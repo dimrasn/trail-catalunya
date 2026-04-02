@@ -5,15 +5,19 @@ import { useSearchParams } from 'next/navigation'
 import FilterBar from './FilterBar'
 import RaceCard from './RaceCard'
 
-const MONTH_ORDER = ['2026-03', '2026-04', '2026-05', '2026-06', '2026-07', '2026-08', '2026-09']
+const MONTH_ORDER = [
+  '2026-04', '2026-05', '2026-06', '2026-07',
+  '2026-08', '2026-09', '2026-10', '2026-11',
+]
 const MONTH_LABELS = {
-  '2026-03': 'March',
   '2026-04': 'April',
   '2026-05': 'May',
   '2026-06': 'June',
   '2026-07': 'July',
   '2026-08': 'August',
   '2026-09': 'September',
+  '2026-10': 'October',
+  '2026-11': 'November',
   'TBD': 'Date TBD',
 }
 
@@ -22,7 +26,7 @@ const MONTH_LABELS = {
 const DRIVE_VALUES = ['u60', '60-120', '120+']
 const DISTANCE_VALUES = ['u10', '10-15', '15-21', '21-42', '42+']
 const ELEVATION_VALUES = ['u200', '200-500', '500-1000', '1000-2000', '2000+']
-const MONTH_VALUES = ['03', '04', '05', '06', '07', '08', '09']
+const MONTH_VALUES = ['04', '05', '06', '07', '08', '09', '10', '11']
 const PROVINCE_VALUES = ['BARCELONA', 'GIRONA', 'TARRAGONA', 'LLEIDA']
 
 function filtersFromParams(sp) {
@@ -33,6 +37,7 @@ function filtersFromParams(sp) {
     month: sp.get('month'),
     province: sp.get('prov'),
     showTBD: sp.get('tbd') === '1',
+    kidsRun: sp.get('kids') === '1',
   }
   return {
     drive: DRIVE_VALUES.includes(raw.drive) ? raw.drive : 'any',
@@ -41,6 +46,7 @@ function filtersFromParams(sp) {
     month: MONTH_VALUES.includes(raw.month) ? raw.month : 'all',
     province: PROVINCE_VALUES.includes(raw.province) ? raw.province : 'all',
     showTBD: raw.showTBD,
+    kidsRun: raw.kidsRun,
   }
 }
 
@@ -52,6 +58,7 @@ function filtersToParams(filters) {
   if (filters.month !== 'all') p.set('month', filters.month)
   if (filters.province !== 'all') p.set('prov', filters.province)
   if (filters.showTBD) p.set('tbd', '1')
+  if (filters.kidsRun) p.set('kids', '1')
   return p.toString()
 }
 
@@ -163,7 +170,6 @@ export default function RaceList({ races, lastUpdated }) {
   const searchParams = useSearchParams()
   const [filters, setFilters] = useState(() => filtersFromParams(searchParams))
 
-  // Sync filters → URL (no navigation, just replaces history state)
   useEffect(() => {
     const qs = filtersToParams(filters)
     const url = qs ? `?${qs}` : window.location.pathname
@@ -175,6 +181,7 @@ export default function RaceList({ races, lastUpdated }) {
   const filtered = useMemo(() => {
     return races.filter(race => {
       if (!race.date && !filters.showTBD) return false
+      if (filters.kidsRun && !race.kidsRun) return false
       return (
         matchesDrive(race, filters.drive) &&
         matchesDistance(race, filters.distance) &&

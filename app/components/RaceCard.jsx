@@ -140,6 +140,11 @@ export default function RaceCard({ race }) {
               SOLD OUT
             </span>
           )}
+          {race.kidsRun && (
+            <span style={{ fontSize: '10px', padding: '1px 5px', borderRadius: '3px', backgroundColor: '#064e3b', color: '#34d399', fontWeight: '700', flexShrink: 0 }}>
+              KIDS RUN
+            </span>
+          )}
         </div>
         <span style={{ fontSize: '13px', color: '#888', whiteSpace: 'nowrap', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace', flexShrink: 0 }}>
           {dateDisplay || <span style={{ color: '#a78bfa' }}>DATE TBD</span>}

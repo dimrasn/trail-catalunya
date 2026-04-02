@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Step 1: Parse CSV → data/races-raw.json
-Groups rows by (url, town), collects distances, parses dates.
+Groups rows by (race_url, town), collects distances, parses dates.
+Supports the new ultres_calendar.csv format.
 """
 import csv
 import json
@@ -10,8 +11,13 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
-CSV_PATH = ROOT / "data/raw/trail_catalunya_2026.csv"
+CSV_PATH = ROOT / "data/raw/ultres_calendar.csv"
 OUTPUT_PATH = ROOT / "data/races-raw.json"
+
+KIDS_KEYWORDS = [
+    'cadet', 'juvenil', 'junior', 'jove', 'nens', 'mini',
+    'infant', 'kids', 'escolar', 'benjamí', 'aleví', 'prebenjamí',
+]
 
 
 def slugify(text):
@@ -23,38 +29,36 @@ def slugify(text):
     text = re.sub(r"[ùúûü]", "u", text)
     text = re.sub(r"[ç]", "c", text)
     text = re.sub(r"[ñ]", "n", text)
-    text = re.sub(r"[·'·']", "", text)
+    text = re.sub(r"[·''·]", "", text)
     text = re.sub(r"[^a-z0-9]+", "-", text)
     text = text.strip("-")
     return text
 
 
-def parse_date(date_str):
-    """Returns (date_iso, date_end_iso). Both may be None."""
-    if not date_str or not date_str.strip():
-        return None, None
-    s = date_str.strip()
+def parse_date_end(date_display, date_iso):
+    """
+    Extract dateEnd from date_display for multi-day events.
+    date_iso is the already-parsed start date (YYYY-MM-DD).
+    Returns dateEnd ISO string or None.
+    """
+    if not date_display or not date_iso:
+        return None
+    s = date_display.strip()
+    year = date_iso[:4]
 
     # Cross-month: 29/8-05/09/2026
     m = re.match(r"^(\d{1,2})/(\d{1,2})-(\d{1,2})/(\d{1,2})/(\d{4})$", s)
     if m:
-        d1, mo1, d2, mo2, y = m.groups()
-        return f"{y}-{int(mo1):02d}-{int(d1):02d}", f"{y}-{int(mo2):02d}-{int(d2):02d}"
+        _, _, d2, mo2, y = m.groups()
+        return f"{y}-{int(mo2):02d}-{int(d2):02d}"
 
-    # Multi-day same month: 21-22/03/2026
+    # Same-month: 11-12/04/2026
     m = re.match(r"^(\d{1,2})-(\d{1,2})/(\d{1,2})/(\d{4})$", s)
     if m:
-        d1, d2, mo, y = m.groups()
-        return f"{y}-{int(mo):02d}-{int(d1):02d}", f"{y}-{int(mo):02d}-{int(d2):02d}"
+        _, d2, mo, y = m.groups()
+        return f"{y}-{int(mo):02d}-{int(d2):02d}"
 
-    # Single day: 01/03/2026
-    m = re.match(r"^(\d{1,2})/(\d{1,2})/(\d{4})$", s)
-    if m:
-        d, mo, y = m.groups()
-        return f"{y}-{int(mo):02d}-{int(d):02d}", None
-
-    print(f"  WARNING: unrecognized date format: {date_str!r}", file=sys.stderr)
-    return None, None
+    return None
 
 
 def parse_price(price_str):
@@ -64,7 +68,6 @@ def parse_price(price_str):
     s = price_str.strip().upper()
     if "SOLD OUT" in s:
         return None, True
-    # Strip € and parse
     s = re.sub(r"[€\s]", "", price_str)
     try:
         return float(s), False
@@ -72,19 +75,24 @@ def parse_price(price_str):
         return None, False
 
 
+def is_kids_name(name):
+    nl = name.lower()
+    return any(k in nl for k in KIDS_KEYWORDS)
+
+
 def main():
     rows = list(csv.DictReader(open(CSV_PATH, encoding="utf-8")))
     print(f"Read {len(rows)} CSV rows from {CSV_PATH}")
 
-    # Filter out Cancelled
-    rows = [r for r in rows if r["status"] != "Cancelled"]
-    print(f"After removing Cancelled: {len(rows)} rows")
+    # Filter out suspended/cancelled
+    rows = [r for r in rows if r["status"] not in ("SUSPESA", "Cancelled", "CANCEL·LADA")]
+    print(f"After removing suspended/cancelled: {len(rows)} rows")
 
-    # Group by (url, town) — preserving CSV order for first-row naming
-    groups = {}  # (url, town) → list of rows
-    group_order = []  # preserves insertion order
+    # Group by (race_url, town)
+    groups = {}
+    group_order = []
     for row in rows:
-        key = (row["url"].strip(), row["town"].strip())
+        key = (row["race_url"].strip(), row["town"].strip())
         if key not in groups:
             groups[key] = []
             group_order.append(key)
@@ -99,28 +107,34 @@ def main():
         group_rows = groups[key]
         url, town = key
 
-        # Event name from first row
-        event_name = group_rows[0]["race_name"].strip()
+        # Event name: use the non-kids row name if available, else first row
+        main_rows = [r for r in group_rows if not is_kids_name(r["race_name"])]
+        event_name = (main_rows[0] if main_rows else group_rows[0])["race_name"].strip()
         province = group_rows[0]["province"].strip()
         status = group_rows[0]["status"].strip()
 
-        # Date: use first row that has a date value
+        # Date: use first row with a date (already ISO)
         date_iso = None
         date_end_iso = None
         for row in group_rows:
             if row["date"].strip():
-                date_iso, date_end_iso = parse_date(row["date"].strip())
+                date_iso = row["date"].strip()
+                date_end_iso = parse_date_end(row.get("date_display", ""), date_iso)
                 break
 
-        # soldOut: any row with SOLD OUT price
         sold_out = False
+        kids_run = False
 
         # Build distances
         distances = []
         for row in group_rows:
             km_str = row["distance_km"].strip()
+            row_name = row["race_name"].strip()
+
+            if is_kids_name(row_name):
+                kids_run = True
+
             if not km_str:
-                # No distance data for this row — skip adding a distance entry
                 continue
 
             try:
@@ -146,8 +160,6 @@ def main():
                 dist["elevationGain"] = elev
             if price is not None:
                 dist["price"] = price
-
-            row_name = row["race_name"].strip()
             if row_name != event_name:
                 dist["variantName"] = row_name
 
@@ -162,7 +174,6 @@ def main():
             seen_ids[base_id] = town
             event_id = base_id
         else:
-            # Deduplicate with town slug
             event_id = f"{base_id}-{slugify(town)}"
             seen_ids[event_id] = town
 
@@ -181,6 +192,8 @@ def main():
             event["dateEnd"] = date_end_iso
         if sold_out:
             event["soldOut"] = True
+        if kids_run:
+            event["kidsRun"] = True
 
         events.append(event)
 
@@ -188,7 +201,8 @@ def main():
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(events, f, ensure_ascii=False, indent=2)
 
-    print(f"Wrote {len(events)} events to {OUTPUT_PATH}")
+    kids_count = sum(1 for e in events if e.get("kidsRun"))
+    print(f"Wrote {len(events)} events to {OUTPUT_PATH} ({kids_count} with kidsRun)")
 
 
 if __name__ == "__main__":

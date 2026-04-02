@@ -1,0 +1,710 @@
+race_hash,month,date,date_display,race_name,race_url,distance_km,elevation_m,distance_elevation_raw,price,town,province,status,scraped_at
+9408d3b7b3de,Abril 2026,2026-04-04,04/04/2026,Volta a Peramola,http://voltaperamola.cat/,25,1600,25km D+1600m,,Peramola,LLEIDA,ACTIVA,2026-04-02T20:57:50.394486+00:00
+41b398f3909b,Abril 2026,2026-04-04,04/04/2026,Volta a Peramola,http://voltaperamola.cat/,10,610,10km D+610m,,Peramola,LLEIDA,ACTIVA,2026-04-02T20:57:50.394547+00:00
+2ecf85c6c88c,Abril 2026,2026-04-04,04/04/2026,Volta a Peramola,http://voltaperamola.cat/,5,260,5km D+260m,,Peramola,LLEIDA,ACTIVA,2026-04-02T20:57:50.394573+00:00
+4c78596bb4e5,Abril 2026,2026-04-04,04/04/2026,Cursa de l'Airosa,https://www.cursadelairosa.cat/,21,1395,21km D+1395m,,Mas de Barberans,TARRAGONA,ACTIVA,2026-04-02T20:57:50.394593+00:00
+f11d06cccb61,Abril 2026,2026-04-04,04/04/2026,Cursa de l'Airosa,https://www.cursadelairosa.cat/,14.5,800,"14,5km D+800m",,Mas de Barberans,TARRAGONA,ACTIVA,2026-04-02T20:57:50.394613+00:00
+3209b6ad58e0,Abril 2026,2026-04-04,04/04/2026,Cursa de l'Airosa,https://www.cursadelairosa.cat/,9.5,460,"9,5km D+460m",,Mas de Barberans,TARRAGONA,ACTIVA,2026-04-02T20:57:50.394635+00:00
+4101ac915422,Abril 2026,2026-04-11,11-12/04/2026,Trail Montgrí,https://www.trailmontgri.com/,35,600,35km D+600m,,Torroella de Montgrí,GIRONA,ACTIVA,2026-04-02T20:57:50.394655+00:00
+0acaf19e6761,Abril 2026,2026-04-11,11-12/04/2026,Trail Montgrí,https://www.trailmontgri.com/,22,750,22km D+750m,,Torroella de Montgrí,GIRONA,ACTIVA,2026-04-02T20:57:50.394677+00:00
+17f905c223aa,Abril 2026,2026-04-11,11-12/04/2026,Trail Montgrí,https://www.trailmontgri.com/,13,450,13km D+450m,,Torroella de Montgrí,GIRONA,ACTIVA,2026-04-02T20:57:50.394696+00:00
+68cd136e16ba,Abril 2026,2026-04-11,11/04/2026,Ultra Montseny,https://www.ultramontseny.com/,70,4110,70km D+4110m,,Viladrau,BARCELONA,ACTIVA,2026-04-02T20:57:50.394716+00:00
+26731ca8f5f1,Abril 2026,2026-04-11,11/04/2026,Ultra Montseny,https://www.ultramontseny.com/,34,2407,34km D+2407m,,Montseny,BARCELONA,ACTIVA,2026-04-02T20:57:50.394736+00:00
+cd42f04172fa,Abril 2026,2026-04-11,11/04/2026,Montsec Ultra Trail,https://montsecultratrail.com/,100,6600,100km D+6600m,,Àger,LLEIDA,ACTIVA,2026-04-02T20:57:50.394756+00:00
+49d2db769bbd,Abril 2026,2026-04-11,11/04/2026,Montsec Ultra Trail,https://montsecultratrail.com/,45,2850,45km D+2850m,,Àger,LLEIDA,ACTIVA,2026-04-02T20:57:50.394776+00:00
+fc705430d1e8,Abril 2026,2026-04-11,11/04/2026,Montsec Ultra Trail,https://montsecultratrail.com/,22,1400,22km D+1400m,,Àger,LLEIDA,ACTIVA,2026-04-02T20:57:50.394795+00:00
+94a349bd1f19,Abril 2026,2026-04-11,11/04/2026,Trail del Cèrvol,https://www.instagram.com/traildelcervol/,24.6,870,"24,6km D+870m",,Sant Sadurní d'Anoia,BARCELONA,ACTIVA,2026-04-02T20:57:50.394817+00:00
+8ed143f69633,Abril 2026,2026-04-11,11/04/2026,Trail del Cèrvol,https://www.instagram.com/traildelcervol/,13,330,13km D+330m,,Sant Sadurní d'Anoia,BARCELONA,ACTIVA,2026-04-02T20:57:50.394839+00:00
+977f5682ad35,Abril 2026,2026-04-12,12/04/2026,Xtrail Series Òrrius,https://www.xtrailseriesrun.com/,22,832,22km D+832m,,Òrrius,BARCELONA,ACTIVA,2026-04-02T20:57:50.394867+00:00
+6065eaa75519,Abril 2026,2026-04-12,12/04/2026,Xtrail Series Òrrius,https://www.xtrailseriesrun.com/,15,624,15km D+624m,,Òrrius,BARCELONA,ACTIVA,2026-04-02T20:57:50.394888+00:00
+f16d9715097e,Abril 2026,2026-04-12,12/04/2026,Xtrail Series Òrrius,https://www.xtrailseriesrun.com/,10,483,10km D+483m,,Òrrius,BARCELONA,ACTIVA,2026-04-02T20:57:50.394908+00:00
+caf8dd25feb2,Abril 2026,2026-04-12,12/04/2026,Rebentaesparedenyes,https://rebentaespardenyes.wordpress.com/,21.5,,"21,5km",,La Ràpita,BARCELONA,ACTIVA,2026-04-02T20:57:50.394929+00:00
+948f15773e7f,Abril 2026,2026-04-12,12/04/2026,Rebentaesparedenyes,https://rebentaespardenyes.wordpress.com/,10.5,,"10,5km",,La Ràpita,BARCELONA,ACTIVA,2026-04-02T20:57:50.394951+00:00
+4aed23a5dd79,Abril 2026,2026-04-12,12/04/2026,Trail Roda de Berà,https://trailrodadebera.webnode.cat/,13.4,269,"13,4km D+269m",,Roda de Berà,TARRAGONA,ACTIVA,2026-04-02T20:57:50.394974+00:00
+9fc0f22290c9,Abril 2026,2026-04-12,12/04/2026,Trail Roda de Berà,https://trailrodadebera.webnode.cat/,4.8,33,"4,8km D+33m",,Roda de Berà,TARRAGONA,ACTIVA,2026-04-02T20:57:50.394997+00:00
+8055d4273657,Abril 2026,2026-04-12,12/04/2026,Cursa de la Batalla,https://sportmaniacs.com/es/services/inscription/2ordf-cursa-de-la-batalla-dels-prats-de-rei#contact,16,,16km,,Prats de Rei,BARCELONA,ACTIVA,2026-04-02T20:57:50.395017+00:00
+a0f8eefaceeb,Abril 2026,2026-04-12,12/04/2026,Cursa de la Batalla,https://sportmaniacs.com/es/services/inscription/2ordf-cursa-de-la-batalla-dels-prats-de-rei#contact,8,,8km,,Prats de Rei,BARCELONA,ACTIVA,2026-04-02T20:57:50.395040+00:00
+23afaffb36a1,Abril 2026,2026-04-18,18/04/2026,Oncodines Trail,https://www.oncodinestrail.cat/,100,2653,100km D+2653m,,Sant Feliu de Codines,BARCELONA,ACTIVA,2026-04-02T20:57:50.395060+00:00
+8610ac2e453f,Abril 2026,2026-04-18,18/04/2026,Cursa Roca Negra,http://rocanegra.cat/,21,1300,21km D+1300m,,Sant Boi de Llobregat,BARCELONA,ACTIVA,2026-04-02T20:57:50.395081+00:00
+fec640fd43f1,Abril 2026,2026-04-18,18/04/2026,Cursa Roca Negra,http://rocanegra.cat/,13,700,13km D+700m,,Sant Boi de Llobregat,BARCELONA,ACTIVA,2026-04-02T20:57:50.395101+00:00
+0c5be508cc6e,Abril 2026,2026-04-18,18/04/2026,Pels Camins dels Matxos,https://matxos.cat/,61.8,3450,"61,8km D+3450m",,Torelló,BARCELONA,ACTIVA,2026-04-02T20:57:50.395121+00:00
+aa72eba35c6a,Abril 2026,2026-04-18,18/04/2026,UTMCD Ultra Trail Muntanyes Costa Daurada,https://www.naturetime.es/ca/ultra-trail-muntanyes-costa-daurada-3/,64,3000,64km D+3000m,,Prades,TARRAGONA,ACTIVA,2026-04-02T20:57:50.395140+00:00
+c275f68bc360,Abril 2026,2026-04-18,18/04/2026,UTMCD Ultra Trail Muntanyes Costa Daurada,https://www.naturetime.es/ca/ultra-trail-muntanyes-costa-daurada-3/,44,1744,44km D+1744m,,Prades,TARRAGONA,ACTIVA,2026-04-02T20:57:50.395161+00:00
+c36123e3ab73,Abril 2026,2026-04-18,18/04/2026,UTMCD Ultra Trail Muntanyes Costa Daurada,https://www.naturetime.es/ca/ultra-trail-muntanyes-costa-daurada-3/,23,969,23km D+969m,,Prades,TARRAGONA,ACTIVA,2026-04-02T20:57:50.395182+00:00
+adf1ae5b4d5b,Abril 2026,2026-04-18,18/04/2026,UTMCD Ultra Trail Muntanyes Costa Daurada,https://www.naturetime.es/ca/ultra-trail-muntanyes-costa-daurada-3/,11,513,11km D+513m,,Prades,TARRAGONA,ACTIVA,2026-04-02T20:57:50.395204+00:00
+ebd46900aa3a,Abril 2026,2026-04-18,18/04/2026,Engatats Trail,https://www.curses.cat/engatatstrail2026/,12,,12km,,Sant Jordi Desvalls,GIRONA,ACTIVA,2026-04-02T20:57:50.395223+00:00
+0443bded77dc,Abril 2026,2026-04-19,19/04/2026,Vilatrail,https://www.vilatrail.com/,21,1100,21km D+1100m,,Vilassar de Dalt,BARCELONA,ACTIVA,2026-04-02T20:57:50.395243+00:00
+20acb137996f,Abril 2026,2026-04-19,19/04/2026,Vilatrail,https://www.vilatrail.com/,12,675,12km D+675m,,Vilassar de Dalt,BARCELONA,ACTIVA,2026-04-02T20:57:50.395263+00:00
+d590b80f78a2,Abril 2026,2026-04-19,19/04/2026,Cursa de les Roques,https://aecaranordblog.wordpress.com/,21.5,1450,"21,5km D+1450m",,Horta de Sant Joan,TARRAGONA,ACTIVA,2026-04-02T20:57:50.395282+00:00
+25a29f780280,Abril 2026,2026-04-19,19/04/2026,Cursa de les Roques,https://aecaranordblog.wordpress.com/,16,850,16km D+850m,,Horta de Sant Joan,TARRAGONA,ACTIVA,2026-04-02T20:57:50.395300+00:00
+b7abed5bdc84,Abril 2026,2026-04-19,19/04/2026,Cursa de les Roques JUVENIL I CADET,https://aecaranordblog.wordpress.com/,9.3,500,"9,3km D+500m",,Horta de Sant Joan,TARRAGONA,ACTIVA,2026-04-02T20:57:50.395320+00:00
+91593953161a,Abril 2026,2026-04-19,19/04/2026,Cursa de la Nòria,https://cursadelanoria.weebly.com/,10,25,10km D+25m,,Torrelameu,LLEIDA,ACTIVA,2026-04-02T20:57:50.395338+00:00
+7cf960c1d5d6,Abril 2026,2026-04-19,19/04/2026,Cursa de la Nòria,https://cursadelanoria.weebly.com/,5,25,5km D+25m,,Torrelameu,LLEIDA,ACTIVA,2026-04-02T20:57:50.395362+00:00
+7c48b6e49e9b,Abril 2026,2026-04-19,19/04/2026,Selva Trail,https://www.aritjol.org/,22,1200,22km D+1200m,,La Selva del Camp,TARRAGONA,ACTIVA,2026-04-02T20:57:50.395383+00:00
+e3c872008b4e,Abril 2026,2026-04-19,19/04/2026,Selva Trail,https://www.aritjol.org/,14,700,14km D+700m,,La Selva del Camp,TARRAGONA,ACTIVA,2026-04-02T20:57:50.395403+00:00
+7cca56758770,Abril 2026,2026-04-19,19/04/2026,Selva Trail,https://www.aritjol.org/,9,250,9km D+250m,,La Selva del Camp,TARRAGONA,ACTIVA,2026-04-02T20:57:50.395421+00:00
+bf9c7e13743b,Abril 2026,2026-04-19,19/04/2026,L'Esgarrinxada,https://www.instagram.com/trailesgarrinxada,22,1000,22km D+1000m,,Vilanova de l'Aguda,LLEIDA,ACTIVA,2026-04-02T20:57:50.395438+00:00
+7be91a9a2c9e,Abril 2026,2026-04-19,19/04/2026,L'Esgarrinxada,https://www.instagram.com/trailesgarrinxada,12,500,12km D+500m,,Vilanova de l'Aguda,LLEIDA,ACTIVA,2026-04-02T20:57:50.395456+00:00
+29f369f09b2a,Abril 2026,2026-04-19,19/04/2026,Cursa de la Mata,https://curses.cat/lamata2026/,16,750,16km D+750m,,Garriguella,GIRONA,ACTIVA,2026-04-02T20:57:50.395479+00:00
+a117cf1b7d38,Abril 2026,2026-04-19,19/04/2026,Cursa de la Mata,https://curses.cat/lamata2026/,11,375,11km D+375m,,Garriguella,GIRONA,ACTIVA,2026-04-02T20:57:50.395502+00:00
+455a43ab1123,Abril 2026,2026-04-19,19/04/2026,Bacanal de Rupià,https://curses.cat/bacanal2026/,14,,14km,,Rupià,GIRONA,ACTIVA,2026-04-02T20:57:50.395521+00:00
+610d70cf88c9,Abril 2026,2026-04-19,19/04/2026,Bacanal de Rupià,https://curses.cat/bacanal2026/,8,,8km,,Rupià,GIRONA,ACTIVA,2026-04-02T20:57:50.395539+00:00
+6639400be510,Abril 2026,2026-04-19,19/04/2026,Jurasic Trail Race,https://sportmaniacs.com/es/services/inscription/3ordm-jurasic-trail-race-2026,17,700,17km D+700m,,La Torre de Claramunt,BARCELONA,ACTIVA,2026-04-02T20:57:50.395562+00:00
+370747dfc990,Abril 2026,2026-04-19,19/04/2026,Jurasic Trail Race,https://sportmaniacs.com/es/services/inscription/3ordm-jurasic-trail-race-2026,8,300,8km D+300m,,La Torre de Claramunt,BARCELONA,ACTIVA,2026-04-02T20:57:50.395584+00:00
+4e176bbef6fa,Abril 2026,2026-04-19,19/04/2026,Puigdefrou Exhaust,https://exhaust.lacelleradeter.cat/,18,900,18km D+900m,18€,La Cellera de Ter,GIRONA,ACTIVA,2026-04-02T20:57:50.395603+00:00
+02b35bf9fb1d,Abril 2026,2026-04-19,19/04/2026,Cursa del Pinxo,https://inscripcions.cat/cursadelpinxoasac2026/,19,,19km,,Cassà de la Selva,GIRONA,ACTIVA,2026-04-02T20:57:50.395620+00:00
+47e6125c1cd2,Abril 2026,2026-04-25,25/04/2026,Trail Vall de Ribes,https://www.trailvallderibes.com/es/,42,3400,42km D+3400m,,Ribes de Freser,GIRONA,ACTIVA,2026-04-02T20:57:50.395637+00:00
+cac1c6803c62,Abril 2026,2026-04-25,25/04/2026,Trail Vall de Ribes,https://www.trailvallderibes.com/es/,23,1900,23km D+1900m,,Ribes de Freser,GIRONA,ACTIVA,2026-04-02T20:57:50.395660+00:00
+fccff6842e4c,Abril 2026,2026-04-25,25/04/2026,Trail Vall de Ribes,https://www.trailvallderibes.com/es/,16,1100,16km D+1100m,,Ribes de Freser,GIRONA,ACTIVA,2026-04-02T20:57:50.395683+00:00
+91b29b8eb40f,Abril 2026,2026-04-25,25/04/2026,Cursa Medijocs,https://medijocs.comb.cat/cursaatletica.htm,8,,8km,,Sant Cugat del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.395705+00:00
+8d27bc6f49e7,Abril 2026,2026-04-25,25/04/2026,La Mata-Sants,https://www.circuitfer.cat/,20,900,20km D+900m,,Castellbò,LLEIDA,ACTIVA,2026-04-02T20:57:50.395724+00:00
+14177a5541e6,Abril 2026,2026-04-25,25/04/2026,Trenkacames,https://ceer.web.app/,7,240,7km D+240m,,Rosselló,LLEIDA,ACTIVA,2026-04-02T20:57:50.395743+00:00
+1b4f004d7d77,Abril 2026,2026-04-25,25/04/2026,Castarun,https://www.castarun.com/,10,,10km,,Sant Joan Despí,BARCELONA,ACTIVA,2026-04-02T20:57:50.395763+00:00
+6428e1b98c1c,Abril 2026,2026-04-25,25/04/2026,Castarun,https://www.castarun.com/,5,,5km,,Sant Joan Despí,BARCELONA,ACTIVA,2026-04-02T20:57:50.395783+00:00
+135486ac1d4a,Abril 2026,2026-04-25,25/04/2026,Trenkacames,https://ceer.web.app/,14,480,14km D+480m,,Rosselló,LLEIDA,ACTIVA,2026-04-02T20:57:50.395801+00:00
+14cc804e3931,Abril 2026,2026-04-26,26/04/2026,Marató Vies Verdes,http://www.maratonviasverdes.com/,42,,42km,,Girona,GIRONA,ACTIVA,2026-04-02T20:57:50.395821+00:00
+2031b04a1d2c,Abril 2026,2026-04-26,26/04/2026,Marató Vies Verdes,http://www.maratonviasverdes.com/,30,,30km,,Cassà de la Selva,GIRONA,ACTIVA,2026-04-02T20:57:50.395841+00:00
+d09cb7b581da,Abril 2026,2026-04-26,26/04/2026,Marató Vies Verdes,http://www.maratonviasverdes.com/,21,,21km,,Llagostera,GIRONA,ACTIVA,2026-04-02T20:57:50.395867+00:00
+e3b46cb3bdb4,Abril 2026,2026-04-26,26/04/2026,Marató Vies Verdes,http://www.maratonviasverdes.com/,10,,10km,,Santa Cristina d'Aro,GIRONA,ACTIVA,2026-04-02T20:57:50.395885+00:00
+d00cb7f88577,Abril 2026,2026-04-26,26/04/2026,Trail Pobla de Montornés,https://trailpoblamontornes.webnode.cat/,11.2,252,"11,2km D+252m",,La Pobla de Montornés,BARCELONA,ACTIVA,2026-04-02T20:57:50.395903+00:00
+64b74a79a1f2,Abril 2026,2026-04-26,26/04/2026,Trail Pobla de Montornés,https://trailpoblamontornes.webnode.cat/,6.2,105,"6,2km D+105m",,La Pobla de Montornés,BARCELONA,ACTIVA,2026-04-02T20:57:50.395921+00:00
+9890093d0f63,Abril 2026,2026-04-26,26/04/2026,Cursa de muntanya de Rubí,https://cursamuntanyarubi.weebly.com/,17.3,520,"17,3km D+520m",,Rubí,BARCELONA,ACTIVA,2026-04-02T20:57:50.395938+00:00
+591de6200809,Abril 2026,2026-04-26,26/04/2026,Cursa de muntanya de Rubí,https://cursamuntanyarubi.weebly.com/,10.2,280,"10,2km D+280m",,Rubí,BARCELONA,ACTIVA,2026-04-02T20:57:50.395955+00:00
+3ffeb9e8341d,Abril 2026,2026-04-26,26/04/2026,Trail 3 Comarques Alpens,https://trail3comarques.com/,24.5,1200,"24,5km D+1200m",,Alpens,BARCELONA,ACTIVA,2026-04-02T20:57:50.395974+00:00
+20871745f82e,Abril 2026,2026-04-26,26/04/2026,Trail 3 Comarques Alpens,https://trail3comarques.com/,12.5,500,"12,5km D+500m",,Alpens,BARCELONA,ACTIVA,2026-04-02T20:57:50.395992+00:00
+20871745f82e,Abril 2026,2026-04-26,26/04/2026,Trail 3 Comarques Alpens,https://trail3comarques.com/,12.5,500,"12,5km D+500m",,Alpens,BARCELONA,ACTIVA,2026-04-02T20:57:50.396011+00:00
+3e5ff45a701a,Abril 2026,2026-04-26,26/04/2026,Un tomb pel Montsant,http://untombpelmontsant.com/,24,1229,24km D+1229m,,Cornudella de Monsant,TARRAGONA,ACTIVA,2026-04-02T20:57:50.396031+00:00
+8964a17403fb,Abril 2026,2026-04-26,26/04/2026,Un tomb pel Montsant,http://untombpelmontsant.com/,11.6,528,"11,6km D+528m",,Cornudella de Monsant,TARRAGONA,ACTIVA,2026-04-02T20:57:50.396051+00:00
+b9c597a410d8,Abril 2026,2026-04-26,26/04/2026,Cursa dels Senglars,https://cursadelssenglars.bescanocorre.cat/,23,1000,23km D+1000m,,Bescanó,GIRONA,ACTIVA,2026-04-02T20:57:50.396070+00:00
+3cc3f923fb5b,Abril 2026,2026-04-26,26/04/2026,Cursa dels Senglars,https://cursadelssenglars.bescanocorre.cat/,13,600,13km D+600m,,Bescanó,GIRONA,ACTIVA,2026-04-02T20:57:50.396090+00:00
+ed5e8ff221a8,Abril 2026,2026-04-26,26/04/2026,Trail del Senglar CABRILS,https://traildelsenglar.com/cabrils/,21,1100,21km D+1100m,,Cabrils,BARCELONA,ACTIVA,2026-04-02T20:57:50.396110+00:00
+833a9fe9de51,Abril 2026,2026-04-26,26/04/2026,Trail del Senglar CABRILS,https://traildelsenglar.com/cabrils/,15,800,15km D+800m,,Cabrils,BARCELONA,ACTIVA,2026-04-02T20:57:50.396129+00:00
+bbd510f97e2c,Abril 2026,2026-04-26,26/04/2026,Trail del Senglar CABRILS,https://traildelsenglar.com/cabrils/,10,600,10km D+600m,,Cabrils,BARCELONA,ACTIVA,2026-04-02T20:57:50.396148+00:00
+f16d446ca976,Abril 2026,2026-04-26,26/04/2026,Cursa de Muntanya Sant Martí Vell,https://www.curses.cat/cursagavarres2026/,20,850,20km D+850m,,Sant Martí Vell,GIRONA,ACTIVA,2026-04-02T20:57:50.396168+00:00
+1df6c1ba9904,Abril 2026,2026-04-26,26/04/2026,Trail Institut Guttman,https://www.9hsports.cat/ca/informacio_cursa/1056,,,,,Badalona,GIRONA,ACTIVA,2026-04-02T20:57:50.396186+00:00
+5d55e9d55ab8,Abril 2026,2026-04-26,26/04/2026,L'Aleixar Trail,https://webtretzesports.wixsite.com/aleixartrail,12.5,600,"12,5km D+600m",,L'Aleixar,TARRAGONA,ACTIVA,2026-04-02T20:57:50.396208+00:00
+64a5db94ae4d,Abril 2026,2026-04-26,26/04/2026,L'Aleixar Trail,https://webtretzesports.wixsite.com/aleixartrail,8.7,350,"8,7km D+350m",,L'Aleixar,TARRAGONA,ACTIVA,2026-04-02T20:57:50.396227+00:00
+718f79d472f8,Abril 2026,2026-04-26,26/04/2026,Cursa La Talaia,https://cursalatalaia.blogspot.com/,18,,18km,,Vilanova i la Geltrú,BARCELONA,ACTIVA,2026-04-02T20:57:50.396247+00:00
+b2a2fae30eb6,Abril 2026,2026-04-26,26/04/2026,Cursa La Talaia,https://cursalatalaia.blogspot.com/,9,,9km,,Vilanova i la Geltrú,BARCELONA,ACTIVA,2026-04-02T20:57:50.396266+00:00
+ecfc375ac7f2,Abril 2026,2026-04-26,26/04/2026,Cursa del NAT'S,https://www.instagram.com/natssport,11.5,250,"11,5km D+250m",,Sant Fruitós de Bages,BARCELONA,ACTIVA,2026-04-02T20:57:50.396285+00:00
+70464a4b5c3f,Abril 2026,2026-04-26,26/04/2026,Cursa del NAT'S,https://www.instagram.com/natssport,7.5,,"7,5km",,Sant Fruitós de Bages,BARCELONA,ACTIVA,2026-04-02T20:57:50.396305+00:00
+013b22c20c5d,Abril 2026,,SUSPESA,Cursa de les Aixetes,https://cursadelesaixetes.com/,23.8,950,"23,8km D+950m",,Sant Feliu de Llobregat,BARCELONA,SUSPESA,2026-04-02T20:57:50.396324+00:00
+24ce6cad5d27,Abril 2026,,SUSPESA,Cursa de les Aixetes,https://cursadelesaixetes.com/,11,350,11km D+350m,,Sant Feliu de Llobregat,BARCELONA,SUSPESA,2026-04-02T20:57:50.396342+00:00
+5b22b2cf9f9e,Abril 2026,,SUSPESA,Mitja Desvern,https://mitjadesvern.cat/,21,795,21km D+795m,,Sant Just Desvern,BARCELONA,SUSPESA,2026-04-02T20:57:50.396361+00:00
+0af06e115a73,Abril 2026,,SUSPESA,Mitja Desvern,https://mitjadesvern.cat/,15,514,15km D+514m,,Sant Just Desvern,BARCELONA,SUSPESA,2026-04-02T20:57:50.396378+00:00
+b5cec1fcc0d9,Abril 2026,,SUSPESA,Mitja Desvern,https://mitjadesvern.cat/,8,295,8km D+295m,,Sant Just Desvern,BARCELONA,SUSPESA,2026-04-02T20:57:50.396394+00:00
+1eab65551d21,Maig 2026,2026-05-01,01/05/2026,Cursa de la Moixina,https://www.instagram.com/cursadelamoixina/,10,250,10km D+250m,,Olot,GIRONA,ACTIVA,2026-04-02T20:57:50.396785+00:00
+b8e44da3e395,Maig 2026,2026-05-01,01/05/2026,Cursa de fons Les Tortugues,https://www.lestortugues.cat/cursa-1-de-maig/,14,,14km,,La Garriga,BARCELONA,ACTIVA,2026-04-02T20:57:50.396807+00:00
+be8a0986c9f8,Maig 2026,2026-05-01,01/05/2026,Cursa de fons Les Tortugues,https://www.lestortugues.cat/cursa-1-de-maig/,7,,7km,,La Garriga,BARCELONA,ACTIVA,2026-04-02T20:57:50.396830+00:00
+b5328b988b3c,Maig 2026,2026-05-01,01/05/2026,Cros de l'1 de maig,https://www.amicsdelacursa.cat/cros.html,10.3,220,"10,3km D+220m",,Artés,BARCELONA,ACTIVA,2026-04-02T20:57:50.396849+00:00
+f96c57c9f311,Maig 2026,2026-05-01,01/05/2026,Cros de l'1 de maig,https://www.amicsdelacursa.cat/cros.html,6,100,6km D+100m,,Artés,BARCELONA,ACTIVA,2026-04-02T20:57:50.396879+00:00
+2926ac062163,Maig 2026,2026-05-02,02/05/2026,Trencacims,https://www.trencacims.com/,54,4000,54km D+4000m,,Paüls,TARRAGONA,ACTIVA,2026-04-02T20:57:50.396897+00:00
+721fb9e9391d,Maig 2026,2026-05-02,02/05/2026,Trencacims,https://www.trencacims.com/,36,2600,36km D+2600m,,Paüls,TARRAGONA,ACTIVA,2026-04-02T20:57:50.396915+00:00
+4c2f8b43d902,Maig 2026,2026-05-02,02/05/2026,Beren Sant Quiri,http://www.beren.cat/,19,1200,19km D+1200m,,Berén,LLEIDA,ACTIVA,2026-04-02T20:57:50.396932+00:00
+65dfac2d96aa,Maig 2026,2026-05-03,03/05/2026,Trencacims,https://www.trencacims.com/,24,1800,24km D+1800m,,Paüls,TARRAGONA,ACTIVA,2026-04-02T20:57:50.396950+00:00
+3b6ec601e87e,Maig 2026,2026-05-03,03/05/2026,Trencacims,https://www.trencacims.com/,12,740,12km D+740m,,Paüls,TARRAGONA,ACTIVA,2026-04-02T20:57:50.396970+00:00
+d8e3b3fcf895,Maig 2026,2026-05-03,03/05/2026,Vall d'Aro Run Series La Lineal,https://valldarorunseries.com/pages/la-lineal,10.6,190,"10,6km +190m",,S'Agaró,GIRONA,ACTIVA,2026-04-02T20:57:50.396994+00:00
+d3240cf619f4,Maig 2026,2026-05-03,03/05/2026,Cursa solidària Cardedeu,https://corrigaires.cat/cursa-solidaria-de-cardedeu/,15,,15km,,Cardedeu,BARCELONA,ACTIVA,2026-04-02T20:57:50.397014+00:00
+9617989d0834,Maig 2026,2026-05-03,03/05/2026,Cursa solidària Cardedeu,https://corrigaires.cat/cursa-solidaria-de-cardedeu/,10,,10km,,Cardedeu,BARCELONA,ACTIVA,2026-04-02T20:57:50.397032+00:00
+52b5c7273896,Maig 2026,2026-05-03,03/05/2026,Marxa Trail Albons,https://curses.cat/marxaalbons2026/,18,,18km,,Albons,GIRONA,ACTIVA,2026-04-02T20:57:50.397051+00:00
+7e9043b9a078,Maig 2026,2026-05-09,09/05/2026,Les Clàssiques de Berga,https://www.lesclassiquesberga.com/,44.5,2800,"44,5km D+2800m",,Berga,BARCELONA,ACTIVA,2026-04-02T20:57:50.397071+00:00
+b581f2daab07,Maig 2026,2026-05-09,09/05/2026,Les Clàssiques de Berga,https://www.lesclassiquesberga.com/,27.5,1750,"27,5km D+1750m",,Berga,BARCELONA,ACTIVA,2026-04-02T20:57:50.397095+00:00
+19799cc3bd64,Maig 2026,2026-05-09,09/05/2026,Les Clàssiques de Berga,https://www.lesclassiquesberga.com/,12.5,780,"12,5km D+780m",,Berga,BARCELONA,ACTIVA,2026-04-02T20:57:50.397117+00:00
+382cfa9cd5c9,Maig 2026,2026-05-09,09/05/2026,Nocturna Trail Calafell,https://www.athleticevents.net/,14,,14km,,Calafell,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397136+00:00
+5bfb31220567,Maig 2026,2026-05-09,09/05/2026,Nocturna Trail Calafell,https://www.athleticevents.net/,9,,9km,,Calafell,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397156+00:00
+b81002a95183,Maig 2026,2026-05-10,10/05/2026,Xtrail Series Run Vallgorguina,https://www.xtrailseriesrun.com/,22,700,22km D+700m,,Vallgorguina,BARCELONA,ACTIVA,2026-04-02T20:57:50.397177+00:00
+3407bd914d64,Maig 2026,2026-05-10,10/05/2026,Xtrail Series Run Vallgorguina,https://www.xtrailseriesrun.com/,17,500,17km D+500m,,Vallgorguina,BARCELONA,ACTIVA,2026-04-02T20:57:50.397197+00:00
+8fa0e0d30e70,Maig 2026,2026-05-10,10/05/2026,Xtrail Series Run Vallgorguina,https://www.xtrailseriesrun.com/,10,300,10km D+300m,,Vallgorguina,BARCELONA,ACTIVA,2026-04-02T20:57:50.397216+00:00
+2cc6c178cae4,Maig 2026,2026-05-10,10/05/2026,Romànica Navàs La Minor,https://laromanicanavas.cat/,27,700,27km D+700m,25€,Navàs,BARCELONA,ACTIVA,2026-04-02T20:57:50.397240+00:00
+5310d9259820,Maig 2026,2026-05-10,10/05/2026,Lloretrail,https://www.lasansi.com/es/lloretdemartrail,15,583,15km D+583m,,Lloret de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.397260+00:00
+3a742fa6569e,Maig 2026,2026-05-10,10/05/2026,Lloretrail,https://www.lasansi.com/es/lloretdemartrail,7,219,7km D+219m,,Lloret de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.397279+00:00
+e70fe6a72d16,Maig 2026,2026-05-10,10/05/2026,CM Vall d'Arbúcies,https://www.cmvalldarbucies.cat/,28,1550,28km D+1550m,,Arbúcies,GIRONA,ACTIVA,2026-04-02T20:57:50.397299+00:00
+8c3dc044212d,Maig 2026,2026-05-10,10/05/2026,CM Vall d'Arbúcies,https://www.cmvalldarbucies.cat/,16,600,16km D+600m,,Arbúcies,GIRONA,ACTIVA,2026-04-02T20:57:50.397318+00:00
+53a67a5c08d2,Maig 2026,2026-05-10,10/05/2026,CM Vall d'Arbúcies,https://www.cmvalldarbucies.cat/,10,350,10km D+350m,,Arbúcies,GIRONA,ACTIVA,2026-04-02T20:57:50.397338+00:00
+03e46fbe6627,Maig 2026,2026-05-10,10/05/2026,Cirera Trail,http://www.cireratrail.cat/,18,620,18km D+620m,,Santa Coloma de Cervelló,BARCELONA,ACTIVA,2026-04-02T20:57:50.397359+00:00
+fbec360bd00d,Maig 2026,2026-05-10,10/05/2026,Cursa de la Portella,https://www.serresdelmestral.cat/,17,1000,17km D+1000m,,L'Hospital de l'Infant,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397377+00:00
+db113c0c3b98,Maig 2026,2026-05-10,10/05/2026,Cursa de la Portella,https://www.serresdelmestral.cat/,10.5,450,"10,5km D+450m",,L'Hospital de l'Infant,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397396+00:00
+63f431f49671,Maig 2026,2026-05-10,10/05/2026,Cursa Batalla dels Herois,https://www.weevens.com/esdeveniments/batalles-dels-herois-2/,22,,22km,17€,El Bruc,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397419+00:00
+9a964e16a71c,Maig 2026,2026-05-10,10/05/2026,Cursa Batalla dels Herois,https://www.weevens.com/esdeveniments/batalles-dels-herois-2/,10,,10km,10€,El Bruc,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397444+00:00
+08d14afc114e,Maig 2026,2026-05-16,16/05/2026,UTBCN Ultra Trail Barcelona,https://ultratrailbcn.com/,61,1976,61km D+1976m,,Sant Fruitós de Bages,BARCELONA,ACTIVA,2026-04-02T20:57:50.397464+00:00
+3d6f4dfa57e7,Maig 2026,2026-05-16,16/05/2026,UTBCN Ultra Trail Barcelona,https://ultratrailbcn.com/,40,1072,40km D+1072m,,Sant Fruitós de Bages,BARCELONA,ACTIVA,2026-04-02T20:57:50.397482+00:00
+021abea70a17,Maig 2026,2026-05-16,16/05/2026,UTBCN Ultra Trail Barcelona,https://ultratrailbcn.com/,26,640,26km D+640m,,Sant Fruitós de Bages,BARCELONA,ACTIVA,2026-04-02T20:57:50.397500+00:00
+4ddb9986ee2f,Maig 2026,2026-05-16,16/05/2026,UTBCN Ultra Trail Barcelona,https://ultratrailbcn.com/,11,265,11km D+265m,,Sant Fruitós de Bages,BARCELONA,ACTIVA,2026-04-02T20:57:50.397519+00:00
+7d611198363b,Maig 2026,2026-05-16,16/05/2026,Vall d'Aro Run Series La Nocturna,https://valldarorunseries.com/pages/la-nocturna,11.6,400,"11,6km D+400m",,Castell d'Aro,GIRONA,ACTIVA,2026-04-02T20:57:50.397543+00:00
+ae56e28267b9,Maig 2026,2026-05-16,16/05/2026,Vertical Montserrat,https://verticalmontserrat.org/,1,388,1km D+388m,,Montserrat,BARCELONA,ACTIVA,2026-04-02T20:57:50.397563+00:00
+4c60b6940397,Maig 2026,2026-05-16,16/05/2026,La Bandarra,https://www.labandarratrail.com/,49,2500,49km D+2500m,45€,Mont-ral,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397583+00:00
+6aca1050b5f4,Maig 2026,2026-05-16,16/05/2026,La Bandarra,https://www.labandarratrail.com/,28,1150,28km D+1150m,25€,Mont-ral,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397603+00:00
+140c62343404,Maig 2026,2026-05-16,16/05/2026,La Bandarra,https://www.labandarratrail.com/,14.5,520,"14,5km D+520m",18€,Mont-ral,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397625+00:00
+907a2798c766,Maig 2026,2026-05-16,16/05/2026,Trail de Sorà,https://soratrail.cat/,21,,21km,,Sorà,BARCELONA,ACTIVA,2026-04-02T20:57:50.397644+00:00
+321a1929e8db,Maig 2026,2026-05-16,16/05/2026,Trail de Sorà,https://soratrail.cat/,11,,11km,,Sorà,BARCELONA,ACTIVA,2026-04-02T20:57:50.397664+00:00
+3d93137f3bee,Maig 2026,2026-05-16,16/05/2026,CavaCursa Giró Ribot,https://giroribot.es/esdeveniments/cavacursa-2024/,10,100,10km D+100m,,Santa Fe del Penedès,BARCELONA,ACTIVA,2026-04-02T20:57:50.397684+00:00
+ee27c66ce4a9,Maig 2026,2026-05-16,16/05/2026,CavaCursa Giró Ribot,https://giroribot.es/esdeveniments/cavacursa-2024/,2.5,55,"2,5km D+55m",,Santa Fe del Penedès,BARCELONA,ACTIVA,2026-04-02T20:57:50.397705+00:00
+877831d2f1cb,Maig 2026,2026-05-16,16/05/2026,Trail L'Agulla,https://trailagullaelcatllar.webnode.es/,11.5,132,"11,5km D+132m",,Catllar,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397724+00:00
+a0d007066c3f,Maig 2026,2026-05-17,17/05/2026,Samunta Trail Race,https://lnk.bio/samuntatrailrace,23,860,23km D+860m,,Sant Martí Sarroca,BARCELONA,ACTIVA,2026-04-02T20:57:50.397745+00:00
+ab0bd01b4d73,Maig 2026,2026-05-17,17/05/2026,Samunta Trail Race,https://lnk.bio/samuntatrailrace,13,370,13km D+370m,,Sant Martí Sarroca,BARCELONA,ACTIVA,2026-04-02T20:57:50.397770+00:00
+ce0e23f3abd6,Maig 2026,2026-05-17,17/05/2026,Run Festival Tossa,https://runfestivaltossa.com/,17,,17km,31€,Tossa de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.397793+00:00
+c1c711a8c7a7,Maig 2026,2026-05-17,17/05/2026,Run Festival Tossa,https://runfestivaltossa.com/,8,,8km,23€,Tossa de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.397813+00:00
+ec9abe55ef31,Maig 2026,2026-05-17,17/05/2026,Trail Rural Torà,https://trailruraltora.cat/,20,800,20km D+800m,,Torà,LLEIDA,ACTIVA,2026-04-02T20:57:50.397833+00:00
+8192fe004cfe,Maig 2026,2026-05-17,17/05/2026,Trail Rural Torà,https://trailruraltora.cat/,10,400,10km D+400m,,Torà,LLEIDA,ACTIVA,2026-04-02T20:57:50.397853+00:00
+74b2c8375fbf,Maig 2026,2026-05-17,17/05/2026,Trail Tarragona,http://trailtarragona.com/,18,429,18km D+429m,,Tarragona,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397887+00:00
+a5cf1bf74321,Maig 2026,2026-05-17,17/05/2026,Trail Tarragona,http://trailtarragona.com/,11.5,286,"11,5km D+286m",,Tarragona,TARRAGONA,ACTIVA,2026-04-02T20:57:50.397908+00:00
+2b7f7c9f4fac,Maig 2026,2026-05-17,17/05/2026,Trail de Cercs solidari,https://www.traildecercssolidari.com/,22,1615,22km D+1615m,,Sant Jordi de Cercs,BARCELONA,ACTIVA,2026-04-02T20:57:50.397929+00:00
+3c12adcba609,Maig 2026,2026-05-17,17/05/2026,Trail de Cercs solidari,https://www.traildecercssolidari.com/,10,553,10km D+553m,,Sant Jordi de Cercs,BARCELONA,ACTIVA,2026-04-02T20:57:50.397951+00:00
+293b0726d3af,Maig 2026,2026-05-17,17/05/2026,Marxa dels Dòlmens,https://curses.cat/dolmens2026/,14,,14km,,La Jonquera,GIRONA,ACTIVA,2026-04-02T20:57:50.397971+00:00
+c31b1af2a68e,Maig 2026,2026-05-17,17/05/2026,Marxa dels Dòlmens,https://curses.cat/dolmens2026/,7,,7km,,La Jonquera,GIRONA,ACTIVA,2026-04-02T20:57:50.397995+00:00
+62412fdeddae,Maig 2026,2026-05-17,17/05/2026,Vertical Lo Port,https://www.21kloport.cat/es/lovertical/,9,1093,9km D+1093m,,Els Molins del Comte,TARRAGONA,ACTIVA,2026-04-02T20:57:50.398015+00:00
+04cce956f077,Maig 2026,2026-05-23,23/05/2026,Batega al Bac TRAIL KV,http://www.bategalbac.com/,4,1000,4km D+1000m,,Planoles,GIRONA,ACTIVA,2026-04-02T20:57:50.398040+00:00
+16d0ee757b14,Maig 2026,2026-05-23,23/05/2026,La Corriolera,https://www.lacorriolera.cat/,24,1000,24km D+1000m,,Navarcles,BARCELONA,ACTIVA,2026-04-02T20:57:50.398059+00:00
+4d1e49c58aa5,Maig 2026,2026-05-23,23/05/2026,La Corriolera,https://www.lacorriolera.cat/,15,470,15km D+470m,,Navarcles,BARCELONA,ACTIVA,2026-04-02T20:57:50.398078+00:00
+7e70c912914e,Maig 2026,2026-05-23,23/05/2026,La Corriolera,https://www.lacorriolera.cat/,8,,8km,,Navarcles,BARCELONA,ACTIVA,2026-04-02T20:57:50.398096+00:00
+ec3163e8a350,Maig 2026,2026-05-24,24/05/2026,Trail L'Enxerinada,https://lenxerinada.cat/,22,900,22km D+900m,,Girona,GIRONA,ACTIVA,2026-04-02T20:57:50.398114+00:00
+b01b5d52cc44,Maig 2026,2026-05-24,24/05/2026,Trail L'Enxerinada,https://lenxerinada.cat/,12,450,12km D+450m,,Girona,GIRONA,ACTIVA,2026-04-02T20:57:50.398132+00:00
+40bacad28211,Maig 2026,2026-05-24,24/05/2026,Batega al Bac TRAIL,http://www.bategalbac.com/,27,1800,27km D+1800m,,Planoles,GIRONA,ACTIVA,2026-04-02T20:57:50.398153+00:00
+dab70fce23d7,Maig 2026,2026-05-24,24/05/2026,Batega al Bac SPRINT,http://www.bategalbac.com/,18,1200,18km D+1200m,,Planoles,GIRONA,ACTIVA,2026-04-02T20:57:50.398173+00:00
+0d6e2bdd159e,Maig 2026,2026-05-24,24/05/2026,Batega al Bac SHORT,http://www.bategalbac.com/,10,500,10km D+500m,,Planoles,GIRONA,ACTIVA,2026-04-02T20:57:50.398193+00:00
+a98f70906aa0,Maig 2026,2026-05-24,24/05/2026,Senders de Can Costa,https://sendersdecancosta.com/,21,1000,21km +1000m,,Sant Vicenç dels Horts,BARCELONA,ACTIVA,2026-04-02T20:57:50.398213+00:00
+3da4999c325c,Maig 2026,2026-05-24,24/05/2026,Senders de Can Costa,https://sendersdecancosta.com/,13,700,13km D+700m,,Sant Vicenç dels Horts,BARCELONA,ACTIVA,2026-04-02T20:57:50.398234+00:00
+cddf066fe37b,Maig 2026,2026-05-24,24/05/2026,Cursa de la Serp,https://www.facebook.com/cursadelaserp/,20,,20km,,La Sentiu de Sió,LLEIDA,ACTIVA,2026-04-02T20:57:50.398256+00:00
+dac79207431a,Maig 2026,2026-05-24,24/05/2026,Cursa de la Serp,https://www.facebook.com/cursadelaserp/,11,,11km,,La Sentiu de Sió,LLEIDA,ACTIVA,2026-04-02T20:57:50.398277+00:00
+1fca95b068f8,Maig 2026,2026-05-24,24/05/2026,Cursa Terres Blanques,https://curses.cat/cantallops2026/,19,,19km,,Cantallops,GIRONA,ACTIVA,2026-04-02T20:57:50.398297+00:00
+04eec47704e0,Maig 2026,2026-05-24,24/05/2026,Cursa Terres Blanques,https://curses.cat/cantallops2026/,9,,9km,,Cantallops,GIRONA,ACTIVA,2026-04-02T20:57:50.398318+00:00
+2c7d5348c550,Maig 2026,2026-05-31,31/05/2026,Vall d'Aro Run Series La Nocturna,https://valldarorunseries.com/pages/la-classica,15.2,490,"15,2km D+490m",,Platja d'Aro,GIRONA,ACTIVA,2026-04-02T20:57:50.398339+00:00
+17aac7ac0c43,Maig 2026,2026-05-31,31/05/2026,Sant Amand Trail,https://linktr.ee/stamandtrail/,23,1300,23km D+1300m,,Ripoll,GIRONA,ACTIVA,2026-04-02T20:57:50.398362+00:00
+17aac7ac0c43,Maig 2026,2026-05-31,31/05/2026,Sant Amand Trail,https://linktr.ee/stamandtrail/,23,1300,23km D+1300m,,Ripoll,GIRONA,ACTIVA,2026-04-02T20:57:50.398383+00:00
+f510e5918930,Maig 2026,2026-05-31,31/05/2026,Sant Amand Trail,https://linktr.ee/stamandtrail/,14,550,14km D+550m,,Ripoll,GIRONA,ACTIVA,2026-04-02T20:57:50.398406+00:00
+c2a5fe787118,Maig 2026,2026-05-31,31/05/2026,Arruix Santa Fe,http://arruix.bombersorganya.cat/,4.3,670,"4,3km D+670m",,Organyà,LLEIDA,ACTIVA,2026-04-02T20:57:50.398432+00:00
+307af746ecba,Maig 2026,2026-05-31,31/05/2026,Petjades de Cèrvols,https://sites.google.com/blanquerna.url.edu/petjadesdecervolsvallirana/horaris,18,700,18km D+700m,,Vallirana,BARCELONA,ACTIVA,2026-04-02T20:57:50.398452+00:00
+278791affacc,Maig 2026,2026-05-31,31/05/2026,Petjades de Cèrvols,https://sites.google.com/blanquerna.url.edu/petjadesdecervolsvallirana/horaris,9,400,9km D+400m,,Vallirana,BARCELONA,ACTIVA,2026-04-02T20:57:50.398470+00:00
+fb54c94615bc,Maig 2026,2026-05-31,31/05/2026,Petjades de Cèrvols,https://sites.google.com/blanquerna.url.edu/petjadesdecervolsvallirana/horaris,3,60,3km D+60m,,Vallirana,BARCELONA,ACTIVA,2026-04-02T20:57:50.398494+00:00
+12ff3d0fd717,Maig 2026,2026-05-31,31/05/2026,Trail Guilleries,https://trailguilleries.cat/,42,2100,42km D+2100m,,Sant Hilari Sacalm,GIRONA,ACTIVA,2026-04-02T20:57:50.398516+00:00
+3392b4353fff,Maig 2026,2026-05-31,31/05/2026,Trail Guilleries,https://trailguilleries.cat/,26,1300,26km D+1300m,,Sant Hilari Sacalm,GIRONA,ACTIVA,2026-04-02T20:57:50.398536+00:00
+ac4f5d7e2160,Maig 2026,2026-05-31,31/05/2026,Trail Guilleries,https://trailguilleries.cat/,16,750,16km D+750m,,Sant Hilari Sacalm,GIRONA,ACTIVA,2026-04-02T20:57:50.398555+00:00
+435a56d64d02,Maig 2026,2026-05-31,31/05/2026,Trail Orís,https://www.instagram.com/TRAIL_ORIS,21,,21km,,Orís,BARCELONA,ACTIVA,2026-04-02T20:57:50.398576+00:00
+e3ccc2ca2a38,Maig 2026,2026-05-31,31/05/2026,Trail Orís,https://www.instagram.com/TRAIL_ORIS,12,,12km,,Orís,BARCELONA,ACTIVA,2026-04-02T20:57:50.398601+00:00
+89998984ec47,Maig 2026,2026-05-31,31/05/2026,Vigía Trail,https://vigiatrail.runningvigia.com/,21,1100,21km D+1100m,,Santa Coloma de Gramanet,BARCELONA,ACTIVA,2026-04-02T20:57:50.398622+00:00
+0659704175da,Maig 2026,2026-05-31,31/05/2026,Vigía Trail,https://vigiatrail.runningvigia.com/,10,400,10km D+400m,,Santa Coloma de Gramanet,BARCELONA,ACTIVA,2026-04-02T20:57:50.398642+00:00
+9d3788da5fb9,Maig 2026,2026-05-31,31/05/2026,Marxa Trail Arenys,https://gesport.cat/2026-47a-marxa-trail-arenys/,11,,11km,,Arenys de Mar,BARCELONA,ACTIVA,2026-04-02T20:57:50.398661+00:00
+22470afa3e1e,Maig 2026,2026-05-31,31/05/2026,Passos de Gegant,https://www.passosdegegant.cat/wordpress/cursa/,21,1300,21km D+1300m,,Solsona,LLEIDA,ACTIVA,2026-04-02T20:57:50.398681+00:00
+b0bd9d16000a,Maig 2026,2026-05-31,31/05/2026,Passos de Gegant,https://www.passosdegegant.cat/wordpress/cursa/,10,350,10km D+350m,,Solsona,LLEIDA,ACTIVA,2026-04-02T20:57:50.398702+00:00
+6d65d2cfcdf2,Maig 2026,2026-05-31,31/05/2026,Passos de Gegant KV,https://www.passosdegegant.cat/wordpress/cursa/,3.2,220,"3,2km D+220m",,Solsona,LLEIDA,ACTIVA,2026-04-02T20:57:50.398723+00:00
+a527cb142eca,Maig 2026,2026-05-31,31/05/2026,Els Corriols de Colomers,https://curses.cat/colomers2026/,14.5,193,"14,5km D+193m",,Colomers,GIRONA,ACTIVA,2026-04-02T20:57:50.398743+00:00
+79b22c5193e0,Maig 2026,2026-05-31,31/05/2026,Trail Niu d'Àliga,https://www.athleticevents.net/cursa/7a-trail-i-caminada-niu-d-aliga-alcover-524,14,334,14km D+334m,,Alcover,TARRAGONA,ACTIVA,2026-04-02T20:57:50.398765+00:00
+2d602f79f3f8,Maig 2026,,TBD,Trail Selva Marítima,http://www.fondistesblanes.cat/TRAIL-SELVA-MARITIMA/,23,900,23km D+900m,,Blanes,GIRONA,ACTIVA,2026-04-02T20:57:50.398782+00:00
+73cde936613f,Maig 2026,,TBD,Trail Selva Marítima,http://www.fondistesblanes.cat/TRAIL-SELVA-MARITIMA/,11,350,11km D+350m,,Blanes,GIRONA,ACTIVA,2026-04-02T20:57:50.398801+00:00
+78702c9c2366,Maig 2026,,TBD,Ruta dels Masos,https://www.rutadelsmasos.com/,16,440,16km D+440m,,Vilabella,TARRAGONA,ACTIVA,2026-04-02T20:57:50.398819+00:00
+19b983035534,Maig 2026,,TBD,Ruta dels Masos,https://www.rutadelsmasos.com/,10,157,10km D+157m,,Vilabella,TARRAGONA,ACTIVA,2026-04-02T20:57:50.398836+00:00
+7f722441edef,Maig 2026,,TBD,Pujada a les Dues Pedres,https://uca.cat/pujada-a-les-dues-pedres/,10.3,300,"10,3km D+300m",,Sta Coloma de Gramanet,BARCELONA,ACTIVA,2026-04-02T20:57:50.398853+00:00
+dc71cb37277f,Maig 2026,,TBD,Pujada a les Dues Pedres,https://uca.cat/pujada-a-les-dues-pedres/,4.7,40,"4,7km D+40m",,Sta Coloma de Gramanet,BARCELONA,ACTIVA,2026-04-02T20:57:50.398881+00:00
+3c5743f2287c,Maig 2026,,TBD,Cursa pel Cor de la Fageda,https://cursapelcordelafageda.cat/,14.7,348,"14,7km D+348m",,Santa Pau,GIRONA,ACTIVA,2026-04-02T20:57:50.398904+00:00
+3788d1066925,Maig 2026,,TBD,Cursa pel Cor de la Fageda,https://cursapelcordelafageda.cat/,21.3,539,"21,3km D+539m",,Santa Pau,GIRONA,ACTIVA,2026-04-02T20:57:50.398926+00:00
+4edb6911dfeb,Maig 2026,,TBD,Embarrocat,https://embarrocat.wixsite.com/aitona,10,26,10km D+26m,,Aitona,LLEIDA,ACTIVA,2026-04-02T20:57:50.398942+00:00
+a932423c97c1,Maig 2026,,TBD,Embarrocat,https://embarrocat.wixsite.com/aitona,5.5,15,"5,5km D+15m",,Aitona,LLEIDA,ACTIVA,2026-04-02T20:57:50.398957+00:00
+acced8efcfb6,Maig 2026,,TBD,Trail del Puig Segalar,https://curses.cat/latallada2025/,17,400,17km D+400m,,La Tallada d'Empordà,GIRONA,ACTIVA,2026-04-02T20:57:50.398974+00:00
+9f6e881d8cc8,Maig 2026,,TBD,Cursa de la Bassella,https://www.instagram.com/cursadelabassella/,10,42,10km D+42m,,Miralcamp,BARCELONA,ACTIVA,2026-04-02T20:57:50.398991+00:00
+2a6d8ef19a3f,Maig 2026,,TBD,Cursa de la Bassella,https://www.instagram.com/cursadelabassella/,5,32,5km D+32m,,Miralcamp,BARCELONA,ACTIVA,2026-04-02T20:57:50.399006+00:00
+4bc07c397b05,Maig 2026,,TBD,Cursa per Collserola,https://www.atcerdanyola.com/curses/cursaPerCollserola/,14,354,14km D+354m,,Cerdanyola del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.399022+00:00
+90c4539a8a2b,Maig 2026,,TBD,Cursa per Collserola,https://www.atcerdanyola.com/curses/cursaPerCollserola/,7.5,150,"7,5km D+150m",,Cerdanyola del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.399038+00:00
+2678721c5b66,Maig 2026,,TBD,Cursa per Collserola,https://www.atcerdanyola.com/curses/cursaPerCollserola/,5,150,5km D+150m,,Cerdanyola del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.399054+00:00
+f2fe5395be03,Maig 2026,,TBD,Mitja Marató de muntanya de la Roca del Vallès,https://dsport.cat/ca/fitxa_cursa.php?id_cursa=1018,21,800,21km D+800m,,La Roca del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.399071+00:00
+55aa5dc2171a,Maig 2026,,TBD,CEES Race,https://www.9hsports.cat/ca/informacio_cursa/700,10,,10km,,Centelles,BARCELONA,ACTIVA,2026-04-02T20:57:50.399087+00:00
+2f2f225132b8,Maig 2026,,TBD,Cursa Tarraco-La Mina,http://www.tarragonafondistes.com/,6.8,22,"6,8km D+22m",,Tarragona,TARRAGONA,ACTIVA,2026-04-02T20:57:50.399107+00:00
+5133e0e208f3,Maig 2026,,TBD,Cursa Comte Arnau,https://campdevanol.cat/3266-2/,10,150,10km D+150m,,Campdevànol,GIRONA,ACTIVA,2026-04-02T20:57:50.399124+00:00
+c965583a447b,Maig 2026,,TBD,Cursa Comte Arnau,https://campdevanol.cat/3266-2/,5,60,5km D+60m,,Campdevànol,GIRONA,ACTIVA,2026-04-02T20:57:50.399142+00:00
+d287a8ba0af5,Maig 2026,,TBD,Cursa de fons a l' ermita de Sant Josep,http://www.cursaermitasantjosep.cat/,10,94,10km D+94m,,Montblanc,TARRAGONA,ACTIVA,2026-04-02T20:57:50.399159+00:00
+e8611d0a5c97,Maig 2026,,TBD,Cursa de Maig,http://cursademaig.com/,10,68,10km D+68m,,Llorenç del Penedès,BARCELONA,ACTIVA,2026-04-02T20:57:50.399176+00:00
+bbadd2487f09,Maig 2026,,TBD,Cursa de Maig,http://cursademaig.com/,5,43,5km D+43m,,Llorenç del Penedès,BARCELONA,ACTIVA,2026-04-02T20:57:50.399193+00:00
+cc7eda780ea1,Maig 2026,,TBD,Cursa Vila Comtal de Sort,https://sort.cat/serveis/poliesportiu/#cros,5,308,5km D+308m,,Sort,LLEIDA,ACTIVA,2026-04-02T20:57:50.399211+00:00
+2de75de186e1,Juny 2026,2026-06-06,06/06/2026,Lles Xtrail,https://misports.cat/carreras/lles-xtrail/,69,3530,69km D+3530m,,Lles,LLEIDA,ACTIVA,2026-04-02T20:57:50.399559+00:00
+276fcdfd5cbd,Juny 2026,2026-06-06,06/06/2026,Lles Xtrail,https://misports.cat/carreras/lles-xtrail/,44,2000,44km D+2000m,,Lles,LLEIDA,ACTIVA,2026-04-02T20:57:50.399580+00:00
+cc54b6db4cd7,Juny 2026,2026-06-06,06/06/2026,Lles Xtrail,https://misports.cat/carreras/lles-xtrail/,30,1470,30km D+1470m,,Lles,LLEIDA,ACTIVA,2026-04-02T20:57:50.399599+00:00
+2309efeb9630,Juny 2026,2026-06-06,06/06/2026,Lles Xtrail,https://misports.cat/carreras/lles-xtrail/,15,1000,15km D+1000m,,Lles,LLEIDA,ACTIVA,2026-04-02T20:57:50.399617+00:00
+8c8cb13ba1a0,Juny 2026,2026-06-06,06/06/2026,Lles Xtrail,https://misports.cat/carreras/lles-xtrail/,7,250,7km D+250m,,Lles,LLEIDA,ACTIVA,2026-04-02T20:57:50.399635+00:00
+dad189dd6642,Juny 2026,2026-06-06,06/06/2026,Cursa Cassoles del Tros,https://cursacassoles2026.blogspot.com/,10,31,10km D+31m,,Juneda,LLEIDA,ACTIVA,2026-04-02T20:57:50.399654+00:00
+942596b50f8a,Juny 2026,2026-06-06,06/06/2026,Cursa Cassoles del Tros,https://cursacassoles2026.blogspot.com/,5.5,17,"5,5km D+17m",,Juneda,LLEIDA,ACTIVA,2026-04-02T20:57:50.399675+00:00
+41a68c7bcaef,Juny 2026,2026-06-07,07/06/2026,Trail Lo Bunker,http://lobunkertrail.blogspot.com/,22,1200,22km D+1200m,,Foradada,LLEIDA,ACTIVA,2026-04-02T20:57:50.399694+00:00
+749d122bac96,Juny 2026,2026-06-07,07/06/2026,Trail Lo Bunker,http://lobunkertrail.blogspot.com/,14,700,14km D+700m,,Foradada,LLEIDA,ACTIVA,2026-04-02T20:57:50.399713+00:00
+8597bd59143e,Juny 2026,2026-06-07,07/06/2026,Molló Trail,https://www.mollotrail.cat/,21,,21km,,Molló,GIRONA,ACTIVA,2026-04-02T20:57:50.399731+00:00
+000643fe556e,Juny 2026,2026-06-07,07/06/2026,Molló Trail,https://www.mollotrail.cat/,15,,15km,,Molló,GIRONA,ACTIVA,2026-04-02T20:57:50.399750+00:00
+6b02cfe13eed,Juny 2026,2026-06-07,07/06/2026,Trail Serralavella,https://dsport.cat/ca/fitxa_cursa.php?id_cursa=1173,21,586,21km D+586m,,Ullastrell,BARCELONA,ACTIVA,2026-04-02T20:57:50.399769+00:00
+ccac579195ce,Juny 2026,2026-06-07,07/06/2026,Trail Serralavella,https://dsport.cat/ca/fitxa_cursa.php?id_cursa=1173,7,215,7km D+215m,,Ullastrell,BARCELONA,ACTIVA,2026-04-02T20:57:50.399788+00:00
+68807b964401,Juny 2026,2026-06-07,07/06/2026,Bacanard Trail,https://www.bacanardtrail.com/,38,1900,38km D+1900m,40€,Begur,GIRONA,ACTIVA,2026-04-02T20:57:50.399807+00:00
+5704b5eb644b,Juny 2026,2026-06-07,07/06/2026,Bacanard Trail,https://www.bacanardtrail.com/,20,1000,20km D+1000m,25€,Begur,GIRONA,ACTIVA,2026-04-02T20:57:50.399825+00:00
+9e5e098af25f,Juny 2026,2026-06-07,07/06/2026,Bacanard Trail,https://www.bacanardtrail.com/,13.5,600,"13,5km D+600m",15€,Begur,GIRONA,ACTIVA,2026-04-02T20:57:50.399844+00:00
+18965c84c33c,Juny 2026,2026-06-07,07/06/2026,Cursa Memorial Ramon Oliu,https://cursaramonoliu.cat/,20,415,20km D+415m,,Cantonigròs,BARCELONA,ACTIVA,2026-04-02T20:57:50.399878+00:00
+2fa8e8ab3a10,Juny 2026,2026-06-07,07/06/2026,Cursa Memorial Ramon Oliu,https://cursaramonoliu.cat/,10,135,10km D+135m,,Cantonigròs,BARCELONA,ACTIVA,2026-04-02T20:57:50.399900+00:00
+f58c6a9d50dd,Juny 2026,2026-06-07,07/06/2026,Trail Senyor del Castell,https://safirteam.wixsite.com/safirteam/,17,640,17km D+640m,,Palafolls,GIRONA,ACTIVA,2026-04-02T20:57:50.399919+00:00
+6ebaea770e57,Juny 2026,2026-06-07,07/06/2026,Trail Senyor del Castell,https://safirteam.wixsite.com/safirteam/,11,330,11km D+330m,,Palafolls,GIRONA,ACTIVA,2026-04-02T20:57:50.399937+00:00
+c2f548f3547d,Juny 2026,2026-06-07,07/06/2026,Camins de Falles,https://www.caminsdefalles.cat/,27,1400,27km D+1400m,,Isil,LLEIDA,ACTIVA,2026-04-02T20:57:50.399955+00:00
+406fccdfcc1f,Juny 2026,2026-06-13,13/06/2026,Vertical Puigestelup,https://uesantjoan.cat/,4,1047,4km D+1047m,,Ogassa,GIRONA,ACTIVA,2026-04-02T20:57:50.399973+00:00
+203baac681f5,Juny 2026,2026-06-14,14/06/2026,La Ribalera,https://www.laribalera.cat/,42,3400,42km D+3400m,,Tírvia,LLEIDA,ACTIVA,2026-04-02T20:57:50.399991+00:00
+7fd5710e04cc,Juny 2026,2026-06-14,14/06/2026,La Ribalera,https://www.laribalera.cat/,27,2000,27km D+2000m,,Tírvia,LLEIDA,ACTIVA,2026-04-02T20:57:50.400010+00:00
+44c955f470ba,Juny 2026,2026-06-14,14/06/2026,La Ribalera,https://www.laribalera.cat/,16,1040,16km D+1040m,,Tírvia,LLEIDA,ACTIVA,2026-04-02T20:57:50.400028+00:00
+ccc4ce09d9ee,Juny 2026,2026-06-14,14/06/2026,Cursa de la Campana,https://cursacampana.wordpress.com/,14.7,542,"14,7km D+542m",,Vacarisses,BARCELONA,ACTIVA,2026-04-02T20:57:50.400048+00:00
+005857da00ea,Juny 2026,2026-06-14,14/06/2026,Cursa de la Campana,https://cursacampana.wordpress.com/,10,290,10km D+290m,,Vacarisses,BARCELONA,ACTIVA,2026-04-02T20:57:50.400066+00:00
+2179983cca69,Juny 2026,2026-06-20,20/06/2026,Cursa del Pla de Sant Tirs,https://www.instagram.com/cursa_elpla/,13,800,13km D+800m,,Pla de Sant Tirs,LLEIDA,ACTIVA,2026-04-02T20:57:50.400084+00:00
+dc4f969758a0,Juny 2026,2026-06-20,20/06/2026,Cavalls del Vent,https://www.cavallsdelvent.com/festival/,84.2,5600,"84,2km D+5600m",,Refugi Lluis Estasen,BARCELONA,ACTIVA,2026-04-02T20:57:50.400103+00:00
+d323180a3420,Juny 2026,2026-06-20,20/06/2026,Cavalls del Vent HALF,https://www.cavallsdelvent.com/festival/,55.1,,"55,1km",,Refugi Lluis Estasen,BARCELONA,ACTIVA,2026-04-02T20:57:50.400127+00:00
+7a47aa9af890,Juny 2026,2026-06-20,20/06/2026,Nit de Vertic,https://www.instagram.com/nitdevertic,12,325,12km D+325m,,Sant Llorenç Savall,BARCELONA,ACTIVA,2026-04-02T20:57:50.400147+00:00
+13976d031872,Juny 2026,,TBD,Trail Reus-Prades-Reus,https://www.rockthesport.com/ca/esdeveniment/1744176757,54.8,,"54,8km",,Reus,TARRAGONA,ACTIVA,2026-04-02T20:57:50.400165+00:00
+cf992200cd0f,Juny 2026,,TBD,Trail Reus-Prades-Reus,https://www.rockthesport.com/ca/esdeveniment/1744176757,37.3,,"37,3km",,Reus,TARRAGONA,ACTIVA,2026-04-02T20:57:50.400181+00:00
+0fc0fa329c08,Juny 2026,,TBD,Pujada de Bagà a Coll de Pal,https://www.avaibooksports.com/inscripcion/pujada-de-baga-a-coll-de-pal-milla-vertical-baga-puigllancada-vertical-coll-de-pal/inscripcion_datos/,17,,17km,,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.400197+00:00
+11c82f69ef93,Juny 2026,,TBD,Milla Vertical Bagà-Puigllançada,https://www.avaibooksports.com/inscripcion/pujada-de-baga-a-coll-de-pal-milla-vertical-baga-puigllancada-vertical-coll-de-pal/inscripcion_datos/,11.5,,"11,5km",,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.400213+00:00
+91cfb84efe95,Juny 2026,,TBD,Vertical Coll de Pal,https://www.avaibooksports.com/inscripcion/pujada-de-baga-a-coll-de-pal-milla-vertical-baga-puigllancada-vertical-coll-de-pal/inscripcion_datos/,12.5,,"12,5km",,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.400228+00:00
+42c963f54a74,Juny 2026,,TBD,Cursa Cirera de Corbins,https://cursacireraterrades.com/,19,800,19km D+800m,,Terrades,GIRONA,ACTIVA,2026-04-02T20:57:50.400244+00:00
+c3da1c6dfa4f,Juny 2026,,TBD,Cursa Cirera de Corbins,https://cursacireraterrades.com/,13,430,13km D+430m,,Terrades,GIRONA,ACTIVA,2026-04-02T20:57:50.400259+00:00
+8adfd4d20c29,Juny 2026,,TBD,Cursa de la Cirera,https://cursacorbins.cat/cursa/,10,,10km,,Corbins,LLEIDA,ACTIVA,2026-04-02T20:57:50.400274+00:00
+bca5fb6d2d48,Juny 2026,,TBD,Cursa de la Cirera,https://cursacorbins.cat/cursa/,5,,5km,,Corbins,LLEIDA,ACTIVA,2026-04-02T20:57:50.400290+00:00
+35eb683367d7,Juny 2026,,TBD,Pujada solidària a la creu de Gurb VERTICAL,https://www.unioexcursionistavic.org/activitats/12a-pujada-solidaria-a-la-creu-de-gurb/,1.9,300,"1,9km D+300m",,Vic,BARCELONA,ACTIVA,2026-04-02T20:57:50.400307+00:00
+efa97a92034d,Juny 2026,,TBD,Trail Rubinit,https://www.rubinit.cat/,14,,14km,,Rubinat,LLEIDA,ACTIVA,2026-04-02T20:57:50.400322+00:00
+3600a55e9e2e,Juny 2026,,TBD,Trail Rubinit,https://www.rubinit.cat/,9,,9km,,Rubinat,LLEIDA,ACTIVA,2026-04-02T20:57:50.400338+00:00
+fcb7e008a40a,Juny 2026,,TBD,La Ferradura de Vall·llobrega,https://senglanotstrailrunningclub.godaddysites.com/,21,830,21km D+830m,,Vall-llobrega,GIRONA,ACTIVA,2026-04-02T20:57:50.400353+00:00
+a95d05a1fdff,Juny 2026,,TBD,La Ferradura de Vall·llobrega,https://senglanotstrailrunningclub.godaddysites.com/,15,550,15km D+550m,,Vall-llobrega,GIRONA,ACTIVA,2026-04-02T20:57:50.400369+00:00
+bbab89551259,Juny 2026,,TBD,Pujada a Miramar,https://www.aaeet.com/wp/,14.5,535,"14,5km D+535m",,Valls,TARRAGONA,ACTIVA,2026-04-02T20:57:50.400384+00:00
+eb67df5df7c9,Juny 2026,,TBD,Cursa de la Guineu,https://cursaguineu.cat/,5,,5km,,Vilanova de Bellpuig,LLEIDA,ACTIVA,2026-04-02T20:57:50.400398+00:00
+95126907d773,Juny 2026,,TBD,Cursa de la Guineu,https://cursaguineu.cat/,10,13,10km D+13m,,Vilanova de Bellpuig,LLEIDA,ACTIVA,2026-04-02T20:57:50.400412+00:00
+908295d51105,Juny 2026,,TBD,Trail Nocturna Lo Tossal,https://clubexcursionistaalpicat.org/ii-trail-nocturna-lo-tossal/,14,250,14km D+250m,,Alpicat,TARRAGONA,ACTIVA,2026-04-02T20:57:50.400445+00:00
+ee88eb33c825,Juny 2026,,TBD,Trail Nocturna Lo Tossal,https://clubexcursionistaalpicat.org/ii-trail-nocturna-lo-tossal/,8,100,8km D+100m,,Alpicat,TARRAGONA,ACTIVA,2026-04-02T20:57:50.400462+00:00
+7085c7e7ff10,Juny 2026,,TBD,Trail El Vendrell,https://trailelvendrell.runnerselvendrell.cat/,13,270,13km D+270m,,El Vendrell,TARRAGONA,ACTIVA,2026-04-02T20:57:50.400478+00:00
+8073498914c0,Juny 2026,,TBD,Vertical Aran,https://eraportadaran.com/vertical-aran/,4.2,1200,"4,2km D+1200m",,Vielha,BARCELONA,ACTIVA,2026-04-02T20:57:50.400508+00:00
+ff8b288e9a10,Juny 2026,,TBD,Cros de Sant Joan i Elois,https://www.9hsports.cat/ca/informacio_cursa/943,6,90,6km D+90m,,Prats de Lluçanès,BARCELONA,ACTIVA,2026-04-02T20:57:50.400524+00:00
+36c24952559e,Juny 2026,,TBD,Night Trail Lloret,https://nighttraillloret.com/es,14,450,14km D+450m,,Lloret,BARCELONA,ACTIVA,2026-04-02T20:57:50.400539+00:00
+56eecda16e0b,Juny 2026,,TBD,Night Trail Lloret,https://nighttraillloret.com/es,7,280,7km D+280m,,Lloret,BARCELONA,ACTIVA,2026-04-02T20:57:50.400555+00:00
+2ba48e779459,Juny 2026,,TBD,Pujada i Baixada a Batet,https://www.pujaibaixabatet.com/,15,,15km,,Olot,GIRONA,ACTIVA,2026-04-02T20:57:50.400571+00:00
+acfeaf37a14c,Juny 2026,,TBD,Pujada i Baixada a Batet,https://www.pujaibaixabatet.com/,9,,9km,,Olot,GIRONA,ACTIVA,2026-04-02T20:57:50.400586+00:00
+3a929d9df552,Juny 2026,,TBD,Moontrail Llavaneres,https://ajllavaneres.cat/moontrail24,12,570,12km D+570m,,St Andreu de Llavaneres,GIRONA,ACTIVA,2026-04-02T20:57:50.400602+00:00
+dcc06228ab2a,Juny 2026,,TBD,La Directa al Tibidabo,https://cegracia.cat/la-directa/,5,450,5km D+450m,,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.400617+00:00
+605397b77eb7,Juny 2026,,TBD,Cursa benefica malalties minoritàries,https://www.cursa-benefica-malalties-minoritaries.es/,12,650,12km D+650m,,Badalona,BARCELONA,ACTIVA,2026-04-02T20:57:50.400633+00:00
+06b092d88997,Juny 2026,,TBD,Cursa benefica malalties minoritàries,https://www.cursa-benefica-malalties-minoritaries.es/,7.5,350,"7,5km D+350m",,Badalona,BARCELONA,ACTIVA,2026-04-02T20:57:50.400648+00:00
+96f9341bd693,Juny 2026,,TBD,Entre Castells nocturna,https://entrecastells.cat/,8.3,270,"8,3km D+270m",,Vilajuïga,GIRONA,ACTIVA,2026-04-02T20:57:50.400664+00:00
+48f9adc780c7,Juny 2026,,TBD,Be-Vertikal,https://www.instagram.com/tonimof/,5,900,5km D+900m,,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.400680+00:00
+b5c89a705910,Juny 2026,,TBD,Aran per Espòrt,http://emaransportsfoundation.org/home/eventos/verano/em_aran_era_longa/,15,850,15km D+850m,,Vielha,LLEIDA,ACTIVA,2026-04-02T20:57:50.400695+00:00
+0d515728057b,Juny 2026,,TBD,Aran per Espòrt,http://emaransportsfoundation.org/home/eventos/verano/em_aran_era_cuerta/,7.5,280,"7,5km D+280m",,Vielha,LLEIDA,ACTIVA,2026-04-02T20:57:50.400712+00:00
+a9f353baf353,Juny 2026,,TBD,Cross del Traginer,https://www.facebook.com/Cross-del-Traginer-de-Balsareny-483072241880663/,13,250,13km D+250m,,Balsareny,BARCELONA,ACTIVA,2026-04-02T20:57:50.400728+00:00
+e975dcf76f68,Juny 2026,,TBD,Cross del Traginer,https://www.facebook.com/Cross-del-Traginer-de-Balsareny-483072241880663/,7,150,7km D+150m,,Balsareny,BARCELONA,ACTIVA,2026-04-02T20:57:50.400743+00:00
+2a666fcf1ff7,Juliol 2026,2026-07-01,01/07/2026,Aran by UTMB,https://valdaran.utmb.world/,10,600,10km D+600m,,Vielha,LLEIDA,ACTIVA,2026-04-02T20:57:50.400940+00:00
+36151280ccf0,Juliol 2026,2026-07-02,02/07/2026,Aran by UTMB,https://valdaran.utmb.world/,55,3300,55km D+3300m,,Vielha,LLEIDA,ACTIVA,2026-04-02T20:57:50.400960+00:00
+63872eb75d7a,Juliol 2026,2026-07-03,03/07/2026,Aran by UTMB,https://valdaran.utmb.world/,162,10700,162km D+10700m,,Vielha,LLEIDA,ACTIVA,2026-04-02T20:57:50.400978+00:00
+39a04506b895,Juliol 2026,2026-07-03,03/07/2026,Aran by UTMB,https://valdaran.utmb.world/,110,6400,110km D+6400m,,Vielha,LLEIDA,ACTIVA,2026-04-02T20:57:50.400997+00:00
+ac6f1e06746c,Juliol 2026,2026-07-04,04/07/2026,Aran by UTMB,https://valdaran.utmb.world/,18,900,18km D+900m,,Beret,LLEIDA,ACTIVA,2026-04-02T20:57:50.401016+00:00
+40dc4890b3b1,Juliol 2026,2026-07-05,05/07/2026,Aran by UTMB,https://valdaran.utmb.world/,32,2100,32km D+2100m,,Vielha,LLEIDA,ACTIVA,2026-04-02T20:57:50.401034+00:00
+5b081af06e6a,Juliol 2026,2026-07-11,11/07/2026,Corriols de Foc,https://www.corriols.cat/,30,1600,30km D+1600m,,Vallfogona de Ripollès,GIRONA,ACTIVA,2026-04-02T20:57:50.401053+00:00
+984a93a3194b,Juliol 2026,2026-07-11,11/07/2026,Corriols de Foc,https://www.corriols.cat/,20,1300,20km D+1300m,,Vallfogona de Ripollès,GIRONA,ACTIVA,2026-04-02T20:57:50.401071+00:00
+edd9bc24bc4e,Juliol 2026,2026-07-11,11/07/2026,Corriols de Foc,https://www.corriols.cat/,10,,10km,,Vallfogona de Ripollès,GIRONA,ACTIVA,2026-04-02T20:57:50.401090+00:00
+21fc47d939ac,Juliol 2026,2026-07-12,12/07/2026,Trail Els Esterregalls,https://trailesterregalls.com/,21,900,21km D+900m,,Isòvol (Cerdanya),GIRONA,ACTIVA,2026-04-02T20:57:50.401108+00:00
+0a41cb56fd8c,Juliol 2026,2026-07-12,12/07/2026,Trail Els Esterregalls,https://trailesterregalls.com/,15,550,15km D+550m,,Isòvol (Cerdanya),GIRONA,ACTIVA,2026-04-02T20:57:50.401127+00:00
+f917a97e625e,Juliol 2026,,TBD,La Frontal de Puig-Reig,https://www.cquie.cat/lafrontal/,9.6,215,"9,6km D+215m",,Puig-Reig,BARCELONA,ACTIVA,2026-04-02T20:57:50.401144+00:00
+0df90211cfe3,Juliol 2026,,TBD,Escornalbou Beertical,https://www.instagram.com/escornalboubeertical/,2.1,340,"2,1km D+340m",,L'Argentera,TARRAGONA,ACTIVA,2026-04-02T20:57:50.401162+00:00
+ebb8ad9e03cc,Juliol 2026,,TBD,Cursa Nectarina Atlètica,https://www.alcarras.cat/nectarina-atletica,10,,10km,,Alcarràs,LLEIDA,ACTIVA,2026-04-02T20:57:50.401177+00:00
+6ec81cb473d3,Juliol 2026,,TBD,Cursa Nectarina Atlètica,https://www.alcarras.cat/nectarina-atletica,5,,5km,,Alcarràs,LLEIDA,ACTIVA,2026-04-02T20:57:50.401193+00:00
+e87ed2cab995,Juliol 2026,,TBD,Trail Fonts del Montseny,https://www.trailfontsdelmontseny.com/,29,1722,29km D+1722m,,Viladrau,GIRONA,ACTIVA,2026-04-02T20:57:50.401208+00:00
+52f4364adea4,Juliol 2026,,TBD,Trail Fonts del Montseny,https://www.trailfontsdelmontseny.com/,19,1146,19km D+1146m,,Viladrau,GIRONA,ACTIVA,2026-04-02T20:57:50.401224+00:00
+83edbecec859,Juliol 2026,,TBD,Trail Fonts del Montseny,https://www.trailfontsdelmontseny.com/,9,315,9km D+315m,,Viladrau,GIRONA,ACTIVA,2026-04-02T20:57:50.401239+00:00
+a9ea506df443,Juliol 2026,,TBD,Trail Fonts del Montseny,https://www.trailfontsdelmontseny.com/,2.8,102,"2,8km D+102m",,Viladrau,GIRONA,ACTIVA,2026-04-02T20:57:50.401255+00:00
+0fcf55177d6a,Juliol 2026,,TBD,Cursa d'estiu de Bagà - Trail d'Estiu,https://www.avaibooksports.com/inscripcion/cursa-d-estiu-de-baga-trail-d-estiu/inscripcion_datos/,17,,17km,,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.401276+00:00
+1454cc7276a3,Juliol 2026,,TBD,Cursa d'estiu de Bagà - Trail d'Estiu,https://www.avaibooksports.com/inscripcion/cursa-d-estiu-de-baga-trail-d-estiu/inscripcion_datos/,12.2,,"12,2km",,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.401293+00:00
+a059282bae1c,Juliol 2026,,TBD,Duesaigües Trail Night,https://www.naturetime.es/ca/DUESAIGUES-TRAIL/,22,1176,22km D+1176m,,Duesaigües,TARRAGONA,ACTIVA,2026-04-02T20:57:50.401310+00:00
+c3bd4c37aefb,Juliol 2026,,TBD,Duesaigües Trail Night,https://www.naturetime.es/ca/DUESAIGUES-TRAIL/,11,588,11km D+588m,,Duesaigües,TARRAGONA,ACTIVA,2026-04-02T20:57:50.401326+00:00
+a4f916c473c9,Juliol 2026,,TBD,Trail de Gósol,https://www.inscripcions.cat/camitrailgosol2025/,15.68,969,"15,68km D+969m",,Gósol,GIRONA,ACTIVA,2026-04-02T20:57:50.401342+00:00
+03aaa12b632d,Juliol 2026,,TBD,La nocturna de Vilafant,https://www.vilafant.cat/per-temes/curses-caminades-itineraris-saludables-natura/cursa-la-nocturna-juliol,10,85,10km D+85m,,Vilafant,GIRONA,ACTIVA,2026-04-02T20:57:50.401358+00:00
+f807d18f4d0b,Juliol 2026,,TBD,Cursa Nocturna La Granada,http://www.lagranada.com/web/cursa/presentacio.html,15,164,15km D+164m,,La Granada,BARCELONA,ACTIVA,2026-04-02T20:57:50.401375+00:00
+3f16000a3ec4,Juliol 2026,,TBD,Cursa Nocturna La Granada,http://www.lagranada.com/web/cursa/presentacio.html,7,83,7km D+83m,,La Granada,BARCELONA,ACTIVA,2026-04-02T20:57:50.401390+00:00
+2f210f8f58c5,Juliol 2026,,TBD,Cursa Nocturna El Camí dels Cavalls,https://www.ajuntamentdetremp.cat/actualitat/agenda/copy2_of_12a-cursa-nocturna-el-cami-dels-cavalls,6.7,,"6,7km",,Tremp,LLEIDA,ACTIVA,2026-04-02T20:57:50.401404+00:00
+1dea0928b877,Agost 2026,2026-08-02,02/08/2026,Trobada Aristot,https://trobada-aristot.jimdofree.com/,23,1750,23km D+1750m,,Aristot,LLEIDA,ACTIVA,2026-04-02T20:57:50.401547+00:00
+eb03e8f08809,Agost 2026,2026-08-02,02/08/2026,Trobada Aristot,https://trobada-aristot.jimdofree.com/,10,600,10km D+600m,,Aristot,LLEIDA,ACTIVA,2026-04-02T20:57:50.401566+00:00
+1b0000fb226d,Agost 2026,2026-08-02,02/08/2026,Trobada Aristot,https://trobada-aristot.jimdofree.com/,16,1050,16km D+1050m,,Aristot,LLEIDA,ACTIVA,2026-04-02T20:57:50.401584+00:00
+2056e233746c,Agost 2026,2026-08-02,02/08/2026,Trobada Aristot,https://trobada-aristot.jimdofree.com/,6.2,290,"6,2km D+290m",,Aristot,LLEIDA,ACTIVA,2026-04-02T20:57:50.401603+00:00
+79942c6fe52b,Agost 2026,2026-08-29,29/8-05/09/2026,Pyrenees Stage Run,https://psr.run/en/,240,15000,240km D+15000m,,Ribes de Freser,GIRONA,ACTIVA,2026-04-02T20:57:50.401622+00:00
+758633c5fb77,Agost 2026,,TBD,Cursa Popular de Bagà,https://www.avaibooksports.com/inscripcion/cursa-popular-de-baga/inscripcion_datos/?lang=ca,8,,8km,,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.401640+00:00
+c369e9facf1c,Agost 2026,,TBD,Cursa Campi qui Pugui,https://www.athleticevents.net/cursa/19a-cursa-popular-campi-qui-pugui-del-papiolet-497,10,130,10km D+130m,,El Papiolet (St.Jaume dels Domenys),TARRAGONA,ACTIVA,2026-04-02T20:57:50.401658+00:00
+d70c79f71274,Agost 2026,,TBD,Cursa La Vespella de Gaià,https://www.athleticevents.net/cursa/xv-cursa-i-marxa-de-muntanya-vespella-de-gaia-491,14,,14km,,La Vespella de Gaià,TARRAGONA,ACTIVA,2026-04-02T20:57:50.401674+00:00
+e1ef59ac3dc9,Agost 2026,,TBD,Montlude Skyrace,https://www.montludeskyrace.es/,32,2900,32km D+2900m,,Les,LLEIDA,ACTIVA,2026-04-02T20:57:50.401690+00:00
+f9b80b46dde6,Agost 2026,,TBD,Montlude Skyrace,https://www.montludeskyrace.es/,10,500,10km D+500m,,Les,LLEIDA,ACTIVA,2026-04-02T20:57:50.401705+00:00
+92317935ae42,Agost 2026,,TBD,Cursa Festa Major Roda de Berà,https://festamajorcursarodadebera.webnode.es/,7.3,40,"7,3km D+40m",,Roda de Berà,TARRAGONA,ACTIVA,2026-04-02T20:57:50.401721+00:00
+7e56c59e0036,Agost 2026,,TBD,Marxa Camping La Borda del Pubill,https://xtsportevents.com/reglament-ca-marxa-la-borda/,5.5,200,"5,5km D+200m",,Ribera de Cardós,LLEIDA,ACTIVA,2026-04-02T20:57:50.401738+00:00
+81b7f27efd51,Agost 2026,,TBD,Cursa Popular d'Amer,https://curses.cat/amer2025/,12,65,12km D+65m,,Amer,GIRONA,ACTIVA,2026-04-02T20:57:50.401754+00:00
+e4b3ef8ce105,Agost 2026,,TBD,Cursa Popular d'Amer,https://curses.cat/amer2025/,6,23,6km D+23m,,Amer,GIRONA,ACTIVA,2026-04-02T20:57:50.401769+00:00
+acebca796806,Agost 2026,,TBD,La Triscada,https://www.instagram.com/fmsenterada,6,215,6km D+215m,,Senterada,LLEIDA,ACTIVA,2026-04-02T20:57:50.401785+00:00
+988e198fd162,Agost 2026,,TBD,Cursa del Gos,https://www.instagram.com/joventut_massoteres/,10,,10km,,Massoteres,LLEIDA,ACTIVA,2026-04-02T20:57:50.401802+00:00
+9416a7af7d24,Agost 2026,,TBD,Cursa del Miner de Ferro,https://www.gem-malgrat.cat/esdeveniments/el-miner-de-ferro/inscripcions-per-a-la-cursa-del-miner-de-ferro-2025/,13,350,13km D+350m,,Malgrat de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.401818+00:00
+7207477e2d90,Agost 2026,,TBD,Trail Nocturna Els Frares Encantats,https://www.cecostadauradatrail.com/trail-nocturna-els-frares-encantats,26,1032,26km D+1032m,,Poblet,TARRAGONA,ACTIVA,2026-04-02T20:57:50.401833+00:00
+229d7de86cfa,Agost 2026,,TBD,Trail Nocturna Els Frares Encantats,https://www.cecostadauradatrail.com/trail-nocturna-els-frares-encantats,12,523,12km D+523m,,Poblet,TARRAGONA,ACTIVA,2026-04-02T20:57:50.401849+00:00
+4dd2a77a882c,Agost 2026,,TBD,Trail Moixeró,https://www.avaibooksports.com/inscripcion/trail-moixero-36km-24km-i-12km/inscripcion_datos/,36,,36km,,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.401871+00:00
+7ff5204c02c5,Agost 2026,,TBD,Trail Moixeró,https://www.avaibooksports.com/inscripcion/trail-moixero-36km-24km-i-12km/inscripcion_datos/,24,,24km,,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.401885+00:00
+abfd5e7c59f3,Agost 2026,,TBD,Trail Moixeró,https://www.avaibooksports.com/inscripcion/trail-moixero-36km-24km-i-12km/inscripcion_datos/,12,,12km,,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.401899+00:00
+6662b04a3bae,Agost 2026,,TBD,Cursa Blat de Moro,https://www.instagram.com/cursablatdemoro/,10,,10km,,Cabanes,GIRONA,ACTIVA,2026-04-02T20:57:50.401914+00:00
+6a4313c7ec73,Agost 2026,,TBD,Trail Montbrió,https://www.instagram.com/trailmontbrio2024,13,500,13km D+500m,,Montbrió de la Marca,TARRAGONA,ACTIVA,2026-04-02T20:57:50.401928+00:00
+cc9d20ca99d0,Agost 2026,,TBD,Trail Montbrió,https://www.instagram.com/trailmontbrio2024,6,200,6km D+200m,,Montbrió de la Marca,TARRAGONA,ACTIVA,2026-04-02T20:57:50.401943+00:00
+b241f4cda75a,Agost 2026,,TBD,Vertical La Bandera,https://www.instagram.com/verticalbandera/,1.26,549,"1,26km D+549m",,La Guingueta d'Àneu,LLEIDA,ACTIVA,2026-04-02T20:57:50.401959+00:00
+4a46f8eb409a,Agost 2026,,TBD,Cursa Muntanya Llagostera Trail,https://www.9hsports.cat/ca/informacio_cursa/995,8,,8km,,Llagostera,GIRONA,ACTIVA,2026-04-02T20:57:50.401975+00:00
+6951dbcc72ca,Agost 2026,,TBD,Verticalp Skyrace,https://www.9hsports.cat/ca/informacio_cursa/975,7.4,1446,"7,4km D+1446m",,Alp,GIRONA,ACTIVA,2026-04-02T20:57:50.401991+00:00
+aa714f0b6068,Agost 2026,,TBD,Bocafoscant Night Trail,https://bocafoscant.cat/,11.1,666,"11,1km D+666m",,La Guingueta d'Àneu,LLEIDA,ACTIVA,2026-04-02T20:57:50.402007+00:00
+0fd820928e3a,Agost 2026,,TBD,Cursa 15 pobles,https://www.corsa15pobles.org/,21,1130,21km D+1130m,,Vielha,LLEIDA,ACTIVA,2026-04-02T20:57:50.402023+00:00
+332d0e0f9d5c,Agost 2026,,TBD,Cursa 15 pobles,https://www.corsa15pobles.org/,11,491,11km D+491m,,Vielha,LLEIDA,ACTIVA,2026-04-02T20:57:50.402039+00:00
+1b30e2a4e189,Agost 2026,,TBD,Cursa Tossal de les Tenalles,https://www.cursatossaldelestenalles.cat/,10,80,10km D+80m,,Sidamon,LLEIDA,ACTIVA,2026-04-02T20:57:50.402055+00:00
+fe6bbfe5ebc5,Agost 2026,,TBD,Cursa Tossal de les Tenalles,https://www.cursatossaldelestenalles.cat/,5,43,5km D+43m,,Sidamon,LLEIDA,ACTIVA,2026-04-02T20:57:50.402071+00:00
+d08a7c3742a0,Agost 2026,,TBD,Radikal Estana,https://radikalestana.cat/,12,600,12km D+600m,,Estana,LLEIDA,ACTIVA,2026-04-02T20:57:50.402088+00:00
+949ab1086263,Agost 2026,,TBD,Cursa de Muntanya Capafonts,http://www.cursacapafonts.com/,13,690,13km D+690m,,Capafonts,TARRAGONA,ACTIVA,2026-04-02T20:57:50.402104+00:00
+1e6c9b1a237c,Agost 2026,,TBD,Cursa muntanya Llagostera nocturna,https://www.9hsports.cat/ca/informacio_cursa/739/,8,,8km,,Llagostera,GIRONA,ACTIVA,2026-04-02T20:57:50.402120+00:00
+8dbd523b1544,Setembre 2026,2026-09-05,05/09/2026,Burriac Atac,http://burriacatac.cat/,21.4,1090,"21,4km D+1090m",,Vilassar de Mar,BARCELONA,ACTIVA,2026-04-02T20:57:50.402362+00:00
+af10f87a135d,Setembre 2026,2026-09-05,05/09/2026,Burriac Atac,http://burriacatac.cat/,15.7,650,"15,7km D+650m",,Vilassar de Mar,BARCELONA,ACTIVA,2026-04-02T20:57:50.402381+00:00
+1012e8a3298d,Setembre 2026,2026-09-05,05/09/2026,Vertical Prat,https://www.circuitfer.cat/vertical-prat,5.5,764,"5,5km D+764m",,Fígols,LLEIDA,ACTIVA,2026-04-02T20:57:50.402398+00:00
+b703c6954023,Setembre 2026,2026-09-06,06/09/2026,La Marrana Skyrace,https://cursalamarrana.com/,24.5,1900,"24,5km D+1900m",,Vallter,GIRONA,ACTIVA,2026-04-02T20:57:50.402414+00:00
+42919372c65f,Setembre 2026,2026-09-06,06/09/2026,La Marrana Skyrace,https://cursalamarrana.com/,13,1100,13km D+1100m,,Vallter,GIRONA,ACTIVA,2026-04-02T20:57:50.402432+00:00
+cb00970a83d9,Setembre 2026,2026-09-06,06/09/2026,La Marrana Skyrace,https://cursalamarrana.com/,11,880,11km D+880m,,Vallter,GIRONA,ACTIVA,2026-04-02T20:57:50.402449+00:00
+d9bf602d6438,Setembre 2026,2026-09-06,06/09/2026,La Marrana Skyrace,https://cursalamarrana.com/,8,600,8km D+600m,,Vallter,GIRONA,ACTIVA,2026-04-02T20:57:50.402468+00:00
+5e4cd99976fb,Setembre 2026,2026-09-19,19/09/2026,Taga 2040 EVO,https://taga2040.com/,28,2000,28km D+2000m,,Sant Joan de les Abadesses,GIRONA,ACTIVA,2026-04-02T20:57:50.402487+00:00
+ec23ab3554b9,Setembre 2026,2026-09-19,19/09/2026,Taga 2040 EVO,https://taga2040.com/,15,900,15km D+900m,,Sant Joan de les Abadesses,GIRONA,ACTIVA,2026-04-02T20:57:50.402505+00:00
+65adb9a48d7a,Setembre 2026,2026-09-19,19/09/2026,Taga 2040 EVO,https://taga2040.com/,9.7,500,"9,7km D+500m",,Sant Joan de les Abadesses,GIRONA,ACTIVA,2026-04-02T20:57:50.402524+00:00
+73647f2f6124,Setembre 2026,2026-09-20,20/09/2026,Cursa Transfronterera,https://www.circuitfer.cat/,20,1500,20km D+1500m,,La Seu d'Urgell,LLEIDA,ACTIVA,2026-04-02T20:57:50.402544+00:00
+d4a34b2df720,Setembre 2026,2026-09-27,27/09/2026,Pujada al Montsià,https://www.pujadamontsia.cat/,30,1880,30km D+1880m,,Alcanar,TARRAGONA,ACTIVA,2026-04-02T20:57:50.402562+00:00
+e38a5b9dede6,Setembre 2026,2026-09-27,27/09/2026,Pujada al Montsià,https://www.pujadamontsia.cat/,15.5,651,"15,5km D+651m",,Alcanar,TARRAGONA,ACTIVA,2026-04-02T20:57:50.402582+00:00
+0a46bf238ab2,Setembre 2026,2026-09-27,27/09/2026,Pujada al Montsià,https://www.pujadamontsia.cat/,12.5,490,"12,5km D+490m",,Alcanar,TARRAGONA,ACTIVA,2026-04-02T20:57:50.402601+00:00
+4dda61775e79,Setembre 2026,,TBD,La Gurrinada,https://lagurrinada.com/,11.5,330,"11,5km D+330m",,Sant Maria de Martorelles,BARCELONA,ACTIVA,2026-04-02T20:57:50.402616+00:00
+725b7a59e3dd,Setembre 2026,,TBD,Pedraforca Xtrail,https://misports.cat/carreras/pedraforca-xtrail/,41,2609,41km D+2609m,,Saldes,BARCELONA,ACTIVA,2026-04-02T20:57:50.402632+00:00
+1dfd011bd3af,Setembre 2026,,TBD,Pedraforca Xtrail,https://misports.cat/carreras/pedraforca-xtrail/,26,1400,26km D+1400m,,Saldes,BARCELONA,ACTIVA,2026-04-02T20:57:50.402648+00:00
+6a3769e54337,Setembre 2026,,TBD,Senglar Trail,https://senglartrail.blogspot.com/,19,800,19km D+800m,,Cubells,LLEIDA,ACTIVA,2026-04-02T20:57:50.402665+00:00
+44fc1aa9edf0,Setembre 2026,,TBD,Folguerolenca Trail,https://www.9hsports.cat/ca/informacio_cursa/950,14,,14km,,Folgueroles,BARCELONA,ACTIVA,2026-04-02T20:57:50.402680+00:00
+8c03bafe2111,Setembre 2026,,TBD,Duesaigües Trail Night,https://www.naturetime.es/ca/DUESAIGUES-TRAIL/,22,1176,22km D+1176m,,Duesaigües,TARRAGONA,ACTIVA,2026-04-02T20:57:50.402697+00:00
+e779bce0cbef,Setembre 2026,,TBD,Duesaigües Trail Night,https://www.naturetime.es/ca/DUESAIGUES-TRAIL/,11,588,11km D+588m,,Duesaigües,TARRAGONA,ACTIVA,2026-04-02T20:57:50.402713+00:00
+fbbef368c89e,Setembre 2026,,TBD,Duesaigües Trail Night,https://www.naturetime.es/ca/DUESAIGUES-TRAIL/,6,,6km,,Duesaigües,TARRAGONA,ACTIVA,2026-04-02T20:57:50.402728+00:00
+e4074fbe14a4,Setembre 2026,,TBD,Pedraforca Xtrail,https://misports.cat/carreras/pedraforca-xtrail/,21,1668,21km D+1668m,,Saldes,BARCELONA,ACTIVA,2026-04-02T20:57:50.402744+00:00
+adb6dd08b430,Setembre 2026,,TBD,Pedraforca Xtrail,https://misports.cat/carreras/pedraforca-xtrail/,10,550,10km D+550m,,Saldes,BARCELONA,ACTIVA,2026-04-02T20:57:50.402760+00:00
+735808ed6616,Setembre 2026,,TBD,Cursa de la Vinya i el Pàmpol,https://www.ajhortons.cat/actualitat/noticies/28a-cursa-de-la-vinya-i-la-7a-pampol-trail-el-proxim-7-de-setembre.html,10,150,10km D+150m,,Sant Llorenç d'Hortons,BARCELONA,ACTIVA,2026-04-02T20:57:50.402777+00:00
+1ac8844ee53d,Setembre 2026,,TBD,Cursa de la Vinya i el Pàmpol,https://www.ajhortons.cat/actualitat/noticies/28a-cursa-de-la-vinya-i-la-7a-pampol-trail-el-proxim-7-de-setembre.html,21,418,21km D+418m,,Sant Llorenç d'Hortons,BARCELONA,ACTIVA,2026-04-02T20:57:50.402793+00:00
+d96f2cb95d8b,Setembre 2026,,TBD,Cross del Carme,https://www.instagram.com/carmeetstu/,5,,5km,,Carme,BARCELONA,ACTIVA,2026-04-02T20:57:50.402810+00:00
+d064e916f2ce,Setembre 2026,,TBD,Transenyera,https://www.lesguineus.cat/,15,800,15km D+800m,,Castellvell i el Vilar,BARCELONA,ACTIVA,2026-04-02T20:57:50.402826+00:00
+0e90334ae409,Setembre 2026,,TBD,Tramuntana Trail Transfronterer,https://www.curses.cat/tramuntanatrail2025/,11.4,,"11,4km",,El Portús,GIRONA,ACTIVA,2026-04-02T20:57:50.402842+00:00
+dc7c3f205d2f,Setembre 2026,,TBD,Cursa de muntanya Vila de Falset,http://www.cursadefalset.net/,26,1700,26km D+1700m,,Falset,TARRAGONA,ACTIVA,2026-04-02T20:57:50.402864+00:00
+9739274aad2c,Setembre 2026,,TBD,Cursa de muntanya Vila de Falset,http://www.cursadefalset.net/,13,513,13km D+513m,,Falset,TARRAGONA,ACTIVA,2026-04-02T20:57:50.402880+00:00
+9272e4329c9c,Setembre 2026,,TBD,Cursa de la Vall del Tenes,https://www.mancomunitatvalltenes.cat/actualitat/noticies/xxxvi-cursa-de-la-vall-del-tenes.html,10,130,10km D+130m,,Lliçà de Vall,BARCELONA,ACTIVA,2026-04-02T20:57:50.402900+00:00
+e78553df5065,Setembre 2026,,TBD,La 6.6 de Bellaterra,https://la6punt6debellaterra.cat/,6.6,,"6,6km",,Bellaterra,BARCELONA,ACTIVA,2026-04-02T20:57:50.402920+00:00
+fde98e28b75f,Setembre 2026,,TBD,Despertaferro Bàscara,https://curses.cat/despertaferro2025/,11,,11km,,Bàscara,GIRONA,ACTIVA,2026-04-02T20:57:50.402937+00:00
+0208b20ed63a,Setembre 2026,,TBD,Despertaferro Bàscara,https://curses.cat/despertaferro2025/,6,,6km,,Bàscara,GIRONA,ACTIVA,2026-04-02T20:57:50.402953+00:00
+cfead68ae282,Setembre 2026,,TBD,L'Enrucada,http://enrucada.tianat.cat/,13,700,13km D+700m,,Tiana,BARCELONA,ACTIVA,2026-04-02T20:57:50.402970+00:00
+c9b6629c0744,Setembre 2026,,TBD,Cross L'Ametlla de Merola,http://cross.ametllademerola.cat/,10,,10km,,L'Ametlla de Merola,BARCELONA,ACTIVA,2026-04-02T20:57:50.402986+00:00
+17b28492852f,Setembre 2026,,TBD,Cross L'Ametlla de Merola,http://cross.ametllademerola.cat/,5,,5km,,L'Ametlla de Merola,BARCELONA,ACTIVA,2026-04-02T20:57:50.403003+00:00
+1c2a4ae95de2,Setembre 2026,,TBD,Vilaplana 030 Extrem,https://www.vilaplana030.cat/,27.5,2000,"27,5km D+2000m",,Vilaplana,TARRAGONA,ACTIVA,2026-04-02T20:57:50.403021+00:00
+06b27b627fda,Setembre 2026,,TBD,Vilaplana 030 Extrem,https://www.vilaplana030.cat/,11,700,11km D+700m,,Vilaplana,TARRAGONA,ACTIVA,2026-04-02T20:57:50.403039+00:00
+ef4281aee7a3,Setembre 2026,,TBD,Cursa dels Poblats Ibèrics,https://www.cimscerdanyola.cat/poblats/,15.5,600,"15,5km D+600m",,Cerdanyola del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.403059+00:00
+a18dc9190ea9,Setembre 2026,,TBD,Cursa dels Poblats Ibèrics,https://www.cimscerdanyola.cat/poblats/,10.5,425,"10,5km D+425m",,Cerdanyola del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.403075+00:00
+08f8965da900,Setembre 2026,,TBD,Cursa del Castell de Montesquiu,https://www.cursadelcastell.com/,12,440,12km D+440m,,Montesquiu,BARCELONA,ACTIVA,2026-04-02T20:57:50.403092+00:00
+12cad925b8c4,Setembre 2026,,TBD,Cursa del Castell de Montesquiu,https://www.cursadelcastell.com/,5,200,5km D+200m,,Montesquiu,BARCELONA,ACTIVA,2026-04-02T20:57:50.403109+00:00
+4bf3d238f033,Setembre 2026,,TBD,CabróRun,https://dsport.cat/ca/fitxa_cursa.php?id_cursa=1121,11.7,430,"11,7km D+430m",,Cabrianes,BARCELONA,ACTIVA,2026-04-02T20:57:50.403126+00:00
+5bcc2f7d1d5f,Setembre 2026,,TBD,CabróRun,https://dsport.cat/ca/fitxa_cursa.php?id_cursa=1121,5.9,181,"5,9km D+181m",,Cabrianes,BARCELONA,ACTIVA,2026-04-02T20:57:50.403142+00:00
+b4aff0e4f6e9,Setembre 2026,,TBD,Rialp Matxicots,https://www.turisrialp.cat/matxicots/,60,4700,60km D+4700m,,Rialp,LLEIDA,ACTIVA,2026-04-02T20:57:50.403158+00:00
+009cdb90c42b,Setembre 2026,,TBD,Mitja Matxicots,https://www.turisrialp.cat/matxicots/,30,2200,30km D+2200m,,Rialp,LLEIDA,ACTIVA,2026-04-02T20:57:50.403175+00:00
+4f6cd7d4215e,Setembre 2026,,TBD,Mitja Matxicots,https://www.turisrialp.cat/matxicots/,15,1000,15km D+1000m,,Rialp,LLEIDA,ACTIVA,2026-04-02T20:57:50.403191+00:00
+f7e0697de4c4,Setembre 2026,,TBD,Trail d'es Castell,https://www.9hsports.cat/ca/informacio_cursa/1001,10,500,10km D+500m,,Begur,GIRONA,ACTIVA,2026-04-02T20:57:50.403206+00:00
+75627be3f359,Setembre 2026,,TBD,Olla de Núria,https://olladenuria.cat/,21,1940,21km D+1940m,,Vall de Núria,GIRONA,ACTIVA,2026-04-02T20:57:50.403224+00:00
+a5deb386d4f3,Setembre 2026,,TBD,Cursa del Sot,https://sites.google.com/view/cursadelsot/,14,400,14km D+400m,,Monistrol de Calders,BARCELONA,ACTIVA,2026-04-02T20:57:50.403245+00:00
+00c57fc3823f,Setembre 2026,,TBD,Cursa del Sot,https://sites.google.com/view/cursadelsot/,21,700,21km D+700m,,Monistrol de Calders,BARCELONA,ACTIVA,2026-04-02T20:57:50.403265+00:00
+b16ace8f332a,Setembre 2026,,TBD,Murtrail,https://www.cemm.cat/murtrail-2025/,18,850,18km D+850m,,Martorelles,BARCELONA,ACTIVA,2026-04-02T20:57:50.403281+00:00
+1821dc089047,Setembre 2026,,TBD,Murtrail,https://www.cemm.cat/murtrail-2025/,10,420,10km D+420m,,Martorelles,BARCELONA,ACTIVA,2026-04-02T20:57:50.403299+00:00
+9c9fc8a50076,Setembre 2026,,TBD,Vertical Urgellet,https://www.9hsports.cat/ca/informacio_cursa/891,5.7,791,"5,7km D+791m",,La Seu d'Urgell,LLEIDA,ACTIVA,2026-04-02T20:57:50.403318+00:00
+596bc1fff71a,Setembre 2026,,TBD,Cursa Montbau,https://www.9hsports.cat/ca/informacio_cursa/935,12,500,12km D+500m,,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.403338+00:00
+69db9597f57f,Setembre 2026,,TBD,Cursa Montbau,https://www.9hsports.cat/ca/informacio_cursa/935,6,250,6km D+250m,,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.403355+00:00
+4f2fd23a7809,Setembre 2026,,TBD,Tap Trail,https://www.instagram.com/taptrailcassa/?hl=es,15,500,15km D+500m,,Cassà de la Selva,GIRONA,ACTIVA,2026-04-02T20:57:50.403371+00:00
+c64fdf0b3c46,Setembre 2026,,TBD,Ventallonina,https://www.curses.cat/ventallonina2025/,12,,12km,,Ventalló,GIRONA,ACTIVA,2026-04-02T20:57:50.403388+00:00
+705f7690fd9c,Setembre 2026,,TBD,Ventallonina,https://www.curses.cat/ventallonina2025/,8,,8km,,Ventalló,GIRONA,ACTIVA,2026-04-02T20:57:50.403408+00:00
+633b68544234,Setembre 2026,,TBD,Cursa Puig de Tiula,https://cursapuigdetiula.cat/,15,650,15km D+650m,,Cubelles,BARCELONA,ACTIVA,2026-04-02T20:57:50.403428+00:00
+b2c9d71b3d68,Setembre 2026,,TBD,Cursa Puig de Tiula,https://cursapuigdetiula.cat/,10,250,10km D+250m,,Cubelles,BARCELONA,ACTIVA,2026-04-02T20:57:50.403447+00:00
+bd37f55257a6,Setembre 2026,,TBD,Cursa de la Vaca,https://www.cansallebres.cat/,10,22,10km D+22m,,Vallfogona de Balaguer,LLEIDA,ACTIVA,2026-04-02T20:57:50.403463+00:00
+bc25bfab8134,Setembre 2026,,TBD,Cursa de la Vaca,https://www.cansallebres.cat/,5,22,5km D+22m,,Vallfogona de Balaguer,LLEIDA,ACTIVA,2026-04-02T20:57:50.403479+00:00
+0917d1087454,Setembre 2026,,TBD,Cabra's Trail Lloret,https://running.cat/cabras-trail-lloret-2025,14,650,14km D+650m,,Lloret de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.403495+00:00
+8602795ea19c,Setembre 2026,,TBD,Cabra's Trail Lloret,https://running.cat/cabras-trail-lloret-2025,7,240,7km D+240m,,Lloret de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.403511+00:00
+21c1d8cd0da6,Setembre 2026,,TBD,Cursa el Pont de Vilomara,http://cursaelpont.cat/ca/,17,700,17km D+700m,,El Pont de Vilomara,BARCELONA,ACTIVA,2026-04-02T20:57:50.403528+00:00
+5621b575554e,Setembre 2026,,TBD,Cursa el Pont de Vilomara,http://cursaelpont.cat/ca/,10,340,10km D+340m,,El Pont de Vilomara,BARCELONA,ACTIVA,2026-04-02T20:57:50.403549+00:00
+6a994c8bc0b0,Setembre 2026,,TBD,Marxa-Trail del Bomber,https://www.instagram.com/abombersolot/,14,700,14km D+700m,,Olot,GIRONA,ACTIVA,2026-04-02T20:57:50.403579+00:00
+131bec3f78b4,Setembre 2026,,TBD,Espintrail,https://www.espintrail.com/,16,750,16km D+750m,,Espinelves,GIRONA,ACTIVA,2026-04-02T20:57:50.403657+00:00
+c596de03f5da,Setembre 2026,,TBD,Espintrail Vertical,https://www.espintrail.com/,2.5,330,"2,5km D+330m",,Espinelves,GIRONA,ACTIVA,2026-04-02T20:57:50.403685+00:00
+27102a6753dd,Setembre 2026,,TBD,Cursa Bacus,https://correvinyes.verdu.red/cursa-bacus-2025/,10.5,198,"10,5km D+198m",,Verdú,LLEIDA,ACTIVA,2026-04-02T20:57:50.403705+00:00
+18460b4f1817,Setembre 2026,,TBD,Cursa Bacus,https://correvinyes.verdu.red/cursa-bacus-2025/,5.5,70,"5,5km D+70m",,Verdú,LLEIDA,ACTIVA,2026-04-02T20:57:50.403721+00:00
+1a2900388ef0,Setembre 2026,,TBD,Cursa del Margalló,https://www.cursadelmargallo.cat/,22,780,22km D+780m,,Olivella,BARCELONA,ACTIVA,2026-04-02T20:57:50.403738+00:00
+7be9bea662e8,Setembre 2026,,TBD,Cursa del Margalló,https://www.cursadelmargallo.cat/,14,460,14km D+460m,,Olivella,BARCELONA,ACTIVA,2026-04-02T20:57:50.403753+00:00
+ad9906f9e73f,Setembre 2026,,TBD,Trencacames Canyelles,https://www.avaibooksports.com/inscripcion/trencacames-canyelles-2025/,12.6,460,"12,6km D+460m",,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.403776+00:00
+6520da1dbf87,Setembre 2026,,TBD,Cursa Matonera,https://www.marganell.cat/cursa-matonera,12.5,400,"12,5km D+400m",,Marganell,BARCELONA,ACTIVA,2026-04-02T20:57:50.403795+00:00
+db91c1981144,Setembre 2026,,TBD,Trail Senders del Penedès,https://trailsendersdelpenedes.wordpress.com/,12.5,,"12,5km",,Les Cabanyes,BARCELONA,ACTIVA,2026-04-02T20:57:50.403816+00:00
+87237dd71b02,Setembre 2026,,TBD,Trail Senders del Penedès,https://trailsendersdelpenedes.wordpress.com/,5.5,,"5,5km",,Les Cabanyes,BARCELONA,ACTIVA,2026-04-02T20:57:50.403835+00:00
+c0ac84dc6275,Setembre 2026,,TBD,Trencacames Canyelles,https://www.avaibooksports.com/inscripcion/trencacames-canyelles-2025/,13,435,13km D+435m,,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.403853+00:00
+21301f15f0bf,Setembre 2026,,TBD,Duextrem Amposta,https://www.montbike.org/duextremamposta/,18,1000,18km D+1000m,,Amposta,TARRAGONA,ACTIVA,2026-04-02T20:57:50.403881+00:00
+48b1cd825584,Setembre 2026,,TBD,Olla de Tapis,https://olladetapis.cat/,21,1000,21km D+1000m,,Maçanet de Cabrenys,GIRONA,ACTIVA,2026-04-02T20:57:50.403898+00:00
+45b6fbee7fd0,Setembre 2026,,TBD,Olla de Tapis,https://olladetapis.cat/,8.3,300,"8,3km D+300m",,Maçanet de Cabrenys,GIRONA,ACTIVA,2026-04-02T20:57:50.403914+00:00
+7564783d2119,Setembre 2026,,TBD,Trail Els Miradors,https://webtretzesports.wixsite.com/trailelsmiradors,9.5,370,"9,5km D+370m",,Borges del Camp,TARRAGONA,ACTIVA,2026-04-02T20:57:50.403931+00:00
+4f9e46d7b87b,Setembre 2026,,TBD,Volta Volcans d'Olot,https://ceolot.cat/voltavolcans/,13,500,13km D+500m,,Olot,GIRONA,ACTIVA,2026-04-02T20:57:50.403947+00:00
+18fc2dc7331e,Setembre 2026,,TBD,La Tossals d'Almatret,https://tossals.blogspot.com/,17,700,17km D+700m,,Almatret,LLEIDA,ACTIVA,2026-04-02T20:57:50.403968+00:00
+28d3c8983eae,Setembre 2026,,TBD,La Tossals d'Almatret,https://tossals.blogspot.com/,10,300,10km D+300m,,Almatret,LLEIDA,ACTIVA,2026-04-02T20:57:50.403987+00:00
+4e9763867c1d,Setembre 2026,,TBD,Vertical de Pi,https://esportsbellver.org/vertical-de-pi/,3,520,3km D+520m,,Pi,LLEIDA,ACTIVA,2026-04-02T20:57:50.404005+00:00
+3139545a8719,Setembre 2026,,TBD,Trail L'Albiol,https://www.naturetime.es/ca/trail-albiol-3/,,,,,L'Albiol,TARRAGONA,ACTIVA,2026-04-02T20:57:50.404021+00:00
+1e31b40a8413,Setembre 2026,,TBD,KOM Trail,https://www.9hsports.cat/ca/informacio_cursa/732,23,785,23km D+785m,,Llinars del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.404041+00:00
+178cc047a2d3,Setembre 2026,,TBD,KOM Trail,https://www.9hsports.cat/ca/informacio_cursa/732,11,375,11km D+375m,,Llinars del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.404055+00:00
+7f78f9e331c2,Setembre 2026,,TBD,Anella Verda Berga,https://mountainrunners.cat/anella-verda-2024/,21.75,790,"21,75km D+790m",,Berga,BARCELONA,ACTIVA,2026-04-02T20:57:50.404071+00:00
+2db8c8939438,Setembre 2026,,TBD,Bruixes Trail Montmagastre,http://bruixestrailmontmagastre.blogspot.com/,17,700,17km D+700m,,Artesa de Segre,LLEIDA,ACTIVA,2026-04-02T20:57:50.404088+00:00
+272bd37e1f93,Setembre 2026,,TBD,Cursa Salts d'Aigua,http://www.saltsdaiguacabreradanoia.cat/cursa-dels-salts-d-aigua/,10,150,10km D+150m,,Canaletes (Cabrera d'Anoia),BARCELONA,ACTIVA,2026-04-02T20:57:50.404109+00:00
+5d1fe862e61e,Octubre 2026,2026-10-02,02/10/2026,Ultra Pirineu,https://ultrapirineu.com/es/,5,860,5km D+860m,,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.404549+00:00
+70f1c43a6267,Octubre 2026,2026-10-03,03/10/2026,Ultra Pirineu,https://ultrapirineu.com/es/,100,6600,100km D+6600m,,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.404575+00:00
+72673205d6c0,Octubre 2026,2026-10-03,03/10/2026,Ultra Pirineu,https://ultrapirineu.com/es/,42,2800,42km D+2800m,,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.404601+00:00
+76464a5a48b1,Octubre 2026,2026-10-04,04/10/2026,Ultra Pirineu,https://ultrapirineu.com/es/,21,1450,21km D+1450m,,Bagà,BARCELONA,ACTIVA,2026-04-02T20:57:50.404624+00:00
+7711dd0976db,Octubre 2026,2026-10-04,04/10/2026,La Foranca,http://laforanca.cat/,21,550,21km D+550m,,Alàs,LLEIDA,ACTIVA,2026-04-02T20:57:50.404643+00:00
+35ca5ce8d530,Octubre 2026,2026-10-04,04/10/2026,La Foranca,http://laforanca.cat/,11,470,11km D+470m,,Alàs,LLEIDA,ACTIVA,2026-04-02T20:57:50.404661+00:00
+18574a149b2c,Octubre 2026,2026-10-10,10/10/2026,La Cambrils-Odèn,https://www.circuitfer.cat/,11,700,11km D+700m,,Cambrils,LLEIDA,ACTIVA,2026-04-02T20:57:50.404678+00:00
+4d1198ce6372,Octubre 2026,2026-10-10,10/10/2026,UTSM Serra de Montsant,https://www.naturetime.es/en/ultra-trail-serra-montsant-4/,63,3470,63km D+3470m,,Ulldemolins,TARRAGONA,ACTIVA,2026-04-02T20:57:50.404699+00:00
+c21c7cd41e4e,Octubre 2026,2026-10-10,10/10/2026,UTSM Serra de Montsant,https://www.naturetime.es/en/ultra-trail-serra-montsant-4/,44,2343,44km D+2343m,,Ulldemolins,TARRAGONA,ACTIVA,2026-04-02T20:57:50.404716+00:00
+cfdab527f18f,Octubre 2026,2026-10-10,10/10/2026,UTSM Serra de Montsant,https://www.naturetime.es/en/ultra-trail-serra-montsant-4/,25,1263,25km D+1263m,,Ulldemolins,TARRAGONA,ACTIVA,2026-04-02T20:57:50.404733+00:00
+6409f89d2824,Octubre 2026,2026-10-10,10/10/2026,UTSM Serra de Montsant,https://www.naturetime.es/en/ultra-trail-serra-montsant-4/,11,621,11km D+621m,,Ulldemolins,TARRAGONA,ACTIVA,2026-04-02T20:57:50.404750+00:00
+c21eec6cedb9,Octubre 2026,2026-10-11,11/10/2026,Cursa Serra de les Fites,https://serradelesfites.org/,25,1100,25km D+1100m,,La Pobla de Massaluca,TARRAGONA,ACTIVA,2026-04-02T20:57:50.404767+00:00
+677f6898e6ac,Octubre 2026,2026-10-11,11/10/2026,Cursa Serra de les Fites,https://serradelesfites.org/,18,700,18km D+700m,,La Pobla de Massaluca,TARRAGONA,ACTIVA,2026-04-02T20:57:50.404784+00:00
+3e728d8719d5,Octubre 2026,2026-10-11,11/10/2026,Cursa Serra de les Fites,https://serradelesfites.org/,13,350,13km D+350m,,La Pobla de Massaluca,TARRAGONA,ACTIVA,2026-04-02T20:57:50.404800+00:00
+ade1eeb966a4,Octubre 2026,2026-10-17,17/10/2026,Trail del Bisaura,https://www.traildelbisaura.com/,56,3800,56km D+3800m,,Sant Quirze de Besora,BARCELONA,ACTIVA,2026-04-02T20:57:50.404818+00:00
+45cfb8a9a767,Octubre 2026,2026-10-17,17/10/2026,Trail del Bisaura,https://www.traildelbisaura.com/,22,1000,22km D+1000m,,Sant Quirze de Besora,BARCELONA,ACTIVA,2026-04-02T20:57:50.404835+00:00
+ead1215946e8,Octubre 2026,2026-10-17,17/10/2026,Trail del Bisaura,https://www.traildelbisaura.com/,11,500,11km D+500m,,Sant Quirze de Besora,BARCELONA,ACTIVA,2026-04-02T20:57:50.404852+00:00
+9c88bf34a373,Octubre 2026,2026-10-18,18/10/2026,Vertikalm,http://www.geca.cat/vertikalm/,5,975,5km D+975m,,Sant Privat d'en Bas,GIRONA,ACTIVA,2026-04-02T20:57:50.404879+00:00
+ca9848738432,Octubre 2026,2026-10-24,24/10/2026,Marató del Boumort,http://atleticsantafe.cat/maratoboumort/,46,2150,46km D+2150m,,Organyà,LLEIDA,ACTIVA,2026-04-02T20:57:50.404897+00:00
+a001d1c3b522,Octubre 2026,2026-10-24,24/10/2026,Marató del Boumort,http://atleticsantafe.cat/maratoboumort/,23,1230,23km +1230m,,Organyà,LLEIDA,ACTIVA,2026-04-02T20:57:50.404914+00:00
+2dcbe4272d77,Octubre 2026,2026-10-24,24/10/2026,Marató del Boumort,http://atleticsantafe.cat/maratoboumort/,11,390,11km D+390m,,Organyà,LLEIDA,ACTIVA,2026-04-02T20:57:50.404931+00:00
+2595e9dd1f67,Octubre 2026,2026-10-25,25/10/2026,Marató Muntanya de Catalunya,https://www.maratocatalunya.cat/,41,,41km,,Sant Llorenç Savall,BARCELONA,ACTIVA,2026-04-02T20:57:50.404948+00:00
+961c912fb776,Octubre 2026,2026-10-25,25/10/2026,Marató Muntanya de Catalunya,https://www.maratocatalunya.cat/,22,,22km,,Sant Llorenç Savall,BARCELONA,ACTIVA,2026-04-02T20:57:50.404965+00:00
+07b7f2992f57,Octubre 2026,2026-10-25,25/10/2026,Marató Muntanya de Catalunya,https://www.maratocatalunya.cat/,12.5,,"12,5km",,Sant Llorenç Savall,BARCELONA,ACTIVA,2026-04-02T20:57:50.404982+00:00
+481c0df6a833,Octubre 2026,,TBD,Marxa dels Termes,http://www.marxadelstermes.com/,42,1350,42km D+1350m,,Arenys de Munt,BARCELONA,ACTIVA,2026-04-02T20:57:50.404996+00:00
+c17f403ee223,Octubre 2026,,TBD,Marxa dels Termes,http://www.marxadelstermes.com/,22,770,22km D+770m,,Arenys de Munt,BARCELONA,ACTIVA,2026-04-02T20:57:50.405010+00:00
+2b2cd60a8917,Octubre 2026,,TBD,Marxa dels Termes,http://www.marxadelstermes.com/,12.5,470,"12,5km D+470m",,Arenys de Munt,BARCELONA,ACTIVA,2026-04-02T20:57:50.405026+00:00
+671caed710c4,Octubre 2026,,TBD,Montpedró Trail,https://lamontpedro.home.blog/,21,1100,21km D+1100m,,Ivars de Noguera,LLEIDA,ACTIVA,2026-04-02T20:57:50.405041+00:00
+c0fc6ba0baa8,Octubre 2026,,TBD,Montpedró Trail,https://lamontpedro.home.blog/,8,270,8km D+270m,,Ivars de Noguera,LLEIDA,ACTIVA,2026-04-02T20:57:50.405055+00:00
+853d108c6772,Octubre 2026,,TBD,Cursa de l'Alta Segarra,http://altasegarra.ces.cat/wp/,23.5,1024,"23,5 km D+1024m",,Sanaüja,LLEIDA,ACTIVA,2026-04-02T20:57:50.405069+00:00
+5d8a6824890f,Octubre 2026,,TBD,Cursa de l'Alta Segarra,http://altasegarra.ces.cat/wp/,10.2,406,"10,2 km D+406m",,Sanaüja,LLEIDA,ACTIVA,2026-04-02T20:57:50.405083+00:00
+fae6a6b8b4fe,Octubre 2026,,TBD,KOM Trail El Corredor,https://cellv.cat/trail-corredor/,23,785,23km D+785m,,Llinars del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.405098+00:00
+268e5e0115f5,Octubre 2026,,TBD,KOM Trail El Corredor,https://cellv.cat/trail-corredor/,11,375,11km D+375m,,Llinars del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.405112+00:00
+959cc3d2c40e,Octubre 2026,,TBD,Tomb al poble vell de Puigcercòs,https://inscripcions.cat/caminadapuigcercos2025/,15,509,15km D+509m,,Tremp,LLEIDA,ACTIVA,2026-04-02T20:57:50.405126+00:00
+61aaa5044287,Octubre 2026,,TBD,Tomb al poble vell de Puigcercòs,https://inscripcions.cat/caminadapuigcercos2025/,7,,7km,,Tremp,LLEIDA,ACTIVA,2026-04-02T20:57:50.405141+00:00
+08242406ce22,Octubre 2026,,TBD,Cursa Castell d'Olèrdola,http://www.bttelbressol.com/Cursa.asp,11.7,,"11,7km",,Moja,BARCELONA,ACTIVA,2026-04-02T20:57:50.405156+00:00
+6446b89faffb,Octubre 2026,,TBD,Cursa d'Orriols,https://curses.cat/orriols2025/,11,,11km,,Orriols,GIRONA,ACTIVA,2026-04-02T20:57:50.405170+00:00
+6d44bdfe799b,Octubre 2026,,TBD,Cursa d'Orriols,https://curses.cat/orriols2025/,6,,6km,,Orriols,GIRONA,ACTIVA,2026-04-02T20:57:50.405183+00:00
+e2292eae9df9,Octubre 2026,,TBD,Cronoescalada Santa Fe,http://lagranada.com/web/cronoescalada/,0.8,33,"0,8km D+33m",,La Granada del Penedès,BARCELONA,ACTIVA,2026-04-02T20:57:50.405197+00:00
+762e9fd860a9,Octubre 2026,,TBD,La nocturna Trinxavambes,https://misports.cat/curses/nocturna-trinxavambes/,17,680,17km D+680m,,Vallromanes,BARCELONA,ACTIVA,2026-04-02T20:57:50.405211+00:00
+88ce433dc3a4,Octubre 2026,,TBD,La nocturna Trinxavambes,https://misports.cat/curses/nocturna-trinxavambes/,10,425,10km D+425m,,Vallromanes,BARCELONA,ACTIVA,2026-04-02T20:57:50.405225+00:00
+eeeb2f281ea3,Octubre 2026,,TBD,Cursa de les Batalles del Bruc,https://www.instagram.com/cursabatallesbruc,10,400,10km D+400m,,El Bruc,BARCELONA,ACTIVA,2026-04-02T20:57:50.405239+00:00
+83b7ec2b5dc6,Octubre 2026,,TBD,Cursa de les Batalles del Bruc,https://www.instagram.com/cursabatallesbruc,5,200,5km D+200m,,El Bruc,BARCELONA,ACTIVA,2026-04-02T20:57:50.405253+00:00
+d17b1989b0d0,Octubre 2026,,TBD,Rural Trail,https://ruraltrail.com/,21,1100,21km D+1100m,,Bigues i Riells del Fai,BARCELONA,ACTIVA,2026-04-02T20:57:50.405268+00:00
+c56f5f218f3f,Octubre 2026,,TBD,Rural Trail,https://ruraltrail.com/,9,400,9km D+400m,,Bigues i Riells del Fai,BARCELONA,ACTIVA,2026-04-02T20:57:50.405282+00:00
+aa02b09a0fd9,Octubre 2026,,TBD,Campionat Maqui Castelltallat,https://www.campionatmaqui.cat/cursa-castelltallat-14km/,14,,14km,,Castelltallat,BARCELONA,ACTIVA,2026-04-02T20:57:50.405296+00:00
+109b122a0666,Octubre 2026,,TBD,Campionat Maqui Castelltallat,https://www.campionatmaqui.cat/cursa-castelltallat-14km/,5,,5km,,Castelltallat,BARCELONA,ACTIVA,2026-04-02T20:57:50.405312+00:00
+d58bea0afc87,Octubre 2026,,TBD,Historic Trail Calafell,https://webtretzesports.wixsite.com/historictrail,18,630,18km D+630m,,Calafell,BARCELONA,ACTIVA,2026-04-02T20:57:50.405331+00:00
+0a9f2c48a4df,Octubre 2026,,TBD,Historic Trail Calafell,https://webtretzesports.wixsite.com/historictrail,11,330,11km D+330m,,Calafell,BARCELONA,ACTIVA,2026-04-02T20:57:50.405350+00:00
+40c43cb114ef,Octubre 2026,,TBD,Cursa del Torró,https://agramuntesports.cat/cursa-del-torro-2024/,10,42,10km D+42m,,Agramunt,LLEIDA,ACTIVA,2026-04-02T20:57:50.405371+00:00
+908a302fe339,Octubre 2026,,TBD,Cursa del Torró,https://agramuntesports.cat/cursa-del-torro-2024/,5,52,5km D+52m,,Agramunt,LLEIDA,ACTIVA,2026-04-02T20:57:50.405397+00:00
+5175d036c065,Octubre 2026,,TBD,Montsant 360 * en equips de 2,http://montsant360.cat/CURSA/,72,3300,72km D+3300m,,Cornudella de Montsant,TARRAGONA,ACTIVA,2026-04-02T20:57:50.405416+00:00
+3ee4bfa725e0,Octubre 2026,,TBD,Montsant 360 * en equips de 2,http://montsant360.cat/CURSA/,42,2000,42km D+2000m,,Cornudella de Montsant,TARRAGONA,ACTIVA,2026-04-02T20:57:50.405432+00:00
+758d517a87cc,Octubre 2026,,TBD,Brama Stage Run,https://brama.run/es/,100,6100,100km D+6100m *3 etapes,,Ribes de Freser,GIRONA,ACTIVA,2026-04-02T20:57:50.405446+00:00
+19ead650705c,Octubre 2026,,TBD,Brama Stage Run,https://brama.run/es/,80,4400,80km D+4400m *3 etapes,,Ribes de Freser,GIRONA,ACTIVA,2026-04-02T20:57:50.405461+00:00
+afb3f0448728,Octubre 2026,,TBD,Brama Stage Run,https://brama.run/es/,60,3200,60km D+3200m *3 etapes,,Ribes de Freser,GIRONA,ACTIVA,2026-04-02T20:57:50.405475+00:00
+0cfd255d4117,Octubre 2026,,TBD,Vallromanes Xtrail,https://misports.cat/carreras/nocturna-trinxavambes/,17,586,17km D+586m,,Vallromanes,BARCELONA,ACTIVA,2026-04-02T20:57:50.405489+00:00
+653f9e85d7bc,Octubre 2026,,TBD,Vallromanes Xtrail,https://misports.cat/carreras/nocturna-trinxavambes/,10,425,10km D+425m,,Vallromanes,BARCELONA,ACTIVA,2026-04-02T20:57:50.405513+00:00
+64be8690866f,Octubre 2026,,TBD,Marxa Bonesvalls,https://www.marxabonesvalls.cat/,31,1193,31km D+1193m,,Olesa de Bonesvalls,BARCELONA,ACTIVA,2026-04-02T20:57:50.405529+00:00
+9c0692f2bfd8,Octubre 2026,,TBD,Marxa Bonesvalls,https://www.marxabonesvalls.cat/,15,596,15km D+596m,,Olesa de Bonesvalls,BARCELONA,ACTIVA,2026-04-02T20:57:50.405544+00:00
+87d3479b4099,Octubre 2026,,TBD,Fun Trail Barcelona,https://funtrailbarcelona.com/,21,900,21km D+900m,,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.405559+00:00
+8f156c5626df,Octubre 2026,,TBD,Fun Trail Barcelona,https://funtrailbarcelona.com/,11,480,11km D+480m,,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.405574+00:00
+28703a9a6d9c,Octubre 2026,,TBD,La Megalítica,https://www.lasansi.com/es/tossamarato,22.22,791,"22,22km D+791m",,Tossa de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.405593+00:00
+0d51d77812d8,Octubre 2026,,TBD,La Megalítica,https://www.lasansi.com/es/tossamarato,11.24,263,"11,24km D+263m",,Tossa de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.405609+00:00
+207d97b7df8c,Octubre 2026,,TBD,La Megalítica,https://www.lasansi.com/es/tossamarato,5,100,5km D+100m,,Tossa de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.405623+00:00
+f38739521e20,Octubre 2026,,TBD,Cursa de muntanya Besalú,https://curses.cat/besalucross2025/,17,,17km,,Besalú,GIRONA,ACTIVA,2026-04-02T20:57:50.405637+00:00
+944310aa14e0,Octubre 2026,,TBD,Cursa de muntanya Besalú,https://curses.cat/besalucross2025/,11,,11km,,Besalú,GIRONA,ACTIVA,2026-04-02T20:57:50.405651+00:00
+74d4f28a907a,Octubre 2026,,TBD,Corriols de Guardiola,https://www.corriolsdeguardiola.cat/,22,736,22km D+736m,,Sant Salvador de Guardiola,BARCELONA,ACTIVA,2026-04-02T20:57:50.405664+00:00
+b0cd2fe77579,Octubre 2026,,TBD,Corriols de Guardiola,https://www.corriolsdeguardiola.cat/,10,300,10km D+300m,,Sant Salvador de Guardiola,BARCELONA,ACTIVA,2026-04-02T20:57:50.405679+00:00
+642d640f54e9,Octubre 2026,,TBD,Corriols de Guardiola,https://www.corriolsdeguardiola.cat/,5,330,5km D+330m,,Sant Salvador de Guardiola,BARCELONA,ACTIVA,2026-04-02T20:57:50.405695+00:00
+6dc98f2e789e,Octubre 2026,,TBD,Trail No Limits,https://sites.google.com/view/trailnolimitsponts,23,990,23km D+990m,,Ponts,LLEIDA,ACTIVA,2026-04-02T20:57:50.405710+00:00
+4332ba343e73,Octubre 2026,,TBD,Trail No Limits,https://sites.google.com/view/trailnolimitsponts,12,550,12km D+550m,,Ponts,LLEIDA,ACTIVA,2026-04-02T20:57:50.405723+00:00
+1b8e729507f0,Octubre 2026,,TBD,Cursa de la Dona,https://www.cinccims.cat/,7,145,7km D+145m,,Corbera de Llobregat,BARCELONA,ACTIVA,2026-04-02T20:57:50.405737+00:00
+5e5495bc6b35,Octubre 2026,,TBD,Trail Les Tres Fonts,https://masquefatrail.cat/,12.7,317,"12,7km D+317m",,Masquefa,BARCELONA,ACTIVA,2026-04-02T20:57:50.405751+00:00
+97e56225b84a,Octubre 2026,,TBD,Cursa per muntanya Turó de les Guineus,https://www.instagram.com/senglarspunksvc/,10,450,10km D+450m,,Sant Vicenç de Castellet,BARCELONA,ACTIVA,2026-04-02T20:57:50.405766+00:00
+7e5221b7901b,Octubre 2026,,TBD,L'Escalada Trail,https://www.campionatmaqui.cat/escaldada-trail-suria/,14,640,14km D+640m,,Súria,BARCELONA,ACTIVA,2026-04-02T20:57:50.405781+00:00
+edcadfb002bf,Octubre 2026,,TBD,L'Escalada Trail,https://www.campionatmaqui.cat/escaldada-trail-suria/,8,,8km,,Súria,BARCELONA,ACTIVA,2026-04-02T20:57:50.405796+00:00
+8e93900a2f73,Octubre 2026,,TBD,La Salvatge Trail,https://cerellinars.cat/salvatgetrail/,21,,21km,,Rellinars,BARCELONA,ACTIVA,2026-04-02T20:57:50.405811+00:00
+9ec254a9de61,Octubre 2026,,TBD,La Salvatge Trail,https://cerellinars.cat/salvatgetrail/,12,,12km,,Rellinars,BARCELONA,ACTIVA,2026-04-02T20:57:50.405827+00:00
+4a7d9a7567a3,Octubre 2026,,TBD,La Salvatge Trail,https://cerellinars.cat/salvatgetrail/,6,,6km,,Rellinars,BARCELONA,ACTIVA,2026-04-02T20:57:50.405842+00:00
+cdaa08bb7fcf,Octubre 2026,,TBD,Cursa de muntanya Tivissa,https://cursativissa.cat/,20,970,20km D+970m,,Tivissa,TARRAGONA,ACTIVA,2026-04-02T20:57:50.405864+00:00
+1ac35711a5ed,Octubre 2026,,TBD,Cursa de muntanya Tivissa,https://cursativissa.cat/,9,644,9km D+644m,,Tivissa,TARRAGONA,ACTIVA,2026-04-02T20:57:50.405880+00:00
+181785f2f99d,Octubre 2026,,TBD,Short Trail Altafulla,https://www.athleticevents.net/cursa/2n-short-trail-altafulla-507,5,125,5km D+125m,,Altafulla,TARRAGONA,ACTIVA,2026-04-02T20:57:50.405896+00:00
+7554c5e5f400,Octubre 2026,,TBD,Cursa Dona Rural,https://webtretzesports.wixsite.com/caminadadonarural,10,350,10km D+350m,,Riudecanyes,TARRAGONA,ACTIVA,2026-04-02T20:57:50.405910+00:00
+55e1b8d4e2d7,Octubre 2026,,TBD,Trail Capafonts,https://www.rockthesport.com/ca/esdeveniment/capafonts-trail-2025,11,,11km,,Capafonts,TARRAGONA,ACTIVA,2026-04-02T20:57:50.405924+00:00
+d42479d7bb29,Octubre 2026,,TBD,Lliga't a la vida Trail,http://lligatalavida.cat/,100,,100km,,Tarragona,TARRAGONA,ACTIVA,2026-04-02T20:57:50.405938+00:00
+10d87cde7614,Octubre 2026,,TBD,La Dragonera Trail,https://linktr.ee/cursadeldrac,22,979,22km D+979m,,Sant Fost de Campsentelles,BARCELONA,ACTIVA,2026-04-02T20:57:50.405951+00:00
+8d0a0e62b8fa,Octubre 2026,,TBD,La Dragonera Trail,https://linktr.ee/cursadeldrac,13.5,573,"13,5km D+573m",,Sant Fost de Campsentelles,BARCELONA,ACTIVA,2026-04-02T20:57:50.405966+00:00
+3581f249d56f,Octubre 2026,,TBD,La Destralera Trail,https://www.9hsports.cat/ca/informacio_cursa/1006,23,1100,23km D+1100m,,La Pobla de Lillet,BARCELONA,ACTIVA,2026-04-02T20:57:50.405980+00:00
+db8bb04a72de,Octubre 2026,,TBD,La Destralera Trail,https://www.9hsports.cat/ca/informacio_cursa/1006,12,500,12km D+500m,,La Pobla de Lillet,BARCELONA,ACTIVA,2026-04-02T20:57:50.405993+00:00
+0acd15b830c3,Octubre 2026,,TBD,La Selvatjada,https://www.curses.cat/laselvatjada2025/,15,800,15km D+800m,,La Selva de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.406006+00:00
+dc0874b77baf,Octubre 2026,,TBD,La Selvatjada,https://www.curses.cat/laselvatjada2025/,7.5,250,"7,5km D+250m",,La Selva de Mar,GIRONA,ACTIVA,2026-04-02T20:57:50.406021+00:00
+0c3f78a508d3,Octubre 2026,,TBD,La Destralera,https://www.instagram.com/destralers_de_la_pobla/,23,1100,23km D+1100m,,La Pobla de Lillet,BARCELONA,ACTIVA,2026-04-02T20:57:50.406034+00:00
+d5b45b4d84ba,Octubre 2026,,TBD,La Destralera,https://www.instagram.com/destralers_de_la_pobla/,12,500,12km D+500m,,La Pobla de Lillet,BARCELONA,ACTIVA,2026-04-02T20:57:50.406048+00:00
+c8b173411a5d,Octubre 2026,,TBD,Trepitja Garrotxa,https://trepitjagarrotxa.cat/,84,4750,84km D+4750m,,Oix,GIRONA,ACTIVA,2026-04-02T20:57:50.406062+00:00
+0b8d1cb4e580,Octubre 2026,,TBD,Trepitja Garrotxa,https://trepitjagarrotxa.cat/,53,2900,53km D+2900m,,Oix,GIRONA,ACTIVA,2026-04-02T20:57:50.406077+00:00
+002d1a5bf560,Octubre 2026,,TBD,Trepitja Garrotxa,https://trepitjagarrotxa.cat/,23,1200,23km D+1200m,,Oix,GIRONA,ACTIVA,2026-04-02T20:57:50.406093+00:00
+f91d3bfb9782,Octubre 2026,,TBD,Trepitja Garrotxa,https://trepitjagarrotxa.cat/,13,550,13km D+550m,,Oix,GIRONA,ACTIVA,2026-04-02T20:57:50.406108+00:00
+20ff84922c15,Octubre 2026,,TBD,Cursa muntanya Serralavella,https://www.dsport.cat/es/fitxa_cursa.php?id_cursa=1127,10,300,10km D+300m,,Ullastrell,BARCELONA,ACTIVA,2026-04-02T20:57:50.406123+00:00
+4a1997e8efb4,Octubre 2026,,TBD,KV Roquetes,http://kmv.trailroquetes.cat/es/pagina-principal-2/,6,1150,6km D+1150m,,Roquetes,TARRAGONA,ACTIVA,2026-04-02T20:57:50.406138+00:00
+5aa43403dd81,Octubre 2026,,TBD,Marxa Els Roures,https://alliberadrenalina.com/marxa-dels-roures/,31,1400,31km D+1400m,,Montblanc,TARRAGONA,ACTIVA,2026-04-02T20:57:50.406154+00:00
+fa14daecf7d5,Octubre 2026,,TBD,Marxa Els Roures,https://alliberadrenalina.com/marxa-dels-roures/,14,790,14km D+790m,,Montblanc,TARRAGONA,ACTIVA,2026-04-02T20:57:50.406170+00:00
+d8acce411d97,Octubre 2026,,TBD,Mitja Marató Rural de Ribes,https://www.facebook.com/MMRRibes/,20.7,349,"20,7km D+349m",,Sant Pere de Ribes,BARCELONA,ACTIVA,2026-04-02T20:57:50.406186+00:00
+93fb8e3e3813,Octubre 2026,,TBD,Mitja Marató Rural de Ribes,https://www.facebook.com/MMRRibes/,10.6,101,"10,6km D+101m",,Sant Pere de Ribes,BARCELONA,ACTIVA,2026-04-02T20:57:50.406202+00:00
+1b9eb3148e30,Octubre 2026,,TBD,Badatrail,https://www.instagram.com/badatrail/,15,432,15km D+432m,,Badalona,BARCELONA,ACTIVA,2026-04-02T20:57:50.406218+00:00
+b4285b074e96,Octubre 2026,,TBD,Badatrail,https://www.instagram.com/badatrail/,5,145,5km D+145m,,Badalona,BARCELONA,ACTIVA,2026-04-02T20:57:50.406232+00:00
+ab82b85b5f4a,Octubre 2026,,TBD,Mitja del Castell,http://www.mitjadelcastell.com/,22.1,1260,"22,1km D+1260m",,El Papiol,BARCELONA,ACTIVA,2026-04-02T20:57:50.406247+00:00
+2a824d7a95ac,Octubre 2026,,TBD,Mitja del Castell,http://www.mitjadelcastell.com/,13.9,690,"13,9km D+690m",,El Papiol,BARCELONA,ACTIVA,2026-04-02T20:57:50.406262+00:00
+5dd624f0a17d,Octubre 2026,,TBD,Cursa Neandertal,https://cursaneandertal.com/,17,675,17km D+675m,,Capellades,BARCELONA,ACTIVA,2026-04-02T20:57:50.406277+00:00
+a63a0fc34a67,Octubre 2026,,TBD,Cursa Neandertal,https://cursaneandertal.com/,10,350,10km D+350m,,Capellades,BARCELONA,ACTIVA,2026-04-02T20:57:50.406296+00:00
+d7bac5654b56,Octubre 2026,,TBD,Olla de Tapis,https://olladetapis.cat/,21,990,21km D+990m,,Maçanet de Cabrenys,GIRONA,ACTIVA,2026-04-02T20:57:50.406313+00:00
+f9d3d9327548,Octubre 2026,,TBD,Olla de Tapis,https://olladetapis.cat/,9,300,9km D+300m,,Maçanet de Cabrenys,GIRONA,ACTIVA,2026-04-02T20:57:50.406330+00:00
+9ea137f84c4b,Novembre 2026,2026-11-07,07/11/2026,Cursa de l'Alba,https://www.cursalba.cat/,42,,42km,,Collbató,BARCELONA,ACTIVA,2026-04-02T20:57:50.406710+00:00
+d8659c1ad6cf,Novembre 2026,2026-11-07,07/11/2026,Cursa de l'Alba,https://www.cursalba.cat/,22,1200,22km D+1200m,,Collbató,BARCELONA,ACTIVA,2026-04-02T20:57:50.406736+00:00
+7775f0f15367,Novembre 2026,2026-11-07,07/11/2026,Cursa de l'Alba,https://www.cursalba.cat/,12,600,12km D+600m,,Collbató,BARCELONA,ACTIVA,2026-04-02T20:57:50.406755+00:00
+0c888fef642a,Novembre 2026,2026-11-08,08/11/2026,La Pota Roja,https://lapotaroja.com/es/home,42,1925,42km D+1925m,,Cervelló,BARCELONA,ACTIVA,2026-04-02T20:57:50.406775+00:00
+ed0b81716356,Novembre 2026,2026-11-08,08/11/2026,La Pota Roja,https://lapotaroja.com/es/home,24,1114,24km D+1114m,,Cervelló,BARCELONA,ACTIVA,2026-04-02T20:57:50.406792+00:00
+1e89530fda95,Novembre 2026,2026-11-08,08/11/2026,La Pota Roja,https://lapotaroja.com/es/home,14,546,14km D+546m,,Cervelló,BARCELONA,ACTIVA,2026-04-02T20:57:50.406809+00:00
+7bd2f7ce4e9a,Novembre 2026,2026-11-08,08/11/2026,La Pota Roja,https://lapotaroja.com/es/home,8,263,8km D+263m,,Cervelló,BARCELONA,ACTIVA,2026-04-02T20:57:50.406826+00:00
+d378124e59a3,Novembre 2026,2026-11-08,08/11/2026,MonteScatano,https://www.montescatano.cat/,21.3,1200,"21,3km D+1200m",,Montcada i Reixac,BARCELONA,ACTIVA,2026-04-02T20:57:50.406843+00:00
+c99df27e3129,Novembre 2026,2026-11-08,08/11/2026,MonteScatano,https://www.montescatano.cat/,14.7,750,"14,7km D+750m",,Montcada i Reixac,BARCELONA,ACTIVA,2026-04-02T20:57:50.406866+00:00
+4908a1dabc47,Novembre 2026,2026-11-08,08/11/2026,MonteScatano,https://www.montescatano.cat/,10.7,400,"10,7km D+400m",,Montcada i Reixac,BARCELONA,ACTIVA,2026-04-02T20:57:50.406883+00:00
+1d845026360e,Novembre 2026,2026-11-15,15/11/2026,Burriac Xtrem,https://xtrem.gmargentona.com/,29,1340,29km D+1340m,,Argentona,BARCELONA,ACTIVA,2026-04-02T20:57:50.406899+00:00
+8ef159802dc2,Novembre 2026,2026-11-15,15/11/2026,Burriac Xtrem,https://xtrem.gmargentona.com/,21.5,1120,"21,5km D+1120m",,Argentona,BARCELONA,ACTIVA,2026-04-02T20:57:50.406916+00:00
+c5ad9aa1a978,Novembre 2026,2026-11-15,15/11/2026,Burriac Xtrem,https://xtrem.gmargentona.com/,15.5,865,"15,5km D+865m",,Argentona,BARCELONA,ACTIVA,2026-04-02T20:57:50.406940+00:00
+8a269e40725d,Novembre 2026,2026-11-29,29/11/2026,Camins de Collserola,https://caminsdecollserola.cat/,24,,24km,,Molins de Rei,BARCELONA,ACTIVA,2026-04-02T20:57:50.406960+00:00
+e06f6d2e0f2f,Novembre 2026,2026-11-29,29/11/2026,Camins de Collserola,https://caminsdecollserola.cat/,14,,14km,,Molins de Rei,BARCELONA,ACTIVA,2026-04-02T20:57:50.406978+00:00
+a663df756781,Novembre 2026,,TBD,Cursa Antoni Camarasa,https://inscripcions.cat/cursacamarasa2025/,16.5,400,"16,5km D+400m",,Tremp,LLEIDA,ACTIVA,2026-04-02T20:57:50.406995+00:00
+908225e7aec4,Novembre 2026,,TBD,Marató i mitja Marató Collserola,https://uechorta.net/marato/,42,1900,42km D+1900m,,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.407014+00:00
+52482955f560,Novembre 2026,,TBD,Marató i mitja Marató Collserola,https://uechorta.net/marato/,21,900,21km D+900m,,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.407046+00:00
+7a9e739ba898,Novembre 2026,,TBD,Cursa de Sant Galderic,http://cursasantgalderic.blogspot.com/,21,708,21km D+708m,,Tavernoles,BARCELONA,ACTIVA,2026-04-02T20:57:50.407064+00:00
+67db6b40b782,Novembre 2026,,TBD,Cursa de Sant Galderic,http://cursasantgalderic.blogspot.com/,10,305,10km D+305m,,Tavernoles,BARCELONA,ACTIVA,2026-04-02T20:57:50.407080+00:00
+33bdad4dce59,Novembre 2026,,TBD,Cursa Serralats-Lavern,https://serralats.wordpress.com/,17.5,600,"17,5km D+600m",,Lavern Subirats,BARCELONA,ACTIVA,2026-04-02T20:57:50.407094+00:00
+b1a200071295,Novembre 2026,,TBD,Vallalta Trail,https://vallaltatrail.com/,23,1040,23km D+1040m,,Sant Iscle de Vallalta,BARCELONA,ACTIVA,2026-04-02T20:57:50.407115+00:00
+ee97d6f053af,Novembre 2026,,TBD,Vallalta Trail,https://vallaltatrail.com/,10,450,10km D+450m,,Sant Iscle de Vallalta,BARCELONA,ACTIVA,2026-04-02T20:57:50.407137+00:00
+ba4d4742d260,Novembre 2026,,TBD,Rajadell Trail Race,https://www.instagram.com/carenesdelcogullo/,18,750,18km D+750m,,Rajadell,BARCELONA,ACTIVA,2026-04-02T20:57:50.407152+00:00
+ad3c9165dc96,Novembre 2026,,TBD,Cursa Carenes del Cogulló,https://www.instagram.com/carenesdelcogullo/,11,250,11km D+250m,,Rajadell,BARCELONA,ACTIVA,2026-04-02T20:57:50.407173+00:00
+e82a9cdc9f2e,Novembre 2026,,TBD,Panna El Bandoler,https://www.inscripcions.cat/pannaelbandoler2025t/,20,,20km,,Sant Martí de Tous,BARCELONA,ACTIVA,2026-04-02T20:57:50.407197+00:00
+ef60074af71a,Novembre 2026,,TBD,Panna El Bandoler,https://www.inscripcions.cat/pannaelbandoler2025t/,11,,11km,,Sant Martí de Tous,BARCELONA,ACTIVA,2026-04-02T20:57:50.407212+00:00
+c7a7bb98c6c3,Novembre 2026,,TBD,"Cursa ""A tota castanya""",https://www.atotacastanyagurb.cat/,14.5,560,"14,5km D+560m",,Gurb,BARCELONA,ACTIVA,2026-04-02T20:57:50.407226+00:00
+8dc7695b7b5e,Novembre 2026,,TBD,"Cursa ""A tota castanya""",https://www.atotacastanyagurb.cat/,5,60,5km D+60m,,Gurb,BARCELONA,ACTIVA,2026-04-02T20:57:50.407249+00:00
+e644f9439722,Novembre 2026,,TBD,Vertical Sitja del Llop,https://maratomontseny.com/,6.6,1185,"6,6km D+1185m",,Sant Esteve de Palautordera,BARCELONA,ACTIVA,2026-04-02T20:57:50.407263+00:00
+4328661fe588,Novembre 2026,,TBD,Vertical de l'Arp,https://inscripcions.cat/vertical-arp-trail-2025/,6.5,1010,"6,5km D+1010m",,Sorribes de la Vansa,LLEIDA,ACTIVA,2026-04-02T20:57:50.407276+00:00
+3ba767d1926e,Novembre 2026,,TBD,Trail Toca-sons,https://www.innovitsport.com/esdeveniments/trail-tocasons,21,800,21km D+800m,,Taradell,BARCELONA,ACTIVA,2026-04-02T20:57:50.407290+00:00
+a74e69d9f26f,Novembre 2026,,TBD,Trail Toca-sons,https://www.innovitsport.com/esdeveniments/trail-tocasons,12,400,12km D+400m,,Taradell,BARCELONA,ACTIVA,2026-04-02T20:57:50.407304+00:00
+80bbaca1f425,Novembre 2026,,TBD,Trenca 3 Pics,https://trenca3pics.weebly.com/,28,990,28km D+990m,,Navàs,BARCELONA,ACTIVA,2026-04-02T20:57:50.407327+00:00
+0bad44353c98,Novembre 2026,,TBD,Trenca 3 Pics,https://trenca3pics.weebly.com/,13,360,13km D+360m,,Navàs,BARCELONA,ACTIVA,2026-04-02T20:57:50.407342+00:00
+251fd9d59d14,Novembre 2026,,TBD,Trenca 3 Pics,https://trenca3pics.weebly.com/,5,120,5km D+120m,,Navàs,BARCELONA,ACTIVA,2026-04-02T20:57:50.407357+00:00
+bb7b4795330c,Novembre 2026,,TBD,Cursarroca,https://webtretzesports.wixsite.com/cursarroca,11.6,290,"11,6km D+290m",,Sant Martí Sarroca,BARCELONA,ACTIVA,2026-04-02T20:57:50.407373+00:00
+a10784691fed,Novembre 2026,,TBD,Marató del Montseny,https://maratomontseny.com/,45.5,2752,"45,5km D+2752m",,Sant Esteve de Palautordera,BARCELONA,ACTIVA,2026-04-02T20:57:50.407388+00:00
+bd2245ec43ac,Novembre 2026,,TBD,Cursa Camí de Sirga,https://cursacamidesirga.picossatrail.cat/,28,1300,28km D+1300m,,Móra d'Ebre,TARRAGONA,ACTIVA,2026-04-02T20:57:50.407402+00:00
+989aafd7688a,Novembre 2026,,TBD,Cursa Camí de Sirga,https://cursacamidesirga.picossatrail.cat/,16,600,16km D+600m,,Móra d'Ebre,TARRAGONA,ACTIVA,2026-04-02T20:57:50.407415+00:00
+6b085c5335d3,Novembre 2026,,TBD,Cursa Camí de Sirga,https://cursacamidesirga.picossatrail.cat/,11,300,11km D+300m,,Móra d'Ebre,TARRAGONA,ACTIVA,2026-04-02T20:57:50.407430+00:00
+99a145b73cf9,Novembre 2026,,TBD,Saligarda Trail,https://www.lestortugues.cat/saligarda-trail/,21,1250,21km D+1250m,,La Garriga,BARCELONA,ACTIVA,2026-04-02T20:57:50.407445+00:00
+5a4408da45e9,Novembre 2026,,TBD,Saligarda Trail,https://www.lestortugues.cat/saligarda-trail/,12,530,12km D+530m,,La Garriga,BARCELONA,ACTIVA,2026-04-02T20:57:50.407459+00:00
+56007ca1566a,Novembre 2026,,TBD,Cursa de la Ratafia,https://cursadelaratafia.cat/,25,1400,25km D+1400m,,Santa Coloma de Farners,GIRONA,ACTIVA,2026-04-02T20:57:50.407480+00:00
+71d938585228,Novembre 2026,,TBD,Cursa de la Ratafia,https://cursadelaratafia.cat/,13,500,13km D+500m,,Santa Coloma de Farners,GIRONA,ACTIVA,2026-04-02T20:57:50.407495+00:00
+d51a3664659d,Novembre 2026,,TBD,Cursa Montanyans,https://cursamontanyans.wordpress.com/,21,564,21km D+564m,,Castellet i la Gornal,BARCELONA,ACTIVA,2026-04-02T20:57:50.407510+00:00
+ba9ef9d018be,Novembre 2026,,TBD,Cursa Montanyans,https://cursamontanyans.wordpress.com/,14,363,14km D+363m,,Castellet i la Gornal,BARCELONA,ACTIVA,2026-04-02T20:57:50.407535+00:00
+2e41a1dd1d52,Novembre 2026,,TBD,Avenc Trail Cunit,https://webtretzesports.wixsite.com/avenctrailcunit,12.6,470,"12,6km D+470m",,Cunit,BARCELONA,ACTIVA,2026-04-02T20:57:50.407549+00:00
+94d148091836,Novembre 2026,,TBD,Cursarroca,https://webtretzesports.wixsite.com/cursarroca,11,290,11km D+290m,,Sant Martí Sarroca,BARCELONA,ACTIVA,2026-04-02T20:57:50.407565+00:00
+4cba796a0d0b,Novembre 2026,,TBD,Cursa MDM.cat,https://gasmountain.com/mdm/,42,2650,42km D+2650m,,Beuda,GIRONA,ACTIVA,2026-04-02T20:57:50.407581+00:00
+59bc6f80bff1,Novembre 2026,,TBD,Cursa MDM.cat,https://gasmountain.com/mdm/,21,1525,21km D+1525m,,Beuda,GIRONA,ACTIVA,2026-04-02T20:57:50.407596+00:00
+008831f2f7ca,Novembre 2026,,TBD,Cursa MDM.cat,https://gasmountain.com/mdm/,12,890,12km D+890m,,Beuda,GIRONA,ACTIVA,2026-04-02T20:57:50.407619+00:00
+d2622521e4e2,Novembre 2026,,TBD,Trail Antena Solidària,https://antenasolidaria.cat/,22.5,935,"22,5km D+935m",,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.407636+00:00
+92f397ae3ffa,Novembre 2026,,TBD,Trail Antena Solidària,https://antenasolidaria.cat/,11,435,11km D+435m,,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.407653+00:00
+719c2166402c,Novembre 2026,,TBD,Trail Montroig,https://www.trailmontroig.cat/,41.2,2800,"41,2km D+2800m",,Sant Llorenç de Montgai,LLEIDA,ACTIVA,2026-04-02T20:57:50.407668+00:00
+1125f82a7689,Novembre 2026,,TBD,Trail Montroig,https://www.trailmontroig.cat/,21.4,1340,"21,4km D+1340m",,Sant Llorenç de Montgai,LLEIDA,ACTIVA,2026-04-02T20:57:50.407683+00:00
+cd16498c4368,Novembre 2026,,TBD,Trail Montroig,https://www.trailmontroig.cat/,14,560,14km D+560m,,Sant Llorenç de Montgai,LLEIDA,ACTIVA,2026-04-02T20:57:50.407698+00:00
+55c36424a163,Novembre 2026,,TBD,Trail Torres del Foc,https://www.mmoutdoorculture.com/es/trailtorresdelfoc,42,1500,42km D+1500m,,Calella,GIRONA,ACTIVA,2026-04-02T20:57:50.407713+00:00
+fc3ae5aad117,Novembre 2026,,TBD,Trail Torres del Foc,https://www.mmoutdoorculture.com/es/trailtorresdelfoc,21,1000,21km D+1000m,,Calella,GIRONA,ACTIVA,2026-04-02T20:57:50.407728+00:00
+08520d8e6f5d,Novembre 2026,,TBD,Trail Torres del Foc,https://www.mmoutdoorculture.com/es/trailtorresdelfoc,12,400,12km D+400m,,Calella,GIRONA,ACTIVA,2026-04-02T20:57:50.407743+00:00
+ce8b89293b19,Novembre 2026,,TBD,Up Xic Trail Cronoescalada,https://upxictrail.wixsite.com/upxic/,4.5,500,"4,5km D+500m",,Les Masies de Voltregà,BARCELONA,ACTIVA,2026-04-02T20:57:50.407759+00:00
+acb1bb5ea66e,Novembre 2026,,TBD,Volta a la Maria La nocturna,https://www.voltaalamaria.net/,5,80,5km D+80m,,Avià,BARCELONA,ACTIVA,2026-04-02T20:57:50.407784+00:00
+6b5adb908e93,Novembre 2026,,TBD,Volta a la Maria vertical,https://www.voltaalamaria.net/,2,300,2km D+300m,,Avià,BARCELONA,ACTIVA,2026-04-02T20:57:50.407800+00:00
+92bc9909fe28,Novembre 2026,,TBD,Volta a la Maria,https://www.voltaalamaria.net/,18,850,18km D+850m,,Avià,BARCELONA,ACTIVA,2026-04-02T20:57:50.407818+00:00
+1901267ad799,Novembre 2026,,TBD,Up Xic Trail,https://upxictrail.wixsite.com/upxic/,25,1300,25km D+1300m,,Les Masies de Voltregà,BARCELONA,ACTIVA,2026-04-02T20:57:50.407835+00:00
+d3a45553d3f0,Novembre 2026,,TBD,Up Xic Trail,https://upxictrail.wixsite.com/upxic/,11,500,11km D+500m,,Les Masies de Voltregà,BARCELONA,ACTIVA,2026-04-02T20:57:50.407850+00:00
+bb4e9316edef,Novembre 2026,,TBD,Querroig Trail,https://curses.cat/querroig2025/,23,,23km,,Portbou,GIRONA,ACTIVA,2026-04-02T20:57:50.407872+00:00
+4d4c64b72b0a,Novembre 2026,,TBD,Querroig Trail,https://curses.cat/querroig2025/,15,,15km,,Portbou,GIRONA,ACTIVA,2026-04-02T20:57:50.407898+00:00
+51b6c3be2bd3,Novembre 2026,,TBD,Querroig Trail,https://curses.cat/querroig2025/,9,,9km,,Portbou,GIRONA,ACTIVA,2026-04-02T20:57:50.407912+00:00
+a66462b85de1,Novembre 2026,,TBD,Trail Lluerts,https://curses.cat/traillluerts2025/,15,480,15km D+480m,,Lluerts,GIRONA,ACTIVA,2026-04-02T20:57:50.407926+00:00
+3b673ae30ab4,Novembre 2026,,TBD,Vandekames,https://www.vandekames.cat/,18,1000,18km D+1000m,,Vandellòs,TARRAGONA,ACTIVA,2026-04-02T20:57:50.407940+00:00
+fe05fa3b44f8,Novembre 2026,,TBD,Vandekames,https://www.vandekames.cat/,12,740,12km D+740m,,Vandellòs,TARRAGONA,ACTIVA,2026-04-02T20:57:50.407954+00:00
+2ccbac072570,Novembre 2026,,TBD,Vandekames,https://www.vandekames.cat/,7,253,7km D+253m,,Vandellòs,TARRAGONA,ACTIVA,2026-04-02T20:57:50.407968+00:00
+dc9ccc99b930,Novembre 2026,,TBD,Vinya Cross solidari Oller del Mas,https://www.vinya-cross.es/,20,,20km,,Oller del Mas,BARCELONA,ACTIVA,2026-04-02T20:57:50.407981+00:00
+f87542c11b88,Novembre 2026,,TBD,Vinya Cross solidari Oller del Mas,https://www.vinya-cross.es/,10,,10km,,Oller del Mas,BARCELONA,ACTIVA,2026-04-02T20:57:50.407996+00:00
+896dfc53e46e,Novembre 2026,,TBD,Vinya Cross solidari Oller del Mas,https://www.vinya-cross.es/,5,,5km,,Oller del Mas,BARCELONA,ACTIVA,2026-04-02T20:57:50.408010+00:00
+657afea4f976,Novembre 2026,,TBD,Cros 3 Turons La Diablada,https://www.cros3turons-ladiablada.cat/,12,702,12km D+702m,,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.408024+00:00
+6ea8c374a651,Novembre 2026,,TBD,Roc de la Clusa Trail,https://misports.cat/carreras/roc-de-la-clusa/,18,1200,18km D+1200m,,Castell de l'Areny,BARCELONA,ACTIVA,2026-04-02T20:57:50.408038+00:00
+587e174bfd41,Novembre 2026,,TBD,Cursa Fosca,https://www.cursafosca.cat/,20,850,20km D+850m,,Torrelles de Foix,BARCELONA,ACTIVA,2026-04-02T20:57:50.408054+00:00
+477b733bc06b,Novembre 2026,,TBD,Cursa Fosca,https://www.cursafosca.cat/,13,500,13km D+500m,,Torrelles de Foix,BARCELONA,ACTIVA,2026-04-02T20:57:50.408069+00:00
+d8b3f2e028b5,Novembre 2026,,TBD,Trail Intercasteller,https://www.instagram.com/trailintercasteller/,18,900,18km +900m,,Esparreguera,BARCELONA,ACTIVA,2026-04-02T20:57:50.408083+00:00
+91fd1edc5406,Novembre 2026,,TBD,Trail Intercasteller,https://www.instagram.com/trailintercasteller/,12,,12km,,Esparreguera,BARCELONA,ACTIVA,2026-04-02T20:57:50.408097+00:00
+aca0905c21c7,Novembre 2026,,TBD,Trail Intercasteller,https://www.instagram.com/trailintercasteller/,6,,6km,,Esparreguera,BARCELONA,ACTIVA,2026-04-02T20:57:50.408114+00:00
+cccef26c13f5,Novembre 2026,,TBD,Pujada i Baixada a Guanta,https://www.lasansi.com/ca/pujada-guanta,12,,12km,,Sentmenat,BARCELONA,ACTIVA,2026-04-02T20:57:50.408129+00:00
+2c8c216a5f87,Novembre 2026,,TBD,Pujada i Baixada a Guanta,https://www.lasansi.com/ca/pujada-guanta,6,,6km,,Sentmenat,BARCELONA,ACTIVA,2026-04-02T20:57:50.408145+00:00
+5f06f2b67722,Novembre 2026,,TBD,Gualba Trail,https://www.instagram.com/gualbatrail/,21,1200,21km D+1200m,,Gualba,BARCELONA,ACTIVA,2026-04-02T20:57:50.408161+00:00
+b708bbc6c34f,Novembre 2026,,TBD,Gualba Trail,https://www.instagram.com/gualbatrail/,13,750,13km D+750m,,Gualba,BARCELONA,ACTIVA,2026-04-02T20:57:50.408177+00:00
+769ade7aeee9,Novembre 2026,,TBD,Cursa Solidària 4 Camins,https://cngranollers.org/4camins/,14,240,14km D+240m,,Granollers,BARCELONA,ACTIVA,2026-04-02T20:57:50.408193+00:00
+0b59e8b9ade8,Novembre 2026,,TBD,Cursa Solidària 4 Camins,https://cngranollers.org/4camins/,6,100,6km D+100m,,Granollers,BARCELONA,ACTIVA,2026-04-02T20:57:50.408208+00:00
+eb03b0fd530c,Novembre 2026,,TBD,Trail Roc de la Clusa,https://misports.cat/curses/roc-de-la-clusa/,18,1200,18km D+1200m,,Castell de l'Areny,BARCELONA,ACTIVA,2026-04-02T20:57:50.408224+00:00
+f3461784cd49,Novembre 2026,,TBD,Cursa de muntanya Llagostera,https://www.instagram.com/cursamuntanyallagostera/,19,700,19km D+700m,,Llagostera,GIRONA,ACTIVA,2026-04-02T20:57:50.408239+00:00
+977248c0eddb,Novembre 2026,,TBD,Cursa de muntanya Llagostera,https://www.instagram.com/cursamuntanyallagostera/,10,250,10km D+250m,,Llagostera,GIRONA,ACTIVA,2026-04-02T20:57:50.408255+00:00
+4853d7cd67b5,Novembre 2026,,TBD,Cursa Lo Pastisset,https://lopastisset.cat/,24,,24km,,Benifallet,TARRAGONA,ACTIVA,2026-04-02T20:57:50.408271+00:00
+a2680426d211,Novembre 2026,,TBD,Cursa Lo Pastisset,https://lopastisset.cat/,18,,18km,,Benifallet,TARRAGONA,ACTIVA,2026-04-02T20:57:50.408287+00:00
+477e07850bcb,Novembre 2026,,TBD,Trail Ermites Ulldemolins,https://www.naturetime.es/ca/trailseries-les-ermites-ulldemolins-esp/,22,971,22km D+971m,,Ulldemolins,TARRAGONA,ACTIVA,2026-04-02T20:57:50.408303+00:00
+1bef4446e278,Novembre 2026,,TBD,Trail Ermites Ulldemolins,https://www.naturetime.es/ca/trailseries-les-ermites-ulldemolins-esp/,11.6,671,"11,6km D+671m",,Ulldemolins,TARRAGONA,ACTIVA,2026-04-02T20:57:50.408320+00:00
+4ad2f5de7f65,Novembre 2026,,TBD,Olla de Tapis,https://www.curses.cat/olladetapis2025/,21,,21km,,Maçanet de Cabrenys,GIRONA,ACTIVA,2026-04-02T20:57:50.408335+00:00
+c68448ac0b64,Novembre 2026,,TBD,Olla de Tapis,https://www.curses.cat/olladetapis2025/,9,,9km,,Maçanet de Cabrenys,GIRONA,ACTIVA,2026-04-02T20:57:50.408350+00:00
+cbaac3e2e09a,Novembre 2026,,TBD,Trail Popular d'Hivern,https://www.amicsdelacursailamuntanya.cat/trail-popular-hivern/,11,450,11km D+450m,,Sant Climent de Llobregat,BARCELONA,ACTIVA,2026-04-02T20:57:50.408366+00:00
+adc075e91ecc,Novembre 2026,,TBD,Cursa de muntanya MTR,https://inscripcions.cat/mtr2025/,21,,21km,,Mura,BARCELONA,ACTIVA,2026-04-02T20:57:50.408380+00:00
+8a269e40725d,Novembre 2026,,TBD,Camins de Collserola,https://caminsdecollserola.cat/,24,1400,24km D+1400m,,Molins de Rei,BARCELONA,ACTIVA,2026-04-02T20:57:50.408394+00:00
+e06f6d2e0f2f,Novembre 2026,,TBD,Camins de Collserola,https://caminsdecollserola.cat/,14,750,14km D+750m,,Molins de Rei,BARCELONA,ACTIVA,2026-04-02T20:57:50.408407+00:00
+cfb92a058cc7,Novembre 2026,,TBD,Campionat Maqui Bell Race,https://www.campionatmaqui.cat/cursa-bell-race/,15,,15km,,Cabrianes (Mas la Sala),BARCELONA,ACTIVA,2026-04-02T20:57:50.408421+00:00
+577a4d1ca3c3,Novembre 2026,,TBD,Campionat Maqui Bell Race,https://www.campionatmaqui.cat/cursa-bell-race/,10,,10km,,Cabrianes (Mas la Sala),BARCELONA,ACTIVA,2026-04-02T20:57:50.408434+00:00
+58ac0eaef301,Novembre 2026,,TBD,Trail La Vall,https://www.traillavall.cat/,46,1800,46km D+1800m,,Bellcaire d'Empordà,GIRONA,ACTIVA,2026-04-02T20:57:50.408449+00:00
+69a662b11eec,Novembre 2026,,TBD,Trail La Vall,https://www.traillavall.cat/,22,800,22km D+800m,,Bellcaire d'Empordà,GIRONA,ACTIVA,2026-04-02T20:57:50.408463+00:00
+1eace4a52902,Novembre 2026,,TBD,Trail La Vall,https://www.traillavall.cat/,13,550,13km D+550m,,Bellcaire d'Empordà,GIRONA,ACTIVA,2026-04-02T20:57:50.408477+00:00
+a7a9fb4c032b,Novembre 2026,,TBD,Trail La Vall,https://www.traillavall.cat/,5.5,100,"5,5km D+100m",,Bellcaire d'Empordà,GIRONA,ACTIVA,2026-04-02T20:57:50.408491+00:00
+e8a4dc3e926c,Novembre 2026,,TBD,Pujada a Sant Pau,https://corremperlaterra.wordpress.com/,10.7,339,"10,7km D+339m",,Pacs del Penedès,BARCELONA,ACTIVA,2026-04-02T20:57:50.408506+00:00
+83b31dbe79da,Novembre 2026,,TBD,Trail Gaioles,https://sites.google.com/view/1a-trail-gaioles/inici,20,600,20km D+600m,,Sant Martí Sesgueioles,BARCELONA,ACTIVA,2026-04-02T20:57:50.408521+00:00
+0d5029ae161a,Novembre 2026,,TBD,Trail Gaioles,https://sites.google.com/view/1a-trail-gaioles/inici,12,400,12km D+400m,,Sant Martí Sesgueioles,BARCELONA,ACTIVA,2026-04-02T20:57:50.408537+00:00
+21da20af8bb7,Novembre 2026,,TBD,Cursa de l'Esquiador,https://www.uecanoia.cat/cursa-esquiador/,18,550,18km D+550m,,La Llacuna,BARCELONA,ACTIVA,2026-04-02T20:57:50.408552+00:00
+fafef3c94642,Novembre 2026,,TBD,Cursa de l'Esquiador,https://www.uecanoia.cat/cursa-esquiador/,12,350,12km D+350m,,La Llacuna,BARCELONA,ACTIVA,2026-04-02T20:57:50.408569+00:00
+333148918ad8,Novembre 2026,,TBD,Cross dels Esquiadors,https://ues.cat/cross-dels-esquiadors/,8,,8km,,Sabadell,BARCELONA,ACTIVA,2026-04-02T20:57:50.408584+00:00
+b9736eadbb76,Novembre 2026,,TBD,Cross dels Esquiadors,https://ues.cat/cross-dels-esquiadors/,4,,4km,,Sabadell,BARCELONA,ACTIVA,2026-04-02T20:57:50.408599+00:00
+a71b3ee6490a,Novembre 2026,,TBD,Perseguint la Perdiu,https://perseguintlaperdiu.com/,12.5,722,"12,5km D+722m",,Vilanova de Meià,LLEIDA,ACTIVA,2026-04-02T20:57:50.408616+00:00
+0de83b0a7f3d,Desembre 2026,,TBD,Imperial Tarraco Trail,https://alliberadrenalina.com/imperial-tarraco/,25,340,25km D+340m,,Tarragona,TARRAGONA,ACTIVA,2026-04-02T20:57:50.408898+00:00
+9d4e0f54f220,Desembre 2026,,TBD,Imperial Tarraco Trail,https://www.rockthesport.com/es/evento/imperial-tarraco-trail,14,180,14km D+180m,,Tarragona,TARRAGONA,ACTIVA,2026-04-02T20:57:50.408912+00:00
+3d353ac16aa7,Desembre 2026,,TBD,Cursa de Quintos,https://www.9hsports.cat/ca/informacio_cursa/1055,7,200,7km D+200m,,Aiguafreda,BARCELONA,ACTIVA,2026-04-02T20:57:50.408926+00:00
+3db5d4c5ed8b,Desembre 2026,,TBD,Trail Ardenya,https://www.matxacuca.com/portfolio/trail-ardenya/,23.1,950,"23,1km D+950m",,Santa Cristina d'Aro,GIRONA,ACTIVA,2026-04-02T20:57:50.408939+00:00
+8e6833e8b0bb,Desembre 2026,,TBD,Trail Ardenya,https://www.matxacuca.com/portfolio/trail-ardenya/,15,,15km,,Santa Cristina d'Aro,GIRONA,ACTIVA,2026-04-02T20:57:50.408953+00:00
+6400d1bd126b,Desembre 2026,,TBD,Trail Ardenya,https://www.matxacuca.com/portfolio/trail-ardenya/,7,,7km,,Santa Cristina d'Aro,GIRONA,ACTIVA,2026-04-02T20:57:50.408968+00:00
+b93f8f33f9d6,Desembre 2026,,TBD,La Neorural,https://laneorural.com/,24,1600,24km D+1600m,,Santa Maria de Martorelles,BARCELONA,ACTIVA,2026-04-02T20:57:50.408981+00:00
+1a3ba592a411,Desembre 2026,,TBD,Cursa Trail La Riera de Gaià,https://cursalarieragaia.cat/,20.4,601,"20,4km D+601m",,La Riera de Gaià,TARRAGONA,ACTIVA,2026-04-02T20:57:50.408996+00:00
+47bfec996be7,Desembre 2026,,TBD,Cursa Trail La Riera de Gaià,https://cursalarieragaia.cat/,8.6,197,"8,6km D+197m",,La Riera de Gaià,TARRAGONA,ACTIVA,2026-04-02T20:57:50.409011+00:00
+bb292d2f0e4f,Desembre 2026,,TBD,Cursa CEC Collserola,https://collserola.cec.cat/,22,900,22km D+900m,,Barcelona,BARCELONA,ACTIVA,2026-04-02T20:57:50.409026+00:00
+ea66999bcaa3,Desembre 2026,,TBD,Cursa Entre Cabanes,https://www.preixana.cat/de-prop/fira-gastronomica/cursa_entre_cabanes/2025-6a-edicio/enllacos-dinscripcio-a-la-cursa-caminada,20,200,20km D+200m,,Preixana,LLEIDA,ACTIVA,2026-04-02T20:57:50.409041+00:00
+82a01306f98f,Desembre 2026,,TBD,Cursa Entre Cabanes,https://www.preixana.cat/de-prop/fira-gastronomica/cursa_entre_cabanes/2025-6a-edicio/enllacos-dinscripcio-a-la-cursa-caminada,13,120,13km D+120m,,Preixana,LLEIDA,ACTIVA,2026-04-02T20:57:50.409056+00:00
+14dc36137c79,Desembre 2026,,TBD,Cursa de Nadal a Colldejou,https://www.naturetime.es/ca/cursa-de-nadal/,21,1418,21km D+1418m,,Colldejou,TARRAGONA,ACTIVA,2026-04-02T20:57:50.409071+00:00
+b9eeb3e1455e,Desembre 2026,,TBD,Cursa de Nadal a Colldejou,https://www.naturetime.es/ca/cursa-de-nadal/,9.4,690,"9,4km D+690m",,Colldejou,TARRAGONA,ACTIVA,2026-04-02T20:57:50.409087+00:00
+ddaf12171332,Desembre 2026,,TBD,Cursa de Nadal a Colldejou,https://www.naturetime.es/ca/cursa-de-nadal/,4.3,150,"4,3km D+150m",,Colldejou,TARRAGONA,ACTIVA,2026-04-02T20:57:50.409102+00:00
+7844c7b4debf,Desembre 2026,,TBD,Pujada a la Mola per Nadal,http://clubmuntanyencterrassa.blogspot.com/,3.45,460,"3,45km D+460m",,Matadepera,BARCELONA,ACTIVA,2026-04-02T20:57:50.409118+00:00
+1cf03ff56386,Desembre 2026,,TBD,Cursa de Na'dalt a Bellmunt,https://cursadenadalt.com/la-cursa/,3.80,610,"3,80km D+610m",,Sant Pere de Torelló,BARCELONA,ACTIVA,2026-04-02T20:57:50.409132+00:00
+311fd191cce1,Desembre 2026,,TBD,Cursa del Bolet,https://www.cursadelbolet.cat/,6,150,6km D+150m,,Ullastrell,BARCELONA,ACTIVA,2026-04-02T20:57:50.409148+00:00
+05992ad62a39,Desembre 2026,,TBD,Cursa Popular de Porqueres,https://cursesplaestany.cat/cursa-popular-porqueres/,7,94,7km D+94m,,Porqueres,GIRONA,ACTIVA,2026-04-02T20:57:50.409163+00:00
+5474d1ee6fe0,Desembre 2026,,TBD,Trail per la vall d'Olzinelles,https://www.inscripcions.cat/marxavalldolzinelles2022/,19,,19km,,Sant Celoni,BARCELONA,ACTIVA,2026-04-02T20:57:50.409177+00:00
+6d6b1e5ac822,Desembre 2026,,TBD,Trail dels Remençes,https://www.dsport.cat/ca/fitxa_cursa.php?id_cursa=920,11,950,11km D+950m,,Montornès del Vallès,BARCELONA,ACTIVA,2026-04-02T20:57:50.409193+00:00
+aa066fc57723,Desembre 2026,,TBD,Cursa solidària dels Avets,https://www.inscripcions.cat/cursaavetroig2022/,,,,,Sant Celoni,BARCELONA,ACTIVA,2026-04-02T20:57:50.409206+00:00
+febcefe076b2,Desembre 2026,,TBD,Sant Silvestre Sarrianenca,https://www.inscripcions.cat/sssarrianenca2022t/,10,,10km,,Sarrià de Ter,GIRONA,ACTIVA,2026-04-02T20:57:50.409240+00:00
+8173050248f6,Desembre 2026,,TBD,Cursa de Nadal Bigues i Riells,https://www.biguesiriells.cat/ca/actualitat-2/agenda-1/cursa-nadal-2022-688.htm,7,150,7km D+150m,,Bigues i Riells,BARCELONA,ACTIVA,2026-04-02T20:57:50.409255+00:00
+e6e6d0e2ff00,Desembre 2026,,TBD,Pujada a les Formigues,https://fff.cat/activitats/pujada-a-les-formigues/,4.4,400,"4,4km D+400m",,Sant Hilari Sacalm,GIRONA,ACTIVA,2026-04-02T20:57:50.409270+00:00
+734755675848,Desembre 2026,,TBD,Cursa Trail L'Aldea,http://casaljovescurses.blogspot.com/,14,372,14km D+372m,,L'Aldea,TARRAGONA,ACTIVA,2026-04-02T20:57:50.409285+00:00
+1c39844d2fe5,Desembre 2026,,TBD,Cursa Nadal Sant Sadurní d'Anoia,http://cursanadal.blogspot.com/,7.8,91,"7,8km D+91m",,Sant Sadurní d'Anoia,BARCELONA,ACTIVA,2026-04-02T20:57:50.409300+00:00
+7799b9b07336,Desembre 2026,,TBD,Cursa Nadal Sant Sadurní d'Anoia,http://cursanadal.blogspot.com/,3,43,3km D+43m,,Sant Sadurní d'Anoia,BARCELONA,ACTIVA,2026-04-02T20:57:50.409315+00:00
+ce0a344efb2f,Desembre 2026,,TBD,Cursa de Viladecavalls per la Marató TV3,https://www.cursesviladecavalls.com/,10,330,10km D+330m,,Viladecavalls,BARCELONA,ACTIVA,2026-04-02T20:57:50.409331+00:00
+6cc8e53093de,Desembre 2026,,TBD,Cursa de Viladecavalls per la Marató TV3,https://www.cursesviladecavalls.com/,5,190,5km D+190m,,Viladecavalls,BARCELONA,ACTIVA,2026-04-02T20:57:50.409346+00:00
+75959bef1097,Desembre 2026,,TBD,Cronopujada Puig d'en cama,https://www.aritjol.org/post/xviii-cronopujada-al-puig-d-en-cama,3.9,500,"3,9km D+500m",,Els Molins (La Selva del Camp),TARRAGONA,ACTIVA,2026-04-02T20:57:50.409361+00:00
+6d8f013e2c2b,Desembre 2026,,TBD,Cursa de la Llufa,https://caesplugui.cat/cursa-de-la-llufa/,5,100,5km D+100m,,Espluga de Francolí,TARRAGONA,ACTIVA,2026-04-02T20:57:50.409377+00:00
+bb733ae69d76,Desembre 2026,,TBD,Cursa del Gall,https://webtretzesports.wixsite.com/cursadelgall,7.2,100,"7,2km D+100m",,Riudecanyes,TARRAGONA,ACTIVA,2026-04-02T20:57:50.409392+00:00
+87ff0ed19791,Desembre 2026,,TBD,Cursa rodant pel riu Ripoll,http://mitjasabadell.cat/,8.4,100,"8,4km D+100m",,Sabadell,BARCELONA,ACTIVA,2026-04-02T20:57:50.409406+00:00
+4e5ea02088da,Desembre 2026,,TBD,Sant Silvestre de muntanya del Penedès,https://santsilvestredemuntanyadelpenedes.blogspot.com/?m=1,11.4,,"11,4km",,Viladellops (Olèrdola),BARCELONA,ACTIVA,2026-04-02T20:57:50.409419+00:00
+8f84860a1b69,Desembre 2026,,TBD,La Folguerolenca,https://lafolguerolenca.wixsite.com/lafolguerolenca,5.4,61,"5,4km D+61m",,Folgueroles,BARCELONA,ACTIVA,2026-04-02T20:57:50.409433+00:00
+13be3c22c6c4,Desembre 2026,,TBD,Sant Silvestre Llorençana,https://www.instagram.com/p/ClekNFTIeSY/,7,280,7km D+280m,,Sant Llorenç Savall,BARCELONA,ACTIVA,2026-04-02T20:57:50.409446+00:00
+b8d20270a517,Desembre 2026,,TBD,Sant Silvestre Avinyó,https://www.inscripcions.cat/ssavinyo2022/,10,,10km,,Avinyó,BARCELONA,ACTIVA,2026-04-02T20:57:50.409459+00:00
+66deb823acc0,Desembre 2026,,TBD,Sant Silvestre Avinyó,https://www.inscripcions.cat/ssavinyo2022/,5,,5km,,Avinyó,BARCELONA,ACTIVA,2026-04-02T20:57:50.409473+00:00
+873da26f1a1a,Desembre 2026,,TBD,Trail Sant Silvestre Artesa de Segre,https://www.instagram.com/p/ClmDV-lNVnR/?igshid=MDJmNzVkMjY=,11,200,11km D+200m,,Artesa de Segre,LLEIDA,ACTIVA,2026-04-02T20:57:50.409488+00:00

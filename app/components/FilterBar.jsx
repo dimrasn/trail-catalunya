@@ -27,13 +27,14 @@ const ELEVATION_OPTIONS = [
 
 const MONTH_OPTIONS = [
   { value: 'all', label: 'All' },
-  { value: '03', label: 'Mar' },
   { value: '04', label: 'Apr' },
   { value: '05', label: 'May' },
   { value: '06', label: 'Jun' },
   { value: '07', label: 'Jul' },
   { value: '08', label: 'Aug' },
   { value: '09', label: 'Sep' },
+  { value: '10', label: 'Oct' },
+  { value: '11', label: 'Nov' },
 ]
 
 const PROVINCE_OPTIONS = [
@@ -84,10 +85,26 @@ export default function FilterBar({ filters, setFilter }) {
       <FilterRow label="Elevation" options={ELEVATION_OPTIONS} value={filters.elevation} onChange={v => setFilter('elevation', v)} />
       <FilterRow label="Month" options={MONTH_OPTIONS} value={filters.month} onChange={v => setFilter('month', v)} />
       <FilterRow label="Province" options={PROVINCE_OPTIONS} value={filters.province} onChange={v => setFilter('province', v)} />
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', paddingTop: '2px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', paddingTop: '2px' }}>
         <span style={{ fontSize: '11px', color: '#666', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', minWidth: '60px' }}>
-          TBD
+          More
         </span>
+        <button
+          onClick={() => setFilter('kidsRun', !filters.kidsRun)}
+          style={{
+            padding: '5px 12px',
+            borderRadius: '999px',
+            fontSize: '13px',
+            border: 'none',
+            cursor: 'pointer',
+            backgroundColor: filters.kidsRun ? '#ffffff' : '#1a1a2e',
+            color: filters.kidsRun ? '#0a0a14' : '#aaaaaa',
+            fontWeight: filters.kidsRun ? '600' : '400',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          Kids run
+        </button>
         <button
           onClick={() => setFilter('showTBD', !filters.showTBD)}
           style={{
@@ -99,6 +116,7 @@ export default function FilterBar({ filters, setFilter }) {
             backgroundColor: filters.showTBD ? '#ffffff' : '#1a1a2e',
             color: filters.showTBD ? '#0a0a14' : '#aaaaaa',
             fontWeight: filters.showTBD ? '600' : '400',
+            whiteSpace: 'nowrap',
           }}
         >
           Show unscheduled
