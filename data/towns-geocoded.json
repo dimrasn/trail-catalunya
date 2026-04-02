@@ -1,0 +1,454 @@
+{
+  "Albons": {
+    "lat": 42.0833,
+    "lng": 3.0833
+  },
+  "Alcanar": {
+    "lat": 40.5417,
+    "lng": 0.475
+  },
+  "Alella": {
+    "lat": 41.4944,
+    "lng": 2.2958
+  },
+  "Alpens": {
+    "lat": 42.0,
+    "lng": 2.0833
+  },
+  "Arbolí": {
+    "lat": 41.2167,
+    "lng": 1.0167
+  },
+  "Aristot": {
+    "lat": 42.3667,
+    "lng": 1.5833
+  },
+  "Artés": {
+    "lat": 41.7833,
+    "lng": 1.95
+  },
+  "Begur": {
+    "lat": 41.9547,
+    "lng": 3.2072
+  },
+  "Beret": {
+    "lat": 42.7167,
+    "lng": 0.9833
+  },
+  "Berga": {
+    "lat": 42.1,
+    "lng": 1.85
+  },
+  "Berén": {
+    "lat": 42.4167,
+    "lng": 0.8167
+  },
+  "Bescanó": {
+    "lat": 41.9667,
+    "lng": 2.75
+  },
+  "Blanes": {
+    "lat": 41.6744,
+    "lng": 2.7903
+  },
+  "Bràfim": {
+    "lat": 41.25,
+    "lng": 1.2333
+  },
+  "Cabrils": {
+    "lat": 41.5167,
+    "lng": 2.3667
+  },
+  "Campins": {
+    "lat": 41.7234,
+    "lng": 2.4651
+  },
+  "Cardedeu": {
+    "lat": 41.6333,
+    "lng": 2.35
+  },
+  "Cassà de la Selva": {
+    "lat": 41.8833,
+    "lng": 2.8833
+  },
+  "Castellbò": {
+    "lat": 42.3333,
+    "lng": 1.35
+  },
+  "Castellnou de Seana": {
+    "lat": 41.6493,
+    "lng": 0.9026
+  },
+  "Coll de Nargó": {
+    "lat": 42.15,
+    "lng": 1.3167
+  },
+  "Cornudella de Monsant": {
+    "lat": 41.25,
+    "lng": 0.9167
+  },
+  "Cànoves i Samalús": {
+    "lat": 41.6833,
+    "lng": 2.35
+  },
+  "El Perelló": {
+    "lat": 40.8755,
+    "lng": 0.7114
+  },
+  "Font-rubí": {
+    "lat": 41.4167,
+    "lng": 1.6167
+  },
+  "Foradada": {
+    "lat": 41.85,
+    "lng": 1.05
+  },
+  "Garriguella": {
+    "lat": 42.35,
+    "lng": 3.05
+  },
+  "Girona": {
+    "lat": 41.9794,
+    "lng": 2.8214
+  },
+  "Godall": {
+    "lat": 40.6486,
+    "lng": 0.4264
+  },
+  "Guimerà": {
+    "lat": 41.5833,
+    "lng": 1.1833
+  },
+  "Horta de Sant Joan": {
+    "lat": 40.9667,
+    "lng": 0.3167
+  },
+  "Hostalets de Balenyà": {
+    "lat": 41.8167,
+    "lng": 2.2333
+  },
+  "Isòvol": {
+    "lat": 42.35,
+    "lng": 1.8333
+  },
+  "L'Agullana": {
+    "lat": 42.3833,
+    "lng": 2.85
+  },
+  "L'Aleixar": {
+    "lat": 41.2167,
+    "lng": 1.0833
+  },
+  "L'Arboç": {
+    "lat": 41.2667,
+    "lng": 1.6
+  },
+  "L'Espunyola": {
+    "lat": 42.05,
+    "lng": 1.7833
+  },
+  "La Cellera de Ter": {
+    "lat": 41.95,
+    "lng": 2.6333
+  },
+  "La Garriga": {
+    "lat": 41.6833,
+    "lng": 2.2833
+  },
+  "La Llagosta": {
+    "lat": 41.5167,
+    "lng": 2.1833
+  },
+  "La Nou del Berguedà": {
+    "lat": 42.0833,
+    "lng": 1.8167
+  },
+  "La Pobla de Montornés": {
+    "lat": 41.1833,
+    "lng": 1.45
+  },
+  "La Ràpita": {
+    "lat": 40.6167,
+    "lng": 0.5833
+  },
+  "La Selva del Camp": {
+    "lat": 41.2167,
+    "lng": 1.1333
+  },
+  "La Seu d'Urgell": {
+    "lat": 42.3586,
+    "lng": 1.4572
+  },
+  "La Torre de Claramunt": {
+    "lat": 41.5167,
+    "lng": 1.6833
+  },
+  "Les Avellanes": {
+    "lat": 41.8667,
+    "lng": 0.8833
+  },
+  "Llagostera": {
+    "lat": 41.8333,
+    "lng": 2.8833
+  },
+  "Llavaneres": {
+    "lat": 41.5754,
+    "lng": 2.4936
+  },
+  "Llers": {
+    "lat": 42.2972,
+    "lng": 2.9306
+  },
+  "Lles": {
+    "lat": 42.4,
+    "lng": 1.65
+  },
+  "Mas de Barberans": {
+    "lat": 40.7333,
+    "lng": 0.35
+  },
+  "Menàrguens": {
+    "lat": 41.7233,
+    "lng": 0.7419
+  },
+  "Molló": {
+    "lat": 42.3667,
+    "lng": 2.4
+  },
+  "Mont-ral": {
+    "lat": 41.3,
+    "lng": 1.0833
+  },
+  "Mont-roig del Camp": {
+    "lat": 41.0869,
+    "lng": 1.0036
+  },
+  "Montseny": {
+    "lat": 41.75,
+    "lng": 2.3833
+  },
+  "Ogassa": {
+    "lat": 42.25,
+    "lng": 2.2833
+  },
+  "Olost": {
+    "lat": 41.8756,
+    "lng": 2.0936
+  },
+  "Olot": {
+    "lat": 42.1833,
+    "lng": 2.4833
+  },
+  "Palamós": {
+    "lat": 41.848,
+    "lng": 3.1294
+  },
+  "Paüls": {
+    "lat": 40.95,
+    "lng": 0.4333
+  },
+  "Peramola": {
+    "lat": 42.0833,
+    "lng": 1.3167
+  },
+  "Pla de la Font": {
+    "lat": 41.6333,
+    "lng": 0.75
+  },
+  "Planoles": {
+    "lat": 42.3167,
+    "lng": 2.1
+  },
+  "Prades": {
+    "lat": 41.3167,
+    "lng": 1.0333
+  },
+  "Prats de Rei": {
+    "lat": 41.7,
+    "lng": 1.5333
+  },
+  "Premià de Dalt": {
+    "lat": 41.5044,
+    "lng": 2.3531
+  },
+  "Puig-reig": {
+    "lat": 41.8833,
+    "lng": 1.8833
+  },
+  "Refugi Lluis Estasen": {
+    "lat": 42.1833,
+    "lng": 1.7167
+  },
+  "Regencós": {
+    "lat": 41.9505,
+    "lng": 3.1672
+  },
+  "Ribes de Freser": {
+    "lat": 42.3,
+    "lng": 2.1667
+  },
+  "Ripoll": {
+    "lat": 42.2,
+    "lng": 2.1833
+  },
+  "Roda de Berà": {
+    "lat": 41.1833,
+    "lng": 1.4667
+  },
+  "Rosselló": {
+    "lat": 41.6833,
+    "lng": 0.8833
+  },
+  "Rubí": {
+    "lat": 41.4933,
+    "lng": 2.0328
+  },
+  "Rupià": {
+    "lat": 42.0167,
+    "lng": 3.0167
+  },
+  "S'Agaró": {
+    "lat": 41.7833,
+    "lng": 3.05
+  },
+  "Salt": {
+    "lat": 41.9768,
+    "lng": 2.7925
+  },
+  "Sant Boi de Llobregat": {
+    "lat": 41.3461,
+    "lng": 2.0386
+  },
+  "Sant Cugat del Vallès": {
+    "lat": 41.4731,
+    "lng": 2.0864
+  },
+  "Sant Feliu de Codines": {
+    "lat": 41.6833,
+    "lng": 2.1667
+  },
+  "Sant Fruitós de Bages": {
+    "lat": 41.75,
+    "lng": 1.8833
+  },
+  "Sant Guim de Freixenet": {
+    "lat": 41.65,
+    "lng": 1.3833
+  },
+  "Sant Hilari Sacalm": {
+    "lat": 41.8833,
+    "lng": 2.5167
+  },
+  "Sant Joan Despí": {
+    "lat": 41.3689,
+    "lng": 2.0583
+  },
+  "Sant Joan de les Abadesses": {
+    "lat": 42.2333,
+    "lng": 2.2833
+  },
+  "Sant Jordi Desvalls": {
+    "lat": 42.0167,
+    "lng": 2.8833
+  },
+  "Sant Martí Vell": {
+    "lat": 42.0,
+    "lng": 2.8833
+  },
+  "Sant Sadurní d'Anoia": {
+    "lat": 41.4247,
+    "lng": 1.7833
+  },
+  "Santa Coloma de Gramanet": {
+    "lat": 41.4514,
+    "lng": 2.2083
+  },
+  "Santa Cristina d'Aro": {
+    "lat": 41.8167,
+    "lng": 2.9833
+  },
+  "Santa Maria d'Oló": {
+    "lat": 41.8756,
+    "lng": 2.0336
+  },
+  "Tarragona": {
+    "lat": 41.1189,
+    "lng": 1.2445
+  },
+  "Torelló": {
+    "lat": 41.8833,
+    "lng": 2.2667
+  },
+  "Torre de Capdella": {
+    "lat": 42.4167,
+    "lng": 0.8833
+  },
+  "Torrelameu": {
+    "lat": 41.7167,
+    "lng": 0.7833
+  },
+  "Torrelles de Llobregat": {
+    "lat": 41.3583,
+    "lng": 1.975
+  },
+  "Torroella de Montgrí": {
+    "lat": 42.0453,
+    "lng": 3.1275
+  },
+  "Tírvia": {
+    "lat": 42.5667,
+    "lng": 1.25
+  },
+  "Vallfogona de Ripollès": {
+    "lat": 42.2167,
+    "lng": 2.3167
+  },
+  "Vallter": {
+    "lat": 42.4167,
+    "lng": 2.2667
+  },
+  "Vielha": {
+    "lat": 42.7028,
+    "lng": 0.7953
+  },
+  "Viladecavalls": {
+    "lat": 41.5333,
+    "lng": 1.9333
+  },
+  "Viladrau": {
+    "lat": 41.85,
+    "lng": 2.3833
+  },
+  "Vilafranca del Penedès": {
+    "lat": 41.3458,
+    "lng": 1.6972
+  },
+  "Vilamur": {
+    "lat": 42.5167,
+    "lng": 1.05
+  },
+  "Vilanova de l'Aguda": {
+    "lat": 41.85,
+    "lng": 1.2167
+  },
+  "Vilanova i la Geltrú": {
+    "lat": 41.2231,
+    "lng": 1.7256
+  },
+  "Vilassar de Dalt": {
+    "lat": 41.5167,
+    "lng": 2.3667
+  },
+  "Vilassar de Mar": {
+    "lat": 41.5053,
+    "lng": 2.3908
+  },
+  "Àger": {
+    "lat": 42.0,
+    "lng": 0.7667
+  },
+  "Òrrius": {
+    "lat": 41.5333,
+    "lng": 2.35
+  }
+}

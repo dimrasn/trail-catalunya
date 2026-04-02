@@ -1,0 +1,2703 @@
+[
+  {
+    "id": "la-bufavents-trail",
+    "name": "La Bufavents Trail",
+    "url": "https://www.instagram.com/labufavents.trail/",
+    "date": "2026-03-01",
+    "town": "El Perelló",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 1200
+      },
+      {
+        "km": 16.0,
+        "elevationGain": 700
+      }
+    ],
+    "lat": 40.8755,
+    "lng": 0.7114,
+    "driveMinutes": 158
+  },
+  {
+    "id": "la-maasaiada",
+    "name": "La Maasaiada",
+    "url": "https://www.lamaasaiada.cat/",
+    "date": "2026-03-01",
+    "town": "Campins",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 35.0,
+        "elevationGain": 2000
+      },
+      {
+        "km": 24.0,
+        "elevationGain": 1370
+      },
+      {
+        "km": 14.0,
+        "elevationGain": 780
+      }
+    ],
+    "lat": 41.7234,
+    "lng": 2.4651,
+    "driveMinutes": 49
+  },
+  {
+    "id": "saltamarrades",
+    "name": "Saltamarrades",
+    "url": "http://www.saltamarrades.cat/",
+    "date": "2026-03-01",
+    "town": "Santa Maria d'Oló",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 900,
+        "price": 18.0
+      },
+      {
+        "km": 11.0,
+        "elevationGain": 450,
+        "price": 16.0
+      },
+      {
+        "km": 6.0,
+        "elevationGain": 250,
+        "price": 12.0
+      }
+    ],
+    "lat": 41.8756,
+    "lng": 2.0336,
+    "driveMinutes": 62
+  },
+  {
+    "id": "cursa-lorelleta",
+    "name": "Cursa L'Orelleta",
+    "url": "https://cursaorelleta.wixsite.com/cursaorelleta/",
+    "date": "2026-03-01",
+    "town": "Castellnou de Seana",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 10.0,
+        "elevationGain": 37
+      },
+      {
+        "km": 5.0,
+        "elevationGain": 8
+      }
+    ],
+    "lat": 41.6493,
+    "lng": 0.9026,
+    "driveMinutes": 128
+  },
+  {
+    "id": "trail-del-senglar-llavaneres",
+    "name": "Trail del Senglar LLAVANERES",
+    "url": "https://traildelsenglar.com/llavaneres/",
+    "date": "2026-03-01",
+    "town": "Llavaneres",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 1200
+      },
+      {
+        "km": 15.0,
+        "elevationGain": 700
+      },
+      {
+        "km": 10.0,
+        "elevationGain": 600
+      }
+    ],
+    "lat": 41.5754,
+    "lng": 2.4936,
+    "driveMinutes": 37
+  },
+  {
+    "id": "cursa-de-muntanya-de-regencos",
+    "name": "Cursa de Muntanya de Regencós",
+    "url": "https://curses.cat/cursaregencos2026/",
+    "date": "2026-03-01",
+    "town": "Regencós",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 13.0,
+        "elevationGain": 450
+      }
+    ],
+    "lat": 41.9505,
+    "lng": 3.1672,
+    "driveMinutes": 118
+  },
+  {
+    "id": "cursa-les-vetes",
+    "name": "Cursa Les Vetes",
+    "url": "http://www.lesvetes.cat/ca/fundacio-les-vetes/projeccio-social/xii-cursa-popular-les-vetes",
+    "date": "2026-03-07",
+    "town": "Salt",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 10.0,
+        "elevationGain": 64
+      },
+      {
+        "km": 5.6,
+        "elevationGain": 25
+      }
+    ],
+    "lat": 41.9768,
+    "lng": 2.7925,
+    "driveMinutes": 94
+  },
+  {
+    "id": "sant-isidret",
+    "name": "Sant Isidret",
+    "url": "https://www.instagram.com/santisidret/",
+    "date": "2026-03-08",
+    "town": "Olost",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 22.0,
+        "elevationGain": 800
+      },
+      {
+        "km": 13.0,
+        "elevationGain": 350
+      }
+    ],
+    "lat": 41.8756,
+    "lng": 2.0936,
+    "driveMinutes": 61
+  },
+  {
+    "id": "trail-embruixada",
+    "name": "Trail Embruixada",
+    "url": "https://embruixada.com/",
+    "date": "2026-03-08",
+    "town": "Llers",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0
+      },
+      {
+        "km": 12.0
+      }
+    ],
+    "lat": 42.2972,
+    "lng": 2.9306,
+    "driveMinutes": 135
+  },
+  {
+    "id": "trail-larboc",
+    "name": "Trail L'Arboç",
+    "url": "https://www.athleticevents.net/cursa/trail-l-arboc-2026-519/",
+    "date": "2026-03-08",
+    "town": "L'Arboç",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 20.0,
+        "elevationGain": 384
+      },
+      {
+        "km": 12.0,
+        "elevationGain": 205
+      }
+    ],
+    "lat": 41.2667,
+    "lng": 1.6,
+    "driveMinutes": 59
+  },
+  {
+    "id": "cursa-4-termes",
+    "name": "Cursa 4 Termes",
+    "url": "https://www.cursa4termes.com/",
+    "date": "2026-03-14",
+    "town": "Mont-roig del Camp",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 54.0,
+        "elevationGain": 2950
+      },
+      {
+        "km": 27.0,
+        "elevationGain": 1350
+      },
+      {
+        "km": 14.0,
+        "elevationGain": 450,
+        "variantName": "Cursa 4 Termes CADET"
+      },
+      {
+        "km": 10.5,
+        "elevationGain": 360,
+        "variantName": "Cursa 4 Termes CADET"
+      }
+    ],
+    "lat": 41.0869,
+    "lng": 1.0036,
+    "driveMinutes": 122
+  },
+  {
+    "id": "petita-jab-berga",
+    "name": "Petita JAB Berga",
+    "url": "https://www.jaberga.com/petita",
+    "date": "2026-03-15",
+    "town": "L'Espunyola",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [],
+    "lat": 42.05,
+    "lng": 1.7833,
+    "driveMinutes": 92
+  },
+  {
+    "id": "cursa-vinyes-del-penedes",
+    "name": "Cursa Vinyes del Penedès",
+    "url": "https://cursavinyesdelpenedes.com/",
+    "date": "2026-03-15",
+    "town": "Vilafranca del Penedès",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 5.0,
+        "elevationGain": 33
+      }
+    ],
+    "lat": 41.3458,
+    "lng": 1.6972,
+    "driveMinutes": 48
+  },
+  {
+    "id": "pujada-als-angels",
+    "name": "Pujada als Àngels",
+    "url": "https://www.rockthesport.com/ca/esdeveniment/62a-pujada-als-angels",
+    "date": "2026-03-15",
+    "town": "Girona",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 9.1,
+        "elevationGain": 485
+      }
+    ],
+    "lat": 41.9794,
+    "lng": 2.8214,
+    "driveMinutes": 96
+  },
+  {
+    "id": "cursa-serra-de-godall",
+    "name": "Cursa Serra de Godall",
+    "url": "https://crono.cat/cursa-serra-godall/",
+    "date": "2026-03-15",
+    "town": "Godall",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 14.0,
+        "elevationGain": 540
+      },
+      {
+        "km": 5.0,
+        "elevationGain": 200
+      }
+    ],
+    "lat": 40.6486,
+    "lng": 0.4264,
+    "driveMinutes": 197
+  },
+  {
+    "id": "cursa-dels-sucre",
+    "name": "Cursa dels Sucre",
+    "url": "https://lacursadelsucre.web.app/",
+    "date": "2026-03-15",
+    "town": "Menàrguens",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 10.0
+      },
+      {
+        "km": 5.0
+      }
+    ],
+    "lat": 41.7233,
+    "lng": 0.7419,
+    "driveMinutes": 145
+  },
+  {
+    "id": "pugo-regis-trail",
+    "name": "Pugo Regis Trail",
+    "url": "https://pugoregistrail.cat",
+    "date": "2026-03-21",
+    "town": "Puig-reig",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 24.0,
+        "elevationGain": 1000
+      },
+      {
+        "km": 14.0,
+        "elevationGain": 575
+      },
+      {
+        "km": 7.75,
+        "elevationGain": 236,
+        "variantName": "Pugo Regis Trail CADET"
+      }
+    ],
+    "dateEnd": "2026-03-22",
+    "lat": 41.8833,
+    "lng": 1.8833,
+    "driveMinutes": 68
+  },
+  {
+    "id": "trail-cap-de-creus",
+    "name": "Trail Cap de Creus",
+    "url": "https://www.klassmark.com/trail-costa-brava/",
+    "date": "2026-03-21",
+    "town": "Palamós",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 79.5,
+        "elevationGain": 2190
+      },
+      {
+        "km": 41.0,
+        "elevationGain": 2000
+      },
+      {
+        "km": 21.0,
+        "elevationGain": 600
+      },
+      {
+        "km": 12.5,
+        "elevationGain": 400
+      }
+    ],
+    "lat": 41.848,
+    "lng": 3.1294,
+    "driveMinutes": 107
+  },
+  {
+    "id": "cursa-del-roc-gros",
+    "name": "Cursa del Roc Gros",
+    "url": "https://www.cursadelrocgros.com/",
+    "date": "2026-03-22",
+    "town": "Hostalets de Balenyà",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 1000
+      },
+      {
+        "km": 12.0,
+        "elevationGain": 450
+      }
+    ],
+    "lat": 41.8167,
+    "lng": 2.2333,
+    "driveMinutes": 53
+  },
+  {
+    "id": "cursa-sol-blau",
+    "name": "Cursa Sol Blau",
+    "url": "https://www.cetorrellenc.cat/1/INICI/",
+    "date": "2026-03-22",
+    "town": "Torrelles de Llobregat",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 18.5
+      }
+    ],
+    "lat": 41.3583,
+    "lng": 1.975,
+    "driveMinutes": 21
+  },
+  {
+    "id": "cursa-dels-colls",
+    "name": "Cursa dels Colls",
+    "url": "https://www.cursadelscolls.cat/",
+    "date": "2026-03-22",
+    "town": "Vilanova i la Geltrú",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 15.0,
+        "elevationGain": 500
+      },
+      {
+        "km": 8.5,
+        "elevationGain": 200
+      }
+    ],
+    "lat": 41.2231,
+    "lng": 1.7256,
+    "driveMinutes": 50
+  },
+  {
+    "id": "sant-mateu-xtrail",
+    "name": "Sant Mateu Xtrail",
+    "url": "https://misports.cat/curses/sant-mateu-xtrail/",
+    "date": "2026-03-22",
+    "town": "Premià de Dalt",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 25.0,
+        "elevationGain": 1350
+      },
+      {
+        "km": 15.0,
+        "elevationGain": 850
+      },
+      {
+        "km": 10.0,
+        "elevationGain": 600
+      }
+    ],
+    "lat": 41.5044,
+    "lng": 2.3531,
+    "driveMinutes": 21
+  },
+  {
+    "id": "embarrancada",
+    "name": "Embarrancada",
+    "url": "https://www.instagram.com/embarrancadanargo/",
+    "date": "2026-03-22",
+    "town": "Coll de Nargó",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 10.0,
+        "elevationGain": 500
+      }
+    ],
+    "lat": 42.15,
+    "lng": 1.3167,
+    "driveMinutes": 127
+  },
+  {
+    "id": "cursa-brafim-ermita-de-loreto",
+    "name": "Cursa Bràfim Ermita de Loreto",
+    "url": "https://cursabrafim.cat/",
+    "date": "2026-03-22",
+    "town": "Bràfim",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 22.0,
+        "elevationGain": 576
+      },
+      {
+        "km": 13.0,
+        "elevationGain": 322
+      },
+      {
+        "km": 7.0,
+        "elevationGain": 117
+      }
+    ],
+    "lat": 41.25,
+    "lng": 1.2333,
+    "driveMinutes": 94
+  },
+  {
+    "id": "trail-les-peulles",
+    "name": "Trail Les Peülles",
+    "url": "https://www.peullesdelmontsec.com/11a-marxa-trail-les-peulles/",
+    "date": "2026-03-22",
+    "town": "Les Avellanes",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 32.0,
+        "elevationGain": 961
+      },
+      {
+        "km": 14.0,
+        "elevationGain": 346
+      }
+    ],
+    "lat": 41.8667,
+    "lng": 0.8833,
+    "driveMinutes": 139
+  },
+  {
+    "id": "la-suada",
+    "name": "La Suada",
+    "url": "https://curses.cat/lasuada2026/",
+    "date": "2026-03-22",
+    "town": "L'Agullana",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 15.0,
+        "elevationGain": 500
+      }
+    ],
+    "lat": 42.3833,
+    "lng": 2.85,
+    "driveMinutes": 141
+  },
+  {
+    "id": "la-paranormal",
+    "name": "La Paranormal",
+    "url": "https://inscripcions.cat/laparanormal2025_2/",
+    "date": "2026-03-22",
+    "town": "La Llagosta",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 15.0
+      },
+      {
+        "km": 7.0
+      }
+    ],
+    "lat": 41.5167,
+    "lng": 2.1833,
+    "driveMinutes": 15
+  },
+  {
+    "id": "correpoble",
+    "name": "Correpoble",
+    "url": "https://www.correpoble.cat/",
+    "date": "2026-03-28",
+    "town": "Santa Cristina d'Aro",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 10.0,
+        "elevationGain": 110
+      }
+    ],
+    "lat": 41.8167,
+    "lng": 2.9833,
+    "driveMinutes": 93
+  },
+  {
+    "id": "trail-vallforners",
+    "name": "Trail Vallforners",
+    "url": "https://www.traildevallforners.es/",
+    "date": "2026-03-29",
+    "town": "Cànoves i Samalús",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 26.0,
+        "elevationGain": 1700
+      },
+      {
+        "km": 14.0,
+        "elevationGain": 750
+      }
+    ],
+    "lat": 41.6833,
+    "lng": 2.35,
+    "driveMinutes": 39
+  },
+  {
+    "id": "lencantada-de-font-rubi",
+    "name": "L'Encantada de Font-rubí",
+    "url": "https://encantadadefontrubi.blogspot.com/",
+    "date": "2026-03-29",
+    "town": "Font-rubí",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 25.0,
+        "elevationGain": 700
+      },
+      {
+        "km": 12.0,
+        "elevationGain": 240
+      }
+    ],
+    "lat": 41.4167,
+    "lng": 1.6167,
+    "driveMinutes": 55
+  },
+  {
+    "id": "bacanard-trail",
+    "name": "Bacanard Trail",
+    "url": "https://www.bacanardtrail.com/",
+    "date": "2026-03-29",
+    "town": "Begur",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 38.0,
+        "elevationGain": 1900,
+        "price": 40.0
+      },
+      {
+        "km": 20.0,
+        "elevationGain": 1000,
+        "price": 25.0
+      },
+      {
+        "km": 13.5,
+        "elevationGain": 600,
+        "price": 15.0
+      }
+    ],
+    "lat": 41.9547,
+    "lng": 3.2072,
+    "driveMinutes": 121
+  },
+  {
+    "id": "camins-de-fusta",
+    "name": "Camins de Fusta",
+    "url": "https://caminsdefusta.wordpress.com/",
+    "date": "2026-03-29",
+    "town": "Sant Guim de Freixenet",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 850,
+        "price": 24.0
+      },
+      {
+        "km": 12.0,
+        "elevationGain": 450,
+        "price": 21.0
+      }
+    ],
+    "lat": 41.65,
+    "lng": 1.3833,
+    "driveMinutes": 84
+  },
+  {
+    "id": "arboli-trail",
+    "name": "Arbolí Trail",
+    "url": "https://webtretzesports.wixsite.com/arbolitrail",
+    "date": "2026-03-29",
+    "town": "Arbolí",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 13.5,
+        "elevationGain": 566
+      }
+    ],
+    "lat": 41.2167,
+    "lng": 1.0167,
+    "driveMinutes": 116
+  },
+  {
+    "id": "trail-el-mirador",
+    "name": "Trail \"El Mirador\"",
+    "url": "https://pladelafont.ddl.net/actualitat/altres-publicacions/iv-trail-el-mirador-per-afall-1",
+    "date": null,
+    "town": "Pla de la Font",
+    "province": "LLEIDA",
+    "status": "TBD",
+    "distances": [
+      {
+        "km": 15.0
+      },
+      {
+        "km": 7.0
+      }
+    ],
+    "lat": 41.6333,
+    "lng": 0.75,
+    "driveMinutes": 142
+  },
+  {
+    "id": "costa-brava-stage-run",
+    "name": "Costa Brava Stage Run",
+    "url": "http://cbsr.run/",
+    "date": "2026-04-17",
+    "town": "Blanes",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 120.0,
+        "elevationGain": 4700
+      },
+      {
+        "km": 80.0,
+        "elevationGain": 3600
+      }
+    ],
+    "dateEnd": "2026-04-19",
+    "soldOut": true,
+    "lat": 41.6744,
+    "lng": 2.7903,
+    "driveMinutes": 68
+  },
+  {
+    "id": "volta-a-peramola",
+    "name": "Volta a Peramola",
+    "url": "http://voltaperamola.cat/",
+    "date": "2026-04-04",
+    "town": "Peramola",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 25.0,
+        "elevationGain": 1600
+      },
+      {
+        "km": 10.0,
+        "elevationGain": 610
+      },
+      {
+        "km": 5.0,
+        "elevationGain": 260
+      }
+    ],
+    "lat": 42.0833,
+    "lng": 1.3167,
+    "driveMinutes": 121
+  },
+  {
+    "id": "cursa-de-lairosa",
+    "name": "Cursa de l'Airosa",
+    "url": "https://www.cursadelairosa.cat/",
+    "date": "2026-04-04",
+    "town": "Mas de Barberans",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 1395
+      },
+      {
+        "km": 14.5,
+        "elevationGain": 800
+      },
+      {
+        "km": 9.5,
+        "elevationGain": 460
+      }
+    ],
+    "lat": 40.7333,
+    "lng": 0.35,
+    "driveMinutes": 198
+  },
+  {
+    "id": "trail-montgri",
+    "name": "Trail Montgrí",
+    "url": "https://www.trailmontgri.com/",
+    "date": "2026-04-11",
+    "town": "Torroella de Montgrí",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 35.0,
+        "elevationGain": 600
+      },
+      {
+        "km": 22.0,
+        "elevationGain": 750
+      },
+      {
+        "km": 13.0,
+        "elevationGain": 450
+      }
+    ],
+    "dateEnd": "2026-04-12",
+    "lat": 42.0453,
+    "lng": 3.1275,
+    "driveMinutes": 122
+  },
+  {
+    "id": "ultra-montseny",
+    "name": "Ultra Montseny",
+    "url": "https://www.ultramontseny.com/",
+    "date": "2026-04-11",
+    "town": "Viladrau",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 70.0,
+        "elevationGain": 4110
+      }
+    ],
+    "lat": 41.85,
+    "lng": 2.3833,
+    "driveMinutes": 60
+  },
+  {
+    "id": "ultra-montseny-montseny",
+    "name": "Ultra Montseny",
+    "url": "https://www.ultramontseny.com/",
+    "date": "2026-04-11",
+    "town": "Montseny",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 34.0,
+        "elevationGain": 2407
+      }
+    ],
+    "lat": 41.75,
+    "lng": 2.3833,
+    "driveMinutes": 48
+  },
+  {
+    "id": "montsec-ultra-trail",
+    "name": "Montsec Ultra Trail",
+    "url": "https://montsecultratrail.com/",
+    "date": "2026-04-11",
+    "town": "Àger",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 100.0,
+        "elevationGain": 6600
+      },
+      {
+        "km": 45.0,
+        "elevationGain": 2850
+      },
+      {
+        "km": 22.0,
+        "elevationGain": 1400
+      }
+    ],
+    "lat": 42.0,
+    "lng": 0.7667,
+    "driveMinutes": 157
+  },
+  {
+    "id": "trail-del-cervol",
+    "name": "Trail del Cèrvol",
+    "url": "https://www.instagram.com/traildelcervol/",
+    "date": "2026-04-11",
+    "town": "Sant Sadurní d'Anoia",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 24.6,
+        "elevationGain": 870
+      },
+      {
+        "km": 13.0,
+        "elevationGain": 330
+      }
+    ],
+    "lat": 41.4247,
+    "lng": 1.7833,
+    "driveMinutes": 39
+  },
+  {
+    "id": "sobrepuny-trail-vertical",
+    "name": "Sobrepuny Trail VERTICAL",
+    "url": "https://www.sobrepunytrail.cat/",
+    "date": "2026-04-11",
+    "town": "La Nou del Berguedà",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 37.0,
+        "elevationGain": 2400,
+        "variantName": "Sobrepuny Trail"
+      },
+      {
+        "km": 21.0,
+        "elevationGain": 1500,
+        "variantName": "Sobrepuny Trail"
+      },
+      {
+        "km": 12.0,
+        "elevationGain": 1000,
+        "variantName": "Sobrepuny Trail"
+      },
+      {
+        "km": 3.5,
+        "elevationGain": 800
+      }
+    ],
+    "lat": 42.0833,
+    "lng": 1.8167,
+    "driveMinutes": 94
+  },
+  {
+    "id": "xtrail-series-orrius",
+    "name": "Xtrail Series Òrrius",
+    "url": "https://www.xtrailseriesrun.com/",
+    "date": "2026-04-12",
+    "town": "Òrrius",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 22.0,
+        "elevationGain": 832
+      },
+      {
+        "km": 15.0,
+        "elevationGain": 624
+      },
+      {
+        "km": 10.0,
+        "elevationGain": 483
+      }
+    ],
+    "lat": 41.5333,
+    "lng": 2.35,
+    "driveMinutes": 23
+  },
+  {
+    "id": "rebentaesparedenyes",
+    "name": "Rebentaesparedenyes",
+    "url": "https://rebentaespardenyes.wordpress.com/",
+    "date": "2026-04-12",
+    "town": "La Ràpita",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.5
+      },
+      {
+        "km": 10.5
+      }
+    ],
+    "lat": 40.6167,
+    "lng": 0.5833,
+    "driveMinutes": 186
+  },
+  {
+    "id": "trail-roda-de-bera",
+    "name": "Trail Roda de Berà",
+    "url": "https://trailrodadebera.webnode.cat/",
+    "date": "2026-04-12",
+    "town": "Roda de Berà",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 13.4,
+        "elevationGain": 269
+      },
+      {
+        "km": 4.8,
+        "elevationGain": 33
+      }
+    ],
+    "lat": 41.1833,
+    "lng": 1.4667,
+    "driveMinutes": 75
+  },
+  {
+    "id": "cursa-de-la-batalla",
+    "name": "Cursa de la Batalla",
+    "url": "https://sportmaniacs.com/es/services/inscription/2ordf-cursa-de-la-batalla-dels-prats-de-rei#contact",
+    "date": "2026-04-12",
+    "town": "Prats de Rei",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 16.0
+      },
+      {
+        "km": 8.0
+      }
+    ],
+    "lat": 41.7,
+    "lng": 1.5333,
+    "driveMinutes": 74
+  },
+  {
+    "id": "oncodines-trail",
+    "name": "Oncodines Trail",
+    "url": "https://www.oncodinestrail.cat/",
+    "date": "2026-04-18",
+    "town": "Sant Feliu de Codines",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 100.0,
+        "elevationGain": 2653
+      }
+    ],
+    "lat": 41.6833,
+    "lng": 2.1667,
+    "driveMinutes": 36
+  },
+  {
+    "id": "cursa-roca-negra",
+    "name": "Cursa Roca Negra",
+    "url": "http://rocanegra.cat/",
+    "date": "2026-04-18",
+    "town": "Sant Boi de Llobregat",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 1300
+      },
+      {
+        "km": 13.0,
+        "elevationGain": 700
+      }
+    ],
+    "lat": 41.3461,
+    "lng": 2.0386,
+    "driveMinutes": 16
+  },
+  {
+    "id": "pels-camins-dels-matxos",
+    "name": "Pels Camins dels Matxos",
+    "url": "https://matxos.cat/",
+    "date": "2026-04-18",
+    "town": "Torelló",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 61.8,
+        "elevationGain": 3450
+      }
+    ],
+    "lat": 41.8833,
+    "lng": 2.2667,
+    "driveMinutes": 62
+  },
+  {
+    "id": "utmcd-ultra-trail-muntanyes-costa-daurada",
+    "name": "UTMCD Ultra Trail Muntanyes Costa Daurada",
+    "url": "https://www.naturetime.es/ca/ultra-trail-muntanyes-costa-daurada-3/",
+    "date": "2026-04-18",
+    "town": "Prades",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 64.0,
+        "elevationGain": 3000
+      },
+      {
+        "km": 44.0,
+        "elevationGain": 1744
+      },
+      {
+        "km": 23.0,
+        "elevationGain": 969
+      },
+      {
+        "km": 11.0,
+        "elevationGain": 513
+      }
+    ],
+    "lat": 41.3167,
+    "lng": 1.0333,
+    "driveMinutes": 112
+  },
+  {
+    "id": "engatats-trail",
+    "name": "Engatats Trail",
+    "url": "https://www.curses.cat/engatatstrail2026/",
+    "date": "2026-04-18",
+    "town": "Sant Jordi Desvalls",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 12.0
+      }
+    ],
+    "lat": 42.0167,
+    "lng": 2.8833,
+    "driveMinutes": 103
+  },
+  {
+    "id": "vilatrail",
+    "name": "Vilatrail",
+    "url": "https://www.vilatrail.com/",
+    "date": "2026-04-19",
+    "town": "Vilassar de Dalt",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 1100
+      },
+      {
+        "km": 12.0,
+        "elevationGain": 675
+      }
+    ],
+    "lat": 41.5167,
+    "lng": 2.3667,
+    "driveMinutes": 23
+  },
+  {
+    "id": "cursa-de-les-roques",
+    "name": "Cursa de les Roques",
+    "url": "https://aecaranordblog.wordpress.com/",
+    "date": "2026-04-19",
+    "town": "Horta de Sant Joan",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.5,
+        "elevationGain": 1450
+      },
+      {
+        "km": 16.0,
+        "elevationGain": 850
+      },
+      {
+        "km": 9.3,
+        "elevationGain": 500,
+        "variantName": "Cursa de les Roques JUVENIL I CADET"
+      }
+    ],
+    "lat": 40.9667,
+    "lng": 0.3167,
+    "driveMinutes": 190
+  },
+  {
+    "id": "cursa-de-la-noria",
+    "name": "Cursa de la Nòria",
+    "url": "https://cursadelanoria.weebly.com/",
+    "date": "2026-04-19",
+    "town": "Torrelameu",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 10.0,
+        "elevationGain": 25
+      },
+      {
+        "km": 5.0,
+        "elevationGain": 25
+      }
+    ],
+    "lat": 41.7167,
+    "lng": 0.7833,
+    "driveMinutes": 141
+  },
+  {
+    "id": "selva-trail",
+    "name": "Selva Trail",
+    "url": "https://www.aritjol.org/",
+    "date": "2026-04-19",
+    "town": "La Selva del Camp",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 22.0,
+        "elevationGain": 1200
+      },
+      {
+        "km": 14.0,
+        "elevationGain": 700
+      },
+      {
+        "km": 9.0,
+        "elevationGain": 250
+      }
+    ],
+    "lat": 41.2167,
+    "lng": 1.1333,
+    "driveMinutes": 105
+  },
+  {
+    "id": "lesgarrinxada",
+    "name": "L'Esgarrinxada",
+    "url": "https://www.instagram.com/trailesgarrinxada",
+    "date": "2026-04-19",
+    "town": "Vilanova de l'Aguda",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 22.0,
+        "elevationGain": 1000
+      },
+      {
+        "km": 12.0,
+        "elevationGain": 500
+      }
+    ],
+    "lat": 41.85,
+    "lng": 1.2167,
+    "driveMinutes": 110
+  },
+  {
+    "id": "cursa-de-la-mata",
+    "name": "Cursa de la Mata",
+    "url": "https://curses.cat/lamata2026/",
+    "date": "2026-04-19",
+    "town": "Garriguella",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 16.0,
+        "elevationGain": 750
+      },
+      {
+        "km": 11.0,
+        "elevationGain": 375
+      }
+    ],
+    "lat": 42.35,
+    "lng": 3.05,
+    "driveMinutes": 147
+  },
+  {
+    "id": "bacanal-de-rupia",
+    "name": "Bacanal de Rupià",
+    "url": "https://curses.cat/bacanal2026/",
+    "date": "2026-04-19",
+    "town": "Rupià",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 14.0
+      },
+      {
+        "km": 8.0
+      }
+    ],
+    "lat": 42.0167,
+    "lng": 3.0167,
+    "driveMinutes": 112
+  },
+  {
+    "id": "jurasic-trail-race",
+    "name": "Jurasic Trail Race",
+    "url": "https://sportmaniacs.com/es/services/inscription/3ordm-jurasic-trail-race-2026",
+    "date": "2026-04-19",
+    "town": "La Torre de Claramunt",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 17.0,
+        "elevationGain": 700
+      },
+      {
+        "km": 8.0,
+        "elevationGain": 300
+      }
+    ],
+    "lat": 41.5167,
+    "lng": 1.6833,
+    "driveMinutes": 51
+  },
+  {
+    "id": "puigdefrou-exhaust",
+    "name": "Puigdefrou Exhaust",
+    "url": "https://exhaust.lacelleradeter.cat/",
+    "date": "2026-04-19",
+    "town": "La Cellera de Ter",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 18.0,
+        "elevationGain": 900,
+        "price": 18.0
+      }
+    ],
+    "lat": 41.95,
+    "lng": 2.6333,
+    "driveMinutes": 82
+  },
+  {
+    "id": "cursa-del-pinxo",
+    "name": "Cursa del Pinxo",
+    "url": "https://inscripcions.cat/cursadelpinxoasac2026/",
+    "date": "2026-04-19",
+    "town": "Cassà de la Selva",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 19.0
+      }
+    ],
+    "lat": 41.8833,
+    "lng": 2.8833,
+    "driveMinutes": 91
+  },
+  {
+    "id": "trail-vall-de-ribes",
+    "name": "Trail Vall de Ribes",
+    "url": "https://www.trailvallderibes.com/es/",
+    "date": "2026-04-25",
+    "town": "Ribes de Freser",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 42.0,
+        "elevationGain": 3400
+      },
+      {
+        "km": 23.0,
+        "elevationGain": 1900
+      },
+      {
+        "km": 16.0,
+        "elevationGain": 1100
+      }
+    ],
+    "lat": 42.3,
+    "lng": 2.1667,
+    "driveMinutes": 115
+  },
+  {
+    "id": "cursa-medijocs",
+    "name": "Cursa Medijocs",
+    "url": "https://medijocs.comb.cat/cursaatletica.htm",
+    "date": "2026-04-25",
+    "town": "Sant Cugat del Vallès",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 8.0
+      }
+    ],
+    "lat": 41.4731,
+    "lng": 2.0864,
+    "driveMinutes": 13
+  },
+  {
+    "id": "la-mata-sants",
+    "name": "La Mata-Sants",
+    "url": "https://www.circuitfer.cat/",
+    "date": "2026-04-25",
+    "town": "Castellbò",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 20.0,
+        "elevationGain": 900
+      }
+    ],
+    "lat": 42.3333,
+    "lng": 1.35,
+    "driveMinutes": 144
+  },
+  {
+    "id": "trenkacames",
+    "name": "Trenkacames",
+    "url": "https://ceer.web.app/",
+    "date": "2026-04-25",
+    "town": "Rosselló",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 14.0,
+        "elevationGain": 480
+      },
+      {
+        "km": 7.0,
+        "elevationGain": 240
+      }
+    ],
+    "lat": 41.6833,
+    "lng": 0.8833,
+    "driveMinutes": 131
+  },
+  {
+    "id": "castarun",
+    "name": "Castarun",
+    "url": "https://www.castarun.com/",
+    "date": "2026-04-25",
+    "town": "Sant Joan Despí",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 10.0
+      },
+      {
+        "km": 5.0
+      }
+    ],
+    "lat": 41.3689,
+    "lng": 2.0583,
+    "driveMinutes": 13
+  },
+  {
+    "id": "marato-vies-verdes",
+    "name": "Marató Vies Verdes",
+    "url": "http://www.maratonviasverdes.com/",
+    "date": "2026-04-26",
+    "town": "Girona",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 42.0
+      }
+    ],
+    "lat": 41.9794,
+    "lng": 2.8214,
+    "driveMinutes": 96
+  },
+  {
+    "id": "marato-vies-verdes-cassa-de-la-selva",
+    "name": "Marató Vies Verdes",
+    "url": "http://www.maratonviasverdes.com/",
+    "date": "2026-04-26",
+    "town": "Cassà de la Selva",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 30.0
+      }
+    ],
+    "lat": 41.8833,
+    "lng": 2.8833,
+    "driveMinutes": 91
+  },
+  {
+    "id": "marato-vies-verdes-llagostera",
+    "name": "Marató Vies Verdes",
+    "url": "http://www.maratonviasverdes.com/",
+    "date": "2026-04-26",
+    "town": "Llagostera",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0
+      }
+    ],
+    "lat": 41.8333,
+    "lng": 2.8833,
+    "driveMinutes": 87
+  },
+  {
+    "id": "marato-vies-verdes-santa-cristina-daro",
+    "name": "Marató Vies Verdes",
+    "url": "http://www.maratonviasverdes.com/",
+    "date": "2026-04-26",
+    "town": "Santa Cristina d'Aro",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 10.0
+      }
+    ],
+    "lat": 41.8167,
+    "lng": 2.9833,
+    "driveMinutes": 93
+  },
+  {
+    "id": "trail-pobla-de-montornes",
+    "name": "Trail Pobla de Montornés",
+    "url": "https://trailpoblamontornes.webnode.cat/",
+    "date": "2026-04-26",
+    "town": "La Pobla de Montornés",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 11.2,
+        "elevationGain": 252
+      },
+      {
+        "km": 6.2,
+        "elevationGain": 105
+      }
+    ],
+    "lat": 41.1833,
+    "lng": 1.45,
+    "driveMinutes": 77
+  },
+  {
+    "id": "cursa-de-muntanya-de-rubi",
+    "name": "Cursa de muntanya de Rubí",
+    "url": "https://cursamuntanyarubi.weebly.com/",
+    "date": "2026-04-26",
+    "town": "Rubí",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 17.3,
+        "elevationGain": 520
+      },
+      {
+        "km": 10.2,
+        "elevationGain": 280
+      }
+    ],
+    "lat": 41.4933,
+    "lng": 2.0328,
+    "driveMinutes": 19
+  },
+  {
+    "id": "trail-3-comarques-alpens",
+    "name": "Trail 3 Comarques Alpens",
+    "url": "https://trail3comarques.com/",
+    "date": "2026-04-26",
+    "town": "Alpens",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 24.5,
+        "elevationGain": 1200
+      },
+      {
+        "km": 12.5,
+        "elevationGain": 500
+      }
+    ],
+    "lat": 42.0,
+    "lng": 2.0833,
+    "driveMinutes": 77
+  },
+  {
+    "id": "un-tomb-pel-montsant",
+    "name": "Un tomb pel Montsant",
+    "url": "http://untombpelmontsant.com/",
+    "date": "2026-04-26",
+    "town": "Cornudella de Monsant",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 24.0,
+        "elevationGain": 1229
+      },
+      {
+        "km": 11.6,
+        "elevationGain": 528
+      }
+    ],
+    "lat": 41.25,
+    "lng": 0.9167,
+    "driveMinutes": 124
+  },
+  {
+    "id": "cursa-dels-senglars",
+    "name": "Cursa dels Senglars",
+    "url": "https://cursadelssenglars.bescanocorre.cat/",
+    "date": "2026-04-26",
+    "town": "Bescanó",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 23.0,
+        "elevationGain": 1000
+      },
+      {
+        "km": 13.0,
+        "elevationGain": 600
+      }
+    ],
+    "lat": 41.9667,
+    "lng": 2.75,
+    "driveMinutes": 90
+  },
+  {
+    "id": "trail-del-senglar-cabrils",
+    "name": "Trail del Senglar CABRILS",
+    "url": "https://traildelsenglar.com/cabrils/",
+    "date": "2026-04-26",
+    "town": "Cabrils",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 1100
+      },
+      {
+        "km": 15.0,
+        "elevationGain": 800
+      },
+      {
+        "km": 10.0,
+        "elevationGain": 600
+      }
+    ],
+    "lat": 41.5167,
+    "lng": 2.3667,
+    "driveMinutes": 23
+  },
+  {
+    "id": "cursa-de-muntanya-sant-marti-vell",
+    "name": "Cursa de Muntanya Sant Martí Vell",
+    "url": "https://www.curses.cat/cursagavarres2026/",
+    "date": "2026-04-26",
+    "town": "Sant Martí Vell",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 20.0,
+        "elevationGain": 850
+      }
+    ],
+    "lat": 42.0,
+    "lng": 2.8833,
+    "driveMinutes": 102
+  },
+  {
+    "id": "laleixar-trail",
+    "name": "L'Aleixar Trail",
+    "url": "https://webtretzesports.wixsite.com/aleixartrail",
+    "date": "2026-04-26",
+    "town": "L'Aleixar",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 12.5,
+        "elevationGain": 600
+      },
+      {
+        "km": 8.7,
+        "elevationGain": 350
+      }
+    ],
+    "lat": 41.2167,
+    "lng": 1.0833,
+    "driveMinutes": 109
+  },
+  {
+    "id": "cursa-la-talaia",
+    "name": "Cursa La Talaia",
+    "url": "https://cursalatalaia.blogspot.com/",
+    "date": "2026-04-26",
+    "town": "Vilanova i la Geltrú",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 18.0
+      },
+      {
+        "km": 9.0
+      }
+    ],
+    "lat": 41.2231,
+    "lng": 1.7256,
+    "driveMinutes": 50
+  },
+  {
+    "id": "trail-solidaria-serramarina-alella",
+    "name": "Trail Solidària Serramarina Alella",
+    "url": "https://gesport.cat/5a-trail-solidaria-serramarina-alella/",
+    "date": null,
+    "town": "Alella",
+    "province": "BARCELONA",
+    "status": "TBD",
+    "distances": [
+      {
+        "km": 21.0
+      }
+    ],
+    "lat": 41.4944,
+    "lng": 2.2958,
+    "driveMinutes": 16
+  },
+  {
+    "id": "trail-solidaria-serramarina-alella-alella",
+    "name": "Trail Solidària Serramarina Alella",
+    "url": "https://gesport.cat/3a-trail-solidaria-serramarina-alella/",
+    "date": null,
+    "town": "Alella",
+    "province": "BARCELONA",
+    "status": "TBD",
+    "distances": [
+      {
+        "km": 12.0
+      }
+    ],
+    "lat": 41.4944,
+    "lng": 2.2958,
+    "driveMinutes": 16
+  },
+  {
+    "id": "cursa-del-nats",
+    "name": "Cursa del NAT'S",
+    "url": "https://www.nats.cat/noticies/118-10-cursa",
+    "date": null,
+    "town": "Sant Fruitós de Bages",
+    "province": "BARCELONA",
+    "status": "TBD",
+    "distances": [
+      {
+        "km": 11.5,
+        "elevationGain": 250
+      },
+      {
+        "km": 7.5
+      }
+    ],
+    "lat": 41.75,
+    "lng": 1.8833,
+    "driveMinutes": 53
+  },
+  {
+    "id": "trail-tros-guimera",
+    "name": "Trail Tros Guimerà",
+    "url": "https://viuguimera.cat/trail-tros-guimera-informacio",
+    "date": "2026-05-02",
+    "town": "Guimerà",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 22.0,
+        "elevationGain": 600,
+        "price": 25.0
+      },
+      {
+        "km": 12.0,
+        "elevationGain": 350,
+        "price": 16.0
+      }
+    ],
+    "lat": 41.5833,
+    "lng": 1.1833,
+    "driveMinutes": 99
+  },
+  {
+    "id": "skyrace-pic-de-lorri",
+    "name": "Skyrace Pic de l'Orri",
+    "url": "https://www.skyracepicdelorri.com/",
+    "date": "2026-05-09",
+    "town": "Vilamur",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 51.0,
+        "elevationGain": 3743,
+        "price": 62.0
+      },
+      {
+        "km": 26.0,
+        "elevationGain": 1623,
+        "price": 37.0
+      },
+      {
+        "km": 10.0,
+        "elevationGain": 650,
+        "price": 15.0
+      }
+    ],
+    "lat": 42.5167,
+    "lng": 1.05,
+    "driveMinutes": 180
+  },
+  {
+    "id": "trail-pujada-al-ros",
+    "name": "Trail Pujada al Ros",
+    "url": "https://www.pujadaalros.cat/",
+    "date": "2026-05-17",
+    "town": "Viladecavalls",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 950,
+        "price": 19.0
+      },
+      {
+        "km": 11.0,
+        "elevationGain": 300,
+        "price": 11.0
+      }
+    ],
+    "lat": 41.5333,
+    "lng": 1.9333,
+    "driveMinutes": 30
+  },
+  {
+    "id": "la-cabanera",
+    "name": "La Cabanera",
+    "url": "https://cabanera.cat/",
+    "date": "2026-05-30",
+    "town": "Torre de Capdella",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 28.0,
+        "elevationGain": 2000,
+        "price": 45.0
+      },
+      {
+        "km": 23.0,
+        "elevationGain": 1125,
+        "price": 30.0
+      },
+      {
+        "km": 12.0,
+        "elevationGain": 570,
+        "price": 20.0
+      }
+    ],
+    "lat": 42.4167,
+    "lng": 0.8833,
+    "driveMinutes": 180
+  },
+  {
+    "id": "cursa-de-la-moixina",
+    "name": "Cursa de la Moixina",
+    "url": "https://www.instagram.com/cursadelamoixina/",
+    "date": "2026-05-01",
+    "town": "Olot",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 10.0,
+        "elevationGain": 250
+      }
+    ],
+    "lat": 42.1833,
+    "lng": 2.4833,
+    "driveMinutes": 104
+  },
+  {
+    "id": "cursa-de-fons-les-tortugues",
+    "name": "Cursa de fons Les Tortugues",
+    "url": "https://www.lestortugues.cat/cursa-1-de-maig/",
+    "date": "2026-05-01",
+    "town": "La Garriga",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 14.0
+      },
+      {
+        "km": 7.0
+      }
+    ],
+    "lat": 41.6833,
+    "lng": 2.2833,
+    "driveMinutes": 37
+  },
+  {
+    "id": "cros-de-l1-de-maig",
+    "name": "Cros de l'1 de maig",
+    "url": "https://www.amicsdelacursa.cat/cros.html",
+    "date": "2026-05-01",
+    "town": "Artés",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 10.3,
+        "elevationGain": 220
+      },
+      {
+        "km": 6.0,
+        "elevationGain": 100
+      }
+    ],
+    "lat": 41.7833,
+    "lng": 1.95,
+    "driveMinutes": 54
+  },
+  {
+    "id": "trencacims",
+    "name": "Trencacims",
+    "url": "https://www.trencacims.com/",
+    "date": "2026-05-02",
+    "town": "Paüls",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 54.0,
+        "elevationGain": 4000
+      },
+      {
+        "km": 36.0,
+        "elevationGain": 2600
+      },
+      {
+        "km": 24.0,
+        "elevationGain": 1800
+      },
+      {
+        "km": 12.0,
+        "elevationGain": 740
+      }
+    ],
+    "lat": 40.95,
+    "lng": 0.4333,
+    "driveMinutes": 180
+  },
+  {
+    "id": "beren-sant-quiri",
+    "name": "Beren Sant Quiri",
+    "url": "http://www.beren.cat/",
+    "date": "2026-05-02",
+    "town": "Berén",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 19.0,
+        "elevationGain": 1200
+      }
+    ],
+    "lat": 42.4167,
+    "lng": 0.8167,
+    "driveMinutes": 185
+  },
+  {
+    "id": "vall-daro-run-series-la-lineal",
+    "name": "Vall d'Aro Run Series La Lineal",
+    "url": "https://valldarorunseries.com/pages/la-lineal",
+    "date": "2026-05-03",
+    "town": "S'Agaró",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 10.6,
+        "elevationGain": 190
+      }
+    ],
+    "lat": 41.7833,
+    "lng": 3.05,
+    "driveMinutes": 96
+  },
+  {
+    "id": "cursa-solidaria-cardedeu",
+    "name": "Cursa solidària Cardedeu",
+    "url": "https://corrigaires.cat/cursa-solidaria-de-cardedeu/",
+    "date": "2026-05-03",
+    "town": "Cardedeu",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 15.0
+      },
+      {
+        "km": 10.0
+      }
+    ],
+    "lat": 41.6333,
+    "lng": 2.35,
+    "driveMinutes": 33
+  },
+  {
+    "id": "marxa-trail-albons",
+    "name": "Marxa Trail Albons",
+    "url": "https://curses.cat/marxaalbons2026/",
+    "date": "2026-05-03",
+    "town": "Albons",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 18.0
+      }
+    ],
+    "lat": 42.0833,
+    "lng": 3.0833,
+    "driveMinutes": 123
+  },
+  {
+    "id": "les-classiques-de-berga",
+    "name": "Les Clàssiques de Berga",
+    "url": "https://www.lesclassiquesberga.com/",
+    "date": "2026-05-09",
+    "town": "Berga",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 44.5,
+        "elevationGain": 2800
+      },
+      {
+        "km": 27.5,
+        "elevationGain": 1750
+      },
+      {
+        "km": 12.5,
+        "elevationGain": 780
+      }
+    ],
+    "lat": 42.1,
+    "lng": 1.85,
+    "driveMinutes": 95
+  },
+  {
+    "id": "utbcn-ultra-trail-barcelona",
+    "name": "UTBCN Ultra Trail Barcelona",
+    "url": "https://ultratrailbcn.com/",
+    "date": "2026-05-16",
+    "town": "Sant Fruitós de Bages",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 61.0,
+        "elevationGain": 1976
+      },
+      {
+        "km": 40.0,
+        "elevationGain": 1072
+      },
+      {
+        "km": 26.0,
+        "elevationGain": 640
+      },
+      {
+        "km": 11.0,
+        "elevationGain": 265
+      }
+    ],
+    "lat": 41.75,
+    "lng": 1.8833,
+    "driveMinutes": 53
+  },
+  {
+    "id": "la-bandarra",
+    "name": "La Bandarra",
+    "url": "https://www.labandarratrail.com/",
+    "date": "2026-05-16",
+    "town": "Mont-ral",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 49.0,
+        "elevationGain": 2500,
+        "price": 45.0
+      },
+      {
+        "km": 28.0,
+        "elevationGain": 1150,
+        "price": 25.0
+      },
+      {
+        "km": 14.5,
+        "elevationGain": 520,
+        "price": 18.0
+      }
+    ],
+    "lat": 41.3,
+    "lng": 1.0833,
+    "driveMinutes": 107
+  },
+  {
+    "id": "trail-tarragona",
+    "name": "Trail Tarragona",
+    "url": "http://trailtarragona.com/",
+    "date": "2026-05-17",
+    "town": "Tarragona",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 18.0,
+        "elevationGain": 429
+      },
+      {
+        "km": 11.5,
+        "elevationGain": 286
+      }
+    ],
+    "lat": 41.1189,
+    "lng": 1.2445,
+    "driveMinutes": 98
+  },
+  {
+    "id": "trail-lenxerinada",
+    "name": "Trail L'Enxerinada",
+    "url": "https://lenxerinada.cat/",
+    "date": "2026-05-24",
+    "town": "Girona",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 22.0,
+        "elevationGain": 900
+      },
+      {
+        "km": 12.0,
+        "elevationGain": 450
+      }
+    ],
+    "lat": 41.9794,
+    "lng": 2.8214,
+    "driveMinutes": 96
+  },
+  {
+    "id": "batega-al-bac-trail",
+    "name": "Batega al Bac TRAIL",
+    "url": "http://www.bategalbac.com/",
+    "date": "2026-05-24",
+    "town": "Planoles",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 27.0,
+        "elevationGain": 1800
+      },
+      {
+        "km": 18.0,
+        "elevationGain": 1200,
+        "variantName": "Batega al Bac SPRINT"
+      },
+      {
+        "km": 10.0,
+        "elevationGain": 500,
+        "variantName": "Batega al Bac SHORT"
+      }
+    ],
+    "lat": 42.3167,
+    "lng": 2.1,
+    "driveMinutes": 118
+  },
+  {
+    "id": "trail-guilleries",
+    "name": "Trail Guilleries",
+    "url": "https://trailguilleries.cat/",
+    "date": "2026-05-31",
+    "town": "Sant Hilari Sacalm",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 42.0,
+        "elevationGain": 2100
+      },
+      {
+        "km": 26.0,
+        "elevationGain": 1300
+      },
+      {
+        "km": 16.0,
+        "elevationGain": 750
+      }
+    ],
+    "lat": 41.8833,
+    "lng": 2.5167,
+    "driveMinutes": 69
+  },
+  {
+    "id": "vigia-trail",
+    "name": "Vigía Trail",
+    "url": "https://vigiatrail.runningvigia.com/",
+    "date": "2026-05-31",
+    "town": "Santa Coloma de Gramanet",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 1100
+      },
+      {
+        "km": 10.0,
+        "elevationGain": 400
+      }
+    ],
+    "lat": 41.4514,
+    "lng": 2.2083,
+    "driveMinutes": 15
+  },
+  {
+    "id": "sant-amand-trail",
+    "name": "Sant Amand Trail",
+    "url": "https://linktr.ee/stamandtrail/",
+    "date": "2026-05-31",
+    "town": "Ripoll",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 23.0,
+        "elevationGain": 1300
+      },
+      {
+        "km": 14.0,
+        "elevationGain": 550
+      }
+    ],
+    "lat": 42.2,
+    "lng": 2.1833,
+    "driveMinutes": 102
+  },
+  {
+    "id": "lles-xtrail",
+    "name": "Lles Xtrail",
+    "url": "https://misports.cat/carreras/lles-xtrail/",
+    "date": "2026-06-06",
+    "town": "Lles",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 69.0,
+        "elevationGain": 3530
+      },
+      {
+        "km": 44.0,
+        "elevationGain": 2000
+      },
+      {
+        "km": 30.0,
+        "elevationGain": 1470
+      },
+      {
+        "km": 15.0,
+        "elevationGain": 1000
+      }
+    ],
+    "lat": 42.4,
+    "lng": 1.65,
+    "driveMinutes": 138
+  },
+  {
+    "id": "trail-lo-bunker",
+    "name": "Trail Lo Bunker",
+    "url": "http://lobunkertrail.blogspot.com/",
+    "date": "2026-06-07",
+    "town": "Foradada",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 22.0,
+        "elevationGain": 1200
+      },
+      {
+        "km": 14.0,
+        "elevationGain": 700
+      }
+    ],
+    "lat": 41.85,
+    "lng": 1.05,
+    "driveMinutes": 124
+  },
+  {
+    "id": "mollo-trail",
+    "name": "Molló Trail",
+    "url": "https://www.mollotrail.cat/",
+    "date": "2026-06-07",
+    "town": "Molló",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0
+      },
+      {
+        "km": 15.0
+      }
+    ],
+    "lat": 42.3667,
+    "lng": 2.4,
+    "driveMinutes": 126
+  },
+  {
+    "id": "vertical-puigestelup",
+    "name": "Vertical Puigestelup",
+    "url": "https://uesantjoan.cat/",
+    "date": "2026-06-13",
+    "town": "Ogassa",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 4.0,
+        "elevationGain": 1047
+      }
+    ],
+    "lat": 42.25,
+    "lng": 2.2833,
+    "driveMinutes": 109
+  },
+  {
+    "id": "la-ribalera",
+    "name": "La Ribalera",
+    "url": "https://www.laribalera.cat/",
+    "date": "2026-06-14",
+    "town": "Tírvia",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 42.0,
+        "elevationGain": 3400
+      },
+      {
+        "km": 27.0,
+        "elevationGain": 2000
+      },
+      {
+        "km": 16.0,
+        "elevationGain": 1040
+      }
+    ],
+    "lat": 42.5667,
+    "lng": 1.25,
+    "driveMinutes": 174
+  },
+  {
+    "id": "cavalls-del-vent",
+    "name": "Cavalls del Vent",
+    "url": "https://www.cavallsdelvent.com/festival/",
+    "date": "2026-06-20",
+    "town": "Refugi Lluis Estasen",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 84.2,
+        "elevationGain": 5600
+      },
+      {
+        "km": 55.1,
+        "variantName": "Cavalls del Vent HALF"
+      }
+    ],
+    "lat": 42.1833,
+    "lng": 1.7167,
+    "driveMinutes": 110
+  },
+  {
+    "id": "aran-by-utmb",
+    "name": "Aran by UTMB",
+    "url": "https://valdaran.utmb.world/",
+    "date": "2026-07-01",
+    "town": "Vielha",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 162.0,
+        "elevationGain": 10700
+      },
+      {
+        "km": 110.0,
+        "elevationGain": 6400
+      },
+      {
+        "km": 55.0,
+        "elevationGain": 3300
+      },
+      {
+        "km": 32.0,
+        "elevationGain": 2100
+      },
+      {
+        "km": 10.0,
+        "elevationGain": 600
+      }
+    ],
+    "lat": 42.7028,
+    "lng": 0.7953,
+    "driveMinutes": 214
+  },
+  {
+    "id": "aran-by-utmb-beret",
+    "name": "Aran by UTMB",
+    "url": "https://valdaran.utmb.world/",
+    "date": "2026-07-04",
+    "town": "Beret",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 18.0,
+        "elevationGain": 900
+      }
+    ],
+    "lat": 42.7167,
+    "lng": 0.9833,
+    "driveMinutes": 204
+  },
+  {
+    "id": "corriols-de-foc",
+    "name": "Corriols de Foc",
+    "url": "https://www.corriols.cat/",
+    "date": "2026-07-11",
+    "town": "Vallfogona de Ripollès",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 30.0,
+        "elevationGain": 1600
+      },
+      {
+        "km": 20.0,
+        "elevationGain": 1300
+      }
+    ],
+    "lat": 42.2167,
+    "lng": 2.3167,
+    "driveMinutes": 105
+  },
+  {
+    "id": "trail-els-esterregalls",
+    "name": "Trail Els Esterregalls",
+    "url": "https://trailesterregalls.com/",
+    "date": "2026-07-12",
+    "town": "Isòvol",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.0,
+        "elevationGain": 900
+      },
+      {
+        "km": 15.0,
+        "elevationGain": 550
+      }
+    ],
+    "lat": 42.35,
+    "lng": 1.8333,
+    "driveMinutes": 126
+  },
+  {
+    "id": "trobada-aristot",
+    "name": "Trobada Aristot",
+    "url": "https://trobada-aristot.jimdofree.com/",
+    "date": "2026-08-02",
+    "town": "Aristot",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 23.0,
+        "elevationGain": 1750
+      },
+      {
+        "km": 16.0,
+        "elevationGain": 1050
+      },
+      {
+        "km": 10.0,
+        "elevationGain": 600
+      }
+    ],
+    "lat": 42.3667,
+    "lng": 1.5833,
+    "driveMinutes": 137
+  },
+  {
+    "id": "pyrenees-stage-run",
+    "name": "Pyrenees Stage Run",
+    "url": "https://psr.run/en/",
+    "date": "2026-08-29",
+    "town": "Ribes de Freser",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 240.0,
+        "elevationGain": 15000
+      }
+    ],
+    "dateEnd": "2026-09-05",
+    "lat": 42.3,
+    "lng": 2.1667,
+    "driveMinutes": 115
+  },
+  {
+    "id": "burriac-atac",
+    "name": "Burriac Atac",
+    "url": "http://burriacatac.cat/",
+    "date": "2026-09-05",
+    "town": "Vilassar de Mar",
+    "province": "BARCELONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 21.4,
+        "elevationGain": 1090
+      },
+      {
+        "km": 15.7,
+        "elevationGain": 650
+      }
+    ],
+    "lat": 41.5053,
+    "lng": 2.3908,
+    "driveMinutes": 24
+  },
+  {
+    "id": "la-marrana-skyrace",
+    "name": "La Marrana Skyrace",
+    "url": "https://cursalamarrana.com/",
+    "date": "2026-09-06",
+    "town": "Vallter",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 24.5,
+        "elevationGain": 1900
+      },
+      {
+        "km": 13.0,
+        "elevationGain": 1100
+      },
+      {
+        "km": 11.0,
+        "elevationGain": 880
+      }
+    ],
+    "lat": 42.4167,
+    "lng": 2.2667,
+    "driveMinutes": 131
+  },
+  {
+    "id": "taga-2040-evo",
+    "name": "Taga 2040 EVO",
+    "url": "https://taga2040.com/",
+    "date": "2026-09-19",
+    "town": "Sant Joan de les Abadesses",
+    "province": "GIRONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 28.0,
+        "elevationGain": 2000
+      },
+      {
+        "km": 15.0,
+        "elevationGain": 900
+      },
+      {
+        "km": 9.7,
+        "elevationGain": 500
+      }
+    ],
+    "lat": 42.2333,
+    "lng": 2.2833,
+    "driveMinutes": 107
+  },
+  {
+    "id": "cursa-transfronterera",
+    "name": "Cursa Transfronterera",
+    "url": "https://www.circuitfer.cat/",
+    "date": "2026-09-20",
+    "town": "La Seu d'Urgell",
+    "province": "LLEIDA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 20.0,
+        "elevationGain": 1500
+      }
+    ],
+    "lat": 42.3586,
+    "lng": 1.4572,
+    "driveMinutes": 141
+  },
+  {
+    "id": "pujada-al-montsia",
+    "name": "Pujada al Montsià",
+    "url": "https://www.pujadamontsia.cat/",
+    "date": "2026-09-27",
+    "town": "Alcanar",
+    "province": "TARRAGONA",
+    "status": "Active",
+    "distances": [
+      {
+        "km": 30.0,
+        "elevationGain": 1880
+      },
+      {
+        "km": 15.5,
+        "elevationGain": 651
+      },
+      {
+        "km": 12.5,
+        "elevationGain": 490
+      }
+    ],
+    "lat": 40.5417,
+    "lng": 0.475,
+    "driveMinutes": 200
+  }
+]
