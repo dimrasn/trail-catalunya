@@ -253,27 +253,26 @@ Deno.serve(async (req) => {
       }
     }
 
-    // 10. Trigger Vercel deploy hook (only if anything actually changed)
+    // 10. Trigger Vercel deploy hook (only if anything actually changed).
+    //
+    // The URL is read from Deno.env first, then falls back to the
+    // committed default below. Vercel deploy-hook URLs are not classed
+    // as secrets (they only allow triggering a build — no read access)
+    // so a committed fallback is acceptable. To rotate the URL later,
+    // run: `supabase secrets set VERCEL_DEPLOY_HOOK_URL=...` and the
+    // env var will take precedence on the next invocation.
     const hasChanges =
       changeSummary.added + changeSummary.changed + changeSummary.removed + changeSummary.re_added > 0
     if (hasChanges) {
-      const { data: hookRows } = await supabase
-        .schema('vault')
-        .from('decrypted_secrets')
-        .select('decrypted_secret')
-        .eq('name', 'vercel_deploy_hook_url')
-        .limit(1)
-      const hookUrl = hookRows?.[0]?.decrypted_secret as string | undefined
-      if (hookUrl) {
-        try {
-          const r = await fetch(hookUrl, { method: 'POST' })
-          deployHookTriggered = r.ok
-          if (!r.ok) console.error(`Deploy hook returned HTTP ${r.status}`)
-        } catch (hookErr) {
-          console.error(`Deploy hook fetch error: ${hookErr}`)
-        }
-      } else {
-        console.log('vercel_deploy_hook_url not in vault — skipping deploy trigger')
+      const hookUrl =
+        Deno.env.get('VERCEL_DEPLOY_HOOK_URL') ||
+        'https://api.vercel.com/v1/integrations/deploy/prj_kmAJZb6QBJk0IQuQIqCgVf6JIwSh/LcspD6Fybp'
+      try {
+        const r = await fetch(hookUrl, { method: 'POST' })
+        deployHookTriggered = r.ok
+        if (!r.ok) console.error(`Deploy hook returned HTTP ${r.status}`)
+      } catch (hookErr) {
+        console.error(`Deploy hook fetch error: ${hookErr}`)
       }
     }
 
