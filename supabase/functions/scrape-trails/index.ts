@@ -9,6 +9,7 @@
 
 import { createClient } from 'jsr:@supabase/supabase-js@2'
 import { CALENDAR_URL, parseCalendar, type Race } from './parser.ts'
+import { computeChanges, summarize, type DbRaceRow } from './diff.ts'
 
 const USER_AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 ' +
@@ -21,6 +22,15 @@ const UPSERT_BATCH_SIZE = 100
 // blocking the user's ability to retry within a single session. Override
 // with body { "force": true } when you really want to re-run.
 const MIN_RERUN_GAP_MS = 30 * 60 * 1000
+
+// Sanity gate: if the fresh row count drops to less than this fraction of
+// the previous good DB count, refuse to upsert. Likely cause: the source
+// page changed structure and we're parsing garbage.
+const SANITY_MIN_FRACTION = 0.8
+
+// We only enforce the sanity gate once we've established a meaningful
+// baseline. On the first run (DB empty or near-empty) any count is OK.
+const SANITY_BASELINE_MIN = 100
 
 interface ScrapeRunRow {
   id: number
@@ -67,12 +77,11 @@ function dedupeRaces(races: Race[]): { deduped: Race[]; dupeCount: number } {
   return { deduped: [...byHash.values()], dupeCount: races.length - byHash.size }
 }
 
-async function upsertRaces(
+async function upsertDeduped(
   supabase: ReturnType<typeof createClient>,
-  races: Race[],
+  deduped: Race[],
   runStartedAt: string,
 ): Promise<number> {
-  const { deduped } = dedupeRaces(races)
   let upserted = 0
   for (let i = 0; i < deduped.length; i += UPSERT_BATCH_SIZE) {
     const batch = deduped.slice(i, i + UPSERT_BATCH_SIZE).map((r) => ({
@@ -184,6 +193,8 @@ Deno.serve(async (req) => {
   let rowsParsed = 0
   let rowsUpserted = 0
   let rowsRemoved = 0
+  let changeSummary = { added: 0, changed: 0, removed: 0, re_added: 0 }
+  let deployHookTriggered = false
 
   try {
     // 1. Fetch
@@ -196,23 +207,91 @@ Deno.serve(async (req) => {
       throw new Error('Parser returned 0 rows — possible HTML structure change')
     }
 
-    // 3. Upsert (using same timestamp for last_seen so we can detect stragglers)
-    rowsUpserted = await upsertRaces(supabase, races, runStartedAt)
+    // 3. Dedupe (same logic, but extract for diff input)
+    const { deduped } = dedupeRaces(races)
 
-    // 4. Mark removed: rows we didn't touch this run
+    // 4. Fetch current DB state for diffing
+    const { data: currentRows, error: currentErr } = await supabase
+      .from('races')
+      .select('*')
+      .eq('source', 'ultrescatalunya')
+    if (currentErr) throw new Error(`Fetch current state: ${currentErr.message}`)
+
+    // 5. Sanity gate: bail if fresh count looks like garbage
+    const baseline = (currentRows || []).filter((r: DbRaceRow) => r.status !== 'REMOVED').length
+    if (baseline >= SANITY_BASELINE_MIN && deduped.length < baseline * SANITY_MIN_FRACTION) {
+      throw new Error(
+        `Sanity gate failed: only ${deduped.length} fresh rows vs ${baseline} active in DB ` +
+          `(min ${Math.floor(baseline * SANITY_MIN_FRACTION)}). Possible parser regression — ` +
+          `not upserting. Check fixture against live HTML.`,
+      )
+    }
+
+    // 6. Compute change events vs the existing DB state
+    const events = computeChanges(deduped, (currentRows || []) as DbRaceRow[])
+    changeSummary = summarize(events)
+
+    // 7. Upsert fresh rows (last_seen=now bumps for everything in fresh)
+    rowsUpserted = await upsertDeduped(supabase, deduped, runStartedAt)
+
+    // 8. Mark stragglers as REMOVED
     rowsRemoved = await markRemoved(supabase, runStartedAt)
 
-    // 5. Success — update scrape_runs row
+    // 9. Persist the change events (best-effort — don't fail the run if it errors)
+    if (events.length > 0) {
+      const rows = events.map((e) => ({
+        scrape_run_id: runId,
+        race_hash: e.race_hash,
+        change_type: e.change_type,
+        changed_fields: e.changed_fields,
+        before_row: e.before_row,
+        after_row: e.after_row,
+      }))
+      const { error: chErr } = await supabase.from('race_changes').insert(rows)
+      if (chErr) {
+        console.error(`race_changes insert failed: ${chErr.message}`)
+      }
+    }
+
+    // 10. Trigger Vercel deploy hook (only if anything actually changed)
+    const hasChanges =
+      changeSummary.added + changeSummary.changed + changeSummary.removed + changeSummary.re_added > 0
+    if (hasChanges) {
+      const { data: hookRows } = await supabase
+        .schema('vault')
+        .from('decrypted_secrets')
+        .select('decrypted_secret')
+        .eq('name', 'vercel_deploy_hook_url')
+        .limit(1)
+      const hookUrl = hookRows?.[0]?.decrypted_secret as string | undefined
+      if (hookUrl) {
+        try {
+          const r = await fetch(hookUrl, { method: 'POST' })
+          deployHookTriggered = r.ok
+          if (!r.ok) console.error(`Deploy hook returned HTTP ${r.status}`)
+        } catch (hookErr) {
+          console.error(`Deploy hook fetch error: ${hookErr}`)
+        }
+      } else {
+        console.log('vercel_deploy_hook_url not in vault — skipping deploy trigger')
+      }
+    }
+
+    // 11. Success — update scrape_runs row with the rich summary
     const durationMs = Date.now() - startedAtMs
     await supabase
       .from('scrape_runs')
       .update({
         status: 'success',
         total_races: rowsParsed,
-        added: null, // we upsert blindly; a proper "added" count would need a pre-fetch
-        removed: rowsRemoved,
-        changed: null,
+        added: changeSummary.added + changeSummary.re_added,
+        removed: changeSummary.removed,
+        changed: changeSummary.changed,
         duration_ms: durationMs,
+        diff_report: JSON.stringify({
+          ...changeSummary,
+          deploy_hook_triggered: deployHookTriggered,
+        }),
       })
       .eq('id', runId)
 
@@ -222,6 +301,8 @@ Deno.serve(async (req) => {
         rows_parsed: rowsParsed,
         rows_upserted: rowsUpserted,
         rows_removed: rowsRemoved,
+        changes: changeSummary,
+        deploy_hook_triggered: deployHookTriggered,
         status: 'success',
         duration_ms: durationMs,
       }),
