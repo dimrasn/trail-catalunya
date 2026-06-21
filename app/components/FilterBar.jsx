@@ -25,17 +25,9 @@ const ELEVATION_OPTIONS = [
   { value: '2000+', label: '2000+ D+' },
 ]
 
-const MONTH_OPTIONS = [
-  { value: 'all', label: 'All' },
-  { value: '04', label: 'Apr' },
-  { value: '05', label: 'May' },
-  { value: '06', label: 'Jun' },
-  { value: '07', label: 'Jul' },
-  { value: '08', label: 'Aug' },
-  { value: '09', label: 'Sep' },
-  { value: '10', label: 'Oct' },
-  { value: '11', label: 'Nov' },
-]
+// Month options are passed in from RaceList, derived from the data so the
+// list never drifts out of sync with which months actually have races.
+const MONTH_OPTIONS_FALLBACK = [{ value: 'all', label: 'All' }]
 
 const PROVINCE_OPTIONS = [
   { value: 'all', label: 'All' },
@@ -65,7 +57,7 @@ function FilterRow({ label, options, value, onChange }) {
   )
 }
 
-export default function FilterBar({ filters, setFilter }) {
+export default function FilterBar({ filters, setFilter, monthOptions = MONTH_OPTIONS_FALLBACK }) {
   return (
     <div
       style={{
@@ -83,7 +75,7 @@ export default function FilterBar({ filters, setFilter }) {
       <FilterRow label="Drive" options={DRIVE_OPTIONS} value={filters.drive} onChange={v => setFilter('drive', v)} />
       <FilterRow label="Distance" options={DISTANCE_OPTIONS} value={filters.distance} onChange={v => setFilter('distance', v)} />
       <FilterRow label="Elevation" options={ELEVATION_OPTIONS} value={filters.elevation} onChange={v => setFilter('elevation', v)} />
-      <FilterRow label="Month" options={MONTH_OPTIONS} value={filters.month} onChange={v => setFilter('month', v)} />
+      <FilterRow label="Month" options={monthOptions} value={filters.month} onChange={v => setFilter('month', v)} />
       <FilterRow label="Province" options={PROVINCE_OPTIONS} value={filters.province} onChange={v => setFilter('province', v)} />
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', paddingTop: '2px' }}>
         <span style={{ fontSize: '11px', color: '#666', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', minWidth: '60px' }}>

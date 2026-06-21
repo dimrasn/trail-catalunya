@@ -6,20 +6,21 @@ import FilterBar from './FilterBar'
 import RaceCard from './RaceCard'
 import AskAI from './AskAI'
 
-const MONTH_ORDER = [
-  '2026-04', '2026-05', '2026-06', '2026-07',
-  '2026-08', '2026-09', '2026-10', '2026-11',
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
 ]
-const MONTH_LABELS = {
-  '2026-04': 'April',
-  '2026-05': 'May',
-  '2026-06': 'June',
-  '2026-07': 'July',
-  '2026-08': 'August',
-  '2026-09': 'September',
-  '2026-10': 'October',
-  '2026-11': 'November',
-  'TBD': 'Date TBD',
+const MONTH_NAMES_SHORT = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+]
+
+// Label a "YYYY-MM" group key (or "TBD"). Includes the year so it stays
+// unambiguous once the calendar spans into the next year.
+function monthLabel(key) {
+  if (key === 'TBD') return 'Date TBD'
+  const [y, m] = key.split('-')
+  return `${MONTH_NAMES[parseInt(m) - 1]} ${y}`
 }
 
 // --- URL param helpers ---
@@ -27,7 +28,9 @@ const MONTH_LABELS = {
 const DRIVE_VALUES = ['u60', '60-120', '120+']
 const DISTANCE_VALUES = ['u10', '10-15', '15-21', '21-42', '42+']
 const ELEVATION_VALUES = ['u200', '200-500', '500-1000', '1000-2000', '2000+']
-const MONTH_VALUES = ['04', '05', '06', '07', '08', '09', '10', '11']
+// Accept any calendar month — the visible chips are derived from the data,
+// but a shared URL may carry any month, so validate against all 12.
+const MONTH_VALUES = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 const PROVINCE_VALUES = ['BARCELONA', 'GIRONA', 'TARRAGONA', 'LLEIDA']
 
 function filtersFromParams(sp) {
@@ -130,7 +133,7 @@ function MonthHeader({ month, count }) {
       borderBottom: '1px solid #1a1a2e',
     }}>
       <span style={{ fontSize: '13px', fontWeight: '700', color: '#ffffff', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-        {MONTH_LABELS[month] || month}
+        {monthLabel(month)}
       </span>
       <span style={{ fontSize: '12px', color: '#555', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace' }}>
         {count} {count === 1 ? 'race' : 'races'}
@@ -203,13 +206,24 @@ export default function RaceList({ races, lastUpdated }) {
     return groups
   }, [filtered])
 
-  const monthsWithRaces = MONTH_ORDER.filter(m => grouped[m]?.length > 0)
+  // Group order derived from the data: every dated month present, sorted
+  // chronologically (YYYY-MM sorts lexically). No month can silently drop.
+  const monthsWithRaces = Object.keys(grouped).filter(m => m !== 'TBD').sort()
   const hasTBD = filters.showTBD && grouped['TBD']?.length > 0
+
+  // Month filter chips reflect the months actually present in the full
+  // dataset, so December / next-year races appear automatically once dated.
+  const monthOptions = useMemo(() => {
+    const months = new Set()
+    for (const race of races) if (race.date) months.add(race.date.slice(5, 7))
+    const opts = [...months].sort().map(m => ({ value: m, label: MONTH_NAMES_SHORT[parseInt(m) - 1] }))
+    return [{ value: 'all', label: 'All' }, ...opts]
+  }, [races])
 
   return (
     <div style={{ backgroundColor: '#0a0a14', minHeight: '100vh', maxWidth: '680px', margin: '0 auto' }}>
       <Header total={filtered.length} />
-      <FilterBar filters={filters} setFilter={setFilter} />
+      <FilterBar filters={filters} setFilter={setFilter} monthOptions={monthOptions} />
       <AskAI filteredRaces={filtered} filters={filters} />
       <main>
         {monthsWithRaces.map(month => (
