@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import FilterBar from './FilterBar'
 import RaceCard from './RaceCard'
+import AskAI from './AskAI'
 
 const MONTH_ORDER = [
   '2026-04', '2026-05', '2026-06', '2026-07',
@@ -209,6 +210,7 @@ export default function RaceList({ races, lastUpdated }) {
     <div style={{ backgroundColor: '#0a0a14', minHeight: '100vh', maxWidth: '680px', margin: '0 auto' }}>
       <Header total={filtered.length} />
       <FilterBar filters={filters} setFilter={setFilter} />
+      <AskAI filteredRaces={filtered} filters={filters} />
       <main>
         {monthsWithRaces.map(month => (
           <div key={month}>
