@@ -10,10 +10,15 @@ const WINDOW_MS = 60 * 60 * 1000 // 1 hour
 const MAX_PER_WINDOW = 120 // tool calls per IP per hour
 const MAX_PER_DAY_GLOBAL = 50_000 // global backstop, well under the 500k/mo ceiling
 
-// Hash the client IP (never store raw). Take the rightmost x-forwarded-for
-// hop appended by the platform, not the leftmost caller-supplied value.
+// Hash the client IP (never store raw). Use ONLY the rightmost x-forwarded-for
+// hop — on Supabase/Deno Deploy the platform appends the genuine client IP as
+// the last entry, so a spoofed left-side value can't displace it. We do NOT
+// fall back to x-real-ip: it is fully caller-controlled and not platform-
+// appended, so honouring it would let a caller rotate the key by omitting XFF.
+// When XFF is absent, everything shares one 'unknown' bucket (fail-safe), and
+// the global daily ceiling backstops abuse regardless.
 export async function clientIpHash(req: Request): Promise<string> {
-  const xff = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown'
+  const xff = req.headers.get('x-forwarded-for') || ''
   const hops = xff.split(',').map((s) => s.trim()).filter(Boolean)
   const ip = hops.length ? hops[hops.length - 1] : 'unknown'
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(ip))
