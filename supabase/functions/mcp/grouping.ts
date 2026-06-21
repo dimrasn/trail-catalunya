@@ -58,6 +58,14 @@ function slugify(text: string): string {
     .replace(/(^-|-$)/g, '')
 }
 
+// Tiny deterministic hash (djb2 → base36) for disambiguating event ids when
+// name + town collide but the URL differs.
+function shortHash(s: string): string {
+  let h = 5381
+  for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0
+  return h.toString(36).slice(0, 6)
+}
+
 function parseDateEnd(dateDisplay: string, dateIso: string): string | null {
   if (!dateDisplay || !dateIso) return null
   const s = dateDisplay.trim()
@@ -98,7 +106,7 @@ export function groupRowsIntoEvents(rows: RaceRow[]): RaceEvent[] {
     groups.get(key)!.push(row)
   }
 
-  const seenIds = new Map<string, string>()
+  const usedIds = new Set<string>()
   const events: RaceEvent[] = []
 
   for (const key of order) {
@@ -150,11 +158,15 @@ export function groupRowsIntoEvents(rows: RaceRow[]): RaceEvent[] {
 
     distances.sort((a, b) => b.km - a.km)
 
+    // Stable, unique id. Fall back to town slug, then a URL hash, when the
+    // base slug is already taken (same name+town, different URL would otherwise
+    // collide and break get_race(id) / React keys).
     let id = slugify(eventName)
-    if (seenIds.has(id) && seenIds.get(id) !== town) {
-      id = `${id}-${slugify(town)}`
+    if (usedIds.has(id)) {
+      const withTown = `${id}-${slugify(town)}`
+      id = usedIds.has(withTown) ? `${withTown}-${shortHash(url)}` : withTown
     }
-    seenIds.set(id, town)
+    usedIds.add(id)
 
     const event: RaceEvent = {
       id,

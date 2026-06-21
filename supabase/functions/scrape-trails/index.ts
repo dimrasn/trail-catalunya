@@ -162,6 +162,23 @@ Deno.serve(async (req) => {
     )
   }
 
+  // Auth gate: the function is deployed --no-verify-jwt, so without this any
+  // public caller could trigger scrapes (hammering the source) or force-runs.
+  // The cron passes x-scrape-secret from the vault; manual runs pass it too.
+  const expectedSecret = Deno.env.get('SCRAPE_SECRET')
+  if (!expectedSecret) {
+    return new Response(
+      JSON.stringify({ error: 'SCRAPE_SECRET not configured' }),
+      { status: 503, headers: { 'Content-Type': 'application/json' } },
+    )
+  }
+  if (req.headers.get('x-scrape-secret') !== expectedSecret) {
+    return new Response(
+      JSON.stringify({ error: 'forbidden' }),
+      { status: 403, headers: { 'Content-Type': 'application/json' } },
+    )
+  }
+
   // Parse body for optional { force: true } override.
   let force = false
   try {
@@ -301,25 +318,23 @@ Deno.serve(async (req) => {
     }
 
     // 10. Trigger Vercel deploy hook (only if anything actually changed).
-    //
-    // The URL is read from Deno.env first, then falls back to the
-    // committed default below. Vercel deploy-hook URLs are not classed
-    // as secrets (they only allow triggering a build — no read access)
-    // so a committed fallback is acceptable. To rotate the URL later,
-    // run: `supabase secrets set VERCEL_DEPLOY_HOOK_URL=...` and the
-    // env var will take precedence on the next invocation.
+    // The URL comes only from the VERCEL_DEPLOY_HOOK_URL env var (set via
+    // `supabase secrets set`) — no committed fallback, so the hook isn't in
+    // source. If unset, deploy-triggering is skipped (data still updates).
     const hasChanges =
       changeSummary.added + changeSummary.changed + changeSummary.removed + changeSummary.re_added > 0
     if (hasChanges) {
-      const hookUrl =
-        Deno.env.get('VERCEL_DEPLOY_HOOK_URL') ||
-        'https://api.vercel.com/v1/integrations/deploy/prj_kmAJZb6QBJk0IQuQIqCgVf6JIwSh/LcspD6Fybp'
-      try {
-        const r = await fetch(hookUrl, { method: 'POST' })
-        deployHookTriggered = r.ok
-        if (!r.ok) console.error(`Deploy hook returned HTTP ${r.status}`)
-      } catch (hookErr) {
-        console.error(`Deploy hook fetch error: ${hookErr}`)
+      const hookUrl = Deno.env.get('VERCEL_DEPLOY_HOOK_URL')
+      if (hookUrl) {
+        try {
+          const r = await fetch(hookUrl, { method: 'POST' })
+          deployHookTriggered = r.ok
+          if (!r.ok) console.error(`Deploy hook returned HTTP ${r.status}`)
+        } catch (hookErr) {
+          console.error(`Deploy hook fetch error: ${hookErr}`)
+        }
+      } else {
+        console.log('VERCEL_DEPLOY_HOOK_URL not set — skipping deploy trigger')
       }
     }
 
