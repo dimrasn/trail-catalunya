@@ -2,7 +2,7 @@
 // The function holds only the anon key; it cannot read the counter tables,
 // only bump them through the granted functions.
 
-import { getClient } from './client.ts'
+import { getServiceClient } from './client.ts'
 
 // Per-IP window. Conservative defaults for a hobby endpoint; tune from the
 // query log later (plan Open Questions).
@@ -30,7 +30,7 @@ export async function clientIpHash(req: Request): Promise<string> {
 // strictness for a public read-only endpoint whose worst case is a free-tier
 // pause, never a bill.
 export async function checkRateLimit(ipHash: string): Promise<boolean> {
-  const supabase = getClient()
+  const supabase = getServiceClient()
   const windowStart = new Date(Math.floor(Date.now() / WINDOW_MS) * WINDOW_MS).toISOString()
   try {
     const { data, error } = await supabase.rpc('bump_rate_limit', {
@@ -51,7 +51,7 @@ export async function checkRateLimit(ipHash: string): Promise<boolean> {
 // Increment the daily invocation counter (R12). Returns whether we're still
 // under the global ceiling so the caller can reject past the backstop.
 export async function bumpInvocations(): Promise<boolean> {
-  const supabase = getClient()
+  const supabase = getServiceClient()
   try {
     const { data, error } = await supabase.rpc('bump_invocations')
     if (error) {

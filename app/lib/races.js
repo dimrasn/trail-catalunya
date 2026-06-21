@@ -34,6 +34,14 @@ function slugify(text) {
     .replace(/(^-|-$)/g, '')
 }
 
+// Tiny deterministic hash (djb2 \u2192 base36) to disambiguate event ids when
+// name + town collide but the URL differs.
+function shortHash(s) {
+  let h = 5381
+  for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0
+  return h.toString(36).slice(0, 6)
+}
+
 // Parse the multi-day end date from a date_display string like
 // "11-12/04/2026" or "29/8-05/09/2026". Returns YYYY-MM-DD or null.
 function parseDateEnd(dateDisplay, dateIso) {
@@ -89,7 +97,7 @@ function groupRowsIntoEvents(rows) {
     groups.get(key).push(row)
   }
 
-  const seenIds = new Map()
+  const usedIds = new Set()
   const events = []
 
   for (const key of order) {
@@ -152,12 +160,14 @@ function groupRowsIntoEvents(rows) {
     // Sort distances longest first.
     distances.sort((a, b) => b.km - a.km)
 
-    // Generate stable id (same scheme as parse-csv.py).
+    // Stable, unique id: fall back to town slug, then a URL hash, when the
+    // base slug is taken (same name+town, different URL would otherwise collide).
     let id = slugify(eventName)
-    if (seenIds.has(id) && seenIds.get(id) !== town) {
-      id = `${id}-${slugify(town)}`
+    if (usedIds.has(id)) {
+      const withTown = `${id}-${slugify(town)}`
+      id = usedIds.has(withTown) ? `${withTown}-${shortHash(url)}` : withTown
     }
-    seenIds.set(id, town)
+    usedIds.add(id)
 
     // Drive time and lat/lng from the JSON caches.
     const driveMinutes = driveTimes[town] ?? null
@@ -217,6 +227,7 @@ export async function getRaces() {
     .select('*')
     .eq('source', 'ultrescatalunya')
     .neq('status', 'REMOVED')
+    .neq('status', 'SUSPESA')
 
   if (error) throw new Error(`Supabase fetch failed: ${error.message}`)
 

@@ -73,6 +73,18 @@ Deno.test('dedups ids across same name in different towns', () => {
   assert(ids.some((i) => i.startsWith('ultra-montseny-')))
 })
 
+Deno.test('same name + same town + different URL get unique ids', () => {
+  const rows: RaceRow[] = [
+    { race_name: 'Cursa Local', race_url: 'http://a.cat/', town: 'Berga', distance_km: 10, date: '2026-05-01', status: 'ACTIVA' },
+    { race_name: 'Cursa Local', race_url: 'http://b.cat/', town: 'Berga', distance_km: 21, date: '2026-09-01', status: 'ACTIVA' },
+  ]
+  const events = groupRowsIntoEvents(rows)
+  assertEquals(events.length, 2)
+  const ids = events.map((e) => e.id)
+  assertEquals(new Set(ids).size, 2) // no collision
+  assert(ids.includes('cursa-local'))
+})
+
 Deno.test('numeric strings from PostgREST parse correctly', () => {
   const rows: RaceRow[] = [
     { race_name: 'Y', race_url: 'http://y.cat/', town: 'Reus', distance_km: '21.5', elevation_m: '1200', date: '2026-06-01', status: 'ACTIVA' },

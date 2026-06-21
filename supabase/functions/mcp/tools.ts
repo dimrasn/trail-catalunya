@@ -37,7 +37,8 @@ async function loadEventsAndFreshness(): Promise<{
   const supabase = getClient()
 
   const [racesRes, townsRes, freshRes] = await Promise.all([
-    supabase.from('races').select('*').eq('source', 'ultrescatalunya').neq('status', 'REMOVED'),
+    supabase.from('races').select('*').eq('source', 'ultrescatalunya')
+      .neq('status', 'REMOVED').neq('status', 'SUSPESA'),
     supabase.from('towns').select('name, drive_minutes_from_barcelona'),
     supabase.from('scrape_runs').select('run_at').eq('source', 'ultrescatalunya')
       .eq('status', 'success').order('run_at', { ascending: false }).limit(1),
@@ -119,9 +120,18 @@ function applyFilters(events: EnrichedEvent[], f: Filters): { kept: EnrichedEven
 
     if (dateFiltering) {
       if (!e.date) { tbdExcluded++; return false }
-      if (f.month != null && parseInt(e.date.slice(5, 7)) !== f.month) return false
-      if (f.date_from && e.date < f.date_from) return false
-      if (f.date_to && e.date > f.date_to) return false
+      // Multi-day races span [date, dateEnd]; match on range overlap so a
+      // Fri–Sun race is found by a Saturday query (and a cross-month race by
+      // either month).
+      const start = e.date
+      const end = e.dateEnd || e.date
+      if (f.month != null) {
+        const sM = parseInt(start.slice(5, 7))
+        const eM = parseInt(end.slice(5, 7))
+        if (f.month < sM || f.month > eM) return false
+      }
+      if (f.date_from && end < f.date_from) return false
+      if (f.date_to && start > f.date_to) return false
     }
 
     return true
