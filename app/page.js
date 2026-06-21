@@ -1,6 +1,5 @@
 import { Suspense } from 'react'
 import RaceList from './components/RaceList'
-import ChatWidget from './components/ChatWidget'
 import { getRaces, getLastUpdated } from './lib/races'
 
 // Static-with-revalidation: build snapshots Supabase. The Vercel deploy
@@ -28,7 +27,6 @@ export default async function Page() {
   return (
     <Suspense>
       <RaceList races={races} lastUpdated={lastUpdated} />
-      <ChatWidget />
     </Suspense>
   )
 }
