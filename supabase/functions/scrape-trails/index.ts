@@ -10,6 +10,8 @@
 import { createClient } from 'jsr:@supabase/supabase-js@2'
 import { CALENDAR_URL, parseCalendar, type Race } from './parser.ts'
 import { computeChanges, summarize, type DbRaceRow } from './diff.ts'
+import { runGoldenAssertions } from './golden.ts'
+import { sendAlert } from '../_shared/email.ts'
 
 const USER_AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 ' +
@@ -115,6 +117,36 @@ async function markRemoved(
     .select('race_hash')
   if (error) throw new Error(`Mark removed: ${error.message}`)
   return data?.length || 0
+}
+
+// R12: free-tier Edge invocation ceiling is 500k/month; warn at this fraction.
+const USAGE_CEILING_MONTHLY = 500_000
+const USAGE_ALERT_FRACTION = 0.5
+
+async function checkUsageAlert(supabase: ReturnType<typeof createClient>): Promise<void> {
+  try {
+    const monthStart = new Date()
+    monthStart.setUTCDate(1)
+    monthStart.setUTCHours(0, 0, 0, 0)
+    const { data, error } = await supabase
+      .from('mcp_invocations')
+      .select('count')
+      .gte('day', monthStart.toISOString().slice(0, 10))
+    if (error) {
+      console.error(`usage alert query: ${error.message}`)
+      return
+    }
+    const total = (data || []).reduce((s, r) => s + (r.count as number), 0)
+    if (total >= USAGE_CEILING_MONTHLY * USAGE_ALERT_FRACTION) {
+      await sendAlert(
+        'MCP usage approaching free-tier ceiling',
+        `Month-to-date MCP invocations: ${total} of ${USAGE_CEILING_MONTHLY} ` +
+          `(alert at ${Math.round(USAGE_ALERT_FRACTION * 100)}%). Consider tightening rate limits.`,
+      )
+    }
+  } catch (err) {
+    console.error(`checkUsageAlert threw: ${err instanceof Error ? err.message : String(err)}`)
+  }
 }
 
 Deno.serve(async (req) => {
@@ -237,6 +269,21 @@ Deno.serve(async (req) => {
     // 8. Mark stragglers as REMOVED
     rowsRemoved = await markRemoved(supabase, runStartedAt)
 
+    // 8b. Golden-row assertions — catch silent parser drift the count gate misses.
+    const golden = await runGoldenAssertions(supabase)
+    if (!golden.passed) {
+      await sendAlert(
+        `Golden-row assertion failed (run ${runId})`,
+        `The scrape upserted a plausible row count but known-stable races look wrong.\n` +
+          `Likely parser drift. Failures:\n\n- ${golden.failures.join('\n- ')}`,
+      )
+    }
+
+    // 8c. R12 usage heads-up — current-month MCP invocations vs free-tier ceiling.
+    // U6's per-request daily ceiling is the real-time abuse cap; this weekly
+    // check just warns the maintainer if sustained traffic is trending high.
+    await checkUsageAlert(supabase)
+
     // 9. Persist the change events (best-effort — don't fail the run if it errors)
     if (events.length > 0) {
       const rows = events.map((e) => ({
@@ -310,6 +357,12 @@ Deno.serve(async (req) => {
   } catch (err) {
     const errMessage = err instanceof Error ? err.message : String(err)
     const durationMs = Date.now() - startedAtMs
+
+    // R13: notify on loud failure or sanity-gate trip (both land here).
+    await sendAlert(
+      `Scrape failed (run ${runId})`,
+      `The weekly scrape did not complete. Last good data stays live.\n\nError: ${errMessage}`,
+    )
 
     await supabase
       .from('scrape_runs')

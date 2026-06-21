@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Codex Ideation: Trail Catalunya Race Intelligence</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0a0a14;
+      --panel: #111124;
+      --panel-2: #17172e;
+      --line: #252542;
+      --text: #f5f5f7;
+      --muted: #a6a6b8;
+      --dim: #6f7085;
+      --blue: #60a5fa;
+      --green: #4ade80;
+      --yellow: #fbbf24;
+      --purple: #a78bfa;
+      --red: #f87171;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main {
+      width: min(920px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 40px 0 56px;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      margin: 34px 0 12px;
+      font-size: 18px;
+      letter-spacing: 0.01em;
+    }
+    h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+    }
+    p { max-width: 74ch; }
+    a { color: var(--blue); }
+    code {
+      background: #1c1c34;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: #d9d9e8;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.92em;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+    .note {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 16px 0;
+    }
+    .axes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .axis {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 12px;
+      color: var(--muted);
+    }
+    .jump-list {
+      display: grid;
+      gap: 6px;
+      margin: 12px 0 18px;
+      padding: 0;
+      list-style: none;
+    }
+    .jump-list a {
+      display: block;
+      border: 1px solid var(--line);
+      background: #0f0f20;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+    .idea {
+      border-top: 1px solid var(--line);
+      padding: 22px 0;
+    }
+    .idea-head {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .rank {
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+    }
+    .fields {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .field {
+      border-left: 2px solid var(--line);
+      padding-left: 10px;
+      color: var(--muted);
+    }
+    .field strong { color: var(--text); }
+    .badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .badge {
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: var(--panel-2);
+      color: var(--muted);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 8px 6px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { color: var(--text); }
+    td { color: var(--muted); }
+    footer {
+      color: var(--dim);
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-top: 34px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Codex Ideation: Trail Catalunya Race Intelligence</h1>
+    <div class="meta">
+      <span class="pill">date: 2026-06-11</span>
+      <span class="pill">topic: codex-trail-catalunya-fresh-ideation</span>
+      <span class="pill">mode: repo-grounded</span>
+      <span class="pill">author marker: Codex separate opinion</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Grounding Context</h2>
+    <p>This fresh pass treats Trail Catalunya as two linked products: a mobile-first race discovery website and a machine-readable race intelligence layer. The existing app already has useful filters, grouped cards, URL search params, a Supabase-backed scraper, a weekly Edge Function, change auditing, and an in-site Claude assistant. The deployed MVP presents a dense filter/list/card surface with drive, distance, elevation, month, province, kids run, and unscheduled toggles.</p>
+    <p>The strongest opportunity is not another static calendar. The original Ultres Catalunya page remains a source calendar, while your app can become the trusted layer that cleans, explains, enriches, and exposes race knowledge. Current local data also shows the shape of the hard problem: many races remain TBD, drive times are incomplete in the static cache, price data is sparse, and the data model is factual but not yet expressive enough for questions like “scenic, close to Barcelona, and ideally butifarra at the finish.”</p>
+    <p>External grounding: MCP is an open protocol for connecting AI tools to data sources and actions, and the official MCP tool model exposes named tools with schemas. The original source calendar says it is updated as dates are confirmed, which reinforces the need for freshness/provenance rather than one-off scraping. Comparable race calendars emphasize filters, maps, and category browsing; Trail Catalunya can differentiate through local semantics and agent-friendly explanations.</p>
+    <div class="note">
+      <strong>My opinionated frame:</strong> build one shared “race intelligence core” first, then let the website, chat assistant, JSON/API, and MCP server all call the same search, explain, compare, and recommend primitives. That keeps the product coherent and avoids four subtly different versions of truth.
+    </div>
+  </section>
+
+  <section>
+    <h2>Topic Axes</h2>
+    <div class="axes">
+      <div class="axis"><strong>Race discovery UX</strong><br>How runners find and choose races on the website.</div>
+      <div class="axis"><strong>Data ingestion and trust</strong><br>Scraping, freshness, provenance, and parser reliability.</div>
+      <div class="axis"><strong>Enrichment semantics</strong><br>Scenery, terrain, vibe, food, family fit, course history.</div>
+      <div class="axis"><strong>MCP and agent interface</strong><br>How Claude, ChatGPT, and other clients query and reason over races.</div>
+      <div class="axis"><strong>Community utility</strong><br>What makes this useful to Catalunya runners beyond “a nicer table.”</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ranked Ideas</h2>
+    <ul class="jump-list">
+      <li><a href="#idea-1">1. Race Intelligence Core</a></li>
+      <li><a href="#idea-2">2. Trust Layer: Freshness, Provenance, Confidence</a></li>
+      <li><a href="#idea-3">3. Taste Tags and Community Semantics</a></li>
+      <li><a href="#idea-4">4. MCP Surface as a First-Class Product</a></li>
+      <li><a href="#idea-5">5. Enrichment Pipeline for Organizer Sites</a></li>
+      <li><a href="#idea-6">6. Discovery Modes Beyond Filters</a></li>
+      <li><a href="#idea-7">7. Change Feed and Race Watch</a></li>
+    </ul>
+
+    <article class="idea" id="idea-1">
+      <div class="idea-head">
+        <h3><span class="rank">1.</span> Race Intelligence Core</h3>
+        <div class="badges"><span class="badge">confidence 92%</span><span class="badge">complexity Medium</span></div>
+      </div>
+      <div class="fields">
+        <div class="field"><strong>Axis:</strong> MCP and agent interface</div>
+        <div class="field"><strong>Description:</strong> Create a shared internal module that owns race search, filtering, ranking, comparison, and explanation. The website filters, in-site assistant, public JSON/API, and future MCP server all call this same core rather than each reimplementing logic.</div>
+        <div class="field"><strong>Basis:</strong> direct: the app already duplicates filter concepts between <code>RaceList.jsx</code> and <code>app/api/chat/route.js</code>; the chat route builds its own <code>search_races</code> tool over <code>data/races.json</code>, while the page now fetches grouped rows from Supabase.</div>
+        <div class="field"><strong>Rationale:</strong> This is the highest-leverage move because “MCP-friendly” becomes a product architecture, not a bolt-on. If the same core can answer “races under 90 minutes, 15-25 km, scenic if known,” then UI chips, chat answers, and MCP tools stay consistent.</div>
+        <div class="field"><strong>Downsides:</strong> It is less flashy than a map or new filter. It requires discipline around input/output schemas and ranking explanations.</div>
+      </div>
+    </article>
+
+    <article class="idea" id="idea-2">
+      <div class="idea-head">
+        <h3><span class="rank">2.</span> Trust Layer: Freshness, Provenance, Confidence</h3>
+        <div class="badges"><span class="badge">confidence 90%</span><span class="badge">complexity Medium</span></div>
+      </div>
+      <div class="fields">
+        <div class="field"><strong>Axis:</strong> Data ingestion and trust</div>
+        <div class="field"><strong>Description:</strong> Give every race and enriched field a visible source, last-checked time, confidence level, and “unknown vs not found” distinction. Surface this lightly on the website and fully through MCP.</div>
+        <div class="field"><strong>Basis:</strong> direct: the scraper already writes <code>scrape_runs</code> and <code>race_changes</code>; the footer already displays last updated; current data has sparse fields such as prices and incomplete drive times.</div>
+        <div class="field"><strong>Rationale:</strong> Trust is the product moat. If an agent recommends a race because it found “kids run” or “butifarra,” it must be able to say whether that came from Ultres, the organizer site, a cached page, or manual tagging.</div>
+        <div class="field"><strong>Downsides:</strong> Adds metadata weight. The UI must avoid making every card feel like an audit log.</div>
+      </div>
+    </article>
+
+    <article class="idea" id="idea-3">
+      <div class="idea-head">
+        <h3><span class="rank">3.</span> Taste Tags and Community Semantics</h3>
+        <div class="badges"><span class="badge">confidence 86%</span><span class="badge">complexity Medium</span></div>
+      </div>
+      <div class="fields">
+        <div class="field"><strong>Axis:</strong> Enrichment semantics</div>
+        <div class="field"><strong>Description:</strong> Add a controlled vocabulary for qualities runners actually ask about: scenic, coastal, forest, high mountain, runnable, technical, vertical, family-friendly, beginner-friendly, festive, food at finish, butifarra, train-accessible, and “good first race.”</div>
+        <div class="field"><strong>Basis:</strong> direct: your prompt names the impossible current query: scenic, not far from Barcelona, preferably with butifarra at the end. Existing structured fields only cover date, distance, elevation, province, drive time, kids run, status, and URL.</div>
+        <div class="field"><strong>Rationale:</strong> This is where Trail Catalunya becomes community-native. Distance and elevation answer “can I physically do it?” Taste tags answer “will I enjoy this day?”</div>
+        <div class="field"><strong>Downsides:</strong> Tags can become subjective or messy. Start with evidence-backed tags and allow lower-confidence “inferred” tags instead of pretending all tags are equally factual.</div>
+      </div>
+    </article>
+
+    <article class="idea" id="idea-4">
+      <div class="idea-head">
+        <h3><span class="rank">4.</span> MCP Surface as a First-Class Product</h3>
+        <div class="badges"><span class="badge">confidence 84%</span><span class="badge">complexity Medium</span></div>
+      </div>
+      <div class="fields">
+        <div class="field"><strong>Axis:</strong> MCP and agent interface</div>
+        <div class="field"><strong>Description:</strong> Design a small MCP server with resources for dataset snapshots and tools like <code>search_races</code>, <code>compare_races</code>, <code>recommend_races</code>, <code>explain_race</code>, <code>get_race_changes</code>, and <code>fetch_source_evidence</code>.</div>
+        <div class="field"><strong>Basis:</strong> external: the MCP specification frames tools as schema-described capabilities exposed to models; your current chat assistant already has Anthropic-style tools for <code>search_races</code> and <code>fetch_race_url</code>.</div>
+        <div class="field"><strong>Rationale:</strong> Do not make MCP a dump of <code>races.json</code>. Make it the same product promise as the website: “help me choose.” Good MCP tools return ranked candidates, field provenance, and concise explanation, not just rows.</div>
+        <div class="field"><strong>Downsides:</strong> Public MCP hosting, rate limits, and prompt-injection hygiene matter once tools fetch organizer websites.</div>
+      </div>
+    </article>
+
+    <article class="idea" id="idea-5">
+      <div class="idea-head">
+        <h3><span class="rank">5.</span> Enrichment Pipeline for Organizer Sites</h3>
+        <div class="badges"><span class="badge">confidence 80%</span><span class="badge">complexity High</span></div>
+      </div>
+      <div class="fields">
+        <div class="field"><strong>Axis:</strong> Data ingestion and trust</div>
+        <div class="field"><strong>Description:</strong> Add a second-stage crawler that visits each race URL, extracts candidate facts, stores raw evidence snippets, and promotes only validated fields into the canonical dataset. Start with low-risk fields: registration status, price, GPX/course links, start time, kids races, food/after-party mentions, and official contact links.</div>
+        <div class="field"><strong>Basis:</strong> direct: the existing chat route has a <code>fetch_race_url</code> tool and Supabase cache, but it is on-demand and text-extraction is simple regex/HTML stripping. The scraper already has weekly infrastructure and change logging.</div>
+        <div class="field"><strong>Rationale:</strong> This unlocks the user’s “butifarra” class of questions. It also turns race pages into durable structured knowledge instead of one-off LLM browsing.</div>
+        <div class="field"><strong>Downsides:</strong> Organizer websites are heterogeneous and brittle. This needs a quarantine/review model and should not overwrite canonical facts blindly.</div>
+      </div>
+    </article>
+
+    <article class="idea" id="idea-6">
+      <div class="idea-head">
+        <h3><span class="rank">6.</span> Discovery Modes Beyond Filters</h3>
+        <div class="badges"><span class="badge">confidence 78%</span><span class="badge">complexity Medium</span></div>
+      </div>
+      <div class="fields">
+        <div class="field"><strong>Axis:</strong> Race discovery UX</div>
+        <div class="field"><strong>Description:</strong> Keep the current filter list, but add opinionated modes: “near Barcelona this month,” “first trail race,” “family day,” “scenic 15-25 km,” “big mountain day,” “ultra training block,” and “make a weekend of it.” Each mode is just a saved query plus ranking explanation.</div>
+        <div class="field"><strong>Basis:</strong> external: comparable race calendars expose filters and categories, but your differentiator is local route-selection judgement. direct: the existing UI is already dense enough that adding more raw chips may make mobile discovery worse.</div>
+        <div class="field"><strong>Rationale:</strong> People often do not know the exact filter combination they need. Modes let the product express community taste without hiding the underlying filters.</div>
+        <div class="field"><strong>Downsides:</strong> Requires careful curation so modes do not feel arbitrary. Best once taste tags and confidence exist.</div>
+      </div>
+    </article>
+
+    <article class="idea" id="idea-7">
+      <div class="idea-head">
+        <h3><span class="rank">7.</span> Change Feed and Race Watch</h3>
+        <div class="badges"><span class="badge">confidence 74%</span><span class="badge">complexity Low</span></div>
+      </div>
+      <div class="fields">
+        <div class="field"><strong>Axis:</strong> Community utility</div>
+        <div class="field"><strong>Description:</strong> Add a “what changed” view: new races, dates confirmed, price/status changes, sold out, removed, and newly enriched fields. Later, let users or agents watch a query like “Barcelona under 1h, 10-20 km, kids run.”</div>
+        <div class="field"><strong>Basis:</strong> direct: <code>race_changes</code> already exists as an append-only audit log with public read policy. The scraper computes added, changed, removed, and re-added events.</div>
+        <div class="field"><strong>Rationale:</strong> Community runners do not only browse once; they come back as registrations open and dates solidify. This is a natural MCP use case too: “what changed since last week?”</div>
+        <div class="field"><strong>Downsides:</strong> Notifications can wait. The first version should just be a read-only page/resource.</div>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <h2>Rejection Summary</h2>
+    <table>
+      <thead><tr><th>#</th><th>Idea</th><th>Reason Rejected</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Map-first redesign</td><td>Useful, but not the differentiator yet; it should consume enriched semantics later.</td></tr>
+        <tr><td>2</td><td>Personal accounts and saved plans</td><td>Too much product weight for the current public-community tool; local/shareable state is enough for now.</td></tr>
+        <tr><td>3</td><td>Full historical results database now</td><td>High value eventually, but a large scraping/reconciliation project before the core 2026 explorer is mature.</td></tr>
+        <tr><td>4</td><td>Organizer self-service portal</td><td>Interesting community loop, but premature; start with correction links or GitHub-style issue intake.</td></tr>
+        <tr><td>5</td><td>More and more filter chips</td><td>Likely worsens mobile usability unless paired with modes, search, or semantic ranking.</td></tr>
+        <tr><td>6</td><td>AI chat as the main UI</td><td>The list is faster for browsing. Chat/MCP should explain, compare, and handle fuzzy intent, not replace the table.</td></tr>
+        <tr><td>7</td><td>Scrape every possible source immediately</td><td>Scope explosion. Better to make one source reliable, then add FEEC/Curses.cat/ITRA-style sources with source-specific trust.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Questions I Would Ask Next</h2>
+    <p><strong>1.</strong> Do you want Trail Catalunya to feel more like a fast public utility, or more like a taste-making community guide?</p>
+    <p><strong>2.</strong> For enrichment, are you comfortable with inferred tags like “probably scenic” if they are clearly marked, or should every tag require source evidence?</p>
+    <p><strong>3.</strong> Should the MCP server be public infrastructure for everyone, or mainly a power-user layer for you and other agent-heavy runners first?</p>
+  </section>
+
+  <footer class="composition-signal">
+    Composed 2026-06-11T00:00:00+02:00 by ce-ideate / Codex fresh pass from the Trail Catalunya repo, deployed MVP, source calendar, and MCP documentation context.
+  </footer>
+</main>
+</body>
+</html>

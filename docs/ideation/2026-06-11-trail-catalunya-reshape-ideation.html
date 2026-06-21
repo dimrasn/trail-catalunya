@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ideation: Trail Catalunya Reshape</title>
+<style>
+:root{
+  --bg:#0a0a14; --surface:#12122a; --line:#1a1a2e; --line2:#26263f;
+  --text:#e8e8f0; --muted:#9a9ab0; --faint:#62627a;
+  --accent:#4ade80; --accent-text:#86efac; --accent-soft:rgba(74,222,128,.08);
+  --blue:#60a5fa; --blue-soft:rgba(96,165,250,.10);
+  --amber:#fbbf24; --amber-soft:rgba(251,191,36,.08);
+  --purple:#a78bfa; --purple-soft:rgba(167,139,250,.10);
+  --red:#f87171;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;font-size:15px}
+.page{max-width:900px;margin-inline:auto;padding:48px 24px 80px}
+p,li,dd{max-width:72ch}
+h1{font-size:28px;letter-spacing:-.02em;line-height:1.2}
+h2{font-size:20px;margin:48px 0 16px;padding-top:24px;border-top:1px solid var(--line)}
+h3{font-size:16px}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:var(--mono);font-size:.9em;background:var(--surface);padding:1px 5px;border-radius:4px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
+.chip{font-family:var(--mono);font-size:12px;padding:3px 10px;border-radius:999px;background:var(--surface);color:var(--muted);border:1px solid var(--line2)}
+.lede{color:var(--muted);margin-top:12px}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}
+.stat{flex:1;min-width:140px;background:var(--surface);border:1px solid var(--line2);border-radius:10px;padding:12px 16px}
+.stat .n{font-family:var(--mono);font-size:22px;color:var(--accent-text)}
+.stat .l{font-size:12px;color:var(--muted)}
+.grounding p{margin-bottom:12px}
+.axes{list-style:none;display:grid;gap:8px;margin:12px 0}
+.axes li{background:var(--surface);border:1px solid var(--line2);border-radius:8px;padding:10px 14px}
+.axes .ax{font-family:var(--mono);font-size:12px;color:var(--purple);margin-right:8px}
+.jump{list-style:none;display:grid;gap:6px;margin:16px 0 28px;font-size:14px}
+.jump li::before{content:"→ ";color:var(--faint)}
+article.idea{background:var(--surface);border:1px solid var(--line2);border-radius:12px;padding:24px 24px 20px;margin:20px 0}
+article.idea h3{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.idnum{font-family:var(--mono);font-size:13px;color:var(--accent-text)}
+.idea-meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}
+.pill{font-family:var(--mono);font-size:11.5px;padding:2px 10px;border-radius:999px;border:1px solid var(--line2)}
+.pill.axis{background:var(--purple-soft);color:var(--purple)}
+.pill.conf{background:var(--accent-soft);color:var(--accent-text)}
+.pill.cx{background:var(--amber-soft);color:var(--amber)}
+.idea dl{display:grid;gap:10px}
+.idea dt{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.idea dd{color:var(--text)}
+.idea dd.muted{color:var(--muted)}
+.basis-tag{font-family:var(--mono);font-size:11.5px;color:var(--blue);background:var(--blue-soft);padding:1px 7px;border-radius:4px;margin-right:6px}
+figure{margin:18px 0 6px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px}
+figcaption{font-size:12px;color:var(--faint);margin-top:8px;text-align:center}
+svg text{font-family:system-ui,-apple-system,sans-serif}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);text-align:left;padding:8px 12px;border-bottom:1px solid var(--line2)}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{font-family:var(--mono);font-size:12px;color:var(--faint);white-space:nowrap}
+footer.composition-signal{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--faint)}
+strong{color:inherit}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="eyebrow">Ideation</div>
+  <h1>Trail Catalunya Reshape — Scraper, Filters &amp; Agent Access</h1>
+  <div class="meta">
+    <span class="chip">date: 2026-06-11</span>
+    <span class="chip">topic: trail-catalunya-reshape</span>
+    <span class="chip">mode: repo-grounded</span>
+  </div>
+  <p class="lede"><strong>Focus:</strong> reshape the project into a best-in-class niche tool for the Catalunya trail-running community — the website with rich "cool" filters, the scraping pipeline behind it, and MCP access so anyone can use it via Claude or ChatGPT. The north-star query, in the maintainer's words: <em>"a very scenic route not far from Barcelona, and if possible with butifarra at the end."</em></p>
+  <div class="stats">
+    <div class="stat"><div class="n">48</div><div class="l">raw ideas (6 frames)</div></div>
+    <div class="stat"><div class="n">7</div><div class="l">survivors</div></div>
+    <div class="stat"><div class="n">5/5</div><div class="l">axes covered</div></div>
+    <div class="stat"><div class="n">6/6</div><div class="l">frames converged on idea #1</div></div>
+  </div>
+</header>
+
+<section class="grounding">
+<h2>Grounding Context</h2>
+<p><strong>Codebase context.</strong> Next.js 16 site on Vercel reading from Supabase. A weekly Deno Edge Function scrapes the ultrescatalunya.com calendar (Mon 05:00 UTC via pg_cron), parses ~600 race rows, diff-tracks every change into a <code>race_changes</code> audit table, and auto-redeploys the site via a Vercel hook when data actually changed. Current filters: distance, elevation, drive time from Plaça Glòries (pre-computed per town, 311/312 towns covered), month, province, kids run. Race metadata is sparse — name, date, km, D+, price, town, province, status, URL. Each race links to its own website containing rich prose: course descriptions, photos, historical results, aid-station and food details. A Claude chat widget exists in the codebase but is parked.</p>
+<p><strong>External context.</strong> No major platform — ITRA, UTMB Index, Betrail, Ahotu, DUV — offers drive-time proximity, qualitative race character, natural-language querying, or historical results merged into discovery. ITRA's commercial gating disadvantages small regional races, leaving the long tail open for a community tool. LLM enrichment of ~300 race websites costs roughly $3–30 per season; the bottleneck is anti-bot exposure, not money. Closest prior art: FindMyMarathon's derived course-character scores, Wikiloc's TrailRank (engagement as quality signal — built in Girona, used by exactly this community), LiteAPI's hotel "vibe search" (embed prose, match semantically), Google Data Commons' MCP pattern (abstract the schema behind natural-language-shaped tools), Surfline/eBird condition-triggered alerts, and published research on climbing-crag recommenders (33 qualitative attributes; users most wanted the attributes systems lacked — "beautiful views"). The MCP registry (~16K servers) has an underrepresented sports/events category.</p>
+<p><strong>Past learnings.</strong> No <code>docs/solutions/</code> knowledge base exists yet; the project's durable decisions (event-as-atom grouping, geocode/drive-time cache separation, status semantics) live in CLAUDE.md prose and should be carried forward through any reshape.</p>
+</section>
+
+<section>
+<h2>Topic Axes</h2>
+<ul class="axes">
+  <li><span class="ax">A1</span><strong>data-enrichment</strong> — what we know about each race beyond the calendar row</li>
+  <li><span class="ax">A2</span><strong>discovery-ux</strong> — filters, search, and natural-language querying on the site</li>
+  <li><span class="ax">A3</span><strong>agent-access</strong> — MCP tools; how Claude/ChatGPT users interact with the data</li>
+  <li><span class="ax">A4</span><strong>pipeline-integrity</strong> — more sources, freshness, resilience, ground truth</li>
+  <li><span class="ax">A5</span><strong>community-retention</strong> — alerts, contributions, sharing, reasons to return</li>
+</ul>
+</section>
+
+<section>
+<h2>Ranked Ideas</h2>
+<ul class="jump">
+  <li><a href="#i1">1. The Race Dossier — an LLM-enriched qualitative layer</a></li>
+  <li><a href="#i2">2. One Query Engine — natural language that compiles to inspectable filters</a></li>
+  <li><a href="#i3">3. MCP Server with intent-shaped tools — the site becomes a client</a></li>
+  <li><a href="#i4">4. Race Radar — saved-criteria alerts on the existing diff stream</a></li>
+  <li><a href="#i5">5. Race Biography — editions, results, and real difficulty</a></li>
+  <li><a href="#i6">6. Verified Vibes — triangulating prose, geometry, and finishers</a></li>
+  <li><a href="#i7">7. Multi-Source Pipeline — entity resolution over several calendars</a></li>
+</ul>
+
+<article class="idea" id="i1">
+  <h3><span class="idnum">1.</span> The Race Dossier — an LLM-enriched qualitative layer</h3>
+  <div class="idea-meta">
+    <span class="pill axis">A1 · data-enrichment</span>
+    <span class="pill conf">Confidence 90%</span>
+    <span class="pill cx">Complexity Medium</span>
+  </div>
+  <dl>
+    <dt>Description</dt>
+    <dd>Add a second pipeline stage: for each race, fetch its own website (the URL is already in every row), and have an LLM extract a <strong>versioned dossier</strong> against a controlled vocabulary — terrain character (ridge / forest / coastal / volcanic), technicality, % runnable, atmosphere (village festa vs. competitive), post-race food (butifarra detection, literally), village size, shade/exposure — plus a 2-sentence "character note" stored as a pgvector embedding. Store the raw scraped prose corpus alongside the extracted fields so future extraction passes can re-run without re-scraping. Re-enrich only when the weekly diff detects the race site changed. All six ideation frames independently arrived at this idea — the strongest convergence signal in the run.</dd>
+    <dt>Basis</dt>
+    <dd><span class="basis-tag">direct</span>The dream query — "scenic… with butifarra at the end" — is unanswerable from the current schema; race URLs with rich prose already sit in every row. <span class="basis-tag">external</span>LLM enrichment of ~300 sites ≈ $3–30/season; LiteAPI's vibe search proves the embed-prose pattern; crag-recommender research catalogued 33 qualitative attributes as a workable schema shape.</dd>
+    <dt>Rationale</dt>
+    <dd>Every other ambition — semantic search, good MCP answers, qualitative filters, alerts on "scenic races" — is gated on this data existing. Nobody in the trail space has built it, and at this cost it fits a hobby budget. The controlled vocabulary is the key design decision: fixed descriptors work simultaneously as filter chips, URL params, MCP tool enums, and embedding fodder.</dd>
+    <dt>Downsides</dt>
+    <dd class="muted">LLM extraction reads race <em>marketing</em>, which is uniformly positive ("every race claims to be scenic") and goes stale — needs idea 6's verification loop eventually. Anti-bot friction on some race sites. The attribute list is a one-shot schema decision that everything else inherits; getting it wrong is expensive.</dd>
+  </dl>
+  <figure>
+    <svg viewBox="0 0 840 150" role="img" aria-label="Dossier pipeline">
+      <rect x="10" y="48" width="150" height="54" rx="8" fill="#1a1a2e" stroke="#26263f"/>
+      <text x="85" y="70" text-anchor="middle" fill="#9a9ab0" font-size="12">calendar row</text>
+      <text x="85" y="88" text-anchor="middle" fill="#62627a" font-size="11" font-family="monospace">name·date·km·D+</text>
+      <line x1="160" y1="75" x2="216" y2="75" stroke="#62627a" marker-end="url(#ar)"/>
+      <rect x="220" y="48" width="150" height="54" rx="8" fill="#1a1a2e" stroke="#26263f"/>
+      <text x="295" y="70" text-anchor="middle" fill="#9a9ab0" font-size="12">race website</text>
+      <text x="295" y="88" text-anchor="middle" fill="#62627a" font-size="11">prose · photos · results</text>
+      <line x1="370" y1="75" x2="426" y2="75" stroke="#62627a" marker-end="url(#ar)"/>
+      <rect x="430" y="48" width="120" height="54" rx="8" fill="rgba(96,165,250,.10)" stroke="#60a5fa"/>
+      <text x="490" y="80" text-anchor="middle" fill="#60a5fa" font-size="12">LLM extract</text>
+      <line x1="550" y1="62" x2="616" y2="38" stroke="#62627a" marker-end="url(#ar)"/>
+      <line x1="550" y1="88" x2="616" y2="112" stroke="#62627a" marker-end="url(#ar)"/>
+      <rect x="620" y="12" width="205" height="50" rx="8" fill="rgba(74,222,128,.08)" stroke="#4ade80"/>
+      <text x="722" y="33" text-anchor="middle" fill="#86efac" font-size="12">structured tags</text>
+      <text x="722" y="50" text-anchor="middle" fill="#62627a" font-size="11" font-family="monospace">ridge · festa · butifarra ✓</text>
+      <rect x="620" y="88" width="205" height="50" rx="8" fill="rgba(167,139,250,.10)" stroke="#a78bfa"/>
+      <text x="722" y="109" text-anchor="middle" fill="#a78bfa" font-size="12">character note</text>
+      <text x="722" y="126" text-anchor="middle" fill="#62627a" font-size="11">embedded (pgvector)</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#62627a"/></marker></defs>
+    </svg>
+    <figcaption>The row becomes a pointer; the dossier becomes the data. Tags power filters and MCP enums; embeddings power semantic search.</figcaption>
+  </figure>
+</article>
+
+<article class="idea" id="i2">
+  <h3><span class="idnum">2.</span> One Query Engine — natural language that compiles to inspectable filters</h3>
+  <div class="idea-meta">
+    <span class="pill axis">A2 · discovery-ux</span>
+    <span class="pill conf">Confidence 85%</span>
+    <span class="pill cx">Complexity Medium</span>
+  </div>
+  <dl>
+    <dt>Description</dt>
+    <dd>A natural-language box above the existing filters. "Scenic ridge run under 90 min away in May, food at the end" is compiled by one cheap LLM call into (a) hard structured constraints — drive time, month, distance — rendered as the <strong>existing filter chips so the user sees and can adjust what the machine understood</strong>, and (b) a semantic rerank over the dossier embeddings for the qualitative terms, with a one-line "why this matched" per result. The origin becomes a parameter too: pick your town once (Girona, Vic, Manresa…) instead of everything being hardwired to Plaça Glòries — required anyway for agents whose users could be anywhere. Filters stay for power users; nothing is taken away.</dd>
+    <dt>Basis</dt>
+    <dd><span class="basis-tag">direct</span>The dream query is literally a natural-language sentence; the parked chat widget signals the appetite existed before the data was ready. <span class="basis-tag">external</span>Research confirms no major platform has NL querying; pgvector ships free in the Supabase the project already runs.</dd>
+    <dt>Rationale</dt>
+    <dd>Filters force runners to translate desire into facets; most can't express "scenic" that way. Compiling to <em>visible</em> chips avoids the black-box trust problem that kills most NL search UIs. And the same compiler is exactly the contract the MCP server needs — one engine serving the site, the agents, and (later) alert matching.</dd>
+    <dt>Downsides</dt>
+    <dd class="muted">Hard dependency on idea 1's dossier layer for the qualitative half. Per-query LLM cost needs the precompute-heavy design (embeddings at scrape time, cheap cached parse at query time). Mixed-language queries (Catalan/Spanish/English) need care.</dd>
+  </dl>
+  <figure>
+    <svg viewBox="0 0 840 170" role="img" aria-label="One engine, three surfaces">
+      <rect x="320" y="60" width="200" height="52" rx="10" fill="rgba(74,222,128,.08)" stroke="#4ade80"/>
+      <text x="420" y="82" text-anchor="middle" fill="#86efac" font-size="13">query engine</text>
+      <text x="420" y="99" text-anchor="middle" fill="#62627a" font-size="11" font-family="monospace">NL → filters + semantic</text>
+      <rect x="20" y="20" width="180" height="40" rx="8" fill="#1a1a2e" stroke="#26263f"/>
+      <text x="110" y="45" text-anchor="middle" fill="#9a9ab0" font-size="12">website search box</text>
+      <rect x="20" y="115" width="180" height="40" rx="8" fill="#1a1a2e" stroke="#26263f"/>
+      <text x="110" y="140" text-anchor="middle" fill="#9a9ab0" font-size="12">MCP · search_races</text>
+      <rect x="640" y="65" width="180" height="40" rx="8" fill="#1a1a2e" stroke="#26263f"/>
+      <text x="730" y="90" text-anchor="middle" fill="#9a9ab0" font-size="12">alert matching (idea 4)</text>
+      <line x1="200" y1="40" x2="316" y2="74" stroke="#62627a" marker-end="url(#ar2)"/>
+      <line x1="200" y1="135" x2="316" y2="100" stroke="#62627a" marker-end="url(#ar2)"/>
+      <line x1="520" y1="86" x2="636" y2="86" stroke="#62627a" marker-end="url(#ar2)"/>
+      <defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#62627a"/></marker></defs>
+    </svg>
+    <figcaption>Build the compiler once; the site, the MCP tools, and the alert matcher are all callers of the same engine.</figcaption>
+  </figure>
+</article>
+
+<article class="idea" id="i3">
+  <h3><span class="idnum">3.</span> MCP Server with intent-shaped tools — the site becomes a client</h3>
+  <div class="idea-meta">
+    <span class="pill axis">A3 · agent-access</span>
+    <span class="pill conf">Confidence 85%</span>
+    <span class="pill cx">Complexity Medium</span>
+  </div>
+  <dl>
+    <dt>Description</dt>
+    <dd>Ship a remote MCP server (Supabase Edge Function or Cloudflare Worker, streamable HTTP) whose tools do <strong>not</strong> mirror the database schema. Instead: <code>search_races(query, hard_filters)</code>, <code>get_race_dossier(id)</code> — which returns the structured tags <em>plus the raw prose corpus</em>, so the calling agent can do its own butifarra reasoning at query time — <code>compare_races(ids)</code>, <code>whats_on(date_range, origin, max_drive)</code>, and <code>whats_changed(since)</code>. Responses are compact, citation-bearing, and carry freshness timestamps. Refactor the Next.js site onto the same Supabase RPCs so site and MCP are two clients of one canonical query layer, and the parked chat widget revives for free. Add <code>llms.txt</code> and JSON-LD; register in the public MCP directory.</dd>
+    <dt>Basis</dt>
+    <dd><span class="basis-tag">direct</span>The user's stated requirement: "MCP-friendly so other people can use it via Claude or via ChatGPT." <span class="basis-tag">external</span>Data Commons MCP pattern (abstract the schema; agents shouldn't learn table layouts); the MCP registry's sports/events category is underrepresented — early-mover visibility is real.</dd>
+    <dt>Rationale</dt>
+    <dd>A schema-mirroring API makes every agent re-derive domain logic (event grouping, TBD semantics, null-elevation handling) and most will get it wrong; intent-shaped tools encode that logic once, server-side. The dossier tool is the hedge: even before the controlled vocabulary is complete, handing agents the raw prose lets a frontier model answer qualitative questions today. Making the site a client of the same layer means every future field ships to both surfaces for free.</dd>
+    <dt>Downsides</dt>
+    <dd class="muted">A public tool contract is hard to change once agents depend on it — the tool surface deserves real design time. Unauthenticated public endpoints need rate limiting. Site refactor onto shared RPCs is real work beyond the server itself.</dd>
+  </dl>
+</article>
+
+<article class="idea" id="i4">
+  <h3><span class="idnum">4.</span> Race Radar — saved-criteria alerts on the existing diff stream</h3>
+  <div class="idea-meta">
+    <span class="pill axis">A5 · community-retention</span>
+    <span class="pill conf">Confidence 80%</span>
+    <span class="pill cx">Complexity Small–Medium</span>
+  </div>
+  <dl>
+    <dt>Description</dt>
+    <dd>Let visitors save a standing query — structured ("new race &lt;1h from BCN, 20–30k, 1000+ D+") or, once ideas 1–2 land, semantic ("scenic, with a festa") — with just an email or a calendar-subscription token, no account. Each weekly scrape's diff is matched against saved criteria and fires notifications: new race matching your taste, date changed, price posted, registration opened, sold out, cancellation. Agents can manage the same subscriptions through MCP tools (<code>watch_criteria</code>, <code>get_my_matches</code>) so "have my Claude watch the calendar for me" becomes a real workflow.</dd>
+    <dt>Basis</dt>
+    <dd><span class="basis-tag">direct</span>The <code>race_changes</code> table already diff-tracks every row weekly with before/after snapshots — the hard half (change detection) is built and currently feeds nothing but redeploys. <span class="basis-tag">external</span>Surfline's condition alerts and eBird's rarity alerts are the canonical proof that change-triggered notifications, not the reference data itself, are what turn niche outdoor sites into daily-relationship products.</dd>
+    <dt>Rationale</dt>
+    <dd>A discovery site gets visited twice a season; an alert service earns a permanent slot in someone's inbox. This is the one feature where the weekly-cron architecture is an advantage rather than a limitation, and it creates the project's first user relationship (an opt-in list) at near-zero marginal pipeline cost.</dd>
+    <dt>Downsides</dt>
+    <dd class="muted">First feature requiring stored user data on a deliberately zero-auth architecture — privacy posture and email infrastructure (deliverability, unsubscribes) need deliberate choices. Weekly cadence caps alert freshness; truly time-critical events (flash sell-outs) would need idea 7's registration-platform sources.</dd>
+  </dl>
+</article>
+
+<article class="idea" id="i5">
+  <h3><span class="idnum">5.</span> Race Biography — editions, results, and real difficulty</h3>
+  <div class="idea-meta">
+    <span class="pill axis">A1 · data-enrichment</span>
+    <span class="pill conf">Confidence 65%</span>
+    <span class="pill cx">Complexity High</span>
+  </div>
+  <dl>
+    <dt>Description</dt>
+    <dd>Stop treating "La Maasaiada 2026" as the atom. Model the durable entity — the race — with editions per year, linked by URL/name continuity, and join historical results where they exist (race-site results pages; DUV for ultras). Derive empirical character per race: median finish pace vs. flat-equivalent expectation, DNF rate, field size, finisher-count trend, cutoff pressure, consecutive-years-running. Surface as a "reality check" on race cards ("small and brutal" vs. "big and runnable") and as a filterable difficulty independent of the organizer's self-description. The existing <code>race_changes</code> audit log becomes longitudinal memory — date drift, price history, cancellation reliability — instead of a write-only table.</dd>
+    <dt>Basis</dt>
+    <dd><span class="basis-tag">external</span>FindMyMarathon's PR Score validates deriving course character from results — absent in trail everywhere; DUV holds 10M historical performances with zero discovery UX on top. <span class="basis-tag">reasoned</span>km and D+ wildly under-describe trail difficulty (a technical 20k can outrank a runnable 35k); finish-time distributions are the one attribute organizers cannot embellish, making this the ground-truth anchor that calibrates idea 1's softer extracted attributes.</dd>
+    <dt>Rationale</dt>
+    <dd>Answers the second-most-natural runner question after "where" — "can I actually finish this?" Results compound season over season into the dataset no calendar competitor has, and the entity model unlocks year-over-year features ("alert me when my race opens next year") that the flat calendar can't express.</dd>
+    <dt>Downsides</dt>
+    <dd class="muted">Results scraping is a second, messier pipeline — PDFs, chip-timing platforms, heterogeneous Catalan formats — plus personal-data considerations around named finishers. The cross-season identity key should be decided before the 2027 scrape starts, even if results ingestion comes later.</dd>
+  </dl>
+</article>
+
+<article class="idea" id="i6">
+  <h3><span class="idnum">6.</span> Verified Vibes — triangulating prose, geometry, and finishers</h3>
+  <div class="idea-meta">
+    <span class="pill axis">A5 · community-retention</span>
+    <span class="pill conf">Confidence 60%</span>
+    <span class="pill cx">Complexity Medium</span>
+  </div>
+  <dl>
+    <dt>Description</dt>
+    <dd>Make the qualitative layer trustworthy by triangulating three independent signals. (1) <strong>Prose claims</strong> — idea 1's LLM extraction from the race's own website. (2) <strong>Geometry confirms</strong> — computed badges from open geodata: course GPX or start-town corridor against ICGC land cover, DEM profiles, distance-to-coast, Parc Natural overlap, photo density from Wikiloc/Flickr ("ridge-line %", "sea views likely"). (3) <strong>Finishers verify</strong> — the Monday after each race, a 15-second anonymous micro-survey linked from the race page and alert digest (scenery 1–5, marking, what was the food?). Three concordant reports flip a tag from <em>LLM-inferred</em> to <em>community-confirmed</em>, displayed as a confidence badge; questions are generated from dossier gaps ("we don't know if this race has butifarra — did it?").</dd>
+    <dt>Basis</dt>
+    <dd><span class="basis-tag">external</span>Wikiloc — founded in Girona, used by this exact community — proved Catalans contribute structured outdoor data at volume; crag-recommender research showed implicit signals can seed qualitative scoring before explicit reviews exist; Komoot computes tour character from geodata rather than prose. <span class="basis-tag">reasoned</span>Race marketing is uniformly positive, so prose alone is a corrupted signal for exactly the attributes that matter most; "was the butifarra actually there" is knowable only by attendees, and the race calendar tells you precisely when and whom to ask.</dd>
+    <dt>Rationale</dt>
+    <dd>This is the difference between "AI-summarized" and "community-verified" — a moat no scraper-only competitor can copy, and the mechanism that keeps idea 1's data honest and self-improving each season. It also converts users from readers into stakeholders, which is what "community tool" actually means.</dd>
+    <dt>Downsides</dt>
+    <dd class="muted">First write path into a zero-backend-philosophy project: moderation, spam, rate limiting, anonymity-vs-identity all need decisions. Cold-start before survey volume exists (mitigated by the geodata leg). GPX availability is uneven across small races.</dd>
+  </dl>
+  <figure>
+    <svg viewBox="0 0 840 210" role="img" aria-label="Three-signal triangulation">
+      <rect x="330" y="80" width="180" height="48" rx="10" fill="rgba(74,222,128,.08)" stroke="#4ade80"/>
+      <text x="420" y="100" text-anchor="middle" fill="#86efac" font-size="13">dossier fact</text>
+      <text x="420" y="117" text-anchor="middle" fill="#62627a" font-size="11" font-family="monospace">"butifarra: yes" · conf 0.93</text>
+      <rect x="40" y="20" width="190" height="44" rx="8" fill="#1a1a2e" stroke="#26263f"/>
+      <text x="135" y="38" text-anchor="middle" fill="#9a9ab0" font-size="12">prose claims</text>
+      <text x="135" y="54" text-anchor="middle" fill="#62627a" font-size="11">LLM ← race website</text>
+      <rect x="40" y="150" width="190" height="44" rx="8" fill="#1a1a2e" stroke="#26263f"/>
+      <text x="135" y="168" text-anchor="middle" fill="#9a9ab0" font-size="12">geometry confirms</text>
+      <text x="135" y="184" text-anchor="middle" fill="#62627a" font-size="11">GPX · land cover · photos</text>
+      <rect x="610" y="85" width="190" height="44" rx="8" fill="rgba(167,139,250,.10)" stroke="#a78bfa"/>
+      <text x="705" y="103" text-anchor="middle" fill="#a78bfa" font-size="12">finishers verify</text>
+      <text x="705" y="119" text-anchor="middle" fill="#62627a" font-size="11">post-race micro-survey</text>
+      <line x1="230" y1="48" x2="326" y2="92" stroke="#62627a" marker-end="url(#ar3)"/>
+      <line x1="230" y1="166" x2="326" y2="116" stroke="#62627a" marker-end="url(#ar3)"/>
+      <line x1="610" y1="107" x2="514" y2="104" stroke="#a78bfa" marker-end="url(#ar3p)"/>
+      <defs>
+        <marker id="ar3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#62627a"/></marker>
+        <marker id="ar3p" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#a78bfa"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Three independent signals converge on each qualitative fact; community confirmation outranks inference.</figcaption>
+  </figure>
+</article>
+
+<article class="idea" id="i7">
+  <h3><span class="idnum">7.</span> Multi-Source Pipeline — entity resolution over several calendars</h3>
+  <div class="idea-meta">
+    <span class="pill axis">A4 · pipeline-integrity</span>
+    <span class="pill conf">Confidence 70%</span>
+    <span class="pill cx">Complexity High</span>
+  </div>
+  <dl>
+    <dt>Description</dt>
+    <dd>Treat ultrescatalunya.com as one feed among several. Add scrapers for the FEEC federation calendar, ITRA's Catalunya listings, and — highest value — registration platforms (Inscripcions.cat, RockTheSport), which uniquely yield price tiers, registration open/close dates, and live sold-out status. Behind them, an entity-resolution layer (fuzzy name + date + town matching) merges records into one canonical race with per-field source precedence and provenance. Disagreements between sources surface as flagged diffs ("date disputed") rather than silent rot, and the pipeline survives any single source dying or changing markup. The first extra source is expensive (you build the resolver); every subsequent one is cheap.</dd>
+    <dt>Basis</dt>
+    <dd><span class="basis-tag">direct</span>The entire dataset currently hangs off one weekly scrape of one site — both a coverage ceiling and an existential fragility. <span class="basis-tag">reasoned</span>A "best-in-class" trust claim collapses the first time a runner finds a missing race or drives to a moved one; registration status and pricing — the two fields with real-world urgency — are structurally unavailable from a calendar-only source.</dd>
+    <dt>Rationale</dt>
+    <dd>Moves the project from "mirror of one website" to "the canonical Catalunya race dataset" — which is also what makes the MCP server trustworthy enough for agents to cite, and what gives idea 4's alerts something time-critical to fire on.</dd>
+    <dt>Downsides</dt>
+    <dd class="muted">Entity resolution across messy Catalan race names is the riskiest engineering bet on this list, with ongoing per-source maintenance. Registration platforms may have stronger anti-bot. Defer until ideas 1–4 prove the product, but design the race-identity key (idea 5) compatibly now.</dd>
+  </dl>
+</article>
+</section>
+
+<section>
+<h2>Rejection Summary</h2>
+<table>
+  <thead><tr><th>#</th><th>Idea</th><th>Reason Rejected</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Kill the Filter Bar (NL-first homepage)</td><td>Merged into idea 2 — full filter replacement risks power users; compile-to-visible-chips hybrid wins.</td></tr>
+    <tr><td>2</td><td>Origin-as-parameter (drive time from any town)</td><td>Folded into idea 2 as a query-engine parameter rather than a standalone direction.</td></tr>
+    <tr><td>3</td><td>BGG-style similarity ("if you liked Matagalls-Montserrat…")</td><td>Good feature, not a direction — depends on idea 1's vectors; revisit as a race-card module after enrichment ships.</td></tr>
+    <tr><td>4</td><td>Season Autopilot / Draft Board + write-capable MCP coach</td><td>Strongest deferred idea — premature before ideas 1–3 exist; flagged as the natural v2 headline.</td></tr>
+    <tr><td>5</td><td>Perfect Race Page (per-race canonical URL)</td><td>Absorbed — it is the rendering surface of idea 1's dossier, not a separate bet; build it as dossier UI.</td></tr>
+    <tr><td>6</td><td>OpenBeta-style open dataset (versioned JSON/Parquet, open license)</td><td>Strategically interesting but premature: licensing posture toward the scraped source is unresolved and the enriched dataset doesn't exist yet.</td></tr>
+    <tr><td>7</td><td>Organizer-push protocol ("verified by organizer" submissions)</td><td>Second write path; idea 6's finisher loop is the cheaper first verification channel — revisit once moderation exists.</td></tr>
+    <tr><td>8</td><td>Lazy deep-fetch (on-demand enrichment with freshness contracts)</td><td>Implementation strategy for idea 1, not a standalone direction — carry into its brainstorm as the batch-vs-lazy decision.</td></tr>
+    <tr><td>9</td><td>Self-healing parser (LLM proposes patch on scrape anomaly)</td><td>Folded into idea 7's pipeline scope; alone it's an ops nicety below the ambition floor.</td></tr>
+    <tr><td>10</td><td>Scenic score from geotagged photo density</td><td>Folded into idea 6 as one of the geometry-confirmation signals.</td></tr>
+  </tbody>
+</table>
+</section>
+
+<footer class="composition-signal">Composed 2026-06-11 by ce-ideate from in-session focus ("reshape: scraper + filter-rich website + MCP-friendly") · 48 raw ideas across 6 frames · grounding: codebase scan, learnings search, web research</footer>
+
+</div>
+</body>
+</html>
