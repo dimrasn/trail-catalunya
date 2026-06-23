@@ -12,6 +12,7 @@
 import { createClient } from '@supabase/supabase-js'
 import driveTimes from '@/data/towns-drive-times.json'
 import townsGeocoded from '@/data/towns-geocoded.json'
+import { enrichmentForDisplay } from './enrichment.js'
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -231,7 +232,22 @@ export async function getRaces() {
 
   if (error) throw new Error(`Supabase fetch failed: ${error.message}`)
 
-  return groupRowsIntoEvents(data || [])
+  const events = groupRowsIntoEvents(data || [])
+
+  // Attach enriched stable facts (Phase 2a) at the event grain (race_url, town).
+  // Missing table or rows is non-fatal — the site renders fine without them.
+  const { data: enrichRows } = await supabase.from('race_enrichment').select('*')
+  if (enrichRows && enrichRows.length > 0) {
+    const byEvent = new Map(
+      enrichRows.map(r => [`${(r.race_url || '').trim()}::${(r.town || '').trim()}`, r]),
+    )
+    for (const ev of events) {
+      const display = enrichmentForDisplay(byEvent.get(`${ev.url}::${ev.town}`))
+      if (display) ev.enrichment = display
+    }
+  }
+
+  return events
 }
 
 // Get the timestamp of the most recent successful scrape, used in the
