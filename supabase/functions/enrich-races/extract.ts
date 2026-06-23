@@ -22,6 +22,12 @@ import { htmlToText, type Page } from './fetch.ts'
 const MODEL = 'claude-haiku-4-5-20251001'
 const MAX_EVIDENCE_CHARS = 300
 const MAX_OUTPUT_TOKENS = 1024
+const ANTHROPIC_TIMEOUT_MS = 30_000
+
+// confirmed_status is a closed vocabulary — anything else (incl. a model-
+// invented "postponed" or an injected string) collapses to unknown so no
+// consumer (site OR MCP) ever sees an off-vocabulary status.
+const CONFIRMED_VALUES = new Set(['confirmed', 'cancelled'])
 
 export interface ModelResult {
   text: string
@@ -63,12 +69,15 @@ function sanitizeEvidence(raw: unknown): string | null {
   return htmlToText(raw).slice(0, MAX_EVIDENCE_CHARS)
 }
 
-function coerceFact(raw: unknown, sourceUrl: string, nowIso: string): Fact {
+function coerceFact(raw: unknown, sourceUrl: string, nowIso: string, key?: StableFactKey): Fact {
   if (!raw || typeof raw !== 'object') {
     return { value: null, confidence: 'unknown', evidence: null, source_url: null, edition: 'unknown', last_checked: nowIso }
   }
   const r = raw as Record<string, unknown>
-  const value = typeof r.value === 'string' && r.value.trim() ? r.value.trim() : null
+  let value = typeof r.value === 'string' && r.value.trim() ? r.value.trim() : null
+  // Closed vocabulary for confirmed_status — reject anything else.
+  if (key === 'confirmed_status' && value && !CONFIRMED_VALUES.has(value.toLowerCase())) value = null
+  if (key === 'confirmed_status' && value) value = value.toLowerCase()
   let confidence = (VALID_CONFIDENCE.has(r.confidence as Confidence) ? r.confidence : 'unknown') as Confidence
   const edition = (VALID_EDITION.has(r.edition as Edition) ? r.edition : 'unknown') as Edition
   // No value ⇒ unknown, no matter what the model claimed (R3).
@@ -101,7 +110,7 @@ export function parseFactsResponse(text: string, sourceUrl: string, nowIso: stri
     return facts
   }
   for (const key of STABLE_FACT_KEYS) {
-    facts[key as StableFactKey] = coerceFact(parsed[key], sourceUrl, nowIso)
+    facts[key as StableFactKey] = coerceFact(parsed[key], sourceUrl, nowIso, key as StableFactKey)
   }
   return facts
 }
@@ -135,20 +144,28 @@ export async function extractFacts(pages: Page[], opts: ExtractOpts = {}): Promi
 export const callAnthropic: ModelCaller = async ({ system, user }) => {
   const key = Deno.env.get('ANTHROPIC_API_KEY')
   if (!key) throw new Error('ANTHROPIC_API_KEY not set')
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      'x-api-key': key,
-      'anthropic-version': '2023-06-01',
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      max_tokens: MAX_OUTPUT_TOKENS,
-      system,
-      messages: [{ role: 'user', content: user }],
-    }),
-  })
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), ANTHROPIC_TIMEOUT_MS)
+  let res: Response
+  try {
+    res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      signal: controller.signal,
+      headers: {
+        'content-type': 'application/json',
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: MAX_OUTPUT_TOKENS,
+        system,
+        messages: [{ role: 'user', content: user }],
+      }),
+    })
+  } finally {
+    clearTimeout(timer)
+  }
   if (!res.ok) throw new Error(`Anthropic HTTP ${res.status}`)
   const data = await res.json()
   const text = (data.content ?? []).map((b: { text?: string }) => b.text ?? '').join('')

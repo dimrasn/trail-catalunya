@@ -13,7 +13,7 @@
 // Run a real eval:    deno run --allow-read --allow-net --allow-env eval/enrich-eval.ts
 
 import { extractFacts, type ModelCaller } from '../supabase/functions/enrich-races/extract.ts'
-import { htmlToText } from '../supabase/functions/enrich-races/fetch.ts'
+import { htmlToText, MAX_PAGE_CHARS } from '../supabase/functions/enrich-races/fetch.ts'
 import {
   type Confidence,
   type FactSet,
@@ -104,7 +104,12 @@ export function score(graded: Graded[]): Report {
 
 export function formatReport(r: Report): string {
   const pct = (x: number) => `${(x * 100).toFixed(0)}%`
-  const lines = [`Eval over ${r.races} races`, '']
+  const small = r.races < MIN_CALIBRATION_SAMPLE
+  const lines = [
+    `Eval over ${r.races} races`,
+    ...(small ? ['  ⚠ small sample — accuracy/coverage are indicative only, not a pass/fail signal'] : []),
+    '',
+  ]
   for (const key of STABLE_FACT_KEYS) {
     const f = r.perField[key]
     const cal = r.calibration[key]
@@ -121,7 +126,9 @@ export async function runEval(entries: EvalEntry[], callModel?: ModelCaller): Pr
   const graded: Graded[] = []
   for (const entry of entries) {
     const html = await Deno.readTextFile(entry.fixture)
-    const pages = [{ url: entry.race_url, text: htmlToText(html) }]
+    // Slice to the same per-page ceiling production uses, so eval accuracy
+    // reflects what extractFacts actually sees (no over-reporting on long pages).
+    const pages = [{ url: entry.race_url, text: htmlToText(html).slice(0, MAX_PAGE_CHARS) }]
     const { facts } = await extractFacts(pages, { callModel, sourceUrl: entry.race_url })
     graded.push({ entry, facts })
   }

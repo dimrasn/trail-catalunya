@@ -48,7 +48,7 @@ async function loadEventsAndFreshness(): Promise<{
     supabase.from('towns').select('name, drive_minutes_from_barcelona'),
     supabase.from('scrape_runs').select('run_at').eq('source', 'ultrescatalunya')
       .eq('status', 'success').order('run_at', { ascending: false }).limit(1),
-    supabase.from('race_enrichment').select('*'),
+    supabase.from('race_enrichment').select('race_url, town, start_time, price, confirmed_status'),
   ])
 
   if (racesRes.error) throw new Error(`races fetch: ${racesRes.error.message}`)

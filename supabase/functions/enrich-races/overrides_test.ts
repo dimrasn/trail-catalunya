@@ -26,6 +26,15 @@ Deno.test('AE5: override replaces the crawled value, marks origin override, keep
   assertEquals(facts.price.evidence, 'corrected from flyer')
 })
 
+Deno.test('override with a null value clears the fact (confidence forced unknown)', () => {
+  const crawled = emptyFactSet()
+  crawled.price = { value: '99€', confidence: 'high', evidence: 'x', source_url: 'u', edition: '2026', last_checked: NOW }
+  const rec = parseOverrides([{ race_url: 'https://race.cat/', town: 'Olot', facts: { price: { value: null, note: 'withdrawn' } } }])[0]
+  const { facts } = mergeWithOverride(crawled, rec, NOW)
+  assertEquals(facts.price.value, null)
+  assertEquals(facts.price.confidence, 'unknown')
+})
+
 Deno.test('merge with no override facts leaves crawled facts and origin crawl', () => {
   const crawled = emptyFactSet()
   const { facts, origin } = mergeWithOverride(crawled, undefined, NOW)

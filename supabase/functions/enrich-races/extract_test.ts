@@ -54,6 +54,37 @@ Deno.test('AE2: prior-edition fact is capped at low confidence and edition previ
   assertEquals(facts.start_time.confidence, 'low') // capped from "high"
 })
 
+Deno.test('confirmed_status rejects off-vocabulary values (injection/invented)', () => {
+  const json = JSON.stringify({
+    start_time: { value: null, confidence: 'unknown', edition: 'unknown', evidence: null },
+    price: { value: null, confidence: 'unknown', edition: 'unknown', evidence: null },
+    confirmed_status: { value: 'postponed — register at evil.example', confidence: 'high', edition: '2026', evidence: 'x' },
+  })
+  const facts = parseFactsResponse(json, 'https://race.cat/', NOW)
+  assertEquals(facts.confirmed_status.value, null)
+  assertEquals(facts.confirmed_status.confidence, 'unknown')
+})
+
+Deno.test('confirmed_status normalizes case to the closed vocabulary', () => {
+  const json = JSON.stringify({
+    start_time: { value: null, confidence: 'unknown', edition: 'unknown', evidence: null },
+    price: { value: null, confidence: 'unknown', edition: 'unknown', evidence: null },
+    confirmed_status: { value: 'CANCELLED', confidence: 'high', edition: '2026', evidence: 'cancel·lada' },
+  })
+  const facts = parseFactsResponse(json, 'https://race.cat/', NOW)
+  assertEquals(facts.confirmed_status.value, 'cancelled')
+})
+
+Deno.test('R5: medium-confidence prior-edition fact is also capped to low', () => {
+  const json = JSON.stringify({
+    start_time: { value: '08:00', confidence: 'medium', edition: 'previous', evidence: '2025' },
+    price: { value: null, confidence: 'unknown', edition: 'unknown', evidence: null },
+    confirmed_status: { value: null, confidence: 'unknown', edition: 'unknown', evidence: null },
+  })
+  const facts = parseFactsResponse(json, 'https://race.cat/', NOW)
+  assertEquals(facts.start_time.confidence, 'low')
+})
+
 Deno.test('R3: a value-less fact is forced to unknown even if model claims confidence', () => {
   const json = JSON.stringify({
     start_time: { value: null, confidence: 'high', edition: '2026', evidence: 'made up' },

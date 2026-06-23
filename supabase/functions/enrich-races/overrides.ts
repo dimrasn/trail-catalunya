@@ -84,7 +84,7 @@ export function parseOverrides(json: unknown): OverrideRecord[] {
   })
 }
 
-export async function loadOverrides(path: string): Promise<OverrideRecord[]> {
+export async function loadOverrides(path: string | URL): Promise<OverrideRecord[]> {
   let text: string
   try {
     text = await Deno.readTextFile(path)

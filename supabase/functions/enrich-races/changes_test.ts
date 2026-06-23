@@ -45,6 +45,11 @@ Deno.test('shouldEnrich: hash matches and fresh → skip', () => {
   assertEquals(shouldEnrich({ content_hash: 'same', updated_at: updated }, 'same', { nowMs: now, maxAgeDays: 14 }), false)
 })
 
+Deno.test('shouldEnrich: hash matches but updated_at missing → enrich', () => {
+  assertEquals(shouldEnrich({ content_hash: 'same', updated_at: null }, 'same'), true)
+  assertEquals(shouldEnrich({ content_hash: 'same' }, 'same'), true)
+})
+
 Deno.test('shouldEnrich: hash matches but stale → enrich', () => {
   const now = Date.UTC(2026, 5, 23)
   const updated = new Date(Date.UTC(2026, 4, 1)).toISOString() // ~53 days old

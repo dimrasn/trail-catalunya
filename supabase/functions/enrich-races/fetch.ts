@@ -1,9 +1,17 @@
 // U3 — SSRF-guarded fetch + same-domain page discovery + HTML→text (R7, R7a,
 // R9 input bounds, KTD4). Crawled pages are hostile input: we resolve the host
 // and check the RESOLVED IP against a private-range blocklist before every
-// connection (defeats DNS-rebinding), handle redirects manually re-validating
-// each hop's domain AND IP, cap fetch size and page count, and reduce HTML to
-// bounded plain text. The crawler never follows results/participant links.
+// connection, handle redirects manually re-validating each hop's domain AND IP,
+// cap fetch size and page count, and reduce HTML to bounded plain text. The
+// crawler never follows results/participant links.
+//
+// RESIDUAL (documented): this is a check-then-fetch-by-hostname design, so a
+// low-TTL DNS rebind between the resolveDns check and fetch()'s own resolution
+// is not fully eliminated — Deno fetch gives no hook to pin the connection to
+// the validated IP. The blocklist is deliberately conservative (default-deny on
+// non-public ranges incl. IPv6 6to4/Teredo/NAT64/mapped) as defence in depth,
+// and seed URLs come from the scraped calendar, not arbitrary user input. Full
+// IP-pinning is a follow-up if the threat model tightens.
 //
 // DNS resolver and fetch are injectable so tests cover rebind/redirect attacks
 // without real network. Run: deno test supabase/functions/enrich-races/fetch_test.ts
@@ -38,14 +46,19 @@ export function isBlockedIp(ip: string): boolean {
   const addr = ip.trim().toLowerCase()
   if (!addr) return true
 
-  // IPv6
+  // IPv6 — conservative default-deny on non-global ranges.
   if (addr.includes(':')) {
     if (addr === '::1' || addr === '::') return true // loopback / unspecified
     if (addr.startsWith('fe80')) return true // link-local
     if (addr.startsWith('fc') || addr.startsWith('fd')) return true // unique-local
+    if (addr.startsWith('2002:')) return true // 6to4 (embeds arbitrary v4)
+    if (addr.startsWith('2001:0') || addr.startsWith('2001:db8')) return true // Teredo / doc
+    if (addr.startsWith('64:ff9b')) return true // NAT64
     // IPv4-mapped (::ffff:a.b.c.d)
     const mapped = addr.split(':').pop() || ''
     if (mapped.includes('.')) return isBlockedIp(mapped)
+    // Any remaining ::-compressed/hex-mapped form (e.g. ::ffff:7f00:1) — block.
+    if (addr.startsWith('::')) return true
     return false
   }
 
@@ -135,10 +148,39 @@ export async function safeFetch(rawUrl: string, opts: FetchOpts = {}): Promise<s
 
     const len = Number(res.headers.get('content-length') || '0')
     if (len && len > maxBytes) throw new Error(`response too large (${len})`)
-    const body = await res.text()
-    return body.length > maxBytes ? body.slice(0, maxBytes) : body
+    return await readCapped(res, maxBytes)
   }
   throw new Error('too many redirects')
+}
+
+// Read a response body streaming, stopping once maxBytes is reached. A
+// hostile/compromised host can omit Content-Length and stream an unbounded
+// body; res.text() would buffer all of it into memory first. This caps it.
+async function readCapped(res: Response, maxBytes: number): Promise<string> {
+  if (!res.body) return (await res.text()).slice(0, maxBytes)
+  const reader = res.body.getReader()
+  const chunks: Uint8Array[] = []
+  let total = 0
+  while (total < maxBytes) {
+    const { done, value } = await reader.read()
+    if (done) break
+    chunks.push(value)
+    total += value.length
+  }
+  try {
+    await reader.cancel()
+  } catch {
+    // already closed
+  }
+  const out = new Uint8Array(Math.min(total, maxBytes))
+  let offset = 0
+  for (const c of chunks) {
+    if (offset >= out.length) break
+    const take = Math.min(c.length, out.length - offset)
+    out.set(c.subarray(0, take), offset)
+    offset += take
+  }
+  return new TextDecoder().decode(out)
 }
 
 // ---- HTML → text (pure) ---------------------------------------------------

@@ -42,9 +42,9 @@ Deno.test('empty, missing, and malformed urls classify as none', () => {
   assertEquals(classifyUrl('ftp://files.cat/x'), 'none')
 })
 
-Deno.test('isCrawlable only for own-site and platform', () => {
+Deno.test('isCrawlable only for own-site (platforms deferred in Phase 2a)', () => {
   assertEquals(isCrawlable('own-site'), true)
-  assertEquals(isCrawlable('platform'), true)
+  assertEquals(isCrawlable('platform'), false)
   assertEquals(isCrawlable('social'), false)
   assertEquals(isCrawlable('doc'), false)
   assertEquals(isCrawlable('none'), false)

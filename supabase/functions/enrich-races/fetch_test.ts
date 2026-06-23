@@ -18,11 +18,18 @@ const ok = (body: string, headers: Record<string, string> = {}) =>
 const redirect = (location: string) =>
   new Response('', { status: 301, headers: { location } })
 
-Deno.test('isBlockedIp flags private/loopback/link-local/metadata', () => {
-  for (const ip of ['127.0.0.1', '10.0.0.5', '172.16.9.9', '192.168.1.1', '169.254.169.254', '0.0.0.0', '::1', 'fe80::1', 'fc00::1']) {
+Deno.test('isBlockedIp flags private/loopback/link-local/metadata/CGNAT/multicast', () => {
+  for (
+    const ip of [
+      '127.0.0.1', '10.0.0.5', '172.16.9.9', '192.168.1.1', '169.254.169.254', '0.0.0.0',
+      '100.64.0.1', '100.127.0.1', '224.0.0.1', '255.255.255.255',
+      '::1', 'fe80::1', 'fc00::1', 'fd00::1',
+      '2002:0a00:0001::', '2001:0::1', '64:ff9b::1', '::ffff:7f00:1', '::ffff:10.0.0.1',
+    ]
+  ) {
     assertEquals(isBlockedIp(ip), true, ip)
   }
-  for (const ip of ['93.184.216.34', '8.8.8.8', '1.1.1.1']) {
+  for (const ip of ['93.184.216.34', '8.8.8.8', '1.1.1.1', '2606:4700:4700::1111']) {
     assertEquals(isBlockedIp(ip), false, ip)
   }
   assertEquals(isBlockedIp('garbage'), true)
@@ -94,6 +101,35 @@ Deno.test('safeFetch truncates oversized bodies', async () => {
     maxBytes: 10,
   })
   assertEquals(body.length, 10)
+})
+
+Deno.test('safeFetch rejects a redirect with no Location header', async () => {
+  await assertRejects(
+    () => safeFetch('https://race.cat/', { resolver: PUBLIC, fetchImpl: async () => new Response('', { status: 301 }) }),
+    Error,
+    'redirect without location',
+  )
+})
+
+Deno.test('safeFetch rejects oversized bodies declared via Content-Length before reading', async () => {
+  await assertRejects(
+    () => safeFetch('https://race.cat/', { resolver: PUBLIC, fetchImpl: async () => ok('x', { 'content-length': '9999999' }), maxBytes: 100 }),
+    Error,
+    'too large',
+  )
+})
+
+Deno.test('safeFetch rejects a DNS resolver that throws or returns nothing', async () => {
+  await assertRejects(
+    () => safeFetch('https://race.cat/', { resolver: async () => { throw new Error('nx') }, fetchImpl: async () => ok('x') }),
+    Error,
+    'dns resolution failed',
+  )
+  await assertRejects(
+    () => safeFetch('https://race.cat/', { resolver: async () => [], fetchImpl: async () => ok('x') }),
+    Error,
+    'no addresses',
+  )
 })
 
 Deno.test('fetchRacePages returns seed + relevant sub-page, skips results', async () => {

@@ -9,10 +9,11 @@ const HIGH_BLAST = new Set(['start_time', 'confirmed_status'])
 // Generous staleness ceilings for stable high-blast facts (R14a, stable half):
 // past these, a fact reverts to "check site" rather than showing a stale value.
 // The tight volatile ceiling is Phase 2b.
+// Only high-blast facts have a ceiling; price (low-blast) is shown regardless of
+// age, so it intentionally has no entry here.
 const STALE_CEILING_DAYS = {
   start_time: 90,
   confirmed_status: 90,
-  price: 365,
 }
 
 const DAY_MS = 86_400_000

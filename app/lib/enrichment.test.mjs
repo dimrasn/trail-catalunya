@@ -35,6 +35,15 @@ test('R14a: a stale high-blast fact reverts to "check site"', () => {
   assert.equal(d.value, undefined)
 })
 
+test('confirmed_status shows at high, cancelled at medium, reverts when stale', () => {
+  assert.equal(factForDisplay('confirmed_status', fact('confirmed', 'high'), NOW).value, 'confirmed')
+  assert.equal(factForDisplay('confirmed_status', fact('cancelled', 'medium'), NOW).value, 'cancelled')
+  const old = new Date(Date.UTC(2026, 0, 1)).toISOString() // ~173 days > 90
+  const d = factForDisplay('confirmed_status', fact('confirmed', 'high', { last_checked: old }), NOW)
+  assert.equal(d.stale, true)
+  assert.equal(d.value, undefined)
+})
+
 test('price (low-blast) shows at medium, hidden at unknown', () => {
   assert.equal(factForDisplay('price', fact('25€', 'medium'), NOW).value, '25€')
   assert.equal(factForDisplay('price', fact(null, 'unknown'), NOW), null)

@@ -24,8 +24,11 @@ import { estimateCostMicros, monthKey, overCap } from './cost.ts'
 const SOURCE = 'ultrescatalunya'
 const CHUNK_SIZE = 8 // races per invocation — sized to the ~150s Edge wall clock
 const WINDOW_DAYS = 92 // rolling ~3-month horizon (R6)
-const SINGLE_FLIGHT_MS = 10 * 60 * 1000 // treat a <10min-old "running" row as in-flight
-const OVERRIDE_PATH = 'data/enrichment-overrides.json'
+const SINGLE_FLIGHT_MS = 8 * 60 * 1000 // in-flight window; < the 10-min cron gap so a healthy run never collides at the boundary
+const STALE_RUN_MS = 20 * 60 * 1000 // a "running" row older than this is a crashed run — reap it
+// Bundled alongside the function so Deno.readTextFile resolves in production
+// (a repo-root path would silently be absent in the deployed bundle).
+const OVERRIDE_PATH = new URL('./enrichment-overrides.json', import.meta.url)
 
 interface EventRow {
   source: string
@@ -39,13 +42,14 @@ async function selectChunk(supabase: SupabaseClient, nowMs: number): Promise<Eve
   const today = new Date(nowMs).toISOString().slice(0, 10)
   const horizon = new Date(nowMs + WINDOW_DAYS * 86_400_000).toISOString().slice(0, 10)
 
-  const { data: races } = await supabase
+  const { data: races, error: racesErr } = await supabase
     .from('races')
     .select('race_url, town, date')
     .neq('status', 'REMOVED')
     .neq('status', 'SUSPESA')
     .gte('date', today)
     .lte('date', horizon)
+  if (racesErr) throw new Error(`selectChunk races: ${racesErr.message}`)
 
   // Collapse per-distance rows to events; require non-empty url+town (KTD1).
   const events = new Map<string, EventRow>()
@@ -58,7 +62,9 @@ async function selectChunk(supabase: SupabaseClient, nowMs: number): Promise<Eve
     }
   }
 
-  const { data: enriched } = await supabase.from('race_enrichment').select('source, race_url, town')
+  const { data: enriched, error: enrichedErr } = await supabase
+    .from('race_enrichment').select('source, race_url, town')
+  if (enrichedErr) throw new Error(`selectChunk enrichment: ${enrichedErr.message}`)
   const enrichedKeys = new Set((enriched ?? []).map((e) => eventKey(e.source, e.race_url, e.town)))
 
   return [...events.entries()]
@@ -88,7 +94,16 @@ Deno.serve(async (req) => {
 
   const supabase = createClient(supabaseUrl, serviceKey)
 
-  // Single-flight: skip if another run is already in flight.
+  // Reap crashed runs: a row stuck in 'running' past the wall-clock limit means
+  // the process died before finalizing. Flip it to 'error' so it neither wedges
+  // the single-flight guard nor lingers as a phantom in-flight run.
+  await supabase
+    .from('enrichment_runs')
+    .update({ status: 'error', error_message: 'reaped: stale running row (process likely killed)' })
+    .eq('status', 'running')
+    .lt('run_at', new Date(startedAtMs - STALE_RUN_MS).toISOString())
+
+  // Single-flight: skip if another (fresh) run is already in flight.
   const inFlightCutoff = new Date(startedAtMs - SINGLE_FLIGHT_MS).toISOString()
   const { data: running } = await supabase
     .from('enrichment_runs')
@@ -106,7 +121,7 @@ Deno.serve(async (req) => {
   const runId = runRow?.id
 
   const mk = monthKey(new Date(startedAtMs))
-  let counts = { enriched: 0, skipped: 0, unknown: 0 }
+  const counts = { enriched: 0, skipped: 0, unknown: 0, errors: 0 }
   let costMicros = 0
   let status: 'success' | 'paused' | 'error' = 'success'
 
@@ -121,56 +136,89 @@ Deno.serve(async (req) => {
     const nowIso = new Date(startedAtMs).toISOString()
 
     for (const ev of chunk) {
-      const key = eventKey(ev.source, ev.race_url, ev.town)!
-      const override = overrides.get(key)
-      if (override?.skip) {
-        await upsert(supabase, ev, emptyFactSet(), null, 'crawl', nowIso)
-        counts.unknown++
-        continue
+      // Per-race isolation: one bad race (fetch/extract/upsert error) is
+      // counted and skipped, never aborts the whole chunk.
+      try {
+        const key = eventKey(ev.source, ev.race_url, ev.town)!
+        const override = overrides.get(key)
+        const hasOverrideFacts = !!(override?.facts && Object.keys(override.facts).length)
+
+        if (override?.skip) {
+          const merged = mergeWithOverride(emptyFactSet(), override, nowIso)
+          await upsert(supabase, ev, merged.facts, null, merged.origin, nowIso)
+          counts.unknown++
+          continue
+        }
+
+        // Non-crawlable URL → unknown facts (still recorded for coverage, AE7).
+        if (!isCrawlable(classifyUrl(ev.race_url))) {
+          const merged = mergeWithOverride(emptyFactSet(), override, nowIso)
+          await upsert(supabase, ev, merged.facts, null, merged.origin, nowIso)
+          counts.unknown++
+          continue
+        }
+
+        const pages = await fetchRacePages(ev.race_url)
+        if (pages.length === 0) {
+          const merged = mergeWithOverride(emptyFactSet(), override, nowIso)
+          await upsert(supabase, ev, merged.facts, null, merged.origin, nowIso)
+          counts.unknown++
+          continue
+        }
+
+        const hash = await contentHash(pages.map((p) => p.text).join('\n'))
+        const { data: existing } = await supabase
+          .from('race_enrichment')
+          .select('content_hash, updated_at, start_time, price, confirmed_status')
+          .eq('source', ev.source).eq('race_url', ev.race_url).eq('town', ev.town).maybeSingle()
+
+        if (!shouldEnrich(existing, hash)) {
+          // Content unchanged + fresh: skip the paid crawl. But still re-apply
+          // an override edit over the stored facts so a maintainer correction
+          // lands without waiting for the staleness window.
+          if (hasOverrideFacts) {
+            const merged = mergeWithOverride(factsFromRow(existing), override, nowIso)
+            await upsert(supabase, ev, merged.facts, existing?.content_hash ?? hash, merged.origin, nowIso)
+            counts.enriched++
+          } else {
+            counts.skipped++
+          }
+          continue
+        }
+
+        // Cost cap (R11): stop before incurring spend we can't afford. Alert
+        // only on the first pause of the month (not every cron fire).
+        if (overCap(spent)) {
+          status = 'paused'
+          const { data: priorPaused } = await supabase
+            .from('enrichment_runs').select('id').eq('status', 'paused')
+            .gte('run_at', `${mk}-01T00:00:00.000Z`).limit(1)
+          if (!priorPaused || priorPaused.length === 0) {
+            await sendAlert('enrichment paused: monthly cap reached', `Spent ${spent} micros for ${mk}; stored facts keep serving.`)
+          }
+          break
+        }
+
+        const { facts, usage } = await extractFacts(pages, { sourceUrl: ev.race_url, nowIso })
+        const merged = mergeWithOverride(facts, override, nowIso)
+        await upsert(supabase, ev, merged.facts, hash, merged.origin, nowIso)
+
+        const cost = estimateCostMicros(usage)
+        costMicros += cost
+        const { data: newTotal, error: spendErr } = await supabase.rpc('bump_enrichment_spend', { p_month: mk, p_delta: cost })
+        if (spendErr) {
+          // Spend accounting is the cost guardrail — never continue spending
+          // blind. Stop the run and alert.
+          status = 'error'
+          await sendAlert('enrichment spend RPC failed', spendErr.message)
+          break
+        }
+        spent = typeof newTotal === 'number' ? newTotal : spent + cost
+        counts.enriched++
+      } catch (raceErr) {
+        counts.errors++
+        console.error(`enrich race ${ev.race_url}: ${String(raceErr)}`)
       }
-
-      // Non-crawlable URL → unknown facts (still recorded for coverage, AE7).
-      const cls = classifyUrl(ev.race_url)
-      if (!isCrawlable(cls)) {
-        const merged = mergeWithOverride(emptyFactSet(), override, nowIso)
-        await upsert(supabase, ev, merged.facts, null, merged.origin, nowIso)
-        counts.unknown++
-        continue
-      }
-
-      const pages = await fetchRacePages(ev.race_url)
-      if (pages.length === 0) {
-        const merged = mergeWithOverride(emptyFactSet(), override, nowIso)
-        await upsert(supabase, ev, merged.facts, null, merged.origin, nowIso)
-        counts.unknown++
-        continue
-      }
-
-      const hash = await contentHash(pages.map((p) => p.text).join('\n'))
-      const { data: existing } = await supabase
-        .from('race_enrichment').select('content_hash, updated_at')
-        .eq('source', ev.source).eq('race_url', ev.race_url).eq('town', ev.town).maybeSingle()
-      if (!shouldEnrich(existing, hash)) {
-        counts.skipped++
-        continue
-      }
-
-      // Cost cap (R11): stop before incurring spend we can't afford.
-      if (overCap(spent)) {
-        status = 'paused'
-        await sendAlert('enrichment paused: monthly cap reached', `Spent ${spent} micros for ${mk}; stored facts keep serving.`)
-        break
-      }
-
-      const { facts, usage } = await extractFacts(pages, { sourceUrl: ev.race_url, nowIso })
-      const merged = mergeWithOverride(facts, override, nowIso)
-      await upsert(supabase, ev, merged.facts, hash, merged.origin, nowIso)
-
-      const cost = estimateCostMicros(usage)
-      costMicros += cost
-      const { data: newTotal } = await supabase.rpc('bump_enrichment_spend', { p_month: mk, p_delta: cost })
-      spent = typeof newTotal === 'number' ? newTotal : spent + cost
-      counts.enriched++
     }
   } catch (err) {
     status = 'error'
@@ -185,13 +233,24 @@ Deno.serve(async (req) => {
       unknown: counts.unknown,
       cost_micros: costMicros,
       duration_ms: Date.now() - startedAtMs,
+      ...(counts.errors ? { error_message: `${counts.errors} per-race error(s)` } : {}),
     }).eq('id', runId)
   }
 
   return json({ status, ...counts, cost_micros: costMicros }, 200)
 })
 
-function upsert(
+// Build a FactSet from a stored race_enrichment row (JSONB columns come back as
+// objects), so an override can merge onto already-stored facts without a crawl.
+function factsFromRow(row: Record<string, unknown> | null | undefined): FactSet {
+  const f = emptyFactSet()
+  if (row?.start_time) f.start_time = row.start_time as FactSet['start_time']
+  if (row?.price) f.price = row.price as FactSet['price']
+  if (row?.confirmed_status) f.confirmed_status = row.confirmed_status as FactSet['confirmed_status']
+  return f
+}
+
+async function upsert(
   supabase: SupabaseClient,
   ev: EventRow,
   facts: FactSet,
@@ -199,7 +258,7 @@ function upsert(
   origin: 'crawl' | 'override',
   nowIso: string,
 ) {
-  return supabase.from('race_enrichment').upsert({
+  const { error } = await supabase.from('race_enrichment').upsert({
     source: ev.source,
     race_url: ev.race_url,
     town: ev.town,
@@ -210,6 +269,7 @@ function upsert(
     origin,
     updated_at: nowIso,
   }, { onConflict: 'source,race_url,town' })
+  if (error) throw new Error(`upsert ${ev.race_url}: ${error.message}`)
 }
 
 function json(body: unknown, status: number): Response {

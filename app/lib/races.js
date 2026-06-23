@@ -236,7 +236,9 @@ export async function getRaces() {
 
   // Attach enriched stable facts (Phase 2a) at the event grain (race_url, town).
   // Missing table or rows is non-fatal — the site renders fine without them.
-  const { data: enrichRows } = await supabase.from('race_enrichment').select('*')
+  const { data: enrichRows } = await supabase
+    .from('race_enrichment')
+    .select('race_url, town, start_time, price, confirmed_status')
   if (enrichRows && enrichRows.length > 0) {
     const byEvent = new Map(
       enrichRows.map(r => [`${(r.race_url || '').trim()}::${(r.town || '').trim()}`, r]),

@@ -35,6 +35,15 @@ Deno.test('factToMcp preserves prior-edition and caps evidence at 300 chars', ()
   assertEquals(m.evidence!.length, 300)
 })
 
+Deno.test('factToMcp drops a stale high-blast fact (mirrors site ceiling)', () => {
+  const NOW = Date.UTC(2026, 5, 23)
+  const old = new Date(Date.UTC(2026, 0, 1)).toISOString() // ~173 days old > 90
+  // high-blast key + stale → dropped
+  assertEquals(factToMcp(fact('08:00', 'high', { last_checked: old }), 'start_time', NOW), null)
+  // low-blast price has no ceiling → still surfaced
+  assertEquals(factToMcp(fact('25€', 'high', { last_checked: old }), 'price', NOW)!.value, '25€')
+})
+
 Deno.test('enrichedFactsForMcp omits unknowns and returns null when empty', () => {
   const row = {
     start_time: fact('08:00', 'high'),

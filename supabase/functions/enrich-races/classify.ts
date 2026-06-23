@@ -76,8 +76,10 @@ export function classifyUrl(rawUrl: string | null | undefined): UrlClass {
   return 'own-site'
 }
 
-// Crawlable this phase: own-site (and platform if trivially feasible; the
-// orchestrator decides). social/doc/none always yield unknown facts.
+// Crawlable this phase: own-site only. Platform domains host hundreds of
+// unrelated races, so a same-domain crawl would pull facts from the wrong event
+// (per-platform extraction is deferred — see plan Scope Boundaries). social,
+// doc, platform, and none all yield unknown facts in Phase 2a.
 export function isCrawlable(cls: UrlClass): boolean {
-  return cls === 'own-site' || cls === 'platform'
+  return cls === 'own-site'
 }

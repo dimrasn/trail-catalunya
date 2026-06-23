@@ -24,9 +24,14 @@ export async function sendAlert(subject: string, body: string): Promise<boolean>
     return false
   }
 
+  // Bounded so a hung Resend connection can't eat the caller's wall-clock
+  // budget (the enrichment/scrape function awaits this in its error path).
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), 5_000)
   try {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
+      signal: controller.signal,
       headers: {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
@@ -46,5 +51,7 @@ export async function sendAlert(subject: string, body: string): Promise<boolean>
   } catch (err) {
     console.error(`sendAlert: fetch error: ${err instanceof Error ? err.message : String(err)}`)
     return false
+  } finally {
+    clearTimeout(timer)
   }
 }

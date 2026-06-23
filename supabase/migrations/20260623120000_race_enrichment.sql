@@ -7,7 +7,7 @@
 -- sold-out facts are Phase 2b and intentionally absent here.
 
 CREATE TABLE IF NOT EXISTS public.race_enrichment (
-  source           text NOT NULL DEFAULT 'ultrescatalunya',
+  source           text NOT NULL DEFAULT 'ultrescatalunya' CHECK (length(btrim(source)) > 0),
   race_url         text NOT NULL CHECK (length(btrim(race_url)) > 0),
   town             text NOT NULL CHECK (length(btrim(town)) > 0),
   start_time       jsonb,
@@ -60,7 +60,7 @@ CREATE OR REPLACE FUNCTION public.bump_enrichment_spend(p_month text, p_delta bi
   RETURNS bigint
   LANGUAGE plpgsql
   SECURITY DEFINER
-  SET search_path = public
+  SET search_path = public, pg_temp
 AS $$
 DECLARE
   new_total bigint;

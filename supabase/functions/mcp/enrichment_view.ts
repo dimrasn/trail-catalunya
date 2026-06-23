@@ -7,6 +7,14 @@ const MAX_EVIDENCE = 300
 const STABLE_KEYS = ['start_time', 'price', 'confirmed_status'] as const
 type StableKey = (typeof STABLE_KEYS)[number]
 
+// High-blast facts past this age are dropped from MCP too, mirroring the site's
+// staleness ceiling (app/lib/enrichment.js) — keep the two in sync. Low-blast
+// price has no ceiling.
+const STALE_CEILING_DAYS: Partial<Record<StableKey, number>> = {
+  start_time: 90,
+  confirmed_status: 90,
+}
+
 export interface McpFact {
   value: string
   confidence: string
@@ -18,12 +26,19 @@ export interface McpFact {
 export type EnrichedFacts = Partial<Record<StableKey, McpFact>>
 
 // A stored Fact (race_enrichment JSONB) → MCP shape, or null if not worth
-// surfacing (no value, or unknown confidence).
-export function factToMcp(raw: unknown): McpFact | null {
+// surfacing (no value, unknown confidence, or a stale high-blast fact).
+export function factToMcp(raw: unknown, key?: StableKey, nowMs: number = Date.now()): McpFact | null {
   if (!raw || typeof raw !== 'object') return null
   const f = raw as Record<string, unknown>
   const value = typeof f.value === 'string' && f.value.trim() ? f.value.trim() : null
   if (!value || f.confidence === 'unknown') return null
+  // Drop stale high-blast facts so MCP never relays a months-old start time /
+  // status as current (mirrors the site).
+  const ceiling = key ? STALE_CEILING_DAYS[key] : undefined
+  if (ceiling != null && typeof f.last_checked === 'string') {
+    const age = (nowMs - Date.parse(f.last_checked)) / 86_400_000
+    if (!Number.isNaN(age) && age > ceiling) return null
+  }
   return {
     value,
     confidence: typeof f.confidence === 'string' ? f.confidence : 'unknown',
@@ -38,7 +53,7 @@ export function enrichedFactsForMcp(row: Record<string, unknown> | null | undefi
   if (!row) return null
   const out: EnrichedFacts = {}
   for (const key of STABLE_KEYS) {
-    const m = factToMcp(row[key])
+    const m = factToMcp(row[key], key)
     if (m) out[key] = m
   }
   return Object.keys(out).length ? out : null

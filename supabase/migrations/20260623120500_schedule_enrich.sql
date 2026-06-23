@@ -25,7 +25,7 @@ SELECT cron.schedule(
       'x-enrich-secret', (SELECT decrypted_secret FROM vault.decrypted_secrets WHERE name = 'enrich_secret')
     ),
     body := '{}'::jsonb,
-    timeout_milliseconds := 60000
+    timeout_milliseconds := 200000
   );
   $cron$
 );
