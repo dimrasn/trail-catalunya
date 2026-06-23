@@ -1,0 +1,6 @@
+# The enrichment override file is the only authoritative write path that beats
+# crawled values and flows to the public site + MCP. Restrict changes to the
+# maintainer so a stray or malicious commit can't silently inject race facts
+# (plan KTD6 / R15). Branch protection must require code-owner review for this
+# to be enforced.
+/data/enrichment-overrides.json @dimrasn

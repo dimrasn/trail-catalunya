@@ -52,6 +52,21 @@ export function emptyFactSet(): FactSet {
   }
 }
 
+// Event identity key (source, race_url, town). Requires non-empty race_url and
+// town — races missing either are non-crawlable and never get a collapsed
+// (source,'','') row (KTD1). Returns null when the key is unusable.
+export function eventKey(
+  source: string | null | undefined,
+  raceUrl: string | null | undefined,
+  town: string | null | undefined,
+): string | null {
+  const s = (source || '').trim()
+  const u = (raceUrl || '').trim()
+  const t = (town || '').trim()
+  if (!u || !t) return null
+  return `${s}::${u}::${t}`
+}
+
 // A persisted enrichment row (mirrors the race_enrichment table, U1).
 export interface EnrichmentRecord {
   source: string
