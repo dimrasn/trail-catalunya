@@ -1,0 +1,26 @@
+[
+  {
+    "id": "sample-full",
+    "source": "ultrescatalunya",
+    "race_url": "https://cursadelavall.cat/",
+    "town": "La Vall",
+    "fixture": "supabase/functions/enrich-races/fixtures/sample-full.html",
+    "truth": { "start_time": "08:00", "price": "25€", "confirmed_status": "confirmed" }
+  },
+  {
+    "id": "sample-partial",
+    "source": "ultrescatalunya",
+    "race_url": "https://traildelbosc.cat/",
+    "town": "El Bosc",
+    "fixture": "supabase/functions/enrich-races/fixtures/sample-partial.html",
+    "truth": { "start_time": "08:30", "price": null, "confirmed_status": null }
+  },
+  {
+    "id": "sample-sparse",
+    "source": "ultrescatalunya",
+    "race_url": "https://clubexcursionista.cat/",
+    "town": "La Comarca",
+    "fixture": "supabase/functions/enrich-races/fixtures/sample-sparse.html",
+    "truth": { "start_time": null, "price": null, "confirmed_status": null }
+  }
+]
