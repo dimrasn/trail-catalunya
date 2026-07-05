@@ -100,6 +100,59 @@ function ElevTBDBadge() {
   )
 }
 
+function formatChecked(iso) {
+  if (!iso) return null
+  const d = new Date(iso)
+  if (Number.isNaN(d.getTime())) return null
+  return `${String(d.getDate()).padStart(2, '0')} ${MONTHS_SHORT[d.getMonth()]}`
+}
+
+// Enriched stable facts (Phase 2a): start time + confirmed/cancelled + price.
+// High-blast facts carry a "checked DD Mon" note and the card links out for
+// verification; a fact past its staleness ceiling shows "check site" instead.
+function EnrichmentRow({ enrichment }) {
+  const chips = []
+  const st = enrichment.start_time
+  if (st) {
+    chips.push(
+      st.stale
+        ? { key: 'st', text: '◷ start — check site', color: '#888' }
+        : { key: 'st', text: `◷ ${st.value}${st.likelyPrevious ? ' (likely, prev.)' : ''}`, color: '#cbd5e1', checked: formatChecked(st.lastChecked) },
+    )
+  }
+  const cs = enrichment.confirmed_status
+  if (cs && !cs.stale) {
+    if (cs.value === 'cancelled') chips.push({ key: 'cs', text: 'CANCELLED', color: '#fff', bg: '#dc2626' })
+    else if (cs.value === 'confirmed') chips.push({ key: 'cs', text: '✓ confirmed', color: '#34d399', checked: formatChecked(cs.lastChecked) })
+  } else if (cs && cs.stale) {
+    chips.push({ key: 'cs', text: 'status — check site', color: '#888' })
+  }
+  const pr = enrichment.price
+  if (pr) chips.push({ key: 'pr', text: `${pr.value}${pr.likelyPrevious ? ' (likely, prev.)' : ''}`, color: '#cbd5e1' })
+
+  if (chips.length === 0) return null
+
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center', marginBottom: '10px' }}>
+      {chips.map(c => (
+        <span key={c.key} style={{
+          display: 'inline-flex', alignItems: 'baseline', gap: '5px',
+          fontSize: '12px',
+          fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+          padding: c.bg ? '2px 6px' : '0',
+          borderRadius: c.bg ? '3px' : '0',
+          backgroundColor: c.bg || 'transparent',
+          color: c.color,
+          fontWeight: c.bg ? '700' : '400',
+        }}>
+          {c.text}
+          {c.checked && <span style={{ fontSize: '10px', color: '#5b6472' }}>· checked {c.checked}</span>}
+        </span>
+      ))}
+    </div>
+  )
+}
+
 export default function RaceCard({ race }) {
   const provinceColor = PROVINCE_COLOR[race.province] || '#555'
   const provinceShort = PROVINCE_SHORT[race.province] || race.province.slice(0, 3)
@@ -179,6 +232,9 @@ export default function RaceCard({ race }) {
           <span style={{ fontSize: '12px', color: '#666' }}>drive TBD</span>
         )}
       </div>
+
+      {/* Enriched stable facts (Phase 2a) */}
+      {race.enrichment && <EnrichmentRow enrichment={race.enrichment} />}
 
       {/* Row 3: Distance chips */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
