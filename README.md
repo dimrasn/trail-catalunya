@@ -19,8 +19,23 @@ Three surfaces over one Supabase dataset:
 The source lists one row per race × distance. The `races` table mirrors that
 (one row per distance); the app groups rows into events by `(race_url, town)`,
 each event carrying a `distances[]` array. A separate `towns` table holds drive
-time from Plaça Glòries, Barcelona, plus lat/lng. `scrape_runs` logs each
+time from Plaça Glòries, Barcelona, plus lat/lng — but note the split: **only
+the MCP server reads `towns`; the website joins drive times from the committed
+`data/towns-drive-times.json`** (the site→towns migration is deliberately
+deferred — see the enrichment plan's Scope Boundaries). `scrape_runs` logs each
 scrape; `race_changes` is an append-only audit of what changed per run.
+
+**New town appears in a scrape** (its races show "drive TBD" until this runs):
+
+1. `python3 scripts/geocode-towns.py` (needs `GOOGLE_MAPS_API_KEY`)
+2. `python3 scripts/compute-drive-times.py` (same key)
+3. `node scripts/backfill-towns.mjs` (needs the service-role key) — updates the
+   `towns` table for MCP
+4. Commit the updated `data/towns-*.json` and push — the site rebuild picks
+   them up.
+
+(The other v1 scripts — `parse-csv.py`, `merge.py`, `pipeline.sh` — are
+superseded by the scraper Edge Function and kept only for reference.)
 
 Race statuses: `ACTIVA` (live), `SUSPESA` (suspended — excluded from the site
 and MCP), `SOLD_OUT`, `REMOVED` (no longer on the source — excluded).
@@ -152,6 +167,28 @@ When `scrape_runs.error_message` is set, a golden assertion fails, or
 4. If the parser regressed: fix `parser.ts`, mirror in `scrape_trails.py`,
    refresh `fixture.html`, update `test.ts`, then
    `supabase functions deploy scrape-trails --no-verify-jwt`.
+
+## Tests
+
+Three suites; run all before touching code and before any deploy:
+
+```bash
+deno test supabase/functions/          # scraper parity + MCP + enrichment modules
+deno test eval/enrich-eval_test.ts     # enrichment eval-harness scoring
+node --test app/lib/enrichment.test.mjs  # site display logic
+```
+
+Known quirk: `deno check` (not `deno test`) on files importing supabase-js
+fails locally on `npm:@supabase/realtime-js` resolution. **Local-only tooling
+noise — the Supabase runtime resolves it fine and deploys work. Do not "fix"
+it or refactor imports because of it.**
+
+## Deployment state
+
+See `AGENTS.md` → "Deployment state" for what's live vs built-but-not-deployed
+(currently: the enrichment pipeline is merged but NOT deployed) and the exact
+activation checklist. Keep that section current — it's the first thing a cold
+agent must read.
 
 ## Local tooling
 
