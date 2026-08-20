@@ -37,8 +37,9 @@ all differ from your training data. Read the relevant guide in
 Edge Function + weekly cron (verified green); `mcp` Edge Function (public);
 SEO layer (robots/sitemap/JSON-LD/og-image). Custom domain: **trailraces.cat**
 (DonDominio, bought 2026-08-20) — added to Vercel + `NEXT_PUBLIC_SITE_URL` set;
-DNS done — site LIVE at https://trailraces.cat (www + canonical verified).
-Remaining: GSC + Bing setup, see `docs/handoffs/2026-08-20-domain-cutover-handoff.md`.
+Site LIVE at https://trailraces.cat (DNS+SSL+308s verified); GSC verified +
+sitemap submitted + homepage indexing requested; Bing imported from GSC (all
+2026-08-20). GSC verification is an HTML-tag meta in app/layout.js — do not remove.
 
 **Built but NOT deployed — enrichment pipeline** (`supabase/functions/enrich-races/`,
 merged in `710cb31`): migrations `20260623120000_race_enrichment.sql` and

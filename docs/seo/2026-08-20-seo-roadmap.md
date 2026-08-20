@@ -8,9 +8,10 @@ Base URL follows `NEXT_PUBLIC_SITE_URL`.
 
 ## Roadmap (dependency order)
 
-- **R0. Domain → GSC → Bing → IndexNow** — S. trailraces.cat bought 2026-08-20;
-  cutover handoff: `docs/handoffs/2026-08-20-domain-cutover-handoff.md`.
-  IndexNow ping on deploy (~20 lines) can ship with R1.
+- **R0. Domain → GSC → Bing → IndexNow** — ✅ DONE 2026-08-20. trailraces.cat
+  live (DNS + SSL + 308s verified); GSC verified (HTML-tag meta in layout.js),
+  sitemap submitted, homepage indexing requested; Bing Webmaster imported from
+  GSC. Still TODO: IndexNow ping on deploy (~20 lines) — ship with R1.
 - **R1. Per-race pages** — M. `/race/{slug}` via `generateStaticParams`;
   **year-agnostic URLs** (no year in slug — editions update in place so URL
   equity compounds). Anti-thin contract per page: lead with the drive-time
