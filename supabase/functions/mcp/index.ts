@@ -6,6 +6,7 @@
 
 import {
   CORS_HEADERS,
+  INSTRUCTIONS,
   type JsonRpcRequest,
   PROTOCOL_VERSION,
   rpcError,
@@ -59,6 +60,7 @@ Deno.serve(async (req) => {
         protocolVersion,
         capabilities: { tools: {} },
         serverInfo: SERVER_INFO,
+        instructions: INSTRUCTIONS,
       })
     }
 

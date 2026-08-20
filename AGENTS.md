@@ -41,6 +41,21 @@ Site LIVE at https://trailraces.cat (DNS+SSL+308s verified); GSC verified +
 sitemap submitted + homepage indexing requested; Bing imported from GSC (all
 2026-08-20). GSC verification is an HTML-tag meta in app/layout.js — do not remove.
 
+**Staged, NOT deployed — MCP agentic-composition instructions** (2026-08-20,
+branch `feat/agentic-content-and-nudges`): `supabase/functions/mcp/protocol.ts`
+adds an `INSTRUCTIONS` export (returned in `initialize`), `tools.ts` adds a
+`personalization` envelope field + composition clauses on all three tool
+descriptions, `index.ts` wires `instructions` into the initialize result. These
+teach a composing agent to join races with the user's OWN Strava/Garmin MCP
+locally (readiness + projected finish time) — zero storage, no server-side
+fetch. The front-end nudges (AskAI panel, askPrompt lines, /about, /for-agents)
+ship via Vercel push and need no token. The MCP edits are live-inert until
+redeployed: **`supabase functions deploy mcp --no-verify-jwt`** with a fresh
+Supabase access token (unavailable at build time). Until then the deployed
+`initialize` returns no `instructions` and tool descriptions lack the
+composition clauses — the site copy already promises the behavior, so redeploy
+is the one open loop.
+
 **Built but NOT deployed — enrichment pipeline** (`supabase/functions/enrich-races/`,
 merged in `710cb31`): migrations `20260623120000_race_enrichment.sql` and
 `20260623120500_schedule_enrich.sql` are **unapplied**; function undeployed; no

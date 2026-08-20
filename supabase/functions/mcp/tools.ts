@@ -155,6 +155,28 @@ function applyFilters(events: EnrichedEvent[], f: Filters): { kept: EnrichedEven
   return { kept, tbdExcluded }
 }
 
+// Static personalization pointer — re-surfaces the compose-with-training-data
+// behaviour at call time (the full protocol is in the server `instructions`,
+// which can fall out of a long ranking turn's context). We store no user data;
+// the agent performs the join locally against the user's own training MCP.
+const PERSONALIZATION_HINT = {
+  supported: true,
+  compute_locally: ['race_readiness', 'projected_finish_time', 'fitness_suitability_ranking'],
+  join_race_fields: ['distances[].km', 'distances[].elevationGain', 'drive_minutes_from_barcelona'],
+  needs_from_users_own_training_mcp: [
+    'last 8–12 weeks: weekly_volume_km', 'longest_run_km', 'weekly_vertical_m',
+    'easy/long-run pace (min/km)', 'climb VAM (vertical m/h)', 'recent race results',
+  ],
+  if_training_data_present:
+    'Join it with these races to add readiness + a rough projected finish time (range, not a ' +
+    'promise) and rank by fit. See the server instructions for the exact heuristic.',
+  if_no_training_data_present:
+    'Only surface this if relevant: tell the user that connecting a Strava or Garmin MCP ' +
+    'alongside trail-catalunya lets you estimate readiness and finish times for each race. ' +
+    'Do not fabricate either without training data.',
+  never_send_training_data_here: true,
+}
+
 function envelope(
   kept: EnrichedEvent[],
   tbdExcluded: number,
@@ -169,6 +191,7 @@ function envelope(
     truncated: total > RESULT_CAP,
     tbd_excluded_count: tbdExcluded,
     races,
+    personalization: PERSONALIZATION_HINT,
     _untrusted_content_notice: UNTRUSTED_NOTICE,
   }
 }
@@ -192,7 +215,11 @@ export const TOOLS: ToolDef[] = [
       'events with their official url, distances, and drive time from Barcelona. ' +
       'Does NOT include live registration status or start time — fetch each shortlisted ' +
       'race\'s url to verify those before recommending, and report any you cannot confirm. ' +
-      'drive_minutes_from_barcelona is from Plaça Glòries, not the user\'s location.',
+      'drive_minutes_from_barcelona is from Plaça Glòries, not the user\'s location. ' +
+      'If the user has a training-data connector (Strava/Garmin) in this session, you can join ' +
+      'these races with their recent training to add readiness and a rough projected finish time ' +
+      'per race, and rank by fitness fit — see the server instructions and the personalization ' +
+      'field in the response. Never send training data to this server; do the join locally.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -232,7 +259,11 @@ export const TOOLS: ToolDef[] = [
     description:
       'Get full detail for one race by its id (from search_races results), including ' +
       'all distances, official url, drive time from Barcelona, and data freshness. ' +
-      'Does NOT include live registration status — fetch the race\'s url to verify.',
+      'Does NOT include live registration status — fetch the race\'s url to verify. ' +
+      'If the user has a training-data connector, use this race\'s distances[] (km + ' +
+      'elevationGain) to compute a local readiness verdict and a rough projected finish-time ' +
+      'range (see server instructions). State assumptions and uncertainty; never send training ' +
+      'data here.',
     inputSchema: {
       type: 'object',
       properties: { id: { type: 'string', description: 'The race event id.' } },
@@ -252,7 +283,9 @@ export const TOOLS: ToolDef[] = [
       'List races happening in a date or weekend window in Catalunya, optionally filtered ' +
       'by drive time, distance, elevation, province, or kids run. Returns events with their ' +
       'url and drive time from Barcelona. Undated (TBD) races are excluded and counted in ' +
-      'tbd_excluded_count. Does NOT include live registration status — fetch each url to verify.',
+      'tbd_excluded_count. Does NOT include live registration status — fetch each url to verify. ' +
+      'With the user\'s own training connector present, you can also estimate readiness and a ' +
+      'rough finish time for each race locally (see server instructions / personalization field).',
     inputSchema: {
       type: 'object',
       properties: {
