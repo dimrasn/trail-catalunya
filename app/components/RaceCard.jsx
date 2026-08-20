@@ -168,9 +168,7 @@ export default function RaceCard({ race }) {
 
   return (
     <a
-      href={race.url}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={`/race/${race.id}`}
       style={{
         display: 'block',
         padding: '14px 16px',

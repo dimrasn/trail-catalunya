@@ -95,6 +95,33 @@ Once you know my constraints, recommend a few and explain why. Drive time from B
 If you have access to my Strava or Garmin training data in this chat, also tell me for each recommended race whether I'm ready for it and a rough finish-time range, based on my recent training — state your assumptions and keep it a rough estimate. If you don't have my training data, just skip that part (don't guess).`
 }
 
+// A per-race prompt, distinct from the list prompt above: the user is on ONE
+// race's page and wants to decide + plan THAT race, not pick from a list. Leads
+// with the race's facts, then asks for fit, readiness (only with training data),
+// and a race-day/travel plan — keeping the verify-at-source discipline.
+export function buildRacePrompt(race) {
+  const parts = []
+  if (race.date) parts.push(race.date + (race.dateEnd ? `–${race.dateEnd}` : ''))
+  parts.push(`${race.town}${race.province ? `, ${race.province}` : ''}`)
+  if (race.driveMinutes != null) parts.push(`${race.driveMinutes} min drive from Barcelona (Plaça Glòries)`)
+  const dists = (race.distances || [])
+    .map((d) => `${d.km}km${d.elevationGain != null ? ` ↑${d.elevationGain}m` : ''}`)
+    .join(', ') || 'distances TBD'
+  parts.push(dists)
+
+  return `I'm considering this trail race in Catalunya and want your help deciding and planning it.
+
+${race.name} — ${parts.join(' — ')}
+Official site: ${race.url}
+
+Help me with:
+1. Is this race a good fit for me? If you're not sure what I want, ask me first (target distance, how much climbing I like, how far I'll travel, my experience level).
+2. If you have access to my Strava or Garmin training data in this chat, tell me whether I'm ready for it and a rough finish-time range for the distance I'd pick — state your assumptions and keep it a rough estimate. If you don't have my training data, just skip this part (don't guess).
+3. A quick race-day plan, including the drive from Barcelona (Plaça Glòries) — roughly when to leave and any logistics.
+
+Important: registration status and start time aren't in this data and change often — open the official site above to confirm them, and tell me clearly if you can't. If a trail-catalunya MCP connector is available in this chat, you can also pull races near this one for alternatives. Don't present unconfirmed details as certain.`
+}
+
 export function claudeUrl(prompt) {
   return `https://claude.ai/new?q=${encodeURIComponent(prompt)}`
 }
