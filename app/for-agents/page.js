@@ -145,10 +145,7 @@ export default function ForAgentsPage() {
         Races are re-scraped weekly from the Catalan trail-race calendars. Distances,
         elevation and dates are stable; volatile facts (start time, registration status,
         sold-out) should be verified at the race&apos;s official URL before you rely on them —
-        the tools say so, and so should you. The project is open on{' '}
-        <a href="https://github.com/dimrasn/trail-catalunya" style={{ ...back, color: '#8a8aff' }} rel="noopener">
-          GitHub
-        </a>.
+        the tools say so, and so should you.
       </p>
 
       <p style={{ marginTop: '36px' }}>

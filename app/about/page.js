@@ -56,6 +56,11 @@ export default function AboutPage() {
         Others are simpler — you run, and at the finish there&apos;s butifarra and a cold
         beer waiting. I love mountain races, and no two are the same.
       </p>
+      <p style={p}>
+        My favorite is the Burriac Atac — great atmosphere, a proper race, real support on
+        course, good food after, and even the start pack is done right. That&apos;s the whole
+        package, and it&apos;s what I&apos;m always chasing.
+      </p>
 
       <h2 style={h2}>Why an AI, not just filters</h2>
       <p style={p}>
@@ -97,10 +102,7 @@ export default function AboutPage() {
         stay current. It&apos;s not perfect — organizers change things, and some facts (start
         times, whether registration is open) are volatile. That&apos;s why the site and the
         agent both tell you to verify a shortlisted race at its official page before you count
-        on it. If you spot something wrong, the whole thing is open on{' '}
-        <a href="https://github.com/dimrasn/trail-catalunya" style={{ ...back, color: '#8a8aff' }} rel="noopener">
-          GitHub
-        </a>{' '}— that&apos;s the correction channel.
+        on it.
       </p>
 
       <p style={{ ...p, marginTop: '32px', color: '#9a9ab0' }}>

@@ -70,7 +70,9 @@ My filters: ${phrases.join('; ')}.
 Matching races (drive times are from Plaça Glòries, Barcelona — not your location):
 ${lines}${truncationNote}
 
-Please recommend the best 3–5 for me and explain why each fits. Important: this list does NOT include live registration status or start times — open each recommended race's URL to check whether registration is open, whether it's sold out, and the start time, and tell me clearly if you can't confirm. Don't present unconfirmed details as certain.
+Please recommend the best 3–5 for me and explain why each fits. Drive time from Barcelona is the axis I care about most — it's why I use this list, so weight it in your ranking, state it for each pick, and don't put a farther race above a nearer one unless it's clearly better or I've said distance is fine. Important: this list does NOT include live registration status or start times — open each recommended race's URL to check whether registration is open, whether it's sold out, and the start time, and tell me clearly if you can't confirm. Don't present unconfirmed details as certain.
+
+If a trail-catalunya MCP tool is available in this chat, prefer it: query it live for anything beyond this list — other months, areas, or follow-up questions — instead of relying on the snapshot above. If it's not connected and I ask for something outside this list, tell me I can add the trail-catalunya connector (at trailraces.cat) for live search instead of re-filtering the site by hand.
 
 If you have access to my Strava or Garmin training data in this chat, also tell me for each recommended race whether I'm ready for it and a rough finish-time range, based on my recent training — state your assumptions and keep it a rough estimate. If you don't have my training data, just skip that part (don't guess).`
   }
@@ -83,12 +85,12 @@ I haven't set any filters, so the list below is just the ${shown.length} soonest
 - which dates or month
 - whether I need a kids run
 
-If what I want isn't in this sample (e.g. a specific month or area), tell me to filter on the trail-catalunya site and re-send, since it only includes the soonest races here.
+If a trail-catalunya MCP tool is available in this chat, prefer it — query it live for anything beyond this sample (a specific month, area, distance, or any follow-up). If it's not connected and what I want isn't in this sample, tell me I can add the trail-catalunya connector (at trailraces.cat) for live search rather than re-filtering the site by hand.
 
 Upcoming races sample:
 ${lines}
 
-Once you know my constraints, recommend a few and explain why. This list does NOT include live registration status or start times — open each race's URL to verify those, and say clearly if you can't confirm. Don't present unconfirmed details as certain.
+Once you know my constraints, recommend a few and explain why. Drive time from Barcelona is the axis I care about most — weight it in your ranking and state it for each pick; don't put a farther race above a nearer one unless it's clearly better or I've said distance is fine. This list does NOT include live registration status or start times — open each race's URL to verify those, and say clearly if you can't confirm. Don't present unconfirmed details as certain.
 
 If you have access to my Strava or Garmin training data in this chat, also tell me for each recommended race whether I'm ready for it and a rough finish-time range, based on my recent training — state your assumptions and keep it a rough estimate. If you don't have my training data, just skip that part (don't guess).`
 }

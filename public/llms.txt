@@ -23,7 +23,3 @@
 - Homepage — filterable race calendar: https://trailraces.cat/
 - Why I built it: https://trailraces.cat/about
 - For AI agents (MCP docs): https://trailraces.cat/for-agents
-
-## Source
-
-- Open source: https://github.com/dimrasn/trail-catalunya
