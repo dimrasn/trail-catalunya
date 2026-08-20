@@ -128,7 +128,8 @@ function McpHelp({ url, urlCopied, onCopyUrl, onClose }) {
         <p style={{ color: '#9a9ab0', marginTop: 0, marginBottom: '14px' }}>
           This lets Claude or ChatGPT search the full race database live — ask things like
           “scenic races under 1h from Barcelona in October”. It’s a one-time setup, and works
-          on Claude (including Free — one connector) or a paid ChatGPT plan (Plus and up). Details below.
+          on Claude (including Free — one connector) or a paid ChatGPT plan that supports custom
+          connectors. Details below.
         </p>
 
         <p style={{ color: '#9a9ab0', marginTop: 0, marginBottom: '14px' }}>
@@ -169,7 +170,7 @@ function McpHelp({ url, urlCopied, onCopyUrl, onClose }) {
           </ol>
         </Section>
 
-        <Section title="ChatGPT (Plus, Pro, Business, Enterprise or Edu)">
+        <Section title="ChatGPT (a paid plan with Developer mode)">
           <ol style={{ margin: '6px 0 0', paddingLeft: '20px', listStyleType: 'decimal' }}>
             <li>Turn on <strong>Developer mode</strong> in ChatGPT settings (currently
               <strong> Settings → Apps → Advanced → Developer mode</strong>; the exact wording moves —

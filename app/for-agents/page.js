@@ -75,8 +75,9 @@ export default function ForAgentsPage() {
       <p style={p}>
         Trail Catalunya publishes 200+ trail-running races in Catalunya as a Model Context
         Protocol (MCP) server. Any MCP-capable assistant — Claude (any plan, including Free with
-        a single custom connector) or ChatGPT on a paid plan (Plus and up) — can add it as a
-        connector and query the live race database directly, instead of reading a static web page.
+        a single custom connector) or ChatGPT on a paid plan that supports custom connectors — can
+        add it as a connector and query the live race database directly, instead of reading a
+        static web page.
       </p>
 
       <h2 style={h2}>What is the server endpoint?</h2>
@@ -120,9 +121,10 @@ export default function ForAgentsPage() {
         </li>
       </ul>
       <p style={p}>
-        Every race carries its distances (km + elevation gain in metres D+), a real driving
-        estimate from Plaça Glòries in Barcelona (not the user&apos;s location), province,
-        dates, and best-effort enriched facts.
+        Each race carries its distances (km + elevation gain in metres D+), and most carry a
+        real driving estimate from Plaça Glòries in Barcelona (not the user&apos;s location) —
+        a few newer towns show no drive time yet — plus province, dates, and best-effort
+        enriched facts.
       </p>
 
       <h2 style={h2}>Can it use my training data?</h2>

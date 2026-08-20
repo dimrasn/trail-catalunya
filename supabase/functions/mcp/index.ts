@@ -50,6 +50,19 @@ Deno.serve(async (req) => {
   // (R12). Returns false when the global daily ceiling is crossed.
   const underCeiling = await bumpInvocations()
 
+  // Abuse gates apply to every substantive method — initialize and tools/list
+  // are spammable vectors too, not just tools/call. Cheap liveness methods
+  // (notifications/initialized, ping) are exempt so clients stay responsive.
+  if (method === 'initialize' || method === 'tools/list' || method === 'tools/call') {
+    if (!underCeiling) {
+      return rpcError(id, -32000, 'Daily capacity reached. Try again tomorrow.')
+    }
+    const ipHash = await clientIpHash(req)
+    if (!(await checkRateLimit(ipHash))) {
+      return rpcError(id, -32000, 'Rate limit exceeded. Try again shortly.')
+    }
+  }
+
   switch (method) {
     case 'initialize': {
       // Graceful version negotiation: honour the client's requested version when
@@ -85,19 +98,9 @@ Deno.serve(async (req) => {
       const tool = registry.get(name)
       if (!tool) return rpcError(id, -32602, `Unknown tool: ${name}`)
 
-      // Global daily ceiling backstop (covers spoofed/distributed callers).
-      if (!underCeiling) {
-        return rpcError(id, -32000, 'Daily capacity reached. Try again tomorrow.')
-      }
+      // Ceiling + per-IP rate limit already enforced above for tools/call.
 
-      // Per-IP rate limit (U6) before doing any work.
-      const ipHash = await clientIpHash(req)
-      const allowed = await checkRateLimit(ipHash)
-      if (!allowed) {
-        return rpcError(id, -32000, 'Rate limit exceeded. Try again shortly.')
-      }
-
-      // Anonymous query log (U6) — tool + args, never IP/identity.
+      // Anonymous query log (U6) — allowlisted filters only, never IP/identity.
       await logCall(name, args)
 
       try {

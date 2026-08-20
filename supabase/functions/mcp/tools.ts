@@ -258,7 +258,8 @@ export const TOOLS: ToolDef[] = [
     name: 'get_race',
     description:
       'Get full detail for one race by its id (from search_races results), including ' +
-      'all distances, official url, drive time from Barcelona, and data freshness. ' +
+      'all distances, official url, drive time from Barcelona (measured from Plaça Glòries, ' +
+      'NOT the user\'s location), and data freshness. ' +
       'Does NOT include live registration status — fetch the race\'s url to verify. ' +
       'If the user has a training-data connector, use this race\'s distances[] (km + ' +
       'elevationGain) to compute a local readiness verdict and a rough projected finish-time ' +
@@ -274,7 +275,12 @@ export const TOOLS: ToolDef[] = [
       if (!id) throw new Error('id is required')
       const { events, freshness } = await loadEventsAndFreshness()
       const race = events.find((e) => e.id === id) ?? null
-      return { data_freshness: freshness, race, _untrusted_content_notice: UNTRUSTED_NOTICE }
+      return {
+        data_freshness: freshness,
+        race,
+        personalization: PERSONALIZATION_HINT,
+        _untrusted_content_notice: UNTRUSTED_NOTICE,
+      }
     },
   },
   {
@@ -282,7 +288,8 @@ export const TOOLS: ToolDef[] = [
     description:
       'List races happening in a date or weekend window in Catalunya, optionally filtered ' +
       'by drive time, distance, elevation, province, or kids run. Returns events with their ' +
-      'url and drive time from Barcelona. Undated (TBD) races are excluded and counted in ' +
+      'url and drive time from Barcelona (measured from Plaça Glòries, NOT the user\'s location). ' +
+      'Undated (TBD) races are excluded and counted in ' +
       'tbd_excluded_count. Does NOT include live registration status — fetch each url to verify. ' +
       'With the user\'s own training connector present, you can also estimate readiness and a ' +
       'rough finish time for each race locally (see server instructions / personalization field).',

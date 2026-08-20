@@ -3,23 +3,11 @@
 // failure never blocks a tool call.
 
 import { getServiceClient } from './client.ts'
+import { capArgs } from './log_filter.ts'
 
-// Caps so a caller can't stuff the log with large blobs (#7).
+// Free-text intent cap. The allowlist filter for structured args lives in
+// log_filter.ts (pure + tested).
 const MAX_QUERY_CHARS = 500
-const MAX_FILTER_KEYS = 20
-const MAX_VALUE_CHARS = 200
-
-function capArgs(args: Record<string, unknown>): Record<string, unknown> {
-  const out: Record<string, unknown> = {}
-  let n = 0
-  for (const [k, v] of Object.entries(args)) {
-    if (n++ >= MAX_FILTER_KEYS) break
-    if (typeof v === 'string') out[k] = v.length > MAX_VALUE_CHARS ? v.slice(0, MAX_VALUE_CHARS) : v
-    else if (v == null || typeof v === 'number' || typeof v === 'boolean') out[k] = v
-    else out[k] = String(v).slice(0, MAX_VALUE_CHARS) // collapse arrays/objects defensively
-  }
-  return out
-}
 
 export async function logCall(tool: string, args: Record<string, unknown>): Promise<void> {
   const supabase = getServiceClient()

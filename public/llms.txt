@@ -7,7 +7,7 @@
 
 ## Key facts
 
-- Every race carries a real driving estimate from Plaça Glòries, Barcelona — the field no other calendar publishes.
+- Most races carry a real driving estimate from Plaça Glòries, Barcelona — the field no other calendar publishes (a few newer towns are not yet estimated).
 - Race data (distances in km, elevation gain in metres D+, dates) is re-scraped weekly from the Catalan trail-race calendars.
 - Volatile facts (start time, registration status, sold-out) should be verified at each race's official URL.
 
