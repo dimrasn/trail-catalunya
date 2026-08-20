@@ -50,11 +50,27 @@ teach a composing agent to join races with the user's OWN Strava/Garmin MCP
 locally (readiness + projected finish time) — zero storage, no server-side
 fetch. The front-end nudges (AskAI panel, askPrompt lines, /about, /for-agents)
 ship via Vercel push and need no token. The MCP edits are live-inert until
-redeployed: **`supabase functions deploy mcp --no-verify-jwt`** with a fresh
-Supabase access token (unavailable at build time). Until then the deployed
-`initialize` returns no `instructions` and tool descriptions lack the
-composition clauses — the site copy already promises the behavior, so redeploy
-is the one open loop.
+redeployed. Until then the deployed `initialize` returns no `instructions` and
+tool descriptions lack the composition clauses — the site copy already promises
+the behavior, so redeploy is the one open loop.
+
+**Redeploy has a catch — the deployed function LAGS the repo.** The live `mcp`
+function is version 5, which predates the enrichment integration merged in
+`710cb31`: its `tools.ts` does NOT import `enrichment_view.ts` and does NOT
+query `race_enrichment`. The repo's `tools.ts` does both. So redeploying `mcp/`
+ships the composition instructions AND, as a side effect, the enrichment code
+path for the first time — against a `race_enrichment` table that is still
+unapplied (see enrichment pipeline below). The code tolerates the missing table
+by design (the `race_enrichment` select's error is not thrown; `enriched_facts`
+resolves to null), but this is a real behavior change that should be a
+deliberate decision, not a side effect. Deploy options, in order of least
+surprise:
+1. Deploy via the Supabase MCP `deploy_edge_function` (verify_jwt:false to keep
+   it public) or CLI `supabase functions deploy mcp --no-verify-jwt` — either
+   works; a CLI token is NOT required. Ships the enrichment lag too; safe only
+   after confirming the missing-table tolerance holds in prod.
+2. Or activate the enrichment pipeline first (checklist below), so repo and
+   deployed converge and the redeploy carries no surprise.
 
 **Built but NOT deployed — enrichment pipeline** (`supabase/functions/enrich-races/`,
 merged in `710cb31`): migrations `20260623120000_race_enrichment.sql` and
