@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import RaceList from './components/RaceList'
 import { getRaces, getLastUpdated } from './lib/races'
 
@@ -20,13 +19,51 @@ function formatLastUpdated(iso) {
   return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`
 }
 
+// schema.org SportsEvent markup for every dated race — the structured-data
+// surface Google builds event experiences from. Regenerated on each rebuild,
+// so dates/status stay as fresh as the weekly scrape.
+function eventsJsonLd(races) {
+  const items = races
+    .filter(r => r.date)
+    .map((r, i) => {
+      const event = {
+        '@type': 'SportsEvent',
+        name: r.name,
+        sport: 'Trail running',
+        startDate: r.date,
+        eventStatus: 'https://schema.org/EventScheduled',
+        location: {
+          '@type': 'Place',
+          name: r.town,
+          address: { '@type': 'PostalAddress', addressRegion: r.province, addressCountry: 'ES' },
+        },
+        url: r.url,
+      }
+      if (r.dateEnd) event.endDate = r.dateEnd
+      if (r.lat != null && r.lng != null) {
+        event.location.geo = { '@type': 'GeoCoordinates', latitude: r.lat, longitude: r.lng }
+      }
+      return { '@type': 'ListItem', position: i + 1, item: event }
+    })
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Trail running races in Catalunya 2026',
+    numberOfItems: items.length,
+    itemListElement: items,
+  }
+}
+
 export default async function Page() {
   const [races, lastUpdatedIso] = await Promise.all([getRaces(), getLastUpdated()])
   const lastUpdated = formatLastUpdated(lastUpdatedIso)
+  const jsonLd = JSON.stringify(eventsJsonLd(races)).replace(/</g, '\\u003c')
 
   return (
-    <Suspense>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       <RaceList races={races} lastUpdated={lastUpdated} />
-    </Suspense>
+    </>
   )
 }
