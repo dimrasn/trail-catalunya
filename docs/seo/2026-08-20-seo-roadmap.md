@@ -42,6 +42,68 @@ Base URL follows `NEXT_PUBLIC_SITE_URL`.
   generate `/ca/race/*` × 226 (proper nouns + numbers; tripling URLs for zero
   query gain).
 
+### Extended roadmap R6–R10 (added 2026-08-20, SEO-architect round 2)
+
+Sequenced AFTER R1–R5. Do not pull forward: each depends on per-race pages
+existing and beginning to convert.
+
+- **R6. Drive-time data as a link magnet** — M. The drive-time-from-Barcelona
+  dataset is the one asset nobody else has; publish it as a citable resource
+  (a sortable "races by drive time from Barcelona" view) plus a small
+  embeddable widget organizers/blogs can drop in. Links point back; the widget
+  seeds the AI-citation surface. Only after R1 pages exist to link into.
+- **R7. Organizer outreach as a data-correction handshake** — M, relationship
+  work not code. Reach out to race organizers to confirm/correct their facts;
+  the ask is "we list your race, verify your details" — which earns a link and
+  improves data quality at once. Turns the freshness weakness into a moat.
+- **R8. Historical editions + freshness signal** — S/M. Keep past editions on
+  the same year-agnostic URL (result recaps, "2025 → 2026 edition") so each
+  race page accretes history and a genuine `lastmod` cadence Google learns to
+  trust. Feeds both classic SEO and GEO (extractable "how it went" facts).
+- **R9. Multi-source ingestion moat** — L. Add a second/third calendar source
+  beyond ultrescatalunya so coverage exceeds any single competitor. Deferred
+  hard: only worth the ingestion+dedup cost once per-race pages demonstrably
+  convert (R4 signal). Until then it's undifferentiated volume.
+- **R10. Structured-data expansion** — S, ships opportunistically with R1/R8.
+  Broaden per-race JSON-LD (offers, eventStatus, geo already planned) and add
+  the fields AI engines extract cleanly. Pairs with the /for-agents page as the
+  machine-readable spine.
+
+### GEO — generative-engine optimization (added 2026-08-20)
+
+First-class goal now, not a side effect: being the cited source when someone
+asks ChatGPT/Claude/Perplexity for trail races near Barcelona is distribution
+for a data-lookup product.
+
+- **Biggest lever already pulled:** the site is in Bing (imported from GSC).
+  ChatGPT Search leans on Bing's index; Perplexity + Google AI Overviews draw
+  from the same index + schema. Keep GPTBot / ClaudeBot / PerplexityBot ALLOWED
+  in robots — never block them.
+- **llms.txt** shipped at `/llms.txt` (public/llms.txt) — cheap hedge: summary,
+  key facts, the MCP endpoint, and the canonical pages, in the format LLM
+  crawlers prefer.
+- **Extractable content format** is the durable GEO tactic: labeled tables,
+  explicit question-shaped headings, self-contained pages. `/for-agents` is
+  built this way on purpose — the most citable page on the site. Apply the same
+  Q&A shape to R4 curated pages and R1 race pages.
+- **MCP-directory listings** — list the server in public MCP/connector
+  directories; that's both discovery and an authoritative citation signal that
+  the product is agent-native (the novel, citable claim behind E-E-A-T).
+- **Measure GEO** via chatgpt.com / perplexity.ai referrers (Vercel Analytics)
+  and the bot-crawler Supabase table (GPTBot/ClaudeBot/PerplexityBot presence =
+  the AI channel forming). Same weekly ritual, new rows.
+
+### "Why I built it" content (shipped 2026-08-20)
+
+Split into two pages per the E-E-A-T + citability rationale, not one:
+- `/about` — first-person authorship (named human, motivation, the drive-time
+  insight, agentic-by-design, weekly-scraped trust, GitHub as correction
+  channel). Satisfies E-E-A-T's experience/authorship signal.
+- `/for-agents` — the most citable page: extractable Q&A documenting the MCP
+  endpoint, three tools, connect steps, and the Strava/Garmin composition
+  pitch. This is the page AI engines and composing agents should land on.
+Both linked from the footer and in the sitemap.
+
 Parked deliberately: blog content, FAQ/breadcrumb schema, month archives, CWV
 chasing, multilingual race pages.
 

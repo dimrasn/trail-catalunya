@@ -70,7 +70,9 @@ My filters: ${phrases.join('; ')}.
 Matching races (drive times are from Plaça Glòries, Barcelona — not your location):
 ${lines}${truncationNote}
 
-Please recommend the best 3–5 for me and explain why each fits. Important: this list does NOT include live registration status or start times — open each recommended race's URL to check whether registration is open, whether it's sold out, and the start time, and tell me clearly if you can't confirm. Don't present unconfirmed details as certain.`
+Please recommend the best 3–5 for me and explain why each fits. Important: this list does NOT include live registration status or start times — open each recommended race's URL to check whether registration is open, whether it's sold out, and the start time, and tell me clearly if you can't confirm. Don't present unconfirmed details as certain.
+
+If you have access to my Strava or Garmin training data in this chat, also tell me for each recommended race whether I'm ready for it and a rough finish-time range, based on my recent training — state your assumptions and keep it a rough estimate. If you don't have my training data, just skip that part (don't guess).`
   }
 
   return `I'm planning a trail running race in Catalunya and want help choosing.
@@ -86,7 +88,9 @@ If what I want isn't in this sample (e.g. a specific month or area), tell me to 
 Upcoming races sample:
 ${lines}
 
-Once you know my constraints, recommend a few and explain why. This list does NOT include live registration status or start times — open each race's URL to verify those, and say clearly if you can't confirm. Don't present unconfirmed details as certain.`
+Once you know my constraints, recommend a few and explain why. This list does NOT include live registration status or start times — open each race's URL to verify those, and say clearly if you can't confirm. Don't present unconfirmed details as certain.
+
+If you have access to my Strava or Garmin training data in this chat, also tell me for each recommended race whether I'm ready for it and a rough finish-time range, based on my recent training — state your assumptions and keep it a rough estimate. If you don't have my training data, just skip that part (don't guess).`
 }
 
 export function claudeUrl(prompt) {

@@ -131,6 +131,14 @@ function McpHelp({ url, urlCopied, onCopyUrl, onClose }) {
           it needs a paid plan (below).
         </p>
 
+        <p style={{ color: '#9a9ab0', marginTop: 0, marginBottom: '14px' }}>
+          <strong style={{ color: '#c9c9d6' }}>Even more with your training data.</strong>{' '}
+          If you also connect a Strava or Garmin MCP to the same Claude or ChatGPT, it can
+          join your recent training with these races and tell you whether you’re ready for a
+          race and roughly what time you’d run — ask “Am I ready for this one, and what time
+          would I run?”. Your training data stays in your AI; this connector never sees it.
+        </p>
+
         <div style={{ fontSize: '12px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, marginBottom: '6px' }}>
           Server URL
         </div>

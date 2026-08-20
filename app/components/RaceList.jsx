@@ -172,6 +172,11 @@ function Header({ total }) {
 function Footer({ lastUpdated }) {
   return (
     <div style={{ padding: '20px 16px', borderTop: '1px solid #1a1a2e', marginTop: '8px' }}>
+      <p style={{ fontSize: '12px', color: '#666', textAlign: 'center', marginBottom: '8px' }}>
+        <a href="/about" style={{ textDecoration: 'underline' }}>Why I built this</a>
+        {' · '}
+        <a href="/for-agents" style={{ textDecoration: 'underline' }}>For AI agents</a>
+      </p>
       <p style={{ fontSize: '12px', color: '#444', textAlign: 'center' }}>
         Data from ultrescatalunya.com · Drive times are estimates · Last updated {lastUpdated}
       </p>
