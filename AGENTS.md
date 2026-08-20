@@ -35,8 +35,9 @@ all differ from your training data. Read the relevant guide in
 
 **Live:** Next.js site on Vercel (ISR, auto-deploy from `main`); `scrape-trails`
 Edge Function + weekly cron (verified green); `mcp` Edge Function (public);
-SEO layer (robots/sitemap/JSON-LD/og-image). Custom domain: pending purchase —
-base URL flips via `NEXT_PUBLIC_SITE_URL` env in Vercel.
+SEO layer (robots/sitemap/JSON-LD/og-image). Custom domain: **trailraces.cat**
+(DonDominio, bought 2026-08-20) — added to Vercel + `NEXT_PUBLIC_SITE_URL` set;
+DNS cutover + GSC in progress, see `docs/handoffs/2026-08-20-domain-cutover-handoff.md`.
 
 **Built but NOT deployed — enrichment pipeline** (`supabase/functions/enrich-races/`,
 merged in `710cb31`): migrations `20260623120000_race_enrichment.sql` and
@@ -59,7 +60,8 @@ checklist, in order:
 
 - Supabase project: `qaebfhbdfjvzhmvcjroz`.
 - Vercel project: `trail-catalunya` (`prj_kmAJZb6QBJk0IQuQIqCgVf6JIwSh`,
-  team `team_pN0P95wmwoYttZ31w3tnMCio`); prod alias `trail-catalunya.vercel.app`.
+  team `team_pN0P95wmwoYttZ31w3tnMCio`); prod alias `trail-catalunya.vercel.app`;
+  custom domain `trailraces.cat` (+ `www` 308→apex), registrar DonDominio.
 - GitHub: `dimrasn/trail-catalunya`, deploys from `main`.
 - Edge Function secrets: `SCRAPE_SECRET`, `RESEND_API_KEY`, `ALERT_FROM`,
   `ALERT_TO`, `VERCEL_DEPLOY_HOOK_URL`; future: `ANTHROPIC_API_KEY`, `ENRICH_SECRET`.
