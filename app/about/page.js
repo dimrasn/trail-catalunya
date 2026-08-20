@@ -40,37 +40,41 @@ export default function AboutPage() {
       <h1 style={h1}>Why I built this</h1>
 
       <p style={p}>
-        I run trails around Barcelona, and every season I ran into the same wall: there
-        was no single place to answer a simple question — <em>what are the best races near
-        me, on the weekends I&apos;m free, at a distance I actually want to run?</em> The
-        calendars that exist are long lists. They don&apos;t tell you how far a race is
-        from where you live, and they don&apos;t help you choose.
+        For a long time, picking a trail race in Catalunya was harder than running one.
+        There were no real filters and never enough information, so every time I&apos;d find
+        a race and then do all the work by hand — how far is it to drive, how much climbing,
+        is it even the kind of race I want. Every single time. It should be the easy part,
+        and it was the opposite.
       </p>
 
+      <h2 style={h2}>Because the races are worth it</h2>
       <p style={p}>
-        So I built the thing I wanted: 200+ trail races in Catalunya in one place, each one
-        tagged with how long it takes to drive there from Barcelona, its distance, its
-        elevation gain, and the month — so you can filter down to the handful that fit your
-        life instead of scrolling through everything.
+        There are a lot of them, but only 20 or 30 are truly special — and those are one of
+        a kind. Some take you through the most beautiful places in Catalunya; I love running
+        the trails on Montserrat, and a lot of these races are really just an excuse to
+        explore the national parks and corners of this region you&apos;d never see otherwise.
+        Others are simpler — you run, and at the finish there&apos;s butifarra and a cold
+        beer waiting. I love mountain races, and no two are the same.
       </p>
 
-      <h2 style={h2}>The drive-time is the point</h2>
+      <h2 style={h2}>Why an AI, not just filters</h2>
       <p style={p}>
-        Nobody else publishes drive time from Barcelona per race, and it&apos;s the first
-        thing that actually decides whether you enter a race. Every race here carries a
-        real driving estimate from Plaça Glòries. That one field is what turns a calendar
-        into a shortlist.
+        Here&apos;s the honest problem: I can&apos;t tell you what filters you need. Distance,
+        drive time, elevation — sure. But &ldquo;a race with a great atmosphere and good food
+        after,&rdquo; &ldquo;somewhere I&apos;ve never been,&rdquo; &ldquo;something my kid can
+        do too&rdquo; — those aren&apos;t checkboxes. That&apos;s what pulled me to LLMs. You
+        can ask an assistant the questions that don&apos;t fit a filter, and it just answers.
+        To me that&apos;s the most personal search there is, and I wanted to play with it.
       </p>
 
       <h2 style={h2}>Built for agents, on purpose</h2>
       <p style={p}>
-        The bigger bet: I wanted this to be usable by an AI, not just by a human reading a
-        page. So the whole race database is exposed as a live{' '}
-        <Link href="/for-agents" style={{ ...back, color: '#8a8aff' }}>MCP server</Link> —
-        a connector you can add to your own Claude or ChatGPT. You ask your assistant
-        &ldquo;find me a scenic 20&nbsp;km race under an hour from Barcelona in October,&rdquo;
-        and it queries the live data and plans for you. No copy-pasting, no scraping, no
-        stale screenshots.
+        So the whole thing is built to be used by an AI, not just read by a person. The race
+        database is exposed as a live{' '}
+        <Link href="/for-agents" style={{ ...back, color: '#8a8aff' }}>MCP server</Link> — a
+        connector you can add to your own Claude or ChatGPT. You ask &ldquo;find me a scenic
+        20&nbsp;km race under an hour from Barcelona in October,&rdquo; and it queries the live
+        data and plans for you. No copy-pasting, no stale screenshots.
       </p>
       <p style={p}>
         And because it&apos;s your assistant doing the work, it can combine this with things
@@ -80,13 +84,20 @@ export default function AboutPage() {
         never touches my server.
       </p>
 
+      <h2 style={h2}>What it is</h2>
+      <p style={p}>
+        Honestly, a pet project. I built it for me first, but I want it to be useful to
+        anyone trying to find and explore races here — and it&apos;s my way of iterating on
+        what a running marketplace could actually feel like.
+      </p>
+
       <h2 style={h2}>Kept honest</h2>
       <p style={p}>
         The data is re-scraped every week from the source calendars, so dates and new races
-        stay current. It&apos;s not perfect — race organizers change things, and some facts
-        (start times, whether registration is open) are volatile. That&apos;s why the site
-        and the agent both tell you to verify a shortlisted race at its official page before
-        you count on it. If you spot something wrong, the whole thing is open on{' '}
+        stay current. It&apos;s not perfect — organizers change things, and some facts (start
+        times, whether registration is open) are volatile. That&apos;s why the site and the
+        agent both tell you to verify a shortlisted race at its official page before you count
+        on it. If you spot something wrong, the whole thing is open on{' '}
         <a href="https://github.com/dimrasn/trail-catalunya" style={{ ...back, color: '#8a8aff' }} rel="noopener">
           GitHub
         </a>{' '}— that&apos;s the correction channel.
