@@ -24,6 +24,7 @@ confirmed or refuted it. No closing rows = not learning yet.
 3. Crawler table (query below): Googlebot trend + GPTBot/ClaudeBot/Perplexity presence.
 4. Vercel Analytics referrers: chatgpt.com/perplexity.ai (AI channel) + strava/whatsapp (share loop).
 5. Tracer hand-check: the 8 tracers from incognito google.es with `gl=ES&pws=0`; log below.
+6. **AI-citation probe** — the agent channel fires no pixel, so probe it by hand: ask ChatGPT, Claude, and Perplexity a real question ("trail race near Barcelona in October, around 25k") and record whether/how trailraces.cat surfaces. Log below. This is the only read on the bet you care about most, and it works today with zero traffic.
 
 ## Crawler query (real schema: bot, path, ua, hit_at)
 ```sql
@@ -53,6 +54,13 @@ The 8 canaries (same weekday weekly). Note position or "not found".
 | Date | trail races near barcelona | carreras de montaña cerca de barcelona | curses de muntanya prop de barcelona | trail moixeró 2026 | montlude skyrace | marató del montseny 2026 | prades epic trail inscripcions | trail races catalonia 2026 |
 |---|---|---|---|---|---|---|---|---|
 | 2026-08-20 | — | — | — | — | — | — | — | — |
+
+## AI-citation probe log
+Weekly. Ask each engine a real race question; note if trailraces.cat surfaces and how (cited/linked/not at all). Pair with the `crawler_hits` GPTBot/ClaudeBot/Perplexity rows (they read you) — a citation here means they're also answering with you.
+
+| Date | Question asked | ChatGPT | Claude | Perplexity |
+|---|---|---|---|---|
+| _tbd_ | trail race near Barcelona in October, ~25k | — | — | — |
 
 ## Timeline calibration (don't panic)
 - Weeks 0–4: only indexed-count matters; impressions ≈ 0 is normal.
