@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useMemo, useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import FilterBar from './FilterBar'
 import RaceCard from './RaceCard'
 import AskAI from './AskAI'
@@ -32,6 +31,16 @@ const ELEVATION_VALUES = ['u200', '200-500', '500-1000', '1000-2000', '2000+']
 // but a shared URL may carry any month, so validate against all 12.
 const MONTH_VALUES = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 const PROVINCE_VALUES = ['BARCELONA', 'GIRONA', 'TARRAGONA', 'LLEIDA']
+
+const DEFAULT_FILTERS = {
+  drive: 'any',
+  distance: 'any',
+  elevation: 'any',
+  month: 'all',
+  province: 'all',
+  showTBD: false,
+  kidsRun: false,
+}
 
 function filtersFromParams(sp) {
   const raw = {
@@ -171,10 +180,26 @@ function Footer({ lastUpdated }) {
 }
 
 export default function RaceList({ races, lastUpdated }) {
-  const searchParams = useSearchParams()
-  const [filters, setFilters] = useState(() => filtersFromParams(searchParams))
+  // Filters start at defaults and shared-link URL params are read AFTER mount.
+  // Deliberate: useSearchParams in the render path forces a client-side-render
+  // bailout, which made the server HTML empty — invisible to crawlers. With
+  // defaults, the full race list prerenders as real HTML (SEO), at the cost of
+  // a one-frame flash for visitors arriving via a shared filter link.
+  const [filters, setFilters] = useState(DEFAULT_FILTERS)
+  const skipFirstUrlWrite = useRef(true)
 
   useEffect(() => {
+    const fromUrl = filtersFromParams(new URLSearchParams(window.location.search))
+    if (filtersToParams(fromUrl)) setFilters(fromUrl)
+  }, [])
+
+  useEffect(() => {
+    // Skip the mount run so we never clobber a shared link's params before
+    // the read-effect above has applied them.
+    if (skipFirstUrlWrite.current) {
+      skipFirstUrlWrite.current = false
+      return
+    }
     const qs = filtersToParams(filters)
     const url = qs ? `?${qs}` : window.location.pathname
     window.history.replaceState(null, '', url)

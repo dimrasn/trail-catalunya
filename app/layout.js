@@ -1,23 +1,34 @@
 import './globals.css'
+import { SITE_URL } from './lib/site'
+
+const TITLE = 'Trail Races in Catalunya 2026 — Calendar with Drive Times from Barcelona'
+const DESCRIPTION =
+  'Find the trail race that fits you: 200+ races in Catalunya, filterable by ' +
+  'drive time from Barcelona, distance, elevation gain and month. Updated weekly.'
 
 export const metadata = {
-  title: 'Trail Catalunya 2026',
-  description: 'Find trail races in Catalunya by drive time, distance, and elevation',
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'Trail Catalunya 2026',
-    description: 'Find trail races in Catalunya by drive time, distance, and elevation',
+    title: TITLE,
+    description: DESCRIPTION,
+    url: '/',
+    siteName: 'Trail Catalunya',
     type: 'website',
+    locale: 'en_US',
   },
   twitter: {
-    card: 'summary',
-    title: 'Trail Catalunya 2026',
-    description: 'Find trail races in Catalunya by drive time, distance, and elevation',
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
   },
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ca">
+    <html lang="en">
       <body>{children}</body>
     </html>
   )
