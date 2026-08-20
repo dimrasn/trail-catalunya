@@ -28,6 +28,14 @@ unindexed — that is deliberate timing, not a problem).
 
 ## Remaining steps, in order
 
+> **Update 2026-08-20 (later same day):** steps 1–2 are DONE and verified —
+> DNS set at DonDominio (apex ANAME + www CNAME → cname.vercel-dns.com),
+> https://trailraces.cat serves 200 with SSL, www 308s to apex, canonical on
+> both hosts → trailraces.cat, sitemap/robots on the new domain. **Only steps
+> 3–5 (GSC, Bing, doc ticks) remain.** Also: the owner must click the .cat
+> registrant-validation email from no-reply@online-validation.com within 15
+> days or the registry blocks the domain.
+
 ### 1. DNS records at DonDominio (owner does the clicking; guide him)
 
 The owner logs into dondominio.com → Domains → trailraces.cat → DNS zone:
