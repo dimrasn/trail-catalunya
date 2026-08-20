@@ -15,7 +15,10 @@ all differ from your training data. Read the relevant guide in
    **enrich-races is NOT live**: don't apply its migrations or "fix" its absence
    without the activation checklist.
 3. Tests before touching code:
-   `deno test supabase/functions/ eval/` and `node --test app/lib/enrichment.test.mjs`.
+   `deno test --allow-read supabase/functions/ eval/` and
+   `node --test app/lib/enrichment.test.mjs`. The `--allow-read` flag is REQUIRED
+   — without it 12 scrape-trails tests false-fail on `fixture.html` read access
+   (NotCapable), which looks like a code defect but isn't.
    Known quirk: local `deno check` on files importing supabase-js fails on
    `npm:@supabase/realtime-js` resolution — **local only, deploys fine, do not fix**.
 4. `supabase/migrations/` in filename order — the real schema. `races` is one
@@ -41,36 +44,28 @@ Site LIVE at https://trailraces.cat (DNS+SSL+308s verified); GSC verified +
 sitemap submitted + homepage indexing requested; Bing imported from GSC (all
 2026-08-20). GSC verification is an HTML-tag meta in app/layout.js — do not remove.
 
-**Staged, NOT deployed — MCP agentic-composition instructions** (2026-08-20,
-branch `feat/agentic-content-and-nudges`): `supabase/functions/mcp/protocol.ts`
-adds an `INSTRUCTIONS` export (returned in `initialize`), `tools.ts` adds a
-`personalization` envelope field + composition clauses on all three tool
-descriptions, `index.ts` wires `instructions` into the initialize result. These
-teach a composing agent to join races with the user's OWN Strava/Garmin MCP
-locally (readiness + projected finish time) — zero storage, no server-side
-fetch. The front-end nudges (AskAI panel, askPrompt lines, /about, /for-agents)
-ship via Vercel push and need no token. The MCP edits are live-inert until
-redeployed. Until then the deployed `initialize` returns no `instructions` and
-tool descriptions lack the composition clauses — the site copy already promises
-the behavior, so redeploy is the one open loop.
+**MCP agentic-composition instructions — DEPLOYED 2026-08-20** (mcp function
+version 6, verify_jwt:false, via Supabase MCP `deploy_edge_function`).
+`supabase/functions/mcp/protocol.ts` adds an `INSTRUCTIONS` export (returned in
+`initialize`), `tools.ts` adds a `personalization` envelope field + composition
+clauses on all three tool descriptions + the enrichment integration (imports
+`enrichment_view.ts`, queries `race_enrichment`), `index.ts` wires `instructions`
+into the initialize result. These teach a composing agent to join races with the
+user's OWN Strava/Garmin MCP locally (readiness + projected finish time) — zero
+storage, no server-side fetch. Front-end nudges (AskAI panel, askPrompt lines,
+/about, /for-agents) shipped via Vercel push. Verified live post-deploy:
+`initialize` returns the 3261-char `instructions`; `search_races` returns
+`personalization` + `enriched_facts: null` (see next para) with no error.
 
-**Redeploy has a catch — the deployed function LAGS the repo.** The live `mcp`
-function is version 5, which predates the enrichment integration merged in
-`710cb31`: its `tools.ts` does NOT import `enrichment_view.ts` and does NOT
-query `race_enrichment`. The repo's `tools.ts` does both. So redeploying `mcp/`
-ships the composition instructions AND, as a side effect, the enrichment code
-path for the first time — against a `race_enrichment` table that is still
-unapplied (see enrichment pipeline below). The code tolerates the missing table
-by design (the `race_enrichment` select's error is not thrown; `enriched_facts`
-resolves to null), but this is a real behavior change that should be a
-deliberate decision, not a side effect. Deploy options, in order of least
-surprise:
-1. Deploy via the Supabase MCP `deploy_edge_function` (verify_jwt:false to keep
-   it public) or CLI `supabase functions deploy mcp --no-verify-jwt` — either
-   works; a CLI token is NOT required. Ships the enrichment lag too; safe only
-   after confirming the missing-table tolerance holds in prod.
-2. Or activate the enrichment pipeline first (checklist below), so repo and
-   deployed converge and the redeploy carries no surprise.
+**Note the enrichment-lag tolerance is now PROVEN, not just designed.** Versions
+5→6 crossed the enrichment integration merged in `710cb31` (which version 5
+predated). The deployed `tools.ts` now queries `race_enrichment`, a table that
+is STILL unapplied (see enrichment pipeline below). The tools tolerate its
+absence by design — the `race_enrichment` select's error is not thrown;
+`enrichedFactsForMcp(undefined)` returns null — and this was confirmed against
+prod on 2026-08-20 (a live `search_races` returned a clean payload,
+`enriched_facts: null`, no 500). Activating the enrichment pipeline later will
+light these facts up with no further MCP redeploy needed.
 
 **Built but NOT deployed — enrichment pipeline** (`supabase/functions/enrich-races/`,
 merged in `710cb31`): migrations `20260623120000_race_enrichment.sql` and
