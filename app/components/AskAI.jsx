@@ -81,7 +81,7 @@ export default function AskAI({ filteredRaces, filters }) {
           color: '#666', fontWeight: '400', fontSize: '12px', padding: '6px 4px',
           textDecoration: 'underline', textUnderlineOffset: '2px',
         }}
-        title="Connect this race data to your own Claude or ChatGPT (paid plans)">
+        title="Connect this race data to your own Claude or ChatGPT (Claude any plan; ChatGPT paid plans)">
         Connect your own AI
       </button>
 
@@ -127,8 +127,8 @@ function McpHelp({ url, urlCopied, onCopyUrl, onClose }) {
 
         <p style={{ color: '#9a9ab0', marginTop: 0, marginBottom: '14px' }}>
           This lets Claude or ChatGPT search the full race database live — ask things like
-          “scenic races under 1h from Barcelona in October”. It’s a one-time setup, and
-          it needs a paid plan (below).
+          “scenic races under 1h from Barcelona in October”. It’s a one-time setup, and works
+          on Claude (including Free — one connector) or a paid ChatGPT plan (Plus and up). Details below.
         </p>
 
         <p style={{ color: '#9a9ab0', marginTop: 0, marginBottom: '14px' }}>
@@ -158,18 +158,22 @@ function McpHelp({ url, urlCopied, onCopyUrl, onClose }) {
           settings below.
         </p>
 
-        <Section title="Claude (Pro, Max, Team or Enterprise)">
+        <Section title="Claude (any plan — see Free / Team notes)">
           <ol style={{ margin: '6px 0 0', paddingLeft: '20px', listStyleType: 'decimal' }}>
-            <li>Open <strong>Settings → Connectors</strong>.</li>
-            <li>Click <strong>Add custom connector</strong>.</li>
-            <li>Paste the URL above and click <strong>Add</strong>.</li>
+            <li>On <strong>Pro or Max</strong>: open <strong>Settings → Connectors</strong>, click
+              <strong> Add custom connector</strong>, paste the URL above and click <strong>Add</strong>.</li>
+            <li>On <strong>Team or Enterprise</strong>, an <strong>Owner</strong> adds it first under
+              <strong> Organization Settings → Connectors</strong>; then enable it from your own Connectors list.</li>
+            <li>On <strong>Free</strong>, add it the same way — Free allows <strong>one</strong> custom connector.</li>
             <li>In a chat, enable the <strong>trail-catalunya</strong> tool and ask away.</li>
           </ol>
         </Section>
 
-        <Section title="ChatGPT (Plus or Pro)">
+        <Section title="ChatGPT (Plus, Pro, Business, Enterprise or Edu)">
           <ol style={{ margin: '6px 0 0', paddingLeft: '20px', listStyleType: 'decimal' }}>
-            <li>Enable <strong>Settings → Connectors → Developer mode</strong>.</li>
+            <li>Turn on <strong>Developer mode</strong> in ChatGPT settings (currently
+              <strong> Settings → Apps → Advanced → Developer mode</strong>; the exact wording moves —
+              look for “Developer mode” under Apps/Connectors).</li>
             <li>Add a new MCP server and paste the URL above.</li>
             <li>Start a chat with the connector enabled.</li>
           </ol>
@@ -180,8 +184,9 @@ function McpHelp({ url, urlCopied, onCopyUrl, onClose }) {
           backgroundColor: 'rgba(251,191,36,0.08)', border: '1px solid rgba(251,191,36,0.25)',
           color: '#d6b25a', fontSize: '13px',
         }}>
-          On a free plan? Custom connectors aren’t available — use the
-          <strong> Ask Claude</strong> / <strong>Ask ChatGPT</strong> buttons instead. They need no setup.
+          On <strong>ChatGPT Free</strong>? Custom connectors aren’t available — use the
+          <strong> Ask Claude</strong> / <strong>Ask ChatGPT</strong> buttons instead (no setup).
+          On <strong>Claude Free</strong> you can add this as your one custom connector.
         </div>
       </div>
     </div>

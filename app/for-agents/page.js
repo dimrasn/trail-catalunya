@@ -74,9 +74,9 @@ export default function ForAgentsPage() {
       <h2 style={h2}>What is this?</h2>
       <p style={p}>
         Trail Catalunya publishes 200+ trail-running races in Catalunya as a Model Context
-        Protocol (MCP) server. Any MCP-capable assistant — Claude or ChatGPT on a paid plan —
-        can add it as a connector and query the live race database directly, instead of
-        reading a static web page.
+        Protocol (MCP) server. Any MCP-capable assistant — Claude (any plan, including Free with
+        a single custom connector) or ChatGPT on a paid plan (Plus and up) — can add it as a
+        connector and query the live race database directly, instead of reading a static web page.
       </p>
 
       <h2 style={h2}>What is the server endpoint?</h2>
@@ -91,11 +91,12 @@ export default function ForAgentsPage() {
       <ul style={{ paddingLeft: '20px', marginBottom: '12px' }}>
         <li style={li}>
           <strong>Claude:</strong> Settings → Connectors → Add custom connector → paste the
-          URL above.
+          URL above. On Team/Enterprise an Owner must add it first under Organization Settings →
+          Connectors.
         </li>
         <li style={li}>
-          <strong>ChatGPT:</strong> add it as a custom MCP connector under your developer /
-          connector settings and paste the URL above.
+          <strong>ChatGPT:</strong> turn on Developer mode in settings (under Apps/Connectors),
+          add a custom MCP server, and paste the URL above.
         </li>
       </ul>
       <p style={p}>
