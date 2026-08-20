@@ -45,7 +45,11 @@ sitemap submitted + homepage indexing requested; Bing imported from GSC (all
 2026-08-20). GSC verification is an HTML-tag meta in app/layout.js — do not remove.
 
 **MCP agentic-composition instructions — DEPLOYED 2026-08-20** (mcp function
-version 6, verify_jwt:false, via Supabase MCP `deploy_edge_function`).
+version 7, verify_jwt:false, via Supabase MCP `deploy_edge_function`). v7
+(2026-08-20) added a DISCOVERY block at the top of `INSTRUCTIONS` (drive-time is
+the primary axis; which tool for which query) and replaced the readiness/
+projected-time heuristic with a Riegel + ITRA-km-effort (Naismith) v1 — approved
+as a scrappy-but-defensible starting point, to be refined later.
 `supabase/functions/mcp/protocol.ts` adds an `INSTRUCTIONS` export (returned in
 `initialize`), `tools.ts` adds a `personalization` envelope field + composition
 clauses on all three tool descriptions + the enrichment integration (imports
