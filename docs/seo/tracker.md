@@ -47,6 +47,7 @@ One row per decision. It's not closed until the recheck outcome is filled.
 | Date | Reading (signal → value) | Decision / action | Recheck date | Outcome |
 |---|---|---|---|---|
 | 2026-08-20 | Baseline. 226 race pages + sitemap live; crawler log + Vercel Analytics just wired; GSC indexed count not yet read. | None — instrumentation in place; start weekly ritual next week. | 2026-08-27 | _open_ |
+| 2026-08-20 | GSC emailed: 5 non-critical Event fields missing (performer/offers/image/description/organizer). Positive signal — Google is parsing the SportsEvent JSON-LD, so index-plumbing is alive at week 0. | Not a task. Bundle two truthful fixes into the next race-page touch: `description` (reuse the existing metadata builder) + per-race og-image (next/og pattern; real payoff is social cards). Consciously ignore `performer` (N/A to a race), `offers` (already correct — absent only when no price), `organizer` (no data → revisit at R7 outreach). | after those fixes ship | _open_ |
 
 ## Tracer log
 The 8 canaries (same weekday weekly). Note position or "not found".
