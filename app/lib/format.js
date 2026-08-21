@@ -96,3 +96,28 @@ export function maxElevation(distances) {
 export function yearOf(dateStr) {
   return dateStr ? dateStr.slice(0, 4) : null
 }
+
+// km-effort (km-esforç): the native FEEC/ITRA difficulty metric — flat km plus
+// ~1 flat km per 100 m of climb. One number that compares a flat-fast 30k
+// against a brutal 18k. Only computed when both km and D+ are known, so it never
+// understates a race whose elevation we don't have. v1 heuristic.
+export function kmEffort(distance) {
+  if (!distance || distance.km == null || distance.elevationGain == null) return null
+  return Math.round((distance.km + distance.elevationGain / 100) * 10) / 10
+}
+
+// The headline km-effort for an event = the hardest of its distances, or null.
+export function maxKmEffort(distances) {
+  const vals = (distances || []).map(kmEffort).filter((v) => v != null)
+  return vals.length ? Math.max(...vals) : null
+}
+
+// A coarse band for a km-effort value (a starting-point scale, not gospel).
+export function kmEffortBand(v) {
+  if (v == null) return null
+  if (v < 30) return 'gentle'
+  if (v < 50) return 'moderate'
+  if (v < 80) return 'hard'
+  if (v < 120) return 'very hard'
+  return 'extreme'
+}

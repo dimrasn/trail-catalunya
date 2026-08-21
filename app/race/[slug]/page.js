@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation'
 import { getRaces } from '../../lib/races.js'
 import {
   displayDate, formatDrive, driveColor, distancesSummary, elevationSummary,
-  maxElevation, yearOf, PROVINCE_COLOR, PROVINCE_TITLE,
+  maxElevation, yearOf, kmEffort, maxKmEffort, kmEffortBand,
+  PROVINCE_COLOR, PROVINCE_TITLE,
 } from '../../lib/format.js'
 import { buildRacePrompt, claudeUrl, chatgptUrl } from '../../components/askPrompt.js'
 import { SITE_URL } from '../../lib/site.js'
@@ -158,6 +159,9 @@ export default async function RacePage({ params }) {
   const dist = distancesSummary(race.distances)
   const elev = elevationSummary(race.distances)
   const hasAnyPrice = race.distances.some(d => d.price != null)
+  const hasAnyEffort = race.distances.some(d => kmEffort(d) != null)
+  const maxEff = maxKmEffort(race.distances)
+  const effBand = kmEffortBand(maxEff)
   const someMissingElev = race.distances.some(d => d.elevationGain == null)
   const related = relatedRaces(races, race)
   const prompt = buildRacePrompt(race)
@@ -209,6 +213,7 @@ export default async function RacePage({ params }) {
           ['Location', `${race.town}, ${prov}`],
           dist && ['Distances', dist],
           elev && ['Elevation', elev],
+          maxEff != null && ['Difficulty', `${maxEff} km-effort · ${effBand}`],
         ].filter(Boolean).map(([label, value]) => (
           <div key={label} style={{ display: 'grid', gridTemplateColumns: '110px 1fr', gap: '10px', padding: '5px 0' }}>
             <dt style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#666', paddingTop: '2px' }}>{label}</dt>
@@ -226,6 +231,7 @@ export default async function RacePage({ params }) {
               <tr>
                 <th style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 8px 6px 0', fontWeight: 600 }}>Distance</th>
                 <th style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 8px 6px 0', fontWeight: 600 }}>Elevation</th>
+                {hasAnyEffort && <th title="km-effort = km + D+/100 (the FEEC difficulty metric)" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 8px 6px 0', fontWeight: 600 }}>Effort</th>}
                 {hasAnyPrice && <th style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 0', fontWeight: 600 }}>Price</th>}
               </tr>
             </thead>
@@ -239,6 +245,11 @@ export default async function RacePage({ params }) {
                   <td style={{ ...mono, fontSize: '15px', color: '#c9c9d6', padding: '9px 8px 9px 0', borderTop: '1px solid #1a1a2e' }}>
                     {d.elevationGain != null ? `↑${d.elevationGain} m` : <span style={{ color: '#62627a' }}>—</span>}
                   </td>
+                  {hasAnyEffort && (
+                    <td style={{ ...mono, fontSize: '15px', color: '#c9c9d6', padding: '9px 8px 9px 0', borderTop: '1px solid #1a1a2e' }}>
+                      {kmEffort(d) != null ? kmEffort(d) : <span style={{ color: '#62627a' }}>—</span>}
+                    </td>
+                  )}
                   {hasAnyPrice && (
                     <td style={{ ...mono, fontSize: '15px', color: '#c9c9d6', padding: '9px 0', borderTop: '1px solid #1a1a2e' }}>
                       {d.price != null ? `${d.price} €` : <span style={{ color: '#62627a' }}>—</span>}

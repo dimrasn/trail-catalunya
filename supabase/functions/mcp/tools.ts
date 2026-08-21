@@ -30,10 +30,27 @@ interface EnrichedEvent extends RaceEvent {
   drive_minutes_from_barcelona: number | null
   registration_status: string
   enriched_facts: EnrichedFacts | null
+  difficulty: { km_effort: number; band: string | null } | null
 }
 
 interface TownInfo {
   drive_minutes_from_barcelona: number | null
+}
+
+// km-effort (km-esforç): the FEEC/ITRA difficulty metric — km + D+/100. Only
+// computed when both km and D+ are known, so it never understates a race whose
+// elevation we don't have.
+function kmEffort(d: { km: number; elevationGain?: number }): number | null {
+  if (d.km == null || d.elevationGain == null) return null
+  return Math.round((d.km + d.elevationGain / 100) * 10) / 10
+}
+function effortBand(v: number | null): string | null {
+  if (v == null) return null
+  if (v < 30) return 'gentle'
+  if (v < 50) return 'moderate'
+  if (v < 80) return 'hard'
+  if (v < 120) return 'very hard'
+  return 'extreme'
 }
 
 async function loadEventsAndFreshness(): Promise<{
@@ -69,12 +86,18 @@ async function loadEventsAndFreshness(): Promise<{
   }
 
   const events: EnrichedEvent[] = groupRowsIntoEvents((racesRes.data || []) as RaceRow[]).map(
-    (e) => ({
-      ...e,
-      drive_minutes_from_barcelona: townMap.get(e.town)?.drive_minutes_from_barcelona ?? null,
-      registration_status: 'unknown — verify at url',
-      enriched_facts: enrichedFactsForMcp(enrichMap.get(`${e.url}::${e.town}`)),
-    }),
+    (e) => {
+      const efforts = e.distances.map(kmEffort).filter((v): v is number => v != null)
+      const maxEff = efforts.length ? Math.max(...efforts) : null
+      return {
+        ...e,
+        distances: e.distances.map((d) => ({ ...d, km_effort: kmEffort(d) })),
+        difficulty: maxEff != null ? { km_effort: maxEff, band: effortBand(maxEff) } : null,
+        drive_minutes_from_barcelona: townMap.get(e.town)?.drive_minutes_from_barcelona ?? null,
+        registration_status: 'unknown — verify at url',
+        enriched_facts: enrichedFactsForMcp(enrichMap.get(`${e.url}::${e.town}`)),
+      }
+    },
   )
 
   const asOf = freshRes.data?.[0]?.run_at as string | undefined
