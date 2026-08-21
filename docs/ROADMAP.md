@@ -31,5 +31,20 @@ Living control-plane doc. Locked sequence at the bottom; update in place with da
 4. **GSC description + per-race og-image** (ride-along fixes).
 5. Difficulty-index (`km + D+/100`) as a cheap now-win from data we already have.
 
-## Locked sequence
-_To be finalized with the product director (this section is the output of that pass)._
+## Locked sequence (product-director pass, 2026-08-20)
+
+**Through-line:** take the agent-native machinery + race data already built, get all of it live behind one dogfoodable planning on-ramp, and learn whether an AI planning over rich race data is genuinely differentiated — adding zero new scope until the dogfood tells you where the gap is.
+
+**Step 1 — Ship the difficulty index (`km + D+/100`) to live pages + MCP.** Cheapest, objective (no honesty/editorial risk), and the safest payload to prove the built-but-undeployed enrich pipeline deploys cleanly — everything later rides on that pipeline. Done when: the index renders on all eligible race pages and returns as a live MCP field, verified in prod.
+
+**Step 2 — Deploy the 91-race taste layer to live pages + MCP.** Attributes + km-esforç + editorial (unique/cool/catch/who/reference), honesty-tagged, unknown-default; the 29 un-profiled degrade gracefully. Fold the per-race og-image fix in here (already touching page render). This is finished work sitting dark, and the actual substance of the agent-native bet. Done when: the 91 show attributes/editorial on-page + via MCP, honesty tags intact, no un-profiled race renders a broken/invented field.
+
+**Step 3 — Ship the ask-box on-ramp, instrumented.** Natural-language box above the filters (filters stay primary), "Ask Claude →", hands off to the user's AI. ~1-argument change to the existing handoff. Log every query. Only a real test once the data it hands off to is live (steps 1–2). Done when: live above the filters, hands off correctly, every query captured to a readable log.
+
+**Step 4 — Dogfood sprint + gap log.** Dima runs ~8–10 real planning sessions through the ask-box; record every break (wrong ranking, hurtful unknown, missing attribute, clumsy handoff). This IS the learning goal, and the only real demand signal at ~zero traffic. Done when: a written gap list of ≥5 concrete failures, each tagged fix-now / enrich / park — that list seeds the next cycle.
+
+**Parked (say no):** the 29 fix-list races (long tail); full 226 enrichment rollout (gated on demand); new SEO surface + the GSC description tweak (SEO-WAIT); taste-layer persona/voice expansion beyond spec; any MCP v9 / new agentic scope. None re-enter until the dogfood names them.
+
+**Deviation test:** a new idea enters the roadmap only if (a) it ships already-built work to live, or (b) it comes from a failure the dogfood exposed. Otherwise → idea garden, not the sequence.
+
+**Biggest risk:** the enrich pipeline is the one true unknown, and steps 2–4 depend on it deploying cleanly — hence difficulty-index first, to surface friction on the cheapest payload. Permitted reorder: timebox steps 1–2; if the pipeline balloons, ship the ask-box (step 3, standalone) first over current data and fix the pipeline in parallel — don't let an infra rabbit-hole eat the learning.
