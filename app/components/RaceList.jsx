@@ -39,7 +39,15 @@ const DEFAULT_FILTERS = {
   month: 'all',
   province: 'all',
   showTBD: false,
+  showPast: false,
   kidsRun: false,
+}
+
+// Local calendar date (YYYY-MM-DD). Client uses the visitor's clock; the SSR
+// prerender uses build time, corrected on hydration (data revalidates daily).
+function todayISO() {
+  const n = new Date()
+  return `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`
 }
 
 function filtersFromParams(sp) {
@@ -50,6 +58,7 @@ function filtersFromParams(sp) {
     month: sp.get('month'),
     province: sp.get('prov'),
     showTBD: sp.get('tbd') === '1',
+    showPast: sp.get('past') === '1',
     kidsRun: sp.get('kids') === '1',
   }
   return {
@@ -59,6 +68,7 @@ function filtersFromParams(sp) {
     month: MONTH_VALUES.includes(raw.month) ? raw.month : 'all',
     province: PROVINCE_VALUES.includes(raw.province) ? raw.province : 'all',
     showTBD: raw.showTBD,
+    showPast: raw.showPast,
     kidsRun: raw.kidsRun,
   }
 }
@@ -71,6 +81,7 @@ function filtersToParams(filters) {
   if (filters.month !== 'all') p.set('month', filters.month)
   if (filters.province !== 'all') p.set('prov', filters.province)
   if (filters.showTBD) p.set('tbd', '1')
+  if (filters.showPast) p.set('past', '1')
   if (filters.kidsRun) p.set('kids', '1')
   return p.toString()
 }
@@ -213,8 +224,12 @@ export default function RaceList({ races, lastUpdated }) {
   const setFilter = (key, value) => setFilters(prev => ({ ...prev, [key]: value }))
 
   const filtered = useMemo(() => {
+    const today = todayISO()
     return races.filter(race => {
       if (!race.date && !filters.showTBD) return false
+      // Hide finished races by default (use dateEnd so a multi-day race stays
+      // visible through its last day); "Show past" brings them back.
+      if (race.date && !filters.showPast && (race.dateEnd || race.date) < today) return false
       if (filters.kidsRun && !race.kidsRun) return false
       return (
         matchesDrive(race, filters.drive) &&

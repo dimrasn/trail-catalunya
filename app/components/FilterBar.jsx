@@ -113,6 +113,22 @@ export default function FilterBar({ filters, setFilter, monthOptions = MONTH_OPT
         >
           Show unscheduled
         </button>
+        <button
+          onClick={() => setFilter('showPast', !filters.showPast)}
+          style={{
+            padding: '5px 12px',
+            borderRadius: '999px',
+            fontSize: '13px',
+            border: 'none',
+            cursor: 'pointer',
+            backgroundColor: filters.showPast ? '#ffffff' : '#1a1a2e',
+            color: filters.showPast ? '#0a0a14' : '#aaaaaa',
+            fontWeight: filters.showPast ? '600' : '400',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          Show past
+        </button>
       </div>
     </div>
   )
