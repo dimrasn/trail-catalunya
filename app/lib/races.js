@@ -13,6 +13,14 @@ import { createClient } from '@supabase/supabase-js'
 import driveTimes from '@/data/towns-drive-times.json'
 import townsGeocoded from '@/data/towns-geocoded.json'
 import { enrichmentForDisplay } from './enrichment.js'
+import { tasteForDisplay } from './taste.js'
+// Canonical taste artifact (plan v3, KTD1 — committed JSON bundled into the site
+// build; the MCP bundles the same file). Keyed by race_url::town.
+import tasteProfiles from '../../docs/enrichment/2026-batch/parsed/taste.json'
+
+const tasteByEvent = new Map(
+  (tasteProfiles || []).map(p => [`${(p.url || '').trim()}::${(p.town || '').trim()}`, p]),
+)
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -233,6 +241,17 @@ export async function getRaces() {
   if (error) throw new Error(`Supabase fetch failed: ${error.message}`)
 
   const events = groupRowsIntoEvents(data || [])
+
+  // Attach the taste layer (Slice 1) at the (race_url, town) grain. Missing
+  // profile is non-fatal — the page renders fine without it (degrade-to-today).
+  let tasteJoins = 0
+  for (const ev of events) {
+    const t = tasteForDisplay(tasteByEvent.get(`${(ev.url || '').trim()}::${(ev.town || '').trim()}`))
+    if (t) { ev.taste = t; tasteJoins++ }
+  }
+  if (process.env.NODE_ENV !== 'production' || process.env.TASTE_JOIN_LOG) {
+    console.log(`[taste] ${tasteJoins} of ${events.length} events joined a taste profile (${tasteByEvent.size} profiles available)`)
+  }
 
   // Attach enriched stable facts (Phase 2a) at the event grain (race_url, town).
   // Missing table or rows is non-fatal — the site renders fine without them.

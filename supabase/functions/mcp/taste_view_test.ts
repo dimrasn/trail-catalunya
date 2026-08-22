@@ -1,0 +1,47 @@
+// Tests for the MCP taste gate. Mirrors app/lib/taste.test.mjs case-for-case
+// (the parity guard — same Slice-1 policy + honesty logic on both runtimes;
+// field names differ by convention: snake_case here, camelCase on the site).
+// Run: deno test supabase/functions/mcp/taste_view_test.ts
+
+import { assert, assertEquals } from 'jsr:@std/assert@1'
+import { tasteForDisplay, tasteSummary } from './taste_view.ts'
+
+Deno.test('null / empty profile → null', () => {
+  assertEquals(tasteForDisplay(null), null)
+  assertEquals(tasteSummary(null), null)
+  assertEquals(tasteForDisplay({}), null)
+})
+
+Deno.test('editorial is our_read-labelled; Slice-1 excludes operational fields', () => {
+  const p = {
+    attributes: {
+      setting: { value: 'coastal forest ridge', claim_strength: 'organizer_fact' },
+      start_time: { value: '21:00', claim_strength: 'organizer_fact' }, // operational → deferred
+    },
+    editorial: { unique: { value: 'a night point-to-point to the beach', claim_strength: 'our_read' } },
+  }
+  const d = tasteForDisplay(p)!
+  assertEquals(d.editorial[0].label, 'What makes it special')
+  assertEquals(d.editorial[0].strength_label, 'Our read')
+  assertEquals(d.character.map((c) => c.key), ['setting']) // start_time NOT in Slice 1
+})
+
+Deno.test('garble / too-short values are hidden (whole taste → null if nothing survives)', () => {
+  const p = {
+    attributes: { setting: { value: '; .', claim_strength: 'organizer_fact' }, food: { value: 'ok', claim_strength: 'organizer_fact' } },
+    editorial: {},
+  }
+  assertEquals(tasteForDisplay(p), null)
+})
+
+Deno.test('tasteSummary picks unique and keeps its claim strength', () => {
+  assertEquals(
+    tasteSummary({ editorial: { unique: { value: 'Catalonia benchmark 100k', claim_strength: 'our_read' } } }),
+    { value: 'Catalonia benchmark 100k', strength: 'our_read', strength_label: 'Our read' },
+  )
+})
+
+Deno.test('inference stays inference, not upgraded to fact', () => {
+  const d = tasteForDisplay({ editorial: { who: { value: 'strong night runners', claim_strength: 'inference' } } })!
+  assertEquals(d.editorial[0].strength_label, 'Our guess')
+})

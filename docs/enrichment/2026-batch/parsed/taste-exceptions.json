@@ -857,12 +857,6 @@
   },
   {
     "file": "chunk-9.md",
-    "line": 7,
-    "race": "Tap Trail",
-    "reason": "missing_url_or_town"
-  },
-  {
-    "file": "chunk-9.md",
     "line": 39,
     "race": "Cursa de Sant Galderic",
     "reason": "unmapped_label",
@@ -887,12 +881,6 @@
   },
   {
     "file": "chunk-9.md",
-    "line": 36,
-    "race": "Cursa de Sant Galderic",
-    "reason": "missing_url_or_town"
-  },
-  {
-    "file": "chunk-9.md",
     "line": 73,
     "race": "Trail Torres del Foc",
     "reason": "no_tag",
@@ -914,12 +902,6 @@
     "reason": "no_tag",
     "label": "season/heat",
     "snippet": "- **season/heat:** Nov 7, Maresme coast — mild, but a 60k could see wide temp swings dawn-to-dusk."
-  },
-  {
-    "file": "chunk-9.md",
-    "line": 66,
-    "race": "Trail Torres del Foc",
-    "reason": "missing_url_or_town"
   },
   {
     "file": "chunk-9.md",
@@ -963,12 +945,6 @@
   },
   {
     "file": "chunk-9.md",
-    "line": 95,
-    "race": "Cursa de l'Alba",
-    "reason": "missing_url_or_town"
-  },
-  {
-    "file": "chunk-9.md",
     "line": 127,
     "race": "Prades Epic Trail",
     "reason": "unmapped_label",
@@ -1001,12 +977,6 @@
   },
   {
     "file": "chunk-9.md",
-    "line": 124,
-    "race": "Prades Epic Trail",
-    "reason": "missing_url_or_town"
-  },
-  {
-    "file": "chunk-9.md",
     "line": 162,
     "race": "La Pota Roja",
     "reason": "no_tag",
@@ -1031,12 +1001,6 @@
   },
   {
     "file": "chunk-9.md",
-    "line": 156,
-    "race": "La Pota Roja",
-    "reason": "missing_url_or_town"
-  },
-  {
-    "file": "chunk-9.md",
     "line": 191,
     "race": "Marató del Montseny",
     "reason": "no_tag",
@@ -1050,12 +1014,6 @@
     "reason": "no_tag",
     "label": "season/heat",
     "snippet": "- **season/heat:** Nov 8, high Montseny (Turó de l'Home 1,706 m); cold at altitude, possible early snow/fog on the tops."
-  },
-  {
-    "file": "chunk-9.md",
-    "line": 184,
-    "race": "Marató del Montseny",
-    "reason": "missing_url_or_town"
   },
   {
     "file": "chunk-9.md",
@@ -1091,12 +1049,6 @@
   },
   {
     "file": "chunk-9.md",
-    "line": 213,
-    "race": "MonteScatano",
-    "reason": "missing_url_or_town"
-  },
-  {
-    "file": "chunk-9.md",
     "line": 250,
     "race": "Cursa MDM.cat",
     "reason": "no_tag",
@@ -1118,12 +1070,6 @@
     "reason": "no_tag",
     "label": "season/heat",
     "snippet": "- **season/heat:** Nov 8, Alta Garrotxa pre-Pyrenees; cool to cold, autumn."
-  },
-  {
-    "file": "chunk-9.md",
-    "line": 243,
-    "race": "Cursa MDM.cat",
-    "reason": "missing_url_or_town"
   },
   {
     "file": "chunk-10.md",

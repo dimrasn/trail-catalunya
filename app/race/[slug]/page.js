@@ -273,6 +273,43 @@ export default async function RacePage({ params }) {
         </>
       )}
 
+      {/* TASTE LAYER (Slice 1: editorial + character, honesty-labelled) */}
+      {race.taste && (race.taste.editorial.length > 0 || race.taste.character.length > 0) && (
+        <>
+          {race.taste.editorial.length > 0 && (
+            <>
+              <div style={kicker}>Our take</div>
+              {race.taste.editorial.map(item => (
+                <div key={item.key} style={{ marginBottom: '14px' }}>
+                  <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#8a8aff', marginBottom: '3px' }}>
+                    {item.label} <span style={{ color: '#555' }}>· {item.strengthLabel}</span>
+                  </div>
+                  <div style={{ fontSize: '14px', color: '#c9c9d6', lineHeight: 1.55 }}>{item.value}</div>
+                </div>
+              ))}
+            </>
+          )}
+          {race.taste.character.length > 0 && (
+            <>
+              <div style={kicker}>Character</div>
+              <dl style={{ margin: 0 }}>
+                {race.taste.character.map(item => (
+                  <div key={item.key} style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '10px', padding: '5px 0' }}>
+                    <dt style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#666', paddingTop: '2px' }} title={item.evidence || undefined}>{item.label}</dt>
+                    <dd style={{ fontSize: '14px', color: '#e8e8f0', lineHeight: 1.5 }}>
+                      {item.value} <span style={{ fontSize: '11px', color: '#555', whiteSpace: 'nowrap' }}>· {item.strengthLabel}</span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <div style={{ fontSize: '11px', color: '#62627a', marginTop: '10px', lineHeight: 1.5 }}>
+                Labels show how we know each thing: Organizer (from the race’s own site) · Derived · Our read · Our guess · Dima (ran it). Always confirm specifics on the official site.
+              </div>
+            </>
+          )}
+        </>
+      )}
+
       {/* RACE-DAY FACTS (enrichment slot; not load-bearing) */}
       <div style={kicker}>Race-day facts</div>
       {race.enrichment ? (

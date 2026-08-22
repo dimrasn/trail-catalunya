@@ -136,14 +136,17 @@ function parseBullet(line, loc, exceptions) {
 
   // Remove the tag bracket from wherever it sits (recovers leading-tag values,
   // audit #3), then split quoted evidence from the plain value.
-  let content = vTag ? (valuePart.slice(0, vTag.index) + ' ' + valuePart.slice(vTag.index + vTag[0].length)) : valuePart
-  content = content.replace(/\s*[—–-]\s*/g, ' ').replace(/[*]/g, '').replace(/\s+/g, ' ').trim()
+  // Strip EVERY [tag] (compound bullets carry a second one — audit finding #5a),
+  // keep intra-word hyphens (trim only leading/trailing dashes).
+  let content = valuePart.replace(/\[[^\]]*\]/g, ' ').replace(/[*]/g, '').replace(/\s+/g, ' ').trim()
+    .replace(/^[\s—–-]+/, '').replace(/[\s—–-]+$/, '').trim()
   let evidence = null
   const q = content.match(/"([^"]+)"|“([^”]+)”|«([^»]+)»/)
   if (q) evidence = (q[1] || q[2] || q[3]).trim()
-  let value = content.replace(/"[^"]*"|“[^”]*”|«[^»]*»/g, ' ').replace(/\s+/g, ' ').trim()
-  if (!value && evidence) value = evidence               // leading-tag: the quote IS the value
-  if (!evidence && vTag) { const inside = vTag[1].indexOf(':'); if (inside !== -1) evidence = vTag[1].slice(inside + 1).replace(/^["'“«\s]+|["'”»\s]+$/g, '').trim() || null }
+  // Value keeps prose intact (inner quotes + hyphens preserved); only a quote
+  // wrapping the WHOLE value is trimmed (leading-tag case: `[SCRAPE] "09:00"`).
+  let value = content.replace(/^["“«]\s*/, '').replace(/\s*["”»]$/, '').trim()
+  if (!evidence && rawTag) { const inside = rawTag.indexOf(':'); if (inside !== -1) evidence = rawTag.slice(inside + 1).replace(/^["'“«\s]+|["'”»\s]+$/g, '').trim() || null }
 
   if (isUnknownValue(value)) return { omit: true }
 
@@ -176,8 +179,8 @@ function parseHeader(blockLines) {
   let town = null
   const tM = clean.match(/(?:^|[^/])\btown:\s*([^·\n(]+)/i)      // "town:" but not "date/town:"
   if (tM) town = tM[1].trim()
-  if (!town) {                                                    // "date/town: 2026-11-22 · Vilaverd"
-    const dt = clean.match(/date\/town:\s*([^\n]+)/i)
+  if (!town) {                                                    // "date/town:" OR "town / date:" (either order, spaces ok)
+    const dt = clean.match(/(?:date\s*\/\s*town|town\s*\/\s*date):\s*([^\n]+)/i)
     if (dt) for (const p of dt[1].split('·').map((s) => s.trim())) { if (/20\d{2}-\d{2}-\d{2}/.test(p)) continue; const c = p.replace(/\s*\(.*\)\s*/, '').trim(); if (c) { town = c; break } }
   }
   if (!town) {                                                    // positional: url · town · date
@@ -256,6 +259,10 @@ for (const file of chunkFiles) {
 
 writeFileSync(join(OUT, 'taste.json'), JSON.stringify(profiles, null, 2) + '\n')
 writeFileSync(join(OUT, 'taste-exceptions.json'), JSON.stringify(exceptions, null, 2) + '\n')
+// Same artifact bundled into the MCP deploy (KTD1 — one source, two bundles).
+// Minified; only the fields the MCP reads.
+const mcpProfiles = profiles.map((p) => ({ url: p.url, town: p.town, attributes: p.attributes, editorial: p.editorial }))
+writeFileSync(join(ROOT, 'supabase/functions/mcp/taste.json'), JSON.stringify(mcpProfiles) + '\n')
 
 const priorEd = profiles.filter((p) => p.prior_edition).length
 const byReason = {}

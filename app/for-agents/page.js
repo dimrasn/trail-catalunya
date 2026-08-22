@@ -126,7 +126,10 @@ export default function ForAgentsPage() {
         a few newer towns show no drive time yet — plus province, dates, a difficulty on
         ITRA&apos;s km-effort scale (km + D+/100; a 6-level word plus ITRA points 0-6, an
         endurance-load measure, not steepness — with a separate D+/km figure for verticality),
-        and best-effort enriched facts.
+        and best-effort enriched facts. Many also carry a taste layer (what makes a race special,
+        who it suits, its character), every field labelled by how we know it — organizer, derived,
+        our read, inference, or Dima (ran it) — so an agent never mistakes our judgement for an
+        organizer fact.
       </p>
 
       <h2 style={h2}>Can it use my training data?</h2>
