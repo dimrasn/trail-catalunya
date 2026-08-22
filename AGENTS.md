@@ -34,7 +34,26 @@ all differ from your training data. Read the relevant guide in
    drive time is null until the "New town" runbook (README) is run. The
    site→towns migration is deliberately deferred (enrichment plan, Scope Boundaries).
 
-## Deployment state (last verified 2026-08-20)
+## Deployment state (last verified 2026-08-22)
+
+**MCP version 10 + difficulty index — DEPLOYED & VERIFIED 2026-08-22.** The
+difficulty metric now uses ITRA's *published* km-effort scale (verified at
+itra.run): `itra_points` 0-6 (ITRA's table), a 6-level `difficulty_level` word
+(Easy/Moderate/Hard/Very hard/Extreme/Brutal, ITRA points 4+5 merged into
+Extreme), and `d_plus_per_km` (vertical density) — per distance + event-max
+(`scope:event_max`, null unless every distance has D+). Shipped on race pages
+("Difficulty: <word> · <km-effort> km-effort" + "Climb: <n> m/km" + an ITRA-logic
+note) and all three MCP tools; the earlier homemade bands are gone. Shared pure
+module `supabase/functions/mcp/difficulty.ts` ↔ `app/lib/format.js`, parity-
+guarded by mirrored tests (`difficulty_test.ts` + `app/lib/format.test.mjs`,
+11 each). Includes the 5 Codex-review fixes to the first difficulty cut. v10
+deployed via Supabase MCP `deploy_edge_function` from encoded source (all 10
+files); verified live: `get_race(ultra-pirineu)` → `{km_effort:166,
+itra_points:5, difficulty_level:"Extreme"}`, per-distance `d_plus_per_km`
+present, filtered search `matched_distances` carries the new fields,
+`enriched_facts:null` (lag-tolerance intact). **Mountain Level (0-12) stays
+parked** — ITRA hides that formula; the aid-station penalty rides with the
+enrichment deploy. See `docs/ROADMAP.md`.
 
 **Live:** Next.js site on Vercel (ISR, auto-deploy from `main`); `scrape-trails`
 Edge Function + weekly cron (verified green); `mcp` Edge Function (public);
