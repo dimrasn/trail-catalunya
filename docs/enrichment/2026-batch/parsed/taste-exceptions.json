@@ -1,0 +1,1208 @@
+[
+  {
+    "file": "chunk-1.md",
+    "line": 25,
+    "race": "Cursa Campi qui Pugui (del Papiolet)",
+    "reason": "unmapped_label",
+    "label": "What the name/basics imply",
+    "snippet": "- **What the name/basics imply [DERIVED/EDITORIAL]:** \"20a\" = **20th edition** — a long-running, established *cursa popular*, so well-organised and low-drama. \"Campi qui Pugui\" (roughly \"every man for himself\") is a traditional popular-race name; Papiolet/St. Jaume dels Domenys is **Baix Penedès vineyard/low-hills country**, not mountain. Likely short (≈km-scale road-and-track popular race), **low technicality**, family-friendly."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 27,
+    "race": "Cursa Campi qui Pugui (del Papiolet)",
+    "reason": "unmapped_label",
+    "label": "Fix-list",
+    "snippet": "- **Fix-list:** re-scrape via headless browser (athleticevents needs JS), or find the club/ajuntament page for distances, start time, kids race."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 77,
+    "race": "Vertical Prat",
+    "reason": "unmapped_label",
+    "label": "License / cutoffs / aid / parking / food / kids",
+    "snippet": "- **License / cutoffs / aid / parking / food / kids:** unknown [SCRAPE] — page silent."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 93,
+    "race": "Senglar Trail",
+    "reason": "unmapped_label",
+    "label": "Setting / technicality",
+    "snippet": "- **Setting / technicality [SCRAPE]:** forest · rocky — \"corriols tècnics entre boscos d'alzina i pi\", \"terreny pedregós\", \"fortes pujades i descensos vertiginosos\", summit 360° panorama at the **Boada** transmitter. Note: organiser here **does** state technical/rocky ground — unusually honest."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 96,
+    "race": "Senglar Trail",
+    "reason": "unmapped_label",
+    "label": "Start time / license / cutoffs / aid-cups / parking / food / kids",
+    "snippet": "- **Start time / license / cutoffs / aid-cups / parking / food / kids:** unknown [SCRAPE] — blogspot page thin."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 114,
+    "race": "Marató Valls de Cardós",
+    "reason": "unmapped_label",
+    "label": "Championship / license",
+    "snippet": "- **Championship / license [SCRAPE]:** no circuit named; **FEEC license recommended, not mandatory** (federats pay less; non-federats allowed at higher fee, insurance implied)."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 117,
+    "race": "Marató Valls de Cardós",
+    "reason": "unmapped_label",
+    "label": "Mandatory gear",
+    "snippet": "- **Mandatory gear [SCRAPE]:** thermal blanket, whistle, pack, headlamp, 1 L+ water, 300 kcal food, windproof jacket w/ hood (marató). Full mountain kit."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 118,
+    "race": "Marató Valls de Cardós",
+    "reason": "unmapped_label",
+    "label": "Parking / base",
+    "snippet": "- **Parking / base [SCRAPE]:** HQ at **Camping La Borda del Pubill**, Ribera de Cardós; partner lodgings with discounts; camper-friendly."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 119,
+    "race": "Marató Valls de Cardós",
+    "reason": "unmapped_label",
+    "label": "Post-race",
+    "snippet": "- **Post-race [SCRAPE]:** popular **pasta lunch** included + live concerts from 14:00. Kids race: none mentioned."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 142,
+    "race": "Pedraforca Xtrail",
+    "reason": "unmapped_label",
+    "label": "Parking / services",
+    "snippet": "- **Parking / services [SCRAPE]:** \"zona per pernoctar amb la furgoneta\" (camper overnight), cloakroom."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 159,
+    "race": "Cursa de la Vinya i el Pàmpol",
+    "reason": "unmapped_label",
+    "label": "Editions",
+    "snippet": "- **Editions [SCRAPE]:** **29th** Cursa de la Vinya + **8th** Pàmpol Trail — a very established vineyard-race pairing."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 164,
+    "race": "Cursa de la Vinya i el Pàmpol",
+    "reason": "unmapped_label",
+    "label": "License / cutoffs / aid-cups / parking / food",
+    "snippet": "- **License / cutoffs / aid-cups / parking / food [SCRAPE]:** unknown. Walking option on the 10 km with **2 h 15 min** max. Online-only registration, cap 450, no day-of entry."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 184,
+    "race": "La Marrana Skyrace",
+    "reason": "unmapped_label",
+    "label": "Cutoffs / start time / parking",
+    "snippet": "- **Cutoffs / start time / parking [SCRAPE]:** unknown — page silent."
+  },
+  {
+    "file": "chunk-1.md",
+    "line": 186,
+    "race": "La Marrana Skyrace",
+    "reason": "unmapped_label",
+    "label": "Route note / HONESTY",
+    "snippet": "- **Route note / HONESTY [SCRAPE]:** distances/D+ were **modified** — \"Degut a restriccions de la Reserva Natural de Mentet, està totalment prohibit disputar curses entre la Portella de Mentet i el Pic de la Dona.\" Confirm final course figures against the current edition; treat these numbers as the amended set."
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 31,
+    "race": "Cursa de muntanya Vila de Falset",
+    "reason": "unmapped_label",
+    "label": "Two courses. 13 km / 513 m D+ (real 12.7 km, start 08",
+    "snippet": "- **Two courses.** 13 km / **513 m D+** (real 12.7 km, start 08:30) and 26 km / **1109 m D+** (real 26.2 km, start 08:00). [scraped: \"13 km (12,7 km reals)… 513 m\"; \"26 km (26,2 km reals)… 1109 m\"]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 32,
+    "race": "Cursa de muntanya Vila de Falset",
+    "reason": "unmapped_label",
+    "label": "Start",
+    "snippet": "- **Start:** Pavelló Poliesportiu, Falset. [scraped: \"08.00H – PAVELLÓ POLIESPORTIU\"]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 38,
+    "race": "Cursa de muntanya Vila de Falset",
+    "reason": "unmapped_label",
+    "label": "Championship/FEEC",
+    "snippet": "- **Championship/FEEC:** not stated. [scraped — absent]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 45,
+    "race": "Cursa de muntanya Vila de Falset",
+    "reason": "unmapped_label",
+    "label": "Priorat, mid-Sept morning",
+    "snippet": "- Priorat, mid-Sept morning: hot, exposed on the ridge sections. [derived]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 61,
+    "race": "La 6.6 de Bellaterra",
+    "reason": "no_tag",
+    "label": "Night race",
+    "snippet": "- **Night race:** no."
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 65,
+    "race": "La 6.6 de Bellaterra",
+    "reason": "unmapped_label",
+    "label": "Championship/FEEC",
+    "snippet": "- **Championship/FEEC:** not mentioned. [scraped — absent]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 102,
+    "race": "Vilaplana 030 Extrem",
+    "reason": "unmapped_label",
+    "label": "Start",
+    "snippet": "- **Start:** 07:30 from Vilaplana. [scraped: \"SORTIDA VILAPLANA: 7:30 H\"]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 117,
+    "race": "Vilaplana 030 Extrem",
+    "reason": "unmapped_label",
+    "label": "Mid-Sept, 07",
+    "snippet": "- Mid-Sept, 07:30 start caps heat exposure on the climb; ridge exposure later. [derived]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 132,
+    "race": "Cursa del Castell de Montesquiu",
+    "reason": "unmapped_label",
+    "label": "Formats",
+    "snippet": "- **Formats:** \"Cursa Coll dels Tres Pals\" (long), \"Cursa Solana\" (short), children's races, adapted race, walking option. [scraped] Distances / D+ **not on the fetched page** (inscripcions/recorreguts 404'd)."
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 136,
+    "race": "Cursa del Castell de Montesquiu",
+    "reason": "unmapped_label",
+    "label": "Championship/FEEC, cutoffs, aid, start time, food, technicality",
+    "snippet": "- **Championship/FEEC, cutoffs, aid, start time, food, technicality:** unknown from page."
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 137,
+    "race": "Cursa del Castell de Montesquiu",
+    "reason": "unmapped_label",
+    "label": "Registration",
+    "snippet": "- **Registration:** via 9h Sports. [scraped]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 141,
+    "race": "Cursa del Castell de Montesquiu",
+    "reason": "unmapped_label",
+    "label": "Osona, ~600m, mid-Sept",
+    "snippet": "- Osona, ~600m, mid-Sept: mild-to-warm forest running, low heat risk. [derived]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 149,
+    "race": "Cursa del Castell de Montesquiu",
+    "reason": "unmapped_label",
+    "label": "Fix-list",
+    "snippet": "- **Fix-list:** pull distances/D+ from the 9hSports registration page."
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 157,
+    "race": "CabróRun",
+    "reason": "unmapped_label",
+    "label": "Three distances",
+    "snippet": "- **Three distances:** 12 km / **300 m D+**, 6 km / **150 m D+**, Mini CabróRun 350 m / 10 m D+. [scraped: \"12,200m… 300m\"; \"5,850m… 150m\"; \"350m… 10m\"]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 161,
+    "race": "CabróRun",
+    "reason": "unmapped_label",
+    "label": "Min age",
+    "snippet": "- **Min age:** 8 yrs (6k & 12k); 3 yrs (Mini). [scraped]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 164,
+    "race": "CabróRun",
+    "reason": "unmapped_label",
+    "label": "Topology / cutoffs / aid / food / technicality",
+    "snippet": "- **Topology / cutoffs / aid / food / technicality:** unknown."
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 168,
+    "race": "CabróRun",
+    "reason": "unmapped_label",
+    "label": "Bages plain, mid-Sept",
+    "snippet": "- Bages plain, mid-Sept: warm; if evening start, cooler and pleasant. [derived]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 184,
+    "race": "Olla de Núria vertical",
+    "reason": "unmapped_label",
+    "label": "Route",
+    "snippet": "- **Route:** Santuari de Núria (1960m) → **Puigmal summit (2909m)**. Point-to-point, uphill-only. [scraped]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 185,
+    "race": "Olla de Núria vertical",
+    "reason": "unmapped_label",
+    "label": "Start",
+    "snippet": "- **Start:** 10:30 from the Núria sanctuary esplanade. [scraped: \"10:30h des de l'esplanada del Santuari de Núria\"]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 188,
+    "race": "Olla de Núria vertical",
+    "reason": "no_tag",
+    "label": "Night race",
+    "snippet": "- **Night race:** no."
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 192,
+    "race": "Olla de Núria vertical",
+    "reason": "unmapped_label",
+    "label": "Aid / cups / FEEC gate / food / kids",
+    "snippet": "- **Aid / cups / FEEC gate / food / kids:** unknown from page."
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 197,
+    "race": "Olla de Núria vertical",
+    "reason": "unmapped_label",
+    "label": "Puigmal at 2909m in mid-Sept",
+    "snippet": "- Puigmal at 2909m in mid-Sept: cold/wind/altitude exposure at the top even on a warm valley day. [derived]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 212,
+    "race": "Taga 2040 EVO",
+    "reason": "unmapped_label",
+    "label": "Three courses",
+    "snippet": "- **Three courses:** Taga 2040 = 28 km / **2000 m D+** (773→2040 m); Can Camps = 15 km / **900 m D+**; Coll d'Art = 9 km / **500 m D+**. [scraped]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 217,
+    "race": "Taga 2040 EVO",
+    "reason": "no_tag",
+    "label": "Night race",
+    "snippet": "- **Night race:** no."
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 219,
+    "race": "Taga 2040 EVO",
+    "reason": "unmapped_label",
+    "label": "Start time / cutoffs / aid / food / technicality",
+    "snippet": "- **Start time / cutoffs / aid / food / technicality:** unknown from page."
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 223,
+    "race": "Taga 2040 EVO",
+    "reason": "unmapped_label",
+    "label": "Summit 2040m, mid-Sept",
+    "snippet": "- Summit 2040m, mid-Sept: alpine exposure up top, warm on the lower forest — classic big-mountain day. [derived]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 238,
+    "race": "Rialp Matxicots",
+    "reason": "unmapped_label",
+    "label": "Three courses",
+    "snippet": "- **Three courses:** Trail 60k / **~4700 m D+**; Mitja+ 30k / **2200 m D+**; Popular 15k / **>1000 m D+**. [scraped: \"quasi 4.700 m\"; \"2.200 m positius\"; \"més de 1.000 m. positius\"]"
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 243,
+    "race": "Rialp Matxicots",
+    "reason": "unmapped_label",
+    "label": "Championship / FEEC / cutoffs / aid / food / start time / technicality",
+    "snippet": "- **Championship / FEEC / cutoffs / aid / food / start time / technicality:** unknown from page."
+  },
+  {
+    "file": "chunk-2.md",
+    "line": 247,
+    "race": "Rialp Matxicots",
+    "reason": "unmapped_label",
+    "label": "High Pyrenees, ~1000→2900m terrain, mid-Sept",
+    "snippet": "- High Pyrenees, ~1000→2900m terrain, mid-Sept: real alpine exposure, cold/weather risk up high, long day on the 60k. [derived]"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 17,
+    "race": "Volta Volcans d'Olot",
+    "reason": "no_tag",
+    "label": "aid/self-sufficiency",
+    "snippet": "- aid/self-sufficiency: aid provided — \"avituallament sòlid, líquid\"; cups vs bring-your-own unknown"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 21,
+    "race": "Volta Volcans d'Olot",
+    "reason": "no_tag",
+    "label": "kids' race",
+    "snippet": "- kids' race: likely — \"primer infantil\" prize category referenced, details not stated"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 7,
+    "race": "Volta Volcans d'Olot",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 58,
+    "race": "Trail de Monells (23a Marxa de Monells)",
+    "reason": "unmapped_label",
+    "label": "Distances offered",
+    "snippet": "- Distances offered: Trail 25 km / Trail 18 km / Marxa 14 km / Marxa 8 km [SCRAPE]"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 39,
+    "race": "Trail de Monells (23a Marxa de Monells)",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 88,
+    "race": "Cursa del Sot",
+    "reason": "unmapped_label",
+    "label": "Cap",
+    "snippet": "- Cap: registration closes 13/09/2026 or at 400 participants [SCRAPE]"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 72,
+    "race": "Cursa del Sot",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 106,
+    "race": "Cursa de la Vaca",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 152,
+    "race": "Trail l'Albiol",
+    "reason": "no_tag",
+    "label": "post-race food",
+    "snippet": "- post-race food: finish refreshments; botifarrada not stated"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 139,
+    "race": "Trail l'Albiol",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 187,
+    "race": "Ventallonina (VI Edició)",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 236,
+    "race": "Folguerolenca Trail",
+    "reason": "unmapped_label",
+    "label": "Formats",
+    "snippet": "- Formats: Folguerolenca Trail 14 km + a Caminada (distance not stated) [SCRAPE]"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 220,
+    "race": "Folguerolenca Trail",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 273,
+    "race": "La Cambrils-Odèn (I edició)",
+    "reason": "unmapped_label",
+    "label": "Note",
+    "snippet": "- Note: town field in DB says \"La Seu d'Urgell\" but Odèn is in Solsonès (~Sant Llorenç de Morunys side), not Alt Urgell — verify locality [FLAG]"
+  },
+  {
+    "file": "chunk-3.md",
+    "line": 253,
+    "race": "La Cambrils-Odèn (I edició)",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-4.md",
+    "line": 36,
+    "race": "Cursa Matonera",
+    "reason": "unmapped_label",
+    "label": "Edition/tradition",
+    "snippet": "- **Edition/tradition** [scrape]: 6th edition — \"La iniciativa de la cursa va sorgir l'any 2021.\""
+  },
+  {
+    "file": "chunk-4.md",
+    "line": 38,
+    "race": "Cursa Matonera",
+    "reason": "unmapped_label",
+    "label": "Kids/family",
+    "snippet": "- **Kids/family** [scrape]: family walk 4 km / 100 m D+."
+  },
+  {
+    "file": "chunk-4.md",
+    "line": 76,
+    "race": "Cursa del Margalló",
+    "reason": "unmapped_label",
+    "label": "Parking/start",
+    "snippet": "- **Parking/start** [scrape]: start/finish at Olivella football field (bib pickup + sponsor booths there)."
+  },
+  {
+    "file": "chunk-4.md",
+    "line": 100,
+    "race": "Cursa Bacus",
+    "reason": "unmapped_label",
+    "label": "Parking/logistics",
+    "snippet": "- **Parking/logistics** [scrape]: \"WC i dutxes al camp de futbol municipal\"; bib pickup 7:30–8:45 race day."
+  },
+  {
+    "file": "chunk-4.md",
+    "line": 140,
+    "race": "Pujada al Montsià",
+    "reason": "unmapped_label",
+    "label": "Official name",
+    "snippet": "- **Official name** [scrape]: \"XX Pujada al Montsià, memorial Francesc Bort (Madro)\" — **20th edition**, strong tradition + memorial race."
+  },
+  {
+    "file": "chunk-4.md",
+    "line": 178,
+    "race": "Murtrail",
+    "reason": "unmapped_label",
+    "label": "Edition/tradition",
+    "snippet": "- **Edition/tradition** [scrape]: \"II edició de la Murtrail\" — 2nd edition (new race)."
+  },
+  {
+    "file": "chunk-4.md",
+    "line": 187,
+    "race": "Murtrail",
+    "reason": "unmapped_label",
+    "label": "Extras",
+    "snippet": "- **Extras** [scrape]: charity (Associació Maria Sancho); \"petjada verda\" green-event certification; race shirt for all."
+  },
+  {
+    "file": "chunk-5.md",
+    "line": 51,
+    "race": "Ultra Pirineu",
+    "reason": "no_tag",
+    "label": "Start logistics/parking",
+    "snippet": "- Start logistics/parking: Bagà village start; unknown specifics."
+  },
+  {
+    "file": "chunk-5.md",
+    "line": 82,
+    "race": "KOM Trail El Corredor",
+    "reason": "no_tag",
+    "label": "Aid / self-sufficiency",
+    "snippet": "- Aid / self-sufficiency: not detailed."
+  },
+  {
+    "file": "chunk-6.md",
+    "line": 142,
+    "race": "Brama Stage Run",
+    "reason": "unmapped_label",
+    "label": "Format/distances",
+    "snippet": "- Format/distances: `[scraped]` 3-stage race — BRAMA100K (98 km / 6,100 m D+) · BRAMA80K (76 km / 4,400 m) · BRAMA60K (58 km / 3,200 m); \"3 días de trail-running y aventura\""
+  },
+  {
+    "file": "chunk-6.md",
+    "line": 143,
+    "race": "Brama Stage Run",
+    "reason": "unmapped_label",
+    "label": "Stage breakdown",
+    "snippet": "- Stage breakdown: `[scraped]` S1 Ribes 17–33 km / 900–2,100 m · S2 Núria 25–33 km / 1,100–1,800 m · S3 Ribes–Taga 16–32 km / 1,200–2,200 m"
+  },
+  {
+    "file": "chunk-6.md",
+    "line": 154,
+    "race": "Brama Stage Run",
+    "reason": "unmapped_label",
+    "label": "Post-race",
+    "snippet": "- Post-race: `[scraped]` nightly awards + audiovisual recap — \"Cada noche celebraremos la entrega de premios y veremos un audiovisual del día\""
+  },
+  {
+    "file": "chunk-6.md",
+    "line": 192,
+    "race": "La Nocturna Trinxavambes",
+    "reason": "unmapped_label",
+    "label": "Headlamp",
+    "snippet": "- Headlamp: `[derived]` night race → frontal/headlamp effectively required though not stated on page"
+  },
+  {
+    "file": "chunk-7.md",
+    "line": 138,
+    "race": "Vertikalm",
+    "reason": "unmapped_label",
+    "label": "Charity",
+    "snippet": "- Charity: proceeds to Fundació A. Bosch (pediatric research). [SCRAPE]"
+  },
+  {
+    "file": "chunk-7.md",
+    "line": 161,
+    "race": "Trail No Limits",
+    "reason": "unmapped_label",
+    "label": "Circuit",
+    "snippet": "- Circuit: scoring race for the \"Lliga de La Noguera\" mountain-running league. [SCRAPE] → FEEC/day-licence gate likely via the Lliga [INFER]."
+  },
+  {
+    "file": "chunk-7.md",
+    "line": 162,
+    "race": "Trail No Limits",
+    "reason": "unmapped_label",
+    "label": "Organizer",
+    "snippet": "- Organizer: Runners No Limits. Registration opens Aug 1. [SCRAPE]"
+  },
+  {
+    "file": "chunk-7.md",
+    "line": 163,
+    "race": "Trail No Limits",
+    "reason": "unmapped_label",
+    "label": "Distances / D+ / start time / cutoffs / aid / parking / food / kids",
+    "snippet": "- Distances / D+ / start time / cutoffs / aid / parking / food / kids: [UNKNOWN] (behind JS sub-pages)."
+  },
+  {
+    "file": "chunk-7.md",
+    "line": 279,
+    "race": "Congost Trail Challenge — Vertical (Vertical del Tagamanent, nocturna)",
+    "reason": "unmapped_label",
+    "label": "Context",
+    "snippet": "- Context: part of C3C Challenge (Llarg ~45 km/+2,740 m €66; Curt ~27 km/+1,440 m €56; Duo). VdT is the required leg for the Challenge. [SCRAPE]"
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 17,
+    "race": "KV Roquetes",
+    "reason": "unmapped_label",
+    "label": "Cutoffs / cups / parking / tradition / post-race food / kids race",
+    "snippet": "- Cutoffs / cups / parking / tradition / post-race food / kids race: unknown (registration handled off-site via 9hsports)."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 22,
+    "race": "KV Roquetes",
+    "reason": "no_tag",
+    "label": "Season/heat",
+    "snippet": "- Season/heat: late October, low-mid altitude coastal-hinterland — cool, low heat risk. A KV is short so exposure is minimal regardless."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 54,
+    "race": "Rural Trail",
+    "reason": "no_tag",
+    "label": "Season/heat",
+    "snippet": "- Season/heat: late October, low Vallès hills — mild, low heat risk."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 75,
+    "race": "Cursa Neandertal",
+    "reason": "no_tag",
+    "label": "Night race",
+    "snippet": "- Night race: no."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 80,
+    "race": "Cursa Neandertal",
+    "reason": "unmapped_label",
+    "label": "Cups/self-sufficiency / parking",
+    "snippet": "- Cups/self-sufficiency / parking: unknown."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 83,
+    "race": "Cursa Neandertal",
+    "reason": "unmapped_label",
+    "label": "Solidarity",
+    "snippet": "- Solidarity: \"Premi Solidari Neandertal\" — part of fees to charity, 2026 partner Kms XL Lupus [scraped]."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 88,
+    "race": "Cursa Neandertal",
+    "reason": "no_tag",
+    "label": "Season/heat",
+    "snippet": "- Season/heat: late October, Anoia inland hills — mild, low heat risk."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 107,
+    "race": "Marxa Els Roures",
+    "reason": "unmapped_label",
+    "label": "Distances/D+/start/cutoff",
+    "snippet": "- Distances/D+/start/cutoff [scraped]:"
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 108,
+    "race": "Marxa Els Roures",
+    "reason": "unmapped_label",
+    "label": "Roures Clàssica",
+    "snippet": "- Roures Clàssica: 31 km, +1,400 m, start 08:30, cutoff 6:00 h, cap 200."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 109,
+    "race": "Marxa Els Roures",
+    "reason": "unmapped_label",
+    "label": "Roures Petita",
+    "snippet": "- Roures Petita: 16 km, +790 m, start 09:30, cutoff 4:30 h, cap 300 (reduced from prior 22 km)."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 110,
+    "race": "Marxa Els Roures",
+    "reason": "unmapped_label",
+    "label": "Caminada",
+    "snippet": "- Caminada: 11 km, +530 m, start 09:40, cutoff 4:30 h, cap 100."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 111,
+    "race": "Marxa Els Roures",
+    "reason": "no_tag",
+    "label": "Night race",
+    "snippet": "- Night race: no."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 115,
+    "race": "Marxa Els Roures",
+    "reason": "unmapped_label",
+    "label": "Cups/self-sufficiency",
+    "snippet": "- Cups/self-sufficiency: self-sufficient — \"Mandatory personal water bottle (no single-use cups provided)\" [scraped]."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 116,
+    "race": "Marxa Els Roures",
+    "reason": "unmapped_label",
+    "label": "Parking/logistics",
+    "snippet": "- Parking/logistics: routes stay open to vehicle traffic except the Montblanc start zone [scraped]."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 123,
+    "race": "Marxa Els Roures",
+    "reason": "no_tag",
+    "label": "Season/heat",
+    "snippet": "- Season/heat: late October, Prades mid-altitude — cool, low heat risk; the 6 h Clàssica cutoff means most of the day out."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 143,
+    "race": "Marató de Muntanya de Catalunya",
+    "reason": "no_tag",
+    "label": "Night race",
+    "snippet": "- Night race: no. Start time: unknown."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 147,
+    "race": "Marató de Muntanya de Catalunya",
+    "reason": "unmapped_label",
+    "label": "Cutoffs / cups / parking",
+    "snippet": "- Cutoffs / cups / parking: unknown."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 150,
+    "race": "Marató de Muntanya de Catalunya",
+    "reason": "unmapped_label",
+    "label": "Participation",
+    "snippet": "- Participation: ~1,000 runners across the three races [scraped]."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 155,
+    "race": "Marató de Muntanya de Catalunya",
+    "reason": "no_tag",
+    "label": "Season/heat",
+    "snippet": "- Season/heat: late October, Sant Llorenç mid-altitude near Barcelona — mild, low heat risk."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 219,
+    "race": "Vallalta Trail",
+    "reason": "no_tag",
+    "label": "Night race",
+    "snippet": "- Night race: no. Start time: unknown."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 223,
+    "race": "Vallalta Trail",
+    "reason": "unmapped_label",
+    "label": "Cutoffs / cups / self-sufficiency / parking",
+    "snippet": "- Cutoffs / cups / self-sufficiency / parking: unknown."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 230,
+    "race": "Vallalta Trail",
+    "reason": "no_tag",
+    "label": "Season/heat",
+    "snippet": "- Season/heat: early November, Montnegre near the coast — mild, low heat risk; possible humidity/mud in forest."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 252,
+    "race": "Trenca 3 Pics",
+    "reason": "no_tag",
+    "label": "Night race",
+    "snippet": "- Night race: no."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 256,
+    "race": "Trenca 3 Pics",
+    "reason": "unmapped_label",
+    "label": "Cups/self-sufficiency / parking",
+    "snippet": "- Cups/self-sufficiency / parking: unknown."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 257,
+    "race": "Trenca 3 Pics",
+    "reason": "unmapped_label",
+    "label": "Organizers",
+    "snippet": "- Organizers: CEN and Desmunta Marges [scraped]. Tradition/edition count: unknown."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 263,
+    "race": "Trenca 3 Pics",
+    "reason": "no_tag",
+    "label": "Season/heat",
+    "snippet": "- Season/heat: early November, Bages mid-hills — cool, no heat risk."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 284,
+    "race": "Cursa de la Ratafia",
+    "reason": "no_tag",
+    "label": "Night race",
+    "snippet": "- Night race: no."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 288,
+    "race": "Cursa de la Ratafia",
+    "reason": "unmapped_label",
+    "label": "Cutoffs / cups / self-sufficiency / parking",
+    "snippet": "- Cutoffs / cups / self-sufficiency / parking: unknown."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 296,
+    "race": "Cursa de la Ratafia",
+    "reason": "no_tag",
+    "label": "Season/heat",
+    "snippet": "- Season/heat: early November, Selva/Guilleries foothills — cool, no heat risk."
+  },
+  {
+    "file": "chunk-8.md",
+    "line": 306,
+    "race": "Cursa de la Ratafia",
+    "reason": "unmapped_label",
+    "label": "DATE CONFLICT",
+    "snippet": "- DATE CONFLICT: DB lists 2026-11-01, but the site's landing page states \"Diumenge 08 de Novembre 2026\" (Sunday, Nov 8, 2026). Verify the true race date before publishing — likely Nov 8."
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 14,
+    "race": "Tap Trail",
+    "reason": "no_tag",
+    "label": "night_race",
+    "snippet": "- **night_race:** no (inference — 08:00 start)"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 16,
+    "race": "Tap Trail",
+    "reason": "no_tag",
+    "label": "setting/character",
+    "snippet": "- **setting/character:** cork-country / forest (inference — Cassà de la Selva is Gavarres cork-oak territory; organizer \"La Colla dels Taps de Suro\" = cork stoppers) — LOW confidence"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 26,
+    "race": "Tap Trail",
+    "reason": "no_tag",
+    "label": "season/heat",
+    "snippet": "- **season/heat:** Nov 1, coastal-inland Gironès, low heat risk; mild autumn"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 7,
+    "race": "Tap Trail",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 39,
+    "race": "Cursa de Sant Galderic",
+    "reason": "unmapped_label",
+    "label": "NOTE",
+    "snippet": "- **NOTE:** blogspot still shows the **17a edition dated Nov 2, 2025** — 2026 figures below are prior-year, treat as indicative until the page updates."
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 44,
+    "race": "Cursa de Sant Galderic",
+    "reason": "no_tag",
+    "label": "night_race",
+    "snippet": "- **night_race:** no"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 56,
+    "race": "Cursa de Sant Galderic",
+    "reason": "no_tag",
+    "label": "season/heat",
+    "snippet": "- **season/heat:** Nov 1, Osona inland by Sau; cool, low heat"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 36,
+    "race": "Cursa de Sant Galderic",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 73,
+    "race": "Trail Torres del Foc",
+    "reason": "no_tag",
+    "label": "night_race",
+    "snippet": "- **night_race:** likely partial for the 60k (inference — an ultra with a Nov start = early/dark hours) — LOW confidence"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 80,
+    "race": "Trail Torres del Foc",
+    "reason": "no_tag",
+    "label": "start logistics/parking",
+    "snippet": "- **start logistics/parking:** Calella (coast); not detailed"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 85,
+    "race": "Trail Torres del Foc",
+    "reason": "no_tag",
+    "label": "season/heat",
+    "snippet": "- **season/heat:** Nov 7, Maresme coast — mild, but a 60k could see wide temp swings dawn-to-dusk."
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 66,
+    "race": "Trail Torres del Foc",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 101,
+    "race": "Cursa de l'Alba",
+    "reason": "no_tag",
+    "label": "start_time_of_day",
+    "snippet": "- **start_time_of_day:** dawn implied by name (\"l'Alba\" = the dawn) — LOW confidence, not numerically stated"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 102,
+    "race": "Cursa de l'Alba",
+    "reason": "no_tag",
+    "label": "night_race",
+    "snippet": "- **night_race:** possibly dawn start (inference from name) — verify"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 106,
+    "race": "Cursa de l'Alba",
+    "reason": "no_tag",
+    "label": "FEEC license gate",
+    "snippet": "- **FEEC license gate:** FEEC-linked; license likely required or day-license sold (inference from FEEC support) — verify in guide"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 109,
+    "race": "Cursa de l'Alba",
+    "reason": "no_tag",
+    "label": "start logistics/parking",
+    "snippet": "- **start logistics/parking:** Collbató; live broadcast offered (\"RETRANSMISIÓN EN DIRECTO\") — a bigger production than most in this chunk"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 114,
+    "race": "Cursa de l'Alba",
+    "reason": "no_tag",
+    "label": "season/heat",
+    "snippet": "- **season/heat:** Nov 7, Montserrat foothills; cool, possible early-morning chill."
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 95,
+    "race": "Cursa de l'Alba",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 127,
+    "race": "Prades Epic Trail",
+    "reason": "unmapped_label",
+    "label": "distances + D+ (well-documented here)",
+    "snippet": "- **distances + D+ (well-documented here):**"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 140,
+    "race": "Prades Epic Trail",
+    "reason": "no_tag",
+    "label": "start logistics/parking",
+    "snippet": "- **start logistics/parking:** Prades (Costa Daurada hinterland); not detailed"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 144,
+    "race": "Prades Epic Trail",
+    "reason": "unmapped_label",
+    "label": "prize money",
+    "snippet": "- **prize money:** \"13.000€ en PREMIS\" (50K €8k, 25K €5k) [source] — unusually large purse"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 146,
+    "race": "Prades Epic Trail",
+    "reason": "no_tag",
+    "label": "season/heat",
+    "snippet": "- **season/heat:** Nov 7–8, Serra de Prades ~1,000 m; cool, exposure/wind on the high Baltassana finish."
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 124,
+    "race": "Prades Epic Trail",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 162,
+    "race": "La Pota Roja",
+    "reason": "no_tag",
+    "label": "night_race",
+    "snippet": "- **night_race:** no"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 169,
+    "race": "La Pota Roja",
+    "reason": "no_tag",
+    "label": "start logistics/parking",
+    "snippet": "- **start logistics/parking:** Cervelló; not detailed"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 174,
+    "race": "La Pota Roja",
+    "reason": "no_tag",
+    "label": "season/heat",
+    "snippet": "- **season/heat:** Nov 8, Baix Llobregat low hills; mild."
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 156,
+    "race": "La Pota Roja",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 191,
+    "race": "Marató del Montseny",
+    "reason": "no_tag",
+    "label": "night_race",
+    "snippet": "- **night_race:** no"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 203,
+    "race": "Marató del Montseny",
+    "reason": "no_tag",
+    "label": "season/heat",
+    "snippet": "- **season/heat:** Nov 8, high Montseny (Turó de l'Home 1,706 m); cold at altitude, possible early snow/fog on the tops."
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 184,
+    "race": "Marató del Montseny",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 216,
+    "race": "MonteScatano",
+    "reason": "unmapped_label",
+    "label": "NOTE",
+    "snippet": "- **NOTE:** site shows the **XI edition dated 9/11/2025** (\"primeira edició de tardor\") — 2026 figures pending; prior-year data below."
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 221,
+    "race": "MonteScatano",
+    "reason": "no_tag",
+    "label": "night_race",
+    "snippet": "- **night_race:** no"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 225,
+    "race": "MonteScatano",
+    "reason": "no_tag",
+    "label": "FEEC license gate",
+    "snippet": "- **FEEC license gate:** yes, FEEC calendar race — license or day-license expected (inference)"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 233,
+    "race": "MonteScatano",
+    "reason": "no_tag",
+    "label": "season/heat",
+    "snippet": "- **season/heat:** Nov 8, low hills by Barcelona; mild."
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 213,
+    "race": "MonteScatano",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 250,
+    "race": "Cursa MDM.cat",
+    "reason": "no_tag",
+    "label": "night_race",
+    "snippet": "- **night_race:** no"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 259,
+    "race": "Cursa MDM.cat",
+    "reason": "no_tag",
+    "label": "kids' race",
+    "snippet": "- **kids' race:** an \"UP&DOWN\" / Vertical short format exists but not billed as kids-specific"
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 262,
+    "race": "Cursa MDM.cat",
+    "reason": "no_tag",
+    "label": "season/heat",
+    "snippet": "- **season/heat:** Nov 8, Alta Garrotxa pre-Pyrenees; cool to cold, autumn."
+  },
+  {
+    "file": "chunk-9.md",
+    "line": 243,
+    "race": "Cursa MDM.cat",
+    "reason": "missing_url_or_town"
+  },
+  {
+    "file": "chunk-10.md",
+    "line": 48,
+    "race": "Trail Montroig",
+    "reason": "unmapped_label",
+    "label": "Night race? unknown. Start time",
+    "snippet": "- **Night race?** unknown. **Start time:** unknown."
+  },
+  {
+    "file": "chunk-10.md",
+    "line": 72,
+    "race": "Up Xic Trail",
+    "reason": "unmapped_label",
+    "label": "Night race? unknown. Start time",
+    "snippet": "- **Night race?** unknown. **Start time:** unknown."
+  },
+  {
+    "file": "chunk-10.md",
+    "line": 76,
+    "race": "Up Xic Trail",
+    "reason": "unmapped_label",
+    "label": "Cutoffs / aid / cups",
+    "snippet": "- **Cutoffs / aid / cups:** unknown."
+  },
+  {
+    "file": "chunk-10.md",
+    "line": 99,
+    "race": "Volta a la Maria vertical",
+    "reason": "unmapped_label",
+    "label": "Championship/circuit / FEEC gate",
+    "snippet": "- **Championship/circuit / FEEC gate:** unknown."
+  },
+  {
+    "file": "chunk-10.md",
+    "line": 100,
+    "race": "Volta a la Maria vertical",
+    "reason": "unmapped_label",
+    "label": "Cutoffs / aid / cups",
+    "snippet": "- **Cutoffs / aid / cups:** unknown."
+  },
+  {
+    "file": "chunk-10.md",
+    "line": 150,
+    "race": "Historic Trail Calafell",
+    "reason": "unmapped_label",
+    "label": "Night race? unknown. Start time",
+    "snippet": "- **Night race?** unknown. **Start time:** unknown."
+  },
+  {
+    "file": "chunk-10.md",
+    "line": 154,
+    "race": "Historic Trail Calafell",
+    "reason": "unmapped_label",
+    "label": "Championship/circuit / FEEC gate",
+    "snippet": "- **Championship/circuit / FEEC gate:** unknown."
+  },
+  {
+    "file": "chunk-10.md",
+    "line": 155,
+    "race": "Historic Trail Calafell",
+    "reason": "unmapped_label",
+    "label": "Cutoffs / aid / cups",
+    "snippet": "- **Cutoffs / aid / cups:** unknown."
+  },
+  {
+    "file": "chunk-10.md",
+    "line": 208,
+    "race": "Cursa Fosca",
+    "reason": "unmapped_label",
+    "label": "Headlamp",
+    "snippet": "- **Headlamp:** not explicitly required on page (but a semi-night race → assume frontal needed [INFERENCE])."
+  },
+  {
+    "file": "chunk-11.md",
+    "line": 188,
+    "race": "Trail Ermites Ulldemolins",
+    "reason": "no_tag",
+    "label": "tradition/edition",
+    "snippet": "- tradition/edition: ongoing annual, number not stated"
+  }
+]

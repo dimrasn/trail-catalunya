@@ -2,6 +2,11 @@
 
 Living control-plane doc. Locked sequence at the bottom; update in place with dated provenance. Created 2026-08-20 to consolidate a day of parallel threads into one sequence.
 
+## North star (Dima, 2026-08-22)
+**Build the best possible AI-agent-friendly discovery layer for races** — starting from the small Catalunya subset — **as a learning experience for me, and in parallel bringing value to fellow runners.** The agent/MCP experience is the crown jewel: optimise how well an agent can discover, reason over, and plan races from this data. Learning + runner value are the two payoffs; public SEO/traffic and scale are downstream of getting the agent-native layer genuinely good. Rigor is bought where it makes the agent layer more trustworthy, not for its own sake.
+
+**Consequence for sequencing (2026-08-22):** Step 2 (taste) ships **in slices, piece by piece** — the honesty floor holds on every slice, but we do NOT gate the dogfood on perfecting all 91. Ship the cleanest trustworthy slice to site **and** MCP, learn, then add slices.
+
 ## Where we are (state as of 2026-08-20)
 
 ### Shipped & LIVE on trailraces.cat
