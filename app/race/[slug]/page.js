@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { getRaces } from '../../lib/races.js'
 import {
   displayDate, formatDrive, driveColor, distancesSummary, elevationSummary,
-  maxElevation, yearOf, kmEffort, maxKmEffort, kmEffortBand,
+  maxElevation, yearOf, kmEffort, eventKmEffort, difficultyLevel, dPlusPerKm,
   PROVINCE_COLOR, PROVINCE_TITLE,
 } from '../../lib/format.js'
 import { buildRacePrompt, claudeUrl, chatgptUrl } from '../../components/askPrompt.js'
@@ -160,8 +160,12 @@ export default async function RacePage({ params }) {
   const elev = elevationSummary(race.distances)
   const hasAnyPrice = race.distances.some(d => d.price != null)
   const hasAnyEffort = race.distances.some(d => kmEffort(d) != null)
-  const maxEff = maxKmEffort(race.distances)
-  const effBand = kmEffortBand(maxEff)
+  const maxEff = eventKmEffort(race.distances)
+  const diffLevel = difficultyLevel(maxEff)
+  // Climb density of the headline (hardest) distance — same variant the
+  // difficulty label describes. Defined whenever maxEff is (all distances have D+).
+  const hardest = maxEff != null ? race.distances.find(d => kmEffort(d) === maxEff) : null
+  const climbDensity = hardest ? dPlusPerKm(hardest) : null
   const someMissingElev = race.distances.some(d => d.elevationGain == null)
   const related = relatedRaces(races, race)
   const prompt = buildRacePrompt(race)
@@ -213,7 +217,8 @@ export default async function RacePage({ params }) {
           ['Location', `${race.town}, ${prov}`],
           dist && ['Distances', dist],
           elev && ['Elevation', elev],
-          maxEff != null && ['Difficulty', `${maxEff} km-effort · ${effBand}`],
+          maxEff != null && ['Difficulty', `${diffLevel} · ${maxEff} km-effort`],
+          climbDensity != null && ['Climb', `${climbDensity} m/km`],
         ].filter(Boolean).map(([label, value]) => (
           <div key={label} style={{ display: 'grid', gridTemplateColumns: '110px 1fr', gap: '10px', padding: '5px 0' }}>
             <dt style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#666', paddingTop: '2px' }}>{label}</dt>
@@ -231,7 +236,7 @@ export default async function RacePage({ params }) {
               <tr>
                 <th style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 8px 6px 0', fontWeight: 600 }}>Distance</th>
                 <th style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 8px 6px 0', fontWeight: 600 }}>Elevation</th>
-                {hasAnyEffort && <th title="km-effort = km + D+/100 (the FEEC difficulty metric)" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 8px 6px 0', fontWeight: 600 }}>Effort</th>}
+                {hasAnyEffort && <th title="km-effort = km + D+/100 (ITRA's endurance scale)" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 8px 6px 0', fontWeight: 600 }}>Effort</th>}
                 {hasAnyPrice && <th style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 0', fontWeight: 600 }}>Price</th>}
               </tr>
             </thead>
@@ -261,6 +266,9 @@ export default async function RacePage({ params }) {
           </table>
           {someMissingElev && (
             <div style={{ fontSize: '11px', color: '#62627a', marginTop: '8px' }}>Some distances have no published elevation yet.</div>
+          )}
+          {hasAnyEffort && (
+            <div style={{ fontSize: '11px', color: '#62627a', marginTop: '8px' }}>Difficulty uses the same km-effort scale as ITRA — every 100 m of climb counts like ~1 km of distance. It measures endurance load, not steepness or technical terrain; the Climb figure (m/km) shows how vertical the course is.</div>
           )}
         </>
       )}

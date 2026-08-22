@@ -106,18 +106,46 @@ export function kmEffort(distance) {
   return Math.round((distance.km + distance.elevationGain / 100) * 10) / 10
 }
 
-// The headline km-effort for an event = the hardest of its distances, or null.
-export function maxKmEffort(distances) {
-  const vals = (distances || []).map(kmEffort).filter((v) => v != null)
-  return vals.length ? Math.max(...vals) : null
+// The headline km-effort for an event = the hardest of its distances — but ONLY
+// when EVERY distance has a known km-effort. A partial max is misleading (a 42 km
+// option with unknown D+ would silently drop out and understate the event), so a
+// partial or empty event returns null. Known per-distance values stay available.
+export function eventKmEffort(distances) {
+  const ds = distances || []
+  if (ds.length === 0) return null
+  const vals = ds.map(kmEffort)
+  if (vals.some((v) => v == null)) return null
+  return Math.max(...vals)
 }
 
-// A coarse band for a km-effort value (a starting-point scale, not gospel).
-export function kmEffortBand(v) {
+// ITRA Endurance Points (0-6) from km-effort — ITRA's published, verified table
+// (itra.run): 0-24→0, 25-44→1, 45-74→2, 75-114→3, 115-154→4, 155-209→5, 210+→6.
+export function itraPoints(v) {
   if (v == null) return null
-  if (v < 30) return 'gentle'
-  if (v < 50) return 'moderate'
-  if (v < 80) return 'hard'
-  if (v < 120) return 'very hard'
-  return 'extreme'
+  if (v < 25) return 0
+  if (v < 45) return 1
+  if (v < 75) return 2
+  if (v < 115) return 3
+  if (v < 155) return 4
+  if (v < 210) return 5
+  return 6
+}
+
+// Human 6-level difficulty word, mapped onto ITRA's km-effort boundaries
+// (ITRA points 4 and 5 — the big-ultra range — merged into one "Extreme" tier).
+export function difficultyLevel(v) {
+  if (v == null) return null
+  if (v < 25) return 'Easy'
+  if (v < 45) return 'Moderate'
+  if (v < 75) return 'Hard'
+  if (v < 115) return 'Very hard'
+  if (v < 210) return 'Extreme'
+  return 'Brutal'
+}
+
+// Vertical density: metres of climb per km. Separates a runnable course from a
+// mountainous one at the same km-effort. null unless both inputs are known.
+export function dPlusPerKm(distance) {
+  if (!distance || distance.km == null || distance.km === 0 || distance.elevationGain == null) return null
+  return Math.round(distance.elevationGain / distance.km)
 }

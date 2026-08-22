@@ -123,8 +123,10 @@ export default function ForAgentsPage() {
       <p style={p}>
         Each race carries its distances (km + elevation gain in metres D+), and most carry a
         real driving estimate from Plaça Glòries in Barcelona (not the user&apos;s location) —
-        a few newer towns show no drive time yet — plus province, dates, and best-effort
-        enriched facts.
+        a few newer towns show no drive time yet — plus province, dates, a difficulty on
+        ITRA&apos;s km-effort scale (km + D+/100; a 6-level word plus ITRA points 0-6, an
+        endurance-load measure, not steepness — with a separate D+/km figure for verticality),
+        and best-effort enriched facts.
       </p>
 
       <h2 style={h2}>Can it use my training data?</h2>

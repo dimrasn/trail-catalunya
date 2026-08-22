@@ -8,8 +8,11 @@
 // an untrusted-content notice.
 
 import { getClient } from './client.ts'
-import { groupRowsIntoEvents, type RaceEvent, type RaceRow } from './grouping.ts'
+import { type Distance, groupRowsIntoEvents, type RaceEvent, type RaceRow } from './grouping.ts'
 import { type EnrichedFacts, enrichedFactsForMcp } from './enrichment_view.ts'
+import {
+  difficultyLevel, distanceMatches, dPlusPerKm, eventKmEffort, hasVariantFilter, itraPoints, kmEffort,
+} from './difficulty.ts'
 import type { ToolDef } from './protocol.ts'
 
 const RESULT_CAP = 50
@@ -26,31 +29,25 @@ const UNTRUSTED_NOTICE =
   'verify before recommending. Live registration status and sold-out are NOT in ' +
   'this data: fetch each race\'s url, and say so if you cannot confirm.'
 
+type DistanceDifficulty = Distance & {
+  km_effort?: number | null
+  itra_points?: number | null
+  difficulty_level?: string | null
+  d_plus_per_km?: number | null
+}
+
 interface EnrichedEvent extends RaceEvent {
   drive_minutes_from_barcelona: number | null
   registration_status: string
   enriched_facts: EnrichedFacts | null
-  difficulty: { km_effort: number; band: string | null } | null
+  difficulty:
+    | { km_effort: number; itra_points: number | null; difficulty_level: string | null; scope: string }
+    | null
+  matched_distances?: DistanceDifficulty[]
 }
 
 interface TownInfo {
   drive_minutes_from_barcelona: number | null
-}
-
-// km-effort (km-esforç): the FEEC/ITRA difficulty metric — km + D+/100. Only
-// computed when both km and D+ are known, so it never understates a race whose
-// elevation we don't have.
-function kmEffort(d: { km: number; elevationGain?: number }): number | null {
-  if (d.km == null || d.elevationGain == null) return null
-  return Math.round((d.km + d.elevationGain / 100) * 10) / 10
-}
-function effortBand(v: number | null): string | null {
-  if (v == null) return null
-  if (v < 30) return 'gentle'
-  if (v < 50) return 'moderate'
-  if (v < 80) return 'hard'
-  if (v < 120) return 'very hard'
-  return 'extreme'
 }
 
 async function loadEventsAndFreshness(): Promise<{
@@ -87,12 +84,22 @@ async function loadEventsAndFreshness(): Promise<{
 
   const events: EnrichedEvent[] = groupRowsIntoEvents((racesRes.data || []) as RaceRow[]).map(
     (e) => {
-      const efforts = e.distances.map(kmEffort).filter((v): v is number => v != null)
-      const maxEff = efforts.length ? Math.max(...efforts) : null
+      const maxEff = eventKmEffort(e.distances)
       return {
         ...e,
-        distances: e.distances.map((d) => ({ ...d, km_effort: kmEffort(d) })),
-        difficulty: maxEff != null ? { km_effort: maxEff, band: effortBand(maxEff) } : null,
+        distances: e.distances.map((d) => {
+          const k = kmEffort(d)
+          return {
+            ...d,
+            km_effort: k,
+            itra_points: itraPoints(k),
+            difficulty_level: difficultyLevel(k),
+            d_plus_per_km: dPlusPerKm(d),
+          }
+        }),
+        difficulty: maxEff != null
+          ? { km_effort: maxEff, itra_points: itraPoints(maxEff), difficulty_level: difficultyLevel(maxEff), scope: 'event_max' }
+          : null,
         drive_minutes_from_barcelona: townMap.get(e.town)?.drive_minutes_from_barcelona ?? null,
         registration_status: 'unknown — verify at url',
         enriched_facts: enrichedFactsForMcp(enrichMap.get(`${e.url}::${e.town}`)),
@@ -129,6 +136,7 @@ interface Filters {
 // races; we count them so the agent knows the window result isn't exhaustive.
 function applyFilters(events: EnrichedEvent[], f: Filters): { kept: EnrichedEvent[]; tbdExcluded: number } {
   const dateFiltering = f.month != null || f.date_from != null || f.date_to != null
+  const variantFiltering = hasVariantFilter(f)
   let tbdExcluded = 0
 
   const kept = events.filter((e) => {
@@ -140,21 +148,10 @@ function applyFilters(events: EnrichedEvent[], f: Filters): { kept: EnrichedEven
     if (f.province && e.province.toUpperCase() !== f.province.toUpperCase()) return false
     if (f.kids_run && !e.kidsRun) return false
 
-    if (f.dist_min != null || f.dist_max != null) {
-      const ok = e.distances.some((d) =>
-        (f.dist_min == null || d.km >= f.dist_min) && (f.dist_max == null || d.km <= f.dist_max)
-      )
-      if (!ok) return false
-    }
-
-    if (f.elev_min != null || f.elev_max != null) {
-      const ok = e.distances.some((d) =>
-        d.elevationGain != null &&
-        (f.elev_min == null || d.elevationGain >= f.elev_min) &&
-        (f.elev_max == null || d.elevationGain <= f.elev_max)
-      )
-      if (!ok) return false
-    }
+    // A distance/elevation filter keeps the event only if at least one distance
+    // satisfies ALL supplied predicates together (same variant, never split
+    // across siblings).
+    if (variantFiltering && !e.distances.some((d) => distanceMatches(d, f))) return false
 
     if (dateFiltering) {
       if (!e.date) { tbdExcluded++; return false }
@@ -175,7 +172,15 @@ function applyFilters(events: EnrichedEvent[], f: Filters): { kept: EnrichedEven
     return true
   })
 
-  return { kept, tbdExcluded }
+  // When the caller filtered by distance/elevation, attach the matching
+  // variant(s) so the agent knows WHICH distance qualified. The event's
+  // difficulty stays the full-event max (scope: event_max) — it never shifts
+  // with the filter.
+  const withMatches = variantFiltering
+    ? kept.map((e) => ({ ...e, matched_distances: e.distances.filter((d) => distanceMatches(d, f)) }))
+    : kept
+
+  return { kept: withMatches, tbdExcluded }
 }
 
 // Static personalization pointer — re-surfaces the compose-with-training-data
@@ -235,7 +240,15 @@ export const TOOLS: ToolDef[] = [
     description:
       'Search trail-running races in Catalunya by drive time, distance, elevation, ' +
       'province, month, date window, and whether they have a kids run. Returns matching ' +
-      'events with their official url, distances, and drive time from Barcelona. ' +
+      'events with their official url, distances, drive time from Barcelona, and difficulty. ' +
+      'difficulty is on ITRA\'s km-effort scale (km_effort = km + D+/100): itra_points 0-6, and a ' +
+      'human difficulty_level word (Easy/Moderate/Hard/Very hard/Extreme/Brutal). It is an ' +
+      'ENDURANCE-LOAD measure — NOT steepness or technicality; use each distance\'s d_plus_per_km ' +
+      '(metres of climb per km) for how vertical/mountainous it is. difficulty scope is event_max ' +
+      'and is null unless every distance has a known D+. ' +
+      'When you filter by distance/elevation, matched_distances lists the variant(s) that matched ' +
+      '(difficulty stays the full-event max; each distance carries its own km_effort, itra_points, ' +
+      'difficulty_level, and d_plus_per_km). ' +
       'Does NOT include live registration status or start time — fetch each shortlisted ' +
       'race\'s url to verify those before recommending, and report any you cannot confirm. ' +
       'drive_minutes_from_barcelona is from Plaça Glòries, not the user\'s location. ' +
@@ -282,7 +295,11 @@ export const TOOLS: ToolDef[] = [
     description:
       'Get full detail for one race by its id (from search_races results), including ' +
       'all distances, official url, drive time from Barcelona (measured from Plaça Glòries, ' +
-      'NOT the user\'s location), and data freshness. ' +
+      'NOT the user\'s location), difficulty, and data freshness. difficulty is on ITRA\'s ' +
+      'km-effort scale (km_effort = km + D+/100): itra_points 0-6 + a difficulty_level word ' +
+      '(Easy…Brutal); an endurance-load measure, NOT steepness/technicality (use d_plus_per_km ' +
+      'for verticality). scope event_max, null unless every distance has a known D+; each distance ' +
+      'also carries its own km_effort, itra_points, difficulty_level, and d_plus_per_km. ' +
       'Does NOT include live registration status — fetch the race\'s url to verify. ' +
       'If the user has a training-data connector, use this race\'s distances[] (km + ' +
       'elevationGain) to compute a local readiness verdict and a rough projected finish-time ' +
@@ -311,7 +328,11 @@ export const TOOLS: ToolDef[] = [
     description:
       'List races happening in a date or weekend window in Catalunya, optionally filtered ' +
       'by drive time, distance, elevation, province, or kids run. Returns events with their ' +
-      'url and drive time from Barcelona (measured from Plaça Glòries, NOT the user\'s location). ' +
+      'url, drive time from Barcelona (measured from Plaça Glòries, NOT the user\'s location), and ' +
+      'difficulty on ITRA\'s km-effort scale (km_effort = km + D+/100; itra_points 0-6 + a ' +
+      'difficulty_level word Easy…Brutal; an endurance-load measure, NOT steepness — use ' +
+      'd_plus_per_km for verticality; scope event_max, null unless every distance has a known D+). ' +
+      'When you filter by distance/elevation, matched_distances lists the variant(s) that matched. ' +
       'Undated (TBD) races are excluded and counted in ' +
       'tbd_excluded_count. Does NOT include live registration status — fetch each url to verify. ' +
       'With the user\'s own training connector present, you can also estimate readiness and a ' +

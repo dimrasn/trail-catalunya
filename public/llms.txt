@@ -9,6 +9,7 @@
 
 - Most races carry a real driving estimate from Plaça Glòries, Barcelona — the field no other calendar publishes (a few newer towns are not yet estimated).
 - Race data (distances in km, elevation gain in metres D+, dates) is re-scraped weekly from the Catalan trail-race calendars.
+- Each race carries a difficulty on ITRA's km-effort scale (km + D+/100): a 6-level word (Easy…Brutal) plus ITRA points 0-6 — an endurance-load measure, not steepness or technicality. A separate D+/km figure shows how vertical the course is.
 - Volatile facts (start time, registration status, sold-out) should be verified at each race's official URL.
 
 ## MCP server (for agents)
