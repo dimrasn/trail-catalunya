@@ -47,6 +47,23 @@ v11** — `tools.ts` bundles `mcp/taste.json` + per-tool projection (list =
 `taste_available` + `taste_summary`; get_race = full `taste`), untrusted-notice +
 INSTRUCTIONS extended. Verified live: get_race returns labelled taste, search
 returns the compact summary only.
+
+**`main` is AHEAD of the live MCP (as of 2026-08-22).** Two dogfood-driven
+changes are committed on `main` but NOT yet on the live MCP (still v11): (1)
+`taste_flags` — night + technicality band in the list projection so agents filter
+in one call (dogfood gap #1); (2) the PROJECTED-TIME instruction fix — use a hard
+session's work-interval pace as an anchor + flag the estimate when only easy runs
+exist (dogfood R2-2). **The next `supabase functions deploy mcp` from `main`
+ships both → that will be v12.** VERIFY YOU ARE ON `main` (or deploy from a `main`
+worktree) before deploying: this repo's working dir is sometimes checked out on a
+parallel session's feature branch (e.g. `feat/multi-select-filters`), and a
+disk-based CLI deploy from the wrong branch would ship that branch's unfinished
+work. Slice-1 dogfood gap list: `docs/dogfood/2026-08-22-slice1-gaps.md`; the
+bet is validated (readiness composition works on real Strava). Slice-2 backlog:
+operational facts (start/cutoffs, compound-bullet manual split + prior-edition
+gate), merge `_overrides/*` (Burriac runner/PDF notes), technicality-coverage
+salvage, chunk-3 url-only join (town backfill), the 4 non-joining + exception tail.
+
 **Deploy trap (durable):** the Supabase MCP `deploy_edge_function` tool is
 inline-only and `mcp/taste.json` is ~165KB — too large to hand-inline safely (a
 JSON error would 500 the public MCP). So **any MCP deploy that changes taste.json
