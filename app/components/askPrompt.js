@@ -17,6 +17,7 @@ const ELEV_LABEL = {
   u200: 'under 200 D+', '200-500': '200–500 D+', '500-1000': '500–1000 D+',
   '1000-2000': '1000–2000 D+', '2000+': '2000+ D+',
 }
+const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const PROV_LABEL = {
   BARCELONA: 'Barcelona', GIRONA: 'Girona', TARRAGONA: 'Tarragona', LLEIDA: 'Lleida',
 }
@@ -36,7 +37,8 @@ function activeFilterPhrases(filters) {
 }
 
 function raceLine(e, i) {
-  const date = e.date || 'date TBD'
+  const date = e.date
+    || (e.expectedMonth != null ? `expected ${MONTHS_SHORT[e.expectedMonth - 1]} ${e.expectedYear}, exact date unconfirmed` : 'date TBD')
   const prov = PROV_LABEL[e.province] || e.province || ''
   const drive = e.driveMinutes != null ? `${e.driveMinutes} min from Barcelona` : 'drive time unknown'
   const dists = (e.distances || [])

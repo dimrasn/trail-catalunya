@@ -131,7 +131,12 @@ function matchesElevation(race, filter) {
 
 function matchesMonth(race, filter) {
   if (filter === 'all') return true
-  if (!race.date) return false
+  // A race whose month is known but whose day is not still belongs in that
+  // month's results — otherwise 91 events are invisible to every month search.
+  // The card labels it "(expected)"; this only decides membership.
+  if (!race.date) {
+    return race.expectedMonth != null && String(race.expectedMonth).padStart(2, '0') === filter
+  }
   return race.date.slice(5, 7) === filter
 }
 
@@ -226,7 +231,11 @@ export default function RaceList({ races, lastUpdated }) {
   const filtered = useMemo(() => {
     const today = todayISO()
     return races.filter(race => {
-      if (!race.date && !filters.showTBD) return false
+      // A race whose month is known is NOT "date TBD" — it belongs in that
+      // month, labelled "(expected)". Only a race with no month at all (the
+      // source disagreeing with itself, per R6's agreement gate) stays behind
+      // the Show-TBD toggle.
+      if (!race.date && race.expectedMonth == null && !filters.showTBD) return false
       // Hide finished races by default (use dateEnd so a multi-day race stays
       // visible through its last day); "Show past" brings them back.
       if (race.date && !filters.showPast && (race.dateEnd || race.date) < today) return false
@@ -244,7 +253,11 @@ export default function RaceList({ races, lastUpdated }) {
   const grouped = useMemo(() => {
     const groups = {}
     for (const race of filtered) {
-      const key = race.date ? race.date.slice(0, 7) : 'TBD'
+      const key = race.date
+        ? race.date.slice(0, 7)
+        : race.expectedMonth != null
+          ? `${race.expectedYear}-${String(race.expectedMonth).padStart(2, '0')}`
+          : 'TBD'
       if (!groups[key]) groups[key] = []
       groups[key].push(race)
     }

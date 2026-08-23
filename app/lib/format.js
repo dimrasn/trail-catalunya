@@ -83,11 +83,34 @@ export function distancesSummary(distances) {
   return `${fmtNumList(kms)} km`
 }
 
-// "↑650 m" / "↑650, 1090 m" across the distances that have elevation, or null.
+// "↑650 m" / "↑650–1090 m" — the event's climb SPAN.
+//
+// R1 (comma-joined lists) deliberately does NOT apply here. A distance is a
+// thing a runner selects; its climb is a property of that selection. Listing
+// climbs severs which climb belongs to which distance — a worse distortion than
+// the span it would replace. Per-variant D+ stays in the distances table.
+//
+// Returns null unless EVERY distance has a known climb, mirroring
+// eventKmEffort(): a partial maximum silently drops the unknown variants and
+// understates the event.
 export function elevationSummary(distances) {
-  const els = (distances || []).map(d => d.elevationGain).filter(e => e != null)
-  if (els.length === 0) return null
-  return `↑${fmtNumList(els)} m`
+  const ds = distances || []
+  if (ds.length === 0) return null
+  const els = ds.map(d => d.elevationGain)
+  if (els.some(e => e == null)) return null
+  const min = Math.min(...els)
+  const max = Math.max(...els)
+  return min === max ? `↑${min} m` : `↑${min}–${max} m`
+}
+
+// Max climb across an event, ONLY when every distance has one. Distinct from
+// maxElevation(), which maxes whatever is known and is therefore unsafe to
+// publish as an event-level aggregate.
+export function completeMaxElevation(distances) {
+  const ds = distances || []
+  if (ds.length === 0) return null
+  const els = ds.map(d => d.elevationGain)
+  return els.some(e => e == null) ? null : Math.max(...els)
 }
 
 // The distance+climb fragment for page titles and meta descriptions.
@@ -99,7 +122,9 @@ export function metadataDistancePart(distances) {
   const ds = distances || []
   const dist = distancesSummary(ds)
   if (!dist) return null
-  const maxEl = maxElevation(ds)
+  // Complete data only: "up to 6600 m D+" beside a distance list implies the
+  // whole list is covered. On a partially-known event it is not.
+  const maxEl = completeMaxElevation(ds)
   if (maxEl == null) return dist
   const distinctKms = new Set(ds.map(d => d.km).filter(k => k != null))
   return distinctKms.size === 1 ? `${dist} / ${maxEl} m D+` : `${dist} · up to ${maxEl} m D+`

@@ -124,10 +124,24 @@ test('distancesSummary: rows without km are ignored; none → null', () => {
   assert.equal(distancesSummary([]), null)
 })
 
-test('elevationSummary: discrete climbs are a list, not a range', () => {
-  assert.equal(elevationSummary([{ elevationGain: 1090 }, { elevationGain: 650 }]), '↑650, 1090 m')
-  assert.equal(elevationSummary([{ elevationGain: 650 }]), '↑650 m')
-  assert.equal(elevationSummary([{ elevationGain: null }]), null)
+// R1 deliberately does NOT extend to elevation (narrowed 2026-08-23 after audit).
+// A distance is independently selectable; its climb is a PROPERTY of it. Listing
+// climbs as "↑650, 1090 m" severs which climb belongs to which distance, which
+// is a worse lie than the span it replaced. Event aggregates need complete data.
+test('elevationSummary: a span, not a list — climbs stay paired to distances', () => {
+  assert.equal(
+    elevationSummary([{ km: 42, elevationGain: 1090 }, { km: 21, elevationGain: 650 }]),
+    '↑650–1090 m',
+  )
+  assert.equal(elevationSummary([{ km: 21, elevationGain: 650 }]), '↑650 m')
+})
+
+test('elevationSummary: partial data → null, never a partial maximum', () => {
+  // Mirrors eventKmEffort's refusal: a 42 km variant with unknown D+ would drop
+  // out silently and understate the event. 6 active events have this shape.
+  assert.equal(elevationSummary([{ km: 42, elevationGain: null }, { km: 21, elevationGain: 650 }]), null)
+  assert.equal(elevationSummary([{ km: 21, elevationGain: null }]), null)
+  assert.equal(elevationSummary([]), null)
 })
 
 // R2: never pair a range endpoint with an unrelated maximum. Ultra Pirineu's
@@ -147,6 +161,15 @@ test('metadataDistancePart: a single distance pairs its own climb directly', () 
 test('metadataDistancePart: no elevation → distances alone; no distances → null', () => {
   assert.equal(metadataDistancePart([{ km: 18 }, { km: 25 }]), '18, 25 km')
   assert.equal(metadataDistancePart([]), null)
+})
+
+test('metadataDistancePart: PARTIAL elevation publishes no maximum', () => {
+  // The 6 partial-elevation events. "up to 1090 m D+" beside "21, 42 km" implies
+  // the 42 km is covered when its climb is unknown — R2's failure, subtler.
+  assert.equal(
+    metadataDistancePart([{ km: 42, elevationGain: null }, { km: 21, elevationGain: 1090 }]),
+    '21, 42 km',
+  )
 })
 
 // ---------------------------------------------------------------------------

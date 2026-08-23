@@ -40,8 +40,14 @@ contradiction is unreadable; a stamped one is a decision. Contradictions go to
 `lens: honesty` · `status: live` · added 2026-08-23
 
 A range (`18–25 km`) asserts that intermediate values exist. Where the values
-are discrete and enumerable — distances, elevations — join them with commas:
+are **independently selectable** — distances — join them with commas:
 `18, 25 km`. Applies to any surface: card, race page, `<title>`, MCP payload.
+
+**Narrowed 2026-08-23 after audit: this rule does NOT extend to elevation.** A
+distance is a thing a runner selects; its climb is a *property* of that
+selection. Listing climbs (`↑650, 1090 m`) severs which climb belongs to which
+distance — a worse distortion than the span it replaces. Elevation renders as a
+span, and only when every distance has a known climb (see R14).
 
 > Dima, 2026-08-23: *"let's mention distances using comma not -, because there
 > is nothing in between"*
@@ -94,6 +100,16 @@ or discontinued event would still carry a fabricated date-like claim.
 
 **In force:** show "Next edition not announced — check official site." A future
 month/year appears only from organizer evidence or validated edition history.
+
+**Amended 2026-08-23 after audit — the source must agree with itself.** A
+month the *source* publishes (`month_num` + `year`) is organizer evidence, not
+our prediction, and may be shown as "Expected September 2026 — exact date not
+announced". But it is suppressed whenever the source contradicts itself: an
+out-of-range month, rows within one event naming different months, or a
+`date_display` bare year that disagrees with `year` (live: `Radikal Estana`,
+month "Agost 2026", `date_display` "2027"). 4 of 91 events tripped this and now
+fall back to "Date TBD". Publishing 87 verified months beats publishing 91 of
+which 4 are known-contradictory.
 
 ### R7 — Both drive-time consumers are updated together
 `lens: completeness` · `status: live` · added 2026-08-23
@@ -170,35 +186,59 @@ series/edition model, which is not yet built.
 
 *(none open — D1 and D2 resolved below as R12 and R13.)*
 
-### R12 — Roadless towns are a site-side state, not a schema change
+### R12 — Roadless towns need a shared access contract (supersedes the site-only cut)
+`lens: honesty` · `status: live` · added 2026-08-23, **rewritten same day after audit**
+
+**The first version of this rule was wrong and is recorded below as falsified.**
+
+A town's drive state is `drivable(minutes) | no_road_access | unknown`, and the
+contract is **shared across site and MCP**. `null` already means "unknown" to
+every MCP consumer; overloading it to also mean "no road exists" makes the two
+indistinguishable on the axis the MCP documents as primary for discovery. This
+requires the schema change the site-only cut was trying to avoid, and it lands
+**before** the Plan 3 backfill — not after, or 176 towns get written under the
+wrong contract.
+
+#### R12-v1 — `status: falsified` (2026-08-23)
+
+> Keep the access state in the site's JSON only; let the MCP keep returning
+> `null` until Slice 2, on the grounds that no second consumer needs the
+> distinction.
+
+Falsified by audit: **the MCP is already the second consumer.** It publishes
+`drive_minutes_from_barcelona` as the primary discovery axis, and `null` there
+already carries a distinct meaning. The author's "no second consumer yet"
+reasoning was convenience, not economy. Kept so the cut is not re-proposed.
+
+### R13 — Event names come from a canonical registry
+`lens: honesty` · `status: live` · added 2026-08-23, **rewritten same day after audit**
+
+**Rewritten 2026-08-23 after audit — the registry is PRIMARY, not a fallback.**
+
+The canonical registry names every multi-name event explicitly. The
+longest-distance heuristic only *proposes* a name for an event new to the
+registry; it never silently overrides one.
+
+Why the first version was unsound: deriving the name from the longest distance
+makes the name — and therefore the **public slug** — a function of the scraped
+data. A race that adds a longer distance next season silently renames itself and
+moves its URL, which is exactly the instability **R9** exists to prevent. That
+the heuristic happens to resolve all 3 current cases correctly (Olla de Núria,
+Espintrail, Volta a la Maria) is not evidence it is stable.
+
+**Display name and slug are pinned independently.** A display name may be
+corrected without moving a URL; a slug changes only deliberately, and every
+change ships its permanent redirect in the same commit (R9).
+
+### R14 — Event-level aggregates require complete data
 `lens: honesty` · `status: live` · added 2026-08-23
 
-Resolves D1. R3 requires a non-numeric state for places like Vall de Núria, but
-`towns.drive_minutes_from_barcelona` is an integer column where `null` already
-means "unknown". **The access state lives in the site's JSON only**; the MCP
-keeps returning `null` until Slice 2, exactly as it already tolerates the
-absent `race_enrichment` table.
+An aggregate across an event's distances (max climb, km-effort, difficulty) is
+published **only when every distance carries the underlying value**. A partial
+maximum silently drops the unknown variants and understates the event.
 
-The audit was right that a *shared* contract needs a migration. We do not need
-a shared contract yet — we need the site to stop printing `3h 45m` to a valley
-reachable only by rack railway. Revisit if a second consumer needs the
-distinction.
-
-> Adopted on Dima's "let's go", 2026-08-23, from a stated recommendation.
-> Correct this row if that was not the intent.
-
-### R13 — Event names: longest distance, with an override registry
-`lens: honesty` · `status: live` · added 2026-08-23
-
-Resolves D2. Default to the name of the longest-distance row — verified to
-resolve all 3 live sub-race-first cases correctly (Olla de Núria, Espintrail,
-Volta a la Maria). Distance is not proof of brand hierarchy, so an explicit
-override registry covers the 6 mixed-name events where the two diverge. The
-registry lives with this ledger; a name argued over in a PR and not written
-down here will be re-argued.
-
-Pairs with **R9**: any name change moves a slug, and every moved slug needs a
-permanent redirect shipped in the same change.
-
-> Adopted on Dima's "let's go", 2026-08-23, from a stated recommendation.
-> Correct this row if that was not the intent.
+`eventKmEffort()` already enforced this; `maxElevation()` did not, so titles
+read "21, 42 km · up to 1090 m D+" where the 42 km's climb was unknown — R2's
+failure in subtler form. 6 active events have this shape. `elevationSummary()`
+and `metadataDistancePart()` now use `completeMaxElevation()`; per-variant
+values stay in the distances table, where they are correctly attributed.

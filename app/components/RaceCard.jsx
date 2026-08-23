@@ -201,7 +201,7 @@ export default function RaceCard({ race }) {
           {dateDisplay || (
             race.expectedMonth != null
               ? <span style={{ color: '#a78bfa' }} title="Exact date not announced">
-                  {MONTHS_SHORT[race.expectedMonth - 1].toUpperCase()} {race.expectedYear} · DATE TBD
+                  {MONTHS_SHORT[race.expectedMonth - 1].toUpperCase()} {race.expectedYear} · EXPECTED
                 </span>
               : <span style={{ color: '#a78bfa' }}>DATE TBD</span>
           )}

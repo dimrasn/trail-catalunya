@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { getRaces } from '../../lib/races.js'
 import {
   displayDate, formatDrive, driveColor, distancesSummary, elevationSummary,
-  metadataDistancePart, expectedDateLabel,
+  metadataDistancePart, expectedDateLabel, MONTHS_SHORT,
   maxElevation, yearOf, kmEffort, eventKmEffort, difficultyLevel, dPlusPerKm,
   PROVINCE_COLOR, PROVINCE_TITLE,
 } from '../../lib/format.js'
@@ -194,7 +194,7 @@ export default async function RacePage({ params }) {
         {race.name}
       </h1>
       <div style={{ fontSize: '14px', color: '#9a9ab0', marginTop: '8px', display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-        <span style={mono}>{dateStr || <span style={{ color: '#a78bfa' }}>Date TBD</span>} · {race.town}</span>
+        <span style={mono}>{dateStr || <span style={{ color: '#a78bfa' }}>{expectedMonthStr ? `${expectedMonthStr} (expected)` : 'Date TBD'}</span>} · {race.town}</span>
         <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.04em', padding: '2px 7px', borderRadius: '6px', backgroundColor: provColor + '33', color: provColor, textTransform: 'uppercase' }}>
           {prov}
         </span>
@@ -381,7 +381,7 @@ export default async function RacePage({ params }) {
                 <span>
                   <span style={{ fontSize: '15px', fontWeight: 600, color: '#fff' }}>{r.name}</span>
                   <span style={{ display: 'block', fontSize: '13px', color: '#888', marginTop: '3px' }}>
-                    {displayDate(r) || 'Date TBD'} · {r.town} · {r.distances.length} {r.distances.length === 1 ? 'distance' : 'distances'}
+                    {displayDate(r) || (r.expectedMonth != null ? `${MONTHS_SHORT[r.expectedMonth - 1]} ${r.expectedYear} (expected)` : 'Date TBD')} · {r.town} · {r.distances.length} {r.distances.length === 1 ? 'distance' : 'distances'}
                   </span>
                 </span>
                 {r.driveMinutes != null

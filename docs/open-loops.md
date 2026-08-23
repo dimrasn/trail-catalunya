@@ -20,6 +20,9 @@ Created 2026-08-23. Review weekly, alongside the Monday scrape.
 
 | # | Loop | Owner | Due | Status |
 |---|---|---|---|---|
+| L14 | **R12 schema work must precede the Plan 3 backfill.** Shared `drivable / no_road_access / unknown` contract across site JSON + `towns` table, or 176 towns get written under a contract we know is wrong. | agent | with Plan 3 | open |
+| L15 | **Build the canonical name registry (R13)** before any Plan 2 identity change; pin display name and slug independently. | agent | with Plan 2 | open |
+| L16 | **MCP has no expected-month fields.** Site now shows 87 expected months; `mcp/grouping.ts` does not, so agents still see these as undated. Parity work + code-only deploy. | agent | with Plan 2 | open |
 | L13 | **Pre-existing on `main`:** `deno test` type-check fails at `difficulty_test.ts:96` — `drive_max` is not declared in `VariantFilter`. Reproduced with all Plan-1 changes stashed. Blocks the documented test command; 114 tests pass with `--no-check`. May already be fixed on `feat/multi-select-filters` — check before fixing. | agent | 2026-08-30 | open |
 | L4 | Geocode + drive-time backfill for **176 active towns** via OSRM/Nominatim (Dima's call 2026-08-23: automate free, no API spend). Acceptance: Monells ≈86 min vs his hand-measured 1h26m. | agent | with location plan | open |
 | L5 | Add the golden assertion so a new town missing geocode/drive time fails loudly (R11). Must cover **both** consumers per R7 — Supabase check post-scrape, and a build/CI check on the committed JSON caches. | agent | with location plan | open |
