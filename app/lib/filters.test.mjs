@@ -42,6 +42,22 @@ test('filtersFromParams: invalid buckets are dropped', () => {
   assert.deepEqual(f.distance, ['10-15'])
 })
 
+test('filtersFromParams: legacy single-value (no-comma) links still restore', () => {
+  // Old single-select URLs predate the comma format — they must keep working.
+  const f = filtersFromParams(sp({ dist: '10-15', prov: 'GIRONA', drive: 'u60', month: '05' }))
+  assert.deepEqual(f.distance, ['10-15'])
+  assert.deepEqual(f.province, ['GIRONA'])
+  assert.deepEqual(f.drive, ['u60'])
+  assert.deepEqual(f.month, ['05'])
+})
+
+test('filtersFromParams: junk-only / whitespace / empty params → empty array', () => {
+  assert.deepEqual(filtersFromParams(sp({ dist: 'bogus,999' })).distance, [])
+  assert.deepEqual(filtersFromParams(sp({ dist: ',,,' })).distance, [])
+  assert.deepEqual(filtersFromParams(sp({ dist: '' })).distance, [])
+  assert.deepEqual(filtersFromParams(sp({ dist: ' 10-15 ' })).distance, []) // padded ≠ valid token
+})
+
 test('filtersFromParams: order is canonical, not URL order, and deduped', () => {
   const f = filtersFromParams(sp({ dist: '42+,10-15,10-15' }))
   assert.deepEqual(f.distance, ['10-15', '42+'])
@@ -61,6 +77,19 @@ test('round-trip: params → filters → params is stable', () => {
 
 test('filtersToParams: all-empty filters → empty query string', () => {
   assert.equal(filtersToParams(DEFAULT_FILTERS), '')
+})
+
+test('round-trip: every row + the %2B-encoded 42+ bucket survives a real URL string', () => {
+  const original = {
+    ...DEFAULT_FILTERS,
+    drive: ['u60', '120+'], distance: ['u10', '42+'],
+    elevation: ['200-500', '2000+'], month: ['05', '11'],
+    province: ['BARCELONA', 'LLEIDA'], showTBD: true, showPast: true, kidsRun: true,
+  }
+  const qs = filtersToParams(original)
+  assert.ok(qs.includes('42%2B'), 'the "+" in 42+ must be percent-encoded, not a literal +')
+  const back = filtersFromParams(new URLSearchParams(qs))
+  assert.deepEqual(back, original)
 })
 
 // --- Matchers: empty selection matches everything ---
@@ -91,6 +120,15 @@ test('matchesDistance: a multi-distance race matches if ANY distance qualifies',
 
 test('matchesDistance: no distances → not excluded', () => {
   assert.equal(matchesDistance({ distances: [] }, ['10-15']), true)
+})
+
+test('matchers: an unrecognized bucket matches nothing (contract when called directly)', () => {
+  // filtersFromParams drops invalid buckets before they reach a matcher, but the
+  // exported matchers can be called with unvalidated arrays — pin the fallback so
+  // a bogus token never silently matches everything.
+  assert.equal(matchesDistance({ distances: [{ km: 12 }] }, ['bogus']), false)
+  assert.equal(matchesDrive({ driveMinutes: 30 }, ['bogus']), false)
+  assert.equal(matchesElevation({ distances: [{ km: 1, elevationGain: 100 }] }, ['bogus']), false)
 })
 
 // --- Drive ---

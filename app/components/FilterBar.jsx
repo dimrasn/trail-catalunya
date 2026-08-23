@@ -38,11 +38,16 @@ const PROVINCE_OPTIONS = [
   { value: 'LLEIDA', label: 'Lleida' },
 ]
 
-// Multi-select row. `selected` is an array of chosen bucket values; the first
-// option is the "Any / All" sentinel that clears the row. A bucket chip toggles
-// its own value; the sentinel is active only when nothing is selected.
+// The clear-the-row sentinel chip carries one of these values (drive/distance/
+// elevation use 'any'; month/province use 'all'). Detected by value, NOT by
+// position — an OPTIONS list reordered so the sentinel isn't first must not
+// silently turn a real bucket into the clear-all chip.
+const CLEAR_VALUES = new Set(['any', 'all'])
+
+// Multi-select row. `selected` is an array of chosen bucket values; the sentinel
+// chip clears the row. A bucket chip toggles its own value; the sentinel is
+// active only when nothing is selected.
 function FilterRow({ label, options, selected, onChange }) {
-  const anyValue = options[0].value
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minHeight: '32px' }}>
       <span style={{ fontSize: '11px', color: '#666', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', minWidth: '60px', flexShrink: 0 }}>
@@ -50,7 +55,7 @@ function FilterRow({ label, options, selected, onChange }) {
       </span>
       <div className="chips-row" style={{ flex: 1 }}>
         {options.map(opt => {
-          const isAny = opt.value === anyValue
+          const isAny = CLEAR_VALUES.has(opt.value)
           return (
             <FilterChip
               key={opt.value}
