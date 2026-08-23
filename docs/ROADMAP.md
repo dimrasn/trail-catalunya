@@ -43,7 +43,18 @@ Living control-plane doc. Locked sequence at the bottom; update in place with da
 
 **Step 1 — Ship the difficulty index to live pages + MCP. ✅ DONE 2026-08-22.** Cheapest, objective (no honesty/editorial risk), and the safest payload to prove the enrich pipeline deploys cleanly. Shipped on ITRA's public km-effort scale (see the ITRA note below): 6-level word + itra_points 0-6 + D+/km, per-distance and event-max (null unless every distance has D+). Codex reviewed the first cut; all 5 review defects fixed (partial-event false max, filtered-scope mixing, no parity guard, undocumented field, "difficulty" overstated) — now parity-guarded by mirrored tests on both runtimes (`app/lib/format.test.mjs` + `supabase/functions/mcp/difficulty_test.ts`).
 
-**Step 2 — Deploy the 91-race taste layer to live pages + MCP.** Attributes + km-esforç + editorial (unique/cool/catch/who/reference), honesty-tagged, unknown-default; the 29 un-profiled degrade gracefully. Fold the per-race og-image fix in here (already touching page render). This is finished work sitting dark, and the actual substance of the agent-native bet. Done when: the 91 show attributes/editorial on-page + via MCP, honesty tags intact, no un-profiled race renders a broken/invented field.
+**Step 2 — Deploy the taste layer to live pages + MCP. 🟡 Slice 1 SHIPPED 2026-08-22.**
+Shipped in slices (north-star decision). **Slice 1 (LIVE, site + MCP v11):**
+editorial (what makes it special / catch / who) + clean character attributes,
+each honesty-labelled by claim_strength (Organizer/Derived/Our read/Our guess/
+Dima); 84 publishable profiles, 80 join on the site; per-tool MCP projection.
+Built through two external audits + a code-review; correctness bar met (editorial-
+as-fact = 0, prior-edition flagged, source-addressable). **Slice 2 (next):**
+operational facts (start/cutoffs) via compound-bullet manual splits + the
+prior-edition hide gate; chunk-3's ~10 url-only races (town backfill join); the 4
+non-joining + exception-tail salvage; og-image ride-along. Deferred per Trade-1/2
+lean: the resolution-ledger + digest-parity machinery (revisit if taste scales to
+226 / regenerates on a cadence).
 
 **Step 3 — Ship the ask-box on-ramp, instrumented.** Natural-language box above the filters (filters stay primary), "Ask Claude →", hands off to the user's AI. ~1-argument change to the existing handoff. Log every query. Only a real test once the data it hands off to is live (steps 1–2). Done when: live above the filters, hands off correctly, every query captured to a readable log.
 
