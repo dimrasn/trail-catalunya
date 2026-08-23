@@ -5,6 +5,8 @@
 
 export const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 export const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+export const MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December']
 
 export const PROVINCE_COLOR = {
   BARCELONA: '#2563eb',
@@ -66,26 +68,50 @@ export function driveColor(minutes) {
   return '#888888'
 }
 
-function fmtKm(km) {
-  return km % 1 === 0 ? String(km) : String(km)
+// Distances and elevations are DISCRETE options a runner picks between, not a
+// continuous span. Rendering them as a range ("18–25 km") asserts that
+// everything in between exists — Trail de Monells offers exactly 18 and 25.
+// See docs/rules.md R1. Sorted ascending, de-duplicated, comma-joined.
+function fmtNumList(values) {
+  return [...new Set(values)].sort((a, b) => a - b).join(', ')
 }
 
-// "21.4 km" (one distance) or "15.7–21.4 km" (range).
+// "21.4 km" (one distance) or "18, 25 km" (several).
 export function distancesSummary(distances) {
-  const kms = distances.map(d => d.km).filter(k => k != null)
+  const kms = (distances || []).map(d => d.km).filter(k => k != null)
   if (kms.length === 0) return null
-  const min = Math.min(...kms)
-  const max = Math.max(...kms)
-  return min === max ? `${fmtKm(min)} km` : `${fmtKm(min)}–${fmtKm(max)} km`
+  return `${fmtNumList(kms)} km`
 }
 
-// "↑650–1090 m" across the distances that have elevation, or null.
+// "↑650 m" / "↑650, 1090 m" across the distances that have elevation, or null.
 export function elevationSummary(distances) {
-  const els = distances.map(d => d.elevationGain).filter(e => e != null)
+  const els = (distances || []).map(d => d.elevationGain).filter(e => e != null)
   if (els.length === 0) return null
-  const min = Math.min(...els)
-  const max = Math.max(...els)
-  return min === max ? `↑${min} m` : `↑${min}–${max} m`
+  return `↑${fmtNumList(els)} m`
+}
+
+// The distance+climb fragment for page titles and meta descriptions.
+// NEVER juxtaposes a distance list with a bare maximum climb: Ultra Pirineu's
+// title read "5–100 km / 6600 m D+", which describes a 5 km race with 6600 m of
+// ascent. With several distances the climb is explicitly marked "up to"; with
+// one, the two numbers genuinely belong to each other. See docs/rules.md R2.
+export function metadataDistancePart(distances) {
+  const ds = distances || []
+  const dist = distancesSummary(ds)
+  if (!dist) return null
+  const maxEl = maxElevation(ds)
+  if (maxEl == null) return dist
+  const distinctKms = new Set(ds.map(d => d.km).filter(k => k != null))
+  return distinctKms.size === 1 ? `${dist} / ${maxEl} m D+` : `${dist} · up to ${maxEl} m D+`
+}
+
+// A race whose exact date is unpublished but whose month we know: "August 2026".
+// This is an EXPECTED month, never a confirmed date — callers must present it
+// as such and must not emit it as a date in structured data.
+export function expectedDateLabel(monthNum, year) {
+  if (monthNum == null || year == null) return null
+  if (!(monthNum >= 1 && monthNum <= 12)) return null
+  return `${MONTHS_LONG[monthNum - 1]} ${year}`
 }
 
 export function maxElevation(distances) {

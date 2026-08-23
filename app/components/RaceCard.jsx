@@ -198,7 +198,13 @@ export default function RaceCard({ race }) {
           )}
         </div>
         <span style={{ fontSize: '13px', color: '#888', whiteSpace: 'nowrap', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace', flexShrink: 0 }}>
-          {dateDisplay || <span style={{ color: '#a78bfa' }}>DATE TBD</span>}
+          {dateDisplay || (
+            race.expectedMonth != null
+              ? <span style={{ color: '#a78bfa' }} title="Exact date not announced">
+                  {MONTHS_SHORT[race.expectedMonth - 1].toUpperCase()} {race.expectedYear} · DATE TBD
+                </span>
+              : <span style={{ color: '#a78bfa' }}>DATE TBD</span>
+          )}
         </span>
       </div>
 

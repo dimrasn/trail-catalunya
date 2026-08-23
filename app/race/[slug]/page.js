@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { getRaces } from '../../lib/races.js'
 import {
   displayDate, formatDrive, driveColor, distancesSummary, elevationSummary,
+  metadataDistancePart, expectedDateLabel,
   maxElevation, yearOf, kmEffort, eventKmEffort, difficultyLevel, dPlusPerKm,
   PROVINCE_COLOR, PROVINCE_TITLE,
 } from '../../lib/format.js'
@@ -41,18 +42,20 @@ export async function generateMetadata({ params }) {
   const year = yearOf(race.date)
   const dist = distancesSummary(race.distances)
   const maxEl = maxElevation(race.distances)
+  const distPart = metadataDistancePart(race.distances)
   const driveStr = race.driveMinutes != null ? formatDrive(race.driveMinutes) : null
   const prov = PROVINCE_TITLE[race.province] || race.province
 
   const titleBits = [`${race.name}${year ? ` ${year}` : ''} — ${race.town}`]
-  if (dist) titleBits.push(dist + (maxEl ? ` / ${maxEl} m D+` : ''))
+  if (distPart) titleBits.push(distPart)
   if (driveStr) titleBits.push(`${driveStr} from Barcelona`)
   const title = titleBits.join(' · ')
 
   const dateStr = displayDate(race)
+  const expected = dateStr ? null : expectedDateLabel(race.expectedMonth, race.expectedYear)
   const description =
     `${race.name} trail race in ${race.town}, ${prov}` +
-    `${dateStr ? ` on ${dateStr}` : ''}. ` +
+    `${dateStr ? ` on ${dateStr}` : expected ? ` — expected ${expected}` : ''}. ` +
     `${dist ? `Distances ${dist}${maxEl ? `, up to ${maxEl} m D+` : ''}. ` : ''}` +
     `${driveStr ? `${driveStr} drive from Barcelona. ` : ''}` +
     `Drive time, elevation and the official registration link.`
@@ -156,6 +159,13 @@ export default async function RacePage({ params }) {
   const prov = PROVINCE_TITLE[race.province] || race.province
   const provColor = PROVINCE_COLOR[race.province] || '#555'
   const dateStr = displayDate(race)
+  // All 138 dateless rows carry month_num + year; the site used to discard both
+  // and print "To be announced". An expected month is NOT a confirmed date and
+  // must read as an expectation (docs/rules.md R6) and stay out of JSON-LD.
+  const expectedMonthStr = expectedDateLabel(race.expectedMonth, race.expectedYear)
+  const expectedDateStr = dateStr || !expectedMonthStr
+    ? null
+    : `Expected ${expectedMonthStr} — exact date not announced`
   const dist = distancesSummary(race.distances)
   const elev = elevationSummary(race.distances)
   const hasAnyPrice = race.distances.some(d => d.price != null)
@@ -213,7 +223,7 @@ export default async function RacePage({ params }) {
       {/* KEY FACTS */}
       <dl style={{ marginTop: '18px' }}>
         {[
-          ['Date', dateStr || 'To be announced'],
+          ['Date', dateStr || expectedDateStr || 'To be announced'],
           ['Location', `${race.town}, ${prov}`],
           dist && ['Distances', dist],
           elev && ['Elevation', elev],
@@ -310,9 +320,15 @@ export default async function RacePage({ params }) {
         </>
       )}
 
-      {/* RACE-DAY FACTS (enrichment slot; not load-bearing) */}
-      <div style={kicker}>Race-day facts</div>
-      {race.enrichment ? (
+      {/* RACE-DAY FACTS (enrichment slot; not load-bearing).
+          Rendered ONLY when there is a payload. race_enrichment is deliberately
+          unapplied (see AGENTS.md), so the heading otherwise shipped on 226/226
+          pages with nothing under it but an apology. Keep the slot — the
+          pipeline is built and awaiting activation; this is a guard, not a
+          removal. */}
+      {race.enrichment && (
+        <>
+        <div style={kicker}>Race-day facts</div>
         <div style={{ fontSize: '14px', color: '#c9c9d6', lineHeight: 1.6 }}>
           {race.enrichment.start_time?.value && !race.enrichment.start_time.stale && (
             <div>◷ Start {race.enrichment.start_time.value}</div>
@@ -325,10 +341,7 @@ export default async function RacePage({ params }) {
           )}
           <div style={{ fontSize: '12px', color: '#62627a', marginTop: '6px' }}>Best-effort — always confirm on the official site below.</div>
         </div>
-      ) : (
-        <div style={{ fontSize: '13px', color: '#9a9ab0', lineHeight: 1.5 }}>
-          Start time and registration status aren’t verified yet — confirm on the official site below.
-        </div>
+        </>
       )}
 
       {/* REGISTER / VERIFY */}

@@ -132,6 +132,20 @@ function groupRowsIntoEvents(rows) {
       }
     }
 
+    // No exact date, but the source still tells us the month — every dateless
+    // row carries month_num + year. Surfacing "expected September 2026" beats
+    // "To be announced"; it is an EXPECTATION, never a date (docs/rules.md R6),
+    // so it is kept in its own fields and never written into `date`.
+    let expectedMonth = null
+    let expectedYear = null
+    if (!dateIso) {
+      const withMonth = groupRows.find(r => r.month_num != null && r.year != null)
+      if (withMonth) {
+        expectedMonth = withMonth.month_num
+        expectedYear = withMonth.year
+      }
+    }
+
     // Detect status flags.
     let soldOut = false
     let kidsRun = false
@@ -193,6 +207,10 @@ function groupRowsIntoEvents(rows) {
       distances,
     }
     if (dateEndIso) event.dateEnd = dateEndIso
+    if (expectedMonth != null) {
+      event.expectedMonth = expectedMonth
+      event.expectedYear = expectedYear
+    }
     if (driveMinutes != null) event.driveMinutes = driveMinutes
     if (geo) {
       event.lat = geo.lat
