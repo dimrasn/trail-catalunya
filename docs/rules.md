@@ -168,13 +168,37 @@ series/edition model, which is not yet built.
 
 ## Open decisions (awaiting Dima's verdict)
 
-- **D1 — roadless towns.** R3 requires a non-numeric state for places like Vall
-  de Núria, but the JSON cache and the `towns.drive_minutes_from_barcelona`
-  integer column both represent "unknown" and "no road exists" as `null`. A
-  shared `minutes | no_road_access | unknown` contract probably needs a schema
-  change; a cheaper cut keeps the access state in the site's JSON and lets the
-  MCP keep returning null until Slice 2. Not yet decided.
-- **D2 — canonical event names.** The longest-distance heuristic resolves all 3
-  live sub-race-first cases correctly (Olla de Núria, Espintrail, Volta a la
-  Maria) but distance is not proof of brand hierarchy. Proposed: heuristic as
-  default plus an explicit override registry for the 6 mixed-name events.
+*(none open — D1 and D2 resolved below as R12 and R13.)*
+
+### R12 — Roadless towns are a site-side state, not a schema change
+`lens: honesty` · `status: live` · added 2026-08-23
+
+Resolves D1. R3 requires a non-numeric state for places like Vall de Núria, but
+`towns.drive_minutes_from_barcelona` is an integer column where `null` already
+means "unknown". **The access state lives in the site's JSON only**; the MCP
+keeps returning `null` until Slice 2, exactly as it already tolerates the
+absent `race_enrichment` table.
+
+The audit was right that a *shared* contract needs a migration. We do not need
+a shared contract yet — we need the site to stop printing `3h 45m` to a valley
+reachable only by rack railway. Revisit if a second consumer needs the
+distinction.
+
+> Adopted on Dima's "let's go", 2026-08-23, from a stated recommendation.
+> Correct this row if that was not the intent.
+
+### R13 — Event names: longest distance, with an override registry
+`lens: honesty` · `status: live` · added 2026-08-23
+
+Resolves D2. Default to the name of the longest-distance row — verified to
+resolve all 3 live sub-race-first cases correctly (Olla de Núria, Espintrail,
+Volta a la Maria). Distance is not proof of brand hierarchy, so an explicit
+override registry covers the 6 mixed-name events where the two diverge. The
+registry lives with this ledger; a name argued over in a PR and not written
+down here will be re-argued.
+
+Pairs with **R9**: any name change moves a slug, and every moved slug needs a
+permanent redirect shipped in the same change.
+
+> Adopted on Dima's "let's go", 2026-08-23, from a stated recommendation.
+> Correct this row if that was not the intent.

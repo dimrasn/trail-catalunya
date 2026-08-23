@@ -14,14 +14,13 @@ Created 2026-08-23. Review weekly, alongside the Monday scrape.
 
 | # | Loop | Owner | Due | Status |
 |---|---|---|---|---|
-| L1 | **D1 — roadless towns.** Decide the `minutes / no_road_access / unknown` contract: schema change on `towns`, or site-JSON-only with MCP returning null until Slice 2. Blocks requirement B's plausibility guard. | Dima | 2026-08-30 | open |
-| L2 | **D2 — canonical event names.** Approve longest-distance heuristic + override registry for the 6 mixed-name events, or specify a different rule. Blocks the identity plan. | Dima | 2026-08-30 | open |
+*(L1 and L2 closed 2026-08-23 — see Done.)*
 
 ## In flight
 
 | # | Loop | Owner | Due | Status |
 |---|---|---|---|---|
-| L3 | Rewrite the Tier 0 spec against the 2026-08-23 audit (9 findings, 6 confirmed errors) and split into 3 plans: presentation truthfulness / event identity & lifecycle / location operations. | agent | 2026-08-24 | open |
+| L13 | **Pre-existing on `main`:** `deno test` type-check fails at `difficulty_test.ts:96` — `drive_max` is not declared in `VariantFilter`. Reproduced with all Plan-1 changes stashed. Blocks the documented test command; 114 tests pass with `--no-check`. May already be fixed on `feat/multi-select-filters` — check before fixing. | agent | 2026-08-30 | open |
 | L4 | Geocode + drive-time backfill for **176 active towns** via OSRM/Nominatim (Dima's call 2026-08-23: automate free, no API spend). Acceptance: Monells ≈86 min vs his hand-measured 1h26m. | agent | with location plan | open |
 | L5 | Add the golden assertion so a new town missing geocode/drive time fails loudly (R11). Must cover **both** consumers per R7 — Supabase check post-scrape, and a build/CI check on the committed JSON caches. | agent | with location plan | open |
 | L6 | Redirect map for every slug that moves when the naming rule changes (R9). Must exist before the identity plan ships. | agent | with identity plan | open |
