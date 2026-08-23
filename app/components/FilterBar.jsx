@@ -1,4 +1,5 @@
 import FilterChip from './FilterChip'
+import { toggleValue } from '../lib/filters.js'
 
 const DRIVE_OPTIONS = [
   { value: 'any', label: 'Any' },
@@ -37,21 +38,28 @@ const PROVINCE_OPTIONS = [
   { value: 'LLEIDA', label: 'Lleida' },
 ]
 
-function FilterRow({ label, options, value, onChange }) {
+// Multi-select row. `selected` is an array of chosen bucket values; the first
+// option is the "Any / All" sentinel that clears the row. A bucket chip toggles
+// its own value; the sentinel is active only when nothing is selected.
+function FilterRow({ label, options, selected, onChange }) {
+  const anyValue = options[0].value
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minHeight: '32px' }}>
       <span style={{ fontSize: '11px', color: '#666', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', minWidth: '60px', flexShrink: 0 }}>
         {label}
       </span>
       <div className="chips-row" style={{ flex: 1 }}>
-        {options.map(opt => (
-          <FilterChip
-            key={opt.value}
-            label={opt.label}
-            active={value === opt.value}
-            onClick={() => onChange(opt.value)}
-          />
-        ))}
+        {options.map(opt => {
+          const isAny = opt.value === anyValue
+          return (
+            <FilterChip
+              key={opt.value}
+              label={opt.label}
+              active={isAny ? selected.length === 0 : selected.includes(opt.value)}
+              onClick={() => onChange(isAny ? [] : toggleValue(selected, opt.value))}
+            />
+          )
+        })}
       </div>
     </div>
   )
@@ -72,11 +80,11 @@ export default function FilterBar({ filters, setFilter, monthOptions = MONTH_OPT
         gap: '8px',
       }}
     >
-      <FilterRow label="Drive" options={DRIVE_OPTIONS} value={filters.drive} onChange={v => setFilter('drive', v)} />
-      <FilterRow label="Distance" options={DISTANCE_OPTIONS} value={filters.distance} onChange={v => setFilter('distance', v)} />
-      <FilterRow label="Elevation" options={ELEVATION_OPTIONS} value={filters.elevation} onChange={v => setFilter('elevation', v)} />
-      <FilterRow label="Month" options={monthOptions} value={filters.month} onChange={v => setFilter('month', v)} />
-      <FilterRow label="Province" options={PROVINCE_OPTIONS} value={filters.province} onChange={v => setFilter('province', v)} />
+      <FilterRow label="Drive" options={DRIVE_OPTIONS} selected={filters.drive} onChange={v => setFilter('drive', v)} />
+      <FilterRow label="Distance" options={DISTANCE_OPTIONS} selected={filters.distance} onChange={v => setFilter('distance', v)} />
+      <FilterRow label="Elevation" options={ELEVATION_OPTIONS} selected={filters.elevation} onChange={v => setFilter('elevation', v)} />
+      <FilterRow label="Month" options={monthOptions} selected={filters.month} onChange={v => setFilter('month', v)} />
+      <FilterRow label="Province" options={PROVINCE_OPTIONS} selected={filters.province} onChange={v => setFilter('province', v)} />
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', paddingTop: '2px' }}>
         <span style={{ fontSize: '11px', color: '#666', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', minWidth: '60px' }}>
           More

@@ -24,13 +24,18 @@ const PROV_LABEL = {
 // Cap inline races so the deep-link URL stays within practical length limits.
 const MAX_INLINE = 30
 
+// Filters are multi-select arrays; several picks in one row read as "A or B".
+function joinLabels(values, map) {
+  return (values || []).map(v => map[v] || v).filter(Boolean).join(' or ')
+}
+
 function activeFilterPhrases(filters) {
   const out = []
-  if (filters.drive && filters.drive !== 'any') out.push(`drive ${DRIVE_LABEL[filters.drive]} from Barcelona`)
-  if (filters.distance && filters.distance !== 'any') out.push(`distance ${DIST_LABEL[filters.distance]}`)
-  if (filters.elevation && filters.elevation !== 'any') out.push(`elevation ${ELEV_LABEL[filters.elevation]}`)
-  if (filters.month && filters.month !== 'all') out.push(`in ${MONTHS[parseInt(filters.month) - 1]}`)
-  if (filters.province && filters.province !== 'all') out.push(`in ${PROV_LABEL[filters.province]} province`)
+  if (filters.drive?.length) out.push(`drive ${joinLabels(filters.drive, DRIVE_LABEL)} from Barcelona`)
+  if (filters.distance?.length) out.push(`distance ${joinLabels(filters.distance, DIST_LABEL)}`)
+  if (filters.elevation?.length) out.push(`elevation ${joinLabels(filters.elevation, ELEV_LABEL)}`)
+  if (filters.month?.length) out.push(`in ${filters.month.map(m => MONTHS[parseInt(m) - 1]).join(' or ')}`)
+  if (filters.province?.length) out.push(`in ${joinLabels(filters.province, PROV_LABEL)} province`)
   if (filters.kidsRun) out.push('with a kids run')
   return out
 }
