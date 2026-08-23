@@ -80,8 +80,12 @@ export function tasteForDisplay(profile?: TasteProfile | null): { editorial: Tas
 // strength so a list agent never reads our judgement as an organizer fact.
 export function tasteSummary(profile?: TasteProfile | null): { value: string; strength: string; strength_label: string } | null {
   if (!profile) return null
-  const src = (profile.editorial && (profile.editorial.unique || profile.editorial.reference_point)) || null
-  const value = cleanValue(src && src.value)
-  if (!value || !src) return null
-  return { value, strength: src.claim_strength, strength_label: STRENGTH_LABELS[src.claim_strength] || src.claim_strength }
+  const ed = profile.editorial || {}, at = profile.attributes || {}
+  // Fall back so any taste-bearing race yields a one-liner (dogfood gap #2):
+  // special → in-a-word → who-it's-for → the-catch → setting.
+  for (const src of [ed.unique, ed.reference_point, ed.who, ed.catch, at.setting]) {
+    const value = cleanValue(src && src.value)
+    if (value && src) return { value, strength: src.claim_strength, strength_label: STRENGTH_LABELS[src.claim_strength] || src.claim_strength }
+  }
+  return null
 }

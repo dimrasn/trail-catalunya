@@ -41,6 +41,13 @@ Deno.test('tasteSummary picks unique and keeps its claim strength', () => {
   )
 })
 
+Deno.test('tasteSummary falls back (who → setting) when no unique/reference', () => {
+  assertEquals(
+    tasteSummary({ attributes: { setting: { value: 'forested coastal hills', claim_strength: 'organizer_fact' } }, editorial: {} })?.value,
+    'forested coastal hills',
+  )
+})
+
 Deno.test('inference stays inference, not upgraded to fact', () => {
   const d = tasteForDisplay({ editorial: { who: { value: 'strong night runners', claim_strength: 'inference' } } })!
   assertEquals(d.editorial[0].strength_label, 'Our guess')

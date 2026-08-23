@@ -42,6 +42,13 @@ test('tasteSummary picks unique and keeps its claim strength', () => {
   )
 })
 
+test('tasteSummary falls back (who → setting) when no unique/reference', () => {
+  assert.equal(
+    tasteSummary({ attributes: { setting: { value: 'forested coastal hills', claim_strength: 'organizer_fact' } }, editorial: {} }).value,
+    'forested coastal hills',
+  )
+})
+
 test('inference stays inference, not upgraded to fact', () => {
   const d = tasteForDisplay({ editorial: { who: { value: 'strong night runners', claim_strength: 'inference' } } })
   assert.equal(d.editorial[0].strengthLabel, 'Our guess')
