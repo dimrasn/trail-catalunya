@@ -93,7 +93,10 @@ Deno.test('distanceMatches: elevation predicate fails a distance with unknown D+
 Deno.test('hasVariantFilter reflects the distance/elevation predicates only', () => {
   assert(hasVariantFilter({ dist_max: 10 }))
   assert(hasVariantFilter({ elev_min: 500 }))
-  assert(!hasVariantFilter({ drive_max: 60, month: 10 }))
+  // A VariantFilter with no distance/elevation predicate → false. (drive_max/
+  // month aren't VariantFilter keys, so they can't be passed here in the first
+  // place — an empty filter is the type-valid way to assert the false path.)
+  assert(!hasVariantFilter({}))
 })
 
 Deno.test('distanceMatches: dist_ranges OR — "short OR ultra" matches both ends, not the middle', () => {

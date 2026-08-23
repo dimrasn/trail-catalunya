@@ -88,14 +88,26 @@ function bandTechnicality(v?: string): string | undefined {
   if (/mitja|medium|moderate|some technical|partly technical|mixed|t[eè]cnic/.test(s)) return 'moderate'
   return undefined
 }
+// A flag is a queryable near-fact, so it may only come from an ORGANIZER-stated
+// field (not our derived/inferred read) AND must be affirmatively true — a
+// negation like "no night mention" must never set night:true (dogfood audit #6).
+const FLAG_ELIGIBLE = new Set(['organizer_fact', 'organizer_pdf'])
 export function tasteFlags(profile?: TasteProfile | null): { night?: boolean; technicality?: string } | null {
   if (!profile) return null
   const at = profile.attributes || {}
   const flags: { night?: boolean; technicality?: string } = {}
-  const night = ((at.night_race && at.night_race.value) || '').toLowerCase()
-  if (/\byes\b|night|nocturn|\bnit\b/.test(night)) flags.night = true
-  const tech = bandTechnicality(at.technicality && at.technicality.value)
-  if (tech) flags.technicality = tech
+  const nr = at.night_race
+  if (nr && FLAG_ELIGIBLE.has(nr.claim_strength)) {
+    const v = (nr.value || '').toLowerCase()
+    const negated = /^no\b|no night|not a night|day(time)?\b|di[uü]rn/.test(v)
+    const affirmed = /^yes\b|nocturn|night (race|trail|start)|headlamp|headtorch/.test(v)
+    if (affirmed && !negated) flags.night = true
+  }
+  const tc = at.technicality
+  if (tc && FLAG_ELIGIBLE.has(tc.claim_strength)) {
+    const band = bandTechnicality(tc.value)
+    if (band) flags.technicality = band
+  }
   return Object.keys(flags).length ? flags : null
 }
 

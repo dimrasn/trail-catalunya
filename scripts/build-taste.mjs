@@ -31,7 +31,7 @@ const UNKNOWN_VALUES = new Set(['unknown', 'not stated', 'cannot compute', 'n/a'
 function isUnknownValue(v) {
   const s = String(v).toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim()
   if (UNKNOWN_VALUES.has(s)) return true
-  return /^(unknown|not stated|cannot compute|n\/a|none stated|tbd|tba|none mentioned|not mentioned|not named|silent|no .{0,20}(stated|mentioned|named))\b/.test(s)
+  return /^(unknown|not stated|not indicated|no indication|cannot compute|n\/a|n\/d|none stated|tbd|tba|none mentioned|not mentioned|not named|unconfirmed|unclear|silent|no .{0,20}(stated|mentioned|named|indicat|info|data|detail))\b/.test(s)
 }
 
 function normalizeTag(raw) {
@@ -143,9 +143,13 @@ function parseBullet(line, loc, exceptions) {
   let evidence = null
   const q = content.match(/"([^"]+)"|“([^”]+)”|«([^»]+)»/)
   if (q) evidence = (q[1] || q[2] || q[3]).trim()
-  // Value keeps prose intact (inner quotes + hyphens preserved); only a quote
-  // wrapping the WHOLE value is trimmed (leading-tag case: `[SCRAPE] "09:00"`).
-  let value = content.replace(/^["“«]\s*/, '').replace(/\s*["”»]$/, '').trim()
+  // Value keeps prose intact (inner quotes + hyphens preserved). Strip quotes
+  // ONLY when a matched pair wraps the WHOLE value (leading-tag case:
+  // `[SCRAPE] "09:00"`) — never open/close independently, which would leave
+  // unbalanced quotes on prose like `"por la noche" race`.
+  let value = content.trim()
+  const wrapped = value.match(/^"([^"]*)"$|^“([^”]*)”$|^«([^»]*)»$/)
+  if (wrapped) value = (wrapped[1] ?? wrapped[2] ?? wrapped[3]).trim()
   if (!evidence && rawTag) { const inside = rawTag.indexOf(':'); if (inside !== -1) evidence = rawTag.slice(inside + 1).replace(/^["'“«\s]+|["'”»\s]+$/g, '').trim() || null }
 
   if (isUnknownValue(value)) return { omit: true }

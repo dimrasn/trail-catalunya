@@ -58,6 +58,12 @@ test('tasteFlags: conservative — set only when stated, absent = unknown', () =
   assert.equal(tasteFlags({ attributes: { setting: { value: 'coastal forest', claim_strength: 'our_read' } }, editorial: {} }), null)
 })
 
+test('tasteFlags: negation never sets night; non-organizer provenance is ineligible (audit #6)', () => {
+  assert.equal(tasteFlags({ attributes: { night_race: { value: 'No. (day marxa, no night mention)', claim_strength: 'organizer_fact' } }, editorial: {} }), null)
+  assert.equal(tasteFlags({ attributes: { technicality: { value: 'rocky, technical', claim_strength: 'inference' } }, editorial: {} }), null)
+  assert.equal(tasteFlags({ attributes: { night_race: { value: 'Yes — nocturna', claim_strength: 'our_read' } }, editorial: {} }), null)
+})
+
 test('inference stays inference, not upgraded to fact', () => {
   const d = tasteForDisplay({ editorial: { who: { value: 'strong night runners', claim_strength: 'inference' } } })
   assert.equal(d.editorial[0].strengthLabel, 'Our guess')

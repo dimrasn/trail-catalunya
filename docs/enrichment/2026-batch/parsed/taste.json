@@ -15,14 +15,14 @@
         "source_line": 11
       },
       "setting": {
-        "value": "coastal + ridgeline — Serra del Montsià massif rising off the Mediterranean; \"de la mar… al cor del Montsià",
+        "value": "coastal + ridgeline — Serra del Montsià massif rising off the Mediterranean; \"de la mar… al cor del Montsià\"",
         "claim_strength": "organizer_fact",
         "evidence": "de la mar… al cor del Montsià",
         "source_file": "chunk-0.md",
         "source_line": 12
       },
       "cutoffs": {
-        "value": "7-hour overall limit — \"7 HORES",
+        "value": "7-hour overall limit — \"7 HORES\"",
         "claim_strength": "organizer_fact",
         "evidence": "7 HORES",
         "source_file": "chunk-0.md",
@@ -82,7 +82,7 @@
         "source_line": 66
       },
       "food": {
-        "value": "youth category present — under-16 special category noted; \"ABSOLUTS 3 PRIMERS I 3 PRIMERES",
+        "value": "youth category present — under-16 special category noted; \"ABSOLUTS 3 PRIMERS I 3 PRIMERES\"",
         "claim_strength": "organizer_fact",
         "evidence": "ABSOLUTS 3 PRIMERS I 3 PRIMERES",
         "source_file": "chunk-0.md",
@@ -96,7 +96,7 @@
         "source_line": 73
       },
       "price": {
-        "value": "12 € — \"Preu activitat 12€",
+        "value": "12 € — \"Preu activitat 12€\"",
         "claim_strength": "organizer_fact",
         "evidence": "Preu activitat 12€",
         "source_file": "chunk-0.md",
@@ -144,7 +144,7 @@
     "prior_edition": false,
     "attributes": {
       "course_topology": {
-        "value": "point-to-point — \"the GR11 from Ribes de Freser to Salardu, with just some modifications",
+        "value": "point-to-point — \"the GR11 from Ribes de Freser to Salardu, with just some modifications\"",
         "claim_strength": "organizer_fact",
         "evidence": "the GR11 from Ribes de Freser to Salardu, with just some modifications",
         "source_file": "chunk-0.md",
@@ -158,7 +158,7 @@
         "source_line": 92
       },
       "setting": {
-        "value": "high alpine + national-park — \"crosses 5 Natural Parks: Capçaleres del Ter i del Freser, Vall del Madriu-Perafita-Claror, Valls del Comapedrosa, Alt Pirineu i Aigüestortes-Estany de Sant Maurici",
+        "value": "high alpine + national-park — \"crosses 5 Natural Parks: Capçaleres del Ter i del Freser, Vall del Madriu-Perafita-Claror, Valls del Comapedrosa, Alt Pirineu i Aigüestortes-Estany de Sant Maurici\"",
         "claim_strength": "organizer_fact",
         "evidence": "crosses 5 Natural Parks: Capçaleres del Ter i del Freser, Vall del Madriu-Perafita-Claror, Valls del Comapedrosa, Alt Pirineu i Aigüestortes-Estany de Sant Maurici",
         "source_file": "chunk-0.md",
@@ -179,7 +179,7 @@
         "source_line": 96
       },
       "tradition_editions": {
-        "value": "10th anniversary — \"a special edition: 8 stages and a new registration format\"; \"128 teams from 30 nationalities",
+        "value": "10th anniversary — \"a special edition: 8 stages and a new registration format\"; \"128 teams from 30 nationalities\"",
         "claim_strength": "organizer_fact",
         "evidence": "a special edition: 8 stages and a new registration format",
         "source_file": "chunk-0.md",
@@ -239,7 +239,7 @@
     "prior_edition": false,
     "attributes": {
       "start_time": {
-        "value": "21:00 — \"Sortida: a les 21 hores",
+        "value": "21:00 — \"Sortida: a les 21 hores\"",
         "claim_strength": "organizer_fact",
         "evidence": "Sortida: a les 21 hores",
         "source_file": "chunk-0.md",
@@ -267,7 +267,7 @@
         "source_line": 120
       },
       "food": {
-        "value": "botifarra sandwich at finish — \"entrepà de botifarra",
+        "value": "botifarra sandwich at finish — \"entrepà de botifarra\"",
         "claim_strength": "organizer_fact",
         "evidence": "entrepà de botifarra",
         "source_file": "chunk-0.md",
@@ -362,7 +362,7 @@
         "source_line": 147
       },
       "tradition_editions": {
-        "value": "1st edition — \"1a edició de la Night Trail Bocafoscant",
+        "value": "1st edition — \"1a edició de la Night Trail Bocafoscant\"",
         "claim_strength": "organizer_fact",
         "evidence": "1a edició de la Night Trail Bocafoscant",
         "source_file": "chunk-0.md",
@@ -546,7 +546,7 @@
         "source_line": 52
       },
       "aid_stations": {
-        "value": "avituallaments líquids i sòlids\"; cup policy not stated → assume bring-your-own soft flask for a night mountain race.",
+        "value": "\"avituallaments líquids i sòlids\"; cup policy not stated → assume bring-your-own soft flask for a night mountain race.",
         "claim_strength": "organizer_fact",
         "evidence": "avituallaments líquids i sòlids",
         "source_file": "chunk-1.md",
@@ -708,7 +708,7 @@
         "source_line": 92
       },
       "championship": {
-        "value": "puntuable per a la Lliga de la Noguera\".",
+        "value": "\"puntuable per a la Lliga de la Noguera\".",
         "claim_strength": "organizer_fact",
         "evidence": "puntuable per a la Lliga de la Noguera",
         "source_file": "chunk-1.md",
@@ -1046,7 +1046,7 @@
         "source_line": 183
       },
       "aid_stations": {
-        "value": "entrepà i beguda al final\" + intermediate solid/liquid avituallaments; cup policy not stated → BYO flask (skyrace norm).",
+        "value": "\"entrepà i beguda al final\" + intermediate solid/liquid avituallaments; cup policy not stated → BYO flask (skyrace norm).",
         "claim_strength": "organizer_fact",
         "evidence": "entrepà i beguda al final",
         "source_file": "chunk-1.md",
@@ -1621,7 +1621,7 @@
         "source_line": 215
       },
       "kids_race": {
-        "value": "Taga Kids\" 20/09, non-competitive.",
+        "value": "\"Taga Kids\" 20/09, non-competitive.",
         "claim_strength": "organizer_fact",
         "evidence": "Taga Kids",
         "source_file": "chunk-2.md",
@@ -1705,7 +1705,7 @@
     },
     "editorial": {
       "unique": {
-        "value": "la mítica i dura\" Pyrenean ultra linking the emblematic peaks of southern Pallars Sobirà — one of Catalonia's genuinely hard 60k/4700m days.",
+        "value": "\"la mítica i dura\" Pyrenean ultra linking the emblematic peaks of southern Pallars Sobirà — one of Catalonia's genuinely hard 60k/4700m days.",
         "claim_strength": "our_read",
         "source_line": 250
       },
@@ -1742,7 +1742,7 @@
     "prior_edition": false,
     "attributes": {
       "championship": {
-        "value": "Campionat Catalunya\" — hosts the Campionat de Catalunya de Trail Màster (Catalan Masters championship). Categories \"Campionat CAT 11 Km\" and \"Campionat CAT 17 Km\".",
+        "value": "\"Campionat Catalunya\" — hosts the Campionat de Catalunya de Trail Màster (Catalan Masters championship). Categories \"Campionat CAT 11 Km\" and \"Campionat CAT 17 Km\".",
         "claim_strength": "organizer_fact",
         "evidence": "Campionat Catalunya",
         "source_file": "chunk-4.md",
@@ -1783,7 +1783,7 @@
         "source_line": 27
       },
       "start_time": {
-        "value": "9:30h. - Sortida dels corredors\" (runners); walkers 9:00h.",
+        "value": "\"9:30h. - Sortida dels corredors\" (runners); walkers 9:00h.",
         "claim_strength": "organizer_fact",
         "evidence": "9:30h. - Sortida dels corredors",
         "source_file": "chunk-4.md",
@@ -1804,21 +1804,21 @@
         "source_line": 30
       },
       "championship": {
-        "value": "none — \"local community event.",
+        "value": "none — \"local community event.\"",
         "claim_strength": "organizer_fact",
         "evidence": "local community event.",
         "source_file": "chunk-4.md",
         "source_line": 31
       },
       "aid_stations": {
-        "value": "2 avituallaments líquids, un al km 6 i l'altre al km 8\"; finish has water, oranges, bananas + the signature \"un vaset de mel i mató per a tothom\" (honey-and-mató cup for all). Cup-vs-bottle policy not stated.",
+        "value": "\"2 avituallaments líquids, un al km 6 i l'altre al km 8\"; finish has water, oranges, bananas + the signature \"un vaset de mel i mató per a tothom\" (honey-and-mató cup for all). Cup-vs-bottle policy not stated.",
         "claim_strength": "organizer_fact",
         "evidence": "2 avituallaments líquids, un al km 6 i l'altre al km 8",
         "source_file": "chunk-4.md",
         "source_line": 34
       },
       "logistics_parking": {
-        "value": "Es podrà aparcar a la Zona Esportiva\"; bib pickup Sat 10–12h and Sun 7:30–8:30h.",
+        "value": "\"Es podrà aparcar a la Zona Esportiva\"; bib pickup Sat 10–12h and Sun 7:30–8:30h.",
         "claim_strength": "organizer_fact",
         "evidence": "Es podrà aparcar a la Zona Esportiva",
         "source_file": "chunk-4.md",
@@ -1859,7 +1859,7 @@
         "source_line": 69
       },
       "course_topology": {
-        "value": "loop — \"boniques pistes i corriols del Massís del Garraf.",
+        "value": "loop — \"boniques pistes i corriols del Massís del Garraf.\"",
         "claim_strength": "organizer_fact",
         "evidence": "boniques pistes i corriols del Massís del Garraf.",
         "source_file": "chunk-4.md",
@@ -1873,14 +1873,14 @@
         "source_line": 71
       },
       "championship": {
-        "value": "Lliga Gran Penedès\" (Penedès + Garraf league); the 26 km \"may qualify for UTMB INDEX.",
+        "value": "\"Lliga Gran Penedès\" (Penedès + Garraf league); the 26 km \"may qualify for UTMB INDEX.\"",
         "claim_strength": "organizer_fact",
         "evidence": "Lliga Gran Penedès",
         "source_file": "chunk-4.md",
         "source_line": 72
       },
       "aid_stations": {
-        "value": "avituallaments\" mentioned; bottle/cup policy not stated.",
+        "value": "\"avituallaments\" mentioned; bottle/cup policy not stated.",
         "claim_strength": "organizer_fact",
         "evidence": "avituallaments",
         "source_file": "chunk-4.md",
@@ -2025,14 +2025,14 @@
         "source_line": 120
       },
       "cutoffs": {
-        "value": "XTREM \"6h 30 máx.\", TRAIL \"5h 30 máx.\", Xpress \"4h 30 máx.",
+        "value": "XTREM \"6h 30 máx.\", TRAIL \"5h 30 máx.\", Xpress \"4h 30 máx.\"",
         "claim_strength": "organizer_fact",
         "evidence": "6h 30 máx.",
         "source_file": "chunk-4.md",
         "source_line": 123
       },
       "aid_stations": {
-        "value": "Puntos de avituallamiento sólido y líquido estratégicamente distribuidos.\" Cup policy not stated.",
+        "value": "\"Puntos de avituallamiento sólido y líquido estratégicamente distribuidos.\" Cup policy not stated.",
         "claim_strength": "organizer_fact",
         "evidence": "Puntos de avituallamiento sólido y líquido estratégicamente distribuidos.",
         "source_file": "chunk-4.md",
@@ -2052,14 +2052,14 @@
     "prior_edition": false,
     "attributes": {
       "championship": {
-        "value": "Campionat de Catalunya de curses per muntanya FEEC 2026\" — a Catalan championship; also \"Circuit Ebre.",
+        "value": "\"Campionat de Catalunya de curses per muntanya FEEC 2026\" — a Catalan championship; also \"Circuit Ebre.\"",
         "claim_strength": "organizer_fact",
         "evidence": "Campionat de Catalunya de curses per muntanya FEEC 2026",
         "source_file": "chunk-4.md",
         "source_line": 141
       },
       "feec_gate": {
-        "value": "Llicència mínima requerida per la cursa FEEC 'C'\" — minimum FEEC 'C' licence required (day-licence gate, hard requirement).",
+        "value": "\"Llicència mínima requerida per la cursa FEEC 'C'\" — minimum FEEC 'C' licence required (day-licence gate, hard requirement).",
         "claim_strength": "organizer_fact",
         "evidence": "Llicència mínima requerida per la cursa FEEC 'C",
         "source_file": "chunk-4.md",
@@ -2079,13 +2079,6 @@
         "source_file": "chunk-4.md",
         "source_line": 144
       },
-      "night_race": {
-        "value": "No indication.",
-        "claim_strength": "organizer_fact",
-        "evidence": null,
-        "source_file": "chunk-4.md",
-        "source_line": 145
-      },
       "kids_race": {
         "value": "yes — \"cadet, infantil… marxeta infantil\" youth divisions; plus express long/short and marxa variants.",
         "claim_strength": "organizer_fact",
@@ -2103,7 +2096,7 @@
     },
     "editorial": {},
     "honesty": null,
-    "field_count": 7
+    "field_count": 6
   },
   {
     "race": "Murtrail",
@@ -2135,14 +2128,14 @@
         "source_line": 183
       },
       "aid_stations": {
-        "value": "bring-your-own — \"NO hi haurà gots! Haureu de dur el vostre bidó/got plegable.\" Stations stock \"aigua, isotonic, platans, gominoles, taronjes.",
+        "value": "bring-your-own — \"NO hi haurà gots! Haureu de dur el vostre bidó/got plegable.\" Stations stock \"aigua, isotonic, platans, gominoles, taronjes.\"",
         "claim_strength": "organizer_fact",
         "evidence": "NO hi haurà gots! Haureu de dur el vostre bidó/got plegable.",
         "source_file": "chunk-4.md",
         "source_line": 184
       },
       "technicality": {
-        "value": "some technical sections — even the short course is \"pujada per pista però amb alguns trams tècnics.",
+        "value": "some technical sections — even the short course is \"pujada per pista però amb alguns trams tècnics.\"",
         "claim_strength": "organizer_fact",
         "evidence": "pujada per pista però amb alguns trams tècnics.",
         "source_file": "chunk-4.md",
@@ -2176,14 +2169,14 @@
         "source_line": 201
       },
       "championship": {
-        "value": "PROVA PUNTUABLE PER A LA COPA OSONING\" — scores for the Osoning (Osona) Cup.",
+        "value": "\"PROVA PUNTUABLE PER A LA COPA OSONING\" — scores for the Osoning (Osona) Cup.",
         "claim_strength": "organizer_fact",
         "evidence": "PROVA PUNTUABLE PER A LA COPA OSONING",
         "source_file": "chunk-4.md",
         "source_line": 202
       },
       "kids_race": {
-        "value": "LA MINIESPI\" — free kids' race (\"CURSA GRATUÏTA\") for ages up to 13, held Sat 2026-09-26.",
+        "value": "\"LA MINIESPI\" — free kids' race (\"CURSA GRATUÏTA\") for ages up to 13, held Sat 2026-09-26.",
         "claim_strength": "organizer_fact",
         "evidence": "LA MINIESPI",
         "source_file": "chunk-4.md",
@@ -2333,7 +2326,7 @@
         "source_line": 49
       },
       "aid_stations": {
-        "value": "10 aid stations plus start/finish\" on the 100K.",
+        "value": "\"10 aid stations plus start/finish\" on the 100K.",
         "claim_strength": "organizer_fact",
         "evidence": "10 aid stations plus start/finish",
         "source_file": "chunk-5.md",
@@ -2421,7 +2414,7 @@
         "source_line": 76
       },
       "course_topology": {
-        "value": "dos recorreguts circulars\" — both loops.",
+        "value": "\"dos recorreguts circulars\" — both loops.",
         "claim_strength": "organizer_fact",
         "evidence": "dos recorreguts circulars",
         "source_file": "chunk-5.md",
@@ -2456,7 +2449,7 @@
         "source_line": 84
       },
       "food": {
-        "value": "Hi haurà obsequi per tots els participants\" (gift for all); no kids race.",
+        "value": "\"Hi haurà obsequi per tots els participants\" (gift for all); no kids race.",
         "claim_strength": "organizer_fact",
         "evidence": "Hi haurà obsequi per tots els participants",
         "source_file": "chunk-5.md",
@@ -2632,7 +2625,7 @@
         "source_line": 175
       },
       "tradition_editions": {
-        "value": "25a Cursa al Castell d'Olèrdola\" — 25th edition, a genuine local institution.",
+        "value": "\"25a Cursa al Castell d'Olèrdola\" — 25th edition, a genuine local institution.",
         "claim_strength": "organizer_fact",
         "evidence": "25a Cursa al Castell d'Olèrdola",
         "source_file": "chunk-5.md",
@@ -2815,7 +2808,7 @@
         "source_line": 249
       },
       "championship": {
-        "value": "FEEC Endurance Cup\" + UTMB qualifier; ITRA points. FEEC license not explicitly mandated — temporary accident insurance offered for non-federated .",
+        "value": "\"FEEC Endurance Cup\" + UTMB qualifier; ITRA points. FEEC license not explicitly mandated — temporary accident insurance offered for non-federated .",
         "claim_strength": "organizer_fact",
         "evidence": "FEEC Endurance Cup",
         "source_file": "chunk-5.md",
@@ -2857,7 +2850,7 @@
         "source_line": 255
       },
       "technicality": {
-        "value": "accessible\" despite distance — treat with caution given 3470 m D+ on rocky Montsant conglomerate .",
+        "value": "\"accessible\" despite distance — treat with caution given 3470 m D+ on rocky Montsant conglomerate .",
         "claim_strength": "organizer_fact",
         "evidence": "accessible",
         "source_file": "chunk-5.md",
@@ -2910,7 +2903,7 @@
     "prior_edition": false,
     "attributes": {
       "course_topology": {
-        "value": "loop — \"una cursa circular",
+        "value": "loop — \"una cursa circular\"",
         "claim_strength": "organizer_fact",
         "evidence": "una cursa circular",
         "source_file": "chunk-6.md",
@@ -2924,7 +2917,7 @@
         "source_line": 16
       },
       "championship": {
-        "value": "Circuit FER, and new to it this year — \"aquest any som cursa amiga del circuit",
+        "value": "Circuit FER, and new to it this year — \"aquest any som cursa amiga del circuit\"",
         "claim_strength": "organizer_fact",
         "evidence": "aquest any som cursa amiga del circuit",
         "source_file": "chunk-6.md",
@@ -2938,7 +2931,7 @@
         "source_line": 21
       },
       "tradition_editions": {
-        "value": "established local race, but first year as a Circuit FER \"cursa amiga",
+        "value": "established local race, but first year as a Circuit FER \"cursa amiga\"",
         "claim_strength": "derived",
         "evidence": "cursa amiga",
         "source_file": "chunk-6.md",
@@ -2981,7 +2974,7 @@
         "source_line": 35
       },
       "reference_point": {
-        "value": "like a short Copa-Catalana-style ascent race, but circular and low-key — \"harder than its 12 km suggests.",
+        "value": "like a short Copa-Catalana-style ascent race, but circular and low-key — \"harder than its 12 km suggests.\"",
         "claim_strength": "our_read",
         "source_line": 36
       }
@@ -3005,7 +2998,7 @@
         "source_line": 63
       },
       "food": {
-        "value": "village-organized meals — \"meals organized by villagers",
+        "value": "village-organized meals — \"meals organized by villagers\"",
         "claim_strength": "organizer_fact",
         "evidence": "meals organized by villagers",
         "source_file": "chunk-6.md",
@@ -3079,7 +3072,7 @@
         "source_line": 96
       },
       "setting": {
-        "value": "forest / rural Bages — \"boscos, corriols, pistes, masies\"; branded \"l'autèntica clàssica rural i salvatge\", \"#lamésrural",
+        "value": "forest / rural Bages — \"boscos, corriols, pistes, masies\"; branded \"l'autèntica clàssica rural i salvatge\", \"#lamésrural\"",
         "claim_strength": "organizer_fact",
         "evidence": "boscos, corriols, pistes, masies",
         "source_file": "chunk-6.md",
@@ -3238,7 +3231,7 @@
         "source_line": 166
       },
       "reference_point": {
-        "value": "like a mini Pyrenees version of a Costa Brava/Andorra stage race — \"harder than any single 100K because it's three back-to-back mountain days.",
+        "value": "like a mini Pyrenees version of a Costa Brava/Andorra stage race — \"harder than any single 100K because it's three back-to-back mountain days.\"",
         "claim_strength": "our_read",
         "source_line": 167
       }
@@ -3343,7 +3336,7 @@
     "prior_edition": false,
     "attributes": {
       "setting": {
-        "value": "/ mid-mountain forest — Bisaura subregion between Osona and Ripollès; \"indrets màgics\", a \"Cursa de muntanya ben parida",
+        "value": "/ mid-mountain forest — Bisaura subregion between Osona and Ripollès; \"indrets màgics\", a \"Cursa de muntanya ben parida\"",
         "claim_strength": "organizer_fact",
         "evidence": "indrets màgics",
         "source_file": "chunk-6.md",
@@ -3410,7 +3403,7 @@
     "prior_edition": false,
     "attributes": {
       "course_topology": {
-        "value": "trail/path course avoiding tarmac — \"camins i corriols\", \"evitant al màxim el traçat urbà",
+        "value": "trail/path course avoiding tarmac — \"camins i corriols\", \"evitant al màxim el traçat urbà\"",
         "claim_strength": "organizer_fact",
         "evidence": "camins i corriols",
         "source_file": "chunk-6.md",
@@ -3445,7 +3438,7 @@
         "source_line": 256
       },
       "logistics_parking": {
-        "value": "Com arribar i aparcament\" section on site (details not fetched)",
+        "value": "\"Com arribar i aparcament\" section on site (details not fetched)",
         "claim_strength": "organizer_fact",
         "evidence": "Com arribar i aparcament",
         "source_file": "chunk-6.md",
@@ -3505,7 +3498,7 @@
     "prior_edition": false,
     "attributes": {
       "setting": {
-        "value": "forest / Montseny foothills — Baix Montseny, \"corriols tècnics, boscos d'alçada",
+        "value": "forest / Montseny foothills — Baix Montseny, \"corriols tècnics, boscos d'alçada\"",
         "claim_strength": "organizer_fact",
         "evidence": "corriols tècnics, boscos d'alçada",
         "source_file": "chunk-6.md",
@@ -3562,7 +3555,7 @@
         "source_line": 307
       },
       "reference_point": {
-        "value": "like a small-scale Montseny classic — \"harder than its 25 km / 1,400 m suggests once the technical corriols slow you down.",
+        "value": "like a small-scale Montseny classic — \"harder than its 25 km / 1,400 m suggests once the technical corriols slow you down.\"",
         "claim_strength": "our_read",
         "source_line": 308
       }
@@ -3762,7 +3755,7 @@
         "source_line": 96
       },
       "logistics_parking": {
-        "value": "Delante del pabellón de Tossa\"; bib pickup at the polideportivo. Bib draw 08:45 Sun.",
+        "value": "\"Delante del pabellón de Tossa\"; bib pickup at the polideportivo. Bib draw 08:45 Sun.",
         "claim_strength": "organizer_fact",
         "evidence": "Delante del pabellón de Tossa",
         "source_file": "chunk-7.md",
@@ -4046,7 +4039,7 @@
         "source_line": 237
       },
       "logistics_parking": {
-        "value": "Salida carrera (no parking)\" — no parking at the start.",
+        "value": "\"Salida carrera (no parking)\" — no parking at the start.",
         "claim_strength": "organizer_fact",
         "evidence": "Salida carrera (no parking)",
         "source_file": "chunk-7.md",
@@ -4127,7 +4120,7 @@
         "source_line": 270
       },
       "aid_stations": {
-        "value": "un o més avituallaments sòlids i líquids\"; \"no hi haurà vasos d'un sol ús\" → bring-your-own reusable cup.",
+        "value": "\"un o més avituallaments sòlids i líquids\"; \"no hi haurà vasos d'un sol ús\" → bring-your-own reusable cup.",
         "claim_strength": "organizer_fact",
         "evidence": "un o més avituallaments sòlids i líquids",
         "source_file": "chunk-7.md",
@@ -4275,7 +4268,7 @@
         "source_line": 48
       },
       "food": {
-        "value": "festa\" at aid stations mentioned ; specific botifarrada unknown. Kids race: unknown.",
+        "value": "\"festa\" at aid stations mentioned ; specific botifarrada unknown. Kids race: unknown.",
         "claim_strength": "organizer_fact",
         "evidence": "festa",
         "source_file": "chunk-8.md",
@@ -4751,7 +4744,7 @@
     "prior_edition": false,
     "attributes": {
       "tradition_editions": {
-        "value": "7th — \"7ª Edició Tap Trail",
+        "value": "7th — \"7ª Edició Tap Trail\"",
         "claim_strength": "organizer_fact",
         "evidence": "7ª Edició Tap Trail",
         "source_file": "chunk-9.md",
@@ -4825,7 +4818,7 @@
     "prior_edition": true,
     "attributes": {
       "tradition_editions": {
-        "value": "17th — \"17a Cursa i Caminada de Sant Galderic",
+        "value": "17th — \"17a Cursa i Caminada de Sant Galderic\"",
         "claim_strength": "organizer_fact",
         "evidence": "17a Cursa i Caminada de Sant Galderic",
         "source_file": "chunk-9.md",
@@ -4853,7 +4846,7 @@
         "source_line": 51
       },
       "technicality": {
-        "value": "Mitja/baixa\" (medium/low) — organizer-stated",
+        "value": "\"Mitja/baixa\" (medium/low) — organizer-stated",
         "claim_strength": "organizer_fact",
         "evidence": "Mitja/baixa",
         "source_file": "chunk-9.md",
@@ -5019,7 +5012,7 @@
         "source_line": 134
       },
       "setting": {
-        "value": "alpine / mountain — Serra de Prades, \"un recorregut semitécnico",
+        "value": "alpine / mountain — Serra de Prades, \"un recorregut semitécnico\"",
         "claim_strength": "organizer_fact",
         "evidence": "un recorregut semitécnico",
         "source_file": "chunk-9.md",
@@ -5040,7 +5033,7 @@
         "source_line": 138
       },
       "aid_stations": {
-        "value": "50K — \"6 avituallamientos\" (external assist at La Febrò + Capafonts); 25K — 4, \"Este año añadimos 1 avituallamiento más",
+        "value": "50K — \"6 avituallamientos\" (external assist at La Febrò + Capafonts); 25K — 4, \"Este año añadimos 1 avituallamiento más\"",
         "claim_strength": "organizer_fact",
         "evidence": "6 avituallamientos",
         "source_file": "chunk-9.md",
@@ -5054,7 +5047,7 @@
         "source_line": 142
       },
       "technicality": {
-        "value": "semitécnico\" (semi-technical) — organizer-stated",
+        "value": "\"semitécnico\" (semi-technical) — organizer-stated",
         "claim_strength": "organizer_fact",
         "evidence": "semitécnico",
         "source_file": "chunk-9.md",
@@ -5100,21 +5093,21 @@
     "prior_edition": false,
     "attributes": {
       "setting": {
-        "value": "forest / mountain — Cervelló hills (Baix Llobregat), \"naturaleza 100%\", \"climbing stairs to descending between rocks",
+        "value": "forest / mountain — Cervelló hills (Baix Llobregat), \"naturaleza 100%\", \"climbing stairs to descending between rocks\"",
         "claim_strength": "organizer_fact",
         "evidence": "naturaleza 100%",
         "source_file": "chunk-9.md",
         "source_line": 164
       },
       "aid_stations": {
-        "value": "Puntos de recàrrega\" (refill points) + \"avituallament\" with water/isotonic — refill points hint at BYO-bottle/cupless, LOW confidence",
+        "value": "\"Puntos de recàrrega\" (refill points) + \"avituallament\" with water/isotonic — refill points hint at BYO-bottle/cupless, LOW confidence",
         "claim_strength": "organizer_fact",
         "evidence": "Puntos de recàrrega",
         "source_file": "chunk-9.md",
         "source_line": 168
       },
       "technicality": {
-        "value": "divertida y exigente\" (fun and demanding), rock descents + stair climbs — reads more technical than most here",
+        "value": "\"divertida y exigente\" (fun and demanding), rock descents + stair climbs — reads more technical than most here",
         "claim_strength": "organizer_fact",
         "evidence": "divertida y exigente",
         "source_file": "chunk-9.md",
@@ -5160,7 +5153,7 @@
     "prior_edition": false,
     "attributes": {
       "tradition_editions": {
-        "value": "15th — \"15ª Edición... 15 Anys\", running \"des de... 2011",
+        "value": "15th — \"15ª Edición... 15 Anys\", running \"des de... 2011\"",
         "claim_strength": "organizer_fact",
         "evidence": "15ª Edición... 15 Anys",
         "source_file": "chunk-9.md",
@@ -5241,7 +5234,7 @@
         "source_line": 223
       },
       "championship": {
-        "value": "FEEC mountain-race calendar — \"Prova del calendari de curses per muntanya de la FEEC\" (2018–2025); also \"Campionat de Catalunya Universitari\" host and 2017 \"Campionat d'Europa Màster",
+        "value": "FEEC mountain-race calendar — \"Prova del calendari de curses per muntanya de la FEEC\" (2018–2025); also \"Campionat de Catalunya Universitari\" host and 2017 \"Campionat d'Europa Màster\"",
         "claim_strength": "organizer_fact",
         "evidence": "Prova del calendari de curses per muntanya de la FEEC",
         "source_file": "chunk-9.md",
@@ -5308,7 +5301,7 @@
         "source_line": 251
       },
       "setting": {
-        "value": "national-park / pre-Pyrenees — \"Espai Natural Protegit de l'Alta Garrotxa\", eastern Pre-Pyrenees, \"gran riquesa paisatgística, faunística i cultural",
+        "value": "national-park / pre-Pyrenees — \"Espai Natural Protegit de l'Alta Garrotxa\", eastern Pre-Pyrenees, \"gran riquesa paisatgística, faunística i cultural\"",
         "claim_strength": "organizer_fact",
         "evidence": "Espai Natural Protegit de l'Alta Garrotxa",
         "source_file": "chunk-9.md",
@@ -5322,7 +5315,7 @@
         "source_line": 257
       },
       "technicality": {
-        "value": "well-marked, no cross-country, but \"requires mountain running capability",
+        "value": "well-marked, no cross-country, but \"requires mountain running capability\"",
         "claim_strength": "organizer_fact",
         "evidence": "requires mountain running capability",
         "source_file": "chunk-9.md",
@@ -5375,21 +5368,21 @@
         "source_line": 24
       },
       "course_topology": {
-        "value": "point-to-point mountain routes through \"els racons més emblemàtics del famós Bandoler de Taradell Jaume Masferrer.",
+        "value": "point-to-point mountain routes through \"els racons més emblemàtics del famós Bandoler de Taradell Jaume Masferrer.\"",
         "claim_strength": "organizer_fact",
         "evidence": "els racons més emblemàtics del famós Bandoler de Taradell Jaume Masferrer.",
         "source_file": "chunk-10.md",
         "source_line": 25
       },
       "setting": {
-        "value": "rural Osona, historic/bandit theme — \"la cursa de muntanya popular més bandolera de Catalunya.",
+        "value": "rural Osona, historic/bandit theme — \"la cursa de muntanya popular més bandolera de Catalunya.\"",
         "claim_strength": "organizer_fact",
         "evidence": "la cursa de muntanya popular més bandolera de Catalunya.",
         "source_file": "chunk-10.md",
         "source_line": 26
       },
       "aid_stations": {
-        "value": "4 points — km 4.8 (liquids), km 8.4 & 10.1 (liquids+solids at Castell d'en Boix). Cup policy not stated. Finish \"un bon esmorzar.",
+        "value": "4 points — km 4.8 (liquids), km 8.4 & 10.1 (liquids+solids at Castell d'en Boix). Cup policy not stated. Finish \"un bon esmorzar.\"",
         "claim_strength": "organizer_fact",
         "evidence": "un bon esmorzar.",
         "source_file": "chunk-10.md",
@@ -5463,7 +5456,7 @@
     "prior_edition": false,
     "attributes": {
       "setting": {
-        "value": "RESERVA NATURAL DE SANT LLORENÇ DE MONTGAI-CAMARASA\" — natural reserve, reservoir/pantà, \"trams tècnics, equipats i de pura muntanya\" (equipped technical sections).",
+        "value": "\"RESERVA NATURAL DE SANT LLORENÇ DE MONTGAI-CAMARASA\" — natural reserve, reservoir/pantà, \"trams tècnics, equipats i de pura muntanya\" (equipped technical sections).",
         "claim_strength": "organizer_fact",
         "evidence": "RESERVA NATURAL DE SANT LLORENÇ DE MONTGAI-CAMARASA",
         "source_file": "chunk-10.md",
@@ -5544,7 +5537,7 @@
         "source_line": 77
       },
       "tradition_editions": {
-        "value": "VII UP XIC TRAIL\" — 7th edition.",
+        "value": "\"VII UP XIC TRAIL\" — 7th edition.",
         "claim_strength": "organizer_fact",
         "evidence": "VII UP XIC TRAIL",
         "source_file": "chunk-10.md",
@@ -5599,7 +5592,7 @@
         "source_line": 94
       },
       "course_topology": {
-        "value": "Nocturna runs \"per l'interior del poble\"; Clàssica \"per les muntanyes del poble passant per cada una de les conegudes Tres Maries\"; Amunt Maria \"Vertical per la clàssica baixada de la primera Maria.",
+        "value": "Nocturna runs \"per l'interior del poble\"; Clàssica \"per les muntanyes del poble passant per cada una de les conegudes Tres Maries\"; Amunt Maria \"Vertical per la clàssica baixada de la primera Maria.\"",
         "claim_strength": "organizer_fact",
         "evidence": "per l'interior del poble",
         "source_file": "chunk-10.md",
@@ -5858,7 +5851,7 @@
         "source_line": 205
       },
       "aid_stations": {
-        "value": "Avituallaments en cursa i arribada\" — cup/bottle policy not stated.",
+        "value": "\"Avituallaments en cursa i arribada\" — cup/bottle policy not stated.",
         "claim_strength": "organizer_fact",
         "evidence": "Avituallaments en cursa i arribada",
         "source_file": "chunk-10.md",
@@ -5872,7 +5865,7 @@
         "source_line": 209
       },
       "food": {
-        "value": "Entrepà i beguda a l'arribada\"; \"botifarres a la brasa\" (grilled sausages — a botifarrada). Finisher medals; physio + medical on site.",
+        "value": "\"Entrepà i beguda a l'arribada\"; \"botifarres a la brasa\" (grilled sausages — a botifarrada). Finisher medals; physio + medical on site.",
         "claim_strength": "organizer_fact",
         "evidence": "Entrepà i beguda a l'arribada",
         "source_file": "chunk-10.md",
@@ -5953,7 +5946,7 @@
         "source_line": 15
       },
       "tradition_editions": {
-        "value": "6th edition — \"sisena edició",
+        "value": "6th edition — \"sisena edició\"",
         "claim_strength": "organizer_fact",
         "evidence": "sisena edició",
         "source_file": "chunk-11.md",
@@ -5967,7 +5960,7 @@
         "source_line": 21
       },
       "technicality": {
-        "value": "HIGH (unusually, organizer states it) — Skyrace is \"very technical… for runners accustomed to mountain\"; even the Trail is \"authentic mountain terrain",
+        "value": "HIGH (unusually, organizer states it) — Skyrace is \"very technical… for runners accustomed to mountain\"; even the Trail is \"authentic mountain terrain\"",
         "claim_strength": "organizer_fact",
         "evidence": "very technical… for runners accustomed to mountain",
         "source_file": "chunk-11.md",
@@ -6027,7 +6020,7 @@
         "source_line": 44
       },
       "setting": {
-        "value": "forest/path · low hills — \"camins i algun corriol,\" a winter race with \"demanding profile",
+        "value": "forest/path · low hills — \"camins i algun corriol,\" a winter race with \"demanding profile\"",
         "claim_strength": "organizer_fact",
         "evidence": "camins i algun corriol,",
         "source_file": "chunk-11.md",
@@ -6101,7 +6094,7 @@
         "source_line": 72
       },
       "start_time": {
-        "value": "morning — \"A les 9:30h",
+        "value": "morning — \"A les 9:30h\"",
         "claim_strength": "organizer_fact",
         "evidence": "A les 9:30h",
         "source_file": "chunk-11.md",
@@ -6115,21 +6108,21 @@
         "source_line": 74
       },
       "setting": {
-        "value": "forest · pre-Pyrenean ridgeline — \"boscos i corriols de l'Alt Berguedà,\" \"vistes fantàstiques",
+        "value": "forest · pre-Pyrenean ridgeline — \"boscos i corriols de l'Alt Berguedà,\" \"vistes fantàstiques\"",
         "claim_strength": "organizer_fact",
         "evidence": "boscos i corriols de l'Alt Berguedà,",
         "source_file": "chunk-11.md",
         "source_line": 75
       },
       "cutoffs": {
-        "value": "yes, tight — overall 3h45; intermediate \"Refugi de la Clusa: 1 hora i 30 minuts",
+        "value": "yes, tight — overall 3h45; intermediate \"Refugi de la Clusa: 1 hora i 30 minuts\"",
         "claim_strength": "organizer_fact",
         "evidence": "Refugi de la Clusa: 1 hora i 30 minuts",
         "source_file": "chunk-11.md",
         "source_line": 77
       },
       "aid_stations": {
-        "value": "2 en recorregut\" (2 on course) ; cup policy unknown",
+        "value": "\"2 en recorregut\" (2 on course) ; cup policy unknown",
         "claim_strength": "organizer_fact",
         "evidence": "2 en recorregut",
         "source_file": "chunk-11.md",
@@ -6189,28 +6182,28 @@
         "source_line": 104
       },
       "setting": {
-        "value": "forest · Montserrat foothills — \"near Montserrat",
+        "value": "forest · Montserrat foothills — \"near Montserrat\"",
         "claim_strength": "organizer_fact",
         "evidence": "near Montserrat",
         "source_file": "chunk-11.md",
         "source_line": 105
       },
       "championship": {
-        "value": "none — this is a private/community event . Entry gate is NOT FEEC but casteller membership: \"Cal ser casteller per participar",
+        "value": "none — this is a private/community event . Entry gate is NOT FEEC but casteller membership: \"Cal ser casteller per participar\"",
         "claim_strength": "organizer_fact",
         "evidence": "Cal ser casteller per participar",
         "source_file": "chunk-11.md",
         "source_line": 106
       },
       "aid_stations": {
-        "value": "avituallaments\" provided ; cup policy unknown",
+        "value": "\"avituallaments\" provided ; cup policy unknown",
         "claim_strength": "organizer_fact",
         "evidence": "avituallaments",
         "source_file": "chunk-11.md",
         "source_line": 108
       },
       "tradition_editions": {
-        "value": "3rd edition — \"3a edició, 2026",
+        "value": "3rd edition — \"3a edició, 2026\"",
         "claim_strength": "organizer_fact",
         "evidence": "3a edició, 2026",
         "source_file": "chunk-11.md",
@@ -6231,7 +6224,7 @@
         "source_line": 112
       },
       "technicality": {
-        "value": "split — short \"Circuit poc tècnic\" (walkable), long \"Circuit més tècnic\" needing \"experiència en terreny tècnic",
+        "value": "split — short \"Circuit poc tècnic\" (walkable), long \"Circuit més tècnic\" needing \"experiència en terreny tècnic\"",
         "claim_strength": "organizer_fact",
         "evidence": "Circuit poc tècnic",
         "source_file": "chunk-11.md",
@@ -6284,14 +6277,14 @@
         "source_line": 133
       },
       "start_time": {
-        "value": "morning — \"10:00h",
+        "value": "morning — \"10:00h\"",
         "claim_strength": "organizer_fact",
         "evidence": "10:00h",
         "source_file": "chunk-11.md",
         "source_line": 134
       },
       "course_topology": {
-        "value": "loop — summit-and-return around \"La Campana",
+        "value": "loop — summit-and-return around \"La Campana\"",
         "claim_strength": "inference",
         "evidence": "La Campana",
         "source_file": "chunk-11.md",
@@ -6305,7 +6298,7 @@
         "source_line": 136
       },
       "championship": {
-        "value": "part of the Campionat Maqui series . FEEC gate: license holders pay base; non-federated add \"4€ mandatory daily insurance",
+        "value": "part of the Campionat Maqui series . FEEC gate: license holders pay base; non-federated add \"4€ mandatory daily insurance\"",
         "claim_strength": "organizer_fact",
         "evidence": "4€ mandatory daily insurance",
         "source_file": "chunk-11.md",
@@ -6319,7 +6312,7 @@
         "source_line": 139
       },
       "tradition_editions": {
-        "value": "16th edition — \"XVI Bell Race",
+        "value": "16th edition — \"XVI Bell Race\"",
         "claim_strength": "organizer_fact",
         "evidence": "XVI Bell Race",
         "source_file": "chunk-11.md",
@@ -6333,7 +6326,7 @@
         "source_line": 142
       },
       "technicality": {
-        "value": "navigation-heavy on the long one — 21k has \"exclusive sections… NO ribbons or arrows… your GPS device and the official track. Pure navigation",
+        "value": "navigation-heavy on the long one — 21k has \"exclusive sections… NO ribbons or arrows… your GPS device and the official track. Pure navigation\"",
         "claim_strength": "organizer_fact",
         "evidence": "exclusive sections… NO ribbons or arrows… your GPS device and the official track. Pure navigation",
         "source_file": "chunk-11.md",
@@ -6400,7 +6393,7 @@
         "source_line": 182
       },
       "setting": {
-        "value": "national-park · monastery/historic — \"Parc Natural de la Serra de Montsant,\" \"Ermita de la Mare de Déu de Montsant,\" \"ermita de Santa Magdalena",
+        "value": "national-park · monastery/historic — \"Parc Natural de la Serra de Montsant,\" \"Ermita de la Mare de Déu de Montsant,\" \"ermita de Santa Magdalena\"",
         "claim_strength": "organizer_fact",
         "evidence": "Parc Natural de la Serra de Montsant,",
         "source_file": "chunk-11.md",
@@ -6495,7 +6488,7 @@
         "source_line": 213
       },
       "setting": {
-        "value": "forest · metropolitan natural-park — \"un dels pulmons verds més importants de l'àrea metropolitana de Barcelona",
+        "value": "forest · metropolitan natural-park — \"un dels pulmons verds més importants de l'àrea metropolitana de Barcelona\"",
         "claim_strength": "organizer_fact",
         "evidence": "un dels pulmons verds més importants de l'àrea metropolitana de Barcelona",
         "source_file": "chunk-11.md",
@@ -6516,7 +6509,7 @@
         "source_line": 220
       },
       "technicality": {
-        "value": "split — 24 km has \"el desnivell i els camins més tècnics\"; 14 km suited to \"ritmes suaus",
+        "value": "split — 24 km has \"el desnivell i els camins més tècnics\"; 14 km suited to \"ritmes suaus\"",
         "claim_strength": "organizer_fact",
         "evidence": "el desnivell i els camins més tècnics",
         "source_file": "chunk-11.md",

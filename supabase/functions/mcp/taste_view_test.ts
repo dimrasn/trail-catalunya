@@ -58,6 +58,14 @@ Deno.test('tasteFlags: conservative — set only when stated, absent = unknown',
   assertEquals(tasteFlags({ attributes: { setting: { value: 'coastal forest', claim_strength: 'our_read' } }, editorial: {} }), null)
 })
 
+Deno.test('tasteFlags: negation never sets night; non-organizer provenance is ineligible (audit #6)', () => {
+  // "no night mention" must NOT become night:true
+  assertEquals(tasteFlags({ attributes: { night_race: { value: 'No. (day marxa, no night mention)', claim_strength: 'organizer_fact' } }, editorial: {} }), null)
+  // an inferred/our-read technicality is NOT a queryable flag
+  assertEquals(tasteFlags({ attributes: { technicality: { value: 'rocky, technical', claim_strength: 'inference' } }, editorial: {} }), null)
+  assertEquals(tasteFlags({ attributes: { night_race: { value: 'Yes — nocturna', claim_strength: 'our_read' } }, editorial: {} }), null)
+})
+
 Deno.test('inference stays inference, not upgraded to fact', () => {
   const d = tasteForDisplay({ editorial: { who: { value: 'strong night runners', claim_strength: 'inference' } } })!
   assertEquals(d.editorial[0].strength_label, 'Our guess')

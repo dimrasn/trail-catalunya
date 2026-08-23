@@ -216,3 +216,20 @@ Ask-box = Step 3.
 ## Rollback
 Revert the taste.json + site commit (Vercel rebuilds); the live MCP self-heals to
 `taste:null` if the bundled file is removed on a redeploy. No DB to unwind.
+
+## Corrections (2026-08-23 — post-implementation audit)
+Appended, not edited into the body above (issued-deliverable rule). Two items the
+build surfaced after this plan was issued:
+- **U6 / any MCP deploy: do NOT "redeploy from encoded source" (inline).** The
+  Supabase `deploy_edge_function` tool is inline-only and `mcp/taste.json` is
+  ~165KB — too large to hand-inline safely (a JSON error 500s the public MCP). The
+  correct path is the **Supabase CLI from disk, run on a clean `main` worktree**:
+  `supabase functions deploy mcp --no-verify-jwt` (from the repo root, NOT `~`).
+  See `AGENTS.md` "Deploy trap". This supersedes any inline-deploy wording earlier
+  in the plan.
+- **`taste_flags` (added post-plan) are gated to organizer-stated fields only** and
+  require affirmative wording (a negation like "no night mention" never sets
+  night:true), and **R2-2's projection anchor excludes interval reps** (no valid
+  continuous `(D1,T1)` pair) — both per the 2026-08-23 review. The generator's
+  unknown-sentinel set + quote-strip were also hardened (source-silence no longer
+  publishes as an organizer fact; only matched enclosing quote-pairs are trimmed).
