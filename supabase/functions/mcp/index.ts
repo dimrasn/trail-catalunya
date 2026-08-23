@@ -27,6 +27,14 @@ Deno.serve(async (req) => {
   if (origin === 'null' || origin?.startsWith('file://')) {
     return new Response('forbidden origin', { status: 403 })
   }
+  // Authless server: OAuth discovery probes must 404, not 405. A 405 on
+  // /.well-known/oauth-protected-resource reads to Claude.ai's connector as "an
+  // OAuth resource exists here (wrong method)" and triggers a sign-in/registration
+  // flow that fails ("Couldn't register with sign-in service"). A clean 404 tells
+  // the client there is no OAuth metadata → connect authless.
+  if (new URL(req.url).pathname.includes('/.well-known/')) {
+    return new Response('Not Found', { status: 404, headers: CORS_HEADERS })
+  }
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS_HEADERS })
   }
