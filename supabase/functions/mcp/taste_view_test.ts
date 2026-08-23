@@ -4,7 +4,7 @@
 // Run: deno test supabase/functions/mcp/taste_view_test.ts
 
 import { assert, assertEquals } from 'jsr:@std/assert@1'
-import { tasteForDisplay, tasteSummary } from './taste_view.ts'
+import { tasteFlags, tasteForDisplay, tasteSummary } from './taste_view.ts'
 
 Deno.test('null / empty profile → null', () => {
   assertEquals(tasteForDisplay(null), null)
@@ -46,6 +46,16 @@ Deno.test('tasteSummary falls back (who → setting) when no unique/reference', 
     tasteSummary({ attributes: { setting: { value: 'forested coastal hills', claim_strength: 'organizer_fact' } }, editorial: {} })?.value,
     'forested coastal hills',
   )
+})
+
+Deno.test('tasteFlags: conservative — set only when stated, absent = unknown', () => {
+  assertEquals(tasteFlags(null), null)
+  assertEquals(tasteFlags({ attributes: { night_race: { value: 'Yes', claim_strength: 'organizer_fact' } }, editorial: {} }), { night: true })
+  assertEquals(tasteFlags({ attributes: { technicality: { value: 'some technical sections', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'moderate' })
+  assertEquals(tasteFlags({ attributes: { technicality: { value: 'molt tècnica, rocky descents', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'high' })
+  assertEquals(tasteFlags({ attributes: { technicality: { value: 'runnable, low tech', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'low' })
+  // a race that states nothing technical/night → no flags asserted (not "low", not "not-night")
+  assertEquals(tasteFlags({ attributes: { setting: { value: 'coastal forest', claim_strength: 'our_read' } }, editorial: {} }), null)
 })
 
 Deno.test('inference stays inference, not upgraded to fact', () => {

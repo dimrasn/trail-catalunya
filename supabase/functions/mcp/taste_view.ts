@@ -76,6 +76,29 @@ export function tasteForDisplay(profile?: TasteProfile | null): { editorial: Tas
   return { editorial, character }
 }
 
+// Queryable filter flags for the list projection (dogfood gap #1) so an agent can
+// filter on the differentiated axes in one call. CONSERVATIVE: a flag is set only
+// when the taste text clearly states it; ambiguous → absent (unknown, not a
+// claim). Derived-from-text — a hint to confirm via get_race, never an assertion.
+function bandTechnicality(v?: string): string | undefined {
+  const s = (v || '').toLowerCase()
+  if (!s) return undefined
+  if (/molt t[eè]cnic|very technical|highly technical|rocky|scrambl|exposed|chain|rope|extrem|steep technical/.test(s)) return 'high'
+  if (/baixa|low tech|runnable|non-?technical|smooth|gentle|rolling|poc t[eè]cnic/.test(s)) return 'low'
+  if (/mitja|medium|moderate|some technical|partly technical|mixed|t[eè]cnic/.test(s)) return 'moderate'
+  return undefined
+}
+export function tasteFlags(profile?: TasteProfile | null): { night?: boolean; technicality?: string } | null {
+  if (!profile) return null
+  const at = profile.attributes || {}
+  const flags: { night?: boolean; technicality?: string } = {}
+  const night = ((at.night_race && at.night_race.value) || '').toLowerCase()
+  if (/\byes\b|night|nocturn|\bnit\b/.test(night)) flags.night = true
+  const tech = bandTechnicality(at.technicality && at.technicality.value)
+  if (tech) flags.technicality = tech
+  return Object.keys(flags).length ? flags : null
+}
+
 // Compact, typed one-liner for the list projection (KTD8): keeps its claim
 // strength so a list agent never reads our judgement as an organizer fact.
 export function tasteSummary(profile?: TasteProfile | null): { value: string; strength: string; strength_label: string } | null {

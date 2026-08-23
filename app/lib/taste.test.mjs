@@ -5,7 +5,7 @@
 
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { tasteForDisplay, tasteSummary } from './taste.js'
+import { tasteForDisplay, tasteSummary, tasteFlags } from './taste.js'
 
 test('null / empty profile → null', () => {
   assert.equal(tasteForDisplay(null), null)
@@ -47,6 +47,15 @@ test('tasteSummary falls back (who → setting) when no unique/reference', () =>
     tasteSummary({ attributes: { setting: { value: 'forested coastal hills', claim_strength: 'organizer_fact' } }, editorial: {} }).value,
     'forested coastal hills',
   )
+})
+
+test('tasteFlags: conservative — set only when stated, absent = unknown', () => {
+  assert.equal(tasteFlags(null), null)
+  assert.deepEqual(tasteFlags({ attributes: { night_race: { value: 'Yes', claim_strength: 'organizer_fact' } }, editorial: {} }), { night: true })
+  assert.deepEqual(tasteFlags({ attributes: { technicality: { value: 'some technical sections', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'moderate' })
+  assert.deepEqual(tasteFlags({ attributes: { technicality: { value: 'molt tècnica, rocky descents', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'high' })
+  assert.deepEqual(tasteFlags({ attributes: { technicality: { value: 'runnable, low tech', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'low' })
+  assert.equal(tasteFlags({ attributes: { setting: { value: 'coastal forest', claim_strength: 'our_read' } }, editorial: {} }), null)
 })
 
 test('inference stays inference, not upgraded to fact', () => {

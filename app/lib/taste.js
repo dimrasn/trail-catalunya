@@ -73,6 +73,30 @@ export function tasteForDisplay(profile) {
   return { editorial, character }
 }
 
+// Queryable filter flags for the MCP list projection (dogfood gap #1) so an agent
+// can filter on the differentiated axes in one call instead of N get_race's.
+// CONSERVATIVE by design: a flag is set ONLY when the taste text clearly states
+// it; anything ambiguous stays absent (= unknown, not a claim). Derived-from-text,
+// so the agent should treat it as a hint and confirm specifics via get_race.
+function bandTechnicality(v) {
+  const s = (v || '').toLowerCase()
+  if (!s) return undefined
+  if (/molt t[eè]cnic|very technical|highly technical|rocky|scrambl|exposed|chain|rope|extrem|steep technical/.test(s)) return 'high'
+  if (/baixa|low tech|runnable|non-?technical|smooth|gentle|rolling|poc t[eè]cnic/.test(s)) return 'low'
+  if (/mitja|medium|moderate|some technical|partly technical|mixed|t[eè]cnic/.test(s)) return 'moderate'
+  return undefined
+}
+export function tasteFlags(profile) {
+  if (!profile) return null
+  const at = profile.attributes || {}
+  const flags = {}
+  const night = (at.night_race && at.night_race.value || '').toLowerCase()
+  if (/\byes\b|night|nocturn|\bnit\b/.test(night)) flags.night = true
+  const tech = bandTechnicality(at.technicality && at.technicality.value)
+  if (tech) flags.technicality = tech
+  return Object.keys(flags).length ? flags : null
+}
+
 // The one-line summary for the MCP list projection (KTD8): the "special" line,
 // or the "in a word" reference. Kept typed with its strength so a list agent
 // never reads our judgement as an organizer fact.

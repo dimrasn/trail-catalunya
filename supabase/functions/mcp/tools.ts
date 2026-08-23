@@ -13,7 +13,7 @@ import { type EnrichedFacts, enrichedFactsForMcp } from './enrichment_view.ts'
 import {
   difficultyLevel, distanceMatches, dPlusPerKm, eventKmEffort, hasVariantFilter, itraPoints, kmEffort,
 } from './difficulty.ts'
-import { type TasteField, type TasteProfile, tasteForDisplay, tasteSummary } from './taste_view.ts'
+import { type TasteField, type TasteProfile, tasteFlags, tasteForDisplay, tasteSummary } from './taste_view.ts'
 import tasteProfilesRaw from './taste.json' with { type: 'json' }
 import type { ToolDef } from './protocol.ts'
 
@@ -57,6 +57,7 @@ interface EnrichedEvent extends RaceEvent {
     | null
   taste: { editorial: TasteField[]; character: TasteField[] } | null
   taste_summary: { value: string; strength: string; strength_label: string } | null
+  taste_flags: { night?: boolean; technicality?: string } | null
   matched_distances?: DistanceDifficulty[]
 }
 
@@ -104,6 +105,7 @@ async function loadEventsAndFreshness(): Promise<{
         ...e,
         taste: tasteForDisplay(tasteProfile),
         taste_summary: tasteSummary(tasteProfile),
+        taste_flags: tasteFlags(tasteProfile),
         distances: e.distances.map((d) => {
           const k = kmEffort(d)
           return {
@@ -272,7 +274,9 @@ export const TOOLS: ToolDef[] = [
       'Does NOT include live registration status or start time — fetch each shortlisted ' +
       'race\'s url to verify those before recommending, and report any you cannot confirm. ' +
       'Each event carries taste_available + taste_summary (a one-line, claim-tagged our-read on ' +
-      'what makes it special); call get_race for the full taste profile. ' +
+      'what makes it special) + taste_flags (night:true, technicality:low|moderate|high — each set ' +
+      'ONLY when the race states it, so filter permissively: absent = unknown, not "no"). Filter on ' +
+      'taste_flags directly instead of a get_race per race; call get_race for the full taste profile. ' +
       'drive_minutes_from_barcelona is from Plaça Glòries, not the user\'s location. ' +
       'If the user has a training-data connector (Strava/Garmin) in this session, you can join ' +
       'these races with their recent training to add readiness and a rough projected finish time ' +
@@ -360,7 +364,8 @@ export const TOOLS: ToolDef[] = [
       'difficulty_level word Easy…Brutal; an endurance-load measure, NOT steepness — use ' +
       'd_plus_per_km for verticality; scope event_max, null unless every distance has a known D+). ' +
       'When you filter by distance/elevation, matched_distances lists the variant(s) that matched. ' +
-      'Each event carries taste_available + taste_summary (full taste via get_race). ' +
+      'Each event carries taste_available + taste_summary + taste_flags (night, technicality band; ' +
+      'set only when stated — absent = unknown; full taste via get_race). ' +
       'Undated (TBD) races are excluded and counted in ' +
       'tbd_excluded_count. Does NOT include live registration status — fetch each url to verify. ' +
       'With the user\'s own training connector present, you can also estimate readiness and a ' +
