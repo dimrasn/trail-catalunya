@@ -273,7 +273,12 @@ export default function RaceList({ races, lastUpdated }) {
   // dataset, so December / next-year races appear automatically once dated.
   const monthOptions = useMemo(() => {
     const months = new Set()
-    for (const race of races) if (race.date) months.add(race.date.slice(5, 7))
+    for (const race of races) {
+      if (race.date) months.add(race.date.slice(5, 7))
+      // A race with only a source-published month must be selectable too, or a
+      // future expected-only month has races that no chip can reach (audit #6).
+      else if (race.expectedMonth != null) months.add(String(race.expectedMonth).padStart(2, '0'))
+    }
     const opts = [...months].sort().map(m => ({ value: m, label: MONTH_NAMES_SHORT[parseInt(m) - 1] }))
     return [{ value: 'all', label: 'All' }, ...opts]
   }, [races])

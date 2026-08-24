@@ -101,10 +101,12 @@ or discontinued event would still carry a fabricated date-like claim.
 **In force:** show "Next edition not announced — check official site." A future
 month/year appears only from organizer evidence or validated edition history.
 
-**Amended 2026-08-23 after audit — the source must agree with itself.** A
-month the *source* publishes (`month_num` + `year`) is organizer evidence, not
-our prediction, and may be shown as "Expected September 2026 — exact date not
-announced". But it is suppressed whenever the source contradicts itself: an
+**Amended 2026-08-23 after audit — the source must agree with itself, and it is
+SOURCE-backed, not organizer-backed.** A month the aggregator publishes
+(`month_num` + `year`, scraped from ultrescatalunya) is *source* evidence — NOT
+the organizer's own claim (R5 keeps that distinction). It is our least-inferred
+signal, not a prediction, and may be shown as "Expected September 2026 — exact
+date not announced". Do not label it as the organizer's. But it is suppressed whenever the source contradicts itself: an
 out-of-range month, rows within one event naming different months, or a
 `date_display` bare year that disagrees with `year` (live: `Radikal Estana`,
 month "Agost 2026", `date_display` "2027"). 4 of 91 events tripped this and now
@@ -226,9 +228,13 @@ moves its URL, which is exactly the instability **R9** exists to prevent. That
 the heuristic happens to resolve all 3 current cases correctly (Olla de Núria,
 Espintrail, Volta a la Maria) is not evidence it is stable.
 
-**Display name and slug are pinned independently.** A display name may be
-corrected without moving a URL; a slug changes only deliberately, and every
-change ships its permanent redirect in the same commit (R9).
+**The registry key is stable and independent of both name and slug.** Key each
+entry on the immutable event identity — `race_url` + `town` (the grain the
+groupers already use) — never on the display name or slug. Display name and slug
+are pinned as separate fields off that key: a display name may be corrected
+without moving a URL, and a slug changes only deliberately, shipping its
+permanent redirect in the same commit (R9). Keying on the name would recreate
+the very instability this rule removes.
 
 ### R14 — Event-level aggregates require complete data
 `lens: honesty` · `status: live` · added 2026-08-23

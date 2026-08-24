@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { getRaces } from '../../lib/races.js'
 import {
   displayDate, formatDrive, driveColor, distancesSummary, elevationSummary,
-  metadataDistancePart, expectedDateLabel, MONTHS_SHORT,
+  metadataDistancePart, completeMaxElevation, expectedDateLabel, MONTHS_SHORT,
   maxElevation, yearOf, kmEffort, eventKmEffort, difficultyLevel, dPlusPerKm,
   PROVINCE_COLOR, PROVINCE_TITLE,
 } from '../../lib/format.js'
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }) {
 
   const year = yearOf(race.date)
   const dist = distancesSummary(race.distances)
-  const maxEl = maxElevation(race.distances)
+  const maxEl = completeMaxElevation(race.distances)
   const distPart = metadataDistancePart(race.distances)
   const driveStr = race.driveMinutes != null ? formatDrive(race.driveMinutes) : null
   const prov = PROVINCE_TITLE[race.province] || race.province

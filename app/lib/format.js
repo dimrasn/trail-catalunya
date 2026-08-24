@@ -130,6 +130,31 @@ export function metadataDistancePart(distances) {
   return distinctKms.size === 1 ? `${dist} / ${maxEl} m D+` : `${dist} · up to ${maxEl} m D+`
 }
 
+// The source-published month for a dateless event, or null. A month is trusted
+// ONLY when EVERY row that asserts one is complete (month AND year present),
+// in range, and in agreement, and no date_display bare year contradicts it.
+// A single malformed sibling poisons the event: we cannot tell which row is
+// right, so we publish nothing. See docs/rules.md R6.
+//
+// A row "asserts a month" if it carries month_num or year (or both). Validating
+// only the rows that already parsed — the earlier bug — let one clean row slip
+// past a month=13 or missing-year sibling.
+export function expectedMonthFromRows(rows) {
+  const asserting = (rows || []).filter(r => r.month_num != null || r.year != null)
+  if (asserting.length === 0) return null
+  const complete = asserting.every(r =>
+    r.month_num != null && r.year != null && r.month_num >= 1 && r.month_num <= 12)
+  if (!complete) return null
+  const { month_num: m, year: y } = asserting[0]
+  if (!asserting.every(r => r.month_num === m && r.year === y)) return null
+  const contradicted = (rows || []).some(r => {
+    const dd = (r.date_display || '').trim()
+    return /^\d{4}$/.test(dd) && Number(dd) !== y
+  })
+  if (contradicted) return null
+  return { month: m, year: y }
+}
+
 // A race whose exact date is unpublished but whose month we know: "August 2026".
 // This is an EXPECTED month, never a confirmed date — callers must present it
 // as such and must not emit it as a date in structured data.

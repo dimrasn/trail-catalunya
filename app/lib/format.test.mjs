@@ -8,6 +8,7 @@ import assert from 'node:assert/strict'
 import {
   kmEffort, eventKmEffort, itraPoints, difficultyLevel, dPlusPerKm,
   distancesSummary, elevationSummary, metadataDistancePart, expectedDateLabel,
+  expectedMonthFromRows,
 } from './format.js'
 
 test('kmEffort: missing km → null', () => {
@@ -188,4 +189,63 @@ test('expectedDateLabel: missing or out-of-range input → null', () => {
   assert.equal(expectedDateLabel(8, null), null)
   assert.equal(expectedDateLabel(0, 2026), null)
   assert.equal(expectedDateLabel(13, 2026), null)
+})
+
+// ---------------------------------------------------------------------------
+// expectedMonthFromRows — the R6 agreement gate (docs/rules.md R6).
+// A source-published month is shown ONLY when EVERY row that asserts a month
+// is complete, in range, and agrees; and no date_display bare year contradicts
+// it. One malformed sibling poisons the event — we cannot tell which row is
+// right, so we publish nothing. (Audit finding #2: filtering invalid rows out
+// before the agreement check let a lone valid row through.)
+// ---------------------------------------------------------------------------
+
+test('expectedMonthFromRows: all rows agree → the month', () => {
+  assert.deepEqual(
+    expectedMonthFromRows([
+      { month_num: 8, year: 2026, date_display: 'Agost 2026' },
+      { month_num: 8, year: 2026, date_display: 'Agost 2026' },
+    ]),
+    { month: 8, year: 2026 },
+  )
+})
+
+test('expectedMonthFromRows: out-of-range sibling poisons the event', () => {
+  assert.equal(expectedMonthFromRows([
+    { month_num: 8, year: 2026 }, { month_num: 13, year: 2026 },
+  ]), null)
+  assert.equal(expectedMonthFromRows([{ month_num: 0, year: 2026 }]), null)
+})
+
+test('expectedMonthFromRows: a row asserting month but missing year poisons', () => {
+  assert.equal(expectedMonthFromRows([
+    { month_num: 8, year: 2026 }, { month_num: 8, year: null },
+  ]), null)
+})
+
+test('expectedMonthFromRows: rows split on month/year → suppressed', () => {
+  assert.equal(expectedMonthFromRows([
+    { month_num: 8, year: 2026 }, { month_num: 9, year: 2026 },
+  ]), null)
+  assert.equal(expectedMonthFromRows([
+    { month_num: 8, year: 2026 }, { month_num: 8, year: 2027 },
+  ]), null)
+})
+
+test('expectedMonthFromRows: date_display bare year contradicting year → suppressed (Radikal Estana)', () => {
+  assert.equal(expectedMonthFromRows([
+    { month_num: 8, year: 2026, date_display: '2027' },
+  ]), null)
+})
+
+test('expectedMonthFromRows: date_display bare year MATCHING year is allowed', () => {
+  assert.deepEqual(
+    expectedMonthFromRows([{ month_num: 8, year: 2026, date_display: '2026' }]),
+    { month: 8, year: 2026 },
+  )
+})
+
+test('expectedMonthFromRows: no rows assert a month → null', () => {
+  assert.equal(expectedMonthFromRows([{ month_num: null, year: null }]), null)
+  assert.equal(expectedMonthFromRows([]), null)
 })

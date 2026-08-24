@@ -13,6 +13,7 @@ import { createClient } from '@supabase/supabase-js'
 import driveTimes from '@/data/towns-drive-times.json'
 import townsGeocoded from '@/data/towns-geocoded.json'
 import { enrichmentForDisplay } from './enrichment.js'
+import { expectedMonthFromRows } from './format.js'
 import { tasteForDisplay } from './taste.js'
 // Canonical taste artifact (plan v3, KTD1 — committed JSON bundled into the site
 // build; the MCP bundles the same file). Keyed by race_url::town.
@@ -147,17 +148,10 @@ function groupRowsIntoEvents(rows) {
     let expectedMonth = null
     let expectedYear = null
     if (!dateIso) {
-      const dated = groupRows.filter(r => r.month_num != null && r.year != null)
-      const valid = dated.filter(r => r.month_num >= 1 && r.month_num <= 12)
-      const agree = valid.length > 0 &&
-        valid.every(r => r.month_num === valid[0].month_num && r.year === valid[0].year)
-      const contradicted = agree && groupRows.some(r => {
-        const dd = (r.date_display || '').trim()
-        return /^\d{4}$/.test(dd) && Number(dd) !== valid[0].year
-      })
-      if (agree && !contradicted) {
-        expectedMonth = valid[0].month_num
-        expectedYear = valid[0].year
+      const em = expectedMonthFromRows(groupRows)
+      if (em) {
+        expectedMonth = em.month
+        expectedYear = em.year
       }
     }
 
