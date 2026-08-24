@@ -1,6 +1,12 @@
 import './globals.css'
+import './fdr.css'
+import { Anton, Work_Sans, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SITE_URL } from './lib/site'
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-poster' })
+const workSans = Work_Sans({ subsets: ['latin'], variable: '--font-sans' })
+const jbMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 const TITLE = 'Trail Races in Catalunya 2026 — Calendar with Drive Times from Barcelona'
 const DESCRIPTION =
@@ -31,7 +37,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${anton.variable} ${workSans.variable} ${jbMono.variable}`}>
         {children}
         <Analytics />
       </body>
