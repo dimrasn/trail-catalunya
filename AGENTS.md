@@ -65,18 +65,26 @@ v11** — `tools.ts` bundles `mcp/taste.json` + per-tool projection (list =
 INSTRUCTIONS extended. Verified live: get_race returns labelled taste, search
 returns the compact summary only.
 
-**`main` is AHEAD of the live MCP (as of 2026-08-22).** Two dogfood-driven
-changes are committed on `main` but NOT yet on the live MCP (still v11): (1)
-`taste_flags` — night + technicality band in the list projection so agents filter
-in one call (dogfood gap #1); (2) the PROJECTED-TIME instruction fix — use a hard
-session's work-interval pace as an anchor + flag the estimate when only easy runs
-exist (dogfood R2-2). **The next `supabase functions deploy mcp` from `main`
-ships both → that will be v12.** VERIFY YOU ARE ON `main` (or deploy from a `main`
-worktree) before deploying: this repo's working dir is sometimes checked out on a
-parallel session's feature branch (e.g. `feat/multi-select-filters`), and a
-disk-based CLI deploy from the wrong branch would ship that branch's unfinished
-work. Slice-1 dogfood gap list: `docs/dogfood/2026-08-22-slice1-gaps.md`; the
-bet is validated (readiness composition works on real Strava). Slice-2 backlog:
+**Taste dogfood + the 2026-08-23 review are DEPLOYED & VERIFIED LIVE (MCP v15,
+2026-08-23).** `taste_flags` (night + technicality band in the list projection,
+gated to organizer-stated fields + affirmative wording — a negation like "no
+night mention" never sets night:true) and the PROJECTED-TIME fix (interval reps
+are NOT a valid Riegel anchor — excluded; keep the no-anchor "suggest a TT" flag)
+are live, along with the review's honesty fixes: source-silence no longer
+publishes as an organizer fact (isUnknownValue broadened), and only matched
+enclosing quote-pairs are trimmed (no unbalanced quotes). Verified on the live
+MCP: `get_race(pujada-al-montsia)` has no "No indication."; only real night races
+carry `taste_flags.night`; zero unbalanced quotes across the taste corpus. The
+required Deno suite (`deno test --allow-read supabase/functions/ eval/`) is green
+(135/135). Review + fixes: `outputs/2026-08-23_step*` + commit 579f595.
+**VERSION-TRACKING TRAP:** parallel sessions deploy the MCP independently, so the
+version moves without notice (v11→v15 in one day). NEVER trust a version number
+written here — always `list_edge_functions` before naming a release, and deploy
+from a `git worktree add <tmp> origin/main` (fetch first) so a stale local `main`
+can't ship old source (that bug shipped a stale v15 once). The working dir is
+often on a parallel session's branch — do NOT deploy from it. Slice-1 dogfood
+gap list: `docs/dogfood/2026-08-22-slice1-gaps.md`; the bet is validated
+(readiness composition works on real Strava). Slice-2 backlog:
 operational facts (start/cutoffs, compound-bullet manual split + prior-edition
 gate), merge `_overrides/*` (Burriac runner/PDF notes), technicality-coverage
 salvage, chunk-3 url-only join (town backfill), the 4 non-joining + exception tail.
