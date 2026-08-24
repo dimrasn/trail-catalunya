@@ -1,11 +1,25 @@
+'use client'
+
+import { useState } from 'react'
 import FilterChip from './FilterChip'
 import { toggleValue } from '../lib/filters.js'
+import { LEVELS } from '../lib/semantics.js'
 
 const DRIVE_OPTIONS = [
   { value: 'any', label: 'Any' },
   { value: 'u60', label: '< 1h' },
   { value: '60-120', label: '1–2h' },
   { value: '120+', label: '2h+' },
+]
+
+// Difficulty replaces raw D+ buckets as the visible axis — human words,
+// coloured by their own level token when active (word always present).
+const DIFFICULTY_OPTIONS = [
+  { value: 'any', label: 'Any' },
+  { value: 'easy', label: 'Easy', bg: LEVELS.Easy.bg, ink: LEVELS.Easy.ink },
+  { value: 'moderate', label: 'Moderate', bg: LEVELS.Moderate.bg, ink: LEVELS.Moderate.ink },
+  { value: 'hard', label: 'Hard', bg: LEVELS.Hard.bg, ink: LEVELS.Hard.ink },
+  { value: 'vh+', label: 'V.hard+', bg: LEVELS['Very hard'].bg, ink: LEVELS['Very hard'].ink },
 ]
 
 const DISTANCE_OPTIONS = [
@@ -17,6 +31,7 @@ const DISTANCE_OPTIONS = [
   { value: '42+', label: '42+ km' },
 ]
 
+// Raw climb buckets live behind "More" — expert units, demoted not deleted.
 const ELEVATION_OPTIONS = [
   { value: 'any', label: 'Any' },
   { value: 'u200', label: '< 200 D+' },
@@ -38,21 +53,14 @@ const PROVINCE_OPTIONS = [
   { value: 'LLEIDA', label: 'Lleida' },
 ]
 
-// The clear-the-row sentinel chip carries one of these values (drive/distance/
-// elevation use 'any'; month/province use 'all'). Detected by value, NOT by
-// position — an OPTIONS list reordered so the sentinel isn't first must not
-// silently turn a real bucket into the clear-all chip.
+// The clear-the-row sentinel chip carries one of these values. Detected by
+// value, NOT by position.
 const CLEAR_VALUES = new Set(['any', 'all'])
 
-// Multi-select row. `selected` is an array of chosen bucket values; the sentinel
-// chip clears the row. A bucket chip toggles its own value; the sentinel is
-// active only when nothing is selected.
 function FilterRow({ label, options, selected, onChange }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minHeight: '32px' }}>
-      <span style={{ fontSize: '11px', color: '#666', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', minWidth: '60px', flexShrink: 0 }}>
-        {label}
-      </span>
+      <span className="fdr-label" style={{ minWidth: '64px', flexShrink: 0 }}>{label}</span>
       <div className="chips-row" style={{ flex: 1 }}>
         {options.map(opt => {
           const isAny = CLEAR_VALUES.has(opt.value)
@@ -61,6 +69,8 @@ function FilterRow({ label, options, selected, onChange }) {
               key={opt.value}
               label={opt.label}
               active={isAny ? selected.length === 0 : selected.includes(opt.value)}
+              activeBg={opt.bg}
+              activeInk={opt.ink}
               onClick={() => onChange(isAny ? [] : toggleValue(selected, opt.value))}
             />
           )
@@ -70,15 +80,35 @@ function FilterRow({ label, options, selected, onChange }) {
   )
 }
 
+function Toggle({ label, active, onClick }) {
+  return (
+    <button onClick={onClick} aria-pressed={active} style={{
+      padding: '5px 12px', borderRadius: '999px', fontSize: '13px',
+      border: '1px solid', borderColor: active ? 'transparent' : 'var(--fdr-border)',
+      cursor: 'pointer', whiteSpace: 'nowrap',
+      backgroundColor: active ? 'var(--fdr-ink)' : 'var(--fdr-surface)',
+      color: active ? 'var(--fdr-ink-inverse)' : 'var(--fdr-ink-muted)',
+      fontWeight: active ? '600' : '400',
+    }}>
+      {label}
+    </button>
+  )
+}
+
 export default function FilterBar({ filters, setFilter, monthOptions = MONTH_OPTIONS_FALLBACK }) {
+  // Climb row is hidden by default but must surface when a shared URL
+  // arrives carrying elevation filters — hidden active filters lie.
+  const [showElev, setShowElev] = useState(false)
+  const elevVisible = showElev || filters.elevation.length > 0
+
   return (
     <div
       style={{
         position: 'sticky',
         top: 0,
         zIndex: 10,
-        backgroundColor: '#0a0a14',
-        borderBottom: '1px solid #1a1a2e',
+        backgroundColor: 'var(--fdr-canvas)',
+        borderBottom: '1px solid var(--fdr-border)',
         padding: '10px 16px',
         display: 'flex',
         flexDirection: 'column',
@@ -86,63 +116,20 @@ export default function FilterBar({ filters, setFilter, monthOptions = MONTH_OPT
       }}
     >
       <FilterRow label="Drive" options={DRIVE_OPTIONS} selected={filters.drive} onChange={v => setFilter('drive', v)} />
+      <FilterRow label="Difficulty" options={DIFFICULTY_OPTIONS} selected={filters.difficulty} onChange={v => setFilter('difficulty', v)} />
       <FilterRow label="Distance" options={DISTANCE_OPTIONS} selected={filters.distance} onChange={v => setFilter('distance', v)} />
-      <FilterRow label="Elevation" options={ELEVATION_OPTIONS} selected={filters.elevation} onChange={v => setFilter('elevation', v)} />
       <FilterRow label="Month" options={monthOptions} selected={filters.month} onChange={v => setFilter('month', v)} />
       <FilterRow label="Province" options={PROVINCE_OPTIONS} selected={filters.province} onChange={v => setFilter('province', v)} />
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', paddingTop: '2px' }}>
-        <span style={{ fontSize: '11px', color: '#666', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', minWidth: '60px' }}>
-          More
-        </span>
-        <button
-          onClick={() => setFilter('kidsRun', !filters.kidsRun)}
-          style={{
-            padding: '5px 12px',
-            borderRadius: '999px',
-            fontSize: '13px',
-            border: 'none',
-            cursor: 'pointer',
-            backgroundColor: filters.kidsRun ? '#ffffff' : '#1a1a2e',
-            color: filters.kidsRun ? '#0a0a14' : '#aaaaaa',
-            fontWeight: filters.kidsRun ? '600' : '400',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          Kids run
-        </button>
-        <button
-          onClick={() => setFilter('showTBD', !filters.showTBD)}
-          style={{
-            padding: '5px 12px',
-            borderRadius: '999px',
-            fontSize: '13px',
-            border: 'none',
-            cursor: 'pointer',
-            backgroundColor: filters.showTBD ? '#ffffff' : '#1a1a2e',
-            color: filters.showTBD ? '#0a0a14' : '#aaaaaa',
-            fontWeight: filters.showTBD ? '600' : '400',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          Show unscheduled
-        </button>
-        <button
-          onClick={() => setFilter('showPast', !filters.showPast)}
-          style={{
-            padding: '5px 12px',
-            borderRadius: '999px',
-            fontSize: '13px',
-            border: 'none',
-            cursor: 'pointer',
-            backgroundColor: filters.showPast ? '#ffffff' : '#1a1a2e',
-            color: filters.showPast ? '#0a0a14' : '#aaaaaa',
-            fontWeight: filters.showPast ? '600' : '400',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          Show past
-        </button>
+        <span className="fdr-label" style={{ minWidth: '64px' }}>More</span>
+        <Toggle label="Kids run" active={filters.kidsRun} onClick={() => setFilter('kidsRun', !filters.kidsRun)} />
+        <Toggle label="Show unscheduled" active={filters.showTBD} onClick={() => setFilter('showTBD', !filters.showTBD)} />
+        <Toggle label="Show past" active={filters.showPast} onClick={() => setFilter('showPast', !filters.showPast)} />
+        <Toggle label={elevVisible ? 'Climb (D+) ▴' : 'Climb (D+) ▾'} active={filters.elevation.length > 0} onClick={() => setShowElev(s => !s)} />
       </div>
+      {elevVisible && (
+        <FilterRow label="Climb" options={ELEVATION_OPTIONS} selected={filters.elevation} onChange={v => setFilter('elevation', v)} />
+      )}
     </div>
   )
 }
