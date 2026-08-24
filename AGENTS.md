@@ -70,6 +70,14 @@ v11** — `tools.ts` bundles `mcp/taste.json` + per-tool projection (list =
 INSTRUCTIONS extended. Verified live: get_race returns labelled taste, search
 returns the compact summary only.
 
+**Update 2026-08-24:** `feat/card-quality-tier0` adds a THIRD undeployed MCP
+change on top — expected-month parity (`expectedMonth`/`expectedYear` in
+`grouping.ts` + `filters_core.ts`, so source-dated-but-dayless races answer a
+month filter). Built + mirrored-tested, NOT deployed, pending re-audit. NOTE the
+two claims below disagree on the live version (multi-value "DEPLOYED & VERIFIED"
+vs "still v11") — resolve by calling the live MCP `initialize` before the next
+deploy (open loop L17), do not trust this file's number.
+
 **`main` is AHEAD of the live MCP (as of 2026-08-22).** Two dogfood-driven
 changes are committed on `main` but NOT yet on the live MCP (still v11): (1)
 `taste_flags` — night + technicality band in the list projection so agents filter
