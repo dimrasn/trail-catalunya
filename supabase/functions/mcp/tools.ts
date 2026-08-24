@@ -173,7 +173,19 @@ function applyFilters(events: EnrichedEvent[], f: Filters): { kept: EnrichedEven
     if (variantFiltering && !e.distances.some((d) => distanceMatches(d, f))) return false
 
     if (dateFiltering) {
-      if (!e.date) { tbdExcluded++; return false }
+      if (!e.date) {
+        // A dateless race whose source-published month matches a month filter
+        // still belongs in the result (site/MCP parity, docs/rules.md R6/R8).
+        // A precise date_from/date_to window can't place it, so it stays
+        // excluded there — and counted, so the agent knows the window isn't
+        // exhaustive.
+        if (f.month != null && f.date_from == null && f.date_to == null &&
+            e.expectedMonth === f.month) {
+          return true
+        }
+        tbdExcluded++
+        return false
+      }
       // Multi-day races span [date, dateEnd]; match on range overlap so a
       // Fri–Sun race is found by a Saturday query (and a cross-month race by
       // either month).
@@ -292,7 +304,7 @@ export const TOOLS: ToolDef[] = [
         elev_min: { type: 'number', description: 'Min elevation gain in metres (D+).' },
         elev_max: { type: 'number', description: 'Max elevation gain in metres (D+).' },
         province: { type: 'string', description: 'BARCELONA, GIRONA, TARRAGONA, or LLEIDA.' },
-        month: { type: 'number', description: 'Month number 1-12. Excludes undated (TBD) races.' },
+        month: { type: 'number', description: 'Month number 1-12. Includes races with a source-published month (expectedMonth) even without an exact date; fully undated (TBD) races are excluded and counted in tbd_excluded_count.' },
         kids_run: { type: 'boolean', description: 'Only races that include a kids run.' },
         date_from: { type: 'string', description: 'Earliest race date, ISO YYYY-MM-DD.' },
         date_to: { type: 'string', description: 'Latest race date, ISO YYYY-MM-DD.' },
@@ -366,7 +378,7 @@ export const TOOLS: ToolDef[] = [
       'When you filter by distance/elevation, matched_distances lists the variant(s) that matched. ' +
       'Each event carries taste_available + taste_summary + taste_flags (night, technicality band; ' +
       'set only when stated — absent = unknown; full taste via get_race). ' +
-      'Undated (TBD) races are excluded and counted in ' +
+      'A race with expectedMonth/expectedYear has a source-published month but no confirmed day — treat it as unconfirmed (verify at url), never as a fixed date; it matches a month filter but not a precise date_from/date_to window. Fully undated (TBD) races are excluded and counted in ' +
       'tbd_excluded_count. Does NOT include live registration status — fetch each url to verify. ' +
       'With the user\'s own training connector present, you can also estimate readiness and a ' +
       'rough finish time for each race locally (see server instructions / personalization field).',

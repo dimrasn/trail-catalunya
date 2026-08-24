@@ -93,3 +93,48 @@ Deno.test('numeric strings from PostgREST parse correctly', () => {
   assertEquals(e.distances[0].km, 21.5)
   assertEquals(e.distances[0].elevationGain, 1200)
 })
+
+// Expected-month parity with app/lib/races.js + format.js expectedMonthFromRows.
+// A dateless event whose source-published month is self-consistent carries
+// expectedMonth/expectedYear; the site and MCP MUST agree (docs/rules.md R6, R8).
+
+Deno.test('expected month: agreeing dateless rows carry expectedMonth/year', () => {
+  const rows: RaceRow[] = [
+    { race_name: 'La Triscada', race_url: 'http://t.cat/', town: 'Senterada', province: 'LLEIDA', distance_km: 25, month_num: 8, year: 2026, date_display: 'Agost 2026', status: 'ACTIVA' },
+    { race_name: 'La Triscada', race_url: 'http://t.cat/', town: 'Senterada', province: 'LLEIDA', distance_km: 12, month_num: 8, year: 2026, date_display: 'Agost 2026', status: 'ACTIVA' },
+  ]
+  const [e] = groupRowsIntoEvents(rows)
+  assertEquals(e.date, null)
+  assertEquals(e.expectedMonth, 8)
+  assertEquals(e.expectedYear, 2026)
+})
+
+Deno.test('expected month: a real date wins; no expected fields set', () => {
+  const rows: RaceRow[] = [
+    { race_name: 'Dated', race_url: 'http://d.cat/', town: 'X', province: 'GIRONA', distance_km: 20, date: '2026-05-01', month_num: 5, year: 2026, status: 'ACTIVA' },
+  ]
+  const [e] = groupRowsIntoEvents(rows)
+  assertEquals(e.date, '2026-05-01')
+  assertEquals(e.expectedMonth, undefined)
+})
+
+Deno.test('expected month: one malformed sibling poisons the event', () => {
+  const outOfRange: RaceRow[] = [
+    { race_name: 'A', race_url: 'http://a.cat/', town: 'X', province: 'GIRONA', distance_km: 20, month_num: 8, year: 2026, status: 'ACTIVA' },
+    { race_name: 'A', race_url: 'http://a.cat/', town: 'X', province: 'GIRONA', distance_km: 10, month_num: 13, year: 2026, status: 'ACTIVA' },
+  ]
+  assertEquals(groupRowsIntoEvents(outOfRange)[0].expectedMonth, undefined)
+
+  const missingYear: RaceRow[] = [
+    { race_name: 'B', race_url: 'http://b.cat/', town: 'X', province: 'GIRONA', distance_km: 20, month_num: 8, year: 2026, status: 'ACTIVA' },
+    { race_name: 'B', race_url: 'http://b.cat/', town: 'X', province: 'GIRONA', distance_km: 10, month_num: 8, year: null, status: 'ACTIVA' },
+  ]
+  assertEquals(groupRowsIntoEvents(missingYear)[0].expectedMonth, undefined)
+})
+
+Deno.test('expected month: date_display bare year contradicting year → suppressed', () => {
+  const rows: RaceRow[] = [
+    { race_name: 'Radikal Estana', race_url: 'http://re.cat/', town: 'Estana', province: 'LLEIDA', distance_km: 20, month_num: 8, year: 2026, date_display: '2027', status: 'ACTIVA' },
+  ]
+  assertEquals(groupRowsIntoEvents(rows)[0].expectedMonth, undefined)
+})
