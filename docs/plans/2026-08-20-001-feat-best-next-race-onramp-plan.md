@@ -1,9 +1,59 @@
 # feat: Best next race — agent-native planning on-ramp (v1)
 
-Type: feat · Depth: Standard · Created: 2026-08-20
+Type: feat · Depth: Standard · Created: 2026-08-20 · Deepened: 2026-08-24
 Origin: `docs/brainstorms/2026-08-20-best-next-race-requirements.md`
 
 ---
+
+## Deepening (2026-08-24) — read first; refines the units below
+
+Five things changed since this plan was written. None overturn the shape; they
+sharpen it and add one hard sequencing constraint.
+
+1. **Taste + difficulty are now LIVE (Slice 1) and queryable — stop planning for
+   "agent infers taste."** Race data on both the pages and the MCP now carries
+   `difficulty` (ITRA km-effort word + points + D+/km), `taste_summary` (a
+   one-line, claim-tagged "what makes it special"), and `taste_flags` (night,
+   technicality band — organizer-gated). **U2 (handoff prompt) and U4 (MCP
+   ranking clause) must LEVERAGE these fields**, not tell the agent to infer or
+   fetch taste. Concretely: the "why it fits" reasoning ranks on drive time +
+   `difficulty` + `taste_flags`/`taste_summary` that already exist; the prompt
+   inlines them. Scope-boundaries line "structured taste layer deferred" is
+   partly superseded — Slice 1 is in.
+
+2. **Intent-logging (R4 / U3) is the load-bearing value, not a nice-to-have.**
+   Dogfood + the live query log proved agents pass STRUCTURED filters and almost
+   never free-text intent, so `mcp_query_log` is blind to *why*. U3 is what turns
+   that blindness into signal. Raise its priority; do not treat it as optional
+   polish. It ranks which taste-fields Slice 2 should build.
+
+3. **Honest ceiling (CPO data, 2026-08-24).** Real users reach us via ChatGPT/
+   OpenAI-search READING PAGES (`oai-searchbot` crawled ~149 pages; live
+   `chatgpt-user` fetches), while MCP-connector adoption is ~0. So this on-ramp's
+   ceiling is **intent-capture + a better handoff for the humans who land on the
+   site** — NOT connector growth. Update Success Criteria accordingly: measure
+   intent-log fill + handoff use + whether the reasoned-shortlist behaviour shows
+   in the weekly citation probe; do NOT measure connector installs.
+
+4. **[HARD CONSTRAINT] A homepage redesign is in flight (`feat/fdr-light-redesign`).**
+   U1 mounts a component in `app/components/RaceList.jsx` — the exact surface the
+   redesign is rewriting. **Do NOT build U1 against the current RaceList.** Either
+   build the on-ramp INSIDE the redesign branch, or land it as a drop-in on the
+   NEW homepage after the redesign merges to `main`. Sequencing dependency: U1
+   waits on (or joins) the redesign. U3/U4 (log + MCP clause) are independent and
+   can proceed. Coordinate before writing homepage JSX.
+
+5. **One measurement layer + gated deploy.** U3's intent log is the *why* half of
+   the same funnel `docs/seo/2026-08-24-trackability-requirements.md` builds —
+   T1 outbound-clicks (*did it work*) + T7 race-alerts (*came back*). **Reconcile
+   the logging pattern:** U3 currently specifies a client→`SECURITY DEFINER` RPC;
+   T1 specifies a Next route handler holding a server-side write credential +
+   allowlist validation. Pick ONE for both (the route-handler pattern is the
+   stronger default — credential server-side, payload validated, rate-limitable
+   so counts can't be inflated). And **U4 (MCP-instruction change) deploys via
+   `scripts/deploy-mcp.sh`** (gated, from a clean `origin/main` worktree) — NOT an
+   inline `deploy_edge_function` (the 165KB taste bundle can't inline; a wrong-
+   source deploy already shipped stale code once).
 
 ## Summary
 
