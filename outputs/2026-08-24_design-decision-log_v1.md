@@ -36,3 +36,9 @@
 1. **What changed because of this review:** verdict-for-all dropped in favour of three states; silhouette demoted from list rows; "next two weekends" horizon adopted; sequencing/freeze named top risk; pack format adopted (lightweight).
 2. **Where we intentionally disagreed:** Q4 goes to a greyscale + contrast test rather than direct adoption (the equal-lightness pastels are the system's stated signature; we convert the taste dispute into a measurement); the frozen-pack process is collapsed to one self-contained HTML pack, and the implementation freeze is scoped to the redesign surfaces only.
 3. **What remains unproven:** the 390px scan test at production density; the Q4 ramp choice; whether the route sheet earns its identity bet.
+
+## Addendum — 2026-08-24 late (owner rulings on the preview)
+
+1. **Q3 SUPERSEDED — drive gets the full difficulty treatment, warm ramp (specimen option B).** Dima reviewed the three-way specimen (A shipped / B warm / C cool) and chose B: banded chips NEAR (green pastel) · MID (amber pastel) · FAR (dark red), word + time always together. Overrides both the external reviewer's Q3 and our A recommendation; the warm-collision trade-off is accepted, with the band word as the disambiguator. Implemented in `semantics.js` (`DRIVE_CHIP`), RaceCard, race-page gate; related-row text colours follow `DRIVE_INK` (green/amber/red).
+2. **Q8 SUPERSEDED — AI provider buttons wear palette shades**, not neutral: Ask Claude = the ramp's orange tint (#F9CAA2/#593215), Ask ChatGPT = the green tint (#ADE3BF/#103C28). Palette colours, not raw brand hex — a middle path between the brand-hue ban and neutrality. Implemented in AskAI + race-page act zone.
+3. **Filter "More" section: first rework** — content filters (Kids run, Climb D+) stay under MORE; view toggles moved to a separate SHOW row ("No date yet", "Past races"). Dima flagged more rework coming; treat this row as open.

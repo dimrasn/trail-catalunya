@@ -54,15 +54,16 @@ export default function AskAI({ filteredRaces, filters }) {
         Or just say it
       </span>
 
-      {/* Neutral provider styling by rule: no third-party brand hues — both
-          collide with difficulty colours, and colour would endorse a provider. */}
+      {/* Provider buttons in palette shades (Dima's ruling 2026-08-24):
+          Claude wears the ramp's orange tint, ChatGPT the green — palette
+          colours, not raw brand hex. */}
       <button onClick={() => open(claudeUrl)} disabled={disabled}
-        style={{ ...btn, backgroundColor: 'var(--fdr-surface)', border: '1px solid var(--fdr-border-strong)', color: 'var(--fdr-ink)' }}
+        style={{ ...btn, backgroundColor: '#F9CAA2', color: '#593215', fontWeight: 700 }}
         title="Open these races in Claude">
         Ask Claude
       </button>
       <button onClick={() => open(chatgptUrl)} disabled={disabled}
-        style={{ ...btn, backgroundColor: 'var(--fdr-surface)', border: '1px solid var(--fdr-border-strong)', color: 'var(--fdr-ink)' }}
+        style={{ ...btn, backgroundColor: '#ADE3BF', color: '#103C28', fontWeight: 700 }}
         title="Open these races in ChatGPT">
         Ask ChatGPT
       </button>

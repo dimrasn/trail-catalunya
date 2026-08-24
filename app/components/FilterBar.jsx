@@ -120,16 +120,22 @@ export default function FilterBar({ filters, setFilter, monthOptions = MONTH_OPT
       <FilterRow label="Distance" options={DISTANCE_OPTIONS} selected={filters.distance} onChange={v => setFilter('distance', v)} />
       <FilterRow label="Month" options={monthOptions} selected={filters.month} onChange={v => setFilter('month', v)} />
       <FilterRow label="Province" options={PROVINCE_OPTIONS} selected={filters.province} onChange={v => setFilter('province', v)} />
+      {/* "More" holds content filters; "Show" holds view toggles — mixing the
+          two was confusing (a kids-run filter is not the same kind of thing as
+          revealing past races). First cut of the rework; expect iteration. */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', paddingTop: '2px' }}>
         <span className="fdr-label" style={{ minWidth: '64px' }}>More</span>
         <Toggle label="Kids run" active={filters.kidsRun} onClick={() => setFilter('kidsRun', !filters.kidsRun)} />
-        <Toggle label="Show unscheduled" active={filters.showTBD} onClick={() => setFilter('showTBD', !filters.showTBD)} />
-        <Toggle label="Show past" active={filters.showPast} onClick={() => setFilter('showPast', !filters.showPast)} />
         <Toggle label={elevVisible ? 'Climb (D+) ▴' : 'Climb (D+) ▾'} active={filters.elevation.length > 0} onClick={() => setShowElev(s => !s)} />
       </div>
       {elevVisible && (
         <FilterRow label="Climb" options={ELEVATION_OPTIONS} selected={filters.elevation} onChange={v => setFilter('elevation', v)} />
       )}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+        <span className="fdr-label" style={{ minWidth: '64px' }}>Show</span>
+        <Toggle label="No date yet" active={filters.showTBD} onClick={() => setFilter('showTBD', !filters.showTBD)} />
+        <Toggle label="Past races" active={filters.showPast} onClick={() => setFilter('showPast', !filters.showPast)} />
+      </div>
     </div>
   )
 }

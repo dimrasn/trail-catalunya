@@ -18,9 +18,16 @@ export function difficultyToken(levelWord) {
   return LEVELS[levelWord] || UNRATED
 }
 
-// Drive: green celebrates "within the radius" (the 1-hour rule); longer is
-// not bad, just quieter — never amber, because amber means Hard.
-export const DRIVE_INK = { near: '#04884D', mid: '#5F6469', far: '#A1A5A9' }
+// Drive bands get the full difficulty treatment (Dima's ruling 2026-08-24,
+// specimen option B): banded chips on the warm ramp — near green, mid amber,
+// far red — word + time always together. The known trade-off (warm hues also
+// mean difficulty) is accepted; the chip's band word disambiguates.
+export const DRIVE_INK = { near: '#04884D', mid: '#A85B00', far: '#AC3031' }
+export const DRIVE_CHIP = {
+  near: { bg: '#ADE3BF', ink: '#103C28', word: 'NEAR' },
+  mid:  { bg: '#F9CAA2', ink: '#593215', word: 'MID' },
+  far:  { bg: '#B04A44', ink: '#FDF3F2', word: 'FAR' },
+}
 export function driveBand(minutes) {
   if (minutes == null) return null
   if (minutes <= 60) return 'near'

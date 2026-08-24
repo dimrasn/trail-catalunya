@@ -7,7 +7,7 @@ import {
   kmEffort, eventKmEffort, difficultyLevel, dPlusPerKm,
   PROVINCE_TITLE, yearOf,
 } from '../../lib/format.js'
-import { driveBand, DRIVE_INK, enumerateDistances, verdictFor, difficultyToken } from '../../lib/semantics.js'
+import { driveBand, DRIVE_INK, DRIVE_CHIP, enumerateDistances, verdictFor, difficultyToken } from '../../lib/semantics.js'
 import DifficultyChip from '../../components/fdr/DifficultyChip.jsx'
 import DifficultyScale from '../../components/fdr/DifficultyScale.jsx'
 import DistanceLadder from '../../components/fdr/DistanceLadder.jsx'
@@ -261,7 +261,7 @@ export default async function RacePage({ params }) {
           {
             label: 'Drive',
             value: race.driveMinutes != null
-              ? <span style={{ color: band === 'near' ? DRIVE_INK.near : band === 'mid' ? DRIVE_INK.mid : DRIVE_INK.far, fontWeight: 700 }}>{formatDrive(race.driveMinutes)}</span>
+              ? <span style={{ background: DRIVE_CHIP[band].bg, color: DRIVE_CHIP[band].ink, fontWeight: 700, padding: '2px 8px', borderRadius: '3px', fontSize: '13px', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>{DRIVE_CHIP[band].word} {formatDrive(race.driveMinutes)}</span>
               : <span style={{ color: 'var(--fdr-ink-faint)' }}>—</span>,
             sub: race.driveMinutes != null ? 'from Barcelona (Glòries, est.)' : 'not available',
           },
@@ -290,10 +290,13 @@ export default async function RacePage({ params }) {
           style={{ display: 'block', textAlign: 'center', background: 'var(--fdr-action)', color: '#fff', borderRadius: 'var(--fdr-radius-md)', padding: '13px', fontWeight: 700, fontSize: '15px', textDecoration: 'none' }}>
           Official site &amp; registration ↗
         </a>
+        {/* Provider buttons in palette shades (Dima's ruling 2026-08-24):
+            Claude wears the ramp's orange tint, ChatGPT the green — palette
+            colours, not raw brand hex. */}
         <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-          {[['Ask Claude', claudeUrl(prompt)], ['Ask ChatGPT', chatgptUrl(prompt)]].map(([label, url]) => (
+          {[['Ask Claude', claudeUrl(prompt), '#F9CAA2', '#593215'], ['Ask ChatGPT', chatgptUrl(prompt), '#ADE3BF', '#103C28']].map(([label, url, bg, ink]) => (
             <a key={label} href={url} target="_blank" rel="noopener noreferrer"
-              style={{ flex: 1, textAlign: 'center', background: 'var(--fdr-surface)', border: '1px solid var(--fdr-border-strong)', color: 'var(--fdr-ink)', borderRadius: 'var(--fdr-radius-md)', padding: '10px', fontWeight: 600, fontSize: '13.5px', textDecoration: 'none' }}>
+              style={{ flex: 1, textAlign: 'center', background: bg, color: ink, border: 'none', borderRadius: 'var(--fdr-radius-md)', padding: '10px', fontWeight: 700, fontSize: '13.5px', textDecoration: 'none' }}>
               {label}
             </a>
           ))}

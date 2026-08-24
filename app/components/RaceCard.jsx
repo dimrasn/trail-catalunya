@@ -1,5 +1,5 @@
 import { PROVINCE_TITLE, MONTHS_SHORT, WEEKDAYS, formatDrive, kmEffort, eventKmEffort, difficultyLevel, maxElevation } from '../lib/format.js'
-import { driveBand, DRIVE_INK, enumerateDistances, verdictFor, difficultyToken } from '../lib/semantics.js'
+import { driveBand, DRIVE_INK, DRIVE_CHIP, enumerateDistances, verdictFor, difficultyToken } from '../lib/semantics.js'
 
 function parseDateParts(dateStr) {
   const [y, m, d] = dateStr.split('-').map(Number)
@@ -89,7 +89,6 @@ export default function RaceCard({ race }) {
   const maxEl = maxElevation(race.distances)
   const verdict = verdictFor(race)
   const band = driveBand(race.driveMinutes)
-  const driveColor = band === 'near' ? DRIVE_INK.near : band === 'mid' ? DRIVE_INK.mid : DRIVE_INK.far
 
   return (
     <a
@@ -130,8 +129,12 @@ export default function RaceCard({ race }) {
       {/* Row 2 — town, province … drive */}
       <span style={{ fontSize: '12.5px', color: 'var(--fdr-ink-muted)' }}>{race.town} · {prov}</span>
       {race.driveMinutes != null ? (
-        <span className="fdr-mono" style={{ fontSize: '13px', fontWeight: band === 'near' ? 700 : 500, color: driveColor, whiteSpace: 'nowrap', textAlign: 'right' }}>
-          {formatDrive(race.driveMinutes)} drive
+        <span className="fdr-mono" style={{
+          fontSize: '11.5px', fontWeight: 700, whiteSpace: 'nowrap', justifySelf: 'end',
+          padding: '2px 8px', borderRadius: '3px', letterSpacing: '0.02em',
+          background: DRIVE_CHIP[band].bg, color: DRIVE_CHIP[band].ink,
+        }}>
+          {DRIVE_CHIP[band].word} {formatDrive(race.driveMinutes)}
         </span>
       ) : (
         <span style={{ fontSize: '12px', color: 'var(--fdr-ink-faint)', whiteSpace: 'nowrap' }}>drive —</span>
