@@ -2,11 +2,17 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getRaces } from '../../lib/races.js'
 import {
-  displayDate, formatDrive, driveColor, distancesSummary, elevationSummary,
+  displayDate, formatDrive, distancesSummary,
   metadataDistancePart, completeMaxElevation, expectedDateLabel, MONTHS_SHORT,
-  maxElevation, yearOf, kmEffort, eventKmEffort, difficultyLevel, dPlusPerKm,
-  PROVINCE_COLOR, PROVINCE_TITLE,
+  kmEffort, eventKmEffort, difficultyLevel, dPlusPerKm,
+  PROVINCE_TITLE, yearOf,
 } from '../../lib/format.js'
+import { driveBand, DRIVE_INK, enumerateDistances, verdictFor, difficultyToken } from '../../lib/semantics.js'
+import DifficultyChip from '../../components/fdr/DifficultyChip.jsx'
+import DifficultyScale from '../../components/fdr/DifficultyScale.jsx'
+import DistanceLadder from '../../components/fdr/DistanceLadder.jsx'
+import StatusRibbon from '../../components/fdr/StatusRibbon.jsx'
+import Provenance from '../../components/fdr/Provenance.jsx'
 import { buildRacePrompt, claudeUrl, chatgptUrl } from '../../components/askPrompt.js'
 import { SITE_URL } from '../../lib/site.js'
 
@@ -141,14 +147,22 @@ function eventJsonLd(race) {
   return ld
 }
 
-// ---- styles (dark-theme tokens, matching /about + the cards) ----
-const wrap = { maxWidth: '680px', margin: '0 auto', padding: '20px 16px 64px', lineHeight: 1.5 }
-const back = { fontSize: '14px', color: '#8a8aff', textDecoration: 'underline' }
+// ---- Full de Ruta light board ----
+const wrap = { maxWidth: '720px', margin: '0 auto', padding: '20px 16px 64px', lineHeight: 1.55, color: 'var(--fdr-ink)' }
 const kicker = {
-  fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em',
-  color: '#fff', margin: '30px 0 8px', paddingBottom: '6px', borderBottom: '1px solid #26263f',
+  fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.09em',
+  fontFamily: 'var(--fdr-mono)', color: 'var(--fdr-ink)', margin: '32px 0 10px',
+  paddingBottom: '6px', borderBottom: '1px solid var(--fdr-border)',
 }
-const mono = { fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace' }
+const card = {
+  background: 'var(--fdr-surface)', border: '1px solid var(--fdr-border)',
+  borderRadius: 'var(--fdr-radius-sm)', padding: '16px 18px',
+}
+const th = {
+  fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--fdr-ink-muted)',
+  fontFamily: 'var(--fdr-mono)', textAlign: 'left', padding: '6px 10px 6px 0', fontWeight: 600,
+}
+const td = { fontFamily: 'var(--fdr-mono)', fontSize: '14px', color: 'var(--fdr-ink)', padding: '9px 10px 9px 0', borderTop: '1px solid var(--fdr-border)' }
 
 export default async function RacePage({ params }) {
   const { slug } = await params
@@ -157,17 +171,11 @@ export default async function RacePage({ params }) {
   if (!race) notFound()
 
   const prov = PROVINCE_TITLE[race.province] || race.province
-  const provColor = PROVINCE_COLOR[race.province] || '#555'
   const dateStr = displayDate(race)
-  // All 138 dateless rows carry month_num + year; the site used to discard both
-  // and print "To be announced". An expected month is NOT a confirmed date and
-  // must read as an expectation (docs/rules.md R6) and stay out of JSON-LD.
+  // An expected month is NOT a confirmed date and must read as an expectation
+  // (docs/rules.md R6); it stays out of JSON-LD.
   const expectedMonthStr = expectedDateLabel(race.expectedMonth, race.expectedYear)
-  const expectedDateStr = dateStr || !expectedMonthStr
-    ? null
-    : `Expected ${expectedMonthStr} — exact date not announced`
-  const dist = distancesSummary(race.distances)
-  const elev = elevationSummary(race.distances)
+  const cancelled = race.enrichment?.confirmed_status?.value === 'cancelled'
   const hasAnyPrice = race.distances.some(d => d.price != null)
   const hasAnyEffort = race.distances.some(d => kmEffort(d) != null)
   const maxEff = eventKmEffort(race.distances)
@@ -177,195 +185,250 @@ export default async function RacePage({ params }) {
   const hardest = maxEff != null ? race.distances.find(d => kmEffort(d) === maxEff) : null
   const climbDensity = hardest ? dPlusPerKm(hardest) : null
   const someMissingElev = race.distances.some(d => d.elevationGain == null)
+  const verdict = verdictFor(race)
+  const band = driveBand(race.driveMinutes)
   const related = relatedRaces(races, race)
   const prompt = buildRacePrompt(race)
   const jsonLd = JSON.stringify(eventJsonLd(race)).replace(/</g, '\\u003c')
+  const editorialRest = (race.taste?.editorial || []).filter(e => e.key !== 'unique')
 
   return (
     <main style={wrap}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
 
-      <p style={{ marginBottom: '22px' }}>
-        <Link href="/" style={back}>← All races</Link>
+      <p style={{ marginBottom: '18px' }}>
+        <Link href="/" style={{ fontSize: '14px', color: 'var(--fdr-action)', textDecoration: 'underline', textUnderlineOffset: '2px' }}>← All races</Link>
       </p>
 
-      {/* HERO */}
-      <h1 style={{ fontSize: '26px', fontWeight: 700, letterSpacing: '-0.02em', color: '#fff', lineHeight: 1.15 }}>
+      {/* TIER 0 — status. Event-level flag is all the data has; per-distance
+          availability is not invented. */}
+      <StatusRibbon
+        kind={cancelled ? 'cancelled' : race.soldOut ? 'sold-out' : null}
+        detail={cancelled
+          ? 'Listed as cancelled — confirm on the official site.'
+          : 'Check the official site for remaining distances.'}
+      />
+
+      {/* TIER 1 — identity + verdict */}
+      <h1 style={{ fontSize: '28px', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--fdr-ink)', lineHeight: 1.12, textWrap: 'balance' }}>
         {race.name}
       </h1>
-      <div style={{ fontSize: '14px', color: '#9a9ab0', marginTop: '8px', display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-        <span style={mono}>{dateStr || <span style={{ color: '#a78bfa' }}>{expectedMonthStr ? `${expectedMonthStr} (expected)` : 'Date TBD'}</span>} · {race.town}</span>
-        <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.04em', padding: '2px 7px', borderRadius: '6px', backgroundColor: provColor + '33', color: provColor, textTransform: 'uppercase' }}>
-          {prov}
-        </span>
-        {race.soldOut && (
-          <span style={{ fontSize: '11px', fontWeight: 700, padding: '2px 7px', borderRadius: '6px', backgroundColor: '#dc2626', color: '#fff' }}>SOLD OUT</span>
-        )}
-        {race.kidsRun && (
-          <span style={{ fontSize: '11px', fontWeight: 700, padding: '2px 7px', borderRadius: '6px', backgroundColor: '#064e3b', color: '#34d399' }}>KIDS RUN</span>
-        )}
+      <div className="fdr-mono" style={{ fontSize: '13px', color: 'var(--fdr-ink-muted)', marginTop: '7px' }}>
+        {dateStr || (expectedMonthStr
+          ? <span title="Exact date not announced">Expected {expectedMonthStr} — not confirmed</span>
+          : 'Date TBD')}
+        {' · '}{race.town}, {prov}
       </div>
+      {verdict && (
+        <p style={{ fontSize: '17px', color: 'var(--fdr-ink)', lineHeight: 1.45, margin: '14px 0 0', maxWidth: '62ch' }}>
+          {verdict.text} <Provenance label={verdict.label} />
+        </p>
+      )}
 
-      <div style={{ background: '#12122a', border: '1px solid #26263f', borderRadius: '14px', padding: '16px 18px', marginTop: '16px' }}>
-        {race.driveMinutes != null ? (
+      {/* TIER 1 — difficulty */}
+      <div style={{ ...card, marginTop: '18px' }}>
+        {diffLevel ? (
           <>
-            <div style={{ ...mono, fontSize: '40px', fontWeight: 700, lineHeight: 1, color: driveColor(race.driveMinutes) }}>
-              {formatDrive(race.driveMinutes)}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '14px', marginBottom: '12px', flexWrap: 'wrap' }}>
+              <DifficultyChip level={diffLevel} effort={maxEff} />
+              <span className="fdr-mono" style={{ fontSize: '12px', color: 'var(--fdr-ink-muted)' }}>
+                {maxEff} km-effort{climbDensity != null ? ` · ${climbDensity} m/km climb` : ''}
+              </span>
             </div>
-            <div style={{ fontSize: '13px', color: '#9a9ab0', marginTop: '6px' }}>drive from Barcelona</div>
-            <div style={{ fontSize: '11px', color: '#62627a', marginTop: '2px' }}>from Plaça Glòries (estimated)</div>
+            <DifficultyScale level={diffLevel} />
+            <div style={{ fontSize: '11.5px', color: 'var(--fdr-ink-faint)', marginTop: '10px' }}>
+              Endurance load on ITRA&apos;s km-effort scale — not steepness or technical terrain.{' '}
+              <details style={{ display: 'inline-block' }}>
+                <summary style={{ cursor: 'pointer', color: 'var(--fdr-action)', display: 'inline' }}>How we measure</summary>
+                <span style={{ display: 'block', marginTop: '6px', color: 'var(--fdr-ink-muted)' }}>
+                  km-effort = distance + climb/100, ITRA&apos;s published scale: every 100 m of climb counts
+                  like ~1 km of distance. Six levels, Easy → Brutal, from the hardest distance of the event.
+                  The climb figure (m/km) shows how vertical the course is.
+                </span>
+              </details>
+            </div>
           </>
         ) : (
-          <div style={{ fontSize: '15px', color: '#666' }}>Drive time — not available</div>
+          <div style={{ fontSize: '14px', color: 'var(--fdr-ink-muted)' }}>
+            Difficulty unrated — the organizer hasn&apos;t published elevation for every distance.
+          </div>
         )}
       </div>
 
-      {/* KEY FACTS */}
-      <dl style={{ marginTop: '18px' }}>
+      {/* TIER 2 — the gate: drive · when · distances */}
+      <div style={{ ...card, padding: 0, marginTop: '12px', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
         {[
-          ['Date', dateStr || expectedDateStr || 'To be announced'],
-          ['Location', `${race.town}, ${prov}`],
-          dist && ['Distances', dist],
-          elev && ['Elevation', elev],
-          maxEff != null && ['Difficulty', `${diffLevel} · ${maxEff} km-effort`],
-          climbDensity != null && ['Climb', `${climbDensity} m/km`],
-        ].filter(Boolean).map(([label, value]) => (
-          <div key={label} style={{ display: 'grid', gridTemplateColumns: '110px 1fr', gap: '10px', padding: '5px 0' }}>
-            <dt style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#666', paddingTop: '2px' }}>{label}</dt>
-            <dd style={{ fontSize: '15px', color: '#e8e8f0', ...(label === 'Distances' || label === 'Elevation' ? mono : {}) }}>{value}</dd>
+          {
+            label: 'Drive',
+            value: race.driveMinutes != null
+              ? <span style={{ color: band === 'near' ? DRIVE_INK.near : band === 'mid' ? DRIVE_INK.mid : DRIVE_INK.far, fontWeight: 700 }}>{formatDrive(race.driveMinutes)}</span>
+              : <span style={{ color: 'var(--fdr-ink-faint)' }}>—</span>,
+            sub: race.driveMinutes != null ? 'from Barcelona (Glòries, est.)' : 'not available',
+          },
+          {
+            label: 'When',
+            value: dateStr || (expectedMonthStr ? `Exp. ${expectedMonthStr}` : '—'),
+            sub: dateStr ? null : expectedMonthStr ? 'not confirmed' : 'TBD',
+          },
+          {
+            label: 'Distances',
+            value: enumerateDistances(race.distances) || '—',
+            sub: race.kidsRun ? '+ kids run' : null,
+          },
+        ].map((cell, i) => (
+          <div key={cell.label} style={{ padding: '12px 14px', borderLeft: i > 0 ? '1px solid var(--fdr-border)' : 'none', minWidth: 0 }}>
+            <div className="fdr-label" style={{ marginBottom: '4px' }}>{cell.label}</div>
+            <div className="fdr-mono" style={{ fontSize: '15px', fontWeight: 600, overflowWrap: 'break-word' }}>{cell.value}</div>
+            {cell.sub && <div style={{ fontSize: '10.5px', color: 'var(--fdr-ink-faint)', marginTop: '2px' }}>{cell.sub}</div>}
           </div>
         ))}
-      </dl>
+      </div>
 
-      {/* DISTANCES */}
+      {/* TIER 2 — act zone */}
+      <div style={{ marginTop: '18px' }}>
+        <a href={race.url} target="_blank" rel="noopener noreferrer"
+          style={{ display: 'block', textAlign: 'center', background: 'var(--fdr-action)', color: '#fff', borderRadius: 'var(--fdr-radius-md)', padding: '13px', fontWeight: 700, fontSize: '15px', textDecoration: 'none' }}>
+          Official site &amp; registration ↗
+        </a>
+        <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
+          {[['Ask Claude', claudeUrl(prompt)], ['Ask ChatGPT', chatgptUrl(prompt)]].map(([label, url]) => (
+            <a key={label} href={url} target="_blank" rel="noopener noreferrer"
+              style={{ flex: 1, textAlign: 'center', background: 'var(--fdr-surface)', border: '1px solid var(--fdr-border-strong)', color: 'var(--fdr-ink)', borderRadius: 'var(--fdr-radius-md)', padding: '10px', fontWeight: 600, fontSize: '13.5px', textDecoration: 'none' }}>
+              {label}
+            </a>
+          ))}
+        </div>
+        <div style={{ fontSize: '12px', color: 'var(--fdr-ink-muted)', marginTop: '8px', textAlign: 'center' }}>
+          Ask anything the page doesn&apos;t show — &ldquo;can I walk it?&rdquo;, &ldquo;good first trail race?&rdquo;
+        </div>
+        <div style={{ fontSize: '11.5px', color: 'var(--fdr-ink-faint)', marginTop: '10px', lineHeight: 1.5 }}>
+          Dates, start times and registration change — always confirm on the official site.
+        </div>
+      </div>
+
+      {/* TIER 3 — distances */}
       {race.distances.length > 0 && (
         <>
           <div style={kicker}>Distances</div>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <DistanceLadder distances={race.distances} />
+          <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '14px' }}>
             <thead>
               <tr>
-                <th style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 8px 6px 0', fontWeight: 600 }}>Distance</th>
-                <th style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 8px 6px 0', fontWeight: 600 }}>Elevation</th>
-                {hasAnyEffort && <th title="km-effort = km + D+/100 (ITRA's endurance scale)" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 8px 6px 0', fontWeight: 600 }}>Effort</th>}
-                {hasAnyPrice && <th style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#666', textAlign: 'left', padding: '6px 0', fontWeight: 600 }}>Price</th>}
+                <th style={th}>Distance</th>
+                <th style={th}>Climb</th>
+                {hasAnyEffort && <th style={th} title="km-effort = km + D+/100 (ITRA's endurance scale)">Effort</th>}
+                {hasAnyPrice && <th style={th}>Price</th>}
               </tr>
             </thead>
             <tbody>
-              {race.distances.map((d, i) => (
-                <tr key={i}>
-                  <td style={{ ...mono, fontSize: '15px', fontWeight: 600, color: '#e8e8f0', padding: '9px 8px 9px 0', borderTop: '1px solid #1a1a2e' }}>
-                    {d.km} km
-                    {d.variantName && <div style={{ fontSize: '12px', color: '#9a9ab0', fontWeight: 400, marginTop: '2px' }}>↳ {d.variantName}</div>}
-                  </td>
-                  <td style={{ ...mono, fontSize: '15px', color: '#c9c9d6', padding: '9px 8px 9px 0', borderTop: '1px solid #1a1a2e' }}>
-                    {d.elevationGain != null ? `↑${d.elevationGain} m` : <span style={{ color: '#62627a' }}>—</span>}
-                  </td>
-                  {hasAnyEffort && (
-                    <td style={{ ...mono, fontSize: '15px', color: '#c9c9d6', padding: '9px 8px 9px 0', borderTop: '1px solid #1a1a2e' }}>
-                      {kmEffort(d) != null ? kmEffort(d) : <span style={{ color: '#62627a' }}>—</span>}
+              {race.distances.map((d, i) => {
+                const eff = kmEffort(d)
+                const level = eff != null ? difficultyLevel(eff) : null
+                const t = difficultyToken(level)
+                return (
+                  <tr key={i}>
+                    <td style={{ ...td, fontWeight: 600 }}>
+                      {d.km} km
+                      {d.variantName && <div style={{ fontSize: '11px', color: 'var(--fdr-ink-muted)', fontWeight: 400, marginTop: '2px' }}>↳ {d.variantName}</div>}
                     </td>
-                  )}
-                  {hasAnyPrice && (
-                    <td style={{ ...mono, fontSize: '15px', color: '#c9c9d6', padding: '9px 0', borderTop: '1px solid #1a1a2e' }}>
-                      {d.price != null ? `${d.price} €` : <span style={{ color: '#62627a' }}>—</span>}
+                    <td style={{ ...td, color: 'var(--fdr-ink-muted)' }}>
+                      {d.elevationGain != null ? `↑${d.elevationGain} m` : <span style={{ color: 'var(--fdr-ink-faint)' }}>—</span>}
                     </td>
-                  )}
+                    {hasAnyEffort && (
+                      <td style={{ ...td, color: 'var(--fdr-ink-muted)' }}>
+                        {eff != null ? (
+                          <>
+                            {eff}{' '}
+                            <span style={{ fontFamily: 'var(--fdr-sans)', fontSize: '10.5px', fontWeight: 700, padding: '1px 7px', borderRadius: 'var(--fdr-radius-pill)', background: t.bg, color: t.ink, whiteSpace: 'nowrap' }}>
+                              {level}
+                            </span>
+                          </>
+                        ) : <span style={{ color: 'var(--fdr-ink-faint)' }}>—</span>}
+                      </td>
+                    )}
+                    {hasAnyPrice && (
+                      <td style={{ ...td, color: 'var(--fdr-ink-muted)' }}>
+                        {d.price != null ? `${d.price} €` : <span style={{ color: 'var(--fdr-ink-faint)' }}>—</span>}
+                      </td>
+                    )}
+                  </tr>
+                )
+              })}
+              {race.kidsRun && (
+                <tr>
+                  <td style={{ ...td, fontWeight: 600 }}>Kids run</td>
+                  <td style={{ ...td, color: 'var(--fdr-ink-faint)' }} colSpan={1 + (hasAnyEffort ? 1 : 0) + (hasAnyPrice ? 1 : 0)}>
+                    distance TBC — see the official site
+                  </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
           {someMissingElev && (
-            <div style={{ fontSize: '11px', color: '#62627a', marginTop: '8px' }}>Some distances have no published elevation yet.</div>
-          )}
-          {hasAnyEffort && (
-            <div style={{ fontSize: '11px', color: '#62627a', marginTop: '8px' }}>Difficulty uses the same km-effort scale as ITRA — every 100 m of climb counts like ~1 km of distance. It measures endurance load, not steepness or technical terrain; the Climb figure (m/km) shows how vertical the course is.</div>
+            <div style={{ fontSize: '11px', color: 'var(--fdr-ink-faint)', marginTop: '8px' }}>Some distances have no published elevation yet.</div>
           )}
         </>
       )}
 
-      {/* TASTE LAYER (Slice 1: editorial + character, honesty-labelled) */}
-      {race.taste && (race.taste.editorial.length > 0 || race.taste.character.length > 0) && (
+      {/* TIER 3 — our take + character (taste layer, honesty-labelled) */}
+      {editorialRest.length > 0 && (
         <>
-          {race.taste.editorial.length > 0 && (
-            <>
-              <div style={kicker}>Our take</div>
-              {race.taste.editorial.map(item => (
-                <div key={item.key} style={{ marginBottom: '14px' }}>
-                  <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#8a8aff', marginBottom: '3px' }}>
-                    {item.label} <span style={{ color: '#555' }}>· {item.strengthLabel}</span>
-                  </div>
-                  <div style={{ fontSize: '14px', color: '#c9c9d6', lineHeight: 1.55 }}>{item.value}</div>
-                </div>
-              ))}
-            </>
-          )}
-          {race.taste.character.length > 0 && (
-            <>
-              <div style={kicker}>Character</div>
-              <dl style={{ margin: 0 }}>
-                {race.taste.character.map(item => (
-                  <div key={item.key} style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '10px', padding: '5px 0' }}>
-                    <dt style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#666', paddingTop: '2px' }} title={item.evidence || undefined}>{item.label}</dt>
-                    <dd style={{ fontSize: '14px', color: '#e8e8f0', lineHeight: 1.5 }}>
-                      {item.value} <span style={{ fontSize: '11px', color: '#555', whiteSpace: 'nowrap' }}>· {item.strengthLabel}</span>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-              <div style={{ fontSize: '11px', color: '#62627a', marginTop: '10px', lineHeight: 1.5 }}>
-                Labels show how we know each thing: Organizer (from the race’s own site) · Derived · Our read · Our guess · Dima (ran it). Always confirm specifics on the official site.
+          <div style={kicker}>Our take</div>
+          {editorialRest.map(item => (
+            <div key={item.key} style={{ marginBottom: '13px' }}>
+              <div className="fdr-label" style={{ marginBottom: '2px' }}>
+                {item.label} <Provenance label={item.strengthLabel} />
               </div>
-            </>
-          )}
+              <div style={{ fontSize: '14px', color: 'var(--fdr-ink)', lineHeight: 1.55, maxWidth: '68ch' }}>{item.value}</div>
+            </div>
+          ))}
+        </>
+      )}
+      {race.taste?.character?.length > 0 && (
+        <>
+          <div style={kicker}>Character</div>
+          <dl style={{ margin: 0 }}>
+            {race.taste.character.map(item => (
+              <div key={item.key} style={{ display: 'grid', gridTemplateColumns: '110px 1fr', gap: '10px', padding: '5px 0' }}>
+                <dt className="fdr-label" style={{ paddingTop: '2px' }} title={item.evidence || undefined}>{item.label}</dt>
+                <dd style={{ fontSize: '14px', color: 'var(--fdr-ink)', lineHeight: 1.5 }}>
+                  {item.value} <Provenance label={item.strengthLabel} />
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <div style={{ fontSize: '11px', color: 'var(--fdr-ink-faint)', marginTop: '10px', lineHeight: 1.5 }}>
+            Labels show how we know each thing: Organizer (from the race&rsquo;s own site) · Derived · Our read · Our guess · Dima (ran it).
+          </div>
         </>
       )}
 
-      {/* RACE-DAY FACTS (enrichment slot; not load-bearing).
-          Rendered ONLY when there is a payload. race_enrichment is deliberately
-          unapplied (see AGENTS.md), so the heading otherwise shipped on 226/226
-          pages with nothing under it but an apology. Keep the slot — the
-          pipeline is built and awaiting activation; this is a guard, not a
-          removal. */}
+      {/* RACE-DAY FACTS (enrichment slot; renders only with a payload) */}
       {race.enrichment && (
         <>
-        <div style={kicker}>Race-day facts</div>
-        <div style={{ fontSize: '14px', color: '#c9c9d6', lineHeight: 1.6 }}>
-          {race.enrichment.start_time?.value && !race.enrichment.start_time.stale && (
-            <div>◷ Start {race.enrichment.start_time.value}</div>
-          )}
-          {race.enrichment.confirmed_status?.value === 'confirmed' && !race.enrichment.confirmed_status.stale && (
-            <div style={{ color: '#34d399' }}>✓ Confirmed</div>
-          )}
-          {race.enrichment.confirmed_status?.value === 'cancelled' && (
-            <div style={{ color: '#f87171', fontWeight: 700 }}>CANCELLED</div>
-          )}
-          <div style={{ fontSize: '12px', color: '#62627a', marginTop: '6px' }}>Best-effort — always confirm on the official site below.</div>
-        </div>
+          <div style={kicker}>Race-day facts</div>
+          <div style={{ fontSize: '14px', color: 'var(--fdr-ink)', lineHeight: 1.6 }}>
+            {race.enrichment.start_time?.value && !race.enrichment.start_time.stale && (
+              <div>◷ Start {race.enrichment.start_time.value}</div>
+            )}
+            {race.enrichment.confirmed_status?.value === 'confirmed' && !race.enrichment.confirmed_status.stale && (
+              <div style={{ color: DRIVE_INK.near }}>✓ Confirmed</div>
+            )}
+            <div style={{ fontSize: '11.5px', color: 'var(--fdr-ink-faint)', marginTop: '6px' }}>Best-effort — always confirm on the official site.</div>
+          </div>
         </>
       )}
-
-      {/* REGISTER / VERIFY */}
-      <div style={{ marginTop: '20px' }}>
-        <a href={race.url} target="_blank" rel="noopener noreferrer"
-          style={{ display: 'block', width: '100%', textAlign: 'center', background: '#2563eb', color: '#fff', borderRadius: '12px', padding: '12px', fontWeight: 600, fontSize: '15px', textDecoration: 'none' }}>
-          Official site &amp; registration ↗
-        </a>
-        <div style={{ fontSize: '12px', color: '#9a9ab0', marginTop: '10px', lineHeight: 1.5 }}>
-          Dates, start times and registration change. Always confirm on the official site before you count on it.
-        </div>
-      </div>
 
       {/* GETTING THERE */}
       {race.lat != null && race.lng != null && (
         <>
           <div style={kicker}>Getting there</div>
           <a href={`https://www.google.com/maps/search/?api=1&query=${race.lat},${race.lng}`} target="_blank" rel="noopener noreferrer"
-            style={{ display: 'inline-block', background: 'transparent', border: '1px solid #26263f', color: '#c9c9d6', borderRadius: '12px', padding: '10px 16px', fontSize: '14px', textDecoration: 'none' }}>
+            style={{ display: 'inline-block', background: 'var(--fdr-surface)', border: '1px solid var(--fdr-border-strong)', color: 'var(--fdr-ink)', borderRadius: 'var(--fdr-radius-md)', padding: '9px 16px', fontSize: '13.5px', fontWeight: 600, textDecoration: 'none' }}>
             Open in Google Maps ↗
           </a>
-          <div style={{ ...mono, fontSize: '12px', color: '#62627a', marginTop: '10px' }}>
+          <div className="fdr-mono" style={{ fontSize: '11.5px', color: 'var(--fdr-ink-faint)', marginTop: '9px' }}>
             {race.town} · {race.lat}, {race.lng}
-            {race.driveMinutes != null && <> · <span style={{ color: driveColor(race.driveMinutes) }}>{formatDrive(race.driveMinutes)}</span> drive from Barcelona (Plaça Glòries)</>}
           </div>
         </>
       )}
@@ -373,44 +436,37 @@ export default async function RacePage({ params }) {
       {/* RELATED */}
       {related.length > 0 && (
         <>
-          <div style={kicker}>More races like this</div>
+          <div style={kicker}>{race.soldOut ? 'Still-open alternatives' : 'More races like this'}</div>
           <div>
-            {related.map((r, i) => (
-              <Link key={r.id} href={`/race/${r.id}`}
-                style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '10px', padding: '12px 0', borderTop: i === 0 ? 'none' : '1px solid #1a1a2e', textDecoration: 'none', color: 'inherit' }}>
-                <span>
-                  <span style={{ fontSize: '15px', fontWeight: 600, color: '#fff' }}>{r.name}</span>
-                  <span style={{ display: 'block', fontSize: '13px', color: '#888', marginTop: '3px' }}>
-                    {displayDate(r) || (r.expectedMonth != null ? `${MONTHS_SHORT[r.expectedMonth - 1]} ${r.expectedYear} (expected)` : 'Date TBD')} · {r.town} · {r.distances.length} {r.distances.length === 1 ? 'distance' : 'distances'}
+            {related.map((r, i) => {
+              const rBand = driveBand(r.driveMinutes)
+              return (
+                <Link key={r.id} href={`/race/${r.id}`}
+                  style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '10px', padding: '11px 0', borderTop: i === 0 ? 'none' : '1px solid var(--fdr-border)', textDecoration: 'none', color: 'inherit' }}>
+                  <span style={{ minWidth: 0 }}>
+                    <span style={{ fontSize: '14.5px', fontWeight: 600, color: 'var(--fdr-ink)' }}>{r.name}</span>
+                    <span style={{ display: 'block', fontSize: '12.5px', color: 'var(--fdr-ink-muted)', marginTop: '2px' }}>
+                      {displayDate(r) || (r.expectedMonth != null ? `${MONTHS_SHORT[r.expectedMonth - 1]} ${r.expectedYear} (expected)` : 'Date TBD')} · {r.town} · {r.distances.length} {r.distances.length === 1 ? 'distance' : 'distances'}
+                    </span>
                   </span>
-                </span>
-                {r.driveMinutes != null
-                  ? <span style={{ ...mono, fontSize: '15px', fontWeight: 700, whiteSpace: 'nowrap', color: driveColor(r.driveMinutes) }}>{formatDrive(r.driveMinutes)}</span>
-                  : <span style={{ fontSize: '13px', color: '#666', whiteSpace: 'nowrap' }}>drive TBD</span>}
-              </Link>
-            ))}
+                  {r.driveMinutes != null
+                    ? <span className="fdr-mono" style={{ fontSize: '14px', fontWeight: 700, whiteSpace: 'nowrap', color: rBand === 'near' ? DRIVE_INK.near : rBand === 'mid' ? DRIVE_INK.mid : DRIVE_INK.far }}>{formatDrive(r.driveMinutes)}</span>
+                    : <span style={{ fontSize: '12px', color: 'var(--fdr-ink-faint)', whiteSpace: 'nowrap' }}>drive —</span>}
+                </Link>
+              )
+            })}
           </div>
         </>
       )}
 
-      {/* ASK AI (per-race prompt) */}
-      <div style={kicker}>Plan this race with AI</div>
-      <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
-        <a href={claudeUrl(prompt)} target="_blank" rel="noopener noreferrer"
-          style={{ borderRadius: '10px', padding: '10px 16px', fontWeight: 600, fontSize: '14px', color: '#fff', background: '#d97757', textDecoration: 'none' }}>Ask Claude</a>
-        <a href={chatgptUrl(prompt)} target="_blank" rel="noopener noreferrer"
-          style={{ borderRadius: '10px', padding: '10px 16px', fontWeight: 600, fontSize: '14px', color: '#fff', background: '#10a37f', textDecoration: 'none' }}>Ask ChatGPT</a>
-        <Link href="/for-agents" style={{ fontSize: '14px', color: '#8a8aff', textDecoration: 'underline' }}>Connect your own AI →</Link>
-      </div>
-
       {/* FOOTER */}
-      <footer style={{ marginTop: '40px', paddingTop: '20px', borderTop: '1px solid #1a1a2e', textAlign: 'center' }}>
-        <p style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>
-          <Link href="/about" style={{ textDecoration: 'underline' }}>Why I built this</Link>
+      <footer style={{ marginTop: '40px', paddingTop: '18px', borderTop: '1px solid var(--fdr-border)', textAlign: 'center' }}>
+        <p style={{ fontSize: '12px', color: 'var(--fdr-ink-muted)', marginBottom: '6px' }}>
+          <Link href="/about" style={{ textDecoration: 'underline', color: 'inherit' }}>Why I built this</Link>
           {' · '}
-          <Link href="/for-agents" style={{ textDecoration: 'underline' }}>For AI agents</Link>
+          <Link href="/for-agents" style={{ textDecoration: 'underline', color: 'inherit' }}>For AI agents</Link>
         </p>
-        <p style={{ fontSize: '12px', color: '#444' }}>Data from ultrescatalunya.com · Drive times are estimates</p>
+        <p style={{ fontSize: '12px', color: 'var(--fdr-ink-faint)' }}>Data from ultrescatalunya.com · Drive times are estimates</p>
       </footer>
     </main>
   )
