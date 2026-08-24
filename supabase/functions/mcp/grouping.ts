@@ -16,6 +16,8 @@ export interface RaceRow {
   price?: string | null
   date?: string | null
   date_display?: string | null
+  month_num?: number | null
+  year?: number | null
   status?: string
 }
 
@@ -32,6 +34,8 @@ export interface RaceEvent {
   url: string
   date: string | null
   dateEnd?: string
+  expectedMonth?: number
+  expectedYear?: number
   town: string
   province: string
   status: string
@@ -91,6 +95,28 @@ function parsePrice(priceStr: string | null | undefined): number | null {
   return Number.isNaN(n) ? null : n
 }
 
+
+// Source-published month for a dateless event, or null. Exact port of
+// app/lib/format.js expectedMonthFromRows — the two MUST agree (docs/rules.md
+// R6, R8). Every row that asserts a month must be complete, in range, and
+// agree; one malformed sibling poisons the event.
+function expectedMonthFromRows(rows: RaceRow[]): { month: number; year: number } | null {
+  const asserting = rows.filter((r) => r.month_num != null || r.year != null)
+  if (asserting.length === 0) return null
+  const complete = asserting.every((r) =>
+    r.month_num != null && r.year != null && r.month_num >= 1 && r.month_num <= 12)
+  if (!complete) return null
+  const m = asserting[0].month_num!
+  const y = asserting[0].year!
+  if (!asserting.every((r) => r.month_num === m && r.year === y)) return null
+  const contradicted = rows.some((r) => {
+    const dd = (r.date_display || '').trim()
+    return /^\d{4}$/.test(dd) && Number(dd) !== y
+  })
+  if (contradicted) return null
+  return { month: m, year: y }
+}
+
 export function groupRowsIntoEvents(rows: RaceRow[]): RaceEvent[] {
   const groups = new Map<string, RaceRow[]>()
   const order: string[] = []
@@ -126,6 +152,7 @@ export function groupRowsIntoEvents(rows: RaceRow[]): RaceEvent[] {
         break
       }
     }
+    const expected = dateIso ? null : expectedMonthFromRows(groupRows)
 
     let soldOut = false
     let kidsRun = false
@@ -179,6 +206,10 @@ export function groupRowsIntoEvents(rows: RaceRow[]): RaceEvent[] {
       distances,
     }
     if (dateEndIso) event.dateEnd = dateEndIso
+    if (expected) {
+      event.expectedMonth = expected.month
+      event.expectedYear = expected.year
+    }
     if (soldOut) event.soldOut = true
     if (kidsRun) event.kidsRun = true
     events.push(event)

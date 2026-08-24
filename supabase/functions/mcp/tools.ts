@@ -239,25 +239,12 @@ export const TOOLS: ToolDef[] = [
         dist_max: { type: 'number', description: 'Max distance in km.' },
         elev_min: { type: 'number', description: 'Min elevation gain in metres (D+). Use for a single range; for disjoint bands use elev_ranges.' },
         elev_max: { type: 'number', description: 'Max elevation gain in metres (D+).' },
-        dist_ranges: {
-          type: 'array',
-          items: { type: 'object', properties: { min: { type: 'number' }, max: { type: 'number' } } },
-          description: 'Disjoint distance bands in km, OR-matched — e.g. [{"max":10},{"min":42}] for "short OR ultra". Supersedes dist_min/dist_max when given. For one contiguous range, prefer dist_min/dist_max.',
-        },
-        elev_ranges: {
-          type: 'array',
-          items: { type: 'object', properties: { min: { type: 'number' }, max: { type: 'number' } } },
-          description: 'Disjoint elevation-gain bands in metres (D+), OR-matched. Supersedes elev_min/elev_max when given.',
-        },
-        province: {
-          type: 'array',
-          items: { type: 'string', enum: ['BARCELONA', 'GIRONA', 'TARRAGONA', 'LLEIDA'] },
-          description: 'One or more of BARCELONA, GIRONA, TARRAGONA, LLEIDA — OR-matched (e.g. ["BARCELONA","GIRONA"]). A single string is also accepted.',
-        },
         month: {
-          type: 'array',
-          items: { type: 'number' },
-          description: 'One or more month numbers 1-12 — OR-matched (e.g. [5,6] for May or June). A single number is also accepted. Excludes undated (TBD) races.',
+          anyOf: [
+            { type: 'number' },
+            { type: 'array', items: { type: 'number' } },
+          ],
+          description: 'One or more month numbers 1-12 — OR-matched (e.g. [5,6] for May or June). A single number is also accepted. Includes races with a source-published month (expectedMonth) even without an exact date; fully undated (TBD) races are excluded and counted in tbd_excluded_count.',
         },
         kids_run: { type: 'boolean', description: 'Only races that include a kids run.' },
         date_from: { type: 'string', description: 'Earliest race date, ISO YYYY-MM-DD.' },
@@ -337,7 +324,7 @@ export const TOOLS: ToolDef[] = [
       'When you filter by distance/elevation, matched_distances lists the variant(s) that matched. ' +
       'Each event carries taste_available + taste_summary + taste_flags (night, technicality band; ' +
       'set only when stated — absent = unknown; full taste via get_race). ' +
-      'Undated (TBD) races are excluded and counted in ' +
+      'A race with expectedMonth/expectedYear has a source-published month but no confirmed day — treat it as unconfirmed (verify at url), never as a fixed date; it matches a month filter but not a precise date_from/date_to window. Fully undated (TBD) races are excluded and counted in ' +
       'tbd_excluded_count. Does NOT include live registration status — fetch each url to verify. ' +
       'With the user\'s own training connector present, you can also estimate readiness and a ' +
       'rough finish time for each race locally (see server instructions / personalization field).',

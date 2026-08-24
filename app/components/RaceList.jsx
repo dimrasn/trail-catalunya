@@ -122,7 +122,11 @@ export default function RaceList({ races, lastUpdated }) {
   const filtered = useMemo(() => {
     const today = todayISO()
     return races.filter(race => {
-      if (!race.date && !filters.showTBD) return false
+      // A race whose month is known is NOT "date TBD" — it belongs in that
+      // month, labelled "(expected)". Only a race with no month at all (the
+      // source disagreeing with itself, per R6's agreement gate) stays behind
+      // the Show-TBD toggle.
+      if (!race.date && race.expectedMonth == null && !filters.showTBD) return false
       // Hide finished races by default (use dateEnd so a multi-day race stays
       // visible through its last day); "Show past" brings them back.
       if (race.date && !filters.showPast && (race.dateEnd || race.date) < today) return false
@@ -140,7 +144,11 @@ export default function RaceList({ races, lastUpdated }) {
   const grouped = useMemo(() => {
     const groups = {}
     for (const race of filtered) {
-      const key = race.date ? race.date.slice(0, 7) : 'TBD'
+      const key = race.date
+        ? race.date.slice(0, 7)
+        : race.expectedMonth != null
+          ? `${race.expectedYear}-${String(race.expectedMonth).padStart(2, '0')}`
+          : 'TBD'
       if (!groups[key]) groups[key] = []
       groups[key].push(race)
     }
@@ -156,7 +164,12 @@ export default function RaceList({ races, lastUpdated }) {
   // dataset, so December / next-year races appear automatically once dated.
   const monthOptions = useMemo(() => {
     const months = new Set()
-    for (const race of races) if (race.date) months.add(race.date.slice(5, 7))
+    for (const race of races) {
+      if (race.date) months.add(race.date.slice(5, 7))
+      // A race with only a source-published month must be selectable too, or a
+      // future expected-only month has races that no chip can reach (audit #6).
+      else if (race.expectedMonth != null) months.add(String(race.expectedMonth).padStart(2, '0'))
+    }
     const opts = [...months].sort().map(m => ({ value: m, label: MONTH_NAMES_SHORT[parseInt(m) - 1] }))
     return [{ value: 'all', label: 'All' }, ...opts]
   }, [races])

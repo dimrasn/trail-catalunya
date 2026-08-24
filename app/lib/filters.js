@@ -124,7 +124,13 @@ export function matchesElevation(race, selected) {
 
 export function matchesMonth(race, selected) {
   if (!selected.length) return true
-  if (!race.date) return false
+  // A race whose month is known but whose exact day is not (expectedMonth)
+  // still belongs in that month — otherwise the source-dated events are
+  // invisible to every month filter. The card labels it "(expected)".
+  if (!race.date) {
+    return race.expectedMonth != null &&
+      selected.includes(String(race.expectedMonth).padStart(2, '0'))
+  }
   return selected.includes(race.date.slice(5, 7))
 }
 

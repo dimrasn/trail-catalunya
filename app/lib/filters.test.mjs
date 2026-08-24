@@ -165,6 +165,10 @@ test('matchesMonth: OR across months; undated excluded when a month is active', 
   assert.equal(matchesMonth({ date: '2026-05-10' }, ['06', '07']), false)
   assert.equal(matchesMonth({ date: '2026-05-10' }, ['05', '06']), true)
   assert.equal(matchesMonth({ date: null }, ['05']), false)
+  // A source-published month (expectedMonth) matches; a mismatching one does not.
+  assert.equal(matchesMonth({ date: null, expectedMonth: 5 }, ['05']), true)
+  assert.equal(matchesMonth({ date: null, expectedMonth: 5 }, ['06', '07']), false)
+  assert.equal(matchesMonth({ date: null, expectedMonth: 12 }, ['12']), true)
 })
 
 test('matchesProvince: OR across provinces', () => {

@@ -1,0 +1,311 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homepage — list card options + page composition</title>
+<style>
+  :root{
+    --bg:#0a0a14; --hair:#1a1a2e; --chipbg:#12122a; --line:#26263f;
+    --t1:#e8e8f0; --t2:#9a9ab0; --t3:#62627a; --accent:#8a8aff;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --d1:#3ecf8e; --d2:#8bcf3e; --d3:#e0c33a; --d4:#e0913a; --d5:#e0553a; --d6:#c05a7a;
+    --drv-near:#4ade80; --drv-mid:#fbbf24; --drv-far:#999;
+    --bcn:#2563eb; --gir:#059669; --tar:#dc2626; --lle:#d97706;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#07070d;color:var(--t1);font-family:var(--sans);padding:26px 18px 90px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .mono{font-family:var(--mono)}
+  h1{font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);max-width:1240px;margin:0 auto 6px}
+  .note{max-width:1240px;margin:0 auto 20px;color:var(--t2);font-size:13.5px}
+  .cols{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:1050px){.cols{grid-template-columns:1fr}}
+  .colh{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);font-weight:700;margin:0 0 4px}
+  .colsub{font-size:12px;color:var(--t3);margin:0 0 10px;min-height:34px}
+  .phone{background:var(--bg);border:1px solid var(--line);border-radius:16px;overflow:hidden;max-width:400px}
+
+  .mh{padding:8px 14px 5px;border-bottom:1px solid var(--hair);display:flex;gap:8px;align-items:baseline}
+  .mh b{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+  .mh span{font-family:var(--mono);font-size:11px;color:var(--t3)}
+
+  .card{display:grid;grid-template-columns:1fr 62px;gap:2px 10px;padding:12px 14px;border-bottom:1px solid var(--hair)}
+  .card:hover{background:#0d0d1f}
+  .nm{font-size:14.5px;font-weight:600;color:#fff;line-height:1.25}
+  .nm .so{font-size:9px;padding:1px 5px;border-radius:3px;background:#dc2626;color:#fff;font-weight:700;vertical-align:1px;margin-left:5px}
+  .dt{grid-column:2;grid-row:1;text-align:right;font-family:var(--mono);font-size:11.5px;color:#888;white-space:nowrap}
+  .sub{font-size:12px;color:var(--t2)}
+  .sub .pv{font-size:9.5px;font-weight:700;padding:0 4px;border-radius:3px;letter-spacing:.03em;margin-left:2px}
+  .drv{grid-column:2;text-align:right;font-family:var(--mono);font-size:13px;font-weight:700;white-space:nowrap}
+  .drv small{display:block;font-size:9px;color:var(--t3);font-weight:400}
+  .chips{grid-column:1;display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+  .chip{padding:2px 7px;border-radius:4px;font-size:11px;font-family:var(--mono);background:var(--chipbg);color:#ccc;white-space:nowrap}
+  .dist{grid-column:1;font-family:var(--mono);font-size:12px;color:var(--t2);margin-top:5px}
+  .dist b{color:#c9c9d6;font-weight:600}
+  .dw{font-weight:800;font-size:11px;letter-spacing:.02em}
+  .taste{grid-column:1/-1;font-size:12px;color:#8f8fa8;margin-top:4px;line-height:1.4;
+    display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+  .taste::before{content:"“";color:var(--t3)}
+  .taste::after{content:"”"}
+
+  /* header + filters section */
+  .wide{max-width:1240px;margin:34px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:1050px){.wide{grid-template-columns:1fr}}
+  .hero{padding:16px 14px 12px;border-bottom:1px solid var(--hair)}
+  .hero h2{font-size:17px;font-weight:700;color:#fff;margin:0;letter-spacing:-.01em}
+  .hero .tag{font-size:12.5px;color:var(--t2);margin-top:3px}
+  .hero .tag b{color:#c9c9d6;font-weight:600}
+  .fr{display:flex;gap:6px;align-items:center;padding:5px 14px;flex-wrap:wrap}
+  .fl{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);width:62px;flex-shrink:0}
+  .fc{font-size:11.5px;padding:3px 10px;border-radius:14px;background:var(--chipbg);color:var(--t2);white-space:nowrap}
+  .fc.on{background:#fff;color:#111;font-weight:600}
+  .airow{display:flex;gap:8px;align-items:center;padding:10px 14px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);flex-wrap:wrap}
+  .aib{font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;color:#fff}
+  .aitxt{font-size:12px;color:var(--t2)}
+  .pick{margin:10px 14px;border:1px solid #3a3a5c;border-radius:12px;padding:11px 13px;background:#101024}
+  .pick .pl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:5px}
+  .pick .why{font-size:12px;color:#a8a8c0;margin-top:4px}
+  .verdictbar{font-size:12px;color:var(--t2);padding:8px 14px;border-bottom:1px solid var(--hair)}
+  .verdictbar b{color:#fff}
+</style>
+
+<h1>Part 1 — the list card: three options, same six real races</h1>
+<p class="note">Real data (incl. the awkward cases: no taste line, no D+ → no difficulty, no drive time). Judge scannability: can you run your eye down and pick?</p>
+
+<div class="cols">
+  <!-- V1 -->
+  <div>
+    <div class="colh">V1 · Minimal touch</div>
+    <p class="colsub">Today's card + a colored difficulty word. Chips stay. Cheapest change.</p>
+    <div class="phone">
+      <div class="mh"><b>September 2026</b><span>6 races</span></div>
+
+      <div class="card">
+        <div class="nm">Burriac Atac</div><div class="dt">Sat 05 Sep</div>
+        <div class="sub">Vilassar de Mar <span class="pv" style="background:#2563eb33;color:#5b8def">BCN</span> · <span class="dw" style="color:var(--d2)">MODERATE</span></div>
+        <div class="drv" style="color:var(--drv-near)">29m<small>drive</small></div>
+        <div class="chips"><span class="chip">21.4km ↑1090m</span><span class="chip">15.7km ↑650m</span></div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Pedraforca Xtrail</div><div class="dt">Sat 05 Sep</div>
+        <div class="sub">Saldes <span class="pv" style="background:#2563eb33;color:#5b8def">BCN</span> · <span class="dw" style="color:var(--d3)">HARD</span></div>
+        <div class="drv" style="color:var(--drv-mid)">1h 46m<small>drive</small></div>
+        <div class="chips"><span class="chip">42km ↑2600m</span><span class="chip">26km ↑1400m</span><span class="chip">10km ↑550m</span></div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Cursa de la Vinya i el Pàmpol</div><div class="dt">Sun 06 Sep</div>
+        <div class="sub">St Llorenç d'Hortons <span class="pv" style="background:#2563eb33;color:#5b8def">BCN</span> · <span class="dw" style="color:var(--d2)">MODERATE</span></div>
+        <div class="drv" style="color:var(--drv-near)">48m<small>drive</small></div>
+        <div class="chips"><span class="chip">21km ↑418m</span><span class="chip">10km ↑150m</span></div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Vallhonesta X-Trail</div><div class="dt">Fri 04 Sep</div>
+        <div class="sub">St Vicenç de Castellet <span class="pv" style="background:#2563eb33;color:#5b8def">BCN</span> · <span class="dw" style="color:var(--d1)">EASY</span></div>
+        <div class="drv" style="color:var(--drv-near)">43m<small>drive</small></div>
+        <div class="chips"><span class="chip">10km ↑311m</span></div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Despertaferro Bàscara</div><div class="dt">Fri 11 Sep</div>
+        <div class="sub">Bàscara <span class="pv" style="background:#05966933;color:#34d399">GIR</span></div>
+        <div class="drv" style="color:var(--drv-mid)">1h 27m<small>drive</small></div>
+        <div class="chips"><span class="chip">11km</span><span class="chip">6km</span><span class="chip" style="background:#3b2f6e;color:#a78bfa">ELEV. TBD</span></div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Marató Valls de Cardós</div><div class="dt">Sat 05 Sep</div>
+        <div class="sub">Ribera de Cardós <span class="pv" style="background:#d9770633;color:#f0a53a">LLE</span> · <span class="dw" style="color:var(--d4)">VERY HARD</span></div>
+        <div class="drv" style="color:var(--drv-far)">3h 29m<small>drive</small></div>
+        <div class="chips"><span class="chip">45km ↑3200m</span><span class="chip">23km ↑1400m</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V2 -->
+  <div>
+    <div class="colh">V2 · Tiered — difficulty always, taste when it exists ★ recommended</div>
+    <p class="colsub">Distances enumerate on one line; the taste one-liner is the second read. Sparse races stay compact, rich races get character.</p>
+    <div class="phone">
+      <div class="mh"><b>September 2026</b><span>6 races</span></div>
+
+      <div class="card">
+        <div class="nm">Burriac Atac</div><div class="dt">Sat 05 Sep</div>
+        <div class="sub">Vilassar de Mar <span class="pv" style="background:#2563eb33;color:#5b8def">BCN</span></div>
+        <div class="drv" style="color:var(--drv-near)">29m<small>drive</small></div>
+        <div class="dist"><span class="dw" style="color:var(--d2)">MODERATE</span> · <b>15.7 · 21.4 km</b> · up to 1090 D+ · night</div>
+        <div class="taste">a night point-to-point that literally ends on the sand at Cabrera beach, under Burriac castle</div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Pedraforca Xtrail</div><div class="dt">Sat 05 Sep</div>
+        <div class="sub">Saldes <span class="pv" style="background:#2563eb33;color:#5b8def">BCN</span></div>
+        <div class="drv" style="color:var(--drv-mid)">1h 46m<small>drive</small></div>
+        <div class="dist"><span class="dw" style="color:var(--d3)">HARD</span> · <b>10 · 26 · 42 km</b> · up to 2600 D+</div>
+        <div class="taste">runs right under the Pedraforca, Catalonia's most iconic silhouette, deep inside Cadí-Moixeró</div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Cursa de la Vinya i el Pàmpol</div><div class="dt">Sun 06 Sep</div>
+        <div class="sub">St Llorenç d'Hortons <span class="pv" style="background:#2563eb33;color:#5b8def">BCN</span></div>
+        <div class="drv" style="color:var(--drv-near)">48m<small>drive</small></div>
+        <div class="dist"><span class="dw" style="color:var(--d2)">MODERATE</span> · <b>10 · 21 km</b> · up to 418 D+</div>
+        <div class="taste">run the harvest-season vineyards of the Penedès with Montserrat on the horizon — a 30-year classic</div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Vallhonesta X-Trail</div><div class="dt">Fri 04 Sep</div>
+        <div class="sub">St Vicenç de Castellet <span class="pv" style="background:#2563eb33;color:#5b8def">BCN</span></div>
+        <div class="drv" style="color:var(--drv-near)">43m<small>drive</small></div>
+        <div class="dist"><span class="dw" style="color:var(--d1)">EASY</span> · <b>10 km</b> · 311 D+</div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Despertaferro Bàscara</div><div class="dt">Fri 11 Sep</div>
+        <div class="sub">Bàscara <span class="pv" style="background:#05966933;color:#34d399">GIR</span></div>
+        <div class="drv" style="color:var(--drv-mid)">1h 27m<small>drive</small></div>
+        <div class="dist"><span class="dw" style="color:var(--t3)">DIFFICULTY TBD</span> · <b>6 · 11 km</b> · climb not published</div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Marató Valls de Cardós</div><div class="dt">Sat 05 Sep</div>
+        <div class="sub">Ribera de Cardós <span class="pv" style="background:#d9770633;color:#f0a53a">LLE</span></div>
+        <div class="drv" style="color:var(--drv-far)">3h 29m<small>drive</small></div>
+        <div class="dist"><span class="dw" style="color:var(--d4)">VERY HARD</span> · <b>23 · 45 km</b> · up to 3200 D+</div>
+        <div class="taste">a genuine high-Pyrenean sky-marathon — peaks over 2800 m, full mandatory-kit seriousness</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V3 -->
+  <div>
+    <div class="colh">V3 · Taste-forward</div>
+    <p class="colsub">Character line leads, numbers demoted to one quiet row. Most human — but ~45% of races have no taste line, and rows go uneven.</p>
+    <div class="phone">
+      <div class="mh"><b>September 2026</b><span>6 races</span></div>
+
+      <div class="card">
+        <div class="nm">Burriac Atac</div><div class="dt">Sat 05 Sep</div>
+        <div class="taste" style="margin-top:2px">a night point-to-point that literally ends on the sand at Cabrera beach, under Burriac castle</div>
+        <div class="dist" style="color:var(--t3)">Vilassar de Mar · <span class="dw" style="color:var(--d2)">Moderate</span> · 15.7–21.4 km</div>
+        <div class="drv" style="color:var(--drv-near);grid-row:1">29m<small>drive</small></div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Pedraforca Xtrail</div><div class="dt">Sat 05 Sep</div>
+        <div class="taste" style="margin-top:2px">runs right under the Pedraforca, Catalonia's most iconic silhouette, deep inside Cadí-Moixeró</div>
+        <div class="dist" style="color:var(--t3)">Saldes · <span class="dw" style="color:var(--d3)">Hard</span> · 10–42 km</div>
+        <div class="drv" style="color:var(--drv-mid);grid-row:1">1h 46m<small>drive</small></div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Cursa de la Vinya i el Pàmpol</div><div class="dt">Sun 06 Sep</div>
+        <div class="taste" style="margin-top:2px">harvest-season vineyards of the Penedès with Montserrat on the horizon — a 30-year classic</div>
+        <div class="dist" style="color:var(--t3)">St Llorenç d'Hortons · <span class="dw" style="color:var(--d2)">Moderate</span> · 10–21 km</div>
+        <div class="drv" style="color:var(--drv-near);grid-row:1">48m<small>drive</small></div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Vallhonesta X-Trail</div><div class="dt">Fri 04 Sep</div>
+        <div class="dist" style="color:var(--t3);margin-top:2px">St Vicenç de Castellet · <span class="dw" style="color:var(--d1)">Easy</span> · 10 km ↑311m</div>
+        <div class="drv" style="color:var(--drv-near);grid-row:1">43m<small>drive</small></div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Despertaferro Bàscara</div><div class="dt">Fri 11 Sep</div>
+        <div class="dist" style="color:var(--t3);margin-top:2px">Bàscara · difficulty TBD · 6–11 km</div>
+        <div class="drv" style="color:var(--drv-mid);grid-row:1">1h 27m<small>drive</small></div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Marató Valls de Cardós</div><div class="dt">Sat 05 Sep</div>
+        <div class="taste" style="margin-top:2px">a genuine high-Pyrenean sky-marathon — peaks over 2800 m, full mandatory-kit seriousness</div>
+        <div class="dist" style="color:var(--t3)">Ribera de Cardós · <span class="dw" style="color:var(--d4)">Very hard</span> · 23–45 km</div>
+        <div class="drv" style="color:var(--drv-far);grid-row:1">3h 29m<small>drive</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1 style="margin-top:44px">Part 2 — top of page: orientation, humane filters, AI as a peer · and the pick-after-input pattern</h1>
+<p class="note">Left: the cold page — promise line, difficulty replaces elevation as the human axis (D+ moves behind "More"), AI sits with the filters as the free-text alternative. Right: after the user filters — the results get a labelled "closest match" pick with a why. Neutral until they speak; opinionated once they have.</p>
+
+<div class="wide">
+  <div>
+    <div class="colh">Cold page (nothing selected)</div>
+    <div class="phone" style="max-width:430px">
+      <div class="hero">
+        <h2>Find your next trail race</h2>
+        <div class="tag">Every trail race in Catalunya — with <b>drive time from Barcelona</b>, <b>honest difficulty</b>, and <b>AI that knows them all</b>.</div>
+      </div>
+      <div class="fr"><span class="fl">Drive</span><span class="fc on">Any</span><span class="fc">&lt; 1h</span><span class="fc">1–2h</span><span class="fc">2h+</span></div>
+      <div class="fr"><span class="fl">Difficulty</span><span class="fc on">Any</span><span class="fc" style="color:var(--d1)">Easy</span><span class="fc" style="color:var(--d2)">Moderate</span><span class="fc" style="color:var(--d3)">Hard</span><span class="fc" style="color:var(--d4)">V.hard+</span></div>
+      <div class="fr"><span class="fl">Distance</span><span class="fc on">Any</span><span class="fc">&lt;10k</span><span class="fc">10–15</span><span class="fc">15–21</span><span class="fc">21–42</span><span class="fc">42+</span></div>
+      <div class="fr"><span class="fl">Month</span><span class="fc on">All</span><span class="fc">Sep</span><span class="fc">Oct</span><span class="fc">Nov</span><span class="fc">Dec</span></div>
+      <div class="fr"><span class="fl">More</span><span class="fc">Province</span><span class="fc">Climb (D+)</span><span class="fc">Kids run</span><span class="fc">Night</span><span class="fc">Unscheduled</span></div>
+      <div class="airow">
+        <span class="aitxt">Or just say it —</span>
+        <span class="aib" style="background:#d97757">Ask Claude</span>
+        <span class="aib" style="background:#10a37f">Ask ChatGPT</span>
+        <span class="aitxt" style="color:var(--t3)">“a hard race ≤1h away I can train toward for November”</span>
+      </div>
+      <div class="mh" style="margin-top:2px"><b>September 2026</b><span>34 races</span></div>
+      <div class="card">
+        <div class="nm">Burriac Atac</div><div class="dt">Sat 05 Sep</div>
+        <div class="sub">Vilassar de Mar <span class="pv" style="background:#2563eb33;color:#5b8def">BCN</span></div>
+        <div class="drv" style="color:var(--drv-near)">29m<small>drive</small></div>
+        <div class="dist"><span class="dw" style="color:var(--d2)">MODERATE</span> · <b>15.7 · 21.4 km</b> · up to 1090 D+ · night</div>
+        <div class="taste">a night point-to-point that literally ends on the sand at Cabrera beach, under Burriac castle</div>
+      </div>
+      <div class="card" style="border-bottom:none">
+        <div class="nm">Pedraforca Xtrail</div><div class="dt">Sat 05 Sep</div>
+        <div class="sub">Saldes <span class="pv" style="background:#2563eb33;color:#5b8def">BCN</span></div>
+        <div class="drv" style="color:var(--drv-mid)">1h 46m<small>drive</small></div>
+        <div class="dist"><span class="dw" style="color:var(--d3)">HARD</span> · <b>10 · 26 · 42 km</b> · up to 2600 D+</div>
+        <div class="taste">runs right under the Pedraforca, Catalonia's most iconic silhouette, deep inside Cadí-Moixeró</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="colh">After input: Hard + ≤2h + September → results + a labelled pick</div>
+    <div class="phone" style="max-width:430px">
+      <div class="fr" style="padding-top:12px"><span class="fl">Drive</span><span class="fc">Any</span><span class="fc">&lt; 1h</span><span class="fc on">1–2h</span><span class="fc">2h+</span></div>
+      <div class="fr"><span class="fl">Difficulty</span><span class="fc">Any</span><span class="fc" style="color:var(--d1)">Easy</span><span class="fc" style="color:var(--d2)">Moderate</span><span class="fc on">Hard</span><span class="fc" style="color:var(--d4)">V.hard+</span></div>
+      <div class="fr"><span class="fl">Month</span><span class="fc">All</span><span class="fc on">Sep</span><span class="fc">Oct</span></div>
+
+      <div class="verdictbar"><b>4 races</b> match: Hard · 1–2h drive · September</div>
+
+      <div class="pick">
+        <div class="pl">★ Closest match to your filters</div>
+        <div class="nm">Taga 2040 EVO <span class="dt" style="float:right">Sat 19 Sep</span></div>
+        <div class="dist"><span class="dw" style="color:var(--d3)">HARD</span> · <b>9.7 · 15 · 28 km</b> · up to 2000 D+ · <span style="color:var(--drv-mid)">1h 42m</span></div>
+        <div class="why">Why: a 27-edition Copa Catalana classic topping out on the Taga (2040 m) — the strongest match on all three of your filters. <span style="color:var(--t3)">· Our read</span></div>
+      </div>
+
+      <div class="card">
+        <div class="nm">Pedraforca Xtrail</div><div class="dt">Sat 05 Sep</div>
+        <div class="sub">Saldes <span class="pv" style="background:#2563eb33;color:#5b8def">BCN</span></div>
+        <div class="drv" style="color:var(--drv-mid)">1h 46m<small>drive</small></div>
+        <div class="dist"><span class="dw" style="color:var(--d3)">HARD</span> · <b>10 · 26 · 42 km</b> · up to 2600 D+</div>
+        <div class="taste">runs right under the Pedraforca, Catalonia's most iconic silhouette, deep inside Cadí-Moixeró</div>
+      </div>
+      <div class="card">
+        <div class="nm">Vilaplana 030 Extrem</div><div class="dt">Sun 13 Sep</div>
+        <div class="sub">Vilaplana <span class="pv" style="background:#dc262633;color:#f08a8a">TAR</span></div>
+        <div class="drv" style="color:var(--drv-mid)">1h 45m<small>drive</small></div>
+        <div class="dist"><span class="dw" style="color:var(--d3)">HARD</span> · <b>15 · 30 km</b> · up to 2000 D+</div>
+        <div class="taste">a compact "extreme" 30k with a real 2000 m punch and UTMB/ITRA points on the Prades massif</div>
+      </div>
+      <div class="card" style="border-bottom:none">
+        <div class="nm">Valls del Freser Trail Run</div><div class="dt">Sun 27 Sep</div>
+        <div class="sub">Ribes de Freser <span class="pv" style="background:#05966933;color:#34d399">GIR</span></div>
+        <div class="drv" style="color:var(--drv-mid)">1h 45m<small>drive</small></div>
+        <div class="dist"><span class="dw" style="color:var(--d3)">HARD</span> · <b>17 · 25 · 33 km</b> · up to 2100 D+</div>
+        <div class="taste">high Pyrenean alpine — "rutas por zonas de alta montaña pirenaica" near Núria</div>
+      </div>
+      <div class="airow" style="border-bottom:none">
+        <span class="aitxt">Narrow it further —</span>
+        <span class="aib" style="background:#d97757">Ask Claude about these 4</span>
+      </div>
+    </div>
+  </div>
+</div>

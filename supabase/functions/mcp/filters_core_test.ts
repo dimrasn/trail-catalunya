@@ -33,6 +33,21 @@ Deno.test('province[]: single-element array behaves like the old scalar', () => 
   assertEquals(ids(applyFilters(EVENTS, { province: ['LLEIDA'] })), ['lle-ultra'])
 })
 
+Deno.test('month[]: a source-published month (expectedMonth) matches; a precise date window does not', () => {
+  const withExpected = [
+    { id: 'exp-oct', date: null, expectedMonth: 10, province: 'GIRONA', kidsRun: false, distances: [{ km: 20 }], drive_minutes_from_barcelona: 60 },
+    { id: 'truly-tbd', date: null, province: 'GIRONA', kidsRun: false, distances: [{ km: 20 }], drive_minutes_from_barcelona: 60 },
+  ] as unknown as Parameters<typeof applyFilters>[0]
+  // month filter includes the expected-month event; the fully-undated one is excluded + counted
+  const r = applyFilters(withExpected, { month: [10] })
+  assertEquals(ids(r), ['exp-oct'])
+  assertEquals(r.tbdExcluded, 1)
+  // a different month excludes both
+  assertEquals(ids(applyFilters(withExpected, { month: [11] })), [])
+  // a precise date window can't place an expected-month race → excluded
+  assertEquals(ids(applyFilters(withExpected, { date_from: '2026-10-01', date_to: '2026-10-31' })), [])
+})
+
 Deno.test('month[]: OR across months', () => {
   assertEquals(ids(applyFilters(EVENTS, { month: [6] })).length, 2) // gir-mid + lle-ultra
   assertEquals(ids(applyFilters(EVENTS, { month: [5, 9] })), ['bcn-near', 'tar-far'])

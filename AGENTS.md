@@ -11,25 +11,30 @@ all differ from your training data. Read the relevant guide in
 1. `README.md` — live architecture: 3 surfaces (site / weekly scraper / MCP
    server) over one Supabase dataset. Trust this, not any `CLAUDE.md`/`AGENTS.md`
    in a parent directory (stale v1, superseded June 2026).
-2. `## Deployment state` below — what's live vs built-but-NOT-deployed.
+2. `docs/rules.md` — **the race-card quality rules ledger.** Single place a
+   rule about what we publish, and how honestly, is allowed to live. Read it
+   before changing anything user-facing; write Dima's verdicts into it before
+   the session ends (he talks, he does not edit markdown). Open commitments:
+   `docs/open-loops.md`.
+3. `## Deployment state` below — what's live vs built-but-NOT-deployed.
    **enrich-races is NOT live**: don't apply its migrations or "fix" its absence
    without the activation checklist.
-3. Tests before touching code:
+4. Tests before touching code:
    `deno test --allow-read supabase/functions/ eval/` and
    `node --test app/lib/enrichment.test.mjs`. The `--allow-read` flag is REQUIRED
    — without it 12 scrape-trails tests false-fail on `fixture.html` read access
    (NotCapable), which looks like a code defect but isn't.
    Known quirk: local `deno check` on files importing supabase-js fails on
    `npm:@supabase/realtime-js` resolution — **local only, deploys fine, do not fix**.
-4. `supabase/migrations/` in filename order — the real schema. `races` is one
+5. `supabase/migrations/` in filename order — the real schema. `races` is one
    row per race×distance; the app and MCP group into events by `(race_url, town)`.
-5. `docs/brainstorms/` → `docs/plans/` by date prefix — design rationale for the
+6. `docs/brainstorms/` → `docs/plans/` by date prefix — design rationale for the
    MCP server (06-21) and enrichment (06-23). Their Scope Boundaries sections
    list what is deliberately not built.
-6. Data flow: pg_cron Mon 05:00 UTC → `scrape-trails` (x-scrape-secret) →
+7. Data flow: pg_cron Mon 05:00 UTC → `scrape-trails` (x-scrape-secret) →
    upsert + golden assertions + Resend alerts → Vercel deploy hook → site rebuild.
    Manual re-run: README "Operations".
-7. Site drive times come from `data/towns-drive-times.json` (committed JSON),
+8. Site drive times come from `data/towns-drive-times.json` (committed JSON),
    NOT the `towns` table — only MCP reads the table. New town in a scrape →
    drive time is null until the "New town" runbook (README) is run. The
    site→towns migration is deliberately deferred (enrichment plan, Scope Boundaries).
@@ -85,6 +90,14 @@ can't ship old source (that bug shipped a stale v15 once). The working dir is
 often on a parallel session's branch — do NOT deploy from it. Slice-1 dogfood
 gap list: `docs/dogfood/2026-08-22-slice1-gaps.md`; the bet is validated
 (readiness composition works on real Strava). Slice-2 backlog:
+
+**Update 2026-08-24 (merged from `feat/card-quality-tier0`):** that branch adds
+one more undeployed MCP change — expected-month parity (`expectedMonth`/
+`expectedYear` in `grouping.ts` + `filters_core.ts`, so source-dated-but-dayless
+races answer a month filter). Built + mirrored-tested, NOT deployed, pending
+re-audit. Per the version-tracking trap above, `list_edge_functions` before any
+deploy — the site-side expected-month display shipped with the FdR redesign
+branch and does not depend on the MCP deploy.
 operational facts (start/cutoffs, compound-bullet manual split + prior-edition
 gate), merge `_overrides/*` (Burriac runner/PDF notes), technicality-coverage
 salvage, chunk-3 url-only join (town backfill), the 4 non-joining + exception tail.
