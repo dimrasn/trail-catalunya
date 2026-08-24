@@ -176,3 +176,31 @@ test('matchesProvince: OR across provinces', () => {
   assert.equal(matchesProvince({ province: 'GIRONA' }, ['BARCELONA']), false)
   assert.equal(matchesProvince({ province: 'GIRONA' }, ['BARCELONA', 'GIRONA']), true)
 })
+
+// --- difficulty filter (FdR redesign) ---
+import { DIFFICULTY_VALUES, matchesDifficulty } from './filters.js'
+
+test('difficulty: empty selection matches everything, unrated fails any active selection', () => {
+  assert.equal(matchesDifficulty({}, [], null), true)
+  assert.equal(matchesDifficulty({}, ['easy'], null), false)
+})
+
+test('difficulty: each band matches its slug; vh+ covers Very hard, Extreme, Brutal', () => {
+  assert.equal(matchesDifficulty({}, ['easy'], 'Easy'), true)
+  assert.equal(matchesDifficulty({}, ['moderate'], 'Moderate'), true)
+  assert.equal(matchesDifficulty({}, ['hard'], 'Hard'), true)
+  assert.equal(matchesDifficulty({}, ['vh+'], 'Very hard'), true)
+  assert.equal(matchesDifficulty({}, ['vh+'], 'Extreme'), true)
+  assert.equal(matchesDifficulty({}, ['vh+'], 'Brutal'), true)
+  assert.equal(matchesDifficulty({}, ['easy'], 'Hard'), false)
+  assert.equal(matchesDifficulty({}, ['easy', 'hard'], 'Hard'), true)
+})
+
+test('difficulty: URL round-trip via dif param', () => {
+  const filters = { ...DEFAULT_FILTERS, difficulty: ['hard', 'vh+'] }
+  const qs = filtersToParams(filters)
+  assert.match(qs, /dif=hard%2Cvh%2B|dif=hard,vh\+/)
+  const back = filtersFromParams(new URLSearchParams(qs))
+  assert.deepEqual(back.difficulty, ['hard', 'vh+'])
+  assert.equal(DIFFICULTY_VALUES.length, 4)
+})

@@ -15,11 +15,15 @@ export const ELEVATION_VALUES = ['u200', '200-500', '500-1000', '1000-2000', '20
 // shared URL may carry any month, so validate against all 12.
 export const MONTH_VALUES = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 export const PROVINCE_VALUES = ['BARCELONA', 'GIRONA', 'TARRAGONA', 'LLEIDA']
+// Human difficulty bands (event-max scope, mirroring the MCP): 'vh+' bundles
+// Very hard, Extreme and Brutal — three words, one tail of the catalogue.
+export const DIFFICULTY_VALUES = ['easy', 'moderate', 'hard', 'vh+']
 
 export const DEFAULT_FILTERS = {
   drive: [],
   distance: [],
   elevation: [],
+  difficulty: [],
   month: [],
   province: [],
   showTBD: false,
@@ -50,6 +54,7 @@ export function filtersFromParams(sp) {
     drive: parseMulti(sp.get('drive'), DRIVE_VALUES),
     distance: parseMulti(sp.get('dist'), DISTANCE_VALUES),
     elevation: parseMulti(sp.get('elev'), ELEVATION_VALUES),
+    difficulty: parseMulti(sp.get('dif'), DIFFICULTY_VALUES),
     month: parseMulti(sp.get('month'), MONTH_VALUES),
     province: parseMulti(sp.get('prov'), PROVINCE_VALUES),
     showTBD: sp.get('tbd') === '1',
@@ -63,6 +68,7 @@ export function filtersToParams(filters) {
   if (filters.drive.length) p.set('drive', filters.drive.join(','))
   if (filters.distance.length) p.set('dist', filters.distance.join(','))
   if (filters.elevation.length) p.set('elev', filters.elevation.join(','))
+  if (filters.difficulty?.length) p.set('dif', filters.difficulty.join(','))
   if (filters.month.length) p.set('month', filters.month.join(','))
   if (filters.province.length) p.set('prov', filters.province.join(','))
   if (filters.showTBD) p.set('tbd', '1')
@@ -137,4 +143,15 @@ export function matchesMonth(race, selected) {
 export function matchesProvince(race, selected) {
   if (!selected.length) return true
   return selected.includes(race.province)
+}
+
+// Event-scope difficulty (max km-effort → level word), mirroring the MCP's
+// event_max scope. The caller computes eventLevelWord from format.js so this
+// stays pure. Unrated races match only an empty selection — an unknown never
+// satisfies a positive claim (docs/rules.md honesty rules).
+export function matchesDifficulty(race, selected, eventLevelWord) {
+  if (!selected || selected.length === 0) return true
+  if (eventLevelWord == null) return false
+  const slug = { Easy: 'easy', Moderate: 'moderate', Hard: 'hard' }[eventLevelWord] || 'vh+'
+  return selected.includes(slug)
 }
