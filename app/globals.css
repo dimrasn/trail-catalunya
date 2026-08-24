@@ -7,9 +7,9 @@
 }
 
 html, body {
-  background-color: #0a0a14;
-  color: #ffffff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #F9FAFC; /* --fdr-canvas: tokens load after this file */
+  color: #20252A;            /* --fdr-ink */
+  font-family: var(--font-sans, system-ui, -apple-system, 'Segoe UI', Roboto), sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }

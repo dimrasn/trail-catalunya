@@ -26,9 +26,9 @@ const wrap = {
   lineHeight: 1.6,
 }
 const h1 = { fontSize: '28px', fontWeight: 700, marginBottom: '20px', letterSpacing: '-0.02em' }
-const h2 = { fontSize: '18px', fontWeight: 700, margin: '32px 0 10px', color: '#e6e6ef' }
-const p = { fontSize: '16px', color: '#c9c9d6', marginBottom: '14px' }
-const back = { fontSize: '14px', color: '#8a8aff', textDecoration: 'underline' }
+const h2 = { fontSize: '18px', fontWeight: 700, margin: '32px 0 10px', color: 'var(--fdr-ink)' }
+const p = { fontSize: '16px', color: 'var(--fdr-ink-muted)', marginBottom: '14px' }
+const back = { fontSize: '14px', color: 'var(--fdr-action)', textDecoration: 'underline' }
 
 export default function AboutPage() {
   return (
@@ -76,7 +76,7 @@ export default function AboutPage() {
       <p style={p}>
         So the whole thing is built to be used by an AI, not just read by a person. The race
         database is exposed as a live{' '}
-        <Link href="/for-agents" style={{ ...back, color: '#8a8aff' }}>MCP server</Link> — a
+        <Link href="/for-agents" style={{ ...back, color: 'var(--fdr-action)' }}>MCP server</Link> — a
         connector you can add to your own Claude or ChatGPT. You ask &ldquo;find me a scenic
         20&nbsp;km race under an hour from Barcelona in October,&rdquo; and it queries the live
         data and plans for you. No copy-pasting, no stale screenshots.
@@ -105,7 +105,7 @@ export default function AboutPage() {
         on it.
       </p>
 
-      <p style={{ ...p, marginTop: '32px', color: '#9a9ab0' }}>
+      <p style={{ ...p, marginTop: '32px', color: 'var(--fdr-ink-muted)' }}>
         — Dima
       </p>
     </main>

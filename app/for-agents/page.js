@@ -29,10 +29,10 @@ const wrap = {
   lineHeight: 1.6,
 }
 const h1 = { fontSize: '28px', fontWeight: 700, marginBottom: '8px', letterSpacing: '-0.02em' }
-const lede = { fontSize: '16px', color: '#9a9ab0', marginBottom: '28px' }
-const h2 = { fontSize: '19px', fontWeight: 700, margin: '34px 0 8px', color: '#e6e6ef' }
-const p = { fontSize: '16px', color: '#c9c9d6', marginBottom: '12px' }
-const li = { fontSize: '16px', color: '#c9c9d6', marginBottom: '6px' }
+const lede = { fontSize: '16px', color: 'var(--fdr-ink-muted)', marginBottom: '28px' }
+const h2 = { fontSize: '19px', fontWeight: 700, margin: '34px 0 8px', color: 'var(--fdr-ink)' }
+const p = { fontSize: '16px', color: 'var(--fdr-ink-muted)', marginBottom: '12px' }
+const li = { fontSize: '16px', color: 'var(--fdr-ink-muted)', marginBottom: '6px' }
 const code = {
   fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
   fontSize: '14px',
@@ -53,7 +53,7 @@ const codeBlock = {
   overflowX: 'auto',
   marginBottom: '14px',
 }
-const back = { fontSize: '14px', color: '#8a8aff', textDecoration: 'underline' }
+const back = { fontSize: '14px', color: 'var(--fdr-action)', textDecoration: 'underline' }
 
 // This page is written in an extractable Q&A shape on purpose: it's the most
 // citable surface on the site for AI-search engines and for agents deciding
@@ -101,7 +101,7 @@ export default function ForAgentsPage() {
         </li>
       </ul>
       <p style={p}>
-        The <Link href="/" style={{ ...back, color: '#8a8aff' }}>homepage</Link> also has an
+        The <Link href="/" style={{ ...back, color: 'var(--fdr-action)' }}>homepage</Link> also has an
         &ldquo;Ask AI&rdquo; button with the URL and copy-paste steps, plus a zero-setup path
         that sends the currently filtered races straight into a chat.
       </p>
