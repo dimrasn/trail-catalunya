@@ -93,5 +93,42 @@ Deno.test('distanceMatches: elevation predicate fails a distance with unknown D+
 Deno.test('hasVariantFilter reflects the distance/elevation predicates only', () => {
   assert(hasVariantFilter({ dist_max: 10 }))
   assert(hasVariantFilter({ elev_min: 500 }))
-  assert(!hasVariantFilter({ drive_max: 60, month: 10 }))
+  // A VariantFilter with no distance/elevation predicate → false. (drive_max/
+  // month aren't VariantFilter keys, so they can't be passed here in the first
+  // place — an empty filter is the type-valid way to assert the false path.)
+  assert(!hasVariantFilter({}))
+})
+
+Deno.test('distanceMatches: dist_ranges OR — "short OR ultra" matches both ends, not the middle', () => {
+  const f = { dist_ranges: [{ max: 10 }, { min: 42 }] }
+  assert(distanceMatches({ km: 8, elevationGain: 300 }, f)) // short
+  assert(distanceMatches({ km: 100, elevationGain: 6000 }, f)) // ultra
+  assert(!distanceMatches({ km: 21, elevationGain: 1000 }, f)) // middle → excluded
+})
+
+Deno.test('distanceMatches: elev_ranges OR across disjoint bands', () => {
+  const f = { elev_ranges: [{ max: 200 }, { min: 2000 }] }
+  assert(distanceMatches({ km: 10, elevationGain: 150 }, f))
+  assert(distanceMatches({ km: 10, elevationGain: 2500 }, f))
+  assert(!distanceMatches({ km: 10, elevationGain: 800 }, f))
+})
+
+Deno.test('distanceMatches: ranges keep the same-variant AND-across-dimensions rule', () => {
+  const short = { km: 5, elevationGain: 200 }
+  const long = { km: 45, elevationGain: 3000 }
+  const f = { dist_ranges: [{ max: 10 }, { min: 42 }], elev_ranges: [{ min: 2000 }] }
+  assert(!distanceMatches(short, f)) // short km but only 200 D+
+  assert(distanceMatches(long, f)) // ultra km AND 2000+ D+, one variant
+})
+
+Deno.test('distanceMatches: explicit *_ranges supersede scalar min/max for that dimension', () => {
+  // dist_ranges wins over dist_max: the 100k is kept via the {min:42} band even
+  // though dist_max:10 alone would reject it.
+  assert(distanceMatches({ km: 100, elevationGain: 6000 }, { dist_max: 10, dist_ranges: [{ min: 42 }] }))
+})
+
+Deno.test('hasVariantFilter: true for *_ranges, false when they are empty', () => {
+  assert(hasVariantFilter({ dist_ranges: [{ max: 10 }] }))
+  assert(hasVariantFilter({ elev_ranges: [{ min: 2000 }] }))
+  assert(!hasVariantFilter({ dist_ranges: [], elev_ranges: [] }))
 })

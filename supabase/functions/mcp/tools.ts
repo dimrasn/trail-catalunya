@@ -11,8 +11,9 @@ import { getClient } from './client.ts'
 import { type Distance, groupRowsIntoEvents, type RaceEvent, type RaceRow } from './grouping.ts'
 import { type EnrichedFacts, enrichedFactsForMcp } from './enrichment_view.ts'
 import {
-  difficultyLevel, distanceMatches, dPlusPerKm, eventKmEffort, hasVariantFilter, itraPoints, kmEffort,
+  difficultyLevel, dPlusPerKm, eventKmEffort, itraPoints, kmEffort,
 } from './difficulty.ts'
+import { applyFilters, numList, rangeList, strList } from './filters_core.ts'
 import { type TasteField, type TasteProfile, tasteFlags, tasteForDisplay, tasteSummary } from './taste_view.ts'
 import tasteProfilesRaw from './taste.json' with { type: 'json' }
 import type { ToolDef } from './protocol.ts'
@@ -138,81 +139,8 @@ async function loadEventsAndFreshness(): Promise<{
   return { events, freshness }
 }
 
-interface Filters {
-  drive_max?: number
-  dist_min?: number
-  dist_max?: number
-  elev_min?: number
-  elev_max?: number
-  province?: string
-  month?: number
-  kids_run?: boolean
-  date_from?: string
-  date_to?: string
-}
-
-// Returns { kept, tbdExcluded }. A date/month filter excludes null-date (TBD)
-// races; we count them so the agent knows the window result isn't exhaustive.
-function applyFilters(events: EnrichedEvent[], f: Filters): { kept: EnrichedEvent[]; tbdExcluded: number } {
-  const dateFiltering = f.month != null || f.date_from != null || f.date_to != null
-  const variantFiltering = hasVariantFilter(f)
-  let tbdExcluded = 0
-
-  const kept = events.filter((e) => {
-    if (f.drive_max != null) {
-      if (e.drive_minutes_from_barcelona == null || e.drive_minutes_from_barcelona > f.drive_max) {
-        return false
-      }
-    }
-    if (f.province && e.province.toUpperCase() !== f.province.toUpperCase()) return false
-    if (f.kids_run && !e.kidsRun) return false
-
-    // A distance/elevation filter keeps the event only if at least one distance
-    // satisfies ALL supplied predicates together (same variant, never split
-    // across siblings).
-    if (variantFiltering && !e.distances.some((d) => distanceMatches(d, f))) return false
-
-    if (dateFiltering) {
-      if (!e.date) {
-        // A dateless race whose source-published month matches a month filter
-        // still belongs in the result (site/MCP parity, docs/rules.md R6/R8).
-        // A precise date_from/date_to window can't place it, so it stays
-        // excluded there — and counted, so the agent knows the window isn't
-        // exhaustive.
-        if (f.month != null && f.date_from == null && f.date_to == null &&
-            e.expectedMonth === f.month) {
-          return true
-        }
-        tbdExcluded++
-        return false
-      }
-      // Multi-day races span [date, dateEnd]; match on range overlap so a
-      // Fri–Sun race is found by a Saturday query (and a cross-month race by
-      // either month).
-      const start = e.date
-      const end = e.dateEnd || e.date
-      if (f.month != null) {
-        const sM = parseInt(start.slice(5, 7))
-        const eM = parseInt(end.slice(5, 7))
-        if (f.month < sM || f.month > eM) return false
-      }
-      if (f.date_from && end < f.date_from) return false
-      if (f.date_to && start > f.date_to) return false
-    }
-
-    return true
-  })
-
-  // When the caller filtered by distance/elevation, attach the matching
-  // variant(s) so the agent knows WHICH distance qualified. The event's
-  // difficulty stays the full-event max (scope: event_max) — it never shifts
-  // with the filter.
-  const withMatches = variantFiltering
-    ? kept.map((e) => ({ ...e, matched_distances: e.distances.filter((d) => distanceMatches(d, f)) }))
-    : kept
-
-  return { kept: withMatches, tbdExcluded }
-}
+// Filters, applyFilters (event-level, multi-value OR) and the input normalizers
+// live in ./filters_core.ts (pure, unit-tested — tools.ts imports supabase-js).
 
 // Static personalization pointer — re-surfaces the compose-with-training-data
 // behaviour at call time (the full protocol is in the server `instructions`,
@@ -268,6 +196,9 @@ function str(v: unknown): string | undefined {
   return typeof v === 'string' && v.trim() ? v.trim() : undefined
 }
 
+
+
+
 export const TOOLS: ToolDef[] = [
   {
     name: 'search_races',
@@ -275,6 +206,10 @@ export const TOOLS: ToolDef[] = [
       'Search trail-running races in Catalunya by drive time, distance, elevation, ' +
       'province, month, date window, and whether they have a kids run. Returns matching ' +
       'events with their official url, distances, drive time from Barcelona, and difficulty. ' +
+      'Filters support multiple values (OR): pass province and month as arrays (e.g. ' +
+      'province ["BARCELONA","GIRONA"], month [5,6]); use dist_ranges/elev_ranges for disjoint ' +
+      'bands like "short OR ultra"; and a drive_min/drive_max band for e.g. 1–2h. Different ' +
+      'filters still AND together. ' +
       'difficulty is on ITRA\'s km-effort scale (km_effort = km + D+/100): itra_points 0-6, and a ' +
       'human difficulty_level word (Easy/Moderate/Hard/Very hard/Extreme/Brutal). It is an ' +
       'ENDURANCE-LOAD measure — NOT steepness or technicality; use each distance\'s d_plus_per_km ' +
@@ -298,13 +233,19 @@ export const TOOLS: ToolDef[] = [
       type: 'object',
       properties: {
         query: { type: 'string', description: 'The user\'s free-text intent, for logging (optional).' },
+        drive_min: { type: 'number', description: 'Min drive minutes from Barcelona (Plaça Glòries). Pair with drive_max for a band, e.g. drive_min 60 + drive_max 120 for "1–2h".' },
         drive_max: { type: 'number', description: 'Max drive minutes from Barcelona (Plaça Glòries).' },
-        dist_min: { type: 'number', description: 'Min distance in km (matches any distance of the event).' },
+        dist_min: { type: 'number', description: 'Min distance in km (matches any distance of the event). Use for a single range; for disjoint bands use dist_ranges.' },
         dist_max: { type: 'number', description: 'Max distance in km.' },
-        elev_min: { type: 'number', description: 'Min elevation gain in metres (D+).' },
+        elev_min: { type: 'number', description: 'Min elevation gain in metres (D+). Use for a single range; for disjoint bands use elev_ranges.' },
         elev_max: { type: 'number', description: 'Max elevation gain in metres (D+).' },
-        province: { type: 'string', description: 'BARCELONA, GIRONA, TARRAGONA, or LLEIDA.' },
-        month: { type: 'number', description: 'Month number 1-12. Includes races with a source-published month (expectedMonth) even without an exact date; fully undated (TBD) races are excluded and counted in tbd_excluded_count.' },
+        month: {
+          anyOf: [
+            { type: 'number' },
+            { type: 'array', items: { type: 'number' } },
+          ],
+          description: 'One or more month numbers 1-12 — OR-matched (e.g. [5,6] for May or June). A single number is also accepted. Includes races with a source-published month (expectedMonth) even without an exact date; fully undated (TBD) races are excluded and counted in tbd_excluded_count.',
+        },
         kids_run: { type: 'boolean', description: 'Only races that include a kids run.' },
         date_from: { type: 'string', description: 'Earliest race date, ISO YYYY-MM-DD.' },
         date_to: { type: 'string', description: 'Latest race date, ISO YYYY-MM-DD.' },
@@ -314,13 +255,16 @@ export const TOOLS: ToolDef[] = [
     handler: async (args) => {
       const { events, freshness } = await loadEventsAndFreshness()
       const { kept, tbdExcluded } = applyFilters(events, {
+        drive_min: num(args.drive_min),
         drive_max: num(args.drive_max),
         dist_min: num(args.dist_min),
         dist_max: num(args.dist_max),
         elev_min: num(args.elev_min),
         elev_max: num(args.elev_max),
-        province: str(args.province),
-        month: num(args.month),
+        dist_ranges: rangeList(args.dist_ranges),
+        elev_ranges: rangeList(args.elev_ranges),
+        province: strList(args.province),
+        month: numList(args.month),
         kids_run: args.kids_run === true,
         date_from: str(args.date_from),
         date_to: str(args.date_to),
@@ -370,7 +314,9 @@ export const TOOLS: ToolDef[] = [
     name: 'whats_on',
     description:
       'List races happening in a date or weekend window in Catalunya, optionally filtered ' +
-      'by drive time, distance, elevation, province, or kids run. Returns events with their ' +
+      'by drive time, distance, elevation, province, or kids run. Filters support multiple ' +
+      'values (OR): province accepts an array, dist_ranges/elev_ranges express disjoint bands, ' +
+      'and drive_min/drive_max form a band. Returns events with their ' +
       'url, drive time from Barcelona (measured from Plaça Glòries, NOT the user\'s location), and ' +
       'difficulty on ITRA\'s km-effort scale (km_effort = km + D+/100; itra_points 0-6 + a ' +
       'difficulty_level word Easy…Brutal; an endurance-load measure, NOT steepness — use ' +
@@ -388,12 +334,27 @@ export const TOOLS: ToolDef[] = [
         query: { type: 'string', description: 'The user\'s free-text intent, for logging (optional).' },
         date_from: { type: 'string', description: 'Window start, ISO YYYY-MM-DD.' },
         date_to: { type: 'string', description: 'Window end, ISO YYYY-MM-DD.' },
+        drive_min: { type: 'number', description: 'Min drive minutes from Barcelona. Pair with drive_max for a band.' },
         drive_max: { type: 'number', description: 'Max drive minutes from Barcelona.' },
-        dist_min: { type: 'number', description: 'Min distance in km.' },
+        dist_min: { type: 'number', description: 'Min distance in km. For disjoint bands use dist_ranges.' },
         dist_max: { type: 'number', description: 'Max distance in km.' },
-        elev_min: { type: 'number', description: 'Min elevation gain in metres.' },
+        elev_min: { type: 'number', description: 'Min elevation gain in metres. For disjoint bands use elev_ranges.' },
         elev_max: { type: 'number', description: 'Max elevation gain in metres.' },
-        province: { type: 'string', description: 'BARCELONA, GIRONA, TARRAGONA, or LLEIDA.' },
+        dist_ranges: {
+          type: 'array',
+          items: { type: 'object', properties: { min: { type: 'number' }, max: { type: 'number' } } },
+          description: 'Disjoint distance bands in km, OR-matched — e.g. [{"max":10},{"min":42}]. Supersedes dist_min/dist_max.',
+        },
+        elev_ranges: {
+          type: 'array',
+          items: { type: 'object', properties: { min: { type: 'number' }, max: { type: 'number' } } },
+          description: 'Disjoint elevation-gain bands in metres (D+), OR-matched. Supersedes elev_min/elev_max.',
+        },
+        province: {
+          type: 'array',
+          items: { type: 'string', enum: ['BARCELONA', 'GIRONA', 'TARRAGONA', 'LLEIDA'] },
+          description: 'One or more of BARCELONA, GIRONA, TARRAGONA, LLEIDA — OR-matched. A single string is also accepted.',
+        },
         kids_run: { type: 'boolean', description: 'Only races with a kids run.' },
       },
       required: ['date_from', 'date_to'],
@@ -403,12 +364,15 @@ export const TOOLS: ToolDef[] = [
       const { kept, tbdExcluded } = applyFilters(events, {
         date_from: str(args.date_from),
         date_to: str(args.date_to),
+        drive_min: num(args.drive_min),
         drive_max: num(args.drive_max),
         dist_min: num(args.dist_min),
         dist_max: num(args.dist_max),
         elev_min: num(args.elev_min),
         elev_max: num(args.elev_max),
-        province: str(args.province),
+        dist_ranges: rangeList(args.dist_ranges),
+        elev_ranges: rangeList(args.elev_ranges),
+        province: strList(args.province),
         kids_run: args.kids_run === true,
       })
       return envelope(kept, tbdExcluded, freshness)

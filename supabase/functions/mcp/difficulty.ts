@@ -60,25 +60,60 @@ export function eventKmEffort(distances: Dist[]): number | null {
   return Math.max(...(vals as number[]))
 }
 
+export interface Range {
+  min?: number
+  max?: number
+}
+
 export interface VariantFilter {
   dist_min?: number
   dist_max?: number
   elev_min?: number
   elev_max?: number
+  // Optional disjoint bands, OR-matched within the dimension — lets a caller ask
+  // for "short OR ultra" (e.g. [{max:10},{min:42}]) which a single min/max can't
+  // express. When present, supersede the scalar min/max for that dimension.
+  dist_ranges?: Range[]
+  elev_ranges?: Range[]
 }
 
-// A single distance must satisfy ALL supplied distance + elevation predicates —
-// same-variant matching, so one distance can't satisfy the km bound while a
-// sibling satisfies the D+ bound. An elevation predicate fails a distance with
-// unknown D+.
+// Resolve a dimension to its list of OR-ed ranges: explicit *_ranges win;
+// otherwise a scalar min/max folds into a single range; otherwise no constraint.
+function distRangesOf(f: VariantFilter): Range[] {
+  if (f.dist_ranges?.length) return f.dist_ranges
+  if (f.dist_min != null || f.dist_max != null) return [{ min: f.dist_min, max: f.dist_max }]
+  return []
+}
+function elevRangesOf(f: VariantFilter): Range[] {
+  if (f.elev_ranges?.length) return f.elev_ranges
+  if (f.elev_min != null || f.elev_max != null) return [{ min: f.elev_min, max: f.elev_max }]
+  return []
+}
+function kmInRange(km: number, r: Range): boolean {
+  if (r.min != null && !(km >= r.min)) return false
+  if (r.max != null && !(km <= r.max)) return false
+  return true
+}
+// Unknown D+ fails any elevation predicate (matches the pre-range behaviour).
+function elevInRange(e: number | null | undefined, r: Range): boolean {
+  if (e == null) return false
+  if (r.min != null && !(e >= r.min)) return false
+  if (r.max != null && !(e <= r.max)) return false
+  return true
+}
+
+// A single distance must satisfy the distance dimension AND the elevation
+// dimension — same-variant matching, so one distance can't satisfy the km bound
+// while a sibling satisfies the D+ bound. WITHIN each dimension the supplied
+// ranges are OR-ed (a distance qualifies if it falls in ANY band).
 export function distanceMatches(d: Dist, f: VariantFilter): boolean {
-  if (f.dist_min != null && !(d.km >= f.dist_min)) return false
-  if (f.dist_max != null && !(d.km <= f.dist_max)) return false
-  if (f.elev_min != null && (d.elevationGain == null || d.elevationGain < f.elev_min)) return false
-  if (f.elev_max != null && (d.elevationGain == null || d.elevationGain > f.elev_max)) return false
+  const dr = distRangesOf(f)
+  const er = elevRangesOf(f)
+  if (dr.length && !dr.some((r) => kmInRange(d.km, r))) return false
+  if (er.length && !er.some((r) => elevInRange(d.elevationGain, r))) return false
   return true
 }
 
 export function hasVariantFilter(f: VariantFilter): boolean {
-  return f.dist_min != null || f.dist_max != null || f.elev_min != null || f.elev_max != null
+  return distRangesOf(f).length > 0 || elevRangesOf(f).length > 0
 }

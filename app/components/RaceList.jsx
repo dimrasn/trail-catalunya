@@ -4,6 +4,10 @@ import { useState, useMemo, useEffect, useRef } from 'react'
 import FilterBar from './FilterBar'
 import RaceCard from './RaceCard'
 import AskAI from './AskAI'
+import {
+  DEFAULT_FILTERS, filtersFromParams, filtersToParams,
+  matchesDrive, matchesDistance, matchesElevation, matchesMonth, matchesProvince,
+} from '../lib/filters.js'
 
 const MONTH_NAMES = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -22,27 +26,6 @@ function monthLabel(key) {
   return `${MONTH_NAMES[parseInt(m) - 1]} ${y}`
 }
 
-// --- URL param helpers ---
-
-const DRIVE_VALUES = ['u60', '60-120', '120+']
-const DISTANCE_VALUES = ['u10', '10-15', '15-21', '21-42', '42+']
-const ELEVATION_VALUES = ['u200', '200-500', '500-1000', '1000-2000', '2000+']
-// Accept any calendar month — the visible chips are derived from the data,
-// but a shared URL may carry any month, so validate against all 12.
-const MONTH_VALUES = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
-const PROVINCE_VALUES = ['BARCELONA', 'GIRONA', 'TARRAGONA', 'LLEIDA']
-
-const DEFAULT_FILTERS = {
-  drive: 'any',
-  distance: 'any',
-  elevation: 'any',
-  month: 'all',
-  province: 'all',
-  showTBD: false,
-  showPast: false,
-  kidsRun: false,
-}
-
 // Local calendar date (YYYY-MM-DD). Client uses the visitor's clock; the SSR
 // prerender uses build time, corrected on hydration (data revalidates daily).
 function todayISO() {
@@ -50,100 +33,8 @@ function todayISO() {
   return `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`
 }
 
-function filtersFromParams(sp) {
-  const raw = {
-    drive: sp.get('drive'),
-    distance: sp.get('dist'),
-    elevation: sp.get('elev'),
-    month: sp.get('month'),
-    province: sp.get('prov'),
-    showTBD: sp.get('tbd') === '1',
-    showPast: sp.get('past') === '1',
-    kidsRun: sp.get('kids') === '1',
-  }
-  return {
-    drive: DRIVE_VALUES.includes(raw.drive) ? raw.drive : 'any',
-    distance: DISTANCE_VALUES.includes(raw.distance) ? raw.distance : 'any',
-    elevation: ELEVATION_VALUES.includes(raw.elevation) ? raw.elevation : 'any',
-    month: MONTH_VALUES.includes(raw.month) ? raw.month : 'all',
-    province: PROVINCE_VALUES.includes(raw.province) ? raw.province : 'all',
-    showTBD: raw.showTBD,
-    showPast: raw.showPast,
-    kidsRun: raw.kidsRun,
-  }
-}
-
-function filtersToParams(filters) {
-  const p = new URLSearchParams()
-  if (filters.drive !== 'any') p.set('drive', filters.drive)
-  if (filters.distance !== 'any') p.set('dist', filters.distance)
-  if (filters.elevation !== 'any') p.set('elev', filters.elevation)
-  if (filters.month !== 'all') p.set('month', filters.month)
-  if (filters.province !== 'all') p.set('prov', filters.province)
-  if (filters.showTBD) p.set('tbd', '1')
-  if (filters.showPast) p.set('past', '1')
-  if (filters.kidsRun) p.set('kids', '1')
-  return p.toString()
-}
-
-// --- Filter logic ---
-
-function matchesDrive(race, filter) {
-  if (filter === 'any') return true
-  if (race.driveMinutes == null) return true
-  const m = race.driveMinutes
-  if (filter === 'u60') return m < 60
-  if (filter === '60-120') return m >= 60 && m <= 120
-  if (filter === '120+') return m > 120
-  return true
-}
-
-function matchesDistance(race, filter) {
-  if (filter === 'any') return true
-  if (!race.distances.length) return true
-  return race.distances.some(d => {
-    const km = d.km
-    if (filter === 'u10') return km < 10
-    if (filter === '10-15') return km >= 10 && km <= 15
-    if (filter === '15-21') return km > 15 && km <= 21
-    if (filter === '21-42') return km > 21 && km <= 42
-    if (filter === '42+') return km > 42
-    return true
-  })
-}
-
-function matchesElevation(race, filter) {
-  if (filter === 'any') return true
-  if (!race.distances.length) return true
-  const hasAnyElev = race.distances.some(d => d.elevationGain != null)
-  if (!hasAnyElev) return true
-  return race.distances.some(d => {
-    const e = d.elevationGain
-    if (e == null) return false
-    if (filter === 'u200') return e < 200
-    if (filter === '200-500') return e >= 200 && e < 500
-    if (filter === '500-1000') return e >= 500 && e < 1000
-    if (filter === '1000-2000') return e >= 1000 && e < 2000
-    if (filter === '2000+') return e >= 2000
-    return true
-  })
-}
-
-function matchesMonth(race, filter) {
-  if (filter === 'all') return true
-  // A race whose month is known but whose day is not still belongs in that
-  // month's results — otherwise 91 events are invisible to every month search.
-  // The card labels it "(expected)"; this only decides membership.
-  if (!race.date) {
-    return race.expectedMonth != null && String(race.expectedMonth).padStart(2, '0') === filter
-  }
-  return race.date.slice(5, 7) === filter
-}
-
-function matchesProvince(race, filter) {
-  if (filter === 'all') return true
-  return race.province === filter
-}
+// URL <-> filter round-trip and the OR-within-row matchers live in
+// ../lib/filters.js (pure, unit-tested).
 
 // --- Components ---
 
