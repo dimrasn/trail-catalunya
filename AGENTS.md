@@ -86,11 +86,18 @@ supersede the design-system readme where they differ. Pre-merge gates: external
 design review + Codex integrity review (all 8 findings fixed:
 `outputs/2026-08-25_codex-review-findings_fdr_v1.md`). This merge also lands
 `feat/card-quality-tier0` (expected-month site display) — that branch is CLOSED.
-Suites at merge: node 83 · deno 143 · build 238 pages. NOTE: the MCP was NOT
-deployed by this merge — `main` carries undeployed MCP changes (expected-month
-parity, honest tbd count, restored search_races schema + `tools_schema_test.ts`);
-next MCP deploy via `scripts/deploy-mcp.sh` ships them. Known follow-up: MCP has
-no `difficulty` filter yet (site does) — agent-parity gap, queued for v-next.
+Suites at merge: node 83 · deno 143 · build 238 pages.
+
+**MCP redeployed 2026-08-25 (origin/main `ce161b5`, build-SHA verified via
+`scripts/deploy-mcp.sh`).** This shipped the previously-undeployed changes
+(expected-month parity, honest tbd count, restored search_races schema +
+`tools_schema_test.ts`) AND closed the agent-parity gap: **`search_races` +
+`whats_on` now accept a `difficulty` filter** (`easy|moderate|hard|vh+`,
+OR-matched, event-max scope), mirroring the site's `matchesDifficulty` via a
+shared `eventMatchesDifficulty` in `filters_core.ts` (an unrated event never
+matches). Verified live: `difficulty:"vh+"` → 9 races (Very hard/Extreme/Brutal),
+`difficulty:"easy"` → only Easy. Deno suite 147. So the agent-native filter set
+now matches the site — ready for the Step-4 dogfood.
 
 **External-review P1 fixes — DEPLOYED & VERIFIED LIVE (2026-08-25, origin/main
 `a640eb4`).** A Codex review of the delivery/taste/U4 work found 11 issues; the
