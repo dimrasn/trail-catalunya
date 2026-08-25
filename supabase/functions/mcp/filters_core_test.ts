@@ -23,7 +23,10 @@ const EVENTS = [
   ev({ id: 'lle-ultra', province: 'LLEIDA', drive_minutes_from_barcelona: 200, date: '2026-06-20', distances: [{ km: 100, elevationGain: 6000 }] }),
 ]
 
-const ids = (r: { kept: Array<{ id: string }> }) => r.kept.map((e) => e.id).sort()
+// kept is unknown[] because FilterableEvent (applyFilters' constraint) carries
+// no id — test events add one, so the helper casts per element instead of
+// demanding a property the type can't promise.
+const ids = (r: { kept: unknown[] }) => r.kept.map((e) => (e as { id?: string }).id).sort()
 
 Deno.test('province[]: OR across provinces', () => {
   assertEquals(ids(applyFilters(EVENTS, { province: ['BARCELONA', 'GIRONA'] })), ['bcn-near', 'gir-mid'])
