@@ -85,6 +85,9 @@ test('tasteFlags: blended organizer value does NOT manufacture a technicality fl
   assert.deepEqual(tasteFlags(vilaverd), { technicality: 'high' })
   // An organizer_fact with NO evidence quote yields no flag (conservative).
   assert.equal(tasteFlags({ attributes: { technicality: { value: 'rocky and hard', claim_strength: 'organizer_fact', evidence: null } }, editorial: {} }), null)
+  // "baixada" (a DESCENT) must not read as "baixa" (low) — real Falset evidence → moderate, not low.
+  const falset = { attributes: { technicality: { value: 'genuinely technical descents', claim_strength: 'organizer_fact', evidence: 'força tècnica; intensa baixada força tècnica; rampes 24–25%' } }, editorial: {} }
+  assert.deepEqual(tasteFlags(falset), { technicality: 'moderate' })
 })
 
 test('inference stays inference, not upgraded to fact', () => {

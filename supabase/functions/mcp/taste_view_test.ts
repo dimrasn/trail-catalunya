@@ -65,6 +65,8 @@ Deno.test('tasteFlags: blended organizer value does NOT manufacture a technicali
   assertEquals(tasteFlags({ attributes: { technicality: { value: '"accessible" despite distance — treat with caution given 3470 m D+ on rocky Montsant conglomerate.', claim_strength: 'organizer_fact', evidence: 'accessible' } }, editorial: {} }), null)
   assertEquals(tasteFlags({ attributes: { technicality: { value: 'HIGH — organizer states it', claim_strength: 'organizer_fact', evidence: 'very technical… for runners accustomed to mountain' } }, editorial: {} }), { technicality: 'high' })
   assertEquals(tasteFlags({ attributes: { technicality: { value: 'rocky and hard', claim_strength: 'organizer_fact', evidence: null } }, editorial: {} }), null)
+  // "baixada" (a DESCENT) must not read as "baixa" (low) — real Falset evidence → moderate.
+  assertEquals(tasteFlags({ attributes: { technicality: { value: 'genuinely technical descents', claim_strength: 'organizer_fact', evidence: 'força tècnica; intensa baixada força tècnica; rampes 24–25%' } }, editorial: {} }), { technicality: 'moderate' })
 })
 
 Deno.test('tasteFlags: negation never sets night; non-organizer provenance is ineligible (audit #6)', () => {
