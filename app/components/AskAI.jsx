@@ -1,26 +1,46 @@
 'use client'
 
 import { useState } from 'react'
-import { buildPrompt, chatgptUrl, claudeUrl } from './askPrompt'
+import { buildPrompt, buildBestNextRacePrompt, chatgptUrl, claudeUrl } from './askPrompt'
 
 const MCP_URL = 'https://qaebfhbdfjvzhmvcjroz.supabase.co/functions/v1/mcp'
+
+// One-tap intent chips — the cheap way to tell the AI what "best" means before
+// (or instead of) typing. Kept short; the free-text box carries the rest.
+const INTENT_CHIPS = ['fun trail', 'somewhere new', 'chase a PB', 'kid-friendly']
 
 export default function AskAI({ filteredRaces, filters }) {
   const [copied, setCopied] = useState(false)
   const [urlCopied, setUrlCopied] = useState(false)
   const [showHelp, setShowHelp] = useState(false)
+  const [goal, setGoal] = useState('')
+  const [chips, setChips] = useState([])
   const disabled = !filteredRaces || filteredRaces.length === 0
+
+  const intent = { goal, chips }
+  const hasIntent = goal.trim().length > 0 || chips.length > 0
+
+  function toggleChip(c) {
+    setChips(prev => prev.includes(c) ? prev.filter(x => x !== c) : [...prev, c])
+  }
+
+  // Goal-first handoff when the user has said what they want; else the plain
+  // filter-based prompt.
+  function promptText() {
+    return hasIntent
+      ? buildBestNextRacePrompt(filteredRaces, filters, intent)
+      : buildPrompt(filteredRaces, filters)
+  }
 
   function open(urlFn) {
     if (disabled) return
-    const prompt = buildPrompt(filteredRaces, filters)
-    window.open(urlFn(prompt), '_blank', 'noopener,noreferrer')
+    window.open(urlFn(promptText()), '_blank', 'noopener,noreferrer')
   }
 
   async function copy() {
     if (disabled) return
     try {
-      await navigator.clipboard.writeText(buildPrompt(filteredRaces, filters))
+      await navigator.clipboard.writeText(promptText())
       setCopied(true)
       setTimeout(() => setCopied(false), 1800)
     } catch {
@@ -47,43 +67,78 @@ export default function AskAI({ filteredRaces, filters }) {
 
   return (
     <div style={{
-      display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap',
-      padding: '10px 16px', borderBottom: '1px solid var(--fdr-border)', backgroundColor: 'var(--fdr-canvas)',
+      display: 'flex', flexDirection: 'column', gap: '10px',
+      padding: '12px 16px', borderBottom: '1px solid var(--fdr-border)', backgroundColor: 'var(--fdr-canvas)',
     }}>
-      <span className="fdr-label" style={{ marginRight: '2px' }} title='e.g. "a hard race under 1h away I can train toward"'>
-        Or just say it
-      </span>
+      {/* Goal-first capture: say what you're after in your words. Whatever you
+          type (plus the chips and any filters set) rides into the AI prompt. */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <span className="fdr-label" style={{ whiteSpace: 'nowrap' }}>Or just say it</span>
+        <input
+          type="text"
+          value={goal}
+          onChange={(e) => setGoal(e.target.value)}
+          onKeyDown={(e) => { if (e.key === 'Enter' && !disabled) open(claudeUrl) }}
+          placeholder="a hard race under 1h away I can train toward"
+          aria-label="Describe the race you're after"
+          style={{
+            flex: 1, minWidth: 0, padding: '8px 13px', fontSize: '13px',
+            borderRadius: '999px', border: '1px solid var(--fdr-border)',
+            background: 'var(--fdr-surface)', color: 'var(--fdr-ink)',
+          }}
+        />
+      </div>
 
-      {/* Provider buttons in palette shades (Dima's ruling 2026-08-24):
-          Claude wears the ramp's orange tint, ChatGPT the green — palette
-          colours, not raw brand hex. */}
-      <button onClick={() => open(claudeUrl)} disabled={disabled}
-        style={{ ...btn, backgroundColor: '#F9CAA2', color: '#593215', fontWeight: 700 }}
-        title="Open these races in Claude">
-        Ask Claude
-      </button>
-      <button onClick={() => open(chatgptUrl)} disabled={disabled}
-        style={{ ...btn, backgroundColor: '#ADE3BF', color: '#103C28', fontWeight: 700 }}
-        title="Open these races in ChatGPT">
-        Ask ChatGPT
-      </button>
-      <button onClick={copy} disabled={disabled}
-        style={{ ...btn, backgroundColor: 'var(--fdr-sunk)', border: '1px solid var(--fdr-border)', color: 'var(--fdr-ink-muted)' }}
-        title="Copy the prompt to paste into any AI">
-        {copied ? '✓ Copied' : 'Copy prompt'}
-      </button>
+      {/* One-tap intent chips — pick what "best" means without typing. */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '7px', flexWrap: 'wrap' }}>
+        {INTENT_CHIPS.map((c) => {
+          const on = chips.includes(c)
+          return (
+            <button key={c} type="button" onClick={() => toggleChip(c)} aria-pressed={on}
+              style={{
+                padding: '5px 11px', borderRadius: '999px', fontSize: '12.5px', cursor: 'pointer',
+                border: `1px solid ${on ? 'var(--fdr-action)' : 'var(--fdr-border)'}`,
+                background: on ? 'var(--fdr-action)' : 'var(--fdr-surface)',
+                color: on ? '#fff' : 'var(--fdr-ink-muted)', fontWeight: on ? 700 : 500,
+              }}>
+              {c}
+            </button>
+          )
+        })}
+      </div>
 
-      <span style={{ flex: 1 }} />
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+        {/* Provider buttons in palette shades (Dima's ruling 2026-08-24):
+            Claude wears the ramp's orange tint, ChatGPT the green — palette
+            colours, not raw brand hex. */}
+        <button onClick={() => open(claudeUrl)} disabled={disabled}
+          style={{ ...btn, backgroundColor: '#F9CAA2', color: '#593215', fontWeight: 700 }}
+          title={hasIntent ? 'Open your goal + these races in Claude' : 'Open these races in Claude'}>
+          Ask Claude
+        </button>
+        <button onClick={() => open(chatgptUrl)} disabled={disabled}
+          style={{ ...btn, backgroundColor: '#ADE3BF', color: '#103C28', fontWeight: 700 }}
+          title={hasIntent ? 'Open your goal + these races in ChatGPT' : 'Open these races in ChatGPT'}>
+          Ask ChatGPT
+        </button>
+        <button onClick={copy} disabled={disabled}
+          style={{ ...btn, backgroundColor: 'var(--fdr-sunk)', border: '1px solid var(--fdr-border)', color: 'var(--fdr-ink-muted)' }}
+          title="Copy the prompt to paste into any AI">
+          {copied ? '✓ Copied' : 'Copy prompt'}
+        </button>
 
-      <button onClick={() => setShowHelp(true)}
-        style={{
-          ...btn, opacity: 1, cursor: 'pointer', backgroundColor: 'transparent', border: 'none',
-          color: 'var(--fdr-action)', fontWeight: '400', fontSize: '12px', padding: '6px 4px',
-          textDecoration: 'underline', textUnderlineOffset: '2px',
-        }}
-        title="Connect this race data to your own Claude or ChatGPT (Claude any plan; ChatGPT paid plans)">
-        Connect your own AI
-      </button>
+        <span style={{ flex: 1 }} />
+
+        <button onClick={() => setShowHelp(true)}
+          style={{
+            ...btn, opacity: 1, cursor: 'pointer', backgroundColor: 'transparent', border: 'none',
+            color: 'var(--fdr-action)', fontWeight: '400', fontSize: '12px', padding: '6px 4px',
+            textDecoration: 'underline', textUnderlineOffset: '2px',
+          }}
+          title="Connect this race data to your own Claude or ChatGPT (Claude any plan; ChatGPT paid plans)">
+          Connect your own AI
+        </button>
+      </div>
 
       {showHelp && (
         <McpHelp

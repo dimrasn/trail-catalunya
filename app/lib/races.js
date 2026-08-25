@@ -14,7 +14,7 @@ import driveTimes from '@/data/towns-drive-times.json'
 import townsGeocoded from '@/data/towns-geocoded.json'
 import { enrichmentForDisplay } from './enrichment.js'
 import { expectedMonthFromRows } from './format.js'
-import { tasteForDisplay } from './taste.js'
+import { tasteForDisplay, tasteSummary, tasteFlags } from './taste.js'
 // Canonical taste artifact (plan v3, KTD1 — committed JSON bundled into the site
 // build; the MCP bundles the same file). Keyed by race_url::town.
 import tasteProfiles from '../../docs/enrichment/2026-batch/parsed/taste.json'
@@ -273,8 +273,16 @@ export async function getRaces() {
   // profile is non-fatal — the page renders fine without it (degrade-to-today).
   let tasteJoins = 0
   for (const ev of events) {
-    const t = tasteForDisplay(tasteByEvent.get(`${(ev.url || '').trim()}::${(ev.town || '').trim()}`))
+    const profile = tasteByEvent.get(`${(ev.url || '').trim()}::${(ev.town || '').trim()}`)
+    const t = tasteForDisplay(profile)
     if (t) { ev.taste = t; tasteJoins++ }
+    // Compact, claim-tagged projection for the AI handoff (Step 3 / review #6) —
+    // the SITE mirror of the MCP list projection. Computed from the raw profile
+    // here so the raw taste (and its evidence) never ships to the client.
+    const summary = tasteSummary(profile)
+    if (summary) ev.tasteSummary = summary
+    const flags = tasteFlags(profile)
+    if (flags) ev.tasteFlags = flags
   }
   if (process.env.NODE_ENV !== 'production' || process.env.TASTE_JOIN_LOG) {
     console.log(`[taste] ${tasteJoins} of ${events.length} events joined a taste profile (${tasteByEvent.size} profiles available)`)

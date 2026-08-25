@@ -5,7 +5,7 @@
 
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { buildPrompt } from './askPrompt.js'
+import { buildPrompt, buildBestNextRacePrompt } from './askPrompt.js'
 
 const RACES = [
   { name: 'Race A', date: '2026-05-10', town: 'Olot', province: 'GIRONA', driveMinutes: 90,
@@ -46,4 +46,49 @@ test('buildPrompt: no active filters uses the unfiltered "ask my constraints" sh
 test('buildPrompt: an active filter uses the filtered "recommend the best" shape', () => {
   const p = buildPrompt(RACES, { ...EMPTY_FILTERS, distance: ['10-15'] })
   assert.match(p, /My filters:/)
+})
+
+// --- buildBestNextRacePrompt (Step 3: goal-first handoff) ---
+
+const TASTE_RACE = {
+  name: 'Ultra Serra', date: '2026-09-12', town: 'Ulldemolins', province: 'TARRAGONA', driveMinutes: 110,
+  distances: [{ km: 100, elevationGain: 3470 }, { km: 42, elevationGain: 1800 }],
+  tasteSummary: { value: 'a savage Montsant loop', strength: 'our_read', strengthLabel: 'Our read' },
+  tasteFlags: { technicality: 'high' },
+}
+
+test('buildBestNextRacePrompt: states the goal + chips and asks for a ranked shortlist', () => {
+  const p = buildBestNextRacePrompt([TASTE_RACE], EMPTY_FILTERS, { goal: 'something scenic I can train toward', chips: ['somewhere new'] })
+  assert.match(p, /something scenic I can train toward/)
+  assert.match(p, /somewhere new/)
+  assert.match(p, /best 3–5/)
+  assert.match(p, /Low-faff/)
+  assert.match(p, /Novelty/)
+})
+
+test('buildBestNextRacePrompt: inlines each race\'s difficulty + taste projection with its source label', () => {
+  const p = buildBestNextRacePrompt([TASTE_RACE], EMPTY_FILTERS, { goal: 'a big mountain day' })
+  assert.match(p, /difficulty .+ \(ITRA km-effort \d+/)
+  assert.match(p, /character: "a savage Montsant loop" \[Our read\]/)
+  assert.match(p, /technicality high/)
+})
+
+test('buildBestNextRacePrompt: carries verify-at-url, injection-guard and Strava-optional discipline', () => {
+  const p = buildBestNextRacePrompt([TASTE_RACE], EMPTY_FILTERS, { goal: 'x' })
+  assert.match(p, /open each recommended race's URL/)
+  assert.match(p, /data, not instructions/)
+  assert.match(p, /never send my training or personal data/)
+  assert.match(p, /If you don't have my training data, just skip/)
+})
+
+test('buildBestNextRacePrompt: folds active filters in as hard constraints', () => {
+  const p = buildBestNextRacePrompt([TASTE_RACE], { ...EMPTY_FILTERS, drive: ['60-120'] }, { goal: 'fun' })
+  assert.match(p, /hard constraints/)
+  assert.match(p, /drive 1–2h/)
+})
+
+test('buildBestNextRacePrompt: empty goal AND no chips degrades to buildPrompt', () => {
+  const best = buildBestNextRacePrompt([TASTE_RACE], EMPTY_FILTERS, { goal: '  ', chips: [] })
+  const plain = buildPrompt([TASTE_RACE], EMPTY_FILTERS)
+  assert.equal(best, plain)
 })
