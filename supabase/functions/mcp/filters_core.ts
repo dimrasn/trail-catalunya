@@ -5,7 +5,10 @@
 // difficulty.ts), and drive_min/drive_max form a band. Different filters AND
 // together. Run: deno test --allow-read --no-check supabase/functions/mcp/tools_filter_test.ts
 
-import { type Dist, distanceMatches, hasVariantFilter, type Range } from './difficulty.ts'
+import {
+  type Dist, distanceMatches, hasVariantFilter, type Range,
+  difficultyLevel, eventKmEffort,
+} from './difficulty.ts'
 
 export interface Filters {
   drive_min?: number
@@ -19,9 +22,22 @@ export interface Filters {
   // province and month are OR-matched lists (a single value is a 1-element list).
   province?: string[]
   month?: number[]
+  // Event-max difficulty bands, OR-matched: easy | moderate | hard | vh+.
+  difficulty?: string[]
   kids_run?: boolean
   date_from?: string
   date_to?: string
+}
+
+// Event-scope difficulty match (max km-effort → level word), mirroring the site's
+// matchesDifficulty in app/lib/filters.js: 'vh+' bundles Very hard/Extreme/Brutal,
+// and an UNRATED event never satisfies a positive claim (docs/rules.md honesty).
+const DIFFICULTY_SLUG: Record<string, string> = { Easy: 'easy', Moderate: 'moderate', Hard: 'hard' }
+export function eventMatchesDifficulty(distances: Dist[], selected?: string[]): boolean {
+  if (!selected || selected.length === 0) return true
+  const word = difficultyLevel(eventKmEffort(distances))
+  if (word == null) return false
+  return selected.includes(DIFFICULTY_SLUG[word] || 'vh+')
 }
 
 // The minimal event shape the filter reads — applyFilters stays decoupled from
@@ -61,6 +77,7 @@ export function applyFilters<T extends FilterableEvent>(
     }
     if (provinceSet && !provinceSet.has(e.province.toUpperCase())) return false
     if (f.kids_run && !e.kidsRun) return false
+    if (f.difficulty?.length && !eventMatchesDifficulty(e.distances, f.difficulty)) return false
 
     // A distance/elevation filter keeps the event only if at least one distance
     // satisfies ALL supplied predicates together (same variant, never split

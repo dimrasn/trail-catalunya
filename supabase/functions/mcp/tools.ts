@@ -261,6 +261,13 @@ export const TOOLS: ToolDef[] = [
           ],
           description: 'One or more month numbers 1-12 — OR-matched (e.g. [5,6] for May or June). A single number is also accepted. Includes races with a source-published month (expectedMonth) even without an exact date; fully undated (TBD) races are excluded and counted in tbd_excluded_count.',
         },
+        difficulty: {
+          anyOf: [
+            { type: 'string' },
+            { type: 'array', items: { type: 'string' } },
+          ],
+          description: 'Event-max difficulty band(s), OR-matched: "easy" | "moderate" | "hard" | "vh+" (vh+ bundles Very hard/Extreme/Brutal). Uses the ITRA km-effort scale. An UNRATED race (no D+ on every distance, so no event-max) never matches a difficulty filter.',
+        },
         kids_run: { type: 'boolean', description: 'Only races that include a kids run.' },
         date_from: { type: 'string', description: 'Earliest race date, ISO YYYY-MM-DD.' },
         date_to: { type: 'string', description: 'Latest race date, ISO YYYY-MM-DD.' },
@@ -280,6 +287,7 @@ export const TOOLS: ToolDef[] = [
         elev_ranges: rangeList(args.elev_ranges),
         province: strList(args.province),
         month: numList(args.month),
+        difficulty: strList(args.difficulty),
         kids_run: args.kids_run === true,
         date_from: str(args.date_from),
         date_to: str(args.date_to),
@@ -370,6 +378,13 @@ export const TOOLS: ToolDef[] = [
           items: { type: 'string', enum: ['BARCELONA', 'GIRONA', 'TARRAGONA', 'LLEIDA'] },
           description: 'One or more of BARCELONA, GIRONA, TARRAGONA, LLEIDA — OR-matched. A single string is also accepted.',
         },
+        difficulty: {
+          anyOf: [
+            { type: 'string' },
+            { type: 'array', items: { type: 'string' } },
+          ],
+          description: 'Event-max difficulty band(s), OR-matched: "easy" | "moderate" | "hard" | "vh+". An UNRATED race never matches.',
+        },
         kids_run: { type: 'boolean', description: 'Only races with a kids run.' },
       },
       required: ['date_from', 'date_to'],
@@ -388,6 +403,7 @@ export const TOOLS: ToolDef[] = [
         dist_ranges: rangeList(args.dist_ranges),
         elev_ranges: rangeList(args.elev_ranges),
         province: strList(args.province),
+        difficulty: strList(args.difficulty),
         kids_run: args.kids_run === true,
       })
       return envelope(kept, tbdExcluded, freshness)

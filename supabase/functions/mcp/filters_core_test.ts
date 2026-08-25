@@ -108,3 +108,33 @@ Deno.test('rangeList: keeps numeric {min,max}, drops empties and junk', () => {
   assertEquals(rangeList([{}, { min: 'x' }]), undefined)
   assertEquals(rangeList('nope'), undefined)
 })
+
+// --- difficulty filter (event-max, mirrors app/lib/filters.js matchesDifficulty) ---
+// EVENTS km-effort: bcn-near 12+6=18 Easy · gir-mid 22+14=36 Moderate ·
+// tar-far 8+1.5≈9 Easy · lle-ultra 100+60=160 Extreme → vh+.
+import { eventMatchesDifficulty } from './filters_core.ts'
+
+Deno.test('difficulty[]: each band matches its event-max word; vh+ covers Extreme', () => {
+  assertEquals(ids(applyFilters(EVENTS, { difficulty: ['easy'] })), ['bcn-near', 'tar-far'])
+  assertEquals(ids(applyFilters(EVENTS, { difficulty: ['moderate'] })), ['gir-mid'])
+  assertEquals(ids(applyFilters(EVENTS, { difficulty: ['vh+'] })), ['lle-ultra'])
+})
+
+Deno.test('difficulty[]: OR across bands', () => {
+  assertEquals(ids(applyFilters(EVENTS, { difficulty: ['easy', 'vh+'] })), ['bcn-near', 'lle-ultra', 'tar-far'])
+})
+
+Deno.test('difficulty[]: empty selection matches all; an UNRATED event never matches a positive selection', () => {
+  assertEquals(ids(applyFilters(EVENTS, { difficulty: [] })).length, EVENTS.length)
+  // no D+ on the distance → no event-max → unrated
+  const unrated = [{ id: 'no-dplus', province: 'BARCELONA', kidsRun: false, distances: [{ km: 20 }], date: '2026-05-01', drive_minutes_from_barcelona: 30 }] as unknown as Parameters<typeof applyFilters>[0]
+  assertEquals(ids(applyFilters(unrated, { difficulty: ['easy'] })).length, 0)
+  assertEquals(eventMatchesDifficulty([{ km: 20 }], ['easy']), false)
+  assertEquals(eventMatchesDifficulty([{ km: 20 }], []), true) // empty selection = match
+})
+
+Deno.test('difficulty: strList normalizes scalar/CSV/array (parity with the tool input)', () => {
+  assertEquals(strList('easy'), ['easy'])
+  assertEquals(strList('easy,vh+'), ['easy', 'vh+'])
+  assertEquals(strList(['moderate']), ['moderate'])
+})
