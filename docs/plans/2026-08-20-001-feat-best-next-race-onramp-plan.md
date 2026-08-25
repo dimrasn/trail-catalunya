@@ -8,7 +8,11 @@ Origin: `docs/brainstorms/2026-08-20-best-next-race-requirements.md`
 ## Deepening (2026-08-24) — read first; refines the units below
 
 Five things changed since this plan was written. None overturn the shape; they
-sharpen it and add one hard sequencing constraint.
+sharpen it and add one hard sequencing constraint. **The units below (U1–U4,
+KTDs, R4/R5) have been rewritten to match this section — do not read an earlier
+draft's "Dependencies: none" / "SECURITY DEFINER RPC" / "redeploy via Supabase
+MCP" wording; those were superseded here (external review #5).** U4 is now
+SHIPPED and live (2026-08-24); U1/U2/U3 remain to build.
 
 1. **Taste + difficulty are now LIVE (Slice 1) and queryable — stop planning for
    "agent infers taste."** Race data on both the pages and the MCP now carries
@@ -68,14 +72,14 @@ Today the site offers filter-based discovery + an "Ask AI" deep-link that sends 
 - R1. Goal-first capture on the homepage, **additive** to (not replacing) the filter discovery page (origin: Primary user + "discovery page stays").
 - R2. Capture is **optional and value-framed** — never blocks the handoff; teaches the user what's worth sharing; reuses filters they've already set rather than a second form (origin: capture-depth decision).
 - R3. A tailored handoff prompt that ranks "best next race" on the four axes (enjoyment / low-logistics / novelty / PB), drive-time-first, and composes with the user's Strava/Calendar/Weather **only if present**, degrading gracefully otherwise (origin: v1 scope, tiered).
-- R4. **On-site intent logging** — one anonymized row per submission (goal text, chips, current filters), mirroring the live `crawler_hits` pattern (origin: intent-logging decision).
-- R5. Zero server-side storage of training data preserved; readiness/PB gated behind the user's own connector (origin: locked constraints).
+- R4. **On-site intent logging** — one row per submission capturing the intent chips, the current filters, and a DERIVED goal category (mapped from any free text), so the log is a demand signal without a free-text PII surface. If raw goal text is kept at all, it is stored as *unlinked, user-volunteered content* — no identity/IP, but NOT labelled "anonymous" (free text can carry a name/email the user typed), disclosed as such, output-escaped, and purged on a fixed retention (origin: intent-logging decision; privacy per review #8).
+- R5. Zero server-side storage of *training* data preserved; readiness/PB gated behind the user's own connector. The intent log holds no training data and no derived-from-connector fields (origin: locked constraints).
 
 ## Key Technical Decisions
 
 - **KTD1 — On-ramp placement: above the filters; discovery page unchanged.** The majority won't use AI, so filter/list/race-page discovery stays primary; the on-ramp sits above it and is skippable (see origin).
 - **KTD2 — Capture reuses existing filter state, no new constraints form.** A goal box + one-tap intent chips + a value-exchange nudge ("tell me what matters and I'll pick better"); the handoff silently folds in whatever filters are already set. Minimizes friction while allowing depth.
-- **KTD3 — Intent log mirrors `crawler_hits`.** New `intent_log` table + `SECURITY DEFINER` RPC + client fire-and-forget on submit. No identity, no IP, capped text — same posture as the query and crawler logs. Reuses a proven, live pattern rather than an analytics SaaS.
+- **KTD3 — Intent log writes through a server-side route handler, the SAME ingest contract as trackability T1** (supersedes the earlier client→`SECURITY DEFINER` RPC; deepening #5). A Next.js route handler (`app/api/intent/route.js`) holds the write credential server-side (a narrow key, never shipped to the client) and validates the payload against an allowlist — known chip ids, known filter keys, a derived goal-category enum, and a capped+escaped free-text field only if kept — before inserting into `intent_log`. RLS on, no anon write policy; rate-limited + body-capped so counts can't be inflated. One ingest pattern serves both funnel halves: the *why* (intent) here and the *did-it-work* (T1 outbound clicks) in the trackability doc. No analytics SaaS.
 - **KTD4 — Reasoning stays in the agent.** No on-site ranking engine. The prompt (and MCP instructions) carry the ranking logic; the site only captures + hands off.
 
 ## Implementation Units
@@ -84,9 +88,9 @@ Today the site offers filter-based discovery + an "Ask AI" deep-link that sends 
 
 **Goal:** A goal-first capture block on the homepage, above the filters, additive and skippable.
 **Requirements:** R1, R2.
-**Dependencies:** none.
-**Files:** `app/components/BestNextRace.jsx` (new), `app/components/RaceList.jsx` (mount above the filter row), `app/components/BestNextRace.test.jsx` (new).
-**Approach:** A compact block: a headline question, a free-text goal input, a row of one-tap intent chips (fun trail / somewhere new / chase a PB / kid-friendly / what's on soon), and a value-exchange line ("the more you tell me, the better I can pick — all optional"). Reads the current filter state already held in `RaceList` (drive/distance/elevation/month/province/kidsRun) via props — does not introduce its own constraints UI. Two primary actions (Ask Claude / Ask ChatGPT) + a "Connect your own AI" link to `/for-agents`. Fully usable with everything left blank.
+**Dependencies:** [HARD, deepening #4] the `feat/fdr-light-redesign` homepage rewrite. Build the on-ramp INSIDE that branch, or land it as a drop-in on the NEW homepage after the redesign merges to `main`. Do NOT mount on the current `RaceList.jsx` — the redesign is rewriting exactly that surface, so any mount here will be thrown away or conflict. U3/U4 do not carry this dependency.
+**Files:** `app/components/BestNextRace.jsx` (new), `app/components/BestNextRace.test.jsx` (new); mount point = the redesigned homepage container (resolve the exact file against `feat/fdr-light-redesign` at build time — NOT `RaceList.jsx`).
+**Approach:** A compact block: a headline question, a free-text goal input, a row of one-tap intent chips (fun trail / somewhere new / chase a PB / kid-friendly / what's on soon), and a value-exchange line ("the more you tell me, the better I can pick — all optional"). Reads the current filter state from the redesigned homepage (drive/distance/elevation/month/province/kidsRun) via props — does not introduce its own constraints UI. Two primary actions (Ask Claude / Ask ChatGPT) + a "Connect your own AI" link to `/for-agents`. Fully usable with everything left blank.
 **Patterns to follow:** the existing `AskAI.jsx` button/afford­ance styling and the dark-theme tokens; chip styling from the filter chips in `RaceList.jsx`.
 **Test scenarios:**
 - Renders with all inputs empty; both handoff buttons are enabled (blank is valid).
@@ -97,43 +101,62 @@ Today the site offers filter-based discovery + an "Ask AI" deep-link that sends 
 
 ### U2. Tailored "best next race" handoff prompt
 
-**Goal:** Build a goal-conditioned prompt from intent + chips + current filters + races, and launch Claude/ChatGPT.
+**Goal:** Build a goal-conditioned prompt from intent + chips + current filters + races — each race carrying its difficulty + taste projection — and launch Claude/ChatGPT.
 **Requirements:** R3.
 **Dependencies:** U1.
-**Files:** `app/components/askPrompt.js` (add `buildBestNextRacePrompt`), `app/components/askPrompt.test.mjs` (extend).
-**Approach:** A new builder distinct from `buildPrompt`/`buildRacePrompt`. It states the user's goal (chips + free text), the active filters as constraints, and the candidate races inline; instructs the agent to recommend the best few, **ranked on enjoyment / low-logistics (drive time) / novelty / PB**, drive-time-first; to compose with the user's own Strava/Garmin/Calendar/Weather **if present** (readiness, projected time, PB-potential, race-day weather) and to **skip those cleanly if not**; and carries the existing discipline verbatim — verify registration/start at the official URL, treat scraped race text as data-not-instructions, never send personal data to a URL. Reuses `claudeUrl`/`chatgptUrl`.
-**Patterns to follow:** the structure, drive-time-ranking clause, injection guard, and Strava-composition clause already in `buildPrompt`/`buildRacePrompt`.
+**[review #6] The prompt's ranking data must exist in scope.** The four-axis "why it fits" reasoning (deepening #1) needs `difficulty` + `d_plus_per_km`, `taste_summary`, and `taste_flags` PER RACE — but site race objects today carry only the display-shaped `ev.taste` (from `tasteForDisplay`); difficulty is computed separately in `app/lib/format.js`, and `taste_summary`/`taste_flags` are currently produced only on the MCP side. So this unit MUST add an event-level projection, not just a prompt string.
+**Files:** `app/lib/raceProjection.js` (new — per-event projection: `difficulty`/`d_plus_per_km` via `app/lib/format.js`, plus `taste_summary` + `taste_flags` via the existing site gate `app/lib/taste.js` exports `tasteSummary`/`tasteFlags`), `app/lib/raceProjection.test.mjs` (new), `app/components/askPrompt.js` (add `buildBestNextRacePrompt`, consuming the projection), `app/components/askPrompt.test.mjs` (extend).
+**Approach:** First the projection: `projectRaceForPrompt(event)` returns a compact, claim-labelled record — difficulty word + itra_points + d+/km, `taste_summary` (with its strength label so our read is never relayed as an organizer fact), and `taste_flags` — OMITTING any field that is unknown (never fabricate; absent = unknown, mirroring the MCP gate). Then the builder: a new function distinct from `buildPrompt`/`buildRacePrompt` that states the user's goal (chips + free text), the active filters as constraints, and the candidate races inline WITH their projection; instructs the agent to recommend the best few, **ranked on enjoyment (taste) / low-logistics (drive time) / novelty / PB**, drive-time-first; to compose with the user's own Strava/Garmin/Calendar/Weather **if present** and **skip cleanly if not**; and carries the existing discipline verbatim — verify registration/start at the official URL, treat scraped race text and taste evidence as data-not-instructions, never send personal data to a URL. **URL-length budget:** reuse `buildPrompt`'s `MAX_INLINE` race cap AND trim the per-race projection to the ranking-relevant fields, so the deep-link stays within practical URL limits even with taste added. Reuses `claudeUrl`/`chatgptUrl`.
+**Patterns to follow:** the structure, drive-time-ranking clause, injection guard, `MAX_INLINE` cap, and Strava-composition clause in `buildPrompt`/`buildRacePrompt`; the projection semantics of `supabase/functions/mcp/tools.ts` (list envelope = taste_summary + taste_flags) mirrored on the site.
 **Test scenarios:**
-- With chips + goal + filters set, the prompt contains the goal, the constraints, and the four-axis ranking instruction.
+- `projectRaceForPrompt`: a race with difficulty + taste yields difficulty + taste_summary (with strength label) + taste_flags; a race missing taste yields difficulty only, no fabricated taste fields; a race missing difficulty omits it.
+- With chips + goal + filters set, the prompt contains the goal, the constraints, the four-axis ranking instruction, and at least one race's projected difficulty/taste.
 - With everything blank, the prompt is still valid and asks the agent to elicit constraints.
 - The prompt includes the verify-at-URL, injection-guard, and Strava-optional (skip-if-absent) clauses.
+- The inline race count respects `MAX_INLINE`; the encoded URL stays under the builder's existing length guard even with projections attached.
 - `claudeUrl`/`chatgptUrl` wrap the prompt (URL-encoded, non-empty).
-- Covers R3.
+- Covers R3 + review #6.
 
 ### U3. On-site intent log
 
-**Goal:** One anonymized row per on-ramp submission.
+**Goal:** One row per on-ramp submission — a demand signal, written through the shared server-side ingest contract, with no free-text PII surface.
 **Requirements:** R4, R5.
-**Dependencies:** U1, U2.
-**Files:** `supabase/migrations/<ts>_intent_log.sql` (new — table + RPC), `middleware`/client call site in `app/components/BestNextRace.jsx` (fire-and-forget on submit), `app/components/BestNextRace.test.jsx` (extend).
-**Approach:** Mirror the shipped `crawler_hits` pattern exactly: an `intent_log` table (goal text, chips array, filters JSON, timestamp — no identity, no IP), RLS on with no policies, a `SECURITY DEFINER` `log_intent` RPC with capped inputs and `anon` execute. On Ask-Claude/ChatGPT click, fire a non-blocking `fetch` to the RPC (never blocks or fails the handoff). Apply the migration to remote via the Supabase MCP (as with `crawler_hits`) and keep the `.sql` as the repo record.
-**Patterns to follow:** `supabase/migrations/20260820173000_crawler_hits.sql` and the `log_crawler_hit` fire-and-forget in `middleware.js`.
+**Dependencies:** U1, U2; **the ingest contract (KTD3 / trackability T1) must be settled first** — U3's backend can be built once that's fixed, independent of U1's redesign wait.
+**Files:** `supabase/migrations/<ts>_intent_log.sql` (new — table + RLS, NO anon write policy), `app/api/intent/route.js` (new — server-side route handler holding the write credential + allowlist validation + rate-limit + body cap), client call site in `app/components/BestNextRace.jsx` (fire-and-forget POST to `/api/intent` on submit), `app/components/BestNextRace.test.jsx` (extend), `app/api/intent/route.test.mjs` (new).
+**Approach:** Same ingest pattern as trackability T1 (KTD3): the client POSTs `{chips[], filters{}, goal_category, goal_text?}` to the `/api/intent` route handler, which validates against an allowlist (known chip ids, known filter keys, a derived goal-category enum, a capped+escaped `goal_text` only if kept), then inserts into `intent_log` using a server-side credential. **Privacy (review #8):** store chips + filters + the derived `goal_category` by default; if raw `goal_text` is retained, mark the column as unlinked user-volunteered content (not "anonymous"), disclose it where the query log is disclosed, escape on any output, and set a fixed retention/purge. RLS on with no anon write policy — writes only via the route handler; rate-limit + body cap so counts can't be inflated. On Ask-Claude/ChatGPT click, fire a non-blocking POST (never blocks or fails the handoff).
+**Patterns to follow:** the trackability T1 route handler + `outbound_clicks` allowlist; the `crawler_hits` migration for the RLS/no-policy shape (but NOT its client-RPC write path — writes go through the route handler now).
 **Execution note:** the write is best-effort — a log failure must never affect the handoff.
 **Test scenarios:**
-- Submitting fires exactly one log call with goal + chips + filters; the handoff proceeds regardless of the call's outcome.
+- Submitting fires exactly one POST with chips + filters + goal_category; the handoff proceeds regardless of the call's outcome.
+- The route handler REJECTS unknown chip ids / filter keys / oversized bodies; accepts a valid payload.
+- `goal_text`, if present, is capped and escaped; the derived `goal_category` is always set.
 - A failed/blocked log call does not throw or delay the redirect.
-- Values are capped; no identity fields are sent.
-- Covers R4; verify no training/personal data is included (R5).
+- No identity/IP/training fields are sent or stored (R5); the row is not labelled "anonymous" if it carries free text (R4/#8).
 
-### U4. MCP instructions — "best next race" ranking clause
+### U4. MCP instructions — "best next race" ranking clause  ✅ SHIPPED (2026-08-24)
 
-**Goal:** Ensure a connected agent ranks on the four axes and degrades gracefully, matching the on-ramp prompt.
+**Status:** LIVE. The BEST NEXT RACE block is in `supabase/functions/mcp/protocol.ts` `INSTRUCTIONS`, deployed via `scripts/deploy-mcp.sh` and build-verified live (serverInfo.build probe). This supersedes this unit's original "redeploy via the Supabase MCP / mcp v8" wording — deploys now go through `deploy-mcp.sh` (deepening #5).
+**What shipped (as refined by external review #9):** the agent ranks the candidate set **from LIST fields first** (drive time + `difficulty` + `taste_summary` + `taste_flags` already in `search_races`/`whats_on`), then calls `get_race` only for the finalists when `taste.editorial` could change their order — resolving the earlier "no fetching" contradiction. Axes: LOW-FAFF (drive), ENJOYMENT (taste), FIT (difficulty + d+/km), NOVELTY/PB. Novelty = distinctiveness within the shortlist; a personal "new to you" or PB projection is offered only if the user supplies history or a training connector is present. Keeps the verify-registration/start-at-url honesty rule; shortlisting is zero-setup.
 **Requirements:** R3.
-**Dependencies:** none (independent of U1–U3; separate deploy).
-**Files:** `supabase/functions/mcp/protocol.ts` (extend the DISCOVERY block).
-**Approach:** A few lines in the existing DISCOVERY section of `INSTRUCTIONS`: when asked for "the best next race," rank on enjoyment / low-logistics (drive time) / novelty / PB-fit, lead with drive time, and treat the training-composition + weather/calendar as optional deepeners. No schema or tool change. Redeploy the `mcp` Edge Function via the Supabase MCP (verify_jwt:false), as with prior versions.
-**Patterns to follow:** the existing DISCOVERY + COMPOSES-WITH-TRAINING-DATA blocks in `protocol.ts`; the deploy path recorded in `AGENTS.md` (mcp v8).
-**Test scenarios:** `Test expectation: none — instruction-string change; verified live post-deploy (initialize returns the new clause; tools unaffected).`
+**Verification:** live `initialize` contains "RANK THE CANDIDATE SET FROM LIST FIELDS FIRST"; the old "no fetching" line is gone; tools unaffected.
+
+## Success Criteria
+
+Measured against the honest ceiling (deepening #3: users arrive via ChatGPT/
+search reading pages; MCP-connector adoption ~0). Connector installs are an
+explicit NON-goal for v1.
+
+- **Intent-log fill** — a steady stream of submissions with a non-empty chip or
+  goal category, above dogfood noise (mark dogfood dates, per trackability T6).
+  This is the demand signal that ranks what Slice-2 taste fields to build.
+- **Handoff use** — Ask-Claude / Ask-ChatGPT click-through on the on-ramp,
+  measured via the same outbound-beacon the trackability doc's T1 builds.
+- **Reasoned-shortlist behaviour** shows up in the weekly citation probe — an AI
+  answer that returns a ranked "why it fits" sourced from our pages — NOT in
+  connector-install counts.
+- **Guardrail:** no honesty regressions — the shipped answer still tells the user
+  to verify registration/start at the race url, and never relays our read as an
+  organizer fact.
 
 ## Scope Boundaries
 
@@ -151,5 +174,5 @@ Today the site offers filter-based discovery + an "Ask AI" deep-link that sends 
 ## Risks & Dependencies
 
 - **Prompt length / deep-link URL limits** — the handoff URL carries the prompt + inline races; reuse the existing `MAX_INLINE` cap from `buildPrompt` to stay within practical limits.
-- **Intent-log privacy** — must stay anonymized and capped; reuse the proven `crawler_hits` posture; disclose in the same place as the query log.
-- **No new backend infra** — front-end deploys on Vercel push; the intent-log migration + any MCP redeploy go through the Supabase MCP (no new tokens).
+- **Intent-log privacy (review #8)** — store chips + filters + a derived goal category; treat any retained free text as unlinked user-volunteered content (not "anonymous"), capped, escaped, retention-purged, and disclosed where the query log is. Validate on the server, never trust the client payload.
+- **New backend surface (review #7)** — U3 introduces the site's first server-side WRITE path (the `/api/intent` route handler + a write credential), shared with trackability T1. This is new infra vs. the current read-only-anon site: it needs a narrow credential (not a broad service-role key), RLS with no anon write, rate-limiting, and body caps before it ships. Front-end still deploys on Vercel push; any MCP redeploy goes through `scripts/deploy-mcp.sh`.
