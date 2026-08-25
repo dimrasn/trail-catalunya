@@ -1,8 +1,22 @@
 # Handoff — review the intent-logging plan (Step 3, U3)
 
-**For:** an external reviewing agent (e.g. Codex), a second lens after an internal
-compound-engineering doc-review already ran. **Read-only:** review the plan and
-report; do NOT implement, migrate, deploy, or edit code.
+**For:** an external reviewing agent (e.g. Codex). **Read-only:** review the plan
+and report; do NOT implement, migrate, deploy, or edit code.
+
+> **Revision note (2026-08-25, round 2).** A first Codex pass returned "not
+> build-ready" with 6 P1 corrections; all are folded in, plus Dima's two
+> decisions: **credential-free** (the `anon` RPC is the trust boundary and does
+> full semantic validation + an atomic write-volume ceiling; data classified
+> directional-not-decision-grade) and **90-day** text retention. Specifically now
+> addressed: RPC validates *meaning* not just size (canonical chip ids, filter
+> rebuild from domains, provider enum, server-derived `has_intent`); a DB circuit
+> breaker bounds volume; privacy reclassified as "unlinked structured event data"
+> with an **inline** notice by the input + admin-only reads; supersession of parent
+> R4/KTD3 enumerated (and pointered in the parent); "one best-effort attempt, may
+> undercount" replaces "exactly one row"; chip **ids** to logging / **labels** to
+> the prompt; idempotent+indexed purge; JSON+Origin route checks; tightened
+> tripwire. Review whether these actually close the round-1 findings and whether
+> the directional-signal trade is sound.
 
 **Plan under review:** `docs/plans/2026-08-25-001-feat-intent-logging-plan.md`
 (on `main`). It supersedes the U3 section of the parent on-ramp plan
