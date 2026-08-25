@@ -88,6 +88,16 @@ design review + Codex integrity review (all 8 findings fixed:
 `feat/card-quality-tier0` (expected-month site display) — that branch is CLOSED.
 Suites at merge: node 83 · deno 143 · build 238 pages.
 
+**MCP redeployed 2026-08-25 (origin/main `5a72739`) — on-ramp fixes + honesty patch.**
+Dogfood round 2 (mine + an independent Codex pass): `search_races` now **excludes past
+races by default** (`include_past:true` to opt in); a real **`night`** filter on
+search_races/whats_on; **`limit` is honored** (was ignored). Honesty: the INSTRUCTIONS +
+untrusted-notice now forbid relaying start/cutoff/price/sold-out taken from taste prose as
+current (verify at url) — the deeper "strip operational facts from taste DATA" is backlogged.
+Opening-move guidance added (read training data first; never force abstract self-categorising;
+give concrete pickable options with an out). Backlog + Codex diff:
+`docs/dogfood/2026-08-25-mcp-dogfood-gaps.md`. Deno 149. Prior MCP note (ce161b5) below.
+
 **MCP redeployed 2026-08-25 (origin/main `ce161b5`, build-SHA verified via
 `scripts/deploy-mcp.sh`).** This shipped the previously-undeployed changes
 (expected-month parity, honest tbd count, restored search_races schema +

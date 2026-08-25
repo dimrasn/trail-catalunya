@@ -79,3 +79,41 @@ tells the agent to verify at the url — that honesty posture worked well.
    technicality filter)** — all parity/bug fixes, deploy via `deploy-mcp.sh`.
 2. Then **Slice 2** (G6) — the demand-validated enrichment.
 3. G5 (geocode + dedup) rides along opportunistically.
+
+---
+
+## Round 2 — Codex independent pass + what shipped (2026-08-25, MCP `5a72739`)
+
+Codex ran an unbiased cold dogfood (handoff:
+`outputs/2026-08-25_codex-dogfood-handoff_v1.md`) and found 3 things this pass
+missed + re-ranked. Integrated.
+
+**Shipped this round (deployed + verified live):**
+- **G1 past races** — `search_races` now excludes past by default (`include_past:true`
+  to opt in). Verified: default earliest = next upcoming; 0 past.
+- **G3 night** — real `night` filter on `search_races`/`whats_on`. Verified: 4 real
+  night races.
+- **Codex #3 `limit`** — was ignored (`limit:1`→50); now honored (capped at 50).
+- **Codex #1 honesty (instruction-level patch)** — taste prose can incidentally carry
+  a start time / cutoff / price / "sold out"; the INSTRUCTIONS + untrusted-notice now
+  forbid relaying any of those as current (verify at url). *The deeper fix — stripping
+  operational facts from the taste DATA — is backlogged (Slice-2 regeneration).*
+- **Opening-move (Dima's session)** — read training data FIRST when present and shape
+  picks to it; never make the user self-categorise into abstract buckets; if no data,
+  give concrete pickable races + an open "or tell me". In MCP INSTRUCTIONS + on-ramp prompt.
+
+**Corrected from round 1:** G2 (kids_run) is NOT a simple "dead filter" — there are
+0 kids-NAMED races in the DB, but Codex showed kids races DO exist as organizer_facts
+in the taste layer (CabróRun "Mini CabróRun", Moontrail "Ironkids"). So the real fix is
+to backfill `kidsRun` from taste organizer_facts (below), not a filter bug.
+
+**Backlog, in Codex's combined priority order:**
+1. Strip operational facts (start/cutoff/price/sold-out) from the taste DATA, or move them
+   to a freshness/edition-tracked envelope (the proper fix behind the instruction patch).
+2. Backfill `kidsRun` from taste `kids_race` organizer_facts + a cross-layer consistency check.
+3. Data quality: dedup "Moon Trail" / "Moontrail Llavaneres" (same URL/date), fix Llavaneres
+   province (GIRONA → Barcelona/Maresme), backfill the ~4 null drive times (geocode).
+4. Ordering/pagination beyond the 50-cap (now that past + limit are fixed).
+5. Slice-2: expand taste + D+ coverage (the biggest lever — ~58% no taste, ~24% no difficulty).
+6. Later: variant-scoped difficulty (Hard event-max can return Moderate matched variants —
+   transparent via matched_distances, so parked).
