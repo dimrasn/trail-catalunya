@@ -138,3 +138,26 @@ Deno.test('difficulty: strList normalizes scalar/CSV/array (parity with the tool
   assertEquals(strList('easy,vh+'), ['easy', 'vh+'])
   assertEquals(strList(['moderate']), ['moderate'])
 })
+
+// --- night filter + past floor (external dogfood fixes) ---
+Deno.test('night filter: keeps only events with taste_flags.night', () => {
+  const evs = [
+    { id: 'day', province: 'BARCELONA', kidsRun: false, distances: [{ km: 10 }], date: '2026-09-01', drive_minutes_from_barcelona: 30, taste_flags: null },
+    { id: 'night', province: 'BARCELONA', kidsRun: false, distances: [{ km: 10 }], date: '2026-09-02', drive_minutes_from_barcelona: 30, taste_flags: { night: true } },
+  ] as unknown as Parameters<typeof applyFilters>[0]
+  assertEquals(ids(applyFilters(evs, { night: true })), ['night'])
+  assertEquals(ids(applyFilters(evs, {})).length, 2) // no night filter → both
+})
+
+Deno.test('not_before: dated past races excluded; undated/expected kept', () => {
+  const evs = [
+    { id: 'past', province: 'BARCELONA', kidsRun: false, distances: [{ km: 10 }], date: '2026-05-10', drive_minutes_from_barcelona: 30 },
+    { id: 'future', province: 'BARCELONA', kidsRun: false, distances: [{ km: 10 }], date: '2026-09-01', drive_minutes_from_barcelona: 30 },
+    { id: 'multiday-ending-future', province: 'BARCELONA', kidsRun: false, distances: [{ km: 10 }], date: '2026-06-28', dateEnd: '2026-07-05', drive_minutes_from_barcelona: 30 },
+    { id: 'expected-only', province: 'BARCELONA', kidsRun: false, distances: [{ km: 10 }], date: null, expectedMonth: 10, drive_minutes_from_barcelona: 30 },
+  ] as unknown as Parameters<typeof applyFilters>[0]
+  // floor at 2026-07-01: 'past' out; 'future' in; multi-day ending 07-05 stays; expected-only stays
+  assertEquals(ids(applyFilters(evs, { not_before: '2026-07-01' })), ['expected-only', 'future', 'multiday-ending-future'])
+  // no floor → all
+  assertEquals(ids(applyFilters(evs, {})).length, 4)
+})

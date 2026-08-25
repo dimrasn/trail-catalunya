@@ -25,6 +25,13 @@ export interface Filters {
   // Event-max difficulty bands, OR-matched: easy | moderate | hard | vh+.
   difficulty?: string[]
   kids_run?: boolean
+  // Only night races (organizer-affirmed taste_flags.night).
+  night?: boolean
+  // Exclude dated races that finished before this ISO date (YYYY-MM-DD). The
+  // search_races handler sets it to today by default so past races don't leak
+  // (mirrors the site's hide-past); undated/expected-month races are never
+  // excluded by it. Unset = include past.
+  not_before?: string
   date_from?: string
   date_to?: string
 }
@@ -50,6 +57,7 @@ export interface FilterableEvent {
   date: string | null
   dateEnd?: string | null
   expectedMonth?: number
+  taste_flags?: { night?: boolean; technicality?: string } | null
 }
 
 // Returns { kept, tbdExcluded }. A date/month filter excludes null-date (TBD)
@@ -77,7 +85,11 @@ export function applyFilters<T extends FilterableEvent>(
     }
     if (provinceSet && !provinceSet.has(e.province.toUpperCase())) return false
     if (f.kids_run && !e.kidsRun) return false
+    if (f.night && !e.taste_flags?.night) return false
     if (f.difficulty?.length && !eventMatchesDifficulty(e.distances, f.difficulty)) return false
+    // Past floor: drop dated races that already finished (dateEnd covers multi-day).
+    // Undated / expected-month races are kept (they're forward-looking).
+    if (f.not_before && e.date && (e.dateEnd || e.date) < f.not_before) return false
 
     // A distance/elevation filter keeps the event only if at least one distance
     // satisfies ALL supplied predicates together (same variant, never split

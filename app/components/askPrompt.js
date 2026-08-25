@@ -194,6 +194,8 @@ export function buildBestNextRacePrompt(filteredRaces, filters, intent = {}) {
 Candidate races (drive times are from Plaça Glòries, Barcelona — not your location). Each may carry a difficulty (ITRA km-effort scale) and a one-line character note; the [label] on a character note is its source — "[Organizer]" is the organizer's own words, "[Our read]"/"[Our guess]" is this site's judgement, so don't relay our judgement as fact:
 ${lines}${truncationNote}
 
+Before you rank: if you can see my Strava/Garmin training data in this chat, read it FIRST and infer what I actually do (typical distance, climbing, pace, what I gravitate to) and let that shape your picks — don't ask me to choose an abstract bucket my own data already answers. If you can't see my training and my goal above is thin, don't box me into a fixed menu — either ask me one quick question, or just give me 4–5 concrete races to pick from across clear buckets (short & fun · iconic · a pro-level challenge · nearest to Barcelona), and always leave an open "…or tell me what you're after".
+
 Recommend the best 3–5 for what I asked, each with a one-line "why it fits". Rank on four axes:
 - Low-faff: drive time from Barcelona — the axis I care about most; lead with it and don't put a farther race above a nearer one unless it's clearly a better fit or I've said distance is fine.
 - Enjoyment / character: match the character notes and flags to what I asked for.
