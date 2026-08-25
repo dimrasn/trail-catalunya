@@ -41,6 +41,33 @@ all differ from your training data. Read the relevant guide in
 
 ## Deployment state (last verified 2026-08-22)
 
+**External-review P1 fixes — DEPLOYED & VERIFIED LIVE (2026-08-25, origin/main
+`a640eb4`).** A Codex review of the delivery/taste/U4 work found 11 issues; the
+live/delivery ones are fixed and verified on the MCP:
+- **Honest technicality flag (#1).** `taste_flags.technicality` now bands from the
+  organizer EVIDENCE quote, not our blended `value` prose — UTSM's organizer said
+  "accessible"; the words "rocky Montsant" were our caution and had manufactured a
+  false organizer `high` flag. A follow-up added word-boundaries (Catalan
+  "baixada"=descent must not read as "baixa"=low). Live: UTSM `taste_flags:null`,
+  Falset `moderate`, Vilaverd `high`; full-corpus sweep = 10 flags, all
+  organizer-grounded. `app/lib/taste.js` ↔ `taste_view.ts`, +regressions.
+- **U4 no-fetch fix (#9).** BEST NEXT RACE now ranks from LIST fields first and
+  fetches `get_race` only for finalists; novelty = shortlist distinctiveness
+  unless the user supplies history. Live in `protocol.ts` INSTRUCTIONS.
+- **Deploy hardening (#2/#3/#4)** in `scripts/deploy-mcp.sh`: fail-closed test
+  gate (deno absent ⇒ refuse, or `--skip-tests` to attest); a build-SHA marker in
+  `serverInfo.build` (`build_info.ts`) that the probe polls for the EXACT shipped
+  SHA (proves the new artifact is live, not a stale edge response); a serialize
+  lock + pre-deploy `origin/main` re-check. **Deno IS available at
+  `~/.local/bin/deno`** — the full gate runs for an agent; Dima's login shell has
+  no deno on PATH (that's why the earlier "command not found"). The build-marker
+  probe replaced the old generic `"instructions"` grep.
+- Plan/doc findings (#5–#8, #10, #11) propagated into the Step-3 plan + the
+  trackability doc (PREP only, unbuilt). Deferred generator nits (Slice-2): the
+  `none.`-style punctuation-normalized unknown sentinel isn't caught by
+  `isUnknownValue`; the UTSM technicality `value` still blends organizer+our-read
+  under one `organizer_fact` label (display only — the machine flag is fixed).
+
 **Multi-select site filters + multi-value MCP filters — DEPLOYED & VERIFIED
 (2026-08-23).** The site supports OR within each Distance/Drive/Elevation/Month/
 Province row and AND across rows, with backward-compatible single-value URLs.

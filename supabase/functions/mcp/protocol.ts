@@ -3,11 +3,16 @@
 // SSE, no session id. Protocol version pinned to 2025-03-26 with graceful
 // negotiation. ~enough to satisfy Claude / ChatGPT remote MCP clients.
 
+import { BUILD_SHA } from './build_info.ts'
+
 export const PROTOCOL_VERSION = '2025-03-26'
 
 export const SERVER_INFO = {
   name: 'trail-catalunya',
   version: '0.1.0',
+  // Deploy marker: the exact origin/main SHA this artifact was built from, so a
+  // deploy can prove the NEW code is live (see build_info.ts / deploy-mcp.sh).
+  build: BUILD_SHA,
   // R17: anonymous-logging disclosure, surfaced where clients show server info.
   description:
     'Trail running races in Catalunya. Read-only. Queries are logged ' +
@@ -52,6 +57,27 @@ export const INSTRUCTIONS = [
   'get_race for one named race. Lead every answer with drive time + date + distance/D+, then',
   'registration status. Rank a nearer race above a farther one unless the user said distance is',
   'fine or the farther race is clearly a better fit.',
+  '',
+  'BEST NEXT RACE (the on-ramp job). When the user asks for "the best next race / a cool race to',
+  'do / something good coming up" — not a raw filter — return a RANKED FEW with a one-line "why it',
+  'fits", not a dump. RANK THE CANDIDATE SET FROM LIST FIELDS FIRST: search_races/whats_on already',
+  'return drive time, date, distance/D+, difficulty and (per race) taste_summary + taste_flags — no',
+  'fetch needed to shortlist. THEN call get_race ONLY for the final few, and only when its fuller',
+  'taste.editorial could change their order. Rank on four axes:',
+  '  • LOW-FAFF: drive_minutes_from_barcelona — lead with it; nearer wins ties.',
+  '  • ENJOYMENT / CHARACTER: taste_summary + taste_flags (night, technicality) from the list to',
+  '    shortlist; taste.editorial (get_race) only to break ties among the finalists. Match the',
+  '    user\'s stated vibe (scenic, runnable, night, family). Filter taste_flags PERMISSIVELY',
+  '    (absent = unknown, not "no").',
+  '  • FIT: difficulty (ITRA km-effort word + itra_points) and d_plus_per_km for how mountainous —',
+  '    match to the distance/climb the user wants.',
+  '  • NOVELTY / PB: prefer a race DISTINCT from the rest of the shortlist (different terrain,',
+  '    format or region). Only call it new-to-the-user, or offer a PB/projected finish, if the user',
+  '    supplied their history or a training connector is present (readiness + a rough projected',
+  '    finish per the COMPOSES-WITH-TRAINING-DATA rules below) — never imply personal novelty from',
+  '    this data alone.',
+  'Shortlisting is ZERO-SETUP — never require a connector. Always keep the honesty rule: registration',
+  'status + start time are not in this data — tell the user to verify at the url.',
   '',
   'MULTI-VALUE FILTERS (OR within a filter, AND across filters). search_races/whats_on accept',
   'several values per filter in ONE call — pass province and month as arrays (e.g. province',

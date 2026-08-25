@@ -83,9 +83,13 @@ export function tasteForDisplay(profile?: TasteProfile | null): { editorial: Tas
 function bandTechnicality(v?: string): string | undefined {
   const s = (v || '').toLowerCase()
   if (!s) return undefined
-  if (/molt t[eè]cnic|very technical|highly technical|rocky|scrambl|exposed|chain|rope|extrem|steep technical/.test(s)) return 'high'
-  if (/baixa|low tech|runnable|non-?technical|smooth|gentle|rolling|poc t[eè]cnic/.test(s)) return 'low'
-  if (/mitja|medium|moderate|some technical|partly technical|mixed|t[eè]cnic/.test(s)) return 'moderate'
+  // Word-boundaried: short tokens must not match inside larger words — e.g.
+  // Catalan "baixada" (a DESCENT) must not read as "baixa" (low), and "Europe"
+  // must not read as "rope". This matters now that we band from the organizer's
+  // evidence quote, which is dense with such words (review #1 follow-up).
+  if (/molt t[eè]cnic|very technical|highly technical|\brocky\b|scrambl|\bexposed\b|\bchain|\brope|\bextrem|steep technical/.test(s)) return 'high'
+  if (/\bbaixa\b|low tech|\brunnable\b|non-?technical|\bsmooth\b|\bgentle\b|\brolling\b|poc t[eè]cnic/.test(s)) return 'low'
+  if (/\bmitja\b|\bmedium\b|\bmoderate\b|some technical|partly technical|\bmixed\b|t[eè]cnic/.test(s)) return 'moderate'
   return undefined
 }
 // A flag is a queryable near-fact, so it may only come from an ORGANIZER-stated
@@ -105,7 +109,17 @@ export function tasteFlags(profile?: TasteProfile | null): { night?: boolean; te
   }
   const tc = at.technicality
   if (tc && FLAG_ELIGIBLE.has(tc.claim_strength)) {
-    const band = bandTechnicality(tc.value)
+    // Band from the ORGANIZER'S OWN WORDS (the evidence quote), never our `value`
+    // prose. An organizer_fact `value` routinely blends the organizer quote with
+    // our editorial caution — e.g. `"accessible" ... treat with caution given
+    // 3470 m D+ on rocky Montsant conglomerate` (evidence: "accessible"). Banding
+    // the whole string turned our word "rocky" into a false organizer `high` flag
+    // (external review #1). Evidence carries only the organizer's phrasing, so a
+    // "high" flag now means the organizer said something high-technical, not us.
+    // (night stays on `value` above: its affirmations ARE the organizer's own
+    // phrasing there, guarded by the negation check, and often lack an evidence
+    // quote — moving it here would drop true night races like "YES — nocturna".)
+    const band = bandTechnicality(tc.evidence ?? undefined)
     if (band) flags.technicality = band
   }
   return Object.keys(flags).length ? flags : null
