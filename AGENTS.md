@@ -39,7 +39,28 @@ all differ from your training data. Read the relevant guide in
    drive time is null until the "New town" runbook (README) is run. The
    site→towns migration is deliberately deferred (enrichment plan, Scope Boundaries).
 
-## Deployment state (last verified 2026-08-22)
+## Deployment state (last verified 2026-08-25)
+
+**Full de Ruta LIGHT REDESIGN — merged to `main` 2026-08-25 (site auto-deploys
+via Vercel).** The dark skin is RETIRED. Both product pages rebuilt in the light
+"Full de Ruta" system: race page on the tier ladder (status ribbon → verdict +
+difficulty scale → gate strip → act zone → ladder/table → taste), homepage with
+promise header, difficulty filter row (`dif` URL param, event-max scope, raw D+
+demoted behind MORE), V2 cards (warm NEAR/MID/FAR drive chips, enumerated
+distances, complete-data-only climb via `climbSummary`), "Next two weekends"
+horizon (real Fri–Sun windows), one labelled closest-match block after input,
+palette-tinted AI buttons. Design semantics live in `app/lib/semantics.js`
+(tested) — change colours/bands THERE. Decision record:
+`outputs/2026-08-24_design-decision-log_v1.md` (+ addendum) — owner rulings
+supersede the design-system readme where they differ. Pre-merge gates: external
+design review + Codex integrity review (all 8 findings fixed:
+`outputs/2026-08-25_codex-review-findings_fdr_v1.md`). This merge also lands
+`feat/card-quality-tier0` (expected-month site display) — that branch is CLOSED.
+Suites at merge: node 83 · deno 143 · build 238 pages. NOTE: the MCP was NOT
+deployed by this merge — `main` carries undeployed MCP changes (expected-month
+parity, honest tbd count, restored search_races schema + `tools_schema_test.ts`);
+next MCP deploy via `scripts/deploy-mcp.sh` ships them. Known follow-up: MCP has
+no `difficulty` filter yet (site does) — agent-parity gap, queued for v-next.
 
 **External-review P1 fixes — DEPLOYED & VERIFIED LIVE (2026-08-25, origin/main
 `a640eb4`).** A Codex review of the delivery/taste/U4 work found 11 issues; the
