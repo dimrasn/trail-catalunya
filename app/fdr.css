@@ -1,0 +1,60 @@
+/* Full de Ruta — site tokens. Light route-sheet board; colour is data, not
+   decoration. Difficulty hues live in app/lib/semantics.js (they are data-
+   driven per race); this file carries structure, action and type only. */
+:root {
+  --fdr-canvas: #F9FAFC;
+  --fdr-surface: #FFFFFF;
+  --fdr-sunk: #F1F4F6;
+  --fdr-border: #DBDEE2;
+  --fdr-border-strong: #CACED3;
+  --fdr-ink: #20252A;
+  --fdr-ink-muted: #5F6469;
+  /* ink-faint carries meaningful small copy (provenance, disclaimers, counts),
+     so it must clear WCAG AA 4.5:1 on every board surface. #6B7075 measures
+     5.00 on surface, 4.79 on canvas, 4.53 on sunk (Codex 2026-08-25 P2-6). */
+  --fdr-ink-faint: #6B7075;
+  --fdr-ink-inverse: #FFFFFF;
+  --fdr-action: #2D6FCD;
+  --fdr-action-hover: #0555B7;
+  --fdr-wash: #D6E9FF;
+  --fdr-danger: #AC3031;
+  --fdr-night: #98E4E8;
+  --fdr-night-ink: #003F4B;
+
+  --fdr-radius-sm: 4px;
+  --fdr-radius-md: 8px;
+  --fdr-radius-pill: 999px;
+
+  /* next/font variables (set on <body>) with real fallbacks */
+  --fdr-poster: var(--font-poster, Impact, 'Arial Narrow'), sans-serif;
+  --fdr-sans: var(--font-sans, -apple-system, 'Segoe UI', Helvetica), Arial, sans-serif;
+  --fdr-mono: var(--font-mono, ui-monospace, Menlo, Consolas), monospace;
+}
+
+.fdr-label {
+  font-family: var(--fdr-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--fdr-ink-muted);
+}
+
+.fdr-mono {
+  font-family: var(--fdr-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.fdr-card {
+  background: var(--fdr-surface);
+  border: 1px solid var(--fdr-border);
+  border-radius: var(--fdr-radius-sm);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--fdr-action);
+  outline-offset: 2px;
+}

@@ -1,0 +1,193 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Race card — composition &amp; accent</title>
+<style>
+  :root{
+    --bg:#0b0b12; --paper:#14141c; --line:#2a2a38; --ink:#e9e9f2; --ink2:#a6a6b8; --ink3:#6b6b7e;
+    --accent:#8a8aff; --gate:#f0a53a; --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,Menlo,Monaco,Consolas,monospace;
+    --g1:#3ecf8e; --g2:#8bcf3e; --g3:#e0c33a; --g4:#e0913a; --g5:#e0553a; --g6:#c03a5a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);padding:26px 20px 90px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .mono{font-family:var(--mono)}
+  h1{font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);max-width:1080px;margin:0 auto 6px}
+  .sub{max-width:1080px;margin:0 auto 22px;color:var(--ink2);font-size:13.5px}
+  .wrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  @media(max-width:860px){.wrap{grid-template-columns:1fr}}
+  .lab{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);font-weight:700;margin:0 0 10px}
+
+  /* wireframe card */
+  .wf{border:1px solid var(--line);border-radius:16px;background:var(--paper);padding:0;overflow:hidden;max-width:430px}
+  .blk{padding:14px 16px;border-bottom:1px dashed #24242f;position:relative}
+  .blk:last-child{border-bottom:none}
+  .tier{position:absolute;left:-11px;top:14px;width:22px;height:22px;border-radius:50%;
+    background:var(--bg);border:1px solid var(--line);color:var(--ink2);font-size:11px;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  .role{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:7px}
+
+  .name{font-size:23px;font-weight:800;letter-spacing:-.02em;color:#fff;line-height:1.1}
+  .verdict{font-size:15px;color:#dcdce6;margin-top:8px;line-height:1.45}
+  .verdict .lblsrc{font-size:10.5px;color:var(--ink3)}
+
+  /* difficulty accent block */
+  .diffwrap{background:#181820;margin:0;padding:15px 16px;border-bottom:1px dashed #24242f}
+  .diffrow{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .diffword{font-size:17px;font-weight:800}
+  .diffnum{font-family:var(--mono);font-size:12px;color:var(--ink2)}
+  .scale{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+  .seg{height:9px;border-radius:3px;background:#26262f}
+  .segticks{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;margin-top:5px}
+  .st{font-size:9px;color:var(--ink3);text-align:center}
+  .st.on{color:var(--ink);font-weight:700}
+
+  /* gate cluster */
+  .gate{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+  .gcell .gl{font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+  .gcell .gv{font-family:var(--mono);font-size:16px;font-weight:700}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .chip{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--ink2)}
+
+  /* generic detail rows (de-emphasised) */
+  .drow{height:11px;background:#20202a;border-radius:4px;margin:9px 0}
+  .drow.s{width:60%}.drow.m{width:80%}
+  .tbl{font-family:var(--mono);font-size:13px;color:var(--ink2)}
+  .tbl div{display:flex;justify-content:space-between;padding:6px 0;border-top:1px solid #20202a}
+  .cta{margin-top:2px}
+  .ctabtn{display:block;text-align:center;border:1px dashed var(--accent);color:var(--accent);
+    border-radius:10px;padding:12px;font-weight:700;font-size:14px}
+  .quiet{opacity:.5}
+
+  /* legend / accent ladder */
+  .ladder{max-width:1080px;margin:34px auto 0;border-top:1px solid var(--line);padding-top:20px}
+  .ladder h2{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  .rung{display:grid;grid-template-columns:34px 150px 1fr;gap:14px;align-items:baseline;padding:9px 0;border-bottom:1px solid #1c1c26}
+  .rung .n{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px}
+  .rung .what{font-weight:700;color:var(--ink)}
+  .rung .why{color:var(--ink2);font-size:13.5px}
+  .accpill{font-size:10px;font-weight:700;padding:1px 8px;border-radius:20px;margin-left:8px;vertical-align:middle}
+  .big{background:#2a1f0a;color:var(--gate)}
+  .mid{background:#111a2a;color:#7aa7ff}
+  .low{background:#1a1a22;color:var(--ink3)}
+  .colornote{max-width:1080px;margin:22px auto 0;background:#101018;border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:13.5px;color:var(--ink2)}
+  .colornote b{color:var(--ink)}
+  .swatch{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:middle;margin:0 2px}
+</style>
+
+<h1>Race card — composition &amp; accent (low-fi, no design system yet)</h1>
+<p class="sub">Blocks sized &amp; ordered by importance. Numbered circles = the eye-path (glance 1 → 2 → 3). We're deciding <b>what's big, what's first, what's accented</b> — colors/fonts come later.</p>
+
+<div class="wrap">
+  <!-- SIMPLE RACE -->
+  <div>
+    <div class="lab">A simple popular race (Amer)</div>
+    <div class="wf">
+      <div class="blk"><span class="tier">1</span>
+        <div class="role">Identity + verdict — the instant read</div>
+        <div class="name">Cursa Popular d'Amer</div>
+        <div class="verdict">A flat, fast 6–12 km morning race near Girona — friendly for a PB or a first trail number. <span class="lblsrc">· auto-summary</span></div>
+      </div>
+
+      <div class="diffwrap"><span class="tier" style="top:15px">1</span>
+        <div class="role">Difficulty — accented, the “is it my level?” answer</div>
+        <div class="diffrow"><span class="diffword" style="color:var(--g1)">Easy · flat</span><span class="diffnum">12.7 km-effort · 5 m/km</span></div>
+        <div class="scale"><div class="seg" style="background:var(--g1)"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+        <div class="segticks"><div class="st on">Easy</div><div class="st">Mod</div><div class="st">Hard</div><div class="st">V.hard</div><div class="st">Extreme</div><div class="st">Brutal</div></div>
+      </div>
+
+      <div class="blk"><span class="tier">2</span>
+        <div class="role">The “gate” — cost of going</div>
+        <div class="gate">
+          <div class="gcell"><div class="gl">Drive</div><div class="gv" style="color:var(--g3)">1h 27m</div></div>
+          <div class="gcell"><div class="gl">Distances</div><div class="gv">6 · 12 km</div></div>
+          <div class="gcell"><div class="gl">When</div><div class="gv" style="font-size:13px">Sun 9 Aug</div></div>
+        </div>
+        <div class="chips"><span class="chip">Entry open</span><span class="chip">Kids run</span></div>
+      </div>
+
+      <div class="blk"><span class="tier">3</span>
+        <div class="role">Detail — quieter</div>
+        <div class="tbl">
+          <div><span>12 km</span><span>↑65 m · 12.7</span></div>
+          <div><span>6 km</span><span>↑23 m · 6.2</span></div>
+        </div>
+      </div>
+
+      <div class="blk cta"><span class="tier">3</span>
+        <div class="role">Act</div>
+        <div class="ctabtn">Official site &amp; registration ↗</div>
+      </div>
+      <div class="blk quiet"><div class="role">Onward — related races · ask AI</div><div class="drow m"></div><div class="drow s"></div></div>
+    </div>
+  </div>
+
+  <!-- RICH RACE -->
+  <div>
+    <div class="lab">A mountain ultra (Ultra Pirineu)</div>
+    <div class="wf">
+      <div class="blk"><span class="tier">1</span>
+        <div class="role">Identity + verdict — the instant read</div>
+        <div class="name">Ultra Pirineu</div>
+        <div class="verdict">Catalonia's benchmark 100k — 6600 m D+, a serious mountain ultra, not for first-timers. <span class="lblsrc">· Our read</span></div>
+      </div>
+
+      <div class="diffwrap"><span class="tier" style="top:15px">1</span>
+        <div class="role">Difficulty — accented</div>
+        <div class="diffrow"><span class="diffword" style="color:var(--g5)">Extreme · big mountain</span><span class="diffnum">166 km-effort · 66 m/km</span></div>
+        <div class="scale"><div class="seg" style="background:var(--g1)"></div><div class="seg" style="background:var(--g2)"></div><div class="seg" style="background:var(--g3)"></div><div class="seg" style="background:var(--g4)"></div><div class="seg" style="background:var(--g5)"></div><div class="seg"></div></div>
+        <div class="segticks"><div class="st">Easy</div><div class="st">Mod</div><div class="st">Hard</div><div class="st">V.hard</div><div class="st on">Extreme</div><div class="st">Brutal</div></div>
+      </div>
+
+      <div class="blk"><span class="tier">2</span>
+        <div class="role">The “gate” — cost of going</div>
+        <div class="gate">
+          <div class="gcell"><div class="gl">Drive</div><div class="gv" style="color:var(--g3)">1h 34m</div></div>
+          <div class="gcell"><div class="gl">Distances</div><div class="gv">5–100 km</div></div>
+          <div class="gcell"><div class="gl">When</div><div class="gv" style="font-size:13px">Fri 2 Oct</div></div>
+        </div>
+        <div class="chips"><span class="chip" style="border-color:#7a2540;color:#f0879f">Sold out (100k)</span><span class="chip" style="border-color:#264a7a;color:#93c5fd">Night start</span></div>
+      </div>
+
+      <div class="blk"><span class="tier">3</span>
+        <div class="role">Detail — distances, quieter</div>
+        <div class="tbl">
+          <div><span>100 km</span><span>↑6600 · Extreme</span></div>
+          <div><span>42 km</span><span>↑2800 · Hard</span></div>
+          <div><span>21 km</span><span>↑1450 · Moderate</span></div>
+          <div><span>5 km</span><span>↑860 · Easy</span></div>
+        </div>
+      </div>
+
+      <div class="blk"><span class="tier">3</span>
+        <div class="role">Character — the differentiator vs a results site</div>
+        <div class="tbl" style="font-family:var(--sans)">
+          <div><span>Setting</span><span style="color:var(--ink3)">Alpine national park</span></div>
+          <div><span>Terrain</span><span style="color:var(--ink3)">Rocky high-mountain</span></div>
+          <div><span>Who</span><span style="color:var(--ink3)">Experienced only</span></div>
+        </div>
+      </div>
+
+      <div class="blk cta"><span class="tier">3</span>
+        <div class="role">Act</div>
+        <div class="ctabtn">Official site &amp; registration ↗</div>
+      </div>
+      <div class="blk quiet"><div class="role">Onward — related races · ask AI</div><div class="drow m"></div><div class="drow s"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ACCENT LADDER -->
+<div class="ladder">
+  <h2>What we accent, and what we demote</h2>
+  <div class="rung"><span class="n">1</span><span class="what">Name + verdict + difficulty<span class="accpill big">ACCENT</span></span><span class="why">The “is this my race?” answer. One sentence anyone can grasp, plus the difficulty scale. This is the page's job — today it's a 3-line footnote.</span></div>
+  <div class="rung"><span class="n">2</span><span class="what">The gate<span class="accpill mid">GROUP</span></span><span class="why">Drive · distances · date + status chips (sold-out, night, entry-open). The cost side of your “worth-the-drive” call — grouped, color-cued, not a billboard.</span></div>
+  <div class="rung"><span class="n">3</span><span class="what">Detail + character<span class="accpill low">PRESENT</span></span><span class="why">Per-distance table + character. Earns its place with detail the strip can't hold; visually calmer so it never competes with tier 1.</span></div>
+  <div class="rung"><span class="n">3</span><span class="what">Register<span class="accpill mid">ANCHOR</span></span><span class="why">One clear action, one disclaimer. On mobile it can become a sticky bottom bar.</span></div>
+  <div class="rung"><span class="n">·</span><span class="what">Related · Ask AI<span class="accpill low">QUIET</span></span><span class="why">Onward moves. Useful, never loud.</span></div>
+</div>
+
+<div class="colornote">
+  <b>One idea worth deciding early (feeds the design system):</b> let <b>color carry meaning consistently</b>, so the card is readable at arm's length.
+  Difficulty runs a fixed spectrum
+  <span class="swatch" style="background:var(--g1)"></span><span class="swatch" style="background:var(--g2)"></span><span class="swatch" style="background:var(--g3)"></span><span class="swatch" style="background:var(--g4)"></span><span class="swatch" style="background:var(--g5)"></span><span class="swatch" style="background:var(--g6)"></span>
+  Easy→Brutal, and the <b>drive number reuses the same warm ramp</b> against your 1-hour instinct — <span style="color:var(--g1)">≤1h green</span>, <span style="color:var(--g3)">~1–1.5h amber</span>, <span style="color:var(--g5)">&gt;1.5h red “needs to be worth it”</span>. Same colors = one visual language for “how demanding” and “how far”, and anyone learns to read a card in a glance.
+</div>

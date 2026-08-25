@@ -33,6 +33,7 @@ export interface FilterableEvent {
   distances: Dist[]
   date: string | null
   dateEnd?: string | null
+  expectedMonth?: number
 }
 
 // Returns { kept, tbdExcluded }. A date/month filter excludes null-date (TBD)
@@ -67,7 +68,21 @@ export function applyFilters<T extends FilterableEvent>(
     if (variantFiltering && !e.distances.some((d) => distanceMatches(d, f))) return false
 
     if (dateFiltering) {
-      if (!e.date) { tbdExcluded++; return false }
+      if (!e.date) {
+        // A dateless race whose source-published month (expectedMonth) matches
+        // a month filter still belongs in the result (site/MCP parity,
+        // docs/rules.md R6/R8). A KNOWN month that mismatches is a plain
+        // exclusion, NOT a TBD count — tbd_excluded_count means "couldn't be
+        // placed", and a known-October race asked about November was placed
+        // fine (Codex 2026-08-25 P2-7). A precise date_from/date_to window
+        // can't place any dayless race, so those stay excluded and counted.
+        if (f.month?.length && f.date_from == null && f.date_to == null &&
+            e.expectedMonth != null) {
+          return f.month.includes(e.expectedMonth)
+        }
+        tbdExcluded++
+        return false
+      }
       // Multi-day races span [date, dateEnd]; match on range overlap so a
       // Fri–Sun race is found by a Saturday query (and a cross-month race by
       // either month).

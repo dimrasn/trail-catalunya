@@ -48,27 +48,27 @@ export default function AskAI({ filteredRaces, filters }) {
   return (
     <div style={{
       display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap',
-      padding: '10px 16px', borderBottom: '1px solid #1a1a2e', backgroundColor: '#0a0a14',
+      padding: '10px 16px', borderBottom: '1px solid var(--fdr-border)', backgroundColor: 'var(--fdr-canvas)',
     }}>
-      <span style={{
-        fontSize: '11px', color: '#666', fontWeight: '600',
-        textTransform: 'uppercase', letterSpacing: '0.05em', marginRight: '2px',
-      }}>
-        Plan with AI
+      <span className="fdr-label" style={{ marginRight: '2px' }} title='e.g. "a hard race under 1h away I can train toward"'>
+        Or just say it
       </span>
 
+      {/* Provider buttons in palette shades (Dima's ruling 2026-08-24):
+          Claude wears the ramp's orange tint, ChatGPT the green — palette
+          colours, not raw brand hex. */}
       <button onClick={() => open(claudeUrl)} disabled={disabled}
-        style={{ ...btn, backgroundColor: '#d97757', color: '#fff' }}
+        style={{ ...btn, backgroundColor: '#F9CAA2', color: '#593215', fontWeight: 700 }}
         title="Open these races in Claude">
         Ask Claude
       </button>
       <button onClick={() => open(chatgptUrl)} disabled={disabled}
-        style={{ ...btn, backgroundColor: '#10a37f', color: '#fff' }}
+        style={{ ...btn, backgroundColor: '#ADE3BF', color: '#103C28', fontWeight: 700 }}
         title="Open these races in ChatGPT">
         Ask ChatGPT
       </button>
       <button onClick={copy} disabled={disabled}
-        style={{ ...btn, backgroundColor: '#1a1a2e', color: '#cccccc' }}
+        style={{ ...btn, backgroundColor: 'var(--fdr-sunk)', border: '1px solid var(--fdr-border)', color: 'var(--fdr-ink-muted)' }}
         title="Copy the prompt to paste into any AI">
         {copied ? '✓ Copied' : 'Copy prompt'}
       </button>
@@ -77,8 +77,8 @@ export default function AskAI({ filteredRaces, filters }) {
 
       <button onClick={() => setShowHelp(true)}
         style={{
-          ...btn, opacity: 1, cursor: 'pointer', backgroundColor: 'transparent',
-          color: '#666', fontWeight: '400', fontSize: '12px', padding: '6px 4px',
+          ...btn, opacity: 1, cursor: 'pointer', backgroundColor: 'transparent', border: 'none',
+          color: 'var(--fdr-action)', fontWeight: '400', fontSize: '12px', padding: '6px 4px',
           textDecoration: 'underline', textUnderlineOffset: '2px',
         }}
         title="Connect this race data to your own Claude or ChatGPT (Claude any plan; ChatGPT paid plans)">
@@ -103,7 +103,7 @@ function McpHelp({ url, urlCopied, onCopyUrl, onClose }) {
       onClick={onClose}
       style={{
         position: 'fixed', inset: 0, zIndex: 100,
-        backgroundColor: 'rgba(0,0,0,0.6)',
+        backgroundColor: 'rgba(32,37,42,0.45)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         padding: '16px',
       }}
@@ -111,50 +111,50 @@ function McpHelp({ url, urlCopied, onCopyUrl, onClose }) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          backgroundColor: '#12122a', border: '1px solid #26263f', borderRadius: '14px',
+          backgroundColor: 'var(--fdr-surface)', border: '1px solid var(--fdr-border)', borderRadius: '8px',
           maxWidth: '480px', width: '100%', maxHeight: '85vh', overflowY: 'auto',
-          padding: '22px', color: '#e8e8f0', fontSize: '14px', lineHeight: '1.55',
+          padding: '22px', color: 'var(--fdr-ink)', fontSize: '14px', lineHeight: '1.55',
           textAlign: 'left',
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '6px' }}>
           <h2 style={{ fontSize: '17px', fontWeight: '700', margin: 0 }}>Connect your own AI</h2>
           <button onClick={onClose} style={{
-            background: 'none', border: 'none', color: '#888', cursor: 'pointer',
+            background: 'none', border: 'none', color: 'var(--fdr-ink-muted)', cursor: 'pointer',
             fontSize: '20px', lineHeight: 1, padding: '2px 4px',
           }}>×</button>
         </div>
 
-        <p style={{ color: '#9a9ab0', marginTop: 0, marginBottom: '14px' }}>
+        <p style={{ color: 'var(--fdr-ink-muted)', marginTop: 0, marginBottom: '14px' }}>
           This lets Claude or ChatGPT search the full race database live — ask things like
           “scenic races under 1h from Barcelona in October”. It’s a one-time setup, and works
           on Claude (including Free — one connector) or a paid ChatGPT plan that supports custom
           connectors. Details below.
         </p>
 
-        <p style={{ color: '#9a9ab0', marginTop: 0, marginBottom: '14px' }}>
-          <strong style={{ color: '#c9c9d6' }}>Even more with your training data.</strong>{' '}
+        <p style={{ color: 'var(--fdr-ink-muted)', marginTop: 0, marginBottom: '14px' }}>
+          <strong style={{ color: 'var(--fdr-ink)' }}>Even more with your training data.</strong>{' '}
           If you also connect a Strava or Garmin MCP to the same Claude or ChatGPT, it can
           join your recent training with these races and tell you whether you’re ready for a
           race and roughly what time you’d run — ask “Am I ready for this one, and what time
           would I run?”. Your training data stays in your AI; this connector never sees it.
         </p>
 
-        <div style={{ fontSize: '12px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, marginBottom: '6px' }}>
+        <div style={{ fontSize: '12px', color: 'var(--fdr-ink-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, marginBottom: '6px' }}>
           Server URL
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'stretch', marginBottom: '18px' }}>
           <code style={{
-            flex: 1, backgroundColor: '#0a0a14', border: '1px solid #26263f', borderRadius: '8px',
-            padding: '9px 11px', fontSize: '12px', color: '#cccccc', wordBreak: 'break-all',
+            flex: 1, backgroundColor: 'var(--fdr-sunk)', border: '1px solid var(--fdr-border)', borderRadius: '8px',
+            padding: '9px 11px', fontSize: '12px', color: 'var(--fdr-ink)', wordBreak: 'break-all',
             fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
           }}>{url}</code>
           <button onClick={onCopyUrl} style={{
             flexShrink: 0, padding: '0 14px', borderRadius: '8px', border: 'none', cursor: 'pointer',
-            backgroundColor: urlCopied ? '#064e3b' : '#2563eb', color: '#fff', fontWeight: 600, fontSize: '13px',
+            backgroundColor: urlCopied ? '#04884D' : 'var(--fdr-action)', color: '#fff', fontWeight: 600, fontSize: '13px',
           }}>{urlCopied ? '✓ Copied' : 'Copy'}</button>
         </div>
-        <p style={{ color: '#62627a', fontSize: '12px', marginTop: '-12px', marginBottom: '18px' }}>
+        <p style={{ color: 'var(--fdr-ink-faint)', fontSize: '12px', marginTop: '-12px', marginBottom: '18px' }}>
           Don’t open this URL in a browser — it’s not a web page. Paste it into the connector
           settings below.
         </p>
@@ -182,8 +182,8 @@ function McpHelp({ url, urlCopied, onCopyUrl, onClose }) {
 
         <div style={{
           marginTop: '16px', padding: '10px 12px', borderRadius: '8px',
-          backgroundColor: 'rgba(251,191,36,0.08)', border: '1px solid rgba(251,191,36,0.25)',
-          color: '#d6b25a', fontSize: '13px',
+          backgroundColor: 'var(--fdr-sunk)', border: '1px solid var(--fdr-border)',
+          color: 'var(--fdr-ink-muted)', fontSize: '13px',
         }}>
           On <strong>ChatGPT Free</strong>? Custom connectors aren’t available — use the
           <strong> Ask Claude</strong> / <strong>Ask ChatGPT</strong> buttons instead (no setup).
@@ -197,8 +197,8 @@ function McpHelp({ url, urlCopied, onCopyUrl, onClose }) {
 function Section({ title, children }) {
   return (
     <div style={{ marginBottom: '14px' }}>
-      <div style={{ fontSize: '13px', fontWeight: 700, color: '#e8e8f0' }}>{title}</div>
-      <div style={{ color: '#bcbcd0', fontSize: '13px' }}>{children}</div>
+      <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--fdr-ink)' }}>{title}</div>
+      <div style={{ color: 'var(--fdr-ink-muted)', fontSize: '13px' }}>{children}</div>
     </div>
   )
 }

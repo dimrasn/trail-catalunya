@@ -23,7 +23,10 @@ const EVENTS = [
   ev({ id: 'lle-ultra', province: 'LLEIDA', drive_minutes_from_barcelona: 200, date: '2026-06-20', distances: [{ km: 100, elevationGain: 6000 }] }),
 ]
 
-const ids = (r: { kept: Array<{ id: string }> }) => r.kept.map((e) => e.id).sort()
+// kept is unknown[] because FilterableEvent (applyFilters' constraint) carries
+// no id — test events add one, so the helper casts per element instead of
+// demanding a property the type can't promise.
+const ids = (r: { kept: unknown[] }) => r.kept.map((e) => (e as { id?: string }).id).sort()
 
 Deno.test('province[]: OR across provinces', () => {
   assertEquals(ids(applyFilters(EVENTS, { province: ['BARCELONA', 'GIRONA'] })), ['bcn-near', 'gir-mid'])
@@ -31,6 +34,26 @@ Deno.test('province[]: OR across provinces', () => {
 
 Deno.test('province[]: single-element array behaves like the old scalar', () => {
   assertEquals(ids(applyFilters(EVENTS, { province: ['LLEIDA'] })), ['lle-ultra'])
+})
+
+Deno.test('month[]: a source-published month (expectedMonth) matches; a precise date window does not', () => {
+  const withExpected = [
+    { id: 'exp-oct', date: null, expectedMonth: 10, province: 'GIRONA', kidsRun: false, distances: [{ km: 20 }], drive_minutes_from_barcelona: 60 },
+    { id: 'truly-tbd', date: null, province: 'GIRONA', kidsRun: false, distances: [{ km: 20 }], drive_minutes_from_barcelona: 60 },
+  ] as unknown as Parameters<typeof applyFilters>[0]
+  // month filter includes the expected-month event; the fully-undated one is excluded + counted
+  const r = applyFilters(withExpected, { month: [10] })
+  assertEquals(ids(r), ['exp-oct'])
+  assertEquals(r.tbdExcluded, 1)
+  // a different month excludes both — but only the truly-undated race counts
+  // as a TBD exclusion; the known-October race is a plain non-match (P2-7)
+  const miss = applyFilters(withExpected, { month: [11] })
+  assertEquals(ids(miss), [])
+  assertEquals(miss.tbdExcluded, 1)
+  // a precise date window can't place ANY dayless race → both excluded + counted
+  const win = applyFilters(withExpected, { date_from: '2026-10-01', date_to: '2026-10-31' })
+  assertEquals(ids(win), [])
+  assertEquals(win.tbdExcluded, 2)
 })
 
 Deno.test('month[]: OR across months', () => {

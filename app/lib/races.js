@@ -13,6 +13,7 @@ import { createClient } from '@supabase/supabase-js'
 import driveTimes from '@/data/towns-drive-times.json'
 import townsGeocoded from '@/data/towns-geocoded.json'
 import { enrichmentForDisplay } from './enrichment.js'
+import { expectedMonthFromRows } from './format.js'
 import { tasteForDisplay } from './taste.js'
 // Canonical taste artifact (plan v3, KTD1 — committed JSON bundled into the site
 // build; the MCP bundles the same file). Keyed by race_url::town.
@@ -132,6 +133,28 @@ function groupRowsIntoEvents(rows) {
       }
     }
 
+    // No exact date, but the source still tells us the month — every dateless
+    // row carries month_num + year. Surfacing "expected September 2026" beats
+    // "To be announced"; it is an EXPECTATION, never a date (docs/rules.md R6),
+    // so it is kept in its own fields and never written into `date`.
+    //
+    // Published ONLY when the source agrees with itself (R6, amended
+    // 2026-08-23 after audit). Three ways it can disagree, all suppressed:
+    //   - month_num out of range, or year absent;
+    //   - rows within one event naming different months/years;
+    //   - date_display carrying a bare year that contradicts `year`
+    //     (live: Radikal Estana says month "Agost 2026" but date_display "2027").
+    // 4 of 91 events tripped the last check when this was written.
+    let expectedMonth = null
+    let expectedYear = null
+    if (!dateIso) {
+      const em = expectedMonthFromRows(groupRows)
+      if (em) {
+        expectedMonth = em.month
+        expectedYear = em.year
+      }
+    }
+
     // Detect status flags.
     let soldOut = false
     let kidsRun = false
@@ -193,6 +216,10 @@ function groupRowsIntoEvents(rows) {
       distances,
     }
     if (dateEndIso) event.dateEnd = dateEndIso
+    if (expectedMonth != null) {
+      event.expectedMonth = expectedMonth
+      event.expectedYear = expectedYear
+    }
     if (driveMinutes != null) event.driveMinutes = driveMinutes
     if (geo) {
       event.lat = geo.lat

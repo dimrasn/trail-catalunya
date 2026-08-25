@@ -5,7 +5,11 @@
 
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { kmEffort, eventKmEffort, itraPoints, difficultyLevel, dPlusPerKm } from './format.js'
+import {
+  kmEffort, eventKmEffort, itraPoints, difficultyLevel, dPlusPerKm,
+  distancesSummary, elevationSummary, metadataDistancePart, expectedDateLabel,
+  expectedMonthFromRows,
+} from './format.js'
 
 test('kmEffort: missing km → null', () => {
   assert.equal(kmEffort({ elevationGain: 500 }), null)
@@ -86,4 +90,162 @@ test('eventKmEffort: complete event → max; per-distance values intact', () => 
 
 test('eventKmEffort: empty → null', () => {
   assert.equal(eventKmEffort([]), null)
+})
+
+// ---------------------------------------------------------------------------
+// Discrete-value rendering (rules R1, R2 in docs/rules.md).
+// A range asserts that intermediate values exist. Distances and elevations are
+// discrete, enumerable options — a runner picks one, they cannot pick 19 km.
+// Reported by Dima 2026-08-23 against /race/trail-de-monells ("18–25 km").
+// ---------------------------------------------------------------------------
+
+test('distancesSummary: two discrete options are a list, not a range', () => {
+  // The reported defect. Trail de Monells offers exactly 18 km and 25 km.
+  assert.equal(distancesSummary([{ km: 25 }, { km: 18 }]), '18, 25 km')
+})
+
+test('distancesSummary: five options (Congost Trail Challenge — the widest event)', () => {
+  assert.equal(
+    distancesSummary([{ km: 25 }, { km: 15 }, { km: 11 }, { km: 10.6 }, { km: 5.2 }]),
+    '5.2, 10.6, 11, 15, 25 km',
+  )
+})
+
+test('distancesSummary: single distance has no separator', () => {
+  assert.equal(distancesSummary([{ km: 21.4 }]), '21.4 km')
+})
+
+test('distancesSummary: duplicate distances collapse', () => {
+  assert.equal(distancesSummary([{ km: 21 }, { km: 21 }]), '21 km')
+})
+
+test('distancesSummary: rows without km are ignored; none → null', () => {
+  assert.equal(distancesSummary([{ km: 12 }, { km: null }]), '12 km')
+  assert.equal(distancesSummary([{ km: null }]), null)
+  assert.equal(distancesSummary([]), null)
+})
+
+// R1 deliberately does NOT extend to elevation (narrowed 2026-08-23 after audit).
+// A distance is independently selectable; its climb is a PROPERTY of it. Listing
+// climbs as "↑650, 1090 m" severs which climb belongs to which distance, which
+// is a worse lie than the span it replaced. Event aggregates need complete data.
+test('elevationSummary: a span, not a list — climbs stay paired to distances', () => {
+  assert.equal(
+    elevationSummary([{ km: 42, elevationGain: 1090 }, { km: 21, elevationGain: 650 }]),
+    '↑650–1090 m',
+  )
+  assert.equal(elevationSummary([{ km: 21, elevationGain: 650 }]), '↑650 m')
+})
+
+test('elevationSummary: partial data → null, never a partial maximum', () => {
+  // Mirrors eventKmEffort's refusal: a 42 km variant with unknown D+ would drop
+  // out silently and understate the event. 6 active events have this shape.
+  assert.equal(elevationSummary([{ km: 42, elevationGain: null }, { km: 21, elevationGain: 650 }]), null)
+  assert.equal(elevationSummary([{ km: 21, elevationGain: null }]), null)
+  assert.equal(elevationSummary([]), null)
+})
+
+// R2: never pair a range endpoint with an unrelated maximum. Ultra Pirineu's
+// title read "5–100 km / 6600 m D+" — a 5 km race with 6600 m of climb.
+test('metadataDistancePart: multi-distance events mark the climb as a maximum', () => {
+  const ultraPirineu = [
+    { km: 100, elevationGain: 6600 }, { km: 42, elevationGain: 2400 },
+    { km: 21, elevationGain: 1200 }, { km: 5, elevationGain: 400 },
+  ]
+  assert.equal(metadataDistancePart(ultraPirineu), '5, 21, 42, 100 km · up to 6600 m D+')
+})
+
+test('metadataDistancePart: a single distance pairs its own climb directly', () => {
+  assert.equal(metadataDistancePart([{ km: 21.4, elevationGain: 1090 }]), '21.4 km / 1090 m D+')
+})
+
+test('metadataDistancePart: no elevation → distances alone; no distances → null', () => {
+  assert.equal(metadataDistancePart([{ km: 18 }, { km: 25 }]), '18, 25 km')
+  assert.equal(metadataDistancePart([]), null)
+})
+
+test('metadataDistancePart: PARTIAL elevation publishes no maximum', () => {
+  // The 6 partial-elevation events. "up to 1090 m D+" beside "21, 42 km" implies
+  // the 42 km is covered when its climb is unknown — R2's failure, subtler.
+  assert.equal(
+    metadataDistancePart([{ km: 42, elevationGain: null }, { km: 21, elevationGain: 1090 }]),
+    '21, 42 km',
+  )
+})
+
+// ---------------------------------------------------------------------------
+// Known-month dates (P1.5). All 138 TBD rows carry month_num and year; the site
+// discarded both and rendered "To be announced". An expected month is NOT a
+// confirmed date and must never be presented as one.
+// ---------------------------------------------------------------------------
+
+test('expectedDateLabel: month + year → a month, not a date', () => {
+  assert.equal(expectedDateLabel(8, 2026), 'August 2026')
+  assert.equal(expectedDateLabel(9, 2026), 'September 2026')
+})
+
+test('expectedDateLabel: missing or out-of-range input → null', () => {
+  assert.equal(expectedDateLabel(null, 2026), null)
+  assert.equal(expectedDateLabel(8, null), null)
+  assert.equal(expectedDateLabel(0, 2026), null)
+  assert.equal(expectedDateLabel(13, 2026), null)
+})
+
+// ---------------------------------------------------------------------------
+// expectedMonthFromRows — the R6 agreement gate (docs/rules.md R6).
+// A source-published month is shown ONLY when EVERY row that asserts a month
+// is complete, in range, and agrees; and no date_display bare year contradicts
+// it. One malformed sibling poisons the event — we cannot tell which row is
+// right, so we publish nothing. (Audit finding #2: filtering invalid rows out
+// before the agreement check let a lone valid row through.)
+// ---------------------------------------------------------------------------
+
+test('expectedMonthFromRows: all rows agree → the month', () => {
+  assert.deepEqual(
+    expectedMonthFromRows([
+      { month_num: 8, year: 2026, date_display: 'Agost 2026' },
+      { month_num: 8, year: 2026, date_display: 'Agost 2026' },
+    ]),
+    { month: 8, year: 2026 },
+  )
+})
+
+test('expectedMonthFromRows: out-of-range sibling poisons the event', () => {
+  assert.equal(expectedMonthFromRows([
+    { month_num: 8, year: 2026 }, { month_num: 13, year: 2026 },
+  ]), null)
+  assert.equal(expectedMonthFromRows([{ month_num: 0, year: 2026 }]), null)
+})
+
+test('expectedMonthFromRows: a row asserting month but missing year poisons', () => {
+  assert.equal(expectedMonthFromRows([
+    { month_num: 8, year: 2026 }, { month_num: 8, year: null },
+  ]), null)
+})
+
+test('expectedMonthFromRows: rows split on month/year → suppressed', () => {
+  assert.equal(expectedMonthFromRows([
+    { month_num: 8, year: 2026 }, { month_num: 9, year: 2026 },
+  ]), null)
+  assert.equal(expectedMonthFromRows([
+    { month_num: 8, year: 2026 }, { month_num: 8, year: 2027 },
+  ]), null)
+})
+
+test('expectedMonthFromRows: date_display bare year contradicting year → suppressed (Radikal Estana)', () => {
+  assert.equal(expectedMonthFromRows([
+    { month_num: 8, year: 2026, date_display: '2027' },
+  ]), null)
+})
+
+test('expectedMonthFromRows: date_display bare year MATCHING year is allowed', () => {
+  assert.deepEqual(
+    expectedMonthFromRows([{ month_num: 8, year: 2026, date_display: '2026' }]),
+    { month: 8, year: 2026 },
+  )
+})
+
+test('expectedMonthFromRows: no rows assert a month → null', () => {
+  assert.equal(expectedMonthFromRows([{ month_num: null, year: null }]), null)
+  assert.equal(expectedMonthFromRows([]), null)
 })

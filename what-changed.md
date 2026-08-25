@@ -38,3 +38,22 @@ left untouched.
 
 Verification on the prepared branch: 55 Node tests passed; 134 Deno tests
 passed; the Next.js production build generated 235 static pages.
+
+## 2026-08-24/25 — Full de Ruta light redesign (branch feat/fdr-light-redesign)
+
+~50 files. Site-wide dark→light retheme in the Full de Ruta design system + IA rebuild
+of both product pages; merged feat/card-quality-tier0 (expected-month display + audit
+fixes + undeployed MCP expected-month parity) into the base.
+
+- NEW: app/lib/semantics.js (+ test) — colour/drive/verdict/climb/weekend semantics.
+- NEW: app/fdr.css (tokens), app/components/fdr/* (DifficultyChip/Scale, DistanceLadder,
+  StatusRibbon, Provenance), app/lib/askprompt.test.mjs, supabase/functions/mcp/tools_schema_test.ts.
+- REBUILT: app/race/[slug]/page.js (tier ladder), app/components/RaceCard.jsx (V2 card),
+  RaceList.jsx (hero, weekend horizon, closest-match), FilterBar.jsx (difficulty row,
+  MORE/SHOW split), FilterChip.jsx, AskAI.jsx (palette buttons); askPrompt.js (difficulty phrase).
+- RETHEMED: app/layout.js (+fonts), globals.css, about, for-agents, opengraph-image.
+- MCP (merge + fixes, NOT deployed): filters_core.ts (expectedMonth month-parity + honest
+  tbd count), tools.ts (schema regression repaired), filters_core_test.ts.
+- Verification: node 82 · deno 142 · build 238 pages · browser QA desktop+390px ·
+  Codex external review (outputs/2026-08-25_codex-review-findings_fdr_v1.md) — all 8
+  findings fixed before merge.
