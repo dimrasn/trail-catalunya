@@ -92,3 +92,11 @@ test('buildBestNextRacePrompt: empty goal AND no chips degrades to buildPrompt',
   const plain = buildPrompt([TASTE_RACE], EMPTY_FILTERS)
   assert.equal(best, plain)
 })
+
+import { chipLabel } from '../lib/intent.js'
+test('chip id→label mapping: prompt carries the LABEL, never the raw id (review #6)', () => {
+  const labels = ['chase-pb'].map(chipLabel) // AskAI maps ids→labels for the prompt
+  const p = buildBestNextRacePrompt([TASTE_RACE], EMPTY_FILTERS, { goal: '', chips: labels })
+  assert.match(p, /chase a PB/)
+  assert.doesNotMatch(p, /chase-pb/)
+})

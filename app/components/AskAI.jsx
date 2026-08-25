@@ -2,12 +2,9 @@
 
 import { useState } from 'react'
 import { buildPrompt, buildBestNextRacePrompt, chatgptUrl, claudeUrl } from './askPrompt'
+import { INTENT_CHIPS, chipLabel, logIntent } from '../lib/intent'
 
 const MCP_URL = 'https://qaebfhbdfjvzhmvcjroz.supabase.co/functions/v1/mcp'
-
-// One-tap intent chips — the cheap way to tell the AI what "best" means before
-// (or instead of) typing. Kept short; the free-text box carries the rest.
-const INTENT_CHIPS = ['fun trail', 'somewhere new', 'chase a PB', 'kid-friendly']
 
 export default function AskAI({ filteredRaces, filters }) {
   const [copied, setCopied] = useState(false)
@@ -17,24 +14,27 @@ export default function AskAI({ filteredRaces, filters }) {
   const [chips, setChips] = useState([])
   const disabled = !filteredRaces || filteredRaces.length === 0
 
-  const intent = { goal, chips }
+  // `chips` holds stable chip IDS: the ID is logged (stable across UI renames),
+  // the LABEL is shown and sent to the AI prompt.
   const hasIntent = goal.trim().length > 0 || chips.length > 0
 
-  function toggleChip(c) {
-    setChips(prev => prev.includes(c) ? prev.filter(x => x !== c) : [...prev, c])
+  function toggleChip(id) {
+    setChips(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id])
   }
 
   // Goal-first handoff when the user has said what they want; else the plain
-  // filter-based prompt.
+  // filter-based prompt. Chips → labels for the prompt (never the raw ids).
   function promptText() {
     return hasIntent
-      ? buildBestNextRacePrompt(filteredRaces, filters, intent)
+      ? buildBestNextRacePrompt(filteredRaces, filters, { goal, chips: chips.map(chipLabel).filter(Boolean) })
       : buildPrompt(filteredRaces, filters)
   }
 
-  function open(urlFn) {
+  function open(urlFn, provider) {
     if (disabled) return
     window.open(urlFn(promptText()), '_blank', 'noopener,noreferrer')
+    // Handoff-first: log AFTER the tab opens, never awaited (chip IDS to the log).
+    logIntent({ goal, chips, filters, provider })
   }
 
   async function copy() {
@@ -45,6 +45,9 @@ export default function AskAI({ filteredRaces, filters }) {
       setTimeout(() => setCopied(false), 1800)
     } catch {
       // clipboard blocked — deep-link buttons still work
+    } finally {
+      // In `finally` so a rejected clipboard write still logs the intent.
+      logIntent({ goal, chips, filters, provider: 'copy' })
     }
   }
 
@@ -78,9 +81,10 @@ export default function AskAI({ filteredRaces, filters }) {
           type="text"
           value={goal}
           onChange={(e) => setGoal(e.target.value)}
-          onKeyDown={(e) => { if (e.key === 'Enter' && !disabled) open(claudeUrl) }}
+          onKeyDown={(e) => { if (e.key === 'Enter' && !disabled) open(claudeUrl, 'claude') }}
           placeholder="a hard race under 1h away I can train toward"
           aria-label="Describe the race you're after"
+          aria-describedby="intent-privacy"
           style={{
             flex: 1, minWidth: 0, padding: '8px 13px', fontSize: '13px',
             borderRadius: '999px', border: '1px solid var(--fdr-border)',
@@ -92,31 +96,37 @@ export default function AskAI({ filteredRaces, filters }) {
       {/* One-tap intent chips — pick what "best" means without typing. */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '7px', flexWrap: 'wrap' }}>
         {INTENT_CHIPS.map((c) => {
-          const on = chips.includes(c)
+          const on = chips.includes(c.id)
           return (
-            <button key={c} type="button" onClick={() => toggleChip(c)} aria-pressed={on}
+            <button key={c.id} type="button" onClick={() => toggleChip(c.id)} aria-pressed={on}
               style={{
                 padding: '5px 11px', borderRadius: '999px', fontSize: '12.5px', cursor: 'pointer',
                 border: `1px solid ${on ? 'var(--fdr-action)' : 'var(--fdr-border)'}`,
                 background: on ? 'var(--fdr-action)' : 'var(--fdr-surface)',
                 color: on ? '#fff' : 'var(--fdr-ink-muted)', fontWeight: on ? 700 : 500,
               }}>
-              {c}
+              {c.label}
             </button>
           )
         })}
       </div>
 
+      {/* Privacy notice, beside the box where people type (review #8): honest
+          about what's kept, that it's not tied to identity, and the retention. */}
+      <p id="intent-privacy" style={{ fontSize: '11px', color: 'var(--fdr-ink-faint)', margin: 0, lineHeight: 1.4 }}>
+        What you type is saved to learn what runners want — not tied to your identity in our systems, kept 90 days, then the text is deleted.
+      </p>
+
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
         {/* Provider buttons in palette shades (Dima's ruling 2026-08-24):
             Claude wears the ramp's orange tint, ChatGPT the green — palette
             colours, not raw brand hex. */}
-        <button onClick={() => open(claudeUrl)} disabled={disabled}
+        <button onClick={() => open(claudeUrl, 'claude')} disabled={disabled}
           style={{ ...btn, backgroundColor: '#F9CAA2', color: '#593215', fontWeight: 700 }}
           title={hasIntent ? 'Open your goal + these races in Claude' : 'Open these races in Claude'}>
           Ask Claude
         </button>
-        <button onClick={() => open(chatgptUrl)} disabled={disabled}
+        <button onClick={() => open(chatgptUrl, 'chatgpt')} disabled={disabled}
           style={{ ...btn, backgroundColor: '#ADE3BF', color: '#103C28', fontWeight: 700 }}
           title={hasIntent ? 'Open your goal + these races in ChatGPT' : 'Open these races in ChatGPT'}>
           Ask ChatGPT

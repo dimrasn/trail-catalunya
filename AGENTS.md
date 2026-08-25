@@ -41,6 +41,26 @@ all differ from your training data. Read the relevant guide in
 
 ## Deployment state (last verified 2026-08-25)
 
+**Ask-box intent logging (Step 3, U3) — BUILT & MERGED to `main` 2026-08-25;
+FRONT-END LIVE on Vercel push, but the MIGRATION IS NOT APPLIED (Dima's step).**
+Plan: `docs/plans/2026-08-25-001-feat-intent-logging-plan.md` (credential-free,
+90-day text retention; reviewed by 4 CE personas + Codex). Every ask-box submit
+(Ask-Claude/ChatGPT/Copy) fires a handoff-first, never-awaited POST to
+`app/api/intent/route.js` → the anon `SECURITY DEFINER` RPC `log_intent()` (the
+TRUST BOUNDARY: canonical chip-id/filter/provider validation + size caps + a cost
+circuit breaker). Chips log as stable IDS, labels go to the prompt. Canonical
+vocab in `app/lib/intent.js`, JS↔SQL parity-tested against `intent_allowlist()`.
+Privacy: inline notice by the box (`aria-describedby`) + `/for-agents` note;
+`goal_text` NULL-purged at 90d by `pg_cron` (`intent_log_purge`), aggregate kept.
+Data is a DIRECTIONAL hint, not decision-grade (a public-key caller can still
+inflate valid rows up to the ceiling). Suites at merge: node 108 · deno 143.
+**ACTIVATION (Dima):** apply `supabase/migrations/20260825120000_intent_log.sql`
+to remote (via the Supabase MCP — a branch first, then merge). Until applied, the
+route returns 204 and the RPC call no-ops (best-effort by design — no errors, no
+lost handoffs). No new env var, no MCP redeploy. Verify post-apply: call
+`log_intent(...)` directly as `anon` with junk → rows normalized/rejected, not
+poisoned; an aged row's `goal_text` goes NULL; `cron.job` shows `intent_log_purge`.
+
 **Full de Ruta LIGHT REDESIGN — merged to `main` 2026-08-25 (site auto-deploys
 via Vercel).** The dark skin is RETIRED. Both product pages rebuilt in the light
 "Full de Ruta" system: race page on the tier ladder (status ribbon → verdict +

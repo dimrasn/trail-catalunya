@@ -87,6 +87,13 @@ export default function ForAgentsPage() {
         2025-03-26). No API key needed. Queries are logged anonymously — no IP, no identity —
         for 90 days to improve the tool.
       </p>
+      <p style={p}>
+        The homepage &ldquo;ask&rdquo; box also logs what people type, to learn what runners
+        want. It&apos;s unlinked structured event data — not tied to any identity in our
+        systems — and the free text you type is deleted after 90 days (the anonymous
+        chip/filter counts are kept). It&apos;s read only by the site owner and used only as a
+        directional hint about demand.
+      </p>
 
       <h2 style={h2}>How do I connect it?</h2>
       <ul style={{ paddingLeft: '20px', marginBottom: '12px' }}>
