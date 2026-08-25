@@ -41,8 +41,18 @@ all differ from your training data. Read the relevant guide in
 
 ## Deployment state (last verified 2026-08-25)
 
-**Ask-box intent logging (Step 3, U3) — BUILT & MERGED to `main` 2026-08-25;
-FRONT-END LIVE on Vercel push, but the MIGRATION IS NOT APPLIED (Dima's step).**
+**Ask-box intent logging (Step 3, U3) — FULLY LIVE & VERIFIED on prod 2026-08-25.**
+Migration `20260825120000_intent_log.sql` applied to prod (via Supabase MCP
+`apply_migration`) and verified: `intent_log` table + `log_intent()`/`intent_allowlist()`
+functions live, RLS on / 0 policies, `execute` granted to `anon` and revoked from
+public, `pg_cron` job `intent_log_purge` scheduled `17 4 * * *` (server-side cron —
+runs regardless of any app being open; unrelated to the Claude-app scheduled-task
+window caveat elsewhere in this file). Pre-apply it was proven on the real prod
+Postgres inside a rolled-back transaction (Free plan blocks Supabase branching):
+semantic validation strips junk chips/filters + invalid provider + forged
+has_intent; the 61st write/minute is rejected (circuit breaker); the 90-day purge
+NULLs old goal_text and keeps the aggregate. A smoke row was written via the RPC
+and deleted — the log starts at 0 rows. Front-end shipped with the `main` merge.
 Plan: `docs/plans/2026-08-25-001-feat-intent-logging-plan.md` (credential-free,
 90-day text retention; reviewed by 4 CE personas + Codex). Every ask-box submit
 (Ask-Claude/ChatGPT/Copy) fires a handoff-first, never-awaited POST to
