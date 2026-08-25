@@ -9,7 +9,10 @@
   --fdr-border-strong: #CACED3;
   --fdr-ink: #20252A;
   --fdr-ink-muted: #5F6469;
-  --fdr-ink-faint: #A1A5A9;
+  /* ink-faint carries meaningful small copy (provenance, disclaimers, counts),
+     so it must clear WCAG AA 4.5:1 on every board surface. #6B7075 measures
+     5.00 on surface, 4.79 on canvas, 4.53 on sunk (Codex 2026-08-25 P2-6). */
+  --fdr-ink-faint: #6B7075;
   --fdr-ink-inverse: #FFFFFF;
   --fdr-action: #2D6FCD;
   --fdr-action-hover: #0555B7;

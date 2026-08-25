@@ -10,7 +10,7 @@ import {
   matchesDifficulty,
 } from '../lib/filters.js'
 import { eventKmEffort, difficultyLevel } from '../lib/format.js'
-import { verdictFor } from '../lib/semantics.js'
+import { verdictFor, nextTwoWeekendWindows, inAnyWindow } from '../lib/semantics.js'
 
 const MONTH_NAMES = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -34,12 +34,6 @@ function monthLabel(key) {
 function todayISO() {
   const n = new Date()
   return `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`
-}
-
-function addDaysISO(iso, days) {
-  const [y, m, d] = iso.split('-').map(Number)
-  const dt = new Date(y, m - 1, d + days)
-  return `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, '0')}-${String(dt.getDate()).padStart(2, '0')}`
 }
 
 // URL <-> filter round-trip and the OR-within-row matchers live in
@@ -178,15 +172,17 @@ export default function RaceList({ races, lastUpdated }) {
   // Any URL-serializable state counts as "the user has spoken".
   const hasInput = filtersToParams(filters) !== ''
 
-  // Deterministic orientation for the cold page: dated races in the next 14
-  // days. It duplicates entries from the calendar below on purpose — this is
-  // a horizon, the calendar stays complete. Hidden once any filter is active.
+  // Deterministic orientation for the cold page: the next two ACTUAL weekend
+  // windows (Fri–Sun; an in-progress weekend counts), so the label matches the
+  // result set. It duplicates entries from the calendar below on purpose —
+  // this is a horizon, the calendar stays complete. Hidden once any filter is
+  // active.
   const horizon = useMemo(() => {
     if (hasInput) return []
     const today = todayISO()
-    const limit = addDaysISO(today, 13)
+    const windows = nextTwoWeekendWindows(today)
     return races
-      .filter(r => r.date && (r.dateEnd || r.date) >= today && r.date <= limit)
+      .filter(r => r.date && (r.dateEnd || r.date) >= today && inAnyWindow(r.date, r.dateEnd, windows))
       .sort((a, b) => a.date === b.date
         ? (a.driveMinutes ?? 9999) - (b.driveMinutes ?? 9999)
         : a.date < b.date ? -1 : 1)
@@ -206,7 +202,10 @@ export default function RaceList({ races, lastUpdated }) {
 
   const grouped = useMemo(() => {
     const groups = {}
-    for (const race of filtered) {
+    // The promoted closest match renders once — in its highlight block, not
+    // again in the calendar (Codex P2-5). The result count still includes it.
+    const listed = closest ? filtered.filter(r => r.id !== closest.id) : filtered
+    for (const race of listed) {
       const key = race.date
         ? race.date.slice(0, 7)
         : race.expectedMonth != null
@@ -216,7 +215,7 @@ export default function RaceList({ races, lastUpdated }) {
       groups[key].push(race)
     }
     return groups
-  }, [filtered])
+  }, [filtered, closest])
 
   // Group order derived from the data: every dated month present, sorted
   // chronologically (YYYY-MM sorts lexically). No month can silently drop.

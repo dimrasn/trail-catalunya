@@ -71,11 +71,14 @@ export function applyFilters<T extends FilterableEvent>(
       if (!e.date) {
         // A dateless race whose source-published month (expectedMonth) matches
         // a month filter still belongs in the result (site/MCP parity,
-        // docs/rules.md R6/R8). A precise date_from/date_to window can't place
-        // it — the day is unknown — so it stays excluded (and counted) there.
+        // docs/rules.md R6/R8). A KNOWN month that mismatches is a plain
+        // exclusion, NOT a TBD count — tbd_excluded_count means "couldn't be
+        // placed", and a known-October race asked about November was placed
+        // fine (Codex 2026-08-25 P2-7). A precise date_from/date_to window
+        // can't place any dayless race, so those stay excluded and counted.
         if (f.month?.length && f.date_from == null && f.date_to == null &&
-            e.expectedMonth != null && f.month.includes(e.expectedMonth)) {
-          return true
+            e.expectedMonth != null) {
+          return f.month.includes(e.expectedMonth)
         }
         tbdExcluded++
         return false

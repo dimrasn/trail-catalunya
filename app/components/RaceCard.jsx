@@ -1,5 +1,5 @@
-import { PROVINCE_TITLE, MONTHS_SHORT, WEEKDAYS, formatDrive, kmEffort, eventKmEffort, difficultyLevel, maxElevation } from '../lib/format.js'
-import { driveBand, DRIVE_INK, DRIVE_CHIP, enumerateDistances, verdictFor, difficultyToken } from '../lib/semantics.js'
+import { PROVINCE_TITLE, MONTHS_SHORT, WEEKDAYS, formatDrive, kmEffort, eventKmEffort, difficultyLevel } from '../lib/format.js'
+import { driveBand, DRIVE_INK, DRIVE_CHIP, enumerateDistances, verdictFor, difficultyToken, climbSummary } from '../lib/semantics.js'
 
 function parseDateParts(dateStr) {
   const [y, m, d] = dateStr.split('-').map(Number)
@@ -86,7 +86,7 @@ export default function RaceCard({ race }) {
   const level = difficultyLevel(eventEff)
   const t = difficultyToken(level)
   const distStr = enumerateDistances(race.distances)
-  const maxEl = maxElevation(race.distances)
+  const climb = climbSummary(race.distances)
   const verdict = verdictFor(race)
   const band = driveBand(race.driveMinutes)
 
@@ -152,7 +152,7 @@ export default function RaceCard({ race }) {
         {distStr
           ? <> · <b style={{ color: 'var(--fdr-ink)', fontWeight: 600 }}>{distStr}</b></>
           : <span style={{ fontStyle: 'italic' }}> Various distances — check website</span>}
-        {maxEl != null ? ` · up to ${maxEl} D+` : distStr ? ' · climb not published' : ''}
+        {climb ? ` · ${climb}` : ''}
         {race.kidsRun ? ' · + kids' : ''}
       </span>
 

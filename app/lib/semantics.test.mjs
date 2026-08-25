@@ -37,3 +37,34 @@ test('verdictFor: editorial when the taste layer has one, null otherwise (no gen
   assert.equal(verdictFor({}), null)
   assert.equal(verdictFor({ taste: { editorial: [{ key: 'unique', value: '' }] } }), null)
 })
+
+test('climbSummary: complete-data-only maximum, partial data says so (Codex P1-1)', async () => {
+  const { climbSummary } = await import('./semantics.js')
+  assert.equal(climbSummary([{ km: 12, elevationGain: 500 }, { km: 6, elevationGain: 200 }]), 'up to 500 D+')
+  assert.equal(climbSummary([{ km: 15, elevationGain: 509 }, { km: 7 }]), 'climb not fully published')
+  assert.equal(climbSummary([{ km: 11 }, { km: 6 }]), 'climb not published')
+  assert.equal(climbSummary([]), null)
+  assert.equal(climbSummary(null), null)
+})
+
+test('nextTwoWeekendWindows: Fri–Sun windows, two of them, current weekend included (Codex P2-4)', async () => {
+  const { nextTwoWeekendWindows, inAnyWindow } = await import('./semantics.js')
+  // 2026-08-25 is a Tuesday → weekends: Fri 28–Sun 30 Aug, Fri 04–Sun 06 Sep
+  assert.deepEqual(nextTwoWeekendWindows('2026-08-25'), [
+    ['2026-08-28', '2026-08-30'],
+    ['2026-09-04', '2026-09-06'],
+  ])
+  // A Saturday: the in-progress weekend counts as the first window
+  assert.deepEqual(nextTwoWeekendWindows('2026-08-29'), [
+    ['2026-08-28', '2026-08-30'],
+    ['2026-09-04', '2026-09-06'],
+  ])
+  // A Sunday: still inside weekend 1
+  assert.deepEqual(nextTwoWeekendWindows('2026-08-30')[0], ['2026-08-28', '2026-08-30'])
+  const windows = nextTwoWeekendWindows('2026-08-25')
+  assert.equal(inAnyWindow('2026-08-29', null, windows), true)   // Saturday race
+  assert.equal(inAnyWindow('2026-09-04', null, windows), true)   // Friday night race
+  assert.equal(inAnyWindow('2026-09-01', null, windows), false)  // Tuesday race
+  assert.equal(inAnyWindow('2026-08-25', '2026-08-29', windows), true) // multi-day overlaps
+  assert.equal(inAnyWindow(null, null, windows), false)
+})

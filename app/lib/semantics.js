@@ -42,6 +42,44 @@ export function enumerateDistances(distances) {
   return `${kms.join(' · ')} km`
 }
 
+// Climb aggregate for the card signal line. Complete-data-only (docs/rules.md
+// R14, Codex 2026-08-25 P1-1): a partial max would present the largest KNOWN
+// figure as the event maximum — a distance with no published climb makes the
+// whole aggregate unpublishable, and we say so instead of guessing.
+export function climbSummary(distances) {
+  if (!distances || distances.length === 0) return null
+  const known = distances.filter(d => d.elevationGain != null)
+  if (known.length === 0) return 'climb not published'
+  if (known.length < distances.length) return 'climb not fully published'
+  return `up to ${Math.max(...known.map(d => d.elevationGain))} D+`
+}
+
+// "Next two weekends" means actual weekends (Codex P2-4) — a rolling 14-day
+// window spans weekdays and, on a Sunday, parts of three weekends, so the
+// label would lie. A weekend window is Fri–Sun (Friday-night races are real);
+// an in-progress weekend counts as the first window.
+function isoShift(iso, days) {
+  const [y, m, d] = iso.split('-').map(Number)
+  const dt = new Date(Date.UTC(y, m - 1, d + days))
+  return dt.toISOString().slice(0, 10)
+}
+
+export function nextTwoWeekendWindows(todayIso) {
+  const [y, m, d] = todayIso.split('-').map(Number)
+  const dow = new Date(Date.UTC(y, m - 1, d)).getUTCDay() // 0=Sun … 6=Sat
+  // Days until the Sunday closing the current-or-next weekend window.
+  const toSunday = dow === 0 ? 0 : 7 - dow
+  const sun1 = isoShift(todayIso, toSunday)
+  const sun2 = isoShift(sun1, 7)
+  return [[isoShift(sun1, -2), sun1], [isoShift(sun2, -2), sun2]]
+}
+
+export function inAnyWindow(dateIso, dateEndIso, windows) {
+  if (!dateIso) return false
+  const end = dateEndIso || dateIso
+  return windows.some(([from, to]) => dateIso <= to && end >= from)
+}
+
 // Verdict three-state design; v1 ships states 1 and 3 only: an editorial
 // verdict from the taste layer, or NOTHING. No templated prose — the factual
 // signals already live in the gate / card signal line (decision log Q7).

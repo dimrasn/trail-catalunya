@@ -239,6 +239,21 @@ export const TOOLS: ToolDef[] = [
         dist_max: { type: 'number', description: 'Max distance in km.' },
         elev_min: { type: 'number', description: 'Min elevation gain in metres (D+). Use for a single range; for disjoint bands use elev_ranges.' },
         elev_max: { type: 'number', description: 'Max elevation gain in metres (D+).' },
+        dist_ranges: {
+          type: 'array',
+          items: { type: 'object', properties: { min: { type: 'number' }, max: { type: 'number' } } },
+          description: 'Disjoint distance bands in km, OR-matched — e.g. [{"max":10},{"min":42}] for "short OR ultra". Supersedes dist_min/dist_max when given. For one contiguous range, prefer dist_min/dist_max.',
+        },
+        elev_ranges: {
+          type: 'array',
+          items: { type: 'object', properties: { min: { type: 'number' }, max: { type: 'number' } } },
+          description: 'Disjoint elevation-gain bands in metres (D+), OR-matched. Supersedes elev_min/elev_max when given.',
+        },
+        province: {
+          type: 'array',
+          items: { type: 'string', enum: ['BARCELONA', 'GIRONA', 'TARRAGONA', 'LLEIDA'] },
+          description: 'One or more of BARCELONA, GIRONA, TARRAGONA, LLEIDA — OR-matched (e.g. ["BARCELONA","GIRONA"]). A single string is also accepted.',
+        },
         month: {
           anyOf: [
             { type: 'number' },

@@ -17,6 +17,9 @@ const ELEV_LABEL = {
   u200: 'under 200 D+', '200-500': '200–500 D+', '500-1000': '500–1000 D+',
   '1000-2000': '1000–2000 D+', '2000+': '2000+ D+',
 }
+const DIFFICULTY_LABEL = {
+  easy: 'Easy', moderate: 'Moderate', hard: 'Hard', 'vh+': 'Very hard or above',
+}
 const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const PROV_LABEL = {
   BARCELONA: 'Barcelona', GIRONA: 'Girona', TARRAGONA: 'Tarragona', LLEIDA: 'Lleida',
@@ -35,6 +38,7 @@ function activeFilterPhrases(filters) {
   if (filters.drive?.length) out.push(`drive ${joinLabels(filters.drive, DRIVE_LABEL)} from Barcelona`)
   if (filters.distance?.length) out.push(`distance ${joinLabels(filters.distance, DIST_LABEL)}`)
   if (filters.elevation?.length) out.push(`elevation ${joinLabels(filters.elevation, ELEV_LABEL)}`)
+  if (filters.difficulty?.length) out.push(`difficulty ${joinLabels(filters.difficulty, DIFFICULTY_LABEL)} (ITRA km-effort scale)`)
   if (filters.month?.length) out.push(`in ${filters.month.map(m => MONTHS[parseInt(m) - 1]).join(' or ')}`)
   if (filters.province?.length) out.push(`in ${joinLabels(filters.province, PROV_LABEL)} province`)
   if (filters.kidsRun) out.push('with a kids run')

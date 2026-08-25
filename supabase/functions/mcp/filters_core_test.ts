@@ -45,10 +45,15 @@ Deno.test('month[]: a source-published month (expectedMonth) matches; a precise 
   const r = applyFilters(withExpected, { month: [10] })
   assertEquals(ids(r), ['exp-oct'])
   assertEquals(r.tbdExcluded, 1)
-  // a different month excludes both
-  assertEquals(ids(applyFilters(withExpected, { month: [11] })), [])
-  // a precise date window can't place an expected-month race → excluded
-  assertEquals(ids(applyFilters(withExpected, { date_from: '2026-10-01', date_to: '2026-10-31' })), [])
+  // a different month excludes both — but only the truly-undated race counts
+  // as a TBD exclusion; the known-October race is a plain non-match (P2-7)
+  const miss = applyFilters(withExpected, { month: [11] })
+  assertEquals(ids(miss), [])
+  assertEquals(miss.tbdExcluded, 1)
+  // a precise date window can't place ANY dayless race → both excluded + counted
+  const win = applyFilters(withExpected, { date_from: '2026-10-01', date_to: '2026-10-31' })
+  assertEquals(ids(win), [])
+  assertEquals(win.tbdExcluded, 2)
 })
 
 Deno.test('month[]: OR across months', () => {
