@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import FilterChip from './FilterChip'
 import { toggleValue } from '../lib/filters.js'
 import { LEVELS } from '../lib/semantics.js'
@@ -31,7 +30,9 @@ const DISTANCE_OPTIONS = [
   { value: '42+', label: '42+ km' },
 ]
 
-// Raw climb buckets live behind "More" — expert units, demoted not deleted.
+// Climb is a first-class row (Dima 2026-08-25): for trail running D+ is a
+// primary decision axis, so it sits right after Distance — the earlier
+// behind-"More" demotion over-corrected.
 const ELEVATION_OPTIONS = [
   { value: 'any', label: 'Any' },
   { value: 'u200', label: '< 200 D+' },
@@ -96,11 +97,6 @@ function Toggle({ label, active, onClick }) {
 }
 
 export default function FilterBar({ filters, setFilter, monthOptions = MONTH_OPTIONS_FALLBACK }) {
-  // Climb row is hidden by default but must surface when a shared URL
-  // arrives carrying elevation filters — hidden active filters lie.
-  const [showElev, setShowElev] = useState(false)
-  const elevVisible = showElev || filters.elevation.length > 0
-
   return (
     <div
       style={{
@@ -118,19 +114,16 @@ export default function FilterBar({ filters, setFilter, monthOptions = MONTH_OPT
       <FilterRow label="Drive" options={DRIVE_OPTIONS} selected={filters.drive} onChange={v => setFilter('drive', v)} />
       <FilterRow label="Difficulty" options={DIFFICULTY_OPTIONS} selected={filters.difficulty} onChange={v => setFilter('difficulty', v)} />
       <FilterRow label="Distance" options={DISTANCE_OPTIONS} selected={filters.distance} onChange={v => setFilter('distance', v)} />
+      <FilterRow label="Climb" options={ELEVATION_OPTIONS} selected={filters.elevation} onChange={v => setFilter('elevation', v)} />
       <FilterRow label="Month" options={monthOptions} selected={filters.month} onChange={v => setFilter('month', v)} />
       <FilterRow label="Province" options={PROVINCE_OPTIONS} selected={filters.province} onChange={v => setFilter('province', v)} />
       {/* "More" holds content filters; "Show" holds view toggles — mixing the
           two was confusing (a kids-run filter is not the same kind of thing as
-          revealing past races). First cut of the rework; expect iteration. */}
+          revealing past races). */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', paddingTop: '2px' }}>
         <span className="fdr-label" style={{ minWidth: '64px' }}>More</span>
         <Toggle label="Kids run" active={filters.kidsRun} onClick={() => setFilter('kidsRun', !filters.kidsRun)} />
-        <Toggle label={elevVisible ? 'Climb (D+) ▴' : 'Climb (D+) ▾'} active={filters.elevation.length > 0} onClick={() => setShowElev(s => !s)} />
       </div>
-      {elevVisible && (
-        <FilterRow label="Climb" options={ELEVATION_OPTIONS} selected={filters.elevation} onChange={v => setFilter('elevation', v)} />
-      )}
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
         <span className="fdr-label" style={{ minWidth: '64px' }}>Show</span>
         <Toggle label="No date yet" active={filters.showTBD} onClick={() => setFilter('showTBD', !filters.showTBD)} />
