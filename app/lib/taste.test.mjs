@@ -52,16 +52,39 @@ test('tasteSummary falls back (who → setting) when no unique/reference', () =>
 test('tasteFlags: conservative — set only when stated, absent = unknown', () => {
   assert.equal(tasteFlags(null), null)
   assert.deepEqual(tasteFlags({ attributes: { night_race: { value: 'Yes', claim_strength: 'organizer_fact' } }, editorial: {} }), { night: true })
-  assert.deepEqual(tasteFlags({ attributes: { technicality: { value: 'some technical sections', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'moderate' })
-  assert.deepEqual(tasteFlags({ attributes: { technicality: { value: 'molt tècnica, rocky descents', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'high' })
-  assert.deepEqual(tasteFlags({ attributes: { technicality: { value: 'runnable, low tech', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'low' })
+  // Technicality bands from the organizer EVIDENCE quote, not our value prose.
+  assert.deepEqual(tasteFlags({ attributes: { technicality: { value: 'some technical sections', claim_strength: 'organizer_fact', evidence: 'some technical sections' } }, editorial: {} }), { technicality: 'moderate' })
+  assert.deepEqual(tasteFlags({ attributes: { technicality: { value: 'genuinely technical', claim_strength: 'organizer_fact', evidence: 'molt tècnica, rocky descents' } }, editorial: {} }), { technicality: 'high' })
+  assert.deepEqual(tasteFlags({ attributes: { technicality: { value: 'runnable, low tech', claim_strength: 'organizer_fact', evidence: 'runnable, low tech' } }, editorial: {} }), { technicality: 'low' })
   assert.equal(tasteFlags({ attributes: { setting: { value: 'coastal forest', claim_strength: 'our_read' } }, editorial: {} }), null)
 })
 
 test('tasteFlags: negation never sets night; non-organizer provenance is ineligible (audit #6)', () => {
   assert.equal(tasteFlags({ attributes: { night_race: { value: 'No. (day marxa, no night mention)', claim_strength: 'organizer_fact' } }, editorial: {} }), null)
-  assert.equal(tasteFlags({ attributes: { technicality: { value: 'rocky, technical', claim_strength: 'inference' } }, editorial: {} }), null)
+  assert.equal(tasteFlags({ attributes: { technicality: { value: 'rocky, technical', claim_strength: 'inference', evidence: 'rocky' } }, editorial: {} }), null)
   assert.equal(tasteFlags({ attributes: { night_race: { value: 'Yes — nocturna', claim_strength: 'our_read' } }, editorial: {} }), null)
+})
+
+test('tasteFlags: blended organizer value does NOT manufacture a technicality flag (review #1, UTSM)', () => {
+  // The real UTSM field: organizer said only "accessible"; the words "rocky
+  // Montsant" are OUR caution living in the same value string. Banding must read
+  // the evidence ("accessible" → no band), never the blended value → no flag.
+  const utsm = {
+    attributes: {
+      technicality: {
+        value: '"accessible" despite distance — treat with caution given 3470 m D+ on rocky Montsant conglomerate.',
+        claim_strength: 'organizer_fact',
+        evidence: 'accessible',
+      },
+    },
+    editorial: {},
+  }
+  assert.equal(tasteFlags(utsm), null)
+  // Guard the other half: when the organizer's OWN quote is high-technical, it flags.
+  const vilaverd = { attributes: { technicality: { value: 'HIGH — organizer states it', claim_strength: 'organizer_fact', evidence: 'very technical… for runners accustomed to mountain' } }, editorial: {} }
+  assert.deepEqual(tasteFlags(vilaverd), { technicality: 'high' })
+  // An organizer_fact with NO evidence quote yields no flag (conservative).
+  assert.equal(tasteFlags({ attributes: { technicality: { value: 'rocky and hard', claim_strength: 'organizer_fact', evidence: null } }, editorial: {} }), null)
 })
 
 test('inference stays inference, not upgraded to fact', () => {

@@ -22,8 +22,17 @@ typing in the same document with no track-changes.
   would yank the other session): `git worktree add <tmp> origin/main`, commit/
   cherry-pick there, `git push origin HEAD:main`, then `git worktree remove`.
 - **Deploy the MCP only via `scripts/deploy-mcp.sh`** — it fetches `origin/main`,
-  gates on the test suite, deploys from a pinned clean worktree, and probes live.
+  deploys from a pinned clean worktree, serializes concurrent deploys with a lock,
+  re-checks that `origin/main` hasn't moved just before deploying, and probes the
+  live `initialize` until `serverInfo.build` equals the exact SHA it shipped.
   Never `supabase functions deploy` from the working dir (it may be on a feature
   branch and would ship that branch's WIP). Versions bump every deploy and drift
   across sessions — always `list_edge_functions` to read the live version; never
   trust a number written in a doc.
+- **The test gate is fail-closed.** With `deno` on PATH the script runs
+  `deno test --allow-read supabase/functions/ eval/` and aborts on failure. If
+  `deno` is ABSENT the deploy is REFUSED, not silently skipped — you must either
+  install deno or pass `--skip-tests` to consciously attest you ran that exact
+  suite elsewhere for this SHA. (Dima's shell has no deno on PATH; a maintainer
+  deploy from there needs `--skip-tests` after the suite has been verified by an
+  agent/CI on the same `origin/main` SHA.)

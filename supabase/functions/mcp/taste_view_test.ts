@@ -51,18 +51,27 @@ Deno.test('tasteSummary falls back (who → setting) when no unique/reference', 
 Deno.test('tasteFlags: conservative — set only when stated, absent = unknown', () => {
   assertEquals(tasteFlags(null), null)
   assertEquals(tasteFlags({ attributes: { night_race: { value: 'Yes', claim_strength: 'organizer_fact' } }, editorial: {} }), { night: true })
-  assertEquals(tasteFlags({ attributes: { technicality: { value: 'some technical sections', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'moderate' })
-  assertEquals(tasteFlags({ attributes: { technicality: { value: 'molt tècnica, rocky descents', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'high' })
-  assertEquals(tasteFlags({ attributes: { technicality: { value: 'runnable, low tech', claim_strength: 'organizer_fact' } }, editorial: {} }), { technicality: 'low' })
+  // Technicality bands from the organizer EVIDENCE quote, not our value prose.
+  assertEquals(tasteFlags({ attributes: { technicality: { value: 'some technical sections', claim_strength: 'organizer_fact', evidence: 'some technical sections' } }, editorial: {} }), { technicality: 'moderate' })
+  assertEquals(tasteFlags({ attributes: { technicality: { value: 'genuinely technical', claim_strength: 'organizer_fact', evidence: 'molt tècnica, rocky descents' } }, editorial: {} }), { technicality: 'high' })
+  assertEquals(tasteFlags({ attributes: { technicality: { value: 'runnable, low tech', claim_strength: 'organizer_fact', evidence: 'runnable, low tech' } }, editorial: {} }), { technicality: 'low' })
   // a race that states nothing technical/night → no flags asserted (not "low", not "not-night")
   assertEquals(tasteFlags({ attributes: { setting: { value: 'coastal forest', claim_strength: 'our_read' } }, editorial: {} }), null)
+})
+
+Deno.test('tasteFlags: blended organizer value does NOT manufacture a technicality flag (review #1, UTSM)', () => {
+  // Organizer said only "accessible"; "rocky Montsant" is OUR caution in the same
+  // value string. Banding reads the evidence quote, never the blended value.
+  assertEquals(tasteFlags({ attributes: { technicality: { value: '"accessible" despite distance — treat with caution given 3470 m D+ on rocky Montsant conglomerate.', claim_strength: 'organizer_fact', evidence: 'accessible' } }, editorial: {} }), null)
+  assertEquals(tasteFlags({ attributes: { technicality: { value: 'HIGH — organizer states it', claim_strength: 'organizer_fact', evidence: 'very technical… for runners accustomed to mountain' } }, editorial: {} }), { technicality: 'high' })
+  assertEquals(tasteFlags({ attributes: { technicality: { value: 'rocky and hard', claim_strength: 'organizer_fact', evidence: null } }, editorial: {} }), null)
 })
 
 Deno.test('tasteFlags: negation never sets night; non-organizer provenance is ineligible (audit #6)', () => {
   // "no night mention" must NOT become night:true
   assertEquals(tasteFlags({ attributes: { night_race: { value: 'No. (day marxa, no night mention)', claim_strength: 'organizer_fact' } }, editorial: {} }), null)
   // an inferred/our-read technicality is NOT a queryable flag
-  assertEquals(tasteFlags({ attributes: { technicality: { value: 'rocky, technical', claim_strength: 'inference' } }, editorial: {} }), null)
+  assertEquals(tasteFlags({ attributes: { technicality: { value: 'rocky, technical', claim_strength: 'inference', evidence: 'rocky' } }, editorial: {} }), null)
   assertEquals(tasteFlags({ attributes: { night_race: { value: 'Yes — nocturna', claim_strength: 'our_read' } }, editorial: {} }), null)
 })
 
