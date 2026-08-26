@@ -94,3 +94,18 @@ test('inference stays inference, not upgraded to fact', () => {
   const d = tasteForDisplay({ editorial: { who: { value: 'strong night runners', claim_strength: 'inference' } } })
   assert.equal(d.editorial[0].strengthLabel, 'Our guess')
 })
+
+import { kidsFromTaste } from './taste.js'
+test('kidsFromTaste: organizer-affirmed kids races set the flag; negations + non-organizer do not', () => {
+  const org = (value) => ({ attributes: { kids_race: { value, claim_strength: 'organizer_fact' } } })
+  assert.equal(kidsFromTaste(org('Mini CabróRun, free.')), true)
+  assert.equal(kidsFromTaste(org('YES — Ironkids 18:30–19:15, four age categories')), true)
+  assert.equal(kidsFromTaste(org('Rialp Matxixics, ages 3–16, 1–6 km.')), true)
+  assert.equal(kidsFromTaste(org('No.')), false)
+  assert.equal(kidsFromTaste(org('none.')), false)
+  assert.equal(kidsFromTaste(org('minors allowed with guardian consent ; no separate kids race stated')), false)
+  // provenance gate: an inferred kids mention is not organizer-confirmed
+  assert.equal(kidsFromTaste({ attributes: { kids_race: { value: 'Mini race', claim_strength: 'inference' } } }), false)
+  assert.equal(kidsFromTaste(null), false)
+  assert.equal(kidsFromTaste({ attributes: {} }), false)
+})

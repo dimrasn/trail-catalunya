@@ -14,7 +14,7 @@ import driveTimes from '@/data/towns-drive-times.json'
 import townsGeocoded from '@/data/towns-geocoded.json'
 import { enrichmentForDisplay } from './enrichment.js'
 import { expectedMonthFromRows } from './format.js'
-import { tasteForDisplay, tasteSummary, tasteFlags } from './taste.js'
+import { tasteForDisplay, tasteSummary, tasteFlags, kidsFromTaste } from './taste.js'
 // Canonical taste artifact (plan v3, KTD1 — committed JSON bundled into the site
 // build; the MCP bundles the same file). Keyed by race_url::town.
 import tasteProfiles from '../../docs/enrichment/2026-batch/parsed/taste.json'
@@ -283,6 +283,8 @@ export async function getRaces() {
     if (summary) ev.tasteSummary = summary
     const flags = tasteFlags(profile)
     if (flags) ev.tasteFlags = flags
+    // Backfill kidsRun from an organizer-stated kids race the race NAME misses.
+    if (!ev.kidsRun && kidsFromTaste(profile)) ev.kidsRun = true
   }
   if (process.env.NODE_ENV !== 'production' || process.env.TASTE_JOIN_LOG) {
     console.log(`[taste] ${tasteJoins} of ${events.length} events joined a taste profile (${tasteByEvent.size} profiles available)`)

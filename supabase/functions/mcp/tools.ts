@@ -14,7 +14,7 @@ import {
   difficultyLevel, dPlusPerKm, eventKmEffort, itraPoints, kmEffort,
 } from './difficulty.ts'
 import { applyFilters, numList, rangeList, strList } from './filters_core.ts'
-import { type TasteField, type TasteProfile, tasteFlags, tasteForDisplay, tasteSummary } from './taste_view.ts'
+import { type TasteField, type TasteProfile, kidsFromTaste, tasteFlags, tasteForDisplay, tasteSummary } from './taste_view.ts'
 import tasteProfilesRaw from './taste.json' with { type: 'json' }
 import type { ToolDef } from './protocol.ts'
 
@@ -109,6 +109,8 @@ async function loadEventsAndFreshness(): Promise<{
       const tasteProfile = tasteByEvent.get(`${(e.url || '').trim()}::${(e.town || '').trim()}`)
       return {
         ...e,
+        // Backfill kidsRun from an organizer-stated kids race the race NAME misses.
+        kidsRun: e.kidsRun || kidsFromTaste(tasteProfile),
         taste: tasteForDisplay(tasteProfile),
         taste_summary: tasteSummary(tasteProfile),
         taste_flags: tasteFlags(tasteProfile),

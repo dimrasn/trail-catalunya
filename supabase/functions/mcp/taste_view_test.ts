@@ -4,7 +4,7 @@
 // Run: deno test supabase/functions/mcp/taste_view_test.ts
 
 import { assert, assertEquals } from 'jsr:@std/assert@1'
-import { tasteFlags, tasteForDisplay, tasteSummary } from './taste_view.ts'
+import { kidsFromTaste, tasteFlags, tasteForDisplay, tasteSummary } from './taste_view.ts'
 
 Deno.test('null / empty profile → null', () => {
   assertEquals(tasteForDisplay(null), null)
@@ -80,4 +80,14 @@ Deno.test('tasteFlags: negation never sets night; non-organizer provenance is in
 Deno.test('inference stays inference, not upgraded to fact', () => {
   const d = tasteForDisplay({ editorial: { who: { value: 'strong night runners', claim_strength: 'inference' } } })!
   assertEquals(d.editorial[0].strength_label, 'Our guess')
+})
+
+Deno.test('kidsFromTaste: organizer-affirmed kids races → true; negations + non-organizer → false', () => {
+  const org = (value: string) => ({ attributes: { kids_race: { value, claim_strength: 'organizer_fact' } } })
+  assertEquals(kidsFromTaste(org('Mini CabróRun, free.')), true)
+  assertEquals(kidsFromTaste(org('YES — Ironkids, four age categories')), true)
+  assertEquals(kidsFromTaste(org('No.')), false)
+  assertEquals(kidsFromTaste(org('minors allowed ; no separate kids race stated')), false)
+  assertEquals(kidsFromTaste({ attributes: { kids_race: { value: 'Mini race', claim_strength: 'inference' } } }), false)
+  assertEquals(kidsFromTaste(null), false)
 })

@@ -123,6 +123,20 @@ export function tasteFlags(profile) {
   return Object.keys(flags).length ? flags : null
 }
 
+// Does this race have a KIDS RUN per the ORGANIZER-stated taste? The site/MCP
+// otherwise derive kidsRun from the race NAME, which misses sub-event kids races
+// (Mini CabróRun, Ironkids, Rialp Matxixics…). CONSERVATIVE: organizer provenance
+// + an affirmative kids-race signal + not a negation / "no separate kids race" /
+// mere age-eligibility. Mirror of taste_view.ts kidsFromTaste (parity).
+const KIDS_NEG = /^\s*(no|none|cap)\b|no separate kids|no kids race/i
+const KIDS_AFFIRM = /\byes\b|\bs[íi]\b|mini|infantil|\bkids\b|corriolet|matxi|miniespi|ironkids|marxeta|cadet|alev|benjam/i
+export function kidsFromTaste(profile) {
+  const kr = profile && profile.attributes && profile.attributes.kids_race
+  if (!kr || !FLAG_ELIGIBLE.has(kr.claim_strength)) return false
+  const v = kr.value || ''
+  return !KIDS_NEG.test(v) && KIDS_AFFIRM.test(v)
+}
+
 // The one-line summary for the MCP list projection (KTD8): the "special" line,
 // or the "in a word" reference. Kept typed with its strength so a list agent
 // never reads our judgement as an organizer fact.

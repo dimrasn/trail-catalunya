@@ -125,6 +125,18 @@ export function tasteFlags(profile?: TasteProfile | null): { night?: boolean; te
   return Object.keys(flags).length ? flags : null
 }
 
+// Organizer-stated kids-run detection (site/MCP derive kidsRun from the race NAME,
+// which misses sub-event kids races). CONSERVATIVE: organizer provenance +
+// affirmative signal + not a negation / age-eligibility. Mirror of taste.js.
+const KIDS_NEG = /^\s*(no|none|cap)\b|no separate kids|no kids race/i
+const KIDS_AFFIRM = /\byes\b|\bs[íi]\b|mini|infantil|\bkids\b|corriolet|matxi|miniespi|ironkids|marxeta|cadet|alev|benjam/i
+export function kidsFromTaste(profile?: TasteProfile | null): boolean {
+  const kr = profile && profile.attributes && profile.attributes.kids_race
+  if (!kr || !FLAG_ELIGIBLE.has(kr.claim_strength)) return false
+  const v = kr.value || ''
+  return !KIDS_NEG.test(v) && KIDS_AFFIRM.test(v)
+}
+
 // Compact, typed one-liner for the list projection (KTD8): keeps its claim
 // strength so a list agent never reads our judgement as an organizer fact.
 export function tasteSummary(profile?: TasteProfile | null): { value: string; strength: string; strength_label: string } | null {
