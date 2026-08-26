@@ -1,7 +1,10 @@
-// Local crawl of the race pages for the enrichment batch (plan 2026-08-25-002, U3).
-// Reuses supabase/functions/enrich-races/fetch.ts (SSRF-guarded fetch + clean +
-// sub-page discovery). Publishes NOTHING — it only caches page text + a manifest.
-// The cache dir is git-ignored; only the manifest is committed.
+// Local crawl of the race pages → a DURABLE, content-addressed corpus for the
+// enrichment slice (plan 2026-08-25-002; Codex r3-P1-5: the corpus must be
+// reproducible + provenanced). Reuses supabase/functions/enrich-races/fetch.ts.
+// Publishes nothing. The corpus is git-TRACKED under docs/enrichment/2026-batch/_corpus/
+// so extraction is reproducible and every fact can cite {source_url, page_hash,
+// fetched_at}. The page hash is SHA-256 of the FULL cleaned text (it deliberately
+// includes dates/times, so a start-time change flips the hash — the freshness anchor).
 //
 // Run: deno run --allow-net --allow-env --allow-read --allow-write \
 //   --env-file=.env.local scripts/enrich-crawl.ts
@@ -15,15 +18,18 @@ if (!SUPABASE_URL || !ANON) {
   Deno.exit(1)
 }
 
-const CACHE = 'docs/enrichment/2026-batch/_crawl'
-await Deno.mkdir(CACHE, { recursive: true })
+const CORPUS = 'docs/enrichment/2026-batch/_corpus'
+await Deno.mkdir(CORPUS, { recursive: true })
 
 function slug(s: string): string {
   return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '').slice(0, 60) || 'x'
 }
+async function sha256(s: string): Promise<string> {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s))
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('')
+}
 
-// Distinct races (url::town), like the site/MCP grouping.
 const q = `${SUPABASE_URL}/rest/v1/races?select=race_url,town,race_name` +
   `&source=eq.ultrescatalunya&status=neq.REMOVED&status=neq.SUSPESA`
 const rows = await (await fetch(q, { headers: { apikey: ANON, authorization: `Bearer ${ANON}` } })).json()
@@ -33,26 +39,32 @@ for (const r of rows) {
   if (r.race_url && !byEvent.has(key)) byEvent.set(key, r)
 }
 const races = [...byEvent.values()]
-console.log(`crawling ${races.length} distinct races → ${CACHE}`)
+console.log(`crawling ${races.length} distinct races → ${CORPUS} (durable, hashed)`)
 
-const manifest = { started_at: new Date().toISOString(), total: races.length, fetched: [] as unknown[], failed: [] as unknown[] }
+const fetchedAt = new Date().toISOString()
+const manifest = { generated_at: fetchedAt, total: races.length, fetched: [] as unknown[], failed: [] as unknown[] }
 let i = 0
 for (const r of races) {
   i++
   const id = `${slug(r.town)}--${slug(r.race_name)}`
   try {
     const pages = await fetchRacePages(r.race_url)
-    if (!pages.length || pages.every((p) => !p.text || p.text.length < 200)) {
-      manifest.failed.push({ url: r.race_url, town: r.town, reason: 'empty/thin (likely JS-only)' })
+    const good = pages.filter((p) => p.text && p.text.length >= 200)
+    if (!good.length) {
+      manifest.failed.push({ id, url: r.race_url, town: r.town, reason: 'empty/thin (likely JS-only)' })
     } else {
-      await Deno.writeTextFile(`${CACHE}/${id}.json`, JSON.stringify({ race: r, pages }, null, 0))
-      manifest.fetched.push({ id, url: r.race_url, town: r.town, pages: pages.length })
+      const hashed = []
+      for (const p of good) hashed.push({ url: p.url, hash: await sha256(p.text), chars: p.text.length, text: p.text })
+      await Deno.writeTextFile(`${CORPUS}/${id}.json`,
+        JSON.stringify({ race: r, fetched_at: fetchedAt, pages: hashed }, null, 0))
+      manifest.fetched.push({ id, source_url: r.race_url, town: r.town,
+        pages: hashed.map((h) => ({ url: h.url, hash: h.hash, chars: h.chars })) })
     }
   } catch (e) {
-    manifest.failed.push({ url: r.race_url, town: r.town, reason: String(e).slice(0, 140) })
+    manifest.failed.push({ id, url: r.race_url, town: r.town, reason: String(e).slice(0, 140) })
   }
   if (i % 20 === 0) console.log(`  ${i}/${races.length} (ok ${manifest.fetched.length}, failed ${manifest.failed.length})`)
-  await new Promise((res) => setTimeout(res, 400)) // polite delay
+  await new Promise((res) => setTimeout(res, 400))
 }
-await Deno.writeTextFile(`${CACHE}/_manifest.json`, JSON.stringify(manifest, null, 2))
-console.log(`done: ${manifest.fetched.length} fetched, ${manifest.failed.length} failed → ${CACHE}/_manifest.json`)
+await Deno.writeTextFile(`${CORPUS}/_manifest.json`, JSON.stringify(manifest, null, 2))
+console.log(`done: ${manifest.fetched.length} fetched, ${manifest.failed.length} failed → ${CORPUS}/_manifest.json`)

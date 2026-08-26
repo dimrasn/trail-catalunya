@@ -1,0 +1,4076 @@
+{
+  "generated_at": "2026-08-26T16:04:58.810Z",
+  "total": 229,
+  "fetched": [
+    {
+      "id": "macanet-de-cabrenys--cursa-del-fau",
+      "source_url": "https://www.cursadelfau.org/",
+      "town": "Maçanet de Cabrenys",
+      "pages": [
+        {
+          "url": "https://www.cursadelfau.org/",
+          "hash": "77c4148a39fc9b845db178b8436f27bc434e2c79bc662c50bb78e841bcf8e8f8",
+          "chars": 2263
+        },
+        {
+          "url": "https://www.cursadelfau.org/index.php/reglament-2019/",
+          "hash": "91fec3d02e5a842784c18ca8ab3cb9db8ec238ce3f66622898ce009a70f7df46",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.cursadelfau.org/index.php/programa-2021/",
+          "hash": "6d28765452a5f35ca210249e098398ad3d81c27dd4964021665734d3753eadf4",
+          "chars": 770
+        }
+      ]
+    },
+    {
+      "id": "tamariu--cursa-popular-tamariu-palafrugell",
+      "source_url": "https://curses.cat/tamariu2026/",
+      "town": "Tamariu",
+      "pages": [
+        {
+          "url": "https://curses.cat/tamariu2026/",
+          "hash": "4a9dec3be48e42217062ebbe78b862d02da9de346ab5c1b7f087ffb5597e3163",
+          "chars": 9658
+        },
+        {
+          "url": "https://curses.cat/tamariu2026/reglament.pdf",
+          "hash": "0a5713ac6de517fc47d62b8f01d2499a4d7c10665612847e95f18e44f26eb6c4",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "ulldecona--travessa-dels-masos",
+      "source_url": "https://sudactiu.cat/",
+      "town": "Ulldecona",
+      "pages": [
+        {
+          "url": "https://sudactiu.cat/",
+          "hash": "f665342d6f3d18ffcff69721f80ea3d00a4eee85af8dc47c9a4b1d0c9348a0b7",
+          "chars": 298
+        },
+        {
+          "url": "https://sudactiu.cat/programa/",
+          "hash": "ca3d1f5359d4a23105721da089fbf0c0277974181453e274e3a3c2e107d481b8",
+          "chars": 893
+        },
+        {
+          "url": "https://sudactiu.cat/inscripcions-tarifes/",
+          "hash": "91f41727ffabbe062a5ebeaf860c8838a9a209a269422244f60f97d253fc944f",
+          "chars": 665
+        }
+      ]
+    },
+    {
+      "id": "llavaneres--moon-trail-llavaneres",
+      "source_url": "https://ajllavaneres.cat/moontrail26",
+      "town": "Llavaneres",
+      "pages": [
+        {
+          "url": "https://ajllavaneres.cat/moontrail26",
+          "hash": "95540cee1e7f1a494861719afcf28da3b47ee23b94c2eec24d48d1095a72a74f",
+          "chars": 3788
+        }
+      ]
+    },
+    {
+      "id": "pavia--cursa-del-laberint",
+      "source_url": "https://lanostramel.com/",
+      "town": "Pàvia",
+      "pages": [
+        {
+          "url": "https://lanostramel.com/",
+          "hash": "ea31cf0acd73ac2e4c62a1af421178369426a3e1ead339038b603ac7223b1cdf",
+          "chars": 4467
+        },
+        {
+          "url": "https://lanostramel.com/la-cursa-del-laberint/",
+          "hash": "6093bddc657af45b6734d5425ded2f0922f06e482596cdc6050b3ef8019eb632",
+          "chars": 6881
+        },
+        {
+          "url": "https://lanostramel.com/producto/caminada-familiar-5-km-la-cursa-del-laberint-2026/",
+          "hash": "17234cf55d4ac00a1c8c2c101df0f55bcc78450cf3cdeb56dbd7fb71f2c1d22b",
+          "chars": 5128
+        },
+        {
+          "url": "https://lanostramel.com/producto/cursa-5-km-la-cursa-del-laberint-2026/",
+          "hash": "3c8c115ccbfb1acb378c11e49d97227866db29da91a27381f0e37fa75230bd05",
+          "chars": 4999
+        }
+      ]
+    },
+    {
+      "id": "l-albiol--trail-l-albiol",
+      "source_url": "https://www.naturetime.es/ca/trail-albiol-3/",
+      "town": "L'Albiol",
+      "pages": [
+        {
+          "url": "https://www.naturetime.es/ca/trail-albiol-3/",
+          "hash": "cb94bccc2dbe8a8414e699789d5daabce2cd3eb3a04ee1634c3686d695e294e4",
+          "chars": 11784
+        },
+        {
+          "url": "https://www.naturetime.es/ca/cursa-de-nadal/",
+          "hash": "c117e842ea750e38d0c290050f98fe02bfdab03ea3815bc2d6fcfc74fd06cb38",
+          "chars": 7547
+        },
+        {
+          "url": "https://www.naturetime.es/ca/cursa-dones-cambrils-2/",
+          "hash": "69606da1f6b0a961d66106a393acc054fc4c566b60ca4c42f9bd3d23213d91c4",
+          "chars": 8394
+        },
+        {
+          "url": "https://www.naturetime.es/wp-content/uploads/2026/07/Reglament_Curses_trailSERIES_Costa_Daurada_2026.docx",
+          "hash": "3170ba05359d432997668756e387b7e5090b7af1f47640cc4625e3ebe11431e3",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "olot--volta-volcans-d-olot",
+      "source_url": "https://ceolot.cat/voltavolcans/",
+      "town": "Olot",
+      "pages": [
+        {
+          "url": "https://ceolot.cat/voltavolcans/",
+          "hash": "384451801a5fe888e4001fd4325347656a305242011fd6685c5a2a614e43414e",
+          "chars": 850
+        }
+      ]
+    },
+    {
+      "id": "ribes-de-freser--valls-del-freser-trail-run",
+      "source_url": "https://www.vallsdelfreser.com/",
+      "town": "Ribes de Freser",
+      "pages": [
+        {
+          "url": "https://www.vallsdelfreser.com/",
+          "hash": "ebc632d1665fd9f125d4b2d802c74d3f6e9c72d302e166bf6fb187c2ecdce47b",
+          "chars": 2858
+        },
+        {
+          "url": "https://www.vallsdelfreser.com/inscripcion",
+          "hash": "03ba26819078bf209b0f672bbfa9b1d10b189a4e9bd987c8580dcf52ecf55855",
+          "chars": 1403
+        }
+      ]
+    },
+    {
+      "id": "montbrio-del-camp--10k-montbrio-del-camp",
+      "source_url": "https://webtretzesports.wixsite.com/10kmontbriodelcamp",
+      "town": "Montbrió del Camp",
+      "pages": [
+        {
+          "url": "https://webtretzesports.wixsite.com/10kmontbriodelcamp",
+          "hash": "677c73c6a9d85b24d75cc3cfea4a66607e1e7029ce69369e04d3bb42cbfae698",
+          "chars": 680
+        },
+        {
+          "url": "https://webtretzesports.wixsite.com/10kmontbriodelcamp/info-cursa",
+          "hash": "85a581d41cc55f8fd391f1c2a0d86a815a01df04a4be4c6796f985eb771cd14f",
+          "chars": 1133
+        }
+      ]
+    },
+    {
+      "id": "riudecanyes--cursa-dona-rural",
+      "source_url": "https://webtretzesports.wixsite.com/caminadadonarural",
+      "town": "Riudecanyes",
+      "pages": [
+        {
+          "url": "https://webtretzesports.wixsite.com/caminadadonarural",
+          "hash": "45034b7d87e64d24065085c4dc009908d44493d70d5f3b165cccd97ca4c4a859",
+          "chars": 1451
+        }
+      ]
+    },
+    {
+      "id": "vilarnau--correcava-vilarnau",
+      "source_url": "https://www.rockthesport.com/ca/esdeveniment/vilarnau-correcava-2026",
+      "town": "Vilarnau",
+      "pages": [
+        {
+          "url": "https://www.rockthesport.com/ca/esdeveniment/vilarnau-correcava-2026",
+          "hash": "b0f84b8469b1479ead39a703abd99a8dcea8667fa8256a007b0e93711da8f30a",
+          "chars": 2768
+        },
+        {
+          "url": "https://www.rockthesport.com/ca/esdeveniment/vilarnau-correcava-2026/inscripcio/selecciona-tarifa",
+          "hash": "826fe5ec5bc8e92d6c3255c02bcffc042a4b92b4c8f6cd45db085d298af620e2",
+          "chars": 1310
+        },
+        {
+          "url": "https://www.rockthesport.com/ca/esdeveniment/vilarnau-correcava-2026/consulta-inscrits",
+          "hash": "1191e0ee310884962bc21b4e136c073cc957cf8e03de478347107d33cbcd5450",
+          "chars": 1086
+        }
+      ]
+    },
+    {
+      "id": "capellades--cursa-neandertal",
+      "source_url": "https://cursaneandertal.com/",
+      "town": "Capellades",
+      "pages": [
+        {
+          "url": "https://cursaneandertal.com/",
+          "hash": "44ee9027cab39f6e7a94659bce15fe92291ac334369640f59fd0f6ea6dc85743",
+          "chars": 3599
+        },
+        {
+          "url": "https://cursaneandertal.com/horaris/",
+          "hash": "49c07749f0bb87b58a6d7b157d25e595ab8d8681d0cc3d49f492f9183df70308",
+          "chars": 3742
+        },
+        {
+          "url": "https://cursaneandertal.com/wp-content/uploads/2026/07/AUTORITZACIO-PARTICIPACIO-CURSA-MININEANDERTAL.docx",
+          "hash": "96d1ecc4e095aa1f2b27f8f84de9b2687b429691dc487e113d5f91d39b71d992",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "suria--l-escalada-trail",
+      "source_url": "https://www.dsport.cat/es/fitxa_cursa.php?id_cursa=1185",
+      "town": "Súria",
+      "pages": [
+        {
+          "url": "https://www.dsport.cat/es/fitxa_cursa.php?id_cursa=1185",
+          "hash": "395f58da8f61701e409f7230e9fa1167ba7f6e6bd9ab5119f92f86e250bdb00c",
+          "chars": 1680
+        },
+        {
+          "url": "https://www.dsport.cat/es/fitxa_inscripcions.php",
+          "hash": "d6d288953d368fed3a6c6f0478cca46ce7b7c32ea53b8fec0f2423bb0eb02057",
+          "chars": 2136
+        },
+        {
+          "url": "https://www.dsport.cat/imatges/reglament1185.pdf",
+          "hash": "3c84662d1ae6653dafd1610dafeb93e81ca428615100991734fc7698c39e1640",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.dsport.cat/es/ins_seleccio_recorregut.php?id_cursa=1185",
+          "hash": "c3cf18ce219805c325284b7295af8e55e3682d46ebf9214c486f475f0f1e5693",
+          "chars": 1039
+        }
+      ]
+    },
+    {
+      "id": "besalu--cursa-de-muntanya-besalu",
+      "source_url": "https://curses.cat/besalucross2025/",
+      "town": "Besalú",
+      "pages": [
+        {
+          "url": "https://curses.cat/besalucross2025/",
+          "hash": "ecf9756b429edb5da87bef422514a4699e3a00d31372e88b953ce3a0fb2a4206",
+          "chars": 1645
+        }
+      ]
+    },
+    {
+      "id": "navas--trenca-3-pics",
+      "source_url": "https://trenca3pics.weebly.com/",
+      "town": "Navàs",
+      "pages": [
+        {
+          "url": "https://trenca3pics.weebly.com/",
+          "hash": "5a469edde12cafe62af7a416bdd4493a2e8c455ad3d8d755f81b94efb9033ea4",
+          "chars": 456
+        },
+        {
+          "url": "https://trenca3pics.weebly.com/inscripcions.html",
+          "hash": "984e419ae4b4dea4bf6ddaee3d3deceaf7971fe0fdd5f51610306fa5819aae0b",
+          "chars": 452
+        },
+        {
+          "url": "https://trenca3pics.weebly.com/horaris-i-serveis.html",
+          "hash": "e71fc43a13865acdeb3f69b0be3665ba84076e072e842a777e9aa28add80362e",
+          "chars": 1403
+        }
+      ]
+    },
+    {
+      "id": "calella--trail-torres-del-foc",
+      "source_url": "https://www.b3sportevents.com/es/trailtorresdelfoc",
+      "town": "Calella",
+      "pages": [
+        {
+          "url": "https://www.b3sportevents.com/es/trailtorresdelfoc",
+          "hash": "253f2774779952544de35180911c471326fd06153e70eaaf1f8bc81fd8f38e53",
+          "chars": 553
+        }
+      ]
+    },
+    {
+      "id": "prades--prades-epic-trail",
+      "source_url": "https://www.muntanyesdepradesepictrail.com/",
+      "town": "Prades",
+      "pages": [
+        {
+          "url": "https://www.muntanyesdepradesepictrail.com/",
+          "hash": "2d84ed0f14cd572a9f1bfaba10cad4803a1b174c49288900f425ac158cefbf5a",
+          "chars": 596
+        },
+        {
+          "url": "https://www.muntanyesdepradesepictrail.com/reglamento",
+          "hash": "26e70c82026d5dc772d8f5c630de5983c790018d5c899894a90ea7f5ca54c163",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.muntanyesdepradesepictrail.com/programa",
+          "hash": "31c8e446893a7ff69d140b9aaabec5b51b84b32996cdb30e556262639968341f",
+          "chars": 943
+        }
+      ]
+    },
+    {
+      "id": "beuda--cursa-mdm-cat",
+      "source_url": "https://gasmountain.com/mdm/",
+      "town": "Beuda",
+      "pages": [
+        {
+          "url": "https://gasmountain.com/mdm/",
+          "hash": "86eb212e9595bc2f900abaeb86e3b5c1617988671c5498523dedde74db6836cb",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "castellet-i-la-gornal--cursa-montanyans",
+      "source_url": "https://cursamontanyans.wordpress.com/",
+      "town": "Castellet i la Gornal",
+      "pages": [
+        {
+          "url": "https://cursamontanyans.wordpress.com/",
+          "hash": "f3b9ab6b1e6ca596eefde815208dd93f31731e7127dcdc101d33cc03e108cf12",
+          "chars": 891
+        },
+        {
+          "url": "https://cursamontanyans.wordpress.com/reglament/",
+          "hash": "21d8df057f4df748a9848db16029fa73a4f88d67e751c4e5d0b35626a2606b50",
+          "chars": 748
+        },
+        {
+          "url": "https://cursamontanyans.wordpress.com/informacio/",
+          "hash": "08d818f11d02b8af7685f826637f588c0e89231a9920b88cfe2b5dfb06837d4d",
+          "chars": 1230
+        },
+        {
+          "url": "https://cursamontanyans.wordpress.com/inscripcions/",
+          "hash": "1842c51f3f5c9d1e2e2400e20e008201735ec7dbd8b464cf498808f9c8e686c0",
+          "chars": 1404
+        }
+      ]
+    },
+    {
+      "id": "argentona--burriac-xtrem",
+      "source_url": "https://xtrem.gmargentona.com/",
+      "town": "Argentona",
+      "pages": [
+        {
+          "url": "https://xtrem.gmargentona.com/",
+          "hash": "fecd2c59396ed61aa07296c37a4e07596385479d54ea7e3bc83036f35ace362e",
+          "chars": 318
+        }
+      ]
+    },
+    {
+      "id": "calafell--historic-trail-calafell",
+      "source_url": "https://webtretzesports.wixsite.com/historictrail/",
+      "town": "Calafell",
+      "pages": [
+        {
+          "url": "https://webtretzesports.wixsite.com/historictrail/",
+          "hash": "93087f1c7c01b99e2c31f81a017cb878aed44d2eb844ae2d0cccc2934952689e",
+          "chars": 1945
+        },
+        {
+          "url": "https://webtretzesports.wixsite.com/historictrail/info",
+          "hash": "1a25c5c188264562892785d02fafe666f96e26da536bcab96390a866e0b662f4",
+          "chars": 2546
+        }
+      ]
+    },
+    {
+      "id": "palamos--transgavarres",
+      "source_url": "https://www.klassmark.com/cmg-transgavarres/",
+      "town": "Palamós",
+      "pages": [
+        {
+          "url": "https://www.klassmark.com/cmg-transgavarres/",
+          "hash": "e493abe73e380f130e4fc0130aa25ed154b835eca15860e16ca2c11c95763762",
+          "chars": 3940
+        },
+        {
+          "url": "https://www.klassmark.com/klassmark-inscripcions/",
+          "hash": "cdacd782f589e72f0250608635b61ec1a01f3633e9413827adfddcb2c2e739df",
+          "chars": 511
+        },
+        {
+          "url": "https://www.klassmark.com/cmg-inscripcions/",
+          "hash": "fe2e295e8b675e3d9f23b2dc06197f6f35864fb6544f0acebe598d12c41808f5",
+          "chars": 701
+        },
+        {
+          "url": "https://www.klassmark.com/trail-cap-de-creus-inscripcions/",
+          "hash": "6457ecaa217f967400bb6b6ed1fec53780f1a725fc24593d67e80f350211aff5",
+          "chars": 662
+        }
+      ]
+    },
+    {
+      "id": "girona--cursa-de-muntanya-de-girona-cmg",
+      "source_url": "https://www.klassmark.com/cmg-transgavarres/",
+      "town": "Girona",
+      "pages": [
+        {
+          "url": "https://www.klassmark.com/cmg-transgavarres/",
+          "hash": "e493abe73e380f130e4fc0130aa25ed154b835eca15860e16ca2c11c95763762",
+          "chars": 3940
+        },
+        {
+          "url": "https://www.klassmark.com/klassmark-inscripcions/",
+          "hash": "cdacd782f589e72f0250608635b61ec1a01f3633e9413827adfddcb2c2e739df",
+          "chars": 511
+        },
+        {
+          "url": "https://www.klassmark.com/cmg-inscripcions/",
+          "hash": "fe2e295e8b675e3d9f23b2dc06197f6f35864fb6544f0acebe598d12c41808f5",
+          "chars": 701
+        },
+        {
+          "url": "https://www.klassmark.com/trail-cap-de-creus-inscripcions/",
+          "hash": "6457ecaa217f967400bb6b6ed1fec53780f1a725fc24593d67e80f350211aff5",
+          "chars": 662
+        }
+      ]
+    },
+    {
+      "id": "torrelles-de-foix--cursa-fosca",
+      "source_url": "https://www.cursafosca.cat/",
+      "town": "Torrelles de Foix",
+      "pages": [
+        {
+          "url": "https://www.cursafosca.cat/",
+          "hash": "9b8d504aa72bc2889816d1965026a1bea379430ba4d796fa603080e32ea15709",
+          "chars": 2219
+        },
+        {
+          "url": "https://www.cursafosca.cat/cursa",
+          "hash": "fbde5a32a49e100d6067636c372949d34adb610848c250df82bf91b3ab7d22bd",
+          "chars": 4560
+        },
+        {
+          "url": "https://www.cursafosca.cat/reglament",
+          "hash": "5077a223103082612be702a7b0c08a24260268efcedf2a5f2dab7ea52758ed91",
+          "chars": 8893
+        }
+      ]
+    },
+    {
+      "id": "castell-de-l-areny--roc-de-la-clusa-trail",
+      "source_url": "https://misports.cat/carreras/roc-de-la-clusa/",
+      "town": "Castell de l'Areny",
+      "pages": [
+        {
+          "url": "https://misports.cat/carreras/roc-de-la-clusa/",
+          "hash": "cbf590f9fff4264e4efbf2ca9576c2cb750395a233cc4b25ec7b765a947a5835",
+          "chars": 5464
+        },
+        {
+          "url": "https://misports.cat/wp-content/uploads/2026/08/2026_PROGRAMA_ROCDELACLUSA.pdf",
+          "hash": "679fc70a0bff8722cc94af4324b85b727d3fdb8a48242205940285304f810978",
+          "chars": 12000
+        },
+        {
+          "url": "https://misports.cat/wp-content/uploads/2025/02/20225_Reglament_ROCDELACLUSA.pdf",
+          "hash": "55741874b3fb09cb9c35ee79f8404d991a1bfcaeeaa212fe95557d48f477ca12",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "granollers--cursa-solidaria-4-camins",
+      "source_url": "https://cngranollers.org/4camins/",
+      "town": "Granollers",
+      "pages": [
+        {
+          "url": "https://cngranollers.org/4camins/",
+          "hash": "c43a9f0c758cb39ef0f5c6d6d253ed35e51867dfca8dc3ff5f8eefd7240838d5",
+          "chars": 7694
+        },
+        {
+          "url": "https://cngranollers.org/presentada-la-8a-edicio-de-la-cursa-solidaria-cng-4-camins-amb-benefici-per-a-lentitat-reir/",
+          "hash": "a0361a24f82a2bd5da8ee10919e29b9e17983dc2523ca362d2d5bec9c18d1d6b",
+          "chars": 6185
+        }
+      ]
+    },
+    {
+      "id": "vilaverd--vilaverd-skyrace",
+      "source_url": "https://vilaverdskyrace.naturaldfn.com/",
+      "town": "Vilaverd",
+      "pages": [
+        {
+          "url": "https://vilaverdskyrace.naturaldfn.com/",
+          "hash": "9e291cdbe1c07c027d81cdba076ff86254c88e78a4aa23465f3990f377dd408f",
+          "chars": 2049
+        },
+        {
+          "url": "https://vilaverdskyrace.naturaldfn.com/inscripcions/",
+          "hash": "1f3b4419b29b8406718129a7d5e5c00bd4b3d40ef591300bdb45c4bac6cd900f",
+          "chars": 937
+        },
+        {
+          "url": "https://vilaverdskyrace.naturaldfn.com/reglament/",
+          "hash": "270562d59959e497f8cccd17b78744f39decb03185a477750896223b09bca19b",
+          "chars": 4858
+        },
+        {
+          "url": "https://vilaverdskyrace.naturaldfn.com/2025/03/12/informacio-previa-2025/",
+          "hash": "8cfd37f2b1f4a83ebe212e9ac49f62bc21c35606b8ea526369bac8e2c9563a47",
+          "chars": 2075
+        }
+      ]
+    },
+    {
+      "id": "bascara--despertaferro-bascara",
+      "source_url": "https://curses.cat/despertaferro2026/",
+      "town": "Bàscara",
+      "pages": [
+        {
+          "url": "https://curses.cat/despertaferro2026/",
+          "hash": "f4bdc87e2052dd298aaa0e13de14473d2dba9233793eca50f988596542e0ad4c",
+          "chars": 3069
+        },
+        {
+          "url": "https://curses.cat/despertaferro2026/inscrits.php",
+          "hash": "21e07dff222aba2edd7d6fce578e99c7b730b2c1f6c4f2736029ae4f51633f1d",
+          "chars": 1858
+        },
+        {
+          "url": "https://www.curses.cat/condicio-us.php?cursa=despertaferro2026",
+          "hash": "d0303c0ccc076942c32d31118c3206f8e5d90ad9a9901e659529b55e4df3ab85",
+          "chars": 2851
+        }
+      ]
+    },
+    {
+      "id": "martorelles--murtrail",
+      "source_url": "https://www.cemm.cat/",
+      "town": "Martorelles",
+      "pages": [
+        {
+          "url": "https://www.cemm.cat/",
+          "hash": "435e22b100c812bbf1d6fe77701ff3d2a64cec2ae5c86e02acb982f766bcfec4",
+          "chars": 2472
+        }
+      ]
+    },
+    {
+      "id": "les-cabanyes--trail-senders-del-penedes",
+      "source_url": "https://trailsendersdelpenedes.wordpress.com/",
+      "town": "Les Cabanyes",
+      "pages": [
+        {
+          "url": "https://trailsendersdelpenedes.wordpress.com/",
+          "hash": "7422b7a5a031fb6872035e9abdf24424874fa0bc69b96a53aead1e4bc180c28a",
+          "chars": 12000
+        },
+        {
+          "url": "https://trailsendersdelpenedes.wordpress.com/memorial-pau-ortega-amat-cursa-curta/",
+          "hash": "511ed3a88919eb2e6afd453e82347ad9c2ad84056dfdf697a1da6ac59c948714",
+          "chars": 4880
+        },
+        {
+          "url": "https://trailsendersdelpenedes.wordpress.com/info-curses/",
+          "hash": "eb12e4df8eb9c835c9c0b74d87f0022b753df4a8d8332ef65e4baece7b797981",
+          "chars": 5132
+        },
+        {
+          "url": "https://trailsendersdelpenedes.wordpress.com/reglament-127kms/",
+          "hash": "dbb9a0d837f203ef3476c96337a1d7d21e37cb1915a7e7c6f0767891f17b7dd6",
+          "chars": 8334
+        }
+      ]
+    },
+    {
+      "id": "llica-de-vall--cursa-de-la-vall-del-tenes",
+      "source_url": "https://www.mancomunitatvalltenes.cat/actualitat/noticies/xxxvi-cursa-de-la-vall-del-tenes.html",
+      "town": "Lliçà de Vall",
+      "pages": [
+        {
+          "url": "https://www.mancomunitatvalltenes.cat/actualitat/noticies/xxxvi-cursa-de-la-vall-del-tenes.html",
+          "hash": "3cc64a233e44079fdcd31ed2525ec4ec0d6b17d1158e8718fdd629bc97fdd76e",
+          "chars": 1005
+        },
+        {
+          "url": "https://www.mancomunitatvalltenes.cat/actualitat/noticies/xxxvi-cursa-de-la-vall-del-tenes.html?lang=ca",
+          "hash": "3cc64a233e44079fdcd31ed2525ec4ec0d6b17d1158e8718fdd629bc97fdd76e",
+          "chars": 1005
+        },
+        {
+          "url": "https://www.mancomunitatvalltenes.cat/mancomunitat/transparencia/presidencia-i-informacio-institucional",
+          "hash": "a00c54af63dd9a9d3776c03705875256776961a919a47f7b6fba877606cf4c1a",
+          "chars": 789
+        },
+        {
+          "url": "https://www.mancomunitatvalltenes.cat/media/repository/serveis/cursa/2025/Normativa_XXXVl_Cursa_de_la_Vall_del_Tenes_2025.pdf",
+          "hash": "4eaab48e91a2abf6ec4739d4a727d81ace0f735c5b2f0f27f10782111651671f",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "borges-del-camp--trail-els-miradors",
+      "source_url": "https://webtretzesports.wixsite.com/trailelsmiradors",
+      "town": "Borges del Camp",
+      "pages": [
+        {
+          "url": "https://webtretzesports.wixsite.com/trailelsmiradors",
+          "hash": "15ddcd2ebd3e1799f199b8254c2b93e011517cf61a80a27fe7a2f6b5ddb0e0a9",
+          "chars": 830
+        },
+        {
+          "url": "https://webtretzesports.wixsite.com/trailelsmiradors/info",
+          "hash": "37ed9c714508aaad3e358af49c1c7631ffd75196df62ee68a14b4e3e1ae313db",
+          "chars": 1244
+        }
+      ]
+    },
+    {
+      "id": "baga--ultra-pirineu",
+      "source_url": "https://ultrapirineu.com/es/",
+      "town": "Bagà",
+      "pages": [
+        {
+          "url": "https://ultrapirineu.com/es/",
+          "hash": "4a3ed1716daedd406b351a84b88772c1d9f1894fddbb4587c70be951094e063a",
+          "chars": 1491
+        },
+        {
+          "url": "https://ultrapirineu.com/es/inscripcions-2026/",
+          "hash": "410086969de51450eefca7dc15502db2e220d868c51982192b14a432c036adff",
+          "chars": 5527
+        },
+        {
+          "url": "https://ultrapirineu.com/es/carreras/ultra/",
+          "hash": "2a209517ca6e08dcee762aa9d79bdeb5cd62a4de78fe700106e1b7bce0bd9c0e",
+          "chars": 5820
+        },
+        {
+          "url": "https://ultrapirineu.com/es/carreras/marato/",
+          "hash": "27e694fa68042af46a30237603f834dbab9a16c28958c0e7ba6c5f82d400d7e7",
+          "chars": 4974
+        }
+      ]
+    },
+    {
+      "id": "tarragona--ctt-trail",
+      "source_url": "https://trail.tennistarragona.com/",
+      "town": "Tarragona",
+      "pages": [
+        {
+          "url": "https://trail.tennistarragona.com/",
+          "hash": "82f72611e698745b3974f394adc137e44d2f8d0e44f324d5d81e02dc6b8a8daa",
+          "chars": 6466
+        }
+      ]
+    },
+    {
+      "id": "sant-quirze-de-besora--trail-del-bisaura",
+      "source_url": "https://www.traildelbisaura.com/",
+      "town": "Sant Quirze de Besora",
+      "pages": [
+        {
+          "url": "https://www.traildelbisaura.com/",
+          "hash": "d5bf68b31db1bafaf54751930bde10b0a9feec9262dda2a7f2c6f5eded987184",
+          "chars": 1444
+        },
+        {
+          "url": "https://www.traildelbisaura.com/pages/inscripcions",
+          "hash": "6344659830509baf3945b6514c0d0c671687db2d8f9ad66b9c516a9fa21882cc",
+          "chars": 2138
+        },
+        {
+          "url": "https://www.traildelbisaura.com/pages/reglament",
+          "hash": "4178048e5b3d4d8fed45ca61e12bc9f59c5bb6f536ac93c5236c0c17a5c0edc7",
+          "chars": 10103
+        },
+        {
+          "url": "https://www.traildelbisaura.com/policies/contact-information",
+          "hash": "0f06baf5e2bd5921c8554cd4705dddee8d923bcb0305baadd96a77b1373c6dfb",
+          "chars": 804
+        }
+      ]
+    },
+    {
+      "id": "rellinars--la-salvatge-trail",
+      "source_url": "https://cerellinars.cat/salvatgetrail/",
+      "town": "Rellinars",
+      "pages": [
+        {
+          "url": "https://cerellinars.cat/salvatgetrail/",
+          "hash": "09819b14fcce6be115895c7d97e07dcf932b123768399a4e2a6ceae8d54e78ad",
+          "chars": 6132
+        },
+        {
+          "url": "https://cerellinars.cat/reglament-intern/",
+          "hash": "2dedaedbba4743a66ef125d41d9bc662d19356fc61b9eca71b42590f06651b74",
+          "chars": 317
+        },
+        {
+          "url": "https://cerellinars.cat/2024/07/22/salvatge-trail-cursa-muntanya-rellinars/",
+          "hash": "6101621d054f6a424e02de480dd9456d03b6b3d9e9cf020d3f9bdb11886feb1a",
+          "chars": 1111
+        },
+        {
+          "url": "https://cerellinars.cat/salvatgetrail/inscripcions/",
+          "hash": "d7d5a56b6d07a681ab1f02f82914aeaff5f9babf118a91cf2f51136965440a92",
+          "chars": 1311
+        }
+      ]
+    },
+    {
+      "id": "sant-antoni-de-vilamajor--fem-sui",
+      "source_url": "https://www.femsui.cat/",
+      "town": "Sant Antoni de Vilamajor",
+      "pages": [
+        {
+          "url": "https://www.femsui.cat/",
+          "hash": "c26f7705975910ef1782f7ed7d4407b03c3bc7aae7f3498d6cac56451ad97ebb",
+          "chars": 2283
+        },
+        {
+          "url": "https://www.femsui.cat/reglament",
+          "hash": "5f7b74ec7e64e9425ab013f493b3a6a424c7d517bd0815433603e3d077df87f6",
+          "chars": 7196
+        },
+        {
+          "url": "https://www.femsui.cat/inscripcions",
+          "hash": "b3872031b6b5ad129e4566bd9b5b4a388161e07ffba2efacb61635213f4ebc5c",
+          "chars": 837
+        }
+      ]
+    },
+    {
+      "id": "la-pobla-de-massaluca--cursa-serra-de-les-fites",
+      "source_url": "https://serradelesfites.org/",
+      "town": "La Pobla de Massaluca",
+      "pages": [
+        {
+          "url": "https://serradelesfites.org/",
+          "hash": "61069e33da25248914d80fdfd8ca57eab5fe7add94245b9815ac8f4bde9da225",
+          "chars": 4848
+        },
+        {
+          "url": "https://serradelesfites.org/informacio/",
+          "hash": "c3c2aac3e557560ef3df42d005bba02a63b4ad62c5b22ef412bb4a46d304fd46",
+          "chars": 5347
+        },
+        {
+          "url": "https://serradelesfites.org/cursa-llarga/",
+          "hash": "a6641f68c24de7f18e89132a88466c534c09b2cbf597c77587371a4aaf059b94",
+          "chars": 2462
+        },
+        {
+          "url": "https://serradelesfites.org/cursa-expres/",
+          "hash": "e643f491cbce5e081b754d68be366e8f5fd45ee1a0d43fa8f052e7e00d9e2840",
+          "chars": 2491
+        }
+      ]
+    },
+    {
+      "id": "castelltallat--campionat-maqui-castelltallat",
+      "source_url": "https://www.campionatmaqui.cat/cursa-castelltallat-14km/",
+      "town": "Castelltallat",
+      "pages": [
+        {
+          "url": "https://www.campionatmaqui.cat/cursa-castelltallat-14km/",
+          "hash": "f801a8a872295b3cfe10354dd050edb27d20128ed0b507b4f97c6570d4351d96",
+          "chars": 3224
+        },
+        {
+          "url": "https://www.campionatmaqui.cat/cursa-de-muntanya-de-castelltallat/",
+          "hash": "a30b170ffc8ab3a1c363c1b252e3dcbcc552317f54e3a85f17f4685cded7715c",
+          "chars": 3360
+        },
+        {
+          "url": "https://www.campionatmaqui.cat/cursa-bell-race/",
+          "hash": "546462105f38b0f6f876dd44456b04b6a04e9f20d1d3eac93e38848b39088a2c",
+          "chars": 6776
+        },
+        {
+          "url": "https://www.campionatmaqui.cat/inscripcions-curses/",
+          "hash": "ea005e1aa46cb133490280c27e9a93849eef12653c80e52f33559403e07acb49",
+          "chars": 4965
+        }
+      ]
+    },
+    {
+      "id": "vallromanes--la-nocturna-trinxavambes",
+      "source_url": "https://misports.cat/curses/nocturna-trinxavambes/",
+      "town": "Vallromanes",
+      "pages": [
+        {
+          "url": "https://misports.cat/curses/nocturna-trinxavambes/",
+          "hash": "3ad295433a84c84c9e984203c4b3c359f833bc65729d1ae6cb362347b74b919d",
+          "chars": 5598
+        },
+        {
+          "url": "https://misports.cat/wp-content/uploads/2025/04/Reglament_NOCTURNA2025.pdf",
+          "hash": "a7d986be14153025f0561d810ec0a14f9a88e87d05475e2d0327af3c6539f999",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "olesa-de-bonesvalls--marxa-bonesvalls",
+      "source_url": "https://www.marxabonesvalls.cat/",
+      "town": "Olesa de Bonesvalls",
+      "pages": [
+        {
+          "url": "https://www.marxabonesvalls.cat/",
+          "hash": "faa8a5c499409ea0370d401d6250ee2a08b7fe486af25eca275fa22c2918d137",
+          "chars": 1839
+        },
+        {
+          "url": "https://www.marxabonesvalls.cat/reglament.html",
+          "hash": "6410f73f9e652e8810c32a90a4176848c7fab6cdaba66f7ab564d133e370b637",
+          "chars": 4089
+        }
+      ]
+    },
+    {
+      "id": "aristot--trobada-aristot",
+      "source_url": "https://trobadaaristot.cat/",
+      "town": "Aristot",
+      "pages": [
+        {
+          "url": "https://trobadaaristot.cat/",
+          "hash": "91d124c564940972f55a6e1a65c86d37d7c10c5bcfd114f404b4cb36f7375149",
+          "chars": 4365
+        },
+        {
+          "url": "https://trobadaaristot.cat/espai-cursa/",
+          "hash": "2740a4707b82f8b73260359bf72ff13dc42850ea6685359ab8d3fd5dfc852d6f",
+          "chars": 1824
+        }
+      ]
+    },
+    {
+      "id": "baga--cursa-popular-de-baga",
+      "source_url": "https://www.atletismebaga.cat/cursa-popular-2026/",
+      "town": "Bagà",
+      "pages": [
+        {
+          "url": "https://www.atletismebaga.cat/cursa-popular-2026/",
+          "hash": "1970eb51e9106af6c593239af40c3792edc1e924da16acb6ec73c235bb972792",
+          "chars": 4623
+        },
+        {
+          "url": "https://www.atletismebaga.cat/category/curses/cursa-destiu/",
+          "hash": "b1173f73a0e661c893ea41620b6638b546c2731465a37df76cc35823285a88d4",
+          "chars": 474
+        },
+        {
+          "url": "https://www.atletismebaga.cat/category/curses/cursa-popular/",
+          "hash": "3c57245585543e2e03c78d62ea20be63c4794d4d4db271dfeaf417813bfe82bf",
+          "chars": 455
+        }
+      ]
+    },
+    {
+      "id": "ribera-de-cardos--marato-valls-de-cardos",
+      "source_url": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+      "town": "Ribera de Cardós",
+      "pages": [
+        {
+          "url": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+          "hash": "23a1c2f60aa7ae778dbe546cb2cb0a666892d7a679896d9473a769169ef72e40",
+          "chars": 12000
+        },
+        {
+          "url": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+          "hash": "23a1c2f60aa7ae778dbe546cb2cb0a666892d7a679896d9473a769169ef72e40",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "cassa-de-la-selva--tap-trail",
+      "source_url": "https://curses.cat/taptrail2026/",
+      "town": "Cassà de la Selva",
+      "pages": [
+        {
+          "url": "https://curses.cat/taptrail2026/",
+          "hash": "db57ffae9816d95d9996d679cc7a97dc286d6ea737c24bcd9aa46ed2db290c5f",
+          "chars": 5243
+        },
+        {
+          "url": "https://curses.cat/taptrail2026/reglament.pdf",
+          "hash": "ccf8f3138ae6a7242ca9cdbf037b9a26baac4e9ad1fe0fa31c0d547e8c3fa3f5",
+          "chars": 12000
+        },
+        {
+          "url": "https://curses.cat/taptrail2026/inscrits.php",
+          "hash": "7908806357156be9a7c1f8288b6266c9ca6ac7449be75f58c2e2605c8385270f",
+          "chars": 2340
+        },
+        {
+          "url": "https://www.curses.cat/condicio-us.php?cursa=taptrail2026",
+          "hash": "f8c7769e8622f0ed4d678b7f2e5ace8b9a4b416c429b77d56430461c208e3a3c",
+          "chars": 2851
+        }
+      ]
+    },
+    {
+      "id": "el-papiolet--cursa-campi-qui-pugui",
+      "source_url": "https://www.athleticevents.net/cursa/20a-cursa-campi-qui-pugui-del-papiolet-528",
+      "town": "El Papiolet",
+      "pages": [
+        {
+          "url": "https://www.athleticevents.net/cursa/20a-cursa-campi-qui-pugui-del-papiolet-528",
+          "hash": "2b3685cde50fccfcdc8e422e45d6faf452dfa3ec580620d4bd30a7a7b05d1c3d",
+          "chars": 1688
+        },
+        {
+          "url": "https://www.athleticevents.net/cursa/3a-cursa-solidaria-de-santa-rosalia-torredembarra-533",
+          "hash": "77e9815965fc3593f64238f7cdf8b0d3dfeb80319e851daf87bcef3cb5ec4464",
+          "chars": 2596
+        },
+        {
+          "url": "https://www.athleticevents.net/cursa/ii-caminada-nocturna-dels-ratpenats-534",
+          "hash": "0d5f33f1fb62a92b572463cffe2d4cc50bff73250b61a54195d446e0cc96a10c",
+          "chars": 2915
+        },
+        {
+          "url": "https://www.athleticevents.net/cursa/10a-cursa-i-marxa-contra-el-cancer-l-arboc-537",
+          "hash": "858b0264dd92ce41731a1bc372fef9eb5c87bf145a7bef1232d296045d7b2813",
+          "chars": 1654
+        }
+      ]
+    },
+    {
+      "id": "les--montlude-skyrace",
+      "source_url": "https://www.montludeskyrace.es/",
+      "town": "Les",
+      "pages": [
+        {
+          "url": "https://www.montludeskyrace.es/",
+          "hash": "2a92e64f2fa6d7bcfdf0faa90f239a78b23505c26298a6b03602635ed88713f7",
+          "chars": 2850
+        },
+        {
+          "url": "https://www.montludeskyrace.es/programa/",
+          "hash": "712ac106c60cd2221b84e3c538e1809abd98d85799f1124d55addc98592d0283",
+          "chars": 2865
+        },
+        {
+          "url": "https://www.montludeskyrace.es/reglamento/",
+          "hash": "dc6a1a2c83b81d81c35f232a780e758a7c7dc354730676bd152df1fe8d05fa29",
+          "chars": 4121
+        }
+      ]
+    },
+    {
+      "id": "roda-de-bera--cursa-festa-major-roda-de-bera",
+      "source_url": "https://festamajorcursarodadebera.webnode.es/",
+      "town": "Roda de Berà",
+      "pages": [
+        {
+          "url": "https://festamajorcursarodadebera.webnode.es/inscripcions/",
+          "hash": "3c12d7727076517f7a4a81384d81c249bc515c3370ab5df1d60dfdea7366da40",
+          "chars": 325
+        }
+      ]
+    },
+    {
+      "id": "la-vespella-de-gaia--cursa-la-vespella-de-gaia",
+      "source_url": "https://www.athleticevents.net/cursa/xvi-trail-i-caminada-vespella-de-gaia-531",
+      "town": "La Vespella de Gaià",
+      "pages": [
+        {
+          "url": "https://www.athleticevents.net/cursa/xvi-trail-i-caminada-vespella-de-gaia-531",
+          "hash": "456e23df773a3edb6b4691425a840be396ec0dd4baaecc6a16a978edfc1631c3",
+          "chars": 1763
+        },
+        {
+          "url": "https://www.athleticevents.net/cursa/3a-cursa-solidaria-de-santa-rosalia-torredembarra-533",
+          "hash": "77e9815965fc3593f64238f7cdf8b0d3dfeb80319e851daf87bcef3cb5ec4464",
+          "chars": 2596
+        },
+        {
+          "url": "https://www.athleticevents.net/cursa/ii-caminada-nocturna-dels-ratpenats-534",
+          "hash": "0d5f33f1fb62a92b572463cffe2d4cc50bff73250b61a54195d446e0cc96a10c",
+          "chars": 2915
+        },
+        {
+          "url": "https://www.athleticevents.net/cursa/10a-cursa-i-marxa-contra-el-cancer-l-arboc-537",
+          "hash": "858b0264dd92ce41731a1bc372fef9eb5c87bf145a7bef1232d296045d7b2813",
+          "chars": 1654
+        }
+      ]
+    },
+    {
+      "id": "ribera-de-cardos--marxa-camping-la-borda-del-pubill",
+      "source_url": "https://xtsportevents.com/events/",
+      "town": "Ribera de Cardós",
+      "pages": [
+        {
+          "url": "https://xtsportevents.com/events/",
+          "hash": "798fde97ebef77118aa5fdc529219370456c3ebde06b36ada35f71a8ba6e310d",
+          "chars": 1520
+        },
+        {
+          "url": "https://xtsportevents.com/reglament-ca-cursa-balafia/",
+          "hash": "cd85f54bbe64153a34dd36bf67d0ed82fbba4901546dc22d1514cd175916e74a",
+          "chars": 10525
+        },
+        {
+          "url": "https://xtsportevents.com/reglament-ca-marxa-la-borda/",
+          "hash": "ed47593537e92e34f195d11b43aaace1cbed3469e198431d1c3d3dac0fa285ac",
+          "chars": 5030
+        },
+        {
+          "url": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+          "hash": "23a1c2f60aa7ae778dbe546cb2cb0a666892d7a679896d9473a769169ef72e40",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "amer--cursa-popular-d-amer",
+      "source_url": "https://curses.cat/amer2026/",
+      "town": "Amer",
+      "pages": [
+        {
+          "url": "https://curses.cat/amer2026/",
+          "hash": "84a6a5795762a943facf323d53b43f5945d52aa2c7f3efe269b1d0b98e0394c2",
+          "chars": 7022
+        },
+        {
+          "url": "https://curses.cat/amer2026/reglament.pdf",
+          "hash": "2546da39895e73f9e4fd6bd4dab0229d6f0967148ac860973ced3ae914aa9bd1",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "malgrat-de-mar--cursa-del-miner-de-ferro",
+      "source_url": "https://gem-malgrat.cat/esdeveniments/el-miner-de-ferro/miner-de-ferro-2026/",
+      "town": "Malgrat de Mar",
+      "pages": [
+        {
+          "url": "https://gem-malgrat.cat/esdeveniments/el-miner-de-ferro/miner-de-ferro-2026/",
+          "hash": "211c21374831a7edf84a4eb4e39e224f0404f46e1500668230a5e8a3018c58b6",
+          "chars": 3721
+        },
+        {
+          "url": "https://www.gem-malgrat.cat/cursa-del-miner-de-ferro/",
+          "hash": "bf85b6505bb3d6f9a1632afdb186b8c76a70fb404fd7aa8371c69db9d6ce4b1a",
+          "chars": 11264
+        }
+      ]
+    },
+    {
+      "id": "ribes-de-freser--pyrenees-stage-run",
+      "source_url": "https://psr.run/en/",
+      "town": "Ribes de Freser",
+      "pages": [
+        {
+          "url": "https://psr.run/en/",
+          "hash": "443676cb4927899cc0a6bb90d3435290e7b7eb2b414fd041fe2c89f07c8228b0",
+          "chars": 5171
+        },
+        {
+          "url": "https://psr.run/en/runners-registration/",
+          "hash": "6341204a196451e445c56f079865b4b7b3d947bbb4aaf42bca4feca245aa9e7c",
+          "chars": 6235
+        },
+        {
+          "url": "https://psr.run/en/family-friends-registration/",
+          "hash": "bdb81db9e3ad7a6397c5485c16b1418a03b6519424b2632c0eb1cd55a99568aa",
+          "chars": 550
+        },
+        {
+          "url": "https://psr.run/en/the-pyrenees-stage-run-celebrates-its-10th-anniversary-with-a-special-edition-8-stages-and-a-new-registration-format/",
+          "hash": "27f34da839bdf13d67055f9a16d0fae813959c689af604ca91b6686cfe7b27b4",
+          "chars": 5639
+        }
+      ]
+    },
+    {
+      "id": "st-andreu-de-llavaneres--moontrail-llavaneres",
+      "source_url": "https://ajllavaneres.cat/moontrail26",
+      "town": "St Andreu de Llavaneres",
+      "pages": [
+        {
+          "url": "https://ajllavaneres.cat/moontrail26",
+          "hash": "95540cee1e7f1a494861719afcf28da3b47ee23b94c2eec24d48d1095a72a74f",
+          "chars": 3788
+        }
+      ]
+    },
+    {
+      "id": "la-guingueta-d-aneu--bocafoscant-night-trail",
+      "source_url": "https://bocafoscant.cat/",
+      "town": "La Guingueta d'Àneu",
+      "pages": [
+        {
+          "url": "https://bocafoscant.cat/",
+          "hash": "7ef3fe038822394a704ac46fbe37580e87caf3048439430b493b131912cfe8b8",
+          "chars": 726
+        },
+        {
+          "url": "https://bocafoscant.cat/reglament-trail-2026-llarg/",
+          "hash": "ee31bd22c793dbed72abb4ba11b02b4683e9076f257eb145e730e566936d1b5e",
+          "chars": 12000
+        },
+        {
+          "url": "https://bocafoscant.cat/reglament-caminada-2026-llarg/",
+          "hash": "4e78d62dbed4067de8b828e15fe5999086ad9b0afeb15d23dbc521388bb3173f",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "aiguafreda--congost-trail-challenge",
+      "source_url": "https://congosttrailchallenge.cat/",
+      "town": "Aiguafreda",
+      "pages": [
+        {
+          "url": "https://congosttrailchallenge.cat/",
+          "hash": "5732a328f266ce4c06a60f0b6cf800c8085f814b031834d3213b56c4eb4da724",
+          "chars": 6215
+        },
+        {
+          "url": "https://congosttrailchallenge.cat/inscripcio",
+          "hash": "03c0495ebe2d4bf33a17c04b61f037563d5de3c39ae237f2d87e39e2ccb3a6fa",
+          "chars": 2557
+        },
+        {
+          "url": "https://congosttrailchallenge.cat/reglament",
+          "hash": "9085201d8473f1b50d462942ee124295f7f5e973057382df72c0355dbca8aae3",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "montesquiu--cursa-del-castell-de-montesquiu",
+      "source_url": "https://www.cursadelcastell.com/",
+      "town": "Montesquiu",
+      "pages": [
+        {
+          "url": "https://www.cursadelcastell.com/",
+          "hash": "858d60e8e90c575dcfda997429d073b27aa8f9b8670a405f18f0a99d2b55ae9c",
+          "chars": 369
+        },
+        {
+          "url": "https://www.cursadelcastell.com/cursa-llarga-1",
+          "hash": "c7251024c4e0e8f2b44bac4dfc92da658f34b70607fc2b2d67eb1e7a01148e2b",
+          "chars": 1089
+        },
+        {
+          "url": "https://www.cursadelcastell.com/cursa-curta",
+          "hash": "98709808a25d6f2344c7bf11b045275bdd6729ec4989bc86dd2db7639639530a",
+          "chars": 1045
+        },
+        {
+          "url": "https://www.cursadelcastell.com/cursa-adaptada",
+          "hash": "46d82ce75ba38eec21c73b2e144dd47b8467f47e58f7cc81235955d112fe498e",
+          "chars": 603
+        }
+      ]
+    },
+    {
+      "id": "ventallo--ventallonina",
+      "source_url": "https://www.curses.cat/ventallonina2026/",
+      "town": "Ventalló",
+      "pages": [
+        {
+          "url": "https://www.curses.cat/ventallonina2026/",
+          "hash": "340b4a5874dcb35bc9d34afdedbd3ea8470e89561d8c6abbf2bf3e0d65f6b6dc",
+          "chars": 3298
+        },
+        {
+          "url": "https://www.curses.cat/ventallonina2026/inscrits.php",
+          "hash": "6ac465a4228e0c668e7a37bd10f5c56e18801e0287241650ab9d953c5b704ff6",
+          "chars": 3227
+        },
+        {
+          "url": "https://www.curses.cat/condicio-us.php?cursa=ventallonina2026",
+          "hash": "cf1b586088c5765adb52a0371c85fd8a802588c63286fb53ab5e4ecfb38440d6",
+          "chars": 2851
+        }
+      ]
+    },
+    {
+      "id": "vallfogona-de-balaguer--cursa-de-la-vaca",
+      "source_url": "https://www.cansallebres.cat/",
+      "town": "Vallfogona de Balaguer",
+      "pages": [
+        {
+          "url": "https://www.cansallebres.cat/reglament-2026/",
+          "hash": "30f1ecce471dde6e1884ab2039023e8f566fbaa1f5977bf610cab5aa183baa07",
+          "chars": 10315
+        },
+        {
+          "url": "https://www.cansallebres.cat/inscripcions-2026/",
+          "hash": "a291cf8bad27d58b2a9194485c7aa8212fd9b3f1ae0985ba556a11e2ae37eee0",
+          "chars": 841
+        }
+      ]
+    },
+    {
+      "id": "begur--trail-d-es-castell",
+      "source_url": "https://www.9hsports.cat/ca/informacio_cursa/1001",
+      "town": "Begur",
+      "pages": [
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/1001",
+          "hash": "4253d9e9a97f011f968a2143a545850e0b13f1607273232a017a55246ae9663d",
+          "chars": 1107
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/inscripcions",
+          "hash": "f227286bffed3950aa3d948c45201ec6a7f3eff34dde9c3cdad1974c5b0838b8",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/reglament_cursa/1001",
+          "hash": "9ad17e9c2d65b8cbcf244f50aee88848c23090757b53975cefe9e52063d6ba67",
+          "chars": 4925
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/1001",
+          "hash": "4253d9e9a97f011f968a2143a545850e0b13f1607273232a017a55246ae9663d",
+          "chars": 1107
+        }
+      ]
+    },
+    {
+      "id": "llagostera--cursa-muntanya-llagostera-trail",
+      "source_url": "https://www.9hsports.cat/ca/informacio_cursa/1266",
+      "town": "Llagostera",
+      "pages": [
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/1266",
+          "hash": "4c83ce6e0730d0fed6112dd651da2dfe8e8ac6d8db5dcb38c2950f2ee9d57c97",
+          "chars": 607
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/inscripcions",
+          "hash": "f227286bffed3950aa3d948c45201ec6a7f3eff34dde9c3cdad1974c5b0838b8",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/1266",
+          "hash": "4c83ce6e0730d0fed6112dd651da2dfe8e8ac6d8db5dcb38c2950f2ee9d57c97",
+          "chars": 607
+        }
+      ]
+    },
+    {
+      "id": "sidamon--cursa-tossal-de-les-tenalles",
+      "source_url": "https://www.cursatossaldelestenalles.cat/",
+      "town": "Sidamon",
+      "pages": [
+        {
+          "url": "https://www.cursatossaldelestenalles.cat/",
+          "hash": "023111480c3571c3f8ece66e41767492713bf663caeb8b28aa24a825b76b27d6",
+          "chars": 554
+        },
+        {
+          "url": "https://www.cursatossaldelestenalles.cat/informaci%C3%B3",
+          "hash": "d7bbbd66c848127a3a87ee6181050d0910aa75a7e831f007b5cef29b4b219b05",
+          "chars": 444
+        },
+        {
+          "url": "https://www.cursatossaldelestenalles.cat/informaci%C3%B3/reglament",
+          "hash": "697cee6fd757a2e686d332cdf64e251e526c0fcb44f84b6a419a4b42270c55ca",
+          "chars": 6187
+        },
+        {
+          "url": "https://www.cursatossaldelestenalles.cat/informaci%C3%B3/circuits",
+          "hash": "b482ca5b7dff614658bd8d1937c0c1df83d33c9d33d470a51c6e5e01dce91c91",
+          "chars": 595
+        }
+      ]
+    },
+    {
+      "id": "vielha--cursa-15-pobles",
+      "source_url": "https://emaransportsfoundation.org/home/eventos/aran_per_esport/#",
+      "town": "Vielha",
+      "pages": [
+        {
+          "url": "https://emaransportsfoundation.org/home/eventos/aran_per_esport/#",
+          "hash": "0c874f5ee3e803d92f734c588c6694be0c301b5f7f7094490014917799a70887",
+          "chars": 424
+        },
+        {
+          "url": "https://emaransportsfoundation.org/wp-content/uploads/2026/05/REGLAMENTO_VERANO_26.pdf",
+          "hash": "d9e248bcb0161a83bd6055e0829174202fa9169d87e0f2ab5466fb285a2f6d83",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "poblet--trail-nocturna-els-frares-encantats",
+      "source_url": "https://www.cecostadauradatrail.com/trail-nocturna-els-frares-encantats",
+      "town": "Poblet",
+      "pages": [
+        {
+          "url": "https://www.cecostadauradatrail.com/trail-nocturna-els-frares-encantats",
+          "hash": "c01485eb5c7d087511925312a2a28db8637ad808eaf836bbd72b79c40513da77",
+          "chars": 4842
+        },
+        {
+          "url": "https://www.cecostadauradatrail.com/inscripcio-licencia",
+          "hash": "0131162312286f027a7ddd83b023aa89ee657bc385df9e48ff4e323bf015016d",
+          "chars": 1490
+        }
+      ]
+    },
+    {
+      "id": "estana--radikal-estana",
+      "source_url": "https://radikalestana.cat/",
+      "town": "Estana",
+      "pages": [
+        {
+          "url": "https://radikalestana.cat/",
+          "hash": "61c6efb9a5976d30697c7f3fa05a423c3627534a103184b6593db48c1b40e681",
+          "chars": 1280
+        }
+      ]
+    },
+    {
+      "id": "collbato--cursa-de-l-alba",
+      "source_url": "https://www.cursalba.cat/",
+      "town": "Collbató",
+      "pages": [
+        {
+          "url": "https://www.cursalba.cat/",
+          "hash": "41c946b7b9c83971e18ad57afd7c6be51ac373839e90bf05713f61f461cf17f7",
+          "chars": 383
+        },
+        {
+          "url": "https://cursalba.cat/cursa-de-l-alba-collbato-montserrat/",
+          "hash": "50a3d759033d714bc1ab4ad502af1ec060bc315ebe766d50cd997bde81a3aed6",
+          "chars": 2039
+        },
+        {
+          "url": "https://cursalba.cat/carrera-mitjalba-collbato/",
+          "hash": "0861b7343551fc42fcde592dc863efad910b2f0db8fbaba91bc9b91c96b80dc9",
+          "chars": 1383
+        },
+        {
+          "url": "https://cursalba.cat/programa/",
+          "hash": "8f6eb2d00a8de60a922e2e28a3b852de862cc3a9ba2acbcd26491e4d7231b7cf",
+          "chars": 438
+        }
+      ]
+    },
+    {
+      "id": "cervello--la-pota-roja",
+      "source_url": "https://lapotaroja.com/es/home",
+      "town": "Cervelló",
+      "pages": [
+        {
+          "url": "https://lapotaroja.com/es/home",
+          "hash": "2e45f882cdbb8e39ca55a52d90a40f8759206903287f6c27e1a30be558303d89",
+          "chars": 4280
+        },
+        {
+          "url": "https://lapotaroja.com/reglamento",
+          "hash": "37b2e55bfd1ac194cbcaac8f4cfb5898835ddfebc0907e26a1bc599ffb44120a",
+          "chars": 7880
+        }
+      ]
+    },
+    {
+      "id": "montcada-i-reixac--montescatano",
+      "source_url": "https://www.montescatano.cat/",
+      "town": "Montcada i Reixac",
+      "pages": [
+        {
+          "url": "https://www.montescatano.cat/",
+          "hash": "f30350102eefc6f6e727fc599136b78801683344553c46809d71f522033d49d2",
+          "chars": 1412
+        },
+        {
+          "url": "https://www.montescatano.cat/reglament.html",
+          "hash": "6646111aa6cebb135e8d6128e9ffe8caef707173a18a4eaf206ac5d39d7ea1d4",
+          "chars": 11625
+        }
+      ]
+    },
+    {
+      "id": "almatret--la-tossals-d-almatret",
+      "source_url": "https://tossals.blogspot.com/",
+      "town": "Almatret",
+      "pages": [
+        {
+          "url": "https://tossals.blogspot.com/",
+          "hash": "8adc2995ab71c42b095b97a450f3f4c756e92f1ecc0cee85ad333c547ddb6978",
+          "chars": 4339
+        }
+      ]
+    },
+    {
+      "id": "sant-llorenc-savall--marato-muntanya-de-catalunya",
+      "source_url": "https://www.maratocatalunya.cat/",
+      "town": "Sant Llorenç Savall",
+      "pages": [
+        {
+          "url": "https://www.maratocatalunya.cat/",
+          "hash": "9a12187ee9d9cf842b1c9c90b29243ff08fc4555104fe066a8a8d9d0456c8060",
+          "chars": 1242
+        },
+        {
+          "url": "https://www.maratocatalunya.cat/reglament",
+          "hash": "606109b0cab77dbb4c4d40d6f9c32075b8e6d05c67db4815bbf984c9036e21d0",
+          "chars": 4990
+        },
+        {
+          "url": "https://www.maratocatalunya.cat/inscripcions",
+          "hash": "8aeeeaa21f6d0f70e799e1d9545cecf0508b422bec2c98136c24a8ec6e4d6423",
+          "chars": 824
+        },
+        {
+          "url": "https://www.maratocatalunya.cat/informacio",
+          "hash": "1cbc62b3a8c6dd38352e173248fbbc23b639fdc4bb159d0bedf0b560fd08a75d",
+          "chars": 1088
+        }
+      ]
+    },
+    {
+      "id": "figols--vertical-prat",
+      "source_url": "https://www.circuitfer.cat/vertical-prat",
+      "town": "Fígols",
+      "pages": [
+        {
+          "url": "https://www.circuitfer.cat/vertical-prat",
+          "hash": "ffaf45db88690127ef3c4bf4934db4e8ecda758d7beaedbf43482bd7099dd468",
+          "chars": 1700
+        },
+        {
+          "url": "https://www.circuitfer.cat/reglament-2026",
+          "hash": "5e7e186c91693b1063923fb44656966d9108b0e0e7338ea6bc6891929e0f6a48",
+          "chars": 618
+        },
+        {
+          "url": "https://www.circuitfer.cat/inscripcions-2026",
+          "hash": "d752d5f8f6046b54f3d69e9fe32d79cd65c50072b05f6ce7858acff2cc868923",
+          "chars": 786
+        },
+        {
+          "url": "https://www.circuitfer.cat/sites/default/files/2026/prat/Reglament-Vertical-Prat-2026.pdf",
+          "hash": "29bee4984d1f377edd7767bdd2b62fa8090ce6a9336a29bc030b163a437575d6",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "saldes--pedraforca-xtrail",
+      "source_url": "https://misports.cat/carreras/pedraforca-xtrail/",
+      "town": "Saldes",
+      "pages": [
+        {
+          "url": "https://misports.cat/carreras/pedraforca-xtrail/",
+          "hash": "dc2ec637f654ef3dd9f926d300ddfb110ca85b3d74a89b0e5a68b79fcb877834",
+          "chars": 6840
+        },
+        {
+          "url": "https://misports.cat/wp-content/uploads/2026/05/2026-PEDRAFORCA_Reglament.pdf",
+          "hash": "3a82f5ecf958a1570e0c074accb1c588e6870abe6d66501af6981b6000475976",
+          "chars": 12000
+        },
+        {
+          "url": "https://misports.cat/wp-content/uploads/2025/02/2025_Autoritzacio_MENORS_-CURSA10KPEDRAFORCA.pdf",
+          "hash": "fd65513c4634483b6a7a2b09ce832ddcad666a1683fe6f4a05709a438c1776c9",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "cubells--senglar-trail",
+      "source_url": "https://senglartrail.blogspot.com/",
+      "town": "Cubells",
+      "pages": [
+        {
+          "url": "https://senglartrail.blogspot.com/",
+          "hash": "98a12d2a1e8be3706f344f9b66a9130fc37061540514a951423b81be6d0298a4",
+          "chars": 1287
+        },
+        {
+          "url": "https://senglartrail.blogspot.com/p/inscripcions-2023_6.html",
+          "hash": "15c2b56354a062e740e034ab32d2df10843ee9b2247a5f0acd933fc61a13214b",
+          "chars": 1479
+        },
+        {
+          "url": "https://senglartrail.blogspot.com/p/reglament_61.html",
+          "hash": "e987eb359f492a9793191cd0b013bbf7baea541ca1d41126a7126a79f3779032",
+          "chars": 3456
+        }
+      ]
+    },
+    {
+      "id": "vallter--la-marrana-skyrace",
+      "source_url": "https://cursalamarrana.com/",
+      "town": "Vallter",
+      "pages": [
+        {
+          "url": "https://cursalamarrana.com/",
+          "hash": "77fec64bc2f6ee079a3e6561661eb9f1ffe8ef5a4a071ebbe1406157a4ea34a9",
+          "chars": 2102
+        },
+        {
+          "url": "https://cursalamarrana.com/la-cursa/",
+          "hash": "ad847583547f978bd2da0015ae83659d3eb7d094093809ad7c92d648fcdec91c",
+          "chars": 5603
+        },
+        {
+          "url": "https://cursalamarrana.com/reglament-curs-de-la-marrana/",
+          "hash": "be6f77148bca2df2104ce757915ebbf7420ffaedb54a81b6dad1240939223dd5",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "sant-salvador-de-guardiola--corriols-de-guardiola",
+      "source_url": "https://www.corriolsdeguardiola.cat/",
+      "town": "Sant Salvador de Guardiola",
+      "pages": [
+        {
+          "url": "https://www.corriolsdeguardiola.cat/",
+          "hash": "c34416aab01ca92e0b12cc7c29c7017873568d1b4a4e52bc2e72b4d207a0931a",
+          "chars": 4319
+        },
+        {
+          "url": "https://www.corriolsdeguardiola.cat/wp-content/uploads/2023/09/Cursa-Corriols-de-Guardiola-22km-2023.zip",
+          "hash": "99b3abdc1bbb9608f3c7410ee6d27ee8e2b594c10dd8cc83afa1a5e0b5d49012",
+          "chars": 9296
+        },
+        {
+          "url": "https://www.corriolsdeguardiola.cat/wp-content/uploads/2023/09/Cursa-Corriols-de-Guardiola-Corriols-10km-2023.zip",
+          "hash": "e3a1036fb63ac1a0e297544ba776210d20e4b805e215efad0096f17f723a0ced",
+          "chars": 4578
+        },
+        {
+          "url": "https://www.corriolsdeguardiola.cat/wp-content/uploads/2023/09/Cursa-Corriols-de-Guardiola-5Km-2023.zip",
+          "hash": "90890e678d9fd436b554893d43544b2b772e358476ebf6c1649bc46ed00d417d",
+          "chars": 3411
+        }
+      ]
+    },
+    {
+      "id": "bigues-i-riells-del-fai--rural-trail",
+      "source_url": "https://ruraltrail.com/",
+      "town": "Bigues i Riells del Fai",
+      "pages": [
+        {
+          "url": "https://ruraltrail.com/",
+          "hash": "421d224eb6658242f619b45874c19b5ca077cf9fb1def24447aa3d71e8ca7729",
+          "chars": 1480
+        },
+        {
+          "url": "https://ruraltrail.com/inscripcio-la-llarga/",
+          "hash": "78fbdf0fc0f8a41305f6eacfa317299d2f16a6ee9703ca5b933cdfce3f2d0a59",
+          "chars": 752
+        },
+        {
+          "url": "https://ruraltrail.com/inscripcio-la-del-mig/",
+          "hash": "73753721712e20a5ff6cc1eaf453b8917edb5b08fb4d72904be0c5ad147f8dc4",
+          "chars": 798
+        },
+        {
+          "url": "https://ruraltrail.com/inscripcio-lacurta/",
+          "hash": "bc647b6a65dba845639dac99b847446c7500a2e790996d540a0dee4599a92be4",
+          "chars": 794
+        }
+      ]
+    },
+    {
+      "id": "tremp--tomb-al-poble-vell-de-puigcercos",
+      "source_url": "https://inscripcions.cat/caminadapuigcercos2025/",
+      "town": "Tremp",
+      "pages": [
+        {
+          "url": "https://inscripcions.cat/caminadapuigcercos2025/",
+          "hash": "59ed344528232cdd5a307f31dfb4c4790f9bd29e0eaaaad7aa7e312e8cb5d904",
+          "chars": 1030
+        },
+        {
+          "url": "https://inscripcions.cat/caminadapuigcercos2025/llistat_inscrits",
+          "hash": "d4105402d8c649b565bb9a2bd761f508dbb0bbe4d4a52a96644987a750b476cf",
+          "chars": 4838
+        },
+        {
+          "url": "https://inscripcions.cat/inscripcions/termes_legals",
+          "hash": "e3a4a0b461f92993abff9e3cef7ccaf3e0b45afd04a1df6f25cc657ab52da9ba",
+          "chars": 4428
+        }
+      ]
+    },
+    {
+      "id": "sant-esteve-de-palautordera--marato-del-montseny",
+      "source_url": "https://maratomontseny.com/",
+      "town": "Sant Esteve de Palautordera",
+      "pages": [
+        {
+          "url": "https://maratomontseny.com/",
+          "hash": "72c92117a5a819f585689c890f41ef7dfbcb444ae954cfe9b4bb1df32ceb22d0",
+          "chars": 1711
+        },
+        {
+          "url": "https://maratomontseny.com/reglament-mdm-22-marato-del-montseny/",
+          "hash": "bf08e342d0176b209900d7607c5ac5acfb955afffded51fe51d2fb93f6d52d47",
+          "chars": 12000
+        },
+        {
+          "url": "https://maratomontseny.com/inscripcions-marato-del-montseny-2/",
+          "hash": "ad797a02241870953451f1facaa5f5cde568632bf276fe72ab7ffe087252d229",
+          "chars": 233
+        },
+        {
+          "url": "https://maratomontseny.com/inscripcions-marato-del-montseny/",
+          "hash": "d62d318943782378e01b591623b95d545d68191d536bc02d337ec81e9f3231c3",
+          "chars": 1024
+        }
+      ]
+    },
+    {
+      "id": "esparreguera--trail-intercasteller",
+      "source_url": "https://trail-intercasteller.castellersdesparreguera.cat/",
+      "town": "Esparreguera",
+      "pages": [
+        {
+          "url": "https://trail-intercasteller.castellersdesparreguera.cat/",
+          "hash": "7f1ebcc9896b5e9c80556023ea9d8ca93a6509bf46edf9f8bb7a6256fd59299f",
+          "chars": 3959
+        }
+      ]
+    },
+    {
+      "id": "molins-de-rei--camins-de-collserola",
+      "source_url": "https://caminsdecollserola.cat/",
+      "town": "Molins de Rei",
+      "pages": [
+        {
+          "url": "https://caminsdecollserola.cat/",
+          "hash": "9334901bdabf28437a3d6e211be0ba31f22059264af329dc7dec73d75db4359a",
+          "chars": 4624
+        },
+        {
+          "url": "https://caminsdecollserola.cat/reglament/",
+          "hash": "7d9958175f2635ccbfbb608561811bc34a03680ee663d16c203304d4b83ca9a9",
+          "chars": 10250
+        }
+      ]
+    },
+    {
+      "id": "oix--trepitja-garrotxa",
+      "source_url": "https://trepitjagarrotxa.cat/",
+      "town": "Oix",
+      "pages": [
+        {
+          "url": "https://trepitjagarrotxa.cat/",
+          "hash": "ba6bf60f26225024ced962f8c07ba96bc6fd6383728df1aee0fb593a69ecbe58",
+          "chars": 922
+        },
+        {
+          "url": "https://trepitjagarrotxa.cat/cursa-9-km/",
+          "hash": "0a6409796bc785968c6c556fc53742757b089bd7fe0ed0cef4a56c0d2d5fc1f3",
+          "chars": 847
+        },
+        {
+          "url": "https://trepitjagarrotxa.cat/programa/",
+          "hash": "cb99dc82d1019ae9ab84cdfebed8561f65685c73e0d77f4937ea4d90caf1b356",
+          "chars": 889
+        }
+      ]
+    },
+    {
+      "id": "montblanc--marxa-els-roures",
+      "source_url": "https://alliberadrenalina.com/marxa-dels-roures/",
+      "town": "Montblanc",
+      "pages": [
+        {
+          "url": "https://alliberadrenalina.com/marxa-dels-roures/",
+          "hash": "fd070f065e1074aab13a4dac66c4f4bbbad7552e9b00458370e1e2f270ab1327",
+          "chars": 12000
+        },
+        {
+          "url": "https://alliberadrenalina.com/cursa_seguici_tgn/",
+          "hash": "9933aeec386426a81a23c2d474b49588000213a2f353a21abe7044ccbe25d7f6",
+          "chars": 4233
+        },
+        {
+          "url": "https://alliberadrenalina.com/dema-obrim-inscripcions/",
+          "hash": "39948bca59cb08efbad20daf8ef669c85a5b1245051084decff0e69cf5cbd422",
+          "chars": 4275
+        },
+        {
+          "url": "https://alliberadrenalina.com/en-breu-mes-info/",
+          "hash": "6275a766e9bb816cc0b2ddd0985b3efcbd9c3f7f73abcf924a408c43d8593006",
+          "chars": 4181
+        }
+      ]
+    },
+    {
+      "id": "ullastrell--cursa-muntanya-serralavella",
+      "source_url": "https://www.dsport.cat/es/fitxa_cursa.php?id_cursa=1127",
+      "town": "Ullastrell",
+      "pages": [
+        {
+          "url": "https://www.dsport.cat/es/fitxa_cursa.php?id_cursa=1127",
+          "hash": "0b485aa27f4c2bbf692b3f5555a00bb41b0275544096e0b9311e9d5d38f7934d",
+          "chars": 840
+        },
+        {
+          "url": "https://www.dsport.cat/es/fitxa_inscripcions.php",
+          "hash": "192c71b80a13a07e8b7a70086f3cdceec4ba5c5ce445aae68e1227fcf78059c8",
+          "chars": 2136
+        },
+        {
+          "url": "https://www.dsport.cat/es/llistat_inscrits.php?id_cursa=1127",
+          "hash": "3125a4635647b61152b46f2c1a13f833b7e34af30adac828c41cac9cd9901136",
+          "chars": 11061
+        },
+        {
+          "url": "https://www.dsport.cat/es/ins_seleccio_recorregut.php?id_cursa=1127",
+          "hash": "ae2cf3255b5f771f875e464b2b9e868c3215cb4c2091287642c2f2b299076ac1",
+          "chars": 595
+        }
+      ]
+    },
+    {
+      "id": "sant-iscle-de-vallalta--vallalta-trail",
+      "source_url": "https://vallaltatrail.com/",
+      "town": "Sant Iscle de Vallalta",
+      "pages": [
+        {
+          "url": "https://vallaltatrail.com/",
+          "hash": "aba12518a646ebe4c12115828dea189582ace50239bdf24b5e6c01d4c64ee0c1",
+          "chars": 12000
+        },
+        {
+          "url": "https://vallaltatrail.com/inscripcions-2026/",
+          "hash": "b7acc6123cafaaf06c0b2287efe465a770797a12665fc47bd997849926bc72ad",
+          "chars": 1871
+        },
+        {
+          "url": "https://vallaltatrail.com/reglament-vt2026/",
+          "hash": "a1d24f6764c4162cc295086e17444447878a0986f9e5142bdf4913c561426599",
+          "chars": 11486
+        }
+      ]
+    },
+    {
+      "id": "sant-marti-de-tous--panna-el-bandoler",
+      "source_url": "https://www.inscripcions.cat/pannaelbandoler2025t/",
+      "town": "Sant Martí de Tous",
+      "pages": [
+        {
+          "url": "https://www.inscripcions.cat/pannaelbandoler2025t/",
+          "hash": "5c3c316705c621c4a230aa187ee54d58554a01a601b37044a46f25a084919419",
+          "chars": 789
+        },
+        {
+          "url": "https://www.inscripcions.cat/pannaelbandoler2025t/llistat_inscrits",
+          "hash": "6c970f6b56a11d9e41d7327fdea403b7de82c5d6208cb572f621dfaec2c0cb9e",
+          "chars": 9717
+        },
+        {
+          "url": "https://www.inscripcions.cat/inscripcions/termes_legals",
+          "hash": "e3a4a0b461f92993abff9e3cef7ccaf3e0b45afd04a1df6f25cc657ab52da9ba",
+          "chars": 4428
+        }
+      ]
+    },
+    {
+      "id": "lavern-subirats--cursa-serralats-lavern",
+      "source_url": "https://serralats.wordpress.com/",
+      "town": "Lavern Subirats",
+      "pages": [
+        {
+          "url": "https://serralats.wordpress.com/",
+          "hash": "a021dac7065541417f713fb0bf085812f1f85fcb624369ceaa2c9ede6de201bd",
+          "chars": 3143
+        },
+        {
+          "url": "https://serralats.wordpress.com/inscriu-te-a-la-cursa/",
+          "hash": "19230d1ce1604894644caa8e2170e916e0f5c7bdcf82be92421ad8656d75f0d7",
+          "chars": 1621
+        },
+        {
+          "url": "https://serralats.wordpress.com/menu-cursa-de-les-caves-i-serralats/",
+          "hash": "5991d6565a81f117d0c21d1aac2e00e56480d60b8af7a357414c84aa1bb64df0",
+          "chars": 999
+        },
+        {
+          "url": "https://serralats.wordpress.com/informacio/20151101_100839/",
+          "hash": "fb2ab273807bf1e0eb212bb5b9d6f0eaa8b11d6a0b913181957fddbef0fd1ee7",
+          "chars": 471
+        }
+      ]
+    },
+    {
+      "id": "taradell--trail-toca-sons",
+      "source_url": "https://www.innovitsport.com/esdeveniments/trail-tocasons",
+      "town": "Taradell",
+      "pages": [
+        {
+          "url": "https://www.innovitsport.com/esdeveniments/trail-tocasons",
+          "hash": "f1ca2dbb7389b4792f0b829fd5f7f296b4cf557957bc4e5586e5271b6d5be7cd",
+          "chars": 4025
+        },
+        {
+          "url": "https://www.innovitsport.com/j/shop/deliveryinfo",
+          "hash": "c8fadca033e7d8eba035917cf36c3fb06d90e93a607af3507b3cbeb0d0e714f4",
+          "chars": 1169
+        }
+      ]
+    },
+    {
+      "id": "sant-marti-sarroca--cursarroca",
+      "source_url": "https://webtretzesports.wixsite.com/cursarroca",
+      "town": "Sant Martí Sarroca",
+      "pages": [
+        {
+          "url": "https://webtretzesports.wixsite.com/cursarroca",
+          "hash": "109bf2f34833b887117f10c05ea4f7f3e5a8927d70f21297dd87b115ab066a47",
+          "chars": 1073
+        },
+        {
+          "url": "https://webtretzesports.wixsite.com/cursarroca",
+          "hash": "109bf2f34833b887117f10c05ea4f7f3e5a8927d70f21297dd87b115ab066a47",
+          "chars": 1073
+        },
+        {
+          "url": "https://webtretzesports.wixsite.com/cursarroca/info-cursa-1",
+          "hash": "c4f4e9806b7054d95cb5cd93c274b98a48f5c36cd851883c7834a0c028361fb2",
+          "chars": 1287
+        }
+      ]
+    },
+    {
+      "id": "cunit--avenc-trail-cunit",
+      "source_url": "https://webtretzesports.wixsite.com/avenctrailcunit",
+      "town": "Cunit",
+      "pages": [
+        {
+          "url": "https://webtretzesports.wixsite.com/avenctrailcunit",
+          "hash": "9b1cd7eb5cae49567d26fa7ba8f80f44d67dd303a88d1a15a3c4cdb8b72971bb",
+          "chars": 539
+        },
+        {
+          "url": "https://webtretzesports.wixsite.com/avenctrailcunit/info-cursa",
+          "hash": "dfc011137eb5520679d532f03e2a3173b60b1fb04540aeaaf7bcdbae8a925be4",
+          "chars": 1157
+        }
+      ]
+    },
+    {
+      "id": "mora-d-ebre--cursa-cami-de-sirga",
+      "source_url": "https://cursacamidesirga.picossatrail.cat/",
+      "town": "Móra d'Ebre",
+      "pages": [
+        {
+          "url": "https://cursacamidesirga.picossatrail.cat/",
+          "hash": "9b782c49cbb7710569e46630fc6f4eb9774e6f58910123e585bef2e3d2be20b3",
+          "chars": 1114
+        },
+        {
+          "url": "https://picossatrail.cat/cursa-pedestre/",
+          "hash": "922b7809ae19d30ac07611299568f68b417d0a9c23614f373f30060d46f45b7d",
+          "chars": 3861
+        }
+      ]
+    },
+    {
+      "id": "oller-del-mas--vinya-cross-solidari-oller-del-mas",
+      "source_url": "https://www.vinya-cross.es/",
+      "town": "Oller del Mas",
+      "pages": [
+        {
+          "url": "https://www.vinya-cross.es/",
+          "hash": "55693c7879bc1aaeb53c56963789f3dd51854b671475ef2028c7fdebbebbabde",
+          "chars": 2165
+        },
+        {
+          "url": "https://www.vinya-cross.es/informacio/",
+          "hash": "520e8dbe64c69fc10b89df26f2d87d5899dd411698f2e64738dd153701339a41",
+          "chars": 1645
+        }
+      ]
+    },
+    {
+      "id": "barcelona--cros-3-turons-la-diablada",
+      "source_url": "https://www.cros3turons-ladiablada.cat/",
+      "town": "Barcelona",
+      "pages": [
+        {
+          "url": "https://www.cros3turons-ladiablada.cat/",
+          "hash": "8650913be87b2ffab022e6c3b859dd288b1b6ce4ed72e7b1e162f4cce81614d1",
+          "chars": 899
+        },
+        {
+          "url": "https://www.cros3turons-ladiablada.cat/inscripcions/",
+          "hash": "30bf83e71a53f8ba8e88d34ecd726384bc81508ed136ae099eed2899804955e5",
+          "chars": 446
+        },
+        {
+          "url": "https://www.cros3turons-ladiablada.cat/2025/10/15/el-cros-3turons-la-diablada-2025-es-correra-el-16-de-novembre-i-les-inscripcions-sobren-el-divendres-17-doctubre-2/",
+          "hash": "d5a86b0354a5fce2aeaf84f7ad85ffd77ae6f68912b21072c1ba3d3aacc4ae4e",
+          "chars": 1876
+        }
+      ]
+    },
+    {
+      "id": "la-llacuna--cursa-de-l-esquiador",
+      "source_url": "https://www.uecanoia.cat/cursa-esquiador/",
+      "town": "La Llacuna",
+      "pages": [
+        {
+          "url": "https://www.uecanoia.cat/cursa-esquiador/",
+          "hash": "5c2eb1b07c0d9776d0b95e22ea00db920fbada1c9e1a4a5f4a411885f58a0fde",
+          "chars": 1080
+        },
+        {
+          "url": "https://www.uecanoia.cat/cursa-esquiador/",
+          "hash": "5c2eb1b07c0d9776d0b95e22ea00db920fbada1c9e1a4a5f4a411885f58a0fde",
+          "chars": 1080
+        },
+        {
+          "url": "https://www.uecanoia.cat/cursa-esquiador/inscripcions",
+          "hash": "8456cbfd3542197b12484a4e079cb1393943a0794bcbb46989da1df02c75171d",
+          "chars": 3989
+        },
+        {
+          "url": "https://www.uecanoia.cat/cursa-esquiador/reglament",
+          "hash": "cddf891ff63d584706e4b016931cbd40746094b298b836834a3bb6eee00b88c3",
+          "chars": 5387
+        }
+      ]
+    },
+    {
+      "id": "sant-vicenc-de-castellet--vallhonesta-x-trail",
+      "source_url": "https://ceaccastellet.wordpress.com/",
+      "town": "Sant Vicenç de Castellet",
+      "pages": [
+        {
+          "url": "https://ceaccastellet.wordpress.com/",
+          "hash": "fef44f7229f899a2f101fb433cad540d50ccd9780c5e9eecc071701e585576d7",
+          "chars": 5393
+        },
+        {
+          "url": "https://ceaccastellet.wordpress.com/cursa-nocturna-de-nadal/",
+          "hash": "5ea6df4660ac7f1a3fdbc569e37d4390db7d107080dbc6ae352e8fb40c07ed2b",
+          "chars": 1078
+        },
+        {
+          "url": "https://ceaccastellet.wordpress.com/atletisme/cursa-de-vallhonesta/fem-recollida-selectiva-cada-residu-al-seu-lloc/",
+          "hash": "e6109324b93672acaaf998289d7abcee91763282a226b1768b9bbb99489b044f",
+          "chars": 2495
+        },
+        {
+          "url": "https://ceaccastellet.wordpress.com/atletisme/cursa-de-vallhonesta/",
+          "hash": "67a46139907a7ddb29639b7cc88c5522559b2a94bc30a45196890084af1142d6",
+          "chars": 772
+        }
+      ]
+    },
+    {
+      "id": "vilaplana--vilaplana-030-extrem",
+      "source_url": "https://www.vilaplana030.cat/",
+      "town": "Vilaplana",
+      "pages": [
+        {
+          "url": "https://www.vilaplana030.cat/",
+          "hash": "329e8e6bc3beea880fe91e531279f00db75ea05efc4b16fe67beed78cb0c42da",
+          "chars": 6180
+        },
+        {
+          "url": "https://www.vilaplana030.cat/inscripcions/",
+          "hash": "9faf84b7252cd115b85eecc3256d81bf50ab8134d965efe5f0bc5afa09e86448",
+          "chars": 3305
+        },
+        {
+          "url": "https://www.vilaplana030.cat/reglament/",
+          "hash": "df70efcdaf64a998f9e074beb7a222c4b20dc2a1ee10d330763370d1b868ea63",
+          "chars": 1939
+        }
+      ]
+    },
+    {
+      "id": "cabrianes--cabrorun",
+      "source_url": "https://dsport.cat/ca/fitxa_cursa.php?id_cursa=1186",
+      "town": "Cabrianes",
+      "pages": [
+        {
+          "url": "https://dsport.cat/ca/fitxa_cursa.php?id_cursa=1186",
+          "hash": "6275954dc332739fc67f73710aa94b8c5e81bbb91e51ee4286249922e630b054",
+          "chars": 882
+        },
+        {
+          "url": "https://dsport.cat/ca/fitxa_inscripcions.php",
+          "hash": "83b82586328daea1e309fa4adce3f80cf37e5ab27cd6208b68789950cc3dda9e",
+          "chars": 2130
+        },
+        {
+          "url": "https://dsport.cat/ca/ins_seleccio_recorregut.php?id_cursa=1186",
+          "hash": "5ba82fca5523657bd5101490fea970282a81d836087e17d5cb1038ef38a448fe",
+          "chars": 610
+        },
+        {
+          "url": "https://dsport.cat/ca/llistat_inscrits.php?id_cursa=1186",
+          "hash": "e2dade3617368f2f5c5ee0902e905179d55da24f9368c8b6d18c1885bc09b701",
+          "chars": 3609
+        }
+      ]
+    },
+    {
+      "id": "sant-joan-de-les-abadesses--taga-2040-evo",
+      "source_url": "https://taga2040.com/",
+      "town": "Sant Joan de les Abadesses",
+      "pages": [
+        {
+          "url": "https://taga2040.com/",
+          "hash": "00b27c0778a9cd84442e3f67036568c482f89bafe96867521757cb6ea10857d0",
+          "chars": 1572
+        },
+        {
+          "url": "https://taga2040.com/index.php/ca/cursa",
+          "hash": "fed26d56683ccce703b08e3c01ff325aa6ffb846667cc71cc68be6c242dd5dcb",
+          "chars": 5106
+        },
+        {
+          "url": "https://taga2040.com/index.php/ca/cursa/informacio",
+          "hash": "fed26d56683ccce703b08e3c01ff325aa6ffb846667cc71cc68be6c242dd5dcb",
+          "chars": 5106
+        },
+        {
+          "url": "https://taga2040.com/index.php/ca/cursa/sobre-nosaltres",
+          "hash": "429680e731f1e74871ddf4aa198ae25f3f949edebb0e7bb25e322e927a071d2f",
+          "chars": 4782
+        }
+      ]
+    },
+    {
+      "id": "vall-de-nuria--olla-de-nuria-vertical",
+      "source_url": "https://olladenuria.cat/",
+      "town": "Vall de Núria",
+      "pages": [
+        {
+          "url": "https://olladenuria.cat/",
+          "hash": "e3ea6f73dbb9bc27bf169c48d43ca29fe3d1259998917bdd00943fab3a04a599",
+          "chars": 669
+        },
+        {
+          "url": "https://olladenuria.cat/obrim-inscripcions-2024/",
+          "hash": "164f0c2bb77847ddabb209e5a1fb153367294cf79f16e2ec168d3f4808a76792",
+          "chars": 1832
+        }
+      ]
+    },
+    {
+      "id": "monells--trail-de-monells",
+      "source_url": "https://www.curses.cat/monells2026/",
+      "town": "Monells",
+      "pages": [
+        {
+          "url": "https://www.curses.cat/monells2026/",
+          "hash": "c371f5d49c96e70b06b28bfe26cdebddb8393a43b71921e6f231a3484229e2e7",
+          "chars": 3039
+        },
+        {
+          "url": "https://www.curses.cat/monells2026/reglament.pdf",
+          "hash": "f53c555cb4762a7f5eed8b4bad2fbc79fc58e45dbce3317acc2ae5ef9582518e",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.curses.cat/monells2026/inscrits.php",
+          "hash": "3b9a4ef45227a9375acd711caa0fe3b047c84da6a154ba1b3d85bae0398d31d8",
+          "chars": 1942
+        },
+        {
+          "url": "https://www.curses.cat/condicio-us.php?cursa=monells2026",
+          "hash": "9fbb5365903a6e2b95ba7d202dc8d7780e5087750759427bf36c4edac1f2617a",
+          "chars": 2851
+        }
+      ]
+    },
+    {
+      "id": "altafulla--short-trail-altafulla",
+      "source_url": "https://www.athleticevents.net/cursa/2n-short-trail-altafulla-507",
+      "town": "Altafulla",
+      "pages": [
+        {
+          "url": "https://www.athleticevents.net/cursa/2n-short-trail-altafulla-507",
+          "hash": "b52b4709c5516c5840e37df13a5d8fe3c682d1ee903a3d8817edd0143c5ded29",
+          "chars": 1580
+        },
+        {
+          "url": "https://www.athleticevents.net/cursa/3a-cursa-solidaria-de-santa-rosalia-torredembarra-533",
+          "hash": "77e9815965fc3593f64238f7cdf8b0d3dfeb80319e851daf87bcef3cb5ec4464",
+          "chars": 2596
+        },
+        {
+          "url": "https://www.athleticevents.net/cursa/ii-caminada-nocturna-dels-ratpenats-534",
+          "hash": "0d5f33f1fb62a92b572463cffe2d4cc50bff73250b61a54195d446e0cc96a10c",
+          "chars": 2915
+        },
+        {
+          "url": "https://www.athleticevents.net/cursa/10a-cursa-i-marxa-contra-el-cancer-l-arboc-537",
+          "hash": "858b0264dd92ce41731a1bc372fef9eb5c87bf145a7bef1232d296045d7b2813",
+          "chars": 1654
+        }
+      ]
+    },
+    {
+      "id": "barcelona--cursa-montbau",
+      "source_url": "https://www.9hsports.cat/ca/informacio_cursa/935",
+      "town": "Barcelona",
+      "pages": [
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/935",
+          "hash": "b699b9f0c436105fe8be4a1e95e1f4c7199fcf8dc6092c8d77bad93a7ac99249",
+          "chars": 1744
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/inscripcions",
+          "hash": "f227286bffed3950aa3d948c45201ec6a7f3eff34dde9c3cdad1974c5b0838b8",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/935",
+          "hash": "b699b9f0c436105fe8be4a1e95e1f4c7199fcf8dc6092c8d77bad93a7ac99249",
+          "chars": 1744
+        }
+      ]
+    },
+    {
+      "id": "lloret-de-mar--cabra-s-trail-lloret",
+      "source_url": "https://running.cat/cabras-trail-lloret-2025",
+      "town": "Lloret de Mar",
+      "pages": [
+        {
+          "url": "https://running.cat/cabras-trail-lloret-2025",
+          "hash": "e01b809e4c0168df85a16c4fb0294a8b4e1a8d088f4bfde73872de9e03614b9e",
+          "chars": 730
+        },
+        {
+          "url": "https://running.cat/media/items/cartells_cabras_trail_nous_preus_2025.jpg",
+          "hash": "a14b5521d51797ba102cac089a36fb85eed84c3ab0b409ea7c727a359bd44594",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "sant-llorenc-d-hortons--cursa-de-la-vinya-i-el-pampol",
+      "source_url": "https://www.ajhortons.cat/temes/esport/la-29-ena-cursa-de-la-vinya-i-la-8ena-pampol-trail-",
+      "town": "Sant Llorenç d'Hortons",
+      "pages": [
+        {
+          "url": "https://www.ajhortons.cat/temes/esport/la-29-ena-cursa-de-la-vinya-i-la-8ena-pampol-trail-",
+          "hash": "aa1be6893daf702307b8e262982fda52c9c5b148007c86d603a5387a7aa0da26",
+          "chars": 5321
+        },
+        {
+          "url": "https://www.ajhortons.cat/temes/esport/la-29-ena-cursa-de-la-vinya-i-la-8ena-pampol-trail-?lang=ca",
+          "hash": "aa1be6893daf702307b8e262982fda52c9c5b148007c86d603a5387a7aa0da26",
+          "chars": 5321
+        },
+        {
+          "url": "https://www.ajhortons.cat/el-municipi/informacio-del-municipi/la-nostra-historia",
+          "hash": "254d0890d547767ed030c0a436f915020764d7bc179273523a2d37c6087f83a4",
+          "chars": 2051
+        }
+      ]
+    },
+    {
+      "id": "la-seu-d-urgell--cursa-transfronterera",
+      "source_url": "https://www.circuitfer.cat/",
+      "town": "La Seu d'Urgell",
+      "pages": [
+        {
+          "url": "https://www.circuitfer.cat/",
+          "hash": "e45aabc7b58007be863b682ca85dcf0906639926fc022b7a421134c9c28c8530",
+          "chars": 3034
+        },
+        {
+          "url": "https://www.circuitfer.cat/reglament-2026",
+          "hash": "5e7e186c91693b1063923fb44656966d9108b0e0e7338ea6bc6891929e0f6a48",
+          "chars": 618
+        },
+        {
+          "url": "https://www.circuitfer.cat/inscripcions-2026",
+          "hash": "d752d5f8f6046b54f3d69e9fe32d79cd65c50072b05f6ce7858acff2cc868923",
+          "chars": 786
+        },
+        {
+          "url": "https://www.circuitfer.cat/IV-cursa-el-pla",
+          "hash": "bbf2be3f245d8db2a5522d8375dea7a56742dd161f82142125d5cc62ef4dc739",
+          "chars": 815
+        }
+      ]
+    },
+    {
+      "id": "folgueroles--folguerolenca-trail",
+      "source_url": "https://www.9hsports.cat/ca/informacio_cursa/1192",
+      "town": "Folgueroles",
+      "pages": [
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/1192",
+          "hash": "512b3dfde960c38c77d9edead7d9d711f4bb40934a70c2f80c83f5837f6db123",
+          "chars": 453
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/inscripcions",
+          "hash": "f227286bffed3950aa3d948c45201ec6a7f3eff34dde9c3cdad1974c5b0838b8",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/1192",
+          "hash": "512b3dfde960c38c77d9edead7d9d711f4bb40934a70c2f80c83f5837f6db123",
+          "chars": 453
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/inscrits/3071",
+          "hash": "78ed4a6b5a6ac884b4938445c84b8a3c1be7776a277d2f826742f47c0f10d8a1",
+          "chars": 7672
+        }
+      ]
+    },
+    {
+      "id": "monistrol-de-calders--cursa-del-sot",
+      "source_url": "https://sites.google.com/view/cursadelsot/",
+      "town": "Monistrol de Calders",
+      "pages": [
+        {
+          "url": "https://sites.google.com/view/cursadelsot/",
+          "hash": "8722e54b7777bf4c5ffcd0687cca863732430c4f6676d7ed36e502425eb04c9c",
+          "chars": 1142
+        },
+        {
+          "url": "https://sites.google.com/view/cursadelsot/p%C3%A0gina-principal",
+          "hash": "8722e54b7777bf4c5ffcd0687cca863732430c4f6676d7ed36e502425eb04c9c",
+          "chars": 1142
+        },
+        {
+          "url": "https://sites.google.com/view/cursadelsot/curses-infantils",
+          "hash": "d122da903bf78b2458136683765d2d20aa45cf81a99ada2b415239c22adb7b4c",
+          "chars": 564
+        },
+        {
+          "url": "https://sites.google.com/view/cursadelsot/normativa",
+          "hash": "227dfabe80d71efc2119c5a3eb32740c87df97418e162de21bf1978a72d814c8",
+          "chars": 3006
+        }
+      ]
+    },
+    {
+      "id": "alcanar--pujada-al-montsia",
+      "source_url": "https://www.pujadamontsia.cat/",
+      "town": "Alcanar",
+      "pages": [
+        {
+          "url": "https://www.pujadamontsia.cat/",
+          "hash": "3918301c8549c9b9edb71ae335825c34f3786de30b358698d874cc2463dca9e1",
+          "chars": 2954
+        },
+        {
+          "url": "https://www.pujadamontsia.cat/recorreguts/cursa-absoluta/",
+          "hash": "531fb40c400fabc9859b166edfc999dd5fca0e4f54938b8741a89e7276ac229d",
+          "chars": 4781
+        },
+        {
+          "url": "https://www.pujadamontsia.cat/recorreguts/cursa-junior/",
+          "hash": "277c92976d26b3ed3b4cab45d72e6dc10754463ae7d97b5cb5f9478cefb0e3f2",
+          "chars": 4611
+        },
+        {
+          "url": "https://www.pujadamontsia.cat/recorreguts/cursa-juvenil/",
+          "hash": "8f7de6722fed5d14a8bc90152ba0955ef1df6ea0410b8c1ef07804d27c6a932c",
+          "chars": 4612
+        }
+      ]
+    },
+    {
+      "id": "espinelves--espintrail-vertical",
+      "source_url": "https://www.espintrail.com/",
+      "town": "Espinelves",
+      "pages": [
+        {
+          "url": "https://www.espintrail.com/",
+          "hash": "a92a42e581b2a810ad342d928d888877efcb9f67911f1e20957535d7002f88ab",
+          "chars": 1488
+        }
+      ]
+    },
+    {
+      "id": "el-portus--tramuntana-trail-transfronterer",
+      "source_url": "https://www.curses.cat/tramuntanatrail2026/",
+      "town": "El Portús",
+      "pages": [
+        {
+          "url": "https://www.curses.cat/tramuntanatrail2026/",
+          "hash": "93e647e2cfae959f344d1e5a514c1f2a741147f1d21bf08fa5fe49ca9e915f43",
+          "chars": 3516
+        },
+        {
+          "url": "https://www.curses.cat/tramuntanatrail2026/reglament.pdf",
+          "hash": "9abff425645c0726deccc42a1e0cbbe92a921cab69c2ef3d40f53fd591727fd0",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.curses.cat/tramuntanatrail2026/inscrits.php",
+          "hash": "580e0c6df18bb4fd4cc101a074714e92239d1909ec2a954e0f55bd46e9ef7fa6",
+          "chars": 2541
+        },
+        {
+          "url": "https://www.curses.cat/condicio-us.php?cursa=tramuntanatrail2026",
+          "hash": "ae624d64db5ddfe5888c940621d986c0a0f4560dab6e68bf655a7e33c322179c",
+          "chars": 2851
+        }
+      ]
+    },
+    {
+      "id": "amposta--duextrem-amposta",
+      "source_url": "https://www.montbike.org/duextremamposta/",
+      "town": "Amposta",
+      "pages": [
+        {
+          "url": "https://www.montbike.org/duextremamposta/",
+          "hash": "dbea1e82c37adeeb223ee6515054030e1a76ca3336708b27b9f288ba2b636a96",
+          "chars": 1396
+        },
+        {
+          "url": "https://www.montbike.org/duextremamposta/duextrem-amposta-cursa-trail/",
+          "hash": "72d8fc5c52327d388369f7941c5e7154dc19fbff0d334fc4e1507e1cde390b89",
+          "chars": 865
+        },
+        {
+          "url": "https://www.montbike.org/duextremamposta/inscripcions/",
+          "hash": "2f2932f43dc8f934a6c1f0e9b41bfd369797a5317277ca2df764f0b2d14c11df",
+          "chars": 2530
+        },
+        {
+          "url": "https://www.montbike.org/duextremamposta/horaris/",
+          "hash": "d1e74c3ff219af95abb43fc70bf6c7febb2e1075e92638fd179c156de082d789",
+          "chars": 615
+        }
+      ]
+    },
+    {
+      "id": "pi--vertical-de-pi",
+      "source_url": "https://esportsbellver.org/vertical-de-pi/",
+      "town": "Pi",
+      "pages": [
+        {
+          "url": "https://esportsbellver.org/vertical-de-pi/",
+          "hash": "fe54741b779e3160bbd9851f8233850b220d35fb66ff4384bd8d74c3cac5e1ca",
+          "chars": 604
+        }
+      ]
+    },
+    {
+      "id": "la-seu-d-urgell--vertical-urgellet",
+      "source_url": "https://www.9hsports.cat/ca/informacio_cursa/891",
+      "town": "La Seu d'Urgell",
+      "pages": [
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/891",
+          "hash": "5994300290bbf9bcb838038c8df5e6fd829c80a9bf60214efbe25870f33f8d9d",
+          "chars": 409
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/inscripcions",
+          "hash": "f227286bffed3950aa3d948c45201ec6a7f3eff34dde9c3cdad1974c5b0838b8",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/891",
+          "hash": "5994300290bbf9bcb838038c8df5e6fd829c80a9bf60214efbe25870f33f8d9d",
+          "chars": 409
+        }
+      ]
+    },
+    {
+      "id": "llinars-del-valles--kom-trail-el-corredor",
+      "source_url": "https://cellv.cat/trail-corredor/",
+      "town": "Llinars del Vallès",
+      "pages": [
+        {
+          "url": "https://cellv.cat/trail-corredor/",
+          "hash": "a9cf7a2df5609115cbc41038dbf4640a808cc655f68a50ade4ddccce27a80137",
+          "chars": 3118
+        },
+        {
+          "url": "https://cellv.cat/wp-content/uploads/2023/07/Reglament-KOM-2023.pdf",
+          "hash": "05cfd2e85a38d536156e5423de2cfb6fa1fe1dc2717c654b884d72c83927599b",
+          "chars": 12000
+        },
+        {
+          "url": "https://cellv.cat/wp-content/uploads/2023/09/carrerafusters.com_-1.png",
+          "hash": "cf38a197221df42219ce18dedd3896bf4b224ba352be467b18fc688eaa63ab37",
+          "chars": 12000
+        },
+        {
+          "url": "https://cellv.cat/cursa-de-sant-silvestre/",
+          "hash": "dbbbbb5cc8475ca01d2ce43222e69617ffab3b2d0f1b3dc19233775600d93cd3",
+          "chars": 2119
+        }
+      ]
+    },
+    {
+      "id": "cambrils--la-cambrils-oden",
+      "source_url": "https://www.circuitfer.cat/",
+      "town": "Cambrils",
+      "pages": [
+        {
+          "url": "https://www.circuitfer.cat/",
+          "hash": "e45aabc7b58007be863b682ca85dcf0906639926fc022b7a421134c9c28c8530",
+          "chars": 3034
+        },
+        {
+          "url": "https://www.circuitfer.cat/reglament-2026",
+          "hash": "5e7e186c91693b1063923fb44656966d9108b0e0e7338ea6bc6891929e0f6a48",
+          "chars": 618
+        },
+        {
+          "url": "https://www.circuitfer.cat/inscripcions-2026",
+          "hash": "d752d5f8f6046b54f3d69e9fe32d79cd65c50072b05f6ce7858acff2cc868923",
+          "chars": 786
+        },
+        {
+          "url": "https://www.circuitfer.cat/IV-cursa-el-pla",
+          "hash": "bbf2be3f245d8db2a5522d8375dea7a56742dd161f82142125d5cc62ef4dc739",
+          "chars": 815
+        }
+      ]
+    },
+    {
+      "id": "ulldemolins--utsm-serra-de-montsant",
+      "source_url": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
+      "town": "Ulldemolins",
+      "pages": [
+        {
+          "url": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
+          "hash": "02fe8356be6165131007b993b0601295c154bb1334256934ae5a1df16e5ef00b",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.naturetime.es/en/cursa-dones-cambrils-3/",
+          "hash": "8bee6484c33f71e0e4337b2eeb2397bf3b07121f2cfdf6b812e1c63b58971bd5",
+          "chars": 8203
+        },
+        {
+          "url": "https://www.naturetime.es/cursa-de-nadal-2/",
+          "hash": "c5366a534797b15096e4cefe7afc61adad0bc054f4af5b50e2e50ee3eb78f6a8",
+          "chars": 7775
+        },
+        {
+          "url": "https://www.naturetime.es/wp-content/uploads/2026/02/UTSM_26_Reglamento_ESP_CAT_ENG_compressed.pdf",
+          "hash": "35c296404157c5fe5879d33664782c9c34d65637e8e9a6347b702345a486c052",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "oden--la-xafonada",
+      "source_url": "https://www.oden.cat/home/xafonada/",
+      "town": "Odèn",
+      "pages": [
+        {
+          "url": "https://www.oden.cat/home/xafonada/",
+          "hash": "f3e9d963483c37d8108be276f7b7d82c4aedbead517471565548c4b14cbb2360",
+          "chars": 7157
+        },
+        {
+          "url": "https://www.oden.cat/tag/informacio/",
+          "hash": "a5235ea4f2b3cf277625c09256f2cf640fdd42b523e9618d2290bb5cf79ca4b2",
+          "chars": 7355
+        }
+      ]
+    },
+    {
+      "id": "ribes-de-freser--brama-stage-run",
+      "source_url": "https://brama.run/es/",
+      "town": "Ribes de Freser",
+      "pages": [
+        {
+          "url": "https://brama.run/es/",
+          "hash": "9ac7398e7015c1e1100175800eb7c1b24b0c6eec7e1d7657445b8a8c3a9b6db5",
+          "chars": 4646
+        },
+        {
+          "url": "https://brama.run/es/la-carrera/",
+          "hash": "bf306cc6799d8bfb2b6b8a5f0eb107c3091176a2774ae5c45ff5a902af3f7ded",
+          "chars": 6809
+        },
+        {
+          "url": "https://brama.run/es/programa-es/",
+          "hash": "198329e8ae32b72d3190067dfd9c406ff03f22de53425f37a2fe76811725ed91",
+          "chars": 501
+        },
+        {
+          "url": "https://brama.run/es/reglamento/",
+          "hash": "53e4d224e557b94d43d43ddaea1046fd3f8c0690f1fddeb7941d85a6015c0a87",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "tossa-de-mar--la-megalitica",
+      "source_url": "https://www.lasansi.com/es/tossamarato",
+      "town": "Tossa de Mar",
+      "pages": [
+        {
+          "url": "https://www.lasansi.com/es/tossamarato",
+          "hash": "2b6b062585e9315433eb4d788660f46f1cc98cdefc20f8de660908b831a9b4c0",
+          "chars": 947
+        }
+      ]
+    },
+    {
+      "id": "sant-fost-de-campsentelles--la-dragonera-trail",
+      "source_url": "https://linktr.ee/cursadeldrac",
+      "town": "Sant Fost de Campsentelles",
+      "pages": [
+        {
+          "url": "https://linktr.ee/cursadeldrac",
+          "hash": "faa0247f4495acfaeafc311a8774eaad5df411a04bf3528e97099eeda3f5957f",
+          "chars": 4431
+        },
+        {
+          "url": "https://linktr.ee/?utm_source=linktree&amp;utm_medium=profile&amp;utm_campaign=footer_logo_cta&amp;utm_content=cursadeldrac",
+          "hash": "66bbd4356434a1389354917b16a2a4579b2c05921f66e730c47795602b34df52",
+          "chars": 2767
+        },
+        {
+          "url": "https://linktr.ee/s/about/trust-center/report/?field86145911=https%3A%2F%2Flinktr.ee%2Fcursadeldrac",
+          "hash": "8f019610fb76d5e7b6ca66ff89159ff6359a0995fe723f9019a24371d9e6d5ab",
+          "chars": 710
+        }
+      ]
+    },
+    {
+      "id": "orriols--cursa-d-orriols",
+      "source_url": "https://curses.cat/orriols2025/",
+      "town": "Orriols",
+      "pages": [
+        {
+          "url": "https://curses.cat/orriols2025/",
+          "hash": "901507d1bf9af2ca450090420e776e878a648e258fd65aba2616016124a074a3",
+          "chars": 1645
+        }
+      ]
+    },
+    {
+      "id": "bellaterra--la-6-6-de-bellaterra",
+      "source_url": "https://la6punt6debellaterra.cat/",
+      "town": "Bellaterra",
+      "pages": [
+        {
+          "url": "https://la6punt6debellaterra.cat/",
+          "hash": "e3ebad4128565466ad63f26ab65f62320974f72a63c9cc3b290c219884473c7b",
+          "chars": 3771
+        },
+        {
+          "url": "https://la6punt6debellaterra.cat/sobre-la-cursa/",
+          "hash": "8b5efb92f262e19ffeb0d61e9c26aa5dff67872dc427d68aaf9ec65515f4c34b",
+          "chars": 6730
+        },
+        {
+          "url": "https://la6punt6debellaterra.cat/reglament/",
+          "hash": "b6081fb3e5bede213b44f3f14b3e4976a74f5351e2248237028b4ba888a66580",
+          "chars": 9481
+        }
+      ]
+    },
+    {
+      "id": "agramunt--cursa-del-torro",
+      "source_url": "https://agramuntesports.cat/cursa-del-torro-2024/",
+      "town": "Agramunt",
+      "pages": [
+        {
+          "url": "https://agramuntesports.cat/cursa-del-torro-2024/",
+          "hash": "06155175b67bf166a1f14ff287e38b291696e4eb1d10fa0d2c877188ef5fba1f",
+          "chars": 7011
+        },
+        {
+          "url": "https://agramuntesports.cat/cursa-del-torro-missio-complerta/",
+          "hash": "8329447cb3bed7f515c4524bd40ff8f64ebe2b43f178baf04097140609b2439c",
+          "chars": 5697
+        },
+        {
+          "url": "https://agramuntesports.cat/cursa-de-la-dona/",
+          "hash": "82aa7f6a8f99bea63f1d9fe1ea0f5d267f2acce7648fca4a81ec45b8e4c45e38",
+          "chars": 6359
+        },
+        {
+          "url": "https://agramuntesports.cat/2025-35a-cursa-del-torro/",
+          "hash": "d3e1aa99503ede5eee5a991a6ec68709477a854d1520bd618253e386125d7106",
+          "chars": 5283
+        }
+      ]
+    },
+    {
+      "id": "portbou--querroig-trail",
+      "source_url": "https://querroigtrail.com/",
+      "town": "Portbou",
+      "pages": [
+        {
+          "url": "https://querroigtrail.com/",
+          "hash": "a8f3fe3884dfe531b1dc5a4dc742093a9b06153d1f2631bc83d06c570d7d401c",
+          "chars": 1322
+        }
+      ]
+    },
+    {
+      "id": "la-selva-de-mar--la-selvatjada",
+      "source_url": "https://www.curses.cat/laselvatjada2026/",
+      "town": "La Selva de Mar",
+      "pages": [
+        {
+          "url": "https://www.curses.cat/laselvatjada2026/",
+          "hash": "afefb58887dec4372858b13823518bdd1444785ecf9dfa34b19777059a631748",
+          "chars": 1645
+        }
+      ]
+    },
+    {
+      "id": "roquetes--kv-roquetes",
+      "source_url": "https://www.trailroquetes.cat/",
+      "town": "Roquetes",
+      "pages": [
+        {
+          "url": "https://www.trailroquetes.cat/",
+          "hash": "9b39a0372922454f26f89ffcb90393d48fc2e2ed38caf43b2e2edbe67522955c",
+          "chars": 4299
+        },
+        {
+          "url": "https://www.trailroquetes.cat/kmv/inscripcions/",
+          "hash": "9cdb0679b18b3eb16abfc0dbb9fac7d724df74e6d091061869ce0d015cfa4ec0",
+          "chars": 561
+        },
+        {
+          "url": "https://www.trailroquetes.cat/kmv/horari/",
+          "hash": "72a7119052dfa27fccb44d5e7f4ea85f01dbd408570d3181d5372830ebb56b4c",
+          "chars": 1266
+        },
+        {
+          "url": "https://www.trailroquetes.cat/kmv/reglament/",
+          "hash": "a1477ff8b04fe82368e3680a6f60edd02a92d832a758028f47b16a883fbe5bf3",
+          "chars": 926
+        }
+      ]
+    },
+    {
+      "id": "barcelona--fun-trail-barcelona",
+      "source_url": "https://funtrailbarcelona.com/",
+      "town": "Barcelona",
+      "pages": [
+        {
+          "url": "https://funtrailbarcelona.com/",
+          "hash": "e34a824fe0c4ff94af86afb58b623ffb8180b4f6167436f249c0342ed65951b3",
+          "chars": 1922
+        },
+        {
+          "url": "https://funtrailbarcelona.com/inicio_postcursa-2-a-edicion/",
+          "hash": "e34a824fe0c4ff94af86afb58b623ffb8180b4f6167436f249c0342ed65951b3",
+          "chars": 1922
+        },
+        {
+          "url": "https://funtrailbarcelona.com/reglament/",
+          "hash": "096410dca58f4f6d78c17a4dcb825a5f664348de59853ecacafe54d6c8ff2872",
+          "chars": 12000
+        },
+        {
+          "url": "https://funtrailbarcelona.com/programa-general/",
+          "hash": "8f6fc6c32b1e87932ae8bf3ee746fdb4012f5318c47bc641178024ad0a170dad",
+          "chars": 1280
+        }
+      ]
+    },
+    {
+      "id": "pacs-del-penedes--pujada-a-sant-pau",
+      "source_url": "https://corremperlaterra.wordpress.com/",
+      "town": "Pacs del Penedès",
+      "pages": [
+        {
+          "url": "https://corremperlaterra.wordpress.com/",
+          "hash": "743110de52f4e8cc70c979dbc25e8bb9bd70e21d9875eba12b20722b671164c3",
+          "chars": 475
+        },
+        {
+          "url": "https://corremperlaterra.wordpress.com/la-cursa/",
+          "hash": "a9c0713b2099e6fe9df8ae83117953da3daca999dcd2839f3da8f54831db41f6",
+          "chars": 1539
+        },
+        {
+          "url": "https://corremperlaterra.wordpress.com/inscripcions",
+          "hash": "c910bed430f6c4ec3829d3dffa514e9dc5ea92cf9408b88db1fa8b512e6c1bbd",
+          "chars": 1463
+        },
+        {
+          "url": "https://corremperlaterra.wordpress.com/wp-content/uploads/2025/11/reglament-14a-pujada-sant-pau.pdf",
+          "hash": "8b95bfa23e8215d7d4cdacc2c5c7854f6dd3eda71da637495c0f6ffcf051bad2",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "ulldemolins--trail-ermites-ulldemolins",
+      "source_url": "https://www.naturetime.es/ca/trailseries-les-ermites-ulldemolins-esp/",
+      "town": "Ulldemolins",
+      "pages": [
+        {
+          "url": "https://www.naturetime.es/ca/trailseries-les-ermites-ulldemolins-esp/",
+          "hash": "cda7080bdf9bb6769948805dc73a161d9c81952b4e95d0f31145c8a564eea227",
+          "chars": 11424
+        },
+        {
+          "url": "https://www.naturetime.es/ca/cursa-de-nadal/",
+          "hash": "c117e842ea750e38d0c290050f98fe02bfdab03ea3815bc2d6fcfc74fd06cb38",
+          "chars": 7547
+        },
+        {
+          "url": "https://www.naturetime.es/ca/cursa-dones-cambrils-2/",
+          "hash": "69606da1f6b0a961d66106a393acc054fc4c566b60ca4c42f9bd3d23213d91c4",
+          "chars": 8394
+        },
+        {
+          "url": "https://www.naturetime.es/wp-content/uploads/2026/06/Reglament_Curses_trailSERIES_Costa_Daurada_2026.docx",
+          "hash": "2ce81649cdf8708cf0b93bcf45f808fdd75c73941cc0e32a48c84e08683a9533",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "tremp--cursa-antoni-camarasa",
+      "source_url": "https://inscripcions.cat/cursacamarasa2025/",
+      "town": "Tremp",
+      "pages": [
+        {
+          "url": "https://inscripcions.cat/cursacamarasa2025/",
+          "hash": "7c575f76f461a9435e53833844db8f1adc30322fa59a1db8b955c28d83396451",
+          "chars": 793
+        },
+        {
+          "url": "https://inscripcions.cat/cursacamarasa2025/?lang=ca&",
+          "hash": "7c575f76f461a9435e53833844db8f1adc30322fa59a1db8b955c28d83396451",
+          "chars": 793
+        },
+        {
+          "url": "https://inscripcions.cat/cursacamarasa2025/?lang=es&",
+          "hash": "9dc173c2aba8cb9bbe64cfeb667125aa6a3626098c1bd6734f3cf4126102696a",
+          "chars": 809
+        },
+        {
+          "url": "https://inscripcions.cat/cursacamarasa2025/?lang=en&",
+          "hash": "e84293e074e55db9bb27942c0ce4d4c27d37d84a7acee9a7ef993e862bf1ea61",
+          "chars": 776
+        }
+      ]
+    },
+    {
+      "id": "gurb--cursa-a-tota-castanya",
+      "source_url": "https://www.atotacastanyagurb.cat/",
+      "town": "Gurb",
+      "pages": [
+        {
+          "url": "https://www.atotacastanyagurb.cat/",
+          "hash": "a1ece176adc59d981c2056be1009d60102b89325fa054768b003af7999e9b519",
+          "chars": 239
+        }
+      ]
+    },
+    {
+      "id": "sorribes-de-la-vansa--vertical-de-l-arp",
+      "source_url": "https://inscripcions.cat/vertical-arp-trail-2025/",
+      "town": "Sorribes de la Vansa",
+      "pages": [
+        {
+          "url": "https://inscripcions.cat/vertical-arp-trail-2025/",
+          "hash": "8c58802154d15f7276f2b321253e4464c728ac4b51fc406b72d3b94b034c7b21",
+          "chars": 2650
+        },
+        {
+          "url": "https://inscripcions.cat/inscripcions/termes_legals",
+          "hash": "e3a4a0b461f92993abff9e3cef7ccaf3e0b45afd04a1df6f25cc657ab52da9ba",
+          "chars": 4428
+        }
+      ]
+    },
+    {
+      "id": "la-garriga--saligarda-trail",
+      "source_url": "https://www.lestortugues.cat/saligarda-trail/",
+      "town": "La Garriga",
+      "pages": [
+        {
+          "url": "https://www.lestortugues.cat/saligarda-trail/",
+          "hash": "3efd36c97aabf1f1d1a3357154f46f7b169854b8f5b9358fdcb5bc1ead74650e",
+          "chars": 9473
+        },
+        {
+          "url": "https://www.lestortugues.cat/inscripcio-caminada-saligarda-2025/",
+          "hash": "fbb82db4cb221b18405b5411eb0d5495739f786209af5181da6c1764bccb1431",
+          "chars": 1923
+        },
+        {
+          "url": "https://www.lestortugues.cat/reglament-saligarda/",
+          "hash": "74213c9430da11f4117b5a0249947c0d863caab1a1a14473c9b0805475c49e5d",
+          "chars": 7422
+        }
+      ]
+    },
+    {
+      "id": "sentmenat--pujada-i-baixada-a-guanta",
+      "source_url": "https://www.lasansi.com/ca/pujada-guanta",
+      "town": "Sentmenat",
+      "pages": [
+        {
+          "url": "https://www.lasansi.com/ca/pujada-guanta",
+          "hash": "6c06e96644028fcf4e40bd6fbe5ebeda527f0bb6a12905b0716b790bd1ca2855",
+          "chars": 888
+        },
+        {
+          "url": "https://www.lasansi.com/ca/pujada-guanta/inscripcions-pujada-guanta",
+          "hash": "ec20b3c5cbc924c4bd702553d54507f7b4e33aa87545d497f978325b8bb1218a",
+          "chars": 222
+        }
+      ]
+    },
+    {
+      "id": "sant-marti-sesgueioles--trail-gaioles",
+      "source_url": "https://sites.google.com/view/1a-trail-gaioles/inici",
+      "town": "Sant Martí Sesgueioles",
+      "pages": [
+        {
+          "url": "https://sites.google.com/view/1a-trail-gaioles/inici",
+          "hash": "a1de9c3169b12bfc546b862fa0517955ea2f9bdfa1e3ba8a8e4ede0e5c582d97",
+          "chars": 2169
+        },
+        {
+          "url": "https://sites.google.com/view/1a-trail-gaioles/inscripcions",
+          "hash": "378a63e0bd5a4067fafff6048c3aae29a92244d508b653a97dddc8d600dfef60",
+          "chars": 636
+        },
+        {
+          "url": "https://sites.google.com/view/1a-trail-gaioles/reglament",
+          "hash": "5b5d9ab18cb887d2c3621bad9adef64c29d22e29e4881ab7c636ee77f0384492",
+          "chars": 3398
+        }
+      ]
+    },
+    {
+      "id": "avia--volta-a-la-maria-la-nocturna",
+      "source_url": "https://voltaalamaria.wixsite.com/misitio",
+      "town": "Avià",
+      "pages": [
+        {
+          "url": "https://voltaalamaria.wixsite.com/misitio",
+          "hash": "0d8a927439397bdad9022490d1d7b7000e0d4155b2a0cf7874fc0e31669d5961",
+          "chars": 2521
+        }
+      ]
+    },
+    {
+      "id": "sant-llorenc-de-montgai--trail-montroig",
+      "source_url": "https://www.trailmontroig.cat/",
+      "town": "Sant Llorenç de Montgai",
+      "pages": [
+        {
+          "url": "https://www.trailmontroig.cat/",
+          "hash": "7c20460c07bbca8b7f242aefc1b0dae9cc26028dd736c55cbd53d9867b75c650",
+          "chars": 2821
+        },
+        {
+          "url": "https://www.trailmontroig.cat/info-util/",
+          "hash": "c475ea0e60daf1433831015a717b0fa95e691a63fe2dcfb6860944cf326c4864",
+          "chars": 7541
+        },
+        {
+          "url": "https://www.trailmontroig.cat/marato-trail-montroig-41-km/reglament/",
+          "hash": "aa920b58f7d7fdbb07786712da1e853b3ba39be6b1f43539560da0e06e4a9b5a",
+          "chars": 7902
+        },
+        {
+          "url": "https://www.trailmontroig.cat/programa-de-lesdeveniment/",
+          "hash": "b0ab7718d7459c98b58c65aa3bdeb1d114123cb710ec812e35688a9278c608b5",
+          "chars": 1460
+        }
+      ]
+    },
+    {
+      "id": "vandellos--vandekames",
+      "source_url": "https://www.vandekames.cat/",
+      "town": "Vandellòs",
+      "pages": [
+        {
+          "url": "https://www.vandekames.cat/",
+          "hash": "359b1ebec219f314c6998fa8fe5ee785b25662f0315d268c19ea55e94a884ea5",
+          "chars": 4046
+        }
+      ]
+    },
+    {
+      "id": "lluerts--trail-lluerts",
+      "source_url": "https://curses.cat/traillluerts2025/",
+      "town": "Lluerts",
+      "pages": [
+        {
+          "url": "https://curses.cat/traillluerts2025/",
+          "hash": "555e1cce3ea588c4eb4d05833c7ec843a3b71e5d615612452d574c7b31d1da4a",
+          "chars": 1645
+        }
+      ]
+    },
+    {
+      "id": "ivars-de-noguera--montpedro-trail",
+      "source_url": "https://lamontpedro.home.blog/",
+      "town": "Ivars de Noguera",
+      "pages": [
+        {
+          "url": "https://lamontpedro.home.blog/",
+          "hash": "90989108dca7d7afa9fe6ab5ad2032e1804378b1f0851ec31909bfe84f610e84",
+          "chars": 468
+        },
+        {
+          "url": "https://lamontpedro.home.blog/programa/",
+          "hash": "9b968085b874ddd4e9f468032416bc739f1a3f19d55b0abab6765f9c15f1c329",
+          "chars": 629
+        },
+        {
+          "url": "https://lamontpedro.home.blog/reglament/",
+          "hash": "99a9151511fe4dbc1f48519bb216ea1de8772652bd8333875a2086eaebc2beba",
+          "chars": 7405
+        },
+        {
+          "url": "https://lamontpedro.home.blog/inscripcions/",
+          "hash": "4c62a3386a9bd92082c59d5ea33ba1cd8d944bb59cb952808ea7c405132c9ac8",
+          "chars": 911
+        }
+      ]
+    },
+    {
+      "id": "olivella--cursa-del-margallo",
+      "source_url": "https://www.cursadelmargallo.cat/",
+      "town": "Olivella",
+      "pages": [
+        {
+          "url": "https://www.cursadelmargallo.cat/",
+          "hash": "5bd4d532112d043b327edb57c8e1ab05c7585a6f35406b92338da920ddac56d0",
+          "chars": 3479
+        },
+        {
+          "url": "https://www.cursadelmargallo.cat/cursa-2021/",
+          "hash": "1454c7a988c291717bf4c46409095d9f9321ac67df6ba590649c1e6e575902dc",
+          "chars": 2799
+        },
+        {
+          "url": "https://www.cursadelmargallo.cat/horaris/",
+          "hash": "3df6f511ad4f6329817410e10f010d15178ce96dc2096e23bb8aed31a17677fd",
+          "chars": 1897
+        },
+        {
+          "url": "https://www.cursadelmargallo.cat/preus/",
+          "hash": "3f3387033a8cd097c2c59d59fb2e152085945dc1de74930a63d4dd67740864a0",
+          "chars": 1788
+        }
+      ]
+    },
+    {
+      "id": "marganell--cursa-matonera",
+      "source_url": "https://www.marganell.cat/cursa-matonera",
+      "town": "Marganell",
+      "pages": [
+        {
+          "url": "https://www.marganell.cat/cursa-matonera",
+          "hash": "64b476e0c5c1e04a60d95d3f917b5444ef70c1d424545930fbf0feb6f5553e44",
+          "chars": 3310
+        },
+        {
+          "url": "https://www.marganell.cat/cursa-matonera?lang=ca",
+          "hash": "64b476e0c5c1e04a60d95d3f917b5444ef70c1d424545930fbf0feb6f5553e44",
+          "chars": 3310
+        },
+        {
+          "url": "https://www.marganell.cat/municipi/informacio-del-municipi",
+          "hash": "4c7b9a204e9312f24a75e2da351a292065d07be87f9047c276dbb48559b1475f",
+          "chars": 1968
+        },
+        {
+          "url": "https://www.marganell.cat/municipi/informacio-del-municipi/marganell",
+          "hash": "4c7b9a204e9312f24a75e2da351a292065d07be87f9047c276dbb48559b1475f",
+          "chars": 1968
+        }
+      ]
+    },
+    {
+      "id": "verdu--cursa-bacus",
+      "source_url": "https://correvinyes.verdu.red/cursa-bacus-2026/",
+      "town": "Verdú",
+      "pages": [
+        {
+          "url": "https://correvinyes.verdu.red/cursa-bacus-2026/",
+          "hash": "0e51f8a8798d1fb8160875e73429534c799dabb56de201a897a7c3ea623b8eec",
+          "chars": 7361
+        },
+        {
+          "url": "https://correvinyes.verdu.red/preus-horaris",
+          "hash": "bb9264b3da765ad0a62eb1d0c851a6ffc021b40eee5386ac4ae010061858f3a1",
+          "chars": 2884
+        },
+        {
+          "url": "https://correvinyes.verdu.red/cursa-bacus-2026/",
+          "hash": "0e51f8a8798d1fb8160875e73429534c799dabb56de201a897a7c3ea623b8eec",
+          "chars": 7361
+        },
+        {
+          "url": "https://correvinyes.verdu.red/preus-horaris/",
+          "hash": "ad35b23352a096a0c7300bd1ce4ce2fc2b48cc03e7b27954bc99a3062616aab5",
+          "chars": 2884
+        }
+      ]
+    },
+    {
+      "id": "barcelona--trencacames-canyelles",
+      "source_url": "https://www.avaibooksports.com/inscripcion/trencacames-canyelles-2025/",
+      "town": "Barcelona",
+      "pages": [
+        {
+          "url": "https://www.avaibooksports.com/inscripcion/trencacames-canyelles-2025/",
+          "hash": "e6b5c3bfa119adb229313980336aac78fd4244c52ef2a53e333307cfd14e29e9",
+          "chars": 527
+        }
+      ]
+    },
+    {
+      "id": "santa-coloma-de-farners--cursa-de-la-ratafia",
+      "source_url": "https://cursadelaratafia.cat/",
+      "town": "Santa Coloma de Farners",
+      "pages": [
+        {
+          "url": "https://cursadelaratafia.cat/",
+          "hash": "4cea278ee0172f3d338eeb9806317f683c59c5df843ce791aced9c753f9b039a",
+          "chars": 912
+        },
+        {
+          "url": "https://cursadelaratafia.cat/info.html",
+          "hash": "bc1f3c67b425dd09104401205050106df16cee92546460eff4e32dc894849e9f",
+          "chars": 2126
+        },
+        {
+          "url": "https://cursadelaratafia.cat/reglament.html",
+          "hash": "7fbc44825690fbe13ac5c63bc912e774aea5d9090a8a27ee6538f2939ebeef6b",
+          "chars": 7089
+        }
+      ]
+    },
+    {
+      "id": "sabadell--cross-dels-esquiadors",
+      "source_url": "https://ues.cat/cross-dels-esquiadors/",
+      "town": "Sabadell",
+      "pages": [
+        {
+          "url": "https://ues.cat/cross-dels-esquiadors/",
+          "hash": "c537d27d9bffb3f42ef87c8e5eb21ca0ab08ea44c53d11cd59d65df1bf224b0a",
+          "chars": 11327
+        },
+        {
+          "url": "https://ues.cat/wp-content/uploads/2018/03/Cursa-4-km.pdf",
+          "hash": "94be06cb17f4532509279c3bec4f130455c27cf8f20ea66a8e36048b9d22b2ff",
+          "chars": 12000
+        },
+        {
+          "url": "https://ues.cat/wp-content/uploads/2025/10/reglament_2025.pdf",
+          "hash": "5e954f83ee5ab928557d58c3535357f09cb270a95d73615da1bc461b33ba30d0",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "tarragona--imperial-tarraco-trail",
+      "source_url": "https://alliberadrenalina.com/imperial-tarraco/",
+      "town": "Tarragona",
+      "pages": [
+        {
+          "url": "https://alliberadrenalina.com/imperial-tarraco/",
+          "hash": "c567fdcfcc51bc51e0d76d65fd435f69b8ed0eab601863b678331c5fa4e87505",
+          "chars": 12000
+        },
+        {
+          "url": "https://alliberadrenalina.com/cursa_seguici_tgn/",
+          "hash": "9933aeec386426a81a23c2d474b49588000213a2f353a21abe7044ccbe25d7f6",
+          "chars": 4233
+        }
+      ]
+    },
+    {
+      "id": "tarragona--imperial-tarraco-trail",
+      "source_url": "https://www.rockthesport.com/es/evento/imperial-tarraco-trail",
+      "town": "Tarragona",
+      "pages": [
+        {
+          "url": "https://www.rockthesport.com/es/evento/imperial-tarraco-trail",
+          "hash": "6d6d70fdc543d78020a5c92a2ef0fa5c37e02c356282d9d0076c24d1969c36e4",
+          "chars": 1832
+        },
+        {
+          "url": "https://www.rockthesport.com/es/evento/imperial-tarraco-trail-2022/inscripcion/selecciona-tarifa",
+          "hash": "67f98920297cf08e1a9d537a9a67f508eedc37d83f6a2aedcd4a0cee9f62a438",
+          "chars": 1034
+        },
+        {
+          "url": "https://www.rockthesport.com/es/evento/imperial-tarraco-trail-2022/consulta-inscritos",
+          "hash": "9068d96574d6d1051c3ab7ebd60a9bff4d409a4fbc1682467b5fa3a0bd709459",
+          "chars": 1090
+        }
+      ]
+    },
+    {
+      "id": "aiguafreda--cursa-de-quintos",
+      "source_url": "https://www.9hsports.cat/ca/informacio_cursa/1055",
+      "town": "Aiguafreda",
+      "pages": [
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/1055",
+          "hash": "f4224953ef5ebea9d6ab0ab51c4817130f39cdc2f61dd1b96fcf8bc1a06297b9",
+          "chars": 1797
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/inscripcions",
+          "hash": "f227286bffed3950aa3d948c45201ec6a7f3eff34dde9c3cdad1974c5b0838b8",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.9hsports.cat/ca/informacio_cursa/1055",
+          "hash": "f4224953ef5ebea9d6ab0ab51c4817130f39cdc2f61dd1b96fcf8bc1a06297b9",
+          "chars": 1797
+        }
+      ]
+    },
+    {
+      "id": "santa-cristina-d-aro--trail-ardenya",
+      "source_url": "https://www.matxacuca.com/portfolio/trail-ardenya/",
+      "town": "Santa Cristina d'Aro",
+      "pages": [
+        {
+          "url": "https://www.matxacuca.com/portfolio/trail-ardenya/",
+          "hash": "6594cafdbad5f656c5360c635e3055df25b6c8c29e3058fedf3d8a01e61ce775",
+          "chars": 7111
+        }
+      ]
+    },
+    {
+      "id": "ponts--trail-no-limits",
+      "source_url": "https://sites.google.com/view/trailnolimitsponts",
+      "town": "Ponts",
+      "pages": [
+        {
+          "url": "https://sites.google.com/view/trailnolimitsponts",
+          "hash": "a2f9b60234dbb5f43dc250b0e76a64125b0766f714f8e35458dedcb39b1d657e",
+          "chars": 564
+        },
+        {
+          "url": "https://sites.google.com/view/trailnolimitsponts/informaci%C3%B3/presentaci%C3%B3",
+          "hash": "530409f726685c181c18941af1cdac93233a9c453b4bcd685c71f300576ea31e",
+          "chars": 1633
+        },
+        {
+          "url": "https://sites.google.com/view/trailnolimitsponts/informaci%C3%B3/reglament",
+          "hash": "2983f8aead35a0bf72481d194715a47a9f201e4a7bbf4a36f2f6e1fe55a75be3",
+          "chars": 5949
+        },
+        {
+          "url": "https://sites.google.com/view/trailnolimitsponts/informaci%C3%B3/inscripcions",
+          "hash": "a36cf4292d6d2687ab7ca269dadfec43e08c5a784ac503b0dbb49b52a69ee462",
+          "chars": 1017
+        }
+      ]
+    },
+    {
+      "id": "corbera-de-llobregat--cursa-de-la-dona",
+      "source_url": "https://www.cinccims.cat/",
+      "town": "Corbera de Llobregat",
+      "pages": [
+        {
+          "url": "https://www.cinccims.cat/",
+          "hash": "cc0baa6aeb29184175bcc4e038670e82da04f52e37af79827655bdd34544f558",
+          "chars": 3405
+        },
+        {
+          "url": "https://www.cinccims.cat/cinc-cims-cim-2026-26-4-26-run-for-cp/reglaments/",
+          "hash": "94d44e361497c7bf726b54b44b1c4d612005d84859d9354c6cd1d4c90dfcaa50",
+          "chars": 12000
+        },
+        {
+          "url": "https://www.cinccims.cat/cursa-de-la-dona-19-10-25/",
+          "hash": "d9b9b836e2407620d1937e6e8630d610353fa0c4d25db194c964ccedb290dfc9",
+          "chars": 1968
+        }
+      ]
+    },
+    {
+      "id": "cabrianes-mas-la-sala--campionat-maqui-bell-race",
+      "source_url": "https://www.campionatmaqui.cat/cursa-bell-race/",
+      "town": "Cabrianes (Mas la Sala)",
+      "pages": [
+        {
+          "url": "https://www.campionatmaqui.cat/cursa-bell-race/",
+          "hash": "546462105f38b0f6f876dd44456b04b6a04e9f20d1d3eac93e38848b39088a2c",
+          "chars": 6776
+        },
+        {
+          "url": "https://www.campionatmaqui.cat/cursa-de-muntanya-de-castelltallat/",
+          "hash": "a30b170ffc8ab3a1c363c1b252e3dcbcc552317f54e3a85f17f4685cded7715c",
+          "chars": 3360
+        },
+        {
+          "url": "https://www.campionatmaqui.cat/cursa-bell-race/",
+          "hash": "546462105f38b0f6f876dd44456b04b6a04e9f20d1d3eac93e38848b39088a2c",
+          "chars": 6776
+        },
+        {
+          "url": "https://www.campionatmaqui.cat/inscripcions-curses/",
+          "hash": "ea005e1aa46cb133490280c27e9a93849eef12653c80e52f33559403e07acb49",
+          "chars": 4965
+        }
+      ]
+    },
+    {
+      "id": "benifallet--cursa-lo-pastisset",
+      "source_url": "https://lopastisset.cat/",
+      "town": "Benifallet",
+      "pages": [
+        {
+          "url": "https://lopastisset.cat/",
+          "hash": "4b2e73ef34875f03c9cd86cfffdcbabb4b945e470998c98151b603dd4e280900",
+          "chars": 515
+        },
+        {
+          "url": "https://lopastisset.cat/inscripcions/",
+          "hash": "c70b0738ed9446e43cf943422666d219a6b195e55e726c33b10947c8be574283",
+          "chars": 2323
+        }
+      ]
+    },
+    {
+      "id": "sant-climent-de-llobregat--trail-popular-d-hivern",
+      "source_url": "https://www.amicsdelacursailamuntanya.cat/trail-popular-hivern/",
+      "town": "Sant Climent de Llobregat",
+      "pages": [
+        {
+          "url": "https://www.amicsdelacursailamuntanya.cat/trail-popular-hivern/",
+          "hash": "ccb866f491d9a214f846041f56475df9f90bbae42746b811f75f1e5ef7305c68",
+          "chars": 1507
+        },
+        {
+          "url": "https://www.amicsdelacursailamuntanya.cat/trail-popular-hivern/informacio-general/",
+          "hash": "26f32a8976079a7ece956ec6771d414aeed6d38e7928d8d2f323c79c0ee72b1b",
+          "chars": 3237
+        },
+        {
+          "url": "https://www.amicsdelacursailamuntanya.cat/trail-popular-hivern/inscripcions/",
+          "hash": "348bf8e54940ea5f19c7da24cab589506898648b0708a0bec8bdd57c09199b9e",
+          "chars": 1446
+        },
+        {
+          "url": "https://www.amicsdelacursailamuntanya.cat/trail-popular-hivern/reglament/",
+          "hash": "8705226cc8bf8474c783f58b6e9bd0aa4abaaab92b9b675ae058a65477f7a3d9",
+          "chars": 6295
+        }
+      ]
+    },
+    {
+      "id": "mura--cursa-de-muntanya-mtr",
+      "source_url": "https://inscripcions.cat/mtr2025/",
+      "town": "Mura",
+      "pages": [
+        {
+          "url": "https://inscripcions.cat/mtr2025/",
+          "hash": "ad3ff409feb5170d57bedd6e9886af1fa1fa2994bb387588cc871ab179ad9f8b",
+          "chars": 2237
+        },
+        {
+          "url": "https://inscripcions.cat/mtr2025/llistat_inscrits",
+          "hash": "e7bde51d26a99611c32323ad89def791e623755b65240a96220592a9f5aff2a9",
+          "chars": 2534
+        },
+        {
+          "url": "https://inscripcions.cat/inscripcions/termes_legals",
+          "hash": "e3a4a0b461f92993abff9e3cef7ccaf3e0b45afd04a1df6f25cc657ab52da9ba",
+          "chars": 4428
+        }
+      ]
+    },
+    {
+      "id": "santa-maria-de-martorelles--la-neorural",
+      "source_url": "https://laneorural.com/",
+      "town": "Santa Maria de Martorelles",
+      "pages": [
+        {
+          "url": "https://laneorural.com/",
+          "hash": "2681f9768ba2a6dfa178578c675c8acfe62a3fee5edd7db8531969cfcf74c642",
+          "chars": 2662
+        },
+        {
+          "url": "https://laneorural.com/la_cursa.php",
+          "hash": "b4db1bafdcde2a9a85d80189f975ac2253908262849ee8a18931f70b1951f64e",
+          "chars": 1103
+        }
+      ]
+    },
+    {
+      "id": "la-riera-de-gaia--cursa-trail-la-riera-de-gaia",
+      "source_url": "https://cursalarieragaia.cat/",
+      "town": "La Riera de Gaià",
+      "pages": [
+        {
+          "url": "https://cursalarieragaia.cat/",
+          "hash": "a5f7d5f1cc5216e1efaf6452b2c71dab46791ed5fa46f2f3ae68086eeba70491",
+          "chars": 3299
+        },
+        {
+          "url": "https://cursalarieragaia.cat/informacio-de-la-cursa",
+          "hash": "3f712b4c238bd66aa488963d05e45cbb8f4f93c5ca52a98e25589c444fc9e9f0",
+          "chars": 3698
+        },
+        {
+          "url": "https://cursalarieragaia.cat/cursa-trail-la-riera-de-gaia-llarga-20k/",
+          "hash": "23a1937335ddfdc4f25489454b5bc20b846df1f0cd59d459073f8d8cbf84e1d3",
+          "chars": 2527
+        },
+        {
+          "url": "https://cursalarieragaia.cat/reglament/",
+          "hash": "efdc634da9f863b8fd00b7bcb1371caa05b9a46dd70bf982f92d2f85491e2cb7",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "barcelona--cursa-cec-collserola",
+      "source_url": "https://collserola.cec.cat/",
+      "town": "Barcelona",
+      "pages": [
+        {
+          "url": "https://collserola.cec.cat/",
+          "hash": "d396a42c1a2361acc931dbe10c6a9e11412088b999affc741738073af414f4fc",
+          "chars": 5386
+        },
+        {
+          "url": "https://collserola.cec.cat/wp-content/uploads/REGLAMENT-2025-REV-2.pdf",
+          "hash": "f5f728ee66107e5aaaba13efd627930e004b1b654e81779d8776b5b4b089f24a",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "preixana--cursa-entre-cabanes",
+      "source_url": "https://www.preixana.cat/de-prop/fira-gastronomica/cursa_entre_cabanes/2025-6a-edicio/enllacos-dinscripcio-a-la-cursa-caminada",
+      "town": "Preixana",
+      "pages": [
+        {
+          "url": "https://www.preixana.cat/de-prop/fira-gastronomica/cursa_entre_cabanes/2025-6a-edicio/enllacos-dinscripcio-a-la-cursa-caminada",
+          "hash": "c3bc40c59d6ea11d0c32e03e56f6bfb4227ac20d9540f7dd2757e8d09ce1abbe",
+          "chars": 1414
+        },
+        {
+          "url": "https://www.preixana.cat/de-prop/fira-gastronomica/cursa_entre_cabanes/1a-edicio-2019",
+          "hash": "7b2114348b104fbc11953f6144484ba18d232ec0ef903ef573d98e2bb5f4000c",
+          "chars": 1039
+        },
+        {
+          "url": "https://www.preixana.cat/de-prop/fira-gastronomica/cursa_entre_cabanes/2021-2a-edicio",
+          "hash": "43c68aa8a1d6db9692f0665b9ea7f3cd65889e26f3a9af71b0287f7569065b57",
+          "chars": 1224
+        },
+        {
+          "url": "https://www.preixana.cat/de-prop/fira-gastronomica/cursa_entre_cabanes/2022-3a-edicio",
+          "hash": "7dff25bf4f1c28ad775c5d8ff4b019808247f8a44cc408f40aa2245dceaafb97",
+          "chars": 1195
+        }
+      ]
+    },
+    {
+      "id": "colldejou--cursa-de-nadal-a-colldejou",
+      "source_url": "https://www.naturetime.es/ca/cursa-de-nadal/",
+      "town": "Colldejou",
+      "pages": [
+        {
+          "url": "https://www.naturetime.es/ca/cursa-de-nadal/",
+          "hash": "c117e842ea750e38d0c290050f98fe02bfdab03ea3815bc2d6fcfc74fd06cb38",
+          "chars": 7547
+        },
+        {
+          "url": "https://www.naturetime.es/cursa-de-nadal-2/",
+          "hash": "c5366a534797b15096e4cefe7afc61adad0bc054f4af5b50e2e50ee3eb78f6a8",
+          "chars": 7775
+        },
+        {
+          "url": "https://www.naturetime.es/ca/cursa-de-nadal/",
+          "hash": "c117e842ea750e38d0c290050f98fe02bfdab03ea3815bc2d6fcfc74fd06cb38",
+          "chars": 7547
+        },
+        {
+          "url": "https://www.naturetime.es/ca/cursa-dones-cambrils-2/",
+          "hash": "69606da1f6b0a961d66106a393acc054fc4c566b60ca4c42f9bd3d23213d91c4",
+          "chars": 8394
+        }
+      ]
+    },
+    {
+      "id": "sant-hilari-sacalm--pujada-a-les-formigues",
+      "source_url": "https://fff.cat/activitats/pujada-a-les-formigues/",
+      "town": "Sant Hilari Sacalm",
+      "pages": [
+        {
+          "url": "https://fff.cat/activitats/pujada-a-les-formigues/",
+          "hash": "0c2ad990fb420239a7c3fb64015f1646e47293af350ee9cb41338ac494e58b1d",
+          "chars": 3930
+        }
+      ]
+    },
+    {
+      "id": "els-molins-la-selva-del-camp--cronopujada-puig-d-en-cama",
+      "source_url": "https://www.aritjol.org/post/xviii-cronopujada-al-puig-d-en-cama",
+      "town": "Els Molins (La Selva del Camp)",
+      "pages": [
+        {
+          "url": "https://www.aritjol.org/post/xviii-cronopujada-al-puig-d-en-cama",
+          "hash": "1fd62b88b4218f6c7b206fa1e0b35f087da1195954ad13ce730ed56ca61623d6",
+          "chars": 1557
+        },
+        {
+          "url": "https://www.aritjol.org/info",
+          "hash": "544a76ab0d551936d3104348904f2358cc95cfaf0f4ec17806b9604c107a58a7",
+          "chars": 699
+        },
+        {
+          "url": "https://www.aritjol.org/informaci%C3%B3-cookies",
+          "hash": "371826f97879e52262beffa16eca1c9e74cafe7069d4ba4cd4a2c3a39b2a8d3c",
+          "chars": 4149
+        }
+      ]
+    },
+    {
+      "id": "espluga-de-francoli--cursa-de-la-llufa",
+      "source_url": "https://caesplugui.cat/cursa-de-la-llufa/",
+      "town": "Espluga de Francolí",
+      "pages": [
+        {
+          "url": "https://caesplugui.cat/cursa-de-la-llufa/",
+          "hash": "9564208ff4bc6bcb145ac057527495fb0c3bff457d7c9de5535785502aafb67c",
+          "chars": 4790
+        },
+        {
+          "url": "https://caesplugui.cat/cursa-atletica/",
+          "hash": "08a27bd62ba89e0a04897d96ff57f5b879655308c1fc8ab1e9b11acb64cd3c48",
+          "chars": 7354
+        },
+        {
+          "url": "https://caesplugui.cat/cursa-de-la-llufa/",
+          "hash": "9564208ff4bc6bcb145ac057527495fb0c3bff457d7c9de5535785502aafb67c",
+          "chars": 4790
+        },
+        {
+          "url": "https://caesplugui.cat/storage/2025/11/REGLAMENT-CURSA-LLUFA-2025.pdf",
+          "hash": "5f70ed5fd5d7415d727aa6d29e15d68afda813c7ad087114a39bade206fc44b1",
+          "chars": 12000
+        }
+      ]
+    },
+    {
+      "id": "riudecanyes--cursa-del-gall",
+      "source_url": "https://webtretzesports.wixsite.com/cursadelgall",
+      "town": "Riudecanyes",
+      "pages": [
+        {
+          "url": "https://webtretzesports.wixsite.com/cursadelgall",
+          "hash": "03fa0dc20bc4d51088415a6f87048b2b8907fa0297b5fffd4f285847730fec8f",
+          "chars": 552
+        },
+        {
+          "url": "https://webtretzesports.wixsite.com/cursadelgall",
+          "hash": "03fa0dc20bc4d51088415a6f87048b2b8907fa0297b5fffd4f285847730fec8f",
+          "chars": 552
+        },
+        {
+          "url": "https://webtretzesports.wixsite.com/cursadelgall/info",
+          "hash": "418f76d735b0a103d1cacc6565802d2fe028bce0e7f1e94a81424e297a024353",
+          "chars": 1005
+        }
+      ]
+    },
+    {
+      "id": "viladellops-olerdola--sant-silvestre-de-muntanya-del-penedes",
+      "source_url": "https://santsilvestredemuntanyadelpenedes.blogspot.com/?m=1",
+      "town": "Viladellops (Olèrdola)",
+      "pages": [
+        {
+          "url": "https://santsilvestredemuntanyadelpenedes.blogspot.com/?m=1",
+          "hash": "3ee80d19d3e331527410fea3c5d67b61d154e76553bcf7d2721fea7fbc509124",
+          "chars": 1250
+        },
+        {
+          "url": "https://santsilvestredemuntanyadelpenedes.blogspot.com/p/inscripcions.html",
+          "hash": "7c03c235577606aae7e36351113132b6d4870490de09ace974369f59562808ae",
+          "chars": 242
+        },
+        {
+          "url": "https://santsilvestredemuntanyadelpenedes.blogspot.com/p/reglament.html",
+          "hash": "42588239ef6f8ded191b865aa5933aa217798e974711d46620d6d20c76d6cd0e",
+          "chars": 9463
+        }
+      ]
+    },
+    {
+      "id": "folgueroles--la-folguerolenca",
+      "source_url": "https://lafolguerolenca.wixsite.com/lafolguerolenca",
+      "town": "Folgueroles",
+      "pages": [
+        {
+          "url": "https://lafolguerolenca.wixsite.com/lafolguerolenca",
+          "hash": "99bd28803df68e9f436c22d21ded6832a7b05ff3a1a6c5c90056db244074169d",
+          "chars": 2039
+        }
+      ]
+    },
+    {
+      "id": "avinyo--sant-silvestre-avinyo",
+      "source_url": "https://www.inscripcions.cat/ssavinyo2022/",
+      "town": "Avinyó",
+      "pages": [
+        {
+          "url": "https://www.inscripcions.cat/ssavinyo2022/",
+          "hash": "12875b03760f102c1c15892ea2dbbb289709e56e3d6ae3521e49cb4c49bbf041",
+          "chars": 832
+        },
+        {
+          "url": "https://www.inscripcions.cat/ssavinyo2022/llistat_inscrits",
+          "hash": "88e170cecc28b99e913a699b3217afae746fc80c3788cdc8f88a8435aa9829c2",
+          "chars": 10994
+        },
+        {
+          "url": "https://www.inscripcions.cat/inscripcions/termes_legals",
+          "hash": "e3a4a0b461f92993abff9e3cef7ccaf3e0b45afd04a1df6f25cc657ab52da9ba",
+          "chars": 4428
+        }
+      ]
+    },
+    {
+      "id": "sant-pere-de-torello--cursa-de-na-dalt-a-bellmunt",
+      "source_url": "https://cursadenadalt.com/la-cursa/",
+      "town": "Sant Pere de Torelló",
+      "pages": [
+        {
+          "url": "https://cursadenadalt.com/la-cursa/",
+          "hash": "e6b3a45022f9d189fd0b2716bcee7aec0018a0520c610a4f115f6fcbbc83404d",
+          "chars": 706
+        },
+        {
+          "url": "https://cursadenadalt.com/la-cursa/",
+          "hash": "e6b3a45022f9d189fd0b2716bcee7aec0018a0520c610a4f115f6fcbbc83404d",
+          "chars": 706
+        },
+        {
+          "url": "https://cursadenadalt.com/reglament/",
+          "hash": "993efc2cddccb15b6031a063114629e2bfc96f681000298f86fc0d3dfba8ffc0",
+          "chars": 4809
+        },
+        {
+          "url": "https://cursadenadalt.com/inscripcions/",
+          "hash": "90ec5c6d9e62168cc9e9989cf1bb5d662ad8b7703ed2b53f9979bab51dae5175",
+          "chars": 432
+        }
+      ]
+    },
+    {
+      "id": "ullastrell--cursa-del-bolet",
+      "source_url": "https://www.cursadelbolet.cat/",
+      "town": "Ullastrell",
+      "pages": [
+        {
+          "url": "https://www.cursadelbolet.cat/",
+          "hash": "fd0fa52b5fd6eedba0648aa4c69fcf197aa2516da358bb013bdad60b23422bf6",
+          "chars": 1388
+        },
+        {
+          "url": "https://www.cursadelbolet.cat/info-general/",
+          "hash": "75d3fff41d9b1196e8ab5a5716e88e5067bac9e1a358ef30315e8e01593eaa04",
+          "chars": 778
+        },
+        {
+          "url": "https://www.cursadelbolet.cat/reglament/",
+          "hash": "7ce780bf2ee70c4a1b43c2ec18f9a8540b1b98b320cc6dac4fae10bfe04b59fd",
+          "chars": 2974
+        },
+        {
+          "url": "https://www.cursadelbolet.cat/inscripcions/",
+          "hash": "a447a930f0906746e46d193ed340dce0b0a274f0c42e295266267d27067676ac",
+          "chars": 838
+        }
+      ]
+    },
+    {
+      "id": "porqueres--cursa-popular-de-porqueres",
+      "source_url": "https://cursesplaestany.cat/cursa-popular-porqueres/",
+      "town": "Porqueres",
+      "pages": [
+        {
+          "url": "https://cursesplaestany.cat/cursa-popular-porqueres/",
+          "hash": "bbbb89fc0f416a4f3694fa07f89f85fd6919ea480be1b77b0e223945d9f2a539",
+          "chars": 1076
+        },
+        {
+          "url": "https://cursesplaestany.cat/cursa-popular-porqueres/",
+          "hash": "bbbb89fc0f416a4f3694fa07f89f85fd6919ea480be1b77b0e223945d9f2a539",
+          "chars": 1076
+        },
+        {
+          "url": "https://cursesplaestany.cat/cursa-popular-fontcoberta/",
+          "hash": "cba8ebb4522eb49667ad9b95611ef540e0a4af062b30f8b6e9c6d9dd510a2fec",
+          "chars": 1101
+        },
+        {
+          "url": "https://cursesplaestany.cat/cursa-atletica-run-run-la-vall-terri/",
+          "hash": "1794d903887c814572b23b3857fcfc25e2a1f5f7b4d6011b31236436613d5ac1",
+          "chars": 1114
+        }
+      ]
+    },
+    {
+      "id": "sant-celoni--trail-per-la-vall-d-olzinelles",
+      "source_url": "https://www.inscripcions.cat/marxavalldolzinelles2022/",
+      "town": "Sant Celoni",
+      "pages": [
+        {
+          "url": "https://www.inscripcions.cat/marxavalldolzinelles2022/",
+          "hash": "5a31af64d1faf6cbe1cd4330c2bf1a740c8ed96a395156a7e7050b8459f957b9",
+          "chars": 951
+        },
+        {
+          "url": "https://www.inscripcions.cat/inscripcions/termes_legals",
+          "hash": "e3a4a0b461f92993abff9e3cef7ccaf3e0b45afd04a1df6f25cc657ab52da9ba",
+          "chars": 4428
+        }
+      ]
+    },
+    {
+      "id": "montornes-del-valles--trail-dels-remences",
+      "source_url": "https://www.dsport.cat/ca/fitxa_cursa.php?id_cursa=920",
+      "town": "Montornès del Vallès",
+      "pages": [
+        {
+          "url": "https://www.dsport.cat/ca/fitxa_cursa.php?id_cursa=920",
+          "hash": "ded256181ba30d7fb0aea1b6a769b703b4cb82b60832a7654f7425490ecc27f4",
+          "chars": 584
+        },
+        {
+          "url": "https://www.dsport.cat/ca/fitxa_inscripcions.php",
+          "hash": "6a5f5abe489a12ffcbd9d0eec2bcab320a17d4a9644d7c63eefb4900e9ceba75",
+          "chars": 2130
+        },
+        {
+          "url": "https://www.dsport.cat/ca/llistat_inscrits.php?id_cursa=920",
+          "hash": "cd20ad5e39fdecbd7282429aa6c73301c83348114437cc1104a1e829ff9d36ff",
+          "chars": 1823
+        },
+        {
+          "url": "https://www.dsport.cat/ca/ins_seleccio_recorregut.php?id_cursa=920",
+          "hash": "c5ed1de234d44ad9d5ecb090495add3bdf30a8378a97c05caa943048818509f0",
+          "chars": 480
+        }
+      ]
+    },
+    {
+      "id": "sant-celoni--cursa-solidaria-dels-avets",
+      "source_url": "https://www.inscripcions.cat/cursaavetroig2022/",
+      "town": "Sant Celoni",
+      "pages": [
+        {
+          "url": "https://www.inscripcions.cat/cursaavetroig2022/",
+          "hash": "0cfb969053690899304d1df0f511b5f89e9158afd0b26547fed0d35bba82075f",
+          "chars": 1034
+        },
+        {
+          "url": "https://www.inscripcions.cat/cursaavetroig2022/?lang=ca&",
+          "hash": "0cfb969053690899304d1df0f511b5f89e9158afd0b26547fed0d35bba82075f",
+          "chars": 1034
+        },
+        {
+          "url": "https://www.inscripcions.cat/cursaavetroig2022/?lang=es&",
+          "hash": "df108dcf8389f0c1cea440efc969f6a7cc0fd7e5382b8c9d8e575b1f1376a1b3",
+          "chars": 1050
+        },
+        {
+          "url": "https://www.inscripcions.cat/cursaavetroig2022/?lang=en&",
+          "hash": "4dc05da6023bbe0a64fff76232ed95e393cf95eca131ae4371dab5fdef58bff8",
+          "chars": 1017
+        }
+      ]
+    },
+    {
+      "id": "sarria-de-ter--sant-silvestre-sarrianenca",
+      "source_url": "https://www.inscripcions.cat/sssarrianenca2022t/",
+      "town": "Sarrià de Ter",
+      "pages": [
+        {
+          "url": "https://www.inscripcions.cat/sssarrianenca2022t/",
+          "hash": "5f7898b0738f9679129961ffac4b52c25114706aa77ccfff91a0f3366c8c9363",
+          "chars": 909
+        },
+        {
+          "url": "https://www.inscripcions.cat/sssarrianenca2022t/llistat_inscrits",
+          "hash": "97a3b5db9670c39129f65a2948e1fc77ca94a95a5e6cd58ac555b9b940d2a2b2",
+          "chars": 8670
+        },
+        {
+          "url": "https://www.inscripcions.cat/inscripcions/termes_legals",
+          "hash": "e3a4a0b461f92993abff9e3cef7ccaf3e0b45afd04a1df6f25cc657ab52da9ba",
+          "chars": 4428
+        }
+      ]
+    }
+  ],
+  "failed": [
+    {
+      "id": "juncosa--lo-trail-de-seca",
+      "url": "https://www.instagram.com/lotraildeseca",
+      "town": "Juncosa",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "gurb--cursa-a-tota-castanya",
+      "url": "https://beacons.ai/atotacastanya",
+      "town": "Gurb",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "tavernoles--cursa-de-sant-galderic",
+      "url": "http://cursasantgalderic.blogspot.com/",
+      "town": "Tavernoles",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "barcelona--trail-antena-solidaria",
+      "url": "https://antenasolidaria.cat/",
+      "town": "Barcelona",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "rocallaura--lo-trail-rocallaura",
+      "url": "https://www.instagram.com/lo_trail_rocallaura/",
+      "town": "Rocallaura",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "canaletes-cabrera-d-anoia--cursa-salts-d-aigua",
+      "url": "http://www.saltsdaiguacabreradanoia.cat/cursa-dels-salts-d-aigua/",
+      "town": "Canaletes (Cabrera d'Anoia)",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "alas--la-foranca",
+      "url": "http://laforanca.cat/",
+      "town": "Alàs",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "arenys-de-munt--marxa-dels-termes",
+      "url": "http://www.marxadelstermes.com/",
+      "town": "Arenys de Munt",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "sanauja--cursa-de-l-alta-segarra",
+      "url": "http://altasegarra.ces.cat/wp/",
+      "town": "Sanaüja",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "vilobi-del-penedes--cursa-parc-dels-talls",
+      "url": "https://www.instagram.com/cursaparcdelstalls/",
+      "town": "Vilobí del Penedès",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "tivissa--cursa-de-muntanya-tivissa",
+      "url": "https://cursativissa.cat/",
+      "town": "Tivissa",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "sant-privat-d-en-bas--vertikalm",
+      "url": "http://www.geca.cat/vertikalm/",
+      "town": "Sant Privat d'en Bas",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "senterada--la-triscada",
+      "url": "https://www.instagram.com/fmsenterada",
+      "town": "Senterada",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "baga--trail-moixero",
+      "url": "https://trailmoixero.cat/",
+      "town": "Bagà",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "massoteres--cursa-del-gos",
+      "url": "https://www.instagram.com/joventut_massoteres/",
+      "town": "Massoteres",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "l-ametlla-de-merola--cross-l-ametlla-de-merola",
+      "url": "http://cross.ametllademerola.cat/",
+      "town": "L'Ametlla de Merola",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "la-guingueta-d-aneu--vertical-la-bandera",
+      "url": "https://www.instagram.com/verticalbandera/",
+      "town": "La Guingueta d'Àneu",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "cabanes--cursa-blat-de-moro",
+      "url": "https://www.instagram.com/cursablatdemoro/",
+      "town": "Cabanes",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "capafonts--cursa-de-muntanya-capafonts",
+      "url": "http://www.cursacapafonts.com/",
+      "town": "Capafonts",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "montbrio-de-la-marca--trail-montbrio",
+      "url": "https://www.montbriotrail.com",
+      "town": "Montbrió de la Marca",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "vilassar-de-mar--burriac-atac",
+      "url": "http://burriacatac.cat/",
+      "town": "Vilassar de Mar",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "el-papiol--mitja-del-castell",
+      "url": "http://www.mitjadelcastell.com/",
+      "town": "El Papiol",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "tarragona--lliga-t-a-la-vida-trail",
+      "url": "http://lligatalavida.cat/",
+      "town": "Tarragona",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "rajadell--rajadell-trail-race",
+      "url": "https://www.instagram.com/carenesdelcogullo/",
+      "town": "Rajadell",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "castellvell-i-el-vilar--transenyera",
+      "url": "https://www.lesguineus.cat/",
+      "town": "Castellvell i el Vilar",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "falset--cursa-de-muntanya-vila-de-falset",
+      "url": "http://www.cursadefalset.net/",
+      "town": "Falset",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "rialp--rialp-matxicots",
+      "url": "https://www.turisrialp.cat/matxicots/",
+      "town": "Rialp",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "cubelles--cursa-puig-de-tiula",
+      "url": "https://cursapuigdetiula.cat/",
+      "town": "Cubelles",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "el-pont-de-vilomara--cursa-el-pont-de-vilomara",
+      "url": "http://cursaelpont.cat/ca/",
+      "town": "El Pont de Vilomara",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "carme--cross-del-carme",
+      "url": "https://www.instagram.com/carmeetstu/",
+      "town": "Carme",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "moja--cursa-castell-d-olerdola",
+      "url": "http://www.bttelbressol.com/Cursa.asp",
+      "town": "Moja",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "organya--marato-del-boumort",
+      "url": "http://atleticsantafe.cat/maratoboumort/",
+      "town": "Organyà",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "les-masies-de-voltrega--up-xic-trail",
+      "url": "https://upxictrail.wixsite.com/upxic/",
+      "town": "Les Masies de Voltregà",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "la-granada-del-penedes--cronoescalada-santa-fe",
+      "url": "http://lagranada.com/web/cronoescalada/",
+      "town": "La Granada del Penedès",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "el-bruc--cursa-de-les-batalles-del-bruc",
+      "url": "https://www.instagram.com/cursabatallesbruc",
+      "town": "El Bruc",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "cornudella-de-montsant--montsant-360-en-equips-de-2",
+      "url": "http://montsant360.cat/CURSA/",
+      "town": "Cornudella de Montsant",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "la-pobla-de-lillet--la-destralera",
+      "url": "https://www.instagram.com/destralers_de_la_pobla/",
+      "town": "La Pobla de Lillet",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "bellcaire-d-emporda--trail-la-vall",
+      "url": "https://www.traillavall.cat/",
+      "town": "Bellcaire d'Empordà",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "olot--marxa-trail-del-bomber",
+      "url": "https://www.instagram.com/abombersolot/",
+      "town": "Olot",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "sant-pere-de-ribes--mitja-marato-rural-de-ribes",
+      "url": "https://www.facebook.com/MMRRibes/",
+      "town": "Sant Pere de Ribes",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "badalona--badatrail",
+      "url": "https://www.instagram.com/badatrail/",
+      "town": "Badalona",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "gualba--gualba-trail",
+      "url": "https://www.instagram.com/gualbatrail/",
+      "town": "Gualba",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "vilanova-de-meia--perseguint-la-perdiu",
+      "url": "https://perseguintlaperdiu.com/",
+      "town": "Vilanova de Meià",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "masquefa--trail-les-tres-fonts",
+      "url": "https://masquefatrail.cat/",
+      "town": "Masquefa",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "sant-vicenc-de-castellet--cursa-per-muntanya-turo-de-les-guineus",
+      "url": "https://www.instagram.com/senglarspunksvc/",
+      "town": "Sant Vicenç de Castellet",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "llagostera--cursa-de-muntanya-llagostera",
+      "url": "https://www.instagram.com/cursamuntanyallagostera/",
+      "town": "Llagostera",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "l-aldea--cursa-trail-l-aldea",
+      "url": "http://casaljovescurses.blogspot.com/",
+      "town": "L'Aldea",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "sant-sadurni-d-anoia--cursa-nadal-sant-sadurni-d-anoia",
+      "url": "http://cursanadal.blogspot.com/",
+      "town": "Sant Sadurní d'Anoia",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "viladecavalls--cursa-de-viladecavalls-per-la-marato-tv3",
+      "url": "https://www.cursesviladecavalls.com/",
+      "town": "Viladecavalls",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "sabadell--cursa-rodant-pel-riu-ripoll",
+      "url": "http://mitjasabadell.cat/",
+      "town": "Sabadell",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "sant-llorenc-savall--sant-silvestre-llorencana",
+      "url": "https://www.instagram.com/p/ClekNFTIeSY/",
+      "town": "Sant Llorenç Savall",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "artesa-de-segre--trail-sant-silvestre-artesa-de-segre",
+      "url": "https://www.instagram.com/p/ClmDV-lNVnR/?igshid=MDJmNzVkMjY=",
+      "town": "Artesa de Segre",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "tiana--l-enrucada",
+      "url": "http://enrucada.tianat.cat/",
+      "town": "Tiana",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "matadepera--pujada-a-la-mola-per-nadal",
+      "url": "http://clubmuntanyencterrassa.blogspot.com/",
+      "town": "Matadepera",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "id": "bigues-i-riells--cursa-de-nadal-bigues-i-riells",
+      "url": "https://www.biguesiriells.cat/ca/actualitat-2/agenda-1/cursa-nadal-2022-688.htm",
+      "town": "Bigues i Riells",
+      "reason": "empty/thin (likely JS-only)"
+    }
+  ]
+}

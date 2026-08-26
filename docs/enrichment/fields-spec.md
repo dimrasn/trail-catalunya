@@ -120,7 +120,49 @@ The MCP checks state per request; the site during ISR.
 - Eval key (human-verified) tests the exact scripted harness for zero false-positive
   actionable facts.
 
-## Open (settle before U3 build)
+## Slice 1 — LINKS + CHARACTER (low-risk, ships first)
+
+Decided 2026-08-25 (after Codex round 3): publish the enrichment in two slices. Slice
+1 is the LOW-BLAST subset — where a wrong value is mildly annoying, not dangerous — so
+it ships on a deliberately (and honestly) simpler contract while the high-risk logistics
+wait for the full machine contract above. This is NOT a shortcut: the four Codex P0s
+target facts a runner *acts on* (start_time, price, cutoff, sold-out, equipment), and
+none of them apply to links or honesty-labelled character. Extracted from the durable
+corpus (`docs/enrichment/2026-batch/_corpus/`, content-addressed, git-tracked).
+
+**In Slice 1**
+- `track_link` (Wikiloc / Komoot / Strava route), `elevation_profile` link,
+  `social_link` (Instagram / Facebook) — each: `{ kind, url, source_url, page_hash,
+  fetched_at }`.
+- CHARACTER (`unique/cool/catch/who/setting/terrain/technicality/food`) — the existing
+  taste layer's shape + `claim_strength`, generated from the corpus; extends taste to
+  uncovered races. New validated character overrides legacy taste per race (KTD8).
+
+**Explicitly NOT in Slice 1 (deferred to the logistics slice + the full contract):**
+start_time, price, cutoff, sold_out, confirmed, registration_*, mandatory_equipment,
+feec_licence, aid_stations. Anything a runner sets an alarm by, pays, or needs for
+safety waits for semantic validation + durable IDs + live freshness.
+
+**Why the four P0s don't bite here (the honesty argument, not a bypass)**
+- *r3-P0-1 semantic proof:* a `track_link` is validated DETERMINISTICALLY — the URL
+  parses, its host is on a small allowlist (wikiloc.com / komoot.* / strava.com /
+  instagram.com / facebook.com), and it occurs verbatim in a corpus page. No LLM
+  field-labelling to be wrong about. Character is honesty-labelled `our_read`, never
+  presented as an organizer fact.
+- *r3-P0-2 formal schema:* Slice 1 has a small, fully-typed shape (LinkFact +
+  CharacterClaim), separate from operational facts, `claim_strength` present.
+- *r3-P0-3 freshness:* links + character are `[stable]` (low staleness); each carries
+  `page_hash` + `fetched_at` so the later monitor can refresh them, but a stale link is
+  low-blast — no live suppression needed in Slice 1.
+- *r3-P0-4 identity:* attaches to the existing `(race_url, town)` event identity; a
+  mis-attach on a rename costs a link, not a start time. Durable series/edition/variant
+  IDs are built with the logistics slice, where they matter.
+
+**Slice 1 honesty rules:** a link publishes only if it parses + is host-allowlisted +
+occurs in a corpus page (else omitted, never fabricated). Character never asserts an
+organizer fact. Every link carries its `source_url` + `page_hash` + `fetched_at`.
+
+## Open (settle before the LOGISTICS-slice U3 build)
 - Exact event-relative TTL + `[stable]` re-confirm cadence → into `docs/rules.md`.
 - Any runner-critical field still missing (parking/access? previous winners' times?
   weather exposure?) — add here first.
