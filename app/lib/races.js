@@ -18,6 +18,18 @@ import { tasteForDisplay, tasteSummary, tasteFlags, kidsFromTaste } from './tast
 // Canonical taste artifact (plan v3, KTD1 — committed JSON bundled into the site
 // build; the MCP bundles the same file). Keyed by race_url::town.
 import tasteProfiles from '../../docs/enrichment/2026-batch/parsed/taste.json'
+// Town corrections applied at grouping so they survive the weekly scrape:
+// canonicalTown merges spelling variants of one town into one event; provinceFor
+// overrides a wrong scraped province. Mirror of supabase/functions/mcp/grouping.ts.
+import townCorrections from '../../data/town-corrections.json'
+
+function canonicalTown(t) {
+  return townCorrections[t]?.canonical || t
+}
+function provinceFor(rawTown, fallback) {
+  return (townCorrections[rawTown]?.province ||
+    townCorrections[canonicalTown(rawTown)]?.province || fallback)
+}
 
 const tasteByEvent = new Map(
   (tasteProfiles || []).map(p => [`${(p.url || '').trim()}::${(p.town || '').trim()}`, p]),
@@ -98,7 +110,8 @@ function groupRowsIntoEvents(rows) {
 
   for (const row of rows) {
     const url = (row.race_url || '').trim()
-    const town = (row.town || '').trim()
+    // Canonical town so spelling variants of one town merge into one event.
+    const town = canonicalTown((row.town || '').trim())
     const key = `${url}::${town}`
     if (!groups.has(key)) {
       groups.set(key, [])
@@ -116,9 +129,10 @@ function groupRowsIntoEvents(rows) {
     // Pick the canonical event name: first non-kids row, else first row.
     const mainRows = groupRows.filter(r => !isKidsName(r.race_name || ''))
     const eventName = ((mainRows[0] || groupRows[0]).race_name || '').trim()
-    const province = ((mainRows[0] || groupRows[0]).province || '').trim()
+    const rawTown = (groupRows[0].town || '').trim()
+    const province = provinceFor(rawTown, ((mainRows[0] || groupRows[0]).province || '').trim())
     const url = (groupRows[0].race_url || '').trim()
-    const town = (groupRows[0].town || '').trim()
+    const town = canonicalTown(rawTown)
 
     // Pick the first non-null date for the event-level date.
     let dateIso = null

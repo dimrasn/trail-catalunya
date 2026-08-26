@@ -1,0 +1,5 @@
+{
+  "_note": "Canonical town corrections applied at grouping (site + MCP), so they survive the weekly scrape. Each key is a raw scraped town; `canonical` merges spelling variants into one event (same url+date, town written two ways → one event), `province` overrides a wrong scraped province. Keep the canonical form aligned to the towns table / drive-time keys.",
+  "Llavaneres": { "canonical": "St Andreu de Llavaneres", "province": "BARCELONA" },
+  "St Andreu de Llavaneres": { "province": "BARCELONA" }
+}

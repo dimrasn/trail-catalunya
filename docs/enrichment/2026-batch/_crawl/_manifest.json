@@ -1,0 +1,1324 @@
+{
+  "started_at": "2026-08-26T07:57:27.736Z",
+  "total": 229,
+  "fetched": [
+    {
+      "id": "macanet-de-cabrenys--cursa-del-fau",
+      "url": "https://www.cursadelfau.org/",
+      "town": "Maçanet de Cabrenys",
+      "pages": 4
+    },
+    {
+      "id": "tamariu--cursa-popular-tamariu-palafrugell",
+      "url": "https://curses.cat/tamariu2026/",
+      "town": "Tamariu",
+      "pages": 2
+    },
+    {
+      "id": "ulldecona--travessa-dels-masos",
+      "url": "https://sudactiu.cat/",
+      "town": "Ulldecona",
+      "pages": 3
+    },
+    {
+      "id": "llavaneres--moon-trail-llavaneres",
+      "url": "https://ajllavaneres.cat/moontrail26",
+      "town": "Llavaneres",
+      "pages": 1
+    },
+    {
+      "id": "pavia--cursa-del-laberint",
+      "url": "https://lanostramel.com/",
+      "town": "Pàvia",
+      "pages": 4
+    },
+    {
+      "id": "l-albiol--trail-l-albiol",
+      "url": "https://www.naturetime.es/ca/trail-albiol-3/",
+      "town": "L'Albiol",
+      "pages": 4
+    },
+    {
+      "id": "olot--volta-volcans-d-olot",
+      "url": "https://ceolot.cat/voltavolcans/",
+      "town": "Olot",
+      "pages": 1
+    },
+    {
+      "id": "ribes-de-freser--valls-del-freser-trail-run",
+      "url": "https://www.vallsdelfreser.com/",
+      "town": "Ribes de Freser",
+      "pages": 2
+    },
+    {
+      "id": "montbrio-del-camp--10k-montbrio-del-camp",
+      "url": "https://webtretzesports.wixsite.com/10kmontbriodelcamp",
+      "town": "Montbrió del Camp",
+      "pages": 2
+    },
+    {
+      "id": "riudecanyes--cursa-dona-rural",
+      "url": "https://webtretzesports.wixsite.com/caminadadonarural",
+      "town": "Riudecanyes",
+      "pages": 1
+    },
+    {
+      "id": "vilarnau--correcava-vilarnau",
+      "url": "https://www.rockthesport.com/ca/esdeveniment/vilarnau-correcava-2026",
+      "town": "Vilarnau",
+      "pages": 3
+    },
+    {
+      "id": "capellades--cursa-neandertal",
+      "url": "https://cursaneandertal.com/",
+      "town": "Capellades",
+      "pages": 3
+    },
+    {
+      "id": "suria--l-escalada-trail",
+      "url": "https://www.dsport.cat/es/fitxa_cursa.php?id_cursa=1185",
+      "town": "Súria",
+      "pages": 4
+    },
+    {
+      "id": "besalu--cursa-de-muntanya-besalu",
+      "url": "https://curses.cat/besalucross2025/",
+      "town": "Besalú",
+      "pages": 1
+    },
+    {
+      "id": "navas--trenca-3-pics",
+      "url": "https://trenca3pics.weebly.com/",
+      "town": "Navàs",
+      "pages": 3
+    },
+    {
+      "id": "calella--trail-torres-del-foc",
+      "url": "https://www.b3sportevents.com/es/trailtorresdelfoc",
+      "town": "Calella",
+      "pages": 1
+    },
+    {
+      "id": "prades--prades-epic-trail",
+      "url": "https://www.muntanyesdepradesepictrail.com/",
+      "town": "Prades",
+      "pages": 3
+    },
+    {
+      "id": "beuda--cursa-mdm-cat",
+      "url": "https://gasmountain.com/mdm/",
+      "town": "Beuda",
+      "pages": 1
+    },
+    {
+      "id": "castellet-i-la-gornal--cursa-montanyans",
+      "url": "https://cursamontanyans.wordpress.com/",
+      "town": "Castellet i la Gornal",
+      "pages": 4
+    },
+    {
+      "id": "argentona--burriac-xtrem",
+      "url": "https://xtrem.gmargentona.com/",
+      "town": "Argentona",
+      "pages": 1
+    },
+    {
+      "id": "calafell--historic-trail-calafell",
+      "url": "https://webtretzesports.wixsite.com/historictrail/",
+      "town": "Calafell",
+      "pages": 2
+    },
+    {
+      "id": "palamos--transgavarres",
+      "url": "https://www.klassmark.com/cmg-transgavarres/",
+      "town": "Palamós",
+      "pages": 4
+    },
+    {
+      "id": "girona--cursa-de-muntanya-de-girona-cmg",
+      "url": "https://www.klassmark.com/cmg-transgavarres/",
+      "town": "Girona",
+      "pages": 4
+    },
+    {
+      "id": "torrelles-de-foix--cursa-fosca",
+      "url": "https://www.cursafosca.cat/",
+      "town": "Torrelles de Foix",
+      "pages": 3
+    },
+    {
+      "id": "castell-de-l-areny--roc-de-la-clusa-trail",
+      "url": "https://misports.cat/carreras/roc-de-la-clusa/",
+      "town": "Castell de l'Areny",
+      "pages": 3
+    },
+    {
+      "id": "granollers--cursa-solidaria-4-camins",
+      "url": "https://cngranollers.org/4camins/",
+      "town": "Granollers",
+      "pages": 2
+    },
+    {
+      "id": "vilaverd--vilaverd-skyrace",
+      "url": "https://vilaverdskyrace.naturaldfn.com/",
+      "town": "Vilaverd",
+      "pages": 4
+    },
+    {
+      "id": "bascara--despertaferro-bascara",
+      "url": "https://curses.cat/despertaferro2026/",
+      "town": "Bàscara",
+      "pages": 3
+    },
+    {
+      "id": "martorelles--murtrail",
+      "url": "https://www.cemm.cat/",
+      "town": "Martorelles",
+      "pages": 1
+    },
+    {
+      "id": "les-cabanyes--trail-senders-del-penedes",
+      "url": "https://trailsendersdelpenedes.wordpress.com/",
+      "town": "Les Cabanyes",
+      "pages": 4
+    },
+    {
+      "id": "llica-de-vall--cursa-de-la-vall-del-tenes",
+      "url": "https://www.mancomunitatvalltenes.cat/actualitat/noticies/xxxvi-cursa-de-la-vall-del-tenes.html",
+      "town": "Lliçà de Vall",
+      "pages": 4
+    },
+    {
+      "id": "borges-del-camp--trail-els-miradors",
+      "url": "https://webtretzesports.wixsite.com/trailelsmiradors",
+      "town": "Borges del Camp",
+      "pages": 2
+    },
+    {
+      "id": "baga--ultra-pirineu",
+      "url": "https://ultrapirineu.com/es/",
+      "town": "Bagà",
+      "pages": 4
+    },
+    {
+      "id": "tarragona--ctt-trail",
+      "url": "https://trail.tennistarragona.com/",
+      "town": "Tarragona",
+      "pages": 2
+    },
+    {
+      "id": "sant-quirze-de-besora--trail-del-bisaura",
+      "url": "https://www.traildelbisaura.com/",
+      "town": "Sant Quirze de Besora",
+      "pages": 4
+    },
+    {
+      "id": "rellinars--la-salvatge-trail",
+      "url": "https://cerellinars.cat/salvatgetrail/",
+      "town": "Rellinars",
+      "pages": 4
+    },
+    {
+      "id": "sant-antoni-de-vilamajor--fem-sui",
+      "url": "https://www.femsui.cat/",
+      "town": "Sant Antoni de Vilamajor",
+      "pages": 3
+    },
+    {
+      "id": "la-pobla-de-massaluca--cursa-serra-de-les-fites",
+      "url": "https://serradelesfites.org/",
+      "town": "La Pobla de Massaluca",
+      "pages": 4
+    },
+    {
+      "id": "castelltallat--campionat-maqui-castelltallat",
+      "url": "https://www.campionatmaqui.cat/cursa-castelltallat-14km/",
+      "town": "Castelltallat",
+      "pages": 4
+    },
+    {
+      "id": "vallromanes--la-nocturna-trinxavambes",
+      "url": "https://misports.cat/curses/nocturna-trinxavambes/",
+      "town": "Vallromanes",
+      "pages": 2
+    },
+    {
+      "id": "olesa-de-bonesvalls--marxa-bonesvalls",
+      "url": "https://www.marxabonesvalls.cat/",
+      "town": "Olesa de Bonesvalls",
+      "pages": 2
+    },
+    {
+      "id": "aristot--trobada-aristot",
+      "url": "https://trobadaaristot.cat/",
+      "town": "Aristot",
+      "pages": 2
+    },
+    {
+      "id": "baga--cursa-popular-de-baga",
+      "url": "https://www.atletismebaga.cat/cursa-popular-2026/",
+      "town": "Bagà",
+      "pages": 3
+    },
+    {
+      "id": "ribera-de-cardos--marato-valls-de-cardos",
+      "url": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+      "town": "Ribera de Cardós",
+      "pages": 2
+    },
+    {
+      "id": "cassa-de-la-selva--tap-trail",
+      "url": "https://curses.cat/taptrail2026/",
+      "town": "Cassà de la Selva",
+      "pages": 4
+    },
+    {
+      "id": "el-papiolet--cursa-campi-qui-pugui",
+      "url": "https://www.athleticevents.net/cursa/20a-cursa-campi-qui-pugui-del-papiolet-528",
+      "town": "El Papiolet",
+      "pages": 4
+    },
+    {
+      "id": "les--montlude-skyrace",
+      "url": "https://www.montludeskyrace.es/",
+      "town": "Les",
+      "pages": 3
+    },
+    {
+      "id": "roda-de-bera--cursa-festa-major-roda-de-bera",
+      "url": "https://festamajorcursarodadebera.webnode.es/",
+      "town": "Roda de Berà",
+      "pages": 2
+    },
+    {
+      "id": "la-vespella-de-gaia--cursa-la-vespella-de-gaia",
+      "url": "https://www.athleticevents.net/cursa/xvi-trail-i-caminada-vespella-de-gaia-531",
+      "town": "La Vespella de Gaià",
+      "pages": 4
+    },
+    {
+      "id": "ribera-de-cardos--marxa-camping-la-borda-del-pubill",
+      "url": "https://xtsportevents.com/events/",
+      "town": "Ribera de Cardós",
+      "pages": 4
+    },
+    {
+      "id": "amer--cursa-popular-d-amer",
+      "url": "https://curses.cat/amer2026/",
+      "town": "Amer",
+      "pages": 2
+    },
+    {
+      "id": "malgrat-de-mar--cursa-del-miner-de-ferro",
+      "url": "https://gem-malgrat.cat/esdeveniments/el-miner-de-ferro/miner-de-ferro-2026/",
+      "town": "Malgrat de Mar",
+      "pages": 2
+    },
+    {
+      "id": "ribes-de-freser--pyrenees-stage-run",
+      "url": "https://psr.run/en/",
+      "town": "Ribes de Freser",
+      "pages": 4
+    },
+    {
+      "id": "st-andreu-de-llavaneres--moontrail-llavaneres",
+      "url": "https://ajllavaneres.cat/moontrail26",
+      "town": "St Andreu de Llavaneres",
+      "pages": 1
+    },
+    {
+      "id": "la-guingueta-d-aneu--bocafoscant-night-trail",
+      "url": "https://bocafoscant.cat/",
+      "town": "La Guingueta d'Àneu",
+      "pages": 3
+    },
+    {
+      "id": "aiguafreda--congost-trail-challenge",
+      "url": "https://congosttrailchallenge.cat/",
+      "town": "Aiguafreda",
+      "pages": 3
+    },
+    {
+      "id": "montesquiu--cursa-del-castell-de-montesquiu",
+      "url": "https://www.cursadelcastell.com/",
+      "town": "Montesquiu",
+      "pages": 4
+    },
+    {
+      "id": "ventallo--ventallonina",
+      "url": "https://www.curses.cat/ventallonina2026/",
+      "town": "Ventalló",
+      "pages": 3
+    },
+    {
+      "id": "vallfogona-de-balaguer--cursa-de-la-vaca",
+      "url": "https://www.cansallebres.cat/",
+      "town": "Vallfogona de Balaguer",
+      "pages": 3
+    },
+    {
+      "id": "begur--trail-d-es-castell",
+      "url": "https://www.9hsports.cat/ca/informacio_cursa/1001",
+      "town": "Begur",
+      "pages": 4
+    },
+    {
+      "id": "llagostera--cursa-muntanya-llagostera-trail",
+      "url": "https://www.9hsports.cat/ca/informacio_cursa/1266",
+      "town": "Llagostera",
+      "pages": 3
+    },
+    {
+      "id": "sidamon--cursa-tossal-de-les-tenalles",
+      "url": "https://www.cursatossaldelestenalles.cat/",
+      "town": "Sidamon",
+      "pages": 4
+    },
+    {
+      "id": "vielha--cursa-15-pobles",
+      "url": "https://emaransportsfoundation.org/home/eventos/aran_per_esport/#",
+      "town": "Vielha",
+      "pages": 2
+    },
+    {
+      "id": "poblet--trail-nocturna-els-frares-encantats",
+      "url": "https://www.cecostadauradatrail.com/trail-nocturna-els-frares-encantats",
+      "town": "Poblet",
+      "pages": 2
+    },
+    {
+      "id": "estana--radikal-estana",
+      "url": "https://radikalestana.cat/",
+      "town": "Estana",
+      "pages": 1
+    },
+    {
+      "id": "collbato--cursa-de-l-alba",
+      "url": "https://www.cursalba.cat/",
+      "town": "Collbató",
+      "pages": 4
+    },
+    {
+      "id": "cervello--la-pota-roja",
+      "url": "https://lapotaroja.com/es/home",
+      "town": "Cervelló",
+      "pages": 2
+    },
+    {
+      "id": "montcada-i-reixac--montescatano",
+      "url": "https://www.montescatano.cat/",
+      "town": "Montcada i Reixac",
+      "pages": 2
+    },
+    {
+      "id": "almatret--la-tossals-d-almatret",
+      "url": "https://tossals.blogspot.com/",
+      "town": "Almatret",
+      "pages": 1
+    },
+    {
+      "id": "sant-llorenc-savall--marato-muntanya-de-catalunya",
+      "url": "https://www.maratocatalunya.cat/",
+      "town": "Sant Llorenç Savall",
+      "pages": 4
+    },
+    {
+      "id": "figols--vertical-prat",
+      "url": "https://www.circuitfer.cat/vertical-prat",
+      "town": "Fígols",
+      "pages": 4
+    },
+    {
+      "id": "saldes--pedraforca-xtrail",
+      "url": "https://misports.cat/carreras/pedraforca-xtrail/",
+      "town": "Saldes",
+      "pages": 3
+    },
+    {
+      "id": "cubells--senglar-trail",
+      "url": "https://senglartrail.blogspot.com/",
+      "town": "Cubells",
+      "pages": 3
+    },
+    {
+      "id": "vallter--la-marrana-skyrace",
+      "url": "https://cursalamarrana.com/",
+      "town": "Vallter",
+      "pages": 3
+    },
+    {
+      "id": "sant-salvador-de-guardiola--corriols-de-guardiola",
+      "url": "https://www.corriolsdeguardiola.cat/",
+      "town": "Sant Salvador de Guardiola",
+      "pages": 4
+    },
+    {
+      "id": "bigues-i-riells-del-fai--rural-trail",
+      "url": "https://ruraltrail.com/",
+      "town": "Bigues i Riells del Fai",
+      "pages": 4
+    },
+    {
+      "id": "tremp--tomb-al-poble-vell-de-puigcercos",
+      "url": "https://inscripcions.cat/caminadapuigcercos2025/",
+      "town": "Tremp",
+      "pages": 3
+    },
+    {
+      "id": "sant-esteve-de-palautordera--marato-del-montseny",
+      "url": "https://maratomontseny.com/",
+      "town": "Sant Esteve de Palautordera",
+      "pages": 4
+    },
+    {
+      "id": "esparreguera--trail-intercasteller",
+      "url": "https://trail-intercasteller.castellersdesparreguera.cat/",
+      "town": "Esparreguera",
+      "pages": 1
+    },
+    {
+      "id": "molins-de-rei--camins-de-collserola",
+      "url": "https://caminsdecollserola.cat/",
+      "town": "Molins de Rei",
+      "pages": 2
+    },
+    {
+      "id": "oix--trepitja-garrotxa",
+      "url": "https://trepitjagarrotxa.cat/",
+      "town": "Oix",
+      "pages": 3
+    },
+    {
+      "id": "montblanc--marxa-els-roures",
+      "url": "https://alliberadrenalina.com/marxa-dels-roures/",
+      "town": "Montblanc",
+      "pages": 4
+    },
+    {
+      "id": "ullastrell--cursa-muntanya-serralavella",
+      "url": "https://www.dsport.cat/es/fitxa_cursa.php?id_cursa=1127",
+      "town": "Ullastrell",
+      "pages": 4
+    },
+    {
+      "id": "sant-iscle-de-vallalta--vallalta-trail",
+      "url": "https://vallaltatrail.com/",
+      "town": "Sant Iscle de Vallalta",
+      "pages": 3
+    },
+    {
+      "id": "sant-marti-de-tous--panna-el-bandoler",
+      "url": "https://www.inscripcions.cat/pannaelbandoler2025t/",
+      "town": "Sant Martí de Tous",
+      "pages": 3
+    },
+    {
+      "id": "lavern-subirats--cursa-serralats-lavern",
+      "url": "https://serralats.wordpress.com/",
+      "town": "Lavern Subirats",
+      "pages": 4
+    },
+    {
+      "id": "taradell--trail-toca-sons",
+      "url": "https://www.innovitsport.com/esdeveniments/trail-tocasons",
+      "town": "Taradell",
+      "pages": 2
+    },
+    {
+      "id": "sant-marti-sarroca--cursarroca",
+      "url": "https://webtretzesports.wixsite.com/cursarroca",
+      "town": "Sant Martí Sarroca",
+      "pages": 4
+    },
+    {
+      "id": "cunit--avenc-trail-cunit",
+      "url": "https://webtretzesports.wixsite.com/avenctrailcunit",
+      "town": "Cunit",
+      "pages": 2
+    },
+    {
+      "id": "mora-d-ebre--cursa-cami-de-sirga",
+      "url": "https://cursacamidesirga.picossatrail.cat/",
+      "town": "Móra d'Ebre",
+      "pages": 2
+    },
+    {
+      "id": "oller-del-mas--vinya-cross-solidari-oller-del-mas",
+      "url": "https://www.vinya-cross.es/",
+      "town": "Oller del Mas",
+      "pages": 2
+    },
+    {
+      "id": "barcelona--cros-3-turons-la-diablada",
+      "url": "https://www.cros3turons-ladiablada.cat/",
+      "town": "Barcelona",
+      "pages": 4
+    },
+    {
+      "id": "sant-vicenc-de-castellet--vallhonesta-x-trail",
+      "url": "https://ceaccastellet.wordpress.com/",
+      "town": "Sant Vicenç de Castellet",
+      "pages": 4
+    },
+    {
+      "id": "vilaplana--vilaplana-030-extrem",
+      "url": "https://www.vilaplana030.cat/",
+      "town": "Vilaplana",
+      "pages": 3
+    },
+    {
+      "id": "cabrianes--cabrorun",
+      "url": "https://dsport.cat/ca/fitxa_cursa.php?id_cursa=1186",
+      "town": "Cabrianes",
+      "pages": 4
+    },
+    {
+      "id": "sant-joan-de-les-abadesses--taga-2040-evo",
+      "url": "https://taga2040.com/",
+      "town": "Sant Joan de les Abadesses",
+      "pages": 4
+    },
+    {
+      "id": "vall-de-nuria--olla-de-nuria-vertical",
+      "url": "https://olladenuria.cat/",
+      "town": "Vall de Núria",
+      "pages": 2
+    },
+    {
+      "id": "monells--trail-de-monells",
+      "url": "https://www.curses.cat/monells2026/",
+      "town": "Monells",
+      "pages": 4
+    },
+    {
+      "id": "altafulla--short-trail-altafulla",
+      "url": "https://www.athleticevents.net/cursa/2n-short-trail-altafulla-507",
+      "town": "Altafulla",
+      "pages": 4
+    },
+    {
+      "id": "barcelona--cursa-montbau",
+      "url": "https://www.9hsports.cat/ca/informacio_cursa/935",
+      "town": "Barcelona",
+      "pages": 3
+    },
+    {
+      "id": "lloret-de-mar--cabra-s-trail-lloret",
+      "url": "https://running.cat/cabras-trail-lloret-2025",
+      "town": "Lloret de Mar",
+      "pages": 2
+    },
+    {
+      "id": "sant-llorenc-d-hortons--cursa-de-la-vinya-i-el-pampol",
+      "url": "https://www.ajhortons.cat/temes/esport/la-29-ena-cursa-de-la-vinya-i-la-8ena-pampol-trail-",
+      "town": "Sant Llorenç d'Hortons",
+      "pages": 3
+    },
+    {
+      "id": "la-seu-d-urgell--cursa-transfronterera",
+      "url": "https://www.circuitfer.cat/",
+      "town": "La Seu d'Urgell",
+      "pages": 4
+    },
+    {
+      "id": "folgueroles--folguerolenca-trail",
+      "url": "https://www.9hsports.cat/ca/informacio_cursa/1192",
+      "town": "Folgueroles",
+      "pages": 4
+    },
+    {
+      "id": "monistrol-de-calders--cursa-del-sot",
+      "url": "https://sites.google.com/view/cursadelsot/",
+      "town": "Monistrol de Calders",
+      "pages": 4
+    },
+    {
+      "id": "alcanar--pujada-al-montsia",
+      "url": "https://www.pujadamontsia.cat/",
+      "town": "Alcanar",
+      "pages": 4
+    },
+    {
+      "id": "espinelves--espintrail-vertical",
+      "url": "https://www.espintrail.com/",
+      "town": "Espinelves",
+      "pages": 3
+    },
+    {
+      "id": "el-portus--tramuntana-trail-transfronterer",
+      "url": "https://www.curses.cat/tramuntanatrail2026/",
+      "town": "El Portús",
+      "pages": 4
+    },
+    {
+      "id": "amposta--duextrem-amposta",
+      "url": "https://www.montbike.org/duextremamposta/",
+      "town": "Amposta",
+      "pages": 4
+    },
+    {
+      "id": "pi--vertical-de-pi",
+      "url": "https://esportsbellver.org/vertical-de-pi/",
+      "town": "Pi",
+      "pages": 1
+    },
+    {
+      "id": "la-seu-d-urgell--vertical-urgellet",
+      "url": "https://www.9hsports.cat/ca/informacio_cursa/891",
+      "town": "La Seu d'Urgell",
+      "pages": 3
+    },
+    {
+      "id": "llinars-del-valles--kom-trail-el-corredor",
+      "url": "https://cellv.cat/trail-corredor/",
+      "town": "Llinars del Vallès",
+      "pages": 4
+    },
+    {
+      "id": "cambrils--la-cambrils-oden",
+      "url": "https://www.circuitfer.cat/",
+      "town": "Cambrils",
+      "pages": 4
+    },
+    {
+      "id": "ulldemolins--utsm-serra-de-montsant",
+      "url": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
+      "town": "Ulldemolins",
+      "pages": 4
+    },
+    {
+      "id": "oden--la-xafonada",
+      "url": "https://www.oden.cat/home/xafonada/",
+      "town": "Odèn",
+      "pages": 2
+    },
+    {
+      "id": "ribes-de-freser--brama-stage-run",
+      "url": "https://brama.run/es/",
+      "town": "Ribes de Freser",
+      "pages": 4
+    },
+    {
+      "id": "tossa-de-mar--la-megalitica",
+      "url": "https://www.lasansi.com/es/tossamarato",
+      "town": "Tossa de Mar",
+      "pages": 1
+    },
+    {
+      "id": "sant-fost-de-campsentelles--la-dragonera-trail",
+      "url": "https://linktr.ee/cursadeldrac",
+      "town": "Sant Fost de Campsentelles",
+      "pages": 3
+    },
+    {
+      "id": "orriols--cursa-d-orriols",
+      "url": "https://curses.cat/orriols2025/",
+      "town": "Orriols",
+      "pages": 1
+    },
+    {
+      "id": "bellaterra--la-6-6-de-bellaterra",
+      "url": "https://la6punt6debellaterra.cat/",
+      "town": "Bellaterra",
+      "pages": 3
+    },
+    {
+      "id": "agramunt--cursa-del-torro",
+      "url": "https://agramuntesports.cat/cursa-del-torro-2024/",
+      "town": "Agramunt",
+      "pages": 4
+    },
+    {
+      "id": "portbou--querroig-trail",
+      "url": "https://querroigtrail.com/",
+      "town": "Portbou",
+      "pages": 1
+    },
+    {
+      "id": "la-selva-de-mar--la-selvatjada",
+      "url": "https://www.curses.cat/laselvatjada2026/",
+      "town": "La Selva de Mar",
+      "pages": 1
+    },
+    {
+      "id": "roquetes--kv-roquetes",
+      "url": "https://www.trailroquetes.cat/",
+      "town": "Roquetes",
+      "pages": 4
+    },
+    {
+      "id": "barcelona--fun-trail-barcelona",
+      "url": "https://funtrailbarcelona.com/",
+      "town": "Barcelona",
+      "pages": 4
+    },
+    {
+      "id": "pacs-del-penedes--pujada-a-sant-pau",
+      "url": "https://corremperlaterra.wordpress.com/",
+      "town": "Pacs del Penedès",
+      "pages": 4
+    },
+    {
+      "id": "ulldemolins--trail-ermites-ulldemolins",
+      "url": "https://www.naturetime.es/ca/trailseries-les-ermites-ulldemolins-esp/",
+      "town": "Ulldemolins",
+      "pages": 4
+    },
+    {
+      "id": "tremp--cursa-antoni-camarasa",
+      "url": "https://inscripcions.cat/cursacamarasa2025/",
+      "town": "Tremp",
+      "pages": 4
+    },
+    {
+      "id": "gurb--cursa-a-tota-castanya",
+      "url": "https://www.atotacastanyagurb.cat/",
+      "town": "Gurb",
+      "pages": 1
+    },
+    {
+      "id": "sorribes-de-la-vansa--vertical-de-l-arp",
+      "url": "https://inscripcions.cat/vertical-arp-trail-2025/",
+      "town": "Sorribes de la Vansa",
+      "pages": 2
+    },
+    {
+      "id": "la-garriga--saligarda-trail",
+      "url": "https://www.lestortugues.cat/saligarda-trail/",
+      "town": "La Garriga",
+      "pages": 3
+    },
+    {
+      "id": "sentmenat--pujada-i-baixada-a-guanta",
+      "url": "https://www.lasansi.com/ca/pujada-guanta",
+      "town": "Sentmenat",
+      "pages": 3
+    },
+    {
+      "id": "sant-marti-sesgueioles--trail-gaioles",
+      "url": "https://sites.google.com/view/1a-trail-gaioles/inici",
+      "town": "Sant Martí Sesgueioles",
+      "pages": 3
+    },
+    {
+      "id": "avia--volta-a-la-maria-la-nocturna",
+      "url": "https://voltaalamaria.wixsite.com/misitio",
+      "town": "Avià",
+      "pages": 1
+    },
+    {
+      "id": "sant-llorenc-de-montgai--trail-montroig",
+      "url": "https://www.trailmontroig.cat/",
+      "town": "Sant Llorenç de Montgai",
+      "pages": 4
+    },
+    {
+      "id": "vandellos--vandekames",
+      "url": "https://www.vandekames.cat/",
+      "town": "Vandellòs",
+      "pages": 1
+    },
+    {
+      "id": "lluerts--trail-lluerts",
+      "url": "https://curses.cat/traillluerts2025/",
+      "town": "Lluerts",
+      "pages": 1
+    },
+    {
+      "id": "ivars-de-noguera--montpedro-trail",
+      "url": "https://lamontpedro.home.blog/",
+      "town": "Ivars de Noguera",
+      "pages": 4
+    },
+    {
+      "id": "olivella--cursa-del-margallo",
+      "url": "https://www.cursadelmargallo.cat/",
+      "town": "Olivella",
+      "pages": 4
+    },
+    {
+      "id": "marganell--cursa-matonera",
+      "url": "https://www.marganell.cat/cursa-matonera",
+      "town": "Marganell",
+      "pages": 4
+    },
+    {
+      "id": "verdu--cursa-bacus",
+      "url": "https://correvinyes.verdu.red/cursa-bacus-2026/",
+      "town": "Verdú",
+      "pages": 4
+    },
+    {
+      "id": "barcelona--trencacames-canyelles",
+      "url": "https://www.avaibooksports.com/inscripcion/trencacames-canyelles-2025/",
+      "town": "Barcelona",
+      "pages": 1
+    },
+    {
+      "id": "santa-coloma-de-farners--cursa-de-la-ratafia",
+      "url": "https://cursadelaratafia.cat/",
+      "town": "Santa Coloma de Farners",
+      "pages": 3
+    },
+    {
+      "id": "sabadell--cross-dels-esquiadors",
+      "url": "https://ues.cat/cross-dels-esquiadors/",
+      "town": "Sabadell",
+      "pages": 3
+    },
+    {
+      "id": "tarragona--imperial-tarraco-trail",
+      "url": "https://alliberadrenalina.com/imperial-tarraco/",
+      "town": "Tarragona",
+      "pages": 2
+    },
+    {
+      "id": "tarragona--imperial-tarraco-trail",
+      "url": "https://www.rockthesport.com/es/evento/imperial-tarraco-trail",
+      "town": "Tarragona",
+      "pages": 3
+    },
+    {
+      "id": "aiguafreda--cursa-de-quintos",
+      "url": "https://www.9hsports.cat/ca/informacio_cursa/1055",
+      "town": "Aiguafreda",
+      "pages": 4
+    },
+    {
+      "id": "santa-cristina-d-aro--trail-ardenya",
+      "url": "https://www.matxacuca.com/portfolio/trail-ardenya/",
+      "town": "Santa Cristina d'Aro",
+      "pages": 1
+    },
+    {
+      "id": "ponts--trail-no-limits",
+      "url": "https://sites.google.com/view/trailnolimitsponts",
+      "town": "Ponts",
+      "pages": 4
+    },
+    {
+      "id": "corbera-de-llobregat--cursa-de-la-dona",
+      "url": "https://www.cinccims.cat/",
+      "town": "Corbera de Llobregat",
+      "pages": 3
+    },
+    {
+      "id": "cabrianes-mas-la-sala--campionat-maqui-bell-race",
+      "url": "https://www.campionatmaqui.cat/cursa-bell-race/",
+      "town": "Cabrianes (Mas la Sala)",
+      "pages": 4
+    },
+    {
+      "id": "benifallet--cursa-lo-pastisset",
+      "url": "https://lopastisset.cat/",
+      "town": "Benifallet",
+      "pages": 2
+    },
+    {
+      "id": "sant-climent-de-llobregat--trail-popular-d-hivern",
+      "url": "https://www.amicsdelacursailamuntanya.cat/trail-popular-hivern/",
+      "town": "Sant Climent de Llobregat",
+      "pages": 4
+    },
+    {
+      "id": "mura--cursa-de-muntanya-mtr",
+      "url": "https://inscripcions.cat/mtr2025/",
+      "town": "Mura",
+      "pages": 3
+    },
+    {
+      "id": "santa-maria-de-martorelles--la-neorural",
+      "url": "https://laneorural.com/",
+      "town": "Santa Maria de Martorelles",
+      "pages": 2
+    },
+    {
+      "id": "la-riera-de-gaia--cursa-trail-la-riera-de-gaia",
+      "url": "https://cursalarieragaia.cat/",
+      "town": "La Riera de Gaià",
+      "pages": 4
+    },
+    {
+      "id": "barcelona--cursa-cec-collserola",
+      "url": "https://collserola.cec.cat/",
+      "town": "Barcelona",
+      "pages": 2
+    },
+    {
+      "id": "preixana--cursa-entre-cabanes",
+      "url": "https://www.preixana.cat/de-prop/fira-gastronomica/cursa_entre_cabanes/2025-6a-edicio/enllacos-dinscripcio-a-la-cursa-caminada",
+      "town": "Preixana",
+      "pages": 4
+    },
+    {
+      "id": "colldejou--cursa-de-nadal-a-colldejou",
+      "url": "https://www.naturetime.es/ca/cursa-de-nadal/",
+      "town": "Colldejou",
+      "pages": 4
+    },
+    {
+      "id": "sant-hilari-sacalm--pujada-a-les-formigues",
+      "url": "https://fff.cat/activitats/pujada-a-les-formigues/",
+      "town": "Sant Hilari Sacalm",
+      "pages": 1
+    },
+    {
+      "id": "espluga-de-francoli--cursa-de-la-llufa",
+      "url": "https://caesplugui.cat/cursa-de-la-llufa/",
+      "town": "Espluga de Francolí",
+      "pages": 4
+    },
+    {
+      "id": "riudecanyes--cursa-del-gall",
+      "url": "https://webtretzesports.wixsite.com/cursadelgall",
+      "town": "Riudecanyes",
+      "pages": 4
+    },
+    {
+      "id": "viladellops-olerdola--sant-silvestre-de-muntanya-del-penedes",
+      "url": "https://santsilvestredemuntanyadelpenedes.blogspot.com/?m=1",
+      "town": "Viladellops (Olèrdola)",
+      "pages": 3
+    },
+    {
+      "id": "avinyo--sant-silvestre-avinyo",
+      "url": "https://www.inscripcions.cat/ssavinyo2022/",
+      "town": "Avinyó",
+      "pages": 3
+    },
+    {
+      "id": "sant-pere-de-torello--cursa-de-na-dalt-a-bellmunt",
+      "url": "https://cursadenadalt.com/la-cursa/",
+      "town": "Sant Pere de Torelló",
+      "pages": 4
+    },
+    {
+      "id": "ullastrell--cursa-del-bolet",
+      "url": "https://www.cursadelbolet.cat/",
+      "town": "Ullastrell",
+      "pages": 4
+    },
+    {
+      "id": "porqueres--cursa-popular-de-porqueres",
+      "url": "https://cursesplaestany.cat/cursa-popular-porqueres/",
+      "town": "Porqueres",
+      "pages": 4
+    },
+    {
+      "id": "sant-celoni--trail-per-la-vall-d-olzinelles",
+      "url": "https://www.inscripcions.cat/marxavalldolzinelles2022/",
+      "town": "Sant Celoni",
+      "pages": 2
+    },
+    {
+      "id": "montornes-del-valles--trail-dels-remences",
+      "url": "https://www.dsport.cat/ca/fitxa_cursa.php?id_cursa=920",
+      "town": "Montornès del Vallès",
+      "pages": 4
+    },
+    {
+      "id": "sant-celoni--cursa-solidaria-dels-avets",
+      "url": "https://www.inscripcions.cat/cursaavetroig2022/",
+      "town": "Sant Celoni",
+      "pages": 4
+    },
+    {
+      "id": "sarria-de-ter--sant-silvestre-sarrianenca",
+      "url": "https://www.inscripcions.cat/sssarrianenca2022t/",
+      "town": "Sarrià de Ter",
+      "pages": 3
+    }
+  ],
+  "failed": [
+    {
+      "url": "https://www.instagram.com/lotraildeseca",
+      "town": "Juncosa",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://beacons.ai/atotacastanya",
+      "town": "Gurb",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://cursasantgalderic.blogspot.com/",
+      "town": "Tavernoles",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://antenasolidaria.cat/",
+      "town": "Barcelona",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/lo_trail_rocallaura/",
+      "town": "Rocallaura",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://www.saltsdaiguacabreradanoia.cat/cursa-dels-salts-d-aigua/",
+      "town": "Canaletes (Cabrera d'Anoia)",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://laforanca.cat/",
+      "town": "Alàs",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://www.marxadelstermes.com/",
+      "town": "Arenys de Munt",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://altasegarra.ces.cat/wp/",
+      "town": "Sanaüja",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/cursaparcdelstalls/",
+      "town": "Vilobí del Penedès",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://cursativissa.cat/",
+      "town": "Tivissa",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://www.geca.cat/vertikalm/",
+      "town": "Sant Privat d'en Bas",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/fmsenterada",
+      "town": "Senterada",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://trailmoixero.cat/",
+      "town": "Bagà",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/joventut_massoteres/",
+      "town": "Massoteres",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://cross.ametllademerola.cat/",
+      "town": "L'Ametlla de Merola",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/verticalbandera/",
+      "town": "La Guingueta d'Àneu",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/cursablatdemoro/",
+      "town": "Cabanes",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://www.cursacapafonts.com/",
+      "town": "Capafonts",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.montbriotrail.com",
+      "town": "Montbrió de la Marca",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://burriacatac.cat/",
+      "town": "Vilassar de Mar",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://www.mitjadelcastell.com/",
+      "town": "El Papiol",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://lligatalavida.cat/",
+      "town": "Tarragona",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/carenesdelcogullo/",
+      "town": "Rajadell",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.uecanoia.cat/cursa-esquiador/",
+      "town": "La Llacuna",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.lesguineus.cat/",
+      "town": "Castellvell i el Vilar",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://www.cursadefalset.net/",
+      "town": "Falset",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.turisrialp.cat/matxicots/",
+      "town": "Rialp",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://cursapuigdetiula.cat/",
+      "town": "Cubelles",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://cursaelpont.cat/ca/",
+      "town": "El Pont de Vilomara",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/carmeetstu/",
+      "town": "Carme",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://www.bttelbressol.com/Cursa.asp",
+      "town": "Moja",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://atleticsantafe.cat/maratoboumort/",
+      "town": "Organyà",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://upxictrail.wixsite.com/upxic/",
+      "town": "Les Masies de Voltregà",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://lagranada.com/web/cronoescalada/",
+      "town": "La Granada del Penedès",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/cursabatallesbruc",
+      "town": "El Bruc",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://montsant360.cat/CURSA/",
+      "town": "Cornudella de Montsant",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/destralers_de_la_pobla/",
+      "town": "La Pobla de Lillet",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.traillavall.cat/",
+      "town": "Bellcaire d'Empordà",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/abombersolot/",
+      "town": "Olot",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.facebook.com/MMRRibes/",
+      "town": "Sant Pere de Ribes",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/badatrail/",
+      "town": "Badalona",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/gualbatrail/",
+      "town": "Gualba",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://perseguintlaperdiu.com/",
+      "town": "Vilanova de Meià",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://masquefatrail.cat/",
+      "town": "Masquefa",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/senglarspunksvc/",
+      "town": "Sant Vicenç de Castellet",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/cursamuntanyallagostera/",
+      "town": "Llagostera",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://casaljovescurses.blogspot.com/",
+      "town": "L'Aldea",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://cursanadal.blogspot.com/",
+      "town": "Sant Sadurní d'Anoia",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.cursesviladecavalls.com/",
+      "town": "Viladecavalls",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.aritjol.org/post/xviii-cronopujada-al-puig-d-en-cama",
+      "town": "Els Molins (La Selva del Camp)",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://mitjasabadell.cat/",
+      "town": "Sabadell",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://lafolguerolenca.wixsite.com/lafolguerolenca",
+      "town": "Folgueroles",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/p/ClekNFTIeSY/",
+      "town": "Sant Llorenç Savall",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.instagram.com/p/ClmDV-lNVnR/?igshid=MDJmNzVkMjY=",
+      "town": "Artesa de Segre",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://enrucada.tianat.cat/",
+      "town": "Tiana",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "http://clubmuntanyencterrassa.blogspot.com/",
+      "town": "Matadepera",
+      "reason": "empty/thin (likely JS-only)"
+    },
+    {
+      "url": "https://www.biguesiriells.cat/ca/actualitat-2/agenda-1/cursa-nadal-2022-688.htm",
+      "town": "Bigues i Riells",
+      "reason": "empty/thin (likely JS-only)"
+    }
+  ]
+}

@@ -43,3 +43,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 supabase/.temp/
+
+# local enrichment crawl cache (raw page text; only _manifest.json is committed)
+docs/enrichment/2026-batch/_crawl/*.json
+!docs/enrichment/2026-batch/_crawl/_manifest.json

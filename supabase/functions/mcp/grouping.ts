@@ -5,6 +5,20 @@
 // Kept behaviour-identical to the Next.js version on purpose; a cross-check
 // test (grouping_test.ts) asserts the two produce the same event ids/counts.
 // The shared-core refactor that would unify them is deferred (see plan).
+//
+// Town corrections (data/town-corrections.json) are applied here so they survive
+// the weekly scrape: `canonicalTown` merges spelling variants of one town into a
+// single event (e.g. "Llavaneres" / "St Andreu de Llavaneres"), and `provinceFor`
+// overrides a wrong scraped province. Mirror of app/lib/races.js.
+import townCorrectionsRaw from '../../../data/town-corrections.json' with { type: 'json' }
+const TOWN_CORRECTIONS = townCorrectionsRaw as Record<string, { canonical?: string; province?: string }>
+export function canonicalTown(t: string): string {
+  return TOWN_CORRECTIONS[t]?.canonical || t
+}
+function provinceFor(rawTown: string, fallback: string): string {
+  return (TOWN_CORRECTIONS[rawTown]?.province ||
+    TOWN_CORRECTIONS[canonicalTown(rawTown)]?.province || fallback)
+}
 
 export interface RaceRow {
   race_name?: string
@@ -123,7 +137,8 @@ export function groupRowsIntoEvents(rows: RaceRow[]): RaceEvent[] {
 
   for (const row of rows) {
     const url = (row.race_url || '').trim()
-    const town = (row.town || '').trim()
+    // Canonical town so spelling variants of one town merge into one event.
+    const town = canonicalTown((row.town || '').trim())
     const key = `${url}::${town}`
     if (!groups.has(key)) {
       groups.set(key, [])
@@ -139,9 +154,10 @@ export function groupRowsIntoEvents(rows: RaceRow[]): RaceEvent[] {
     const groupRows = groups.get(key)!
     const mainRows = groupRows.filter((r) => !isKidsName(r.race_name || ''))
     const eventName = ((mainRows[0] || groupRows[0]).race_name || '').trim()
-    const province = ((mainRows[0] || groupRows[0]).province || '').trim()
+    const rawTown = (groupRows[0].town || '').trim()
+    const province = provinceFor(rawTown, ((mainRows[0] || groupRows[0]).province || '').trim())
     const url = (groupRows[0].race_url || '').trim()
-    const town = (groupRows[0].town || '').trim()
+    const town = canonicalTown(rawTown)
 
     let dateIso: string | null = null
     let dateEndIso: string | null = null

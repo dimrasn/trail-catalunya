@@ -138,3 +138,15 @@ Deno.test('expected month: date_display bare year contradicting year → suppres
   ]
   assertEquals(groupRowsIntoEvents(rows)[0].expectedMonth, undefined)
 })
+
+Deno.test('town corrections: spelling variants merge into one event + province fixed', () => {
+  const rows = [
+    { race_name: 'Moon Trail Llavaneres', race_url: 'https://ajllavaneres.cat/moontrail26', town: 'Llavaneres', province: 'GIRONA', distance_km: 11, elevation_m: 530, date: '2026-08-29', status: 'ACTIVA' },
+    { race_name: 'Moontrail Llavaneres', race_url: 'https://ajllavaneres.cat/moontrail26', town: 'St Andreu de Llavaneres', province: 'GIRONA', distance_km: 12, elevation_m: 560, date: '2026-08-29', status: 'ACTIVA' },
+  ] as RaceRow[]
+  const events = groupRowsIntoEvents(rows)
+  assertEquals(events.length, 1)                           // one event, not two
+  assertEquals(events[0].town, 'St Andreu de Llavaneres')  // canonical town
+  assertEquals(events[0].province, 'BARCELONA')            // corrected province
+  assertEquals(events[0].distances.length, 2)              // both distances kept
+})
