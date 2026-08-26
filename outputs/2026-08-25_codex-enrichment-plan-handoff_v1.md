@@ -1,4 +1,4 @@
-# Handoff — re-review the enrichment-phase plan (round 2)
+# Handoff — re-review the enrichment-phase plan (round 3)
 
 **For:** the external reviewing agent (Codex) that returned the round-1 verdict
 "not build-ready for publication." This is the revised plan addressing your six
@@ -11,6 +11,32 @@ plan builds to).
 ## ⚠ Read `main`, not the working tree
 The round-1 pass false-flagged `scripts/deploy-mcp.sh` and the dogfood file as
 missing; both exist on `origin/main`. Review `origin/main`.
+
+## What changed since your ROUND-2 review (the four P0s)
+Your round-2 verdict ("not build-ready; close the four P0 contract/freshness gaps")
+is addressed. The gating artifact is now a MACHINE CONTRACT in
+`docs/enrichment/fields-spec.md`:
+- **r2-P0-1 (contract can't encode proof/retention)** → a machine `Fact` record
+  (`variant_id`, exact `edition_year`, page-specific `source_url`, `source_hash`,
+  `evidence_quote`, `validation_result`) + separated `current_facts` vs
+  `prior_editions[year]`. Proof moved to BATCH-PROMOTION (U4) where the page exists;
+  the runtime gate trusts `validation_result`. "Likely similar" removed — history
+  renders neutrally. DB-year is a negative veto, not positive proof.
+- **r2-P0-2 (grain incomplete)** → per-field grain matrix marks V (variant) + E
+  (edition) for every actionable field (sold_out, confirmed, equipment, licence, aid,
+  night, registration, price tiers); event-scalar only on a completeness rule (all DB
+  variants agree, none missing) — U4/KTD4.
+- **r2-P0-3 (sentinel can't suppress the bundle)** → freshness is a LIVE per-source
+  state (U6, a PREREQUISITE before publish) the MCP checks per request and the site
+  during ISR; not-`fresh` suppresses the fact. The cheap non-LLM monitor is automated
+  (kept, not demoted).
+- **r2-P0-4 (precedence + missed surfaces)** → one shared `resolveRaceFacts()` with
+  per-field resolution, consumed by race page, card, homepage JSON-LD, AI prompts, and
+  MCP (the missed consumers) — U5, one parity-tested projection.
+- **r2-P1-5/P1-6/P1-7** → executable eval command + broad fixtures + zero-false-positive
+  (U7); pinned-SHA + payload-hash exposed from BOTH surfaces + matched + mixed-version
+  safety (U8/KTD9); character precedence — new overrides legacy taste for processed
+  races (KTD8).
 
 ## What changed since your round-1 review (verify each landed)
 Your six findings + Dima's product decisions are folded in:

@@ -1,106 +1,126 @@
-# Enrichment fields spec — the canonical "what we collect from every race"
+# Enrichment fields spec + machine contract — "what we collect, and how honestly"
 
 The single source of truth for the enrichment phase. The extractor prompt, the
-gate (`enrichment_view.ts`), the schema types (`enrich-races/types.ts`), and the
-eval answer key all reference THIS file. If a field isn't here, we don't publish
-it as a structured fact. Design settled with Dima 2026-08-25; folds the dogfood +
-Codex review. Not yet built — this defines the target.
+batch-promotion validator, the runtime gate (`enrichment_view.ts` / `enrichment.js`),
+the schema types (`enrich-races/types.ts`), the shared resolver, and the eval key all
+reference THIS file. If a field isn't here, we don't publish it. Settled with Dima +
+two Codex review rounds, 2026-08-25. Not yet built — this is the target.
 
 ## Principles
 
-1. **Two tiers.** A **standardized schema** of clear, deterministic fields we try
-   to get from *every* race (below), extracted against a fixed contract; and **the
-   model (Haiku)** for the unpredictable — character ("what's unique/cool") and
-   outliers that don't fit a slot.
-2. **Honesty envelope, always.** Every published fact carries: `value` ·
-   `confidence` · `evidence` (the exact quote, which MUST exist on the page) ·
-   `source_url` · `edition` · `last_checked`. Missing any → the fact fails closed
-   (not published).
-3. **Fact-local proof, fail-closed** (Codex P0-2). A fact is published only if its
-   evidence quote is present on the recorded source page AND its local context
-   (heading/table/date) is consistent with the race's known date. Unresolved,
-   mixed-edition, or unprovable → hidden.
-4. **Grain tags** on every field:
-   - **[distance]** — varies per race distance → stored per-variant, never a single
-     event scalar (Codex P0-1: staggered starts / tiered prices). An event-level
-     scalar is published only when every non-kids variant shares it.
-   - **[edition]** — changes year to year → refreshed each edition.
-   - **[stable]** — usually the same across years → collected once, re-confirmed
-     cheaply.
-5. **Retention across editions** (Dima). A race is very likely the same next year,
-   so data is a *retained asset*, never thrown away. This year's proven facts show
-   as **current**; last year's show as a **dated prior** ("2025 edition: … —
-   likely similar, verify"), never dressed as current; **[stable]** facts + character
-   persist. Next year = re-confirm + deltas, not re-collect.
-6. **Volatile ≠ snapshot.** Genuinely live states are never published as a stale
-   boolean — see Registration.
+1. **Two tiers.** A standardized schema of deterministic fields (below) + the model
+   (Haiku) for character and outliers.
+2. **Validation happens at BATCH-PROMOTION, not at the runtime gate** (Codex r2-P0-1).
+   The runtime gate only sees a fact, not the page, so it cannot check a quote. The
+   local batch validates each fact's quote against exactly one captured page and
+   records a `validation_result`; the runtime gate trusts that result.
+3. **Honesty envelope + machine fields, always.** Every fact carries: `value` ·
+   `variant_id` · `edition_year` · `confidence` · `evidence_quote` · `source_url`
+   (the specific page the quote is on) · `source_hash` · `validation_result` ·
+   `last_checked`. Missing/failed → not published.
+4. **Fail closed.** No provable year, mixed-year, ambiguous page, or ambiguous variant
+   → the fact fails validation and is not published.
+5. **Retention, exact-year keyed.** Data is retained across editions: `current_facts`
+   (proven for the current 2026 edition) and `prior_editions[year]` (isolated
+   history). History renders NEUTRALLY — "2025 edition: 08:00 — 2026 unverified" —
+   never "likely similar" (an unsupported inference), never inside current
+   `enriched_facts`.
+6. **Freshness is a LIVE state, not a static stamp** (Codex r2-P0-3). A separate,
+   cheap, non-LLM monitor persists per-source `fresh | changed | overdue | error`
+   state; the MCP checks it per request and the site during ISR; anything not `fresh`
+   suppresses the affected current facts until a local re-extraction clears it.
+7. **One shared resolved projection** (Codex r2-P0-4). Every surface — race page,
+   card, homepage JSON-LD, AI prompts, MCP — reads the SAME `resolveRaceFacts(race)`
+   output. Resolution is per-field, never cross-field.
 
-## Fields
+## Machine schema
 
-### Logistics — mostly [edition]
-| field | grain | notes |
-|---|---|---|
-| `start_time` | [distance][edition] | staggered starts are the norm — per-variant |
-| `price` / tiers | [distance][edition] | tiered/early-bird → per-variant; precedence over legacy `races.price` |
-| `cutoff` / time limit | [distance][edition] | per-variant |
-| `confirmed_status` | [edition] | confirmed / cancelled for THIS edition |
+```
+Fact {
+  field         : enum (start_time | price | cutoff | confirmed | sold_out |
+                        registration_opens_on | registration_closes_on |
+                        registration_url | track_link | elevation_profile |
+                        mandatory_equipment | feec_licence | aid_stations |
+                        kids_race | night | social_link | <character fields>)
+  variant_id    : DB-backed distance-variant id, or null for a true event-level fact
+  value         : typed per field
+  edition_year  : exact int (e.g. 2026) — never "previous"
+  confidence    : high | low            (unknown ⇒ omit the fact)
+  evidence_quote: verbatim string that MUST occur on source_url's captured page
+  source_url    : the specific crawled page carrying the quote (NOT the seed url)
+  source_hash   : hash of that captured page (ties the fact to the freshness monitor)
+  validation_result : validated | failed | unverified
+  last_checked  : ISO date of the batch run
+}
 
-### Registration lifecycle — [edition], captured as DATES not a live boolean
-| field | grain | notes |
-|---|---|---|
-| `registration_url` | [edition] | where to sign up |
-| `registration_opens_on` | [edition] | dated fact — agent derives "not yet open" if today < this |
-| `registration_closes_on` | [edition] | deadline — agent derives "closed" if today > this |
-| `registration_status` | DERIVED | not_yet_open \| open \| closed \| sold_out \| unknown — computed from the dates + today; **never a stale snapshot** |
-| `sold_out` | [edition] | the ONE live status published honestly — sourced from the WEEKLY SCRAPER (ESGOTADES), so it carries a fresh weekly check-date, not the enrichment snapshot |
+RaceEnrichment {
+  race_id       : DB-backed
+  current_facts : Fact[]   (edition_year == current; validation_result == validated)
+  prior_editions: { [year:int]: Fact[] }   (isolated history)
+}
+```
 
-### Route & terrain — mostly [stable]
-| field | grain | notes |
-|---|---|---|
-| `track_link` (Wikiloc / Komoot / Strava) | [distance][stable] | high value; usually a clean link |
-| `elevation_profile` (image/link) | [distance][stable] | |
-| `distance_km`, `elevation_gain` | [distance] | already in the races table |
+## Field catalog — per-field GRAIN (Codex r2-P0-2: every actionable field can vary)
 
-### Requirements & safety — mostly [stable]
-| field | grain | notes |
-|---|---|---|
-| `mandatory_equipment` | [stable] | e.g. Burriac Atac's working headlamp — safety-relevant |
-| `feec_licence` | [stable] | licence/insurance requirement |
-| `aid_stations` / self-sufficiency | [stable] | |
+Grain columns: **V** = may vary by distance-variant (variant override allowed);
+**E** = may vary by edition (year-scoped); **model** = LLM-generated.
 
-### Flags — organizer-confirmed, filterable
-| field | grain | notes |
-|---|---|---|
-| `kids_race` | [stable] | organizer-affirmed → sets `kidsRun` (U1, shipped 2026-08-25) |
-| `night` | [stable] | organizer-affirmed → `taste_flags.night` (shipped) |
+| field | V | E | notes |
+|---|---|---|---|
+| start_time | ✓ | ✓ | staggered starts |
+| price / tier | ✓ | ✓ | tiers need a category+validity structure, not just a distance key |
+| cutoff | ✓ | ✓ | |
+| confirmed | ✓ | ✓ | one distance can be cancelled while others run |
+| sold_out | ✓ | ✓ | one distance sells out independently; sourced from the WEEKLY SCRAPER (fresh), not the snapshot |
+| registration_opens_on / closes_on | (✓) | ✓ | event default + variant override where stated |
+| registration_url | (✓) | ✓ | event default + variant override |
+| registration_status | — | — | DERIVED from dates + today + fresh sold-out; never snapshotted |
+| track_link (Wikiloc/Komoot/Strava) | ✓ |  | mostly stable |
+| elevation_profile | ✓ |  | |
+| mandatory_equipment | ✓ | ✓ | ultra vs short differ; can change between editions |
+| feec_licence | ✓ | ✓ | |
+| aid_stations / self-sufficiency | ✓ | ✓ | |
+| kids_race | (✓) | ✓ | organizer-affirmed → kidsRun (U1 shipped) |
+| night | ✓ | ✓ | may apply to one variant only |
+| social_link (Instagram/Facebook) |  |  | fallback source for website-less races |
+| character (unique/cool/catch/who/setting/terrain/technicality/food) | — | — | model tier, stable, persists |
 
-### Contact & sources
-| field | grain | notes |
-|---|---|---|
-| `official_url` | — | already have |
-| `social_links` (Instagram / Facebook) | [stable] | the FALLBACK source for the ~29 website-less races |
+**Event-scalar promotion (completeness rule).** A fact may be published event-level
+(variant_id=null) ONLY when EVERY eligible non-kids DB variant has a grounded,
+identical, validated value. If any DB variant is missing from extraction, the scalar
+is blocked — publish per-variant or not at all (Codex r2-P0-2).
 
-### Character — the MODEL tier, [stable]
-`unique` · `cool` · `catch` · `who_its_for` · `setting` · `terrain` ·
-`technicality` · `food` — generated from the page by a cheap model (Haiku),
-honesty-labelled by claim_strength, persists across years. This is the taste layer.
+## Resolution + rendering (the one shared projection)
 
-### Outliers — also the model
-Anything notable that doesn't fit a slot — surfaced low-confidence unless
-organizer-stated. Never fabricated.
+`resolveRaceFacts(race)` resolves each field independently and every surface consumes
+it identically (Codex r2-P0-4):
+- **Price:** enriched current price > fresh-scraper price; a stale legacy `races.price`
+  hides.
+- **Sold-out:** a fresh positive scraper sold-out OVERRIDES any date-derived
+  registration state.
+- **Registration status:** derived only from `opens_on`/`closes_on` + today, labelled;
+  unknown or stale inputs → `unknown`.
+- **JSON-LD availability:** never `InStock` merely because sold-out is absent; emit an
+  availability only from a fresh positive/negative signal. The homepage `EventScheduled`
+  default and the `soldOut` injected into AI prompts read from this resolver too.
+- **Current vs history:** current_facts render as current; prior_editions render
+  neutrally with their year and a "{year} unverified" note; never mixed.
 
-## Consumption (how this file is load-bearing)
-- **Extractor prompt** enumerates exactly these fields + the grain rules; the model
-  fills the standard slots + generates character; unknown → omit (never guess).
-- **Gate** (`enrichment_view.ts`) enforces the envelope + fail-closed + the edition
-  cross-check + the retention/dated-prior presentation + the derived registration
-  status.
-- **Eval key** (human-verified by Dima) tests the extractor's output for these
-  fields against real pages, incl. mixed-edition.
-- **Types** mirror this list per-variant.
+## Freshness state (live, cheap, non-LLM)
 
-## Open (settle at build)
-- The exact `[stable]` re-confirm cadence + the `[edition]` re-crawl N (days before
-  race) → write into `docs/rules.md`.
-- Any field a runner needs that's missing (parking/access? previous winners/times?
-  weather exposure?) — add here before extraction.
+A monitor fetches + hashes each source and persists per-source state. A fact whose
+`source_hash` no longer matches → `changed` → suppressed until re-extracted. Overdue
+(past an event-relative TTL) → suppressed. Monitor error → suppressed (fail closed).
+The MCP checks state per request; the site during ISR.
+
+## Consumption (load-bearing)
+- Extractor prompt enumerates these fields + grain + "unknown → omit".
+- Batch validator proves each quote against one captured page → sets `validation_result`.
+- Runtime gate trusts `validation_result`, applies the freshness state + resolver.
+- Eval key (human-verified) tests the exact scripted harness for zero false-positive
+  actionable facts.
+
+## Open (settle before U3 build)
+- Exact event-relative TTL + `[stable]` re-confirm cadence → into `docs/rules.md`.
+- Any runner-critical field still missing (parking/access? previous winners' times?
+  weather exposure?) — add here first.
