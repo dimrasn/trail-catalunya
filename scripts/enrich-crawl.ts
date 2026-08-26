@@ -9,7 +9,7 @@
 // Run: deno run --allow-net --allow-env --allow-read --allow-write \
 //   --env-file=.env.local scripts/enrich-crawl.ts
 
-import { fetchRacePages } from '../supabase/functions/enrich-races/fetch.ts'
+import { fetchRacePagesWithLinks } from '../supabase/functions/enrich-races/fetch.ts'
 
 const SUPABASE_URL = Deno.env.get('NEXT_PUBLIC_SUPABASE_URL')
 const ANON = Deno.env.get('NEXT_PUBLIC_SUPABASE_ANON_KEY')
@@ -48,17 +48,20 @@ for (const r of races) {
   i++
   const id = `${slug(r.town)}--${slug(r.race_name)}`
   try {
-    const pages = await fetchRacePages(r.race_url)
+    const pages = await fetchRacePagesWithLinks(r.race_url)
     const good = pages.filter((p) => p.text && p.text.length >= 200)
     if (!good.length) {
       manifest.failed.push({ id, url: r.race_url, town: r.town, reason: 'empty/thin (likely JS-only)' })
     } else {
       const hashed = []
-      for (const p of good) hashed.push({ url: p.url, hash: await sha256(p.text), chars: p.text.length, text: p.text })
+      for (const p of good) {
+        hashed.push({ url: p.url, hash: await sha256(p.text), chars: p.text.length, text: p.text, links: p.links })
+      }
       await Deno.writeTextFile(`${CORPUS}/${id}.json`,
         JSON.stringify({ race: r, fetched_at: fetchedAt, pages: hashed }, null, 0))
-      manifest.fetched.push({ id, source_url: r.race_url, town: r.town,
-        pages: hashed.map((h) => ({ url: h.url, hash: h.hash, chars: h.chars })) })
+      const totalLinks = hashed.reduce((n, h) => n + h.links.length, 0)
+      manifest.fetched.push({ id, source_url: r.race_url, town: r.town, links: totalLinks,
+        pages: hashed.map((h) => ({ url: h.url, hash: h.hash, chars: h.chars, links: h.links.length })) })
     }
   } catch (e) {
     manifest.failed.push({ id, url: r.race_url, town: r.town, reason: String(e).slice(0, 140) })

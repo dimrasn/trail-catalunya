@@ -229,6 +229,33 @@ export function discoverPageLinks(html: string, baseUrl: string): string[] {
   return [...out]
 }
 
+// Extract every outbound http(s) URL from raw HTML — from href/src attributes
+// AND bare URLs in text/JS (Wikiloc/Komoot embeds often sit in an iframe src or a
+// script blob). Pure, absolute-resolved against baseUrl, de-duplicated. This is the
+// LINK EVIDENCE the text-only Page cannot carry: htmlToText strips every tag, so a
+// track/social URL only survives here. Not filtered to a domain — the enrichment
+// batch applies the host allowlist; capturing everything keeps the corpus honest.
+export function extractOutboundUrls(html: string, baseUrl: string): string[] {
+  const base = new URL(baseUrl)
+  const out = new Set<string>()
+  const push = (raw: string) => {
+    const s = raw.trim()
+    if (!s || s.startsWith('#') || s.startsWith('mailto:') || s.startsWith('tel:')) return
+    try {
+      const u = new URL(s, base)
+      if (u.protocol !== 'https:' && u.protocol !== 'http:') return
+      u.hash = ''
+      out.add(u.href)
+    } catch { /* skip unparseable */ }
+  }
+  const attrRe = /\b(?:href|src|data-src|content)\s*=\s*["']([^"']+)["']/gi
+  let m: RegExpExecArray | null
+  while ((m = attrRe.exec(html)) !== null) push(m[1])
+  const bareRe = /https?:\/\/[^\s"'<>()\\]+/gi
+  while ((m = bareRe.exec(html)) !== null) push(m[0].replace(/[.,;:]+$/, ''))
+  return [...out]
+}
+
 // ---- Orchestration --------------------------------------------------------
 
 // Fetch the seed page plus a few relevant same-domain pages, each reduced to
@@ -248,6 +275,42 @@ export async function fetchRacePages(seedUrl: string, opts: FetchOpts = {}): Pro
     try {
       const html = await safeFetch(link, opts)
       pages.push({ url: link, text: htmlToText(html).slice(0, MAX_PAGE_CHARS) })
+    } catch {
+      // skip unreachable sub-page
+    }
+  }
+  return pages
+}
+
+// Same crawl as fetchRacePages, but each page also carries `links` — every
+// outbound URL found in its raw HTML (see extractOutboundUrls). Used to build the
+// durable corpus for the enrichment slice; the runtime pipeline uses the text-only
+// variant above. Bounded identically.
+export async function fetchRacePagesWithLinks(
+  seedUrl: string,
+  opts: FetchOpts = {},
+): Promise<Array<Page & { links: string[] }>> {
+  const pages: Array<Page & { links: string[] }> = []
+  let seedHtml: string
+  try {
+    seedHtml = await safeFetch(seedUrl, opts)
+  } catch {
+    return pages
+  }
+  pages.push({
+    url: seedUrl,
+    text: htmlToText(seedHtml).slice(0, MAX_PAGE_CHARS),
+    links: extractOutboundUrls(seedHtml, seedUrl),
+  })
+  const links = discoverPageLinks(seedHtml, seedUrl).slice(0, MAX_PAGES_PER_RACE - 1)
+  for (const link of links) {
+    try {
+      const html = await safeFetch(link, opts)
+      pages.push({
+        url: link,
+        text: htmlToText(html).slice(0, MAX_PAGE_CHARS),
+        links: extractOutboundUrls(html, link),
+      })
     } catch {
       // skip unreachable sub-page
     }
