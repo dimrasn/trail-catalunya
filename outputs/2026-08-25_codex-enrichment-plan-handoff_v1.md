@@ -1,76 +1,71 @@
-# Handoff — review the enrichment-phase plan (independent pass)
+# Handoff — re-review the enrichment-phase plan (round 2)
 
-**For:** an external reviewing agent (e.g. Codex). **Read-only:** review and report;
-do NOT implement, crawl, extract, deploy, or edit code.
+**For:** the external reviewing agent (Codex) that returned the round-1 verdict
+"not build-ready for publication." This is the revised plan addressing your six
+findings + Dima's decisions. **Read-only:** review and report; do not implement.
 
 **Plan:** `docs/plans/2026-08-25-002-feat-enrichment-phase-plan.md` (on `main`).
+**Schema:** `docs/enrichment/fields-spec.md` (new — the canonical field contract the
+plan builds to).
 
 ## ⚠ Read `main`, not the working tree
-Parallel sessions leave the working directory on a feature branch. The internal
-reviewers hit this twice — flagging `scripts/deploy-mcp.sh` and
-`docs/dogfood/2026-08-25-mcp-dogfood-gaps.md` as "missing" when both exist on
-`origin/main`. Review `origin/main` (or `git worktree add <tmp> origin/main`).
+The round-1 pass false-flagged `scripts/deploy-mcp.sh` and the dogfood file as
+missing; both exist on `origin/main`. Review `origin/main`.
 
-## What the plan does
-The data-fill phase: make the agent layer trustworthy across all 229 races by
-collecting operational facts (start_time, price, confirmed_status), fixing derived
-flags from organizer data, cleaning data-quality defects, and closing the
-operational-facts-in-taste honesty leak. **Key decision (Dima): collect operational
-facts as a LOCAL, agent-driven batch over ~200 mostly-static pages → a committed
-bundled `enrichment.json` (the `taste.json` pattern), NOT the metered cloud
-`enrich-races` pipeline (demoted to a freshness fallback).**
+## What changed since your round-1 review (verify each landed)
+Your six findings + Dima's product decisions are folded in:
+- **P0-1 variant grain** → facts that vary by distance (start_time, price, cutoff)
+  are variant-scoped in the schema (`fields-spec.md`) and enforced in U3/U4; an
+  event scalar only when all non-kids variants agree.
+- **P0-2 edition not fact-grounded** → U4 adds fact-local proof (evidence quote must
+  exist on the page) + fail-closed + a NON-LLM cross-check of the page year against
+  the DB's known date; mixed/unresolved → hidden.
+- **P0-3 taste isn't the only operational source** → new U5 reconciles the existing
+  sold-out / race-page price / JSON-LD availability into one precedence contract;
+  nothing live published without freshness.
+- **P1-4 freshness not enforced** → U4/U8 make it code: missing/invalid `last_checked`
+  hides; event-relative TTL hides overdue; a non-LLM change sentinel (reusing
+  `changes.ts`) suppresses facts when a source changes; the re-crawl N goes to
+  `docs/rules.md`.
+- **P1-5 eval didn't test production** → engine flipped to a SCRIPTED Haiku one-off
+  (reusing `extract.ts`'s `callAnthropic`, dedicated spend-limited key, ~$3–4 one-off),
+  and U6's eval runs that EXACT harness against a HUMAN-verified key incl. a
+  mixed-edition fixture.
+- **P1-6 durability** → U2 corrects BOTH the site JSON and the `towns` table + a
+  post-scrape override so the weekly scraper can't revert it.
+- **Your "other calls"** → same-versioned-change (not atomic cross-target deploy,
+  SHA-verified both surfaces); `mcp/enrichment.json` path corrected to
+  `supabase/functions/mcp/enrichment.json`; `source_url` added to the MCP fact.
 
-## What the internal review already changed (verify these hold; don't re-derive)
-Three CE reviewers (coherence/feasibility/adversarial) ran; the adversarial pass read
-the actual reused gate code and found the important issues. The plan now reflects:
-- **The reused gates were BUILT BUT NEVER RUN ON REAL DATA and had honesty holes** —
-  hardening them (U4) is a prerequisite to publishing any fact: (a) edition detection
-  was circular (the model self-judges 2025-vs-2026; a "2025 banner + 2026 registration"
-  page could publish last year's start time as current) → a **non-LLM DB-date
-  cross-check** now forces `edition:previous`→low on a year mismatch; (b) **price had no
-  staleness ceiling** → now rendered "as last checked {date}"; (c) the **site and MCP
-  gates disagreed** on low-confidence high-blast facts (site hides, MCP published) →
-  reconciled to both-hide + a real parity test.
-- **Free engine clarified:** extract via an in-session AGENT workflow (batched fan-out —
-  200 pages don't fit one context), reusing only validation + gate + types, NOT
-  `extract.ts`'s metered `callAnthropic`. (Scripted one-off noted as a ~$3–4 alternative.)
-- **Eval answer key is HUMAN-verified (Dima), not agent-self-graded**, with a
-  mixed-edition fixture (the case the edition bug bites).
-- **Taste-strip happens at the source and in the SAME deploy** as enrichment (no
-  double-source window; no regex-over-prose that clobbers character or misses Catalan).
-- **Runtime:** the crawl/extract reuse Deno-TS modules → run under Deno, not Node.
+Dima's product decisions also folded: **local scripted batch** (cloud cron demoted);
+**one Haiku pass → BOTH operational facts AND character** (so taste expansion is free
+output, not a manual grind); and the **retention model** — this reconciles your
+"never publish prior-edition as current" with Dima's "keep it, it repeats": data is
+retained across editions; current-proven facts show current, prior-edition facts show
+as a DATED PRIOR ("2025 — likely similar, verify"), `[stable]` facts + character persist.
+
+U1 (flag backfill) is already SHIPPED (kids filter 0→13, verified live).
 
 ## Review asks (ranked)
-1. **Is the U4 gate-hardening actually sufficient?** Especially the DB-date edition
-   cross-check — does comparing the extracted page year to the race's known 2026 date
-   reliably catch prior-edition misreads, and are there pages where it false-positives
-   (e.g. a race genuinely dated across a year boundary, or a page with no parseable
-   date)? Is "both gates hide low-confidence high-blast facts" the right call, or does
-   hiding lose value an agent could use with a caveat?
-2. **The freshness/staleness honesty (KTD4).** Is "render start_time with its
-   last_checked date + a hard N-days-before re-crawl rule" enough, or is a one-off local
-   snapshot fundamentally too stale to publish start times at all? What would you do
-   instead?
-3. **The free agent-workflow extraction (U6).** Is fanning ~200 races across sub-agents
-   for honest fact-extraction sound, or will self-consistency/hallucination across a
-   fleet be worse than one scripted model call? Where's the failure mode?
-4. **The same-deploy strip (U7).** Is landing enrichment-bundle + taste-strip in one
-   deploy actually atomic enough, or is there still a window/ordering hazard?
-5. **Scope/sequencing.** Are the quick wins (U1 flags, U2 data-quality) correctly
-   independent? Is anything mis-scoped or missing (e.g. the cloud-pipeline demotion —
-   right call at 200 races, or a mistake)?
-6. **Anything the internal review missed** — its diff against your cold read is the
-   highest-value output.
-
-## Known-incomplete (assess the plan, don't report as bugs)
-The cloud pipeline demotion, taste coverage expansion (U8), and the exact re-crawl N
-are deferred/open by design. Extraction is not yet run; the eval key is not yet built.
+1. **Does the retention / dated-prior model actually close your P0-2 concern,** or
+   does "show last year's as a dated prior" reopen the prior-edition-as-current risk
+   in a new form? Is the non-LLM DB-date cross-check sufficient given no-parseable-year
+   and mixed-edition pages?
+2. **Is the variant-scoping (U3/U4) complete** — any operational field still modeled
+   event-level that shouldn't be? Does the "event scalar only if all variants agree"
+   rule have a failure mode?
+3. **U5 source reconciliation** — is the precedence (enriched > fresh-scraper sold-out
+   > legacy price) right, and did the inventory miss an operational read path?
+4. **U6 production-parity eval** — is running the exact scripted harness against a
+   human key enough, and is the mixed-edition fixture the right hardest case?
+5. **Same-versioned-change (U7/KTD8)** — is SHA-verify across two deploy targets an
+   adequate substitute for atomicity, or is there still a window?
+6. **Anything still missing** — your diff against this revision is the highest value.
 
 ## Constraints
-Read-only; no crawl/deploy. The honesty bar is absolute: a confidently-wrong published
-fact is a phase failure, worse than a gap. Judge honesty as strictly as feasibility.
+Read-only. The honesty bar is absolute: a confidently-wrong published fact is a
+phase failure, worse than a gap.
 
 ## Return
-A ranked findings list (severity · plan section · concrete failure · fix) + a verdict:
-is this plan build-ready, and is the honesty design sound enough that it won't publish
-a confidently-wrong fact? Prefer a few decisive findings.
+Ranked findings (severity · section · concrete failure · fix) + a verdict: is the
+revised plan now build-ready for publication, and is the honesty design sound?
