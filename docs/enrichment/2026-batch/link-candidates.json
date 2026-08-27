@@ -1,6 +1,5 @@
 {
-  "generated_from": "docs/enrichment/2026-batch/link-candidates.json",
-  "approval": "auto: slug/handle names the race",
+  "generated_from": "docs/enrichment/2026-batch/_corpus",
   "races": [
     {
       "id": "agramunt--cursa-del-torro--2b7ee14e",
@@ -15,8 +14,7 @@
           "handle": "fb:agramuntesports",
           "source_page": "https://agramuntesports.cat/cursa-del-torro-2024/",
           "page_hash": "af24ade2c8ba6832c1b710519d7b5c3fc253c232cb888b3769e2526d9d41bd75",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -33,8 +31,14 @@
           "handle": "ig:congosttrailchallenge",
           "source_page": "https://congosttrailchallenge.cat/",
           "page_hash": "7860bc8fff2b095618b54f98c9be6a316b3a193f9ea50a37b9e091361d8345c7",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.facebook.com/construccionsfernandez/?locale=es_ES",
+          "handle": "fb:construccionsfernandez",
+          "source_page": "https://congosttrailchallenge.cat/",
+          "page_hash": "7860bc8fff2b095618b54f98c9be6a316b3a193f9ea50a37b9e091361d8345c7",
+          "scope": "race"
         }
       ]
     },
@@ -49,9 +53,22 @@
           "url": "https://www.wikiloc.com/running-trails/absoluta-pujada-al-montsia-2026-276429776",
           "source_page": "https://www.pujadamontsia.cat/recorreguts/cursa-absoluta/",
           "page_hash": "aec6ec1923a0a0f317118b497e817b63787914512536da60bc6d12cff6ebbdb8"
+        },
+        {
+          "url": "https://www.wikiloc.com/running-trails/junior-juvenil-2026-276426239",
+          "source_page": "https://www.pujadamontsia.cat/recorreguts/cursa-junior/",
+          "page_hash": "a655a6aba9d8c81f6c92c2ff1891c7e13de810c640b351dba2b4580f2012397f"
         }
       ],
-      "socials": []
+      "socials": [
+        {
+          "url": "https://www.instagram.com/masquekms",
+          "handle": "ig:masquekms",
+          "source_page": "https://www.pujadamontsia.cat/",
+          "page_hash": "b323da0080f6a5eb4355cd748ec7f71718167003b1bab64a43e0abfed62724f0",
+          "scope": "race"
+        }
+      ]
     },
     {
       "id": "almatret--la-tossals-d-almatret--30c140d3",
@@ -66,8 +83,47 @@
           "handle": "ig:tossalsalmatret",
           "source_page": "https://tossals.blogspot.com/",
           "page_hash": "9ae77c5189167b32e38c0cd046fe72f6d1f1fb9f920ee57b90785b3af44d11e9",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "altafulla--short-trail-altafulla--66e63048",
+      "town": "Altafulla",
+      "race_name": "Short Trail Altafulla",
+      "source_url": "https://www.athleticevents.net/cursa/2n-short-trail-altafulla-507",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/AthleticEvents",
+          "handle": "fb:athleticevents",
+          "source_page": "https://www.athleticevents.net/cursa/2n-short-trail-altafulla-507",
+          "page_hash": "bf03cd2bbfbdacb9f3325b95a223f0963634ffebd33e29b233d39754340eb9eb",
+          "scope": "organizer"
+        }
+      ]
+    },
+    {
+      "id": "amposta--duextrem-amposta--e1b131be",
+      "town": "Amposta",
+      "race_name": "Duextrem Amposta",
+      "source_url": "https://www.montbike.org/duextremamposta/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://ca.wikiloc.com/rutes-correr/duextrem-trail-2024-179985364",
+          "source_page": "https://www.montbike.org/duextremamposta/duextrem-amposta-cursa-trail/",
+          "page_hash": "d863ed99f15479b4c95cd6441e64c55c65347c40d9ec2baf4d8547f2bb73f72a"
+        }
+      ],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/clubmontbike",
+          "handle": "ig:clubmontbike",
+          "source_page": "https://www.montbike.org/duextremamposta/",
+          "page_hash": "11b3b6fa22ccf72d851db597afaa1f2ec8da18af5351d3d6ba3cd4a15b6bbf17",
+          "scope": "race"
         }
       ]
     },
@@ -87,6 +143,23 @@
       "socials": []
     },
     {
+      "id": "avinyo--sant-silvestre-avinyo--5b985454",
+      "town": "Avinyó",
+      "race_name": "Sant Silvestre Avinyó",
+      "source_url": "https://www.inscripcions.cat/ssavinyo2022/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/esquerdabocs",
+          "handle": "ig:esquerdabocs",
+          "source_page": "https://www.inscripcions.cat/ssavinyo2022/",
+          "page_hash": "ebde68d409107336d71592a87f8345639c350bb245f9a8f50316af3ccb31a4c9",
+          "scope": "race"
+        }
+      ]
+    },
+    {
       "id": "baga--ultra-pirineu--6542543d",
       "town": "Bagà",
       "race_name": "Ultra Pirineu",
@@ -99,16 +172,14 @@
           "handle": "ig:salomonultrapirineu",
           "source_page": "https://ultrapirineu.com/es/",
           "page_hash": "75cd15dabf39a26a522fce63f7e34737ece140d5b116cc9c4bb854e10b86bd0b",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/SalomonUltraPirineu",
           "handle": "fb:salomonultrapirineu",
           "source_page": "https://ultrapirineu.com/es/",
           "page_hash": "75cd15dabf39a26a522fce63f7e34737ece140d5b116cc9c4bb854e10b86bd0b",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -125,8 +196,7 @@
           "handle": "ig:cros3turons",
           "source_page": "https://www.cros3turons-ladiablada.cat/",
           "page_hash": "f3be73c8d3a204604c460a8d7ed23330f93e0698236a0bde75781888908b53d6",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -139,12 +209,25 @@
       "tracks": [],
       "socials": [
         {
+          "url": "https://www.instagram.com/demosunpasoadelante",
+          "handle": "ig:demosunpasoadelante",
+          "source_page": "https://funtrailbarcelona.com/",
+          "page_hash": "d48d7257eb95412b15ade5ef67c9e3d10b3b4dbfd010d7e29d8d29d0625f82c2",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/mascosti_",
+          "handle": "ig:mascosti_",
+          "source_page": "https://funtrailbarcelona.com/",
+          "page_hash": "d48d7257eb95412b15ade5ef67c9e3d10b3b4dbfd010d7e29d8d29d0625f82c2",
+          "scope": "race"
+        },
+        {
           "url": "https://www.instagram.com/funtrailbarcelona",
           "handle": "ig:funtrailbarcelona",
           "source_page": "https://funtrailbarcelona.com/",
           "page_hash": "d48d7257eb95412b15ade5ef67c9e3d10b3b4dbfd010d7e29d8d29d0625f82c2",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -161,8 +244,7 @@
           "handle": "ig:cursa_la6punt6debellaterra",
           "source_page": "https://la6punt6debellaterra.cat/",
           "page_hash": "92c8e65efb6ec0263885f0d233a1add6c5cee2dbfb906e8ddf5538f77f87fb67",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -179,16 +261,38 @@
           "handle": "fb:lopastisset",
           "source_page": "https://lopastisset.cat/",
           "page_hash": "9f48df598f6557537190a04add0bac6f0a4d27f9477a0f6c2b803176c8b13148",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/lopastisset",
           "handle": "ig:lopastisset",
           "source_page": "https://lopastisset.cat/",
           "page_hash": "9f48df598f6557537190a04add0bac6f0a4d27f9477a0f6c2b803176c8b13148",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "beuda--cursa-mdm-cat--abc0315b",
+      "town": "Beuda",
+      "race_name": "Cursa MDM.cat",
+      "source_url": "https://gasmountain.com/mdm/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/GASMOUNTAIN",
+          "handle": "fb:gasmountain",
+          "source_page": "https://gasmountain.com/mdm/",
+          "page_hash": "fd435b99655dea1ab8d15045ca216926b352ba2621d8bdf4ba46018259a02e26",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/gas_mountain",
+          "handle": "ig:gas_mountain",
+          "source_page": "https://gasmountain.com/mdm/",
+          "page_hash": "fd435b99655dea1ab8d15045ca216926b352ba2621d8bdf4ba46018259a02e26",
+          "scope": "race"
         }
       ]
     },
@@ -217,12 +321,63 @@
       ],
       "socials": [
         {
+          "url": "https://www.instagram.com/bar_arcis_team",
+          "handle": "ig:bar_arcis_team",
+          "source_page": "https://ruraltrail.com/",
+          "page_hash": "f73cfb4b6540f18f2e5ac7ddd680c23dbfbcd0fb1f2bd2acb18050512402972d",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/excavacions_a.batlles",
+          "handle": "ig:excavacions_a.batlles",
+          "source_page": "https://ruraltrail.com/",
+          "page_hash": "f73cfb4b6540f18f2e5ac7ddd680c23dbfbcd0fb1f2bd2acb18050512402972d",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/d2centre",
+          "handle": "ig:d2centre",
+          "source_page": "https://ruraltrail.com/",
+          "page_hash": "f73cfb4b6540f18f2e5ac7ddd680c23dbfbcd0fb1f2bd2acb18050512402972d",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/lacakeryvic",
+          "handle": "ig:lacakeryvic",
+          "source_page": "https://ruraltrail.com/",
+          "page_hash": "f73cfb4b6540f18f2e5ac7ddd680c23dbfbcd0fb1f2bd2acb18050512402972d",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/mindmade.es",
+          "handle": "ig:mindmade.es",
+          "source_page": "https://ruraltrail.com/",
+          "page_hash": "f73cfb4b6540f18f2e5ac7ddd680c23dbfbcd0fb1f2bd2acb18050512402972d",
+          "scope": "race"
+        },
+        {
           "url": "https://instagram.com/ruraltrail",
           "handle": "ig:ruraltrail",
           "source_page": "https://ruraltrail.com/",
           "page_hash": "f73cfb4b6540f18f2e5ac7ddd680c23dbfbcd0fb1f2bd2acb18050512402972d",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "cabrianes--cabrorun--13b85121",
+      "town": "Cabrianes",
+      "race_name": "CabróRun",
+      "source_url": "https://dsport.cat/ca/fitxa_cursa.php?id_cursa=1186",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/escaldatsdesuria",
+          "handle": "ig:escaldatsdesuria",
+          "source_page": "https://dsport.cat/ca/fitxa_cursa.php?id_cursa=1186",
+          "page_hash": "eab20d9c5fd339d3e3e22a440ba714eb87e16e570c573b66314d0c9f6406f7a0",
+          "scope": "organizer"
         }
       ]
     },
@@ -239,16 +394,48 @@
           "handle": "fb:campionatmaqui03",
           "source_page": "https://www.campionatmaqui.cat/cursa-bell-race/",
           "page_hash": "0b97c39de862e6b7f95f2fd99e7ed6ced7d151ceef3fd39cede8a10ace330a49",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/campionatmaqui",
           "handle": "ig:campionatmaqui",
           "source_page": "https://www.campionatmaqui.cat/cursa-bell-race/",
           "page_hash": "0b97c39de862e6b7f95f2fd99e7ed6ced7d151ceef3fd39cede8a10ace330a49",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "calella--trail-torres-del-foc--2aaaeecd",
+      "town": "Calella",
+      "race_name": "Trail Torres del Foc",
+      "source_url": "https://www.b3sportevents.com/es/trailtorresdelfoc",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/b3sportevents",
+          "handle": "ig:b3sportevents",
+          "source_page": "https://www.b3sportevents.com/es/trailtorresdelfoc",
+          "page_hash": "c2500386d496ebc720442a7c57eda367ab495766e36d11ddf7deb7dbfdaf3f54",
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "cambrils--la-cambrils-oden--e4116b42",
+      "town": "Cambrils",
+      "race_name": "La Cambrils-Odèn",
+      "source_url": "https://www.circuitfer.cat/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/cursa_elpla",
+          "handle": "ig:cursa_elpla",
+          "source_page": "https://www.circuitfer.cat/",
+          "page_hash": "8cb01d0709f0c0caa0dca023a61dad89c588463a7ced2c12b4fb53e5dd1ed25b",
+          "scope": "race"
         }
       ]
     },
@@ -265,10 +452,24 @@
           "handle": "ig:cursa_neandertal",
           "source_page": "https://cursaneandertal.com/",
           "page_hash": "5ad6be9e20a38928bd2c2b8f8f5b04b02c7f1a35d0a14c6f570f181229c4f494",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
+    },
+    {
+      "id": "castell-de-l-areny--roc-de-la-clusa-trail--3fdb6047",
+      "town": "Castell de l'Areny",
+      "race_name": "Roc de la Clusa Trail",
+      "source_url": "https://misports.cat/carreras/roc-de-la-clusa/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://www.wikiloc.com/trail-running-trails/rocdelaclusa2024-192177346",
+          "source_page": "https://misports.cat/carreras/roc-de-la-clusa/",
+          "page_hash": "c9561955205a223877e6005b7942a618dd3b62043d46af0a961a2f43e1eb46ca"
+        }
+      ],
+      "socials": []
     },
     {
       "id": "castellet-i-la-gornal--cursa-montanyans--f6f3d90d",
@@ -283,16 +484,14 @@
           "handle": "fb:cursamontanyans",
           "source_page": "https://cursamontanyans.wordpress.com/",
           "page_hash": "e2719ab3d888a6d5cd29f422ffe9c23ab8db7bccc981ad25b8e5a233f072e36a",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/cursamontanyans",
           "handle": "ig:cursamontanyans",
           "source_page": "https://cursamontanyans.wordpress.com/",
           "page_hash": "e2719ab3d888a6d5cd29f422ffe9c23ab8db7bccc981ad25b8e5a233f072e36a",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -309,16 +508,14 @@
           "handle": "fb:campionatmaqui03",
           "source_page": "https://www.campionatmaqui.cat/cursa-castelltallat-14km/",
           "page_hash": "481b66ea38316a591f8f8977896b38777e429eba34e22d6f7cee173434020a7e",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/campionatmaqui",
           "handle": "ig:campionatmaqui",
           "source_page": "https://www.campionatmaqui.cat/cursa-castelltallat-14km/",
           "page_hash": "481b66ea38316a591f8f8977896b38777e429eba34e22d6f7cee173434020a7e",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -335,8 +532,14 @@
           "handle": "fb:lapotarojacervello",
           "source_page": "https://lapotaroja.com/es/home",
           "page_hash": "bb59299fbb6dad5721b92eeb593342daa0349bf634d13349dc42c36ceadb07cc",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.facebook.com/BikeAmbBici",
+          "handle": "fb:bikeambbici",
+          "source_page": "https://lapotaroja.com/es/home",
+          "page_hash": "bb59299fbb6dad5721b92eeb593342daa0349bf634d13349dc42c36ceadb07cc",
+          "scope": "race"
         }
       ]
     },
@@ -346,15 +549,25 @@
       "race_name": "Cursa de l'Alba",
       "source_url": "https://www.cursalba.cat/",
       "fetched_at": "2026-08-27T07:12:11.337Z",
-      "tracks": [],
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/wikiloc/embedv2.do?id=209154158",
+          "source_page": "https://cursalba.cat/cursa-de-l-alba-collbato-montserrat/",
+          "page_hash": "acc673261c0ae5f347e0a85f84421b28773d47fac67f74c5e3d46ac8431ead81"
+        },
+        {
+          "url": "https://es.wikiloc.com/wikiloc/embedv2.do?id=209154085",
+          "source_page": "https://cursalba.cat/carrera-mitjalba-collbato/",
+          "page_hash": "9698b99acc590019b0c4d39b68ee269324d8057e59ab80363fecb6814efabde8"
+        }
+      ],
       "socials": [
         {
           "url": "https://www.instagram.com/cursadelalba",
           "handle": "ig:cursadelalba",
           "source_page": "https://www.cursalba.cat/",
           "page_hash": "4b0901299b7e2e3681abb3848aebf5e2eeead6cc67b8c6aaa8966b4758590868",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -381,7 +594,87 @@
           "page_hash": "96f70690546ead989ebfe05e380f3c95fb985203bf0532f86c07a0123b58abeb"
         }
       ],
-      "socials": []
+      "socials": [
+        {
+          "url": "https://www.facebook.com/Naturetime",
+          "handle": "fb:naturetime",
+          "source_page": "https://www.naturetime.es/ca/cursa-de-nadal/",
+          "page_hash": "96f70690546ead989ebfe05e380f3c95fb985203bf0532f86c07a0123b58abeb",
+          "scope": "organizer"
+        },
+        {
+          "url": "https://www.instagram.com/naturetime_events",
+          "handle": "ig:naturetime_events",
+          "source_page": "https://www.naturetime.es/ca/cursa-de-nadal/",
+          "page_hash": "96f70690546ead989ebfe05e380f3c95fb985203bf0532f86c07a0123b58abeb",
+          "scope": "organizer"
+        }
+      ]
+    },
+    {
+      "id": "el-papiolet--cursa-campi-qui-pugui--950324d2",
+      "town": "El Papiolet",
+      "race_name": "Cursa Campi qui pugui",
+      "source_url": "https://www.athleticevents.net/cursa/20a-cursa-campi-qui-pugui-del-papiolet-528",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/AthleticEvents",
+          "handle": "fb:athleticevents",
+          "source_page": "https://www.athleticevents.net/cursa/20a-cursa-campi-qui-pugui-del-papiolet-528",
+          "page_hash": "17b0b235400cab6af9173667491eef121df9e860bf14db03b25eabbe13a8f0ad",
+          "scope": "organizer"
+        }
+      ]
+    },
+    {
+      "id": "els-molins-la-selva-del-camp--cronopujada-puig-d-en-cama--0c4078bf",
+      "town": "Els Molins (La Selva del Camp)",
+      "race_name": "Cronopujada Puig d'en cama",
+      "source_url": "https://www.aritjol.org/post/xviii-cronopujada-al-puig-d-en-cama",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/cearitjol",
+          "handle": "fb:cearitjol",
+          "source_page": "https://www.aritjol.org/post/xviii-cronopujada-al-puig-d-en-cama",
+          "page_hash": "531e5c8e2043adfb24e65bc39c2b237f0bc57a0172a4b3d10adce5a0c56f3fcd",
+          "scope": "race"
+        },
+        {
+          "url": "https://instagram.com/cearitjol",
+          "handle": "ig:cearitjol",
+          "source_page": "https://www.aritjol.org/post/xviii-cronopujada-al-puig-d-en-cama",
+          "page_hash": "531e5c8e2043adfb24e65bc39c2b237f0bc57a0172a4b3d10adce5a0c56f3fcd",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/cearitjol",
+          "handle": "ig:cearitjol",
+          "source_page": "https://www.aritjol.org/info",
+          "page_hash": "999124fae7b222b9f14cb45244aabcbde6c4a231e8234bb74d0ded88778003d3",
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "esparreguera--trail-intercasteller--80dea0a8",
+      "town": "Esparreguera",
+      "race_name": "Trail Intercasteller",
+      "source_url": "https://trail-intercasteller.castellersdesparreguera.cat/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/collabordeus",
+          "handle": "ig:collabordeus",
+          "source_page": "https://trail-intercasteller.castellersdesparreguera.cat/",
+          "page_hash": "9f39769e2fb6cac15f2b45017dfd2835490b13a0e597f21bb30614b7cd32fabc",
+          "scope": "race"
+        }
+      ]
     },
     {
       "id": "espinelves--espintrail-vertical--39f40a60",
@@ -396,8 +689,31 @@
           "handle": "ig:espintrail",
           "source_page": "https://www.espintrail.com/",
           "page_hash": "417ac2b72b73edacf287055f263cece54750d129e0bdf34d3a2f7212f7a2a4df",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "espluga-de-francoli--cursa-de-la-llufa--acc290ac",
+      "town": "Espluga de Francolí",
+      "race_name": "Cursa de la Llufa",
+      "source_url": "https://caesplugui.cat/cursa-de-la-llufa/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/caesplugui",
+          "handle": "fb:caesplugui",
+          "source_page": "https://caesplugui.cat/cursa-de-la-llufa/",
+          "page_hash": "e134fac5e3d649f271f12f3b2f04dc22b5ab1369c69c6f130f4f95f34e9da651",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/caesplugui",
+          "handle": "ig:caesplugui",
+          "source_page": "https://caesplugui.cat/cursa-de-la-llufa/",
+          "page_hash": "e134fac5e3d649f271f12f3b2f04dc22b5ab1369c69c6f130f4f95f34e9da651",
+          "scope": "race"
         }
       ]
     },
@@ -412,6 +728,36 @@
           "url": "https://ca.wikiloc.com/rutes-senderisme/radikal-estana-2025-circuit-fer-222741131",
           "source_page": "https://radikalestana.cat/",
           "page_hash": "bf3ff40b1bf3b5aa591e94a062d360e26c265982c78f3f7fa077fea7d47c4e3c"
+        }
+      ],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/forndenjordi",
+          "handle": "ig:forndenjordi",
+          "source_page": "https://radikalestana.cat/",
+          "page_hash": "bf3ff40b1bf3b5aa591e94a062d360e26c265982c78f3f7fa077fea7d47c4e3c",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/drgorka",
+          "handle": "ig:drgorka",
+          "source_page": "https://radikalestana.cat/",
+          "page_hash": "bf3ff40b1bf3b5aa591e94a062d360e26c265982c78f3f7fa077fea7d47c4e3c",
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "figols--vertical-prat--20eebf25",
+      "town": "Fígols",
+      "race_name": "Vertical Prat",
+      "source_url": "https://www.circuitfer.cat/vertical-prat",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://ca.wikiloc.com/wikiloc/spatialArtifacts.do?event=view&id=141233540&measures=off&title=off&near=off&images=off&maptype=T",
+          "source_page": "https://www.circuitfer.cat/vertical-prat",
+          "page_hash": "aadd906e72132b8188f2e6a97b8f6b8d30aa9392ad90491439ecdb48da8b4b8c"
         }
       ],
       "socials": []
@@ -432,6 +778,30 @@
       "socials": []
     },
     {
+      "id": "girona--cursa-de-muntanya-de-girona-cmg--a7d4e811",
+      "town": "Girona",
+      "race_name": "Cursa de Muntanya de Girona CMG",
+      "source_url": "https://www.klassmark.com/cmg-transgavarres/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/klassmark",
+          "handle": "ig:klassmark",
+          "source_page": "https://www.klassmark.com/cmg-transgavarres/",
+          "page_hash": "2cb66ef457bf6189048d3d66a88e7f701c4c8d10477b27be8683bb750fb461d1",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/klassmarkbike",
+          "handle": "ig:klassmarkbike",
+          "source_page": "https://www.klassmark.com/cmg-transgavarres/",
+          "page_hash": "2cb66ef457bf6189048d3d66a88e7f701c4c8d10477b27be8683bb750fb461d1",
+          "scope": "race"
+        }
+      ]
+    },
+    {
       "id": "granollers--cursa-solidaria-4-camins--34cab34f",
       "town": "Granollers",
       "race_name": "Cursa Solidària 4 Camins",
@@ -444,16 +814,14 @@
           "handle": "fb:club.natacio.granollers",
           "source_page": "https://cngranollers.org/4camins/",
           "page_hash": "442931ac90e254c87067e5556f6cf7eaf11be430be264a7dca3d79f95f9bdfcc",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/cngranollers",
           "handle": "ig:cngranollers",
           "source_page": "https://cngranollers.org/4camins/",
           "page_hash": "442931ac90e254c87067e5556f6cf7eaf11be430be264a7dca3d79f95f9bdfcc",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -465,6 +833,11 @@
       "fetched_at": "2026-08-27T07:12:11.337Z",
       "tracks": [
         {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/22k-primavera-trail-lalbiol-actualitzado-11042023-131335599",
+          "source_page": "https://www.naturetime.es/ca/trail-albiol-3/",
+          "page_hash": "d84ba9ca25fdc0036253b41be57be29c34c84faba428f801ec1fadd15205ebff"
+        },
+        {
           "url": "https://es.wikiloc.com/rutas-carrera-por-montana/12km-primavera-trail-lalbiol-127839967",
           "source_page": "https://www.naturetime.es/ca/trail-albiol-3/",
           "page_hash": "d84ba9ca25fdc0036253b41be57be29c34c84faba428f801ec1fadd15205ebff"
@@ -475,7 +848,29 @@
           "page_hash": "d84ba9ca25fdc0036253b41be57be29c34c84faba428f801ec1fadd15205ebff"
         }
       ],
-      "socials": []
+      "socials": [
+        {
+          "url": "https://www.instagram.com/naturetime_events",
+          "handle": "ig:naturetime_events",
+          "source_page": "https://www.naturetime.es/ca/trail-albiol-3/",
+          "page_hash": "d84ba9ca25fdc0036253b41be57be29c34c84faba428f801ec1fadd15205ebff",
+          "scope": "organizer"
+        },
+        {
+          "url": "https://www.facebook.com/Naturetime/?locale=es_ES",
+          "handle": "fb:naturetime",
+          "source_page": "https://www.naturetime.es/ca/trail-albiol-3/",
+          "page_hash": "d84ba9ca25fdc0036253b41be57be29c34c84faba428f801ec1fadd15205ebff",
+          "scope": "organizer"
+        },
+        {
+          "url": "https://www.facebook.com/Naturetime",
+          "handle": "fb:naturetime",
+          "source_page": "https://www.naturetime.es/ca/trail-albiol-3/",
+          "page_hash": "d84ba9ca25fdc0036253b41be57be29c34c84faba428f801ec1fadd15205ebff",
+          "scope": "organizer"
+        }
+      ]
     },
     {
       "id": "la-garriga--saligarda-trail--3d536214",
@@ -483,15 +878,27 @@
       "race_name": "Saligarda Trail",
       "source_url": "https://www.lestortugues.cat/saligarda-trail/",
       "fetched_at": "2026-08-27T07:12:11.337Z",
-      "tracks": [],
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-senderismo/senderismo-slg-25-230578325?h=3p775wo5pl&wa=sd",
+          "source_page": "https://www.lestortugues.cat/saligarda-trail/",
+          "page_hash": "b11e31587766aedbcf31364fd61edcdcd505bffb328ee15c230c922962f1fcf9"
+        }
+      ],
       "socials": [
         {
           "url": "https://www.facebook.com/lestortugues.lagarriga",
           "handle": "fb:lestortugues.lagarriga",
           "source_page": "https://www.lestortugues.cat/saligarda-trail/",
           "page_hash": "b11e31587766aedbcf31364fd61edcdcd505bffb328ee15c230c922962f1fcf9",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/lestortugues_lg",
+          "handle": "ig:lestortugues_lg",
+          "source_page": "https://www.lestortugues.cat/saligarda-trail/",
+          "page_hash": "b11e31587766aedbcf31364fd61edcdcd505bffb328ee15c230c922962f1fcf9",
+          "scope": "race"
         }
       ]
     },
@@ -515,12 +922,25 @@
       ],
       "socials": [
         {
+          "url": "https://www.instagram.com/ivan_fernandez_bernal",
+          "handle": "ig:ivan_fernandez_bernal",
+          "source_page": "https://bocafoscant.cat/",
+          "page_hash": "98469837749b117b44a553ffa8b196db0bec0b8e73a9f4025bc32c57d43132e8",
+          "scope": "race"
+        },
+        {
           "url": "https://www.facebook.com/espotesqui.vallsdaneu",
           "handle": "fb:espotesqui.vallsdaneu",
           "source_page": "https://bocafoscant.cat/",
           "page_hash": "98469837749b117b44a553ffa8b196db0bec0b8e73a9f4025bc32c57d43132e8",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/espotesqui.club",
+          "handle": "ig:espotesqui.club",
+          "source_page": "https://bocafoscant.cat/",
+          "page_hash": "98469837749b117b44a553ffa8b196db0bec0b8e73a9f4025bc32c57d43132e8",
+          "scope": "race"
         }
       ]
     },
@@ -537,16 +957,21 @@
           "handle": "ig:cursaesquiador",
           "source_page": "https://www.uecanoia.cat/cursa-esquiador/",
           "page_hash": "ce70793b01b5e636b64583676ae770e5e6606903ba3e569467e02e752ceb3a9d",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/Cursadelesquiador",
           "handle": "fb:cursadelesquiador",
           "source_page": "https://www.uecanoia.cat/cursa-esquiador/",
           "page_hash": "ce70793b01b5e636b64583676ae770e5e6606903ba3e569467e02e752ceb3a9d",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/uecanoia",
+          "handle": "ig:uecanoia",
+          "source_page": "https://www.uecanoia.cat/cursa-esquiador/",
+          "page_hash": "ce70793b01b5e636b64583676ae770e5e6606903ba3e569467e02e752ceb3a9d",
+          "scope": "race"
         }
       ]
     },
@@ -563,16 +988,14 @@
           "handle": "fb:serra.delesfites",
           "source_page": "https://serradelesfites.org/",
           "page_hash": "923978d8dbdf9d752ba2e11f146c3f804287213c3673b6004d9631c033bc5fc0",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/serradelesfites",
           "handle": "ig:serradelesfites",
           "source_page": "https://serradelesfites.org/",
           "page_hash": "923978d8dbdf9d752ba2e11f146c3f804287213c3673b6004d9631c033bc5fc0",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -582,23 +1005,78 @@
       "race_name": "Cursa Trail La Riera de Gaià",
       "source_url": "https://cursalarieragaia.cat/",
       "fetched_at": "2026-08-27T07:12:11.337Z",
-      "tracks": [],
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-senderismo/caminada-lrdg-2024-187447765",
+          "source_page": "https://cursalarieragaia.cat/",
+          "page_hash": "73aa7e69e5e5c293422f0c12874022c081e606835188a110bfcefd15c34fa947"
+        },
+        {
+          "url": "https://ca.wikiloc.com/rutes-cursa-de-muntanya/cursa-llarga-2022-114548167",
+          "source_page": "https://cursalarieragaia.cat/cursa-trail-la-riera-de-gaia-llarga-20k/",
+          "page_hash": "668e11be488a2da42f2465c49ce317cab224db2a983cda7a139392929b7f0476"
+        },
+        {
+          "url": "https://ca.wikiloc.com/wikiloc/download.do?id=114548167",
+          "source_page": "https://cursalarieragaia.cat/cursa-trail-la-riera-de-gaia-llarga-20k/",
+          "page_hash": "668e11be488a2da42f2465c49ce317cab224db2a983cda7a139392929b7f0476"
+        }
+      ],
       "socials": [
+        {
+          "url": "https://www.instagram.com/casal_rierenc",
+          "handle": "ig:casal_rierenc",
+          "source_page": "https://cursalarieragaia.cat/",
+          "page_hash": "73aa7e69e5e5c293422f0c12874022c081e606835188a110bfcefd15c34fa947",
+          "scope": "race"
+        },
         {
           "url": "https://www.facebook.com/cursalarieragaia",
           "handle": "fb:cursalarieragaia",
           "source_page": "https://cursalarieragaia.cat/",
           "page_hash": "73aa7e69e5e5c293422f0c12874022c081e606835188a110bfcefd15c34fa947",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/cursalarieragaia",
           "handle": "ig:cursalarieragaia",
           "source_page": "https://cursalarieragaia.cat/",
           "page_hash": "73aa7e69e5e5c293422f0c12874022c081e606835188a110bfcefd15c34fa947",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "la-seu-d-urgell--cursa-transfronterera--55c325f8",
+      "town": "La Seu d'Urgell",
+      "race_name": "Cursa Transfronterera",
+      "source_url": "https://www.circuitfer.cat/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/cursa_elpla",
+          "handle": "ig:cursa_elpla",
+          "source_page": "https://www.circuitfer.cat/",
+          "page_hash": "8cb01d0709f0c0caa0dca023a61dad89c588463a7ced2c12b4fb53e5dd1ed25b",
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "la-vespella-de-gaia--cursa-la-vespella-de-gaia--bd6d0a88",
+      "town": "La Vespella de Gaià",
+      "race_name": "Cursa La Vespella de Gaià",
+      "source_url": "https://www.athleticevents.net/cursa/xvi-trail-i-caminada-vespella-de-gaia-531",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/AthleticEvents",
+          "handle": "fb:athleticevents",
+          "source_page": "https://www.athleticevents.net/cursa/xvi-trail-i-caminada-vespella-de-gaia-531",
+          "page_hash": "58ddd3ff021450eb254755243d9f1e460dc881750dde91b6efda248cbbc3a62e",
+          "scope": "organizer"
         }
       ]
     },
@@ -615,16 +1093,14 @@
           "handle": "fb:montludeskyrace",
           "source_page": "https://www.montludeskyrace.es/",
           "page_hash": "6e560c813ae7198171e7376a018c9c9e0dda47432b5042a78d0a9dccbe0ffca2",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/montludeskyrace",
           "handle": "ig:montludeskyrace",
           "source_page": "https://www.montludeskyrace.es/",
           "page_hash": "6e560c813ae7198171e7376a018c9c9e0dda47432b5042a78d0a9dccbe0ffca2",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -641,8 +1117,7 @@
           "handle": "fb:cursescabanyes",
           "source_page": "https://trailsendersdelpenedes.wordpress.com/",
           "page_hash": "b907bbc2c1c229d426c32f0bafa8a595c4085971b19db3a4f448bfc213b4c533",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -659,16 +1134,14 @@
           "handle": "ig:ajllavaneres",
           "source_page": "https://ajllavaneres.cat/moontrail26",
           "page_hash": "9b50a1432d0c92595981d9a8f2c1df4aa81ae6312cf94815dd25211e501eaa06",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/AjLlavaneres",
           "handle": "fb:ajllavaneres",
           "source_page": "https://ajllavaneres.cat/moontrail26",
           "page_hash": "9b50a1432d0c92595981d9a8f2c1df4aa81ae6312cf94815dd25211e501eaa06",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -685,8 +1158,31 @@
           "handle": "fb:deltenes",
           "source_page": "https://www.mancomunitatvalltenes.cat/actualitat/noticies/xxxvi-cursa-de-la-vall-del-tenes.html",
           "page_hash": "eb81d4aef9857423ecbb0d3b8a94048cc28d2e7d9ccde19702ee209e60020e92",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "macanet-de-cabrenys--cursa-del-fau--7700fabf",
+      "town": "Maçanet de Cabrenys",
+      "race_name": "Cursa del Fau",
+      "source_url": "https://www.cursadelfau.org/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/CursaDelFau",
+          "handle": "fb:cursadelfau",
+          "source_page": "https://www.cursadelfau.org/",
+          "page_hash": "d144c6bc0902cf14ea4847cc9c4422c9b6cfb57c15b7fbb6575caba08267505b",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/cursadelfau_org",
+          "handle": "ig:cursadelfau_org",
+          "source_page": "https://www.cursadelfau.org/",
+          "page_hash": "d144c6bc0902cf14ea4847cc9c4422c9b6cfb57c15b7fbb6575caba08267505b",
+          "scope": "race"
         }
       ]
     },
@@ -714,16 +1210,14 @@
           "handle": "fb:gemmalgrat",
           "source_page": "https://gem-malgrat.cat/esdeveniments/el-miner-de-ferro/miner-de-ferro-2026/",
           "page_hash": "58cbcbbc92a3a58b7ebd5f94cbf62850384accbcc77e4910a01198709a6e977a",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/gemmalgrat",
           "handle": "ig:gemmalgrat",
           "source_page": "https://gem-malgrat.cat/esdeveniments/el-miner-de-ferro/miner-de-ferro-2026/",
           "page_hash": "58cbcbbc92a3a58b7ebd5f94cbf62850384accbcc77e4910a01198709a6e977a",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -746,16 +1240,14 @@
           "handle": "ig:ajuntamentdemarganell",
           "source_page": "https://www.marganell.cat/cursa-matonera",
           "page_hash": "95993e844140184e2febd500d10328e2f9c95273a8d36f3ca2a5f836952e98fe",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/cursamatonera",
           "handle": "ig:cursamatonera",
           "source_page": "https://www.marganell.cat/cursa-matonera",
           "page_hash": "95993e844140184e2febd500d10328e2f9c95273a8d36f3ca2a5f836952e98fe",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -772,8 +1264,7 @@
           "handle": "ig:cem_martorelles",
           "source_page": "https://www.cemm.cat/",
           "page_hash": "f645f15403315b50419f88a9fc99ee19224536d7fa05dc7e4c7430ac2afbfaff",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -790,8 +1281,7 @@
           "handle": "ig:caminsdecollserola",
           "source_page": "https://caminsdecollserola.cat/",
           "page_hash": "840efa4fd21e6f8226bbf707dffc9c09b7ee5206f7be10bc1727d01394a99028",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -808,10 +1298,24 @@
           "handle": "ig:marxa_de_monells",
           "source_page": "https://www.curses.cat/monells2026/",
           "page_hash": "48520ccc51b44f015571981b69ef34b267c2f57a18a1e520747aa0a99c58d574",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
+    },
+    {
+      "id": "monistrol-de-calders--cursa-del-sot--31f5c810",
+      "town": "Monistrol de Calders",
+      "race_name": "Cursa del Sot",
+      "source_url": "https://sites.google.com/view/cursadelsot/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://www.wikiloc.com/running-trails/cursa-del-sot-2026-264023835",
+          "source_page": "https://sites.google.com/view/cursadelsot/",
+          "page_hash": "f96d56361f1c4f6c75b819b6b172bd55fd4d65c5ec4211d6164982d2327297ef"
+        }
+      ],
+      "socials": []
     },
     {
       "id": "montblanc--marxa-els-roures--f6c51180",
@@ -822,20 +1326,39 @@
       "tracks": [],
       "socials": [
         {
+          "url": "https://www.facebook.com/Alliberadrenalina",
+          "handle": "fb:alliberadrenalina",
+          "source_page": "https://alliberadrenalina.com/marxa-dels-roures/",
+          "page_hash": "c40fc744cce4f1513bbca83f89e52437d6f1b07cac877046c96908da5da17644",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/a_adrenalina",
+          "handle": "ig:a_adrenalina",
+          "source_page": "https://alliberadrenalina.com/marxa-dels-roures/",
+          "page_hash": "c40fc744cce4f1513bbca83f89e52437d6f1b07cac877046c96908da5da17644",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.facebook.com/OlgaBerguaFotografia/photos/?tab=album&album_id=2705778496145448&__xts__%5B0%5D=68.ARAwm3vz7d0mQaDTOEfIIAhUq_Yzk-jTgjS-9lnCvYhlKiMNM7K8Nb8gXStr8VBhb3hezkhHDsJNEcJ4K71sJYTIuJEhk9YyvxFlZ0H-aONEF7Np80TqIPf_MwY5PPCBZmRrT7YYpqUq4d_xj4gNLkpg1DZDOYHddphci23mJHhg2oOZ11OCa7qUQaA3aQP4BTg1m9XNZKC1DBK8V6p6_isgsmASTGYijPRuHmWjFvQUD4d91UQ0nmRQ-GlLvY9CNDKG0uAtL-r6Ps6ctqZJJYByEPOqNMfuF7ipZl24p5FVfApJ_t6SaWl0NjSg3X9Stre6dsxjlJhCAC03Ql7TsURXua96QNc36Tc5S0W3xrFdLUaeyU4JAABd5S0umiqfVXSmQ0-fXwCwDfHWewKBec8pKBJ5BQ_R7od6pO9kDdmQjtBXxECKT7n2orSILSV_jlMOmfTMFmWW0AADXN772QlRyA&__tn__=-UC-R",
+          "handle": "fb:olgaberguafotografia",
+          "source_page": "https://alliberadrenalina.com/marxa-dels-roures/",
+          "page_hash": "c40fc744cce4f1513bbca83f89e52437d6f1b07cac877046c96908da5da17644",
+          "scope": "race"
+        },
+        {
           "url": "https://www.facebook.com/rouresmontblanc",
           "handle": "fb:rouresmontblanc",
           "source_page": "https://alliberadrenalina.com/marxa-dels-roures/",
           "page_hash": "c40fc744cce4f1513bbca83f89e52437d6f1b07cac877046c96908da5da17644",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/marxadelsroures",
           "handle": "fb:marxadelsroures",
           "source_page": "https://alliberadrenalina.com/marxa-dels-roures/",
           "page_hash": "c40fc744cce4f1513bbca83f89e52437d6f1b07cac877046c96908da5da17644",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -852,24 +1375,49 @@
           "handle": "ig:amicsdereixac",
           "source_page": "https://www.montescatano.cat/",
           "page_hash": "db2823ffe9a640b5495fb8cc8818d0a69b9afbc44fe673435c5ff44de9e5da1d",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/miirookkoo",
+          "handle": "ig:miirookkoo",
+          "source_page": "https://www.montescatano.cat/",
+          "page_hash": "db2823ffe9a640b5495fb8cc8818d0a69b9afbc44fe673435c5ff44de9e5da1d",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/fisioesportripollet",
+          "handle": "ig:fisioesportripollet",
+          "source_page": "https://www.montescatano.cat/",
+          "page_hash": "db2823ffe9a640b5495fb8cc8818d0a69b9afbc44fe673435c5ff44de9e5da1d",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.facebook.com/carnisserialenvelat",
+          "handle": "fb:carnisserialenvelat",
+          "source_page": "https://www.montescatano.cat/",
+          "page_hash": "db2823ffe9a640b5495fb8cc8818d0a69b9afbc44fe673435c5ff44de9e5da1d",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/forn_oliveras_1958",
+          "handle": "ig:forn_oliveras_1958",
+          "source_page": "https://www.montescatano.cat/",
+          "page_hash": "db2823ffe9a640b5495fb8cc8818d0a69b9afbc44fe673435c5ff44de9e5da1d",
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/Montescatano",
           "handle": "fb:montescatano",
           "source_page": "https://www.montescatano.cat/",
           "page_hash": "db2823ffe9a640b5495fb8cc8818d0a69b9afbc44fe673435c5ff44de9e5da1d",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/jam_montcada1979",
           "handle": "ig:jam_montcada1979",
           "source_page": "https://www.montescatano.cat/",
           "page_hash": "db2823ffe9a640b5495fb8cc8818d0a69b9afbc44fe673435c5ff44de9e5da1d",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -882,14 +1430,52 @@
       "tracks": [],
       "socials": [
         {
+          "url": "https://www.instagram.com/casaportell",
+          "handle": "ig:casaportell",
+          "source_page": "https://www.cursadelcastell.com/",
+          "page_hash": "3036d8be45171077b03b0c3843ebfd56b6d4de31eee9465932069bb8e46e1987",
+          "scope": "race"
+        },
+        {
           "url": "https://www.instagram.com/cursadelcastell",
           "handle": "ig:cursadelcastell",
           "source_page": "https://www.cursadelcastell.com/",
           "page_hash": "3036d8be45171077b03b0c3843ebfd56b6d4de31eee9465932069bb8e46e1987",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
+    },
+    {
+      "id": "montornes-del-valles--trail-dels-remences--56532076",
+      "town": "Montornès del Vallès",
+      "race_name": "Trail dels Remençes",
+      "source_url": "https://www.dsport.cat/ca/fitxa_cursa.php?id_cursa=920",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/escaldatsdesuria",
+          "handle": "ig:escaldatsdesuria",
+          "source_page": "https://www.dsport.cat/ca/fitxa_cursa.php?id_cursa=920",
+          "page_hash": "b9a4f91a41149f03f9658a3bc359246f609abfd399c07a82c1c0653198ae154e",
+          "scope": "organizer"
+        }
+      ]
+    },
+    {
+      "id": "mora-d-ebre--cursa-cami-de-sirga--78bd2311",
+      "town": "Móra d'Ebre",
+      "race_name": "Cursa Camí de Sirga",
+      "source_url": "https://cursacamidesirga.picossatrail.cat/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://ca.wikiloc.com/wikiloc/embedv2.do?id=80561076&elevation=on&images=on&maptype=H",
+          "source_page": "https://picossatrail.cat/cursa-pedestre/",
+          "page_hash": "afd51ee15a44e738e1b7dc37da3d3a286801fb39d00bb535949b58a5352d0c13"
+        }
+      ],
+      "socials": []
     },
     {
       "id": "navas--trenca-3-pics--027ae740",
@@ -904,8 +1490,7 @@
           "handle": "fb:desmuntamarges.navas",
           "source_page": "https://trenca3pics.weebly.com/",
           "page_hash": "df75d4c20701cc7e48fa2f3730bd89b43da5bddd9147f8355c46d1b4661edead",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -922,8 +1507,24 @@
           "handle": "ig:ajuntamentoden",
           "source_page": "https://www.oden.cat/home/xafonada/",
           "page_hash": "6e12aa41068fc761022fd9ae0bf08a96bd73a708c1a162043417cb026938ac76",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "oix--trepitja-garrotxa--b10c068a",
+      "town": "Oix",
+      "race_name": "Trepitja Garrotxa",
+      "source_url": "https://trepitjagarrotxa.cat/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/VHIR.org",
+          "handle": "fb:vhir.org",
+          "source_page": "https://trepitjagarrotxa.cat/",
+          "page_hash": "fd8e8b680d8b1165e87c0f0b5cca330afd40597ed820b87282573ad5301e1681",
+          "scope": "race"
         }
       ]
     },
@@ -933,23 +1534,32 @@
       "race_name": "Marxa Bonesvalls",
       "source_url": "https://www.marxabonesvalls.cat/",
       "fetched_at": "2026-08-27T07:12:11.337Z",
-      "tracks": [],
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-senderismo/mb14-2026-oficial-258138376",
+          "source_page": "https://www.marxabonesvalls.cat/",
+          "page_hash": "e8a1da46ad76b8708a12b586515eea1332af298428db4705dea82f2283dcf2bd"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-senderismo/mb30-2026-oficial-258137533",
+          "source_page": "https://www.marxabonesvalls.cat/",
+          "page_hash": "e8a1da46ad76b8708a12b586515eea1332af298428db4705dea82f2283dcf2bd"
+        }
+      ],
       "socials": [
         {
           "url": "https://www.instagram.com/marxa_bonesvalls",
           "handle": "ig:marxa_bonesvalls",
           "source_page": "https://www.marxabonesvalls.cat/",
           "page_hash": "e8a1da46ad76b8708a12b586515eea1332af298428db4705dea82f2283dcf2bd",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/marxabonesvalls",
           "handle": "fb:marxabonesvalls",
           "source_page": "https://www.marxabonesvalls.cat/",
           "page_hash": "e8a1da46ad76b8708a12b586515eea1332af298428db4705dea82f2283dcf2bd",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -966,16 +1576,14 @@
           "handle": "fb:cursamargallo",
           "source_page": "https://www.cursadelmargallo.cat/",
           "page_hash": "528fcf5383538f933e697b55bd19675e791216e995ef0fb2e1cdaac2055a0e6f",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/cursa_del_margallo",
           "handle": "ig:cursa_del_margallo",
           "source_page": "https://www.cursadelmargallo.cat/",
           "page_hash": "528fcf5383538f933e697b55bd19675e791216e995ef0fb2e1cdaac2055a0e6f",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -992,16 +1600,62 @@
           "handle": "fb:ollerdelmas",
           "source_page": "https://www.vinya-cross.es/",
           "page_hash": "8bd57441ea7a5c44ff2e1e29a0b50f2ba6aa9a785cff42854ea3cc61c875d09c",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/ollerdelmas",
           "handle": "ig:ollerdelmas",
           "source_page": "https://www.vinya-cross.es/",
           "page_hash": "8bd57441ea7a5c44ff2e1e29a0b50f2ba6aa9a785cff42854ea3cc61c875d09c",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "pacs-del-penedes--pujada-a-sant-pau--3e79ffa9",
+      "town": "Pacs del Penedès",
+      "race_name": "Pujada a Sant Pau",
+      "source_url": "https://corremperlaterra.wordpress.com/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/corremperlaterra",
+          "handle": "ig:corremperlaterra",
+          "source_page": "https://corremperlaterra.wordpress.com/",
+          "page_hash": "9f71551339cd51e5569eb8fa4f9292ad5f2f908b21a20f5d4160c5e4f9dc09b9",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/vinyes_singulars",
+          "handle": "ig:vinyes_singulars",
+          "source_page": "https://corremperlaterra.wordpress.com/",
+          "page_hash": "9f71551339cd51e5569eb8fa4f9292ad5f2f908b21a20f5d4160c5e4f9dc09b9",
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "palamos--transgavarres--b1d62589",
+      "town": "Palamós",
+      "race_name": "Transgavarres",
+      "source_url": "https://www.klassmark.com/cmg-transgavarres/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/klassmark",
+          "handle": "ig:klassmark",
+          "source_page": "https://www.klassmark.com/cmg-transgavarres/",
+          "page_hash": "06a4814e5c069e7edf471bf479c007e8b0a12559dae0e729ab3abf021da80efe",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/klassmarkbike",
+          "handle": "ig:klassmarkbike",
+          "source_page": "https://www.klassmark.com/cmg-transgavarres/",
+          "page_hash": "06a4814e5c069e7edf471bf479c007e8b0a12559dae0e729ab3abf021da80efe",
+          "scope": "race"
         }
       ]
     },
@@ -1018,7 +1672,39 @@
           "page_hash": "46e466aca5f90d79aac84e3a3dadf1d2dd92147df42e370b2e96bf08edcb1eb1"
         }
       ],
-      "socials": []
+      "socials": [
+        {
+          "url": "https://www.instagram.com/lanostramel",
+          "handle": "ig:lanostramel",
+          "source_page": "https://lanostramel.com/",
+          "page_hash": "be57df6716ffe1baab9e09ba135b8d05d1ae0e7e0ea1743ee23c7378df4384c7",
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "pi--vertical-de-pi--a076ebed",
+      "town": "Pi",
+      "race_name": "Vertical de Pi",
+      "source_url": "https://esportsbellver.org/vertical-de-pi/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/esports.decerdanya",
+          "handle": "fb:esports.decerdanya",
+          "source_page": "https://esportsbellver.org/vertical-de-pi/",
+          "page_hash": "c174c241c6eb0fd897f830eda84d3e7f4d6bafc844354652a97ff1faff3d4c1c",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/esports_bellver",
+          "handle": "ig:esports_bellver",
+          "source_page": "https://esportsbellver.org/vertical-de-pi/",
+          "page_hash": "c174c241c6eb0fd897f830eda84d3e7f4d6bafc844354652a97ff1faff3d4c1c",
+          "scope": "race"
+        }
+      ]
     },
     {
       "id": "ponts--trail-no-limits--9d1a1905",
@@ -1033,8 +1719,31 @@
           "handle": "ig:runners_no_limits",
           "source_page": "https://sites.google.com/view/trailnolimitsponts",
           "page_hash": "f161112081f82ac04ce961def7ff22611e421b29d7be8c77a3bd73f85a58334d",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "porqueres--cursa-popular-de-porqueres--0cdadf54",
+      "town": "Porqueres",
+      "race_name": "Cursa Popular de Porqueres",
+      "source_url": "https://cursesplaestany.cat/cursa-popular-porqueres/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/consellesportiu.plaestany",
+          "handle": "fb:consellesportiu.plaestany",
+          "source_page": "https://cursesplaestany.cat/cursa-popular-porqueres/",
+          "page_hash": "6b5e20d6830030ea412875135377d5ad0113f9a05aef1799e72cb9b4ee0bc63f",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/ceplaestany",
+          "handle": "ig:ceplaestany",
+          "source_page": "https://cursesplaestany.cat/cursa-popular-porqueres/",
+          "page_hash": "6b5e20d6830030ea412875135377d5ad0113f9a05aef1799e72cb9b4ee0bc63f",
+          "scope": "race"
         }
       ]
     },
@@ -1051,8 +1760,24 @@
           "handle": "ig:querroigtrail",
           "source_page": "https://querroigtrail.com/",
           "page_hash": "1d1c455956f7e48f34f595c7d2cbf23fce1c128fe916a2ebd0640d8805398690",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "preixana--cursa-entre-cabanes--825de1f4",
+      "town": "Preixana",
+      "race_name": "Cursa Entre Cabanes",
+      "source_url": "https://www.preixana.cat/de-prop/fira-gastronomica/cursa_entre_cabanes/2025-6a-edicio/enllacos-dinscripcio-a-la-cursa-caminada",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/mercatdeprop",
+          "handle": "ig:mercatdeprop",
+          "source_page": "https://www.preixana.cat/de-prop/fira-gastronomica/cursa_entre_cabanes/2025-6a-edicio/enllacos-dinscripcio-a-la-cursa-caminada",
+          "page_hash": "decabd6586077663abbc00478749d9eca1d349bddbc70c0bcd16db88109b0511",
+          "scope": "race"
         }
       ]
     },
@@ -1069,16 +1794,14 @@
           "handle": "ig:salvatgetrail_rellinars",
           "source_page": "https://cerellinars.cat/salvatgetrail/",
           "page_hash": "d02a04fae04945fe1d77dcabe5a1b021defd99c538ad2faa5a9502d67e064dc5",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/cerellinars",
           "handle": "ig:cerellinars",
           "source_page": "https://cerellinars.cat/reglament-intern/",
           "page_hash": "029842a0eeafb64d0cc171aa4dd45ca44c6c320ad25b3d744f7b10c2c7152bec",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1095,12 +1818,63 @@
           "page_hash": "f3f388897813f1026a2e8178d5035a4ab440659fb9b257bd8e7d39ef0e511950"
         },
         {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/pleta-tavascan-220313368",
+          "source_page": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+          "page_hash": "f3f388897813f1026a2e8178d5035a4ab440659fb9b257bd8e7d39ef0e511950"
+        },
+        {
           "url": "https://es.wikiloc.com/rutas-carrera-por-montana/mitja-marato-valls-de-cardos-2026-277779497",
           "source_page": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
           "page_hash": "f3f388897813f1026a2e8178d5035a4ab440659fb9b257bd8e7d39ef0e511950"
         }
       ],
-      "socials": []
+      "socials": [
+        {
+          "url": "https://www.instagram.com/casasamarra",
+          "handle": "ig:casasamarra",
+          "source_page": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+          "page_hash": "f3f388897813f1026a2e8178d5035a4ab440659fb9b257bd8e7d39ef0e511950",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.facebook.com/Xtsportevents-105434732240554",
+          "handle": "fb:xtsportevents-105434732240554",
+          "source_page": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+          "page_hash": "f3f388897813f1026a2e8178d5035a4ab440659fb9b257bd8e7d39ef0e511950",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/xtsportevents",
+          "handle": "ig:xtsportevents",
+          "source_page": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+          "page_hash": "f3f388897813f1026a2e8178d5035a4ab440659fb9b257bd8e7d39ef0e511950",
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "ribera-de-cardos--marxa-camping-la-borda-del-pubill--e4e59a34",
+      "town": "Ribera de Cardós",
+      "race_name": "Marxa Camping La Borda del Pubill",
+      "source_url": "https://xtsportevents.com/events/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/Xtsportevents-105434732240554",
+          "handle": "fb:xtsportevents-105434732240554",
+          "source_page": "https://xtsportevents.com/events/",
+          "page_hash": "fbe57604ac67d227ab619558cc7857ff4ffcc3005b5973c1a3cd942c1126b35c",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/xtsportevents",
+          "handle": "ig:xtsportevents",
+          "source_page": "https://xtsportevents.com/events/",
+          "page_hash": "fbe57604ac67d227ab619558cc7857ff4ffcc3005b5973c1a3cd942c1126b35c",
+          "scope": "race"
+        }
+      ]
     },
     {
       "id": "ribes-de-freser--brama-stage-run--38ce8567",
@@ -1115,16 +1889,14 @@
           "handle": "fb:bramastagerun",
           "source_page": "https://brama.run/es/",
           "page_hash": "243bf46793706901cb525ba8aad38172c93ccd6ccf8d5b4f0c0774c85f6992d0",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/bramastagerun",
           "handle": "ig:bramastagerun",
           "source_page": "https://brama.run/es/",
           "page_hash": "243bf46793706901cb525ba8aad38172c93ccd6ccf8d5b4f0c0774c85f6992d0",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1141,8 +1913,24 @@
           "handle": "ig:vallsdelfreser",
           "source_page": "https://www.vallsdelfreser.com/",
           "page_hash": "18a4172daba4b22880259bc2cfa1e7ce58665044074ebf25e600fe3d768ce18a",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "riudecanyes--cursa-dona-rural--8d20c11e",
+      "town": "Riudecanyes",
+      "race_name": "Cursa Dona Rural",
+      "source_url": "https://webtretzesports.wixsite.com/caminadadonarural",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/meldepadri",
+          "handle": "fb:meldepadri",
+          "source_page": "https://webtretzesports.wixsite.com/caminadadonarural",
+          "page_hash": "247f08396a86721f8492924ce7e35cec1ccab9e1d6a1a9c252c020a3b2a71d5c",
+          "scope": "race"
         }
       ]
     },
@@ -1159,16 +1947,56 @@
           "handle": "fb:uesabadell",
           "source_page": "https://ues.cat/cross-dels-esquiadors/",
           "page_hash": "f49bfda0f3ef052e5cd00d8494b51e4456174a77f45f9bc35557f8d7c8e625ab",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/uesabadell",
           "handle": "ig:uesabadell",
           "source_page": "https://ues.cat/cross-dels-esquiadors/",
           "page_hash": "f49bfda0f3ef052e5cd00d8494b51e4456174a77f45f9bc35557f8d7c8e625ab",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "saldes--pedraforca-xtrail--184b619b",
+      "town": "Saldes",
+      "race_name": "Pedraforca Xtrail",
+      "source_url": "https://misports.cat/carreras/pedraforca-xtrail/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://ca.wikiloc.com/rutes-correr/saldes-xtrail-marato-2021-79974434",
+          "source_page": "https://misports.cat/carreras/pedraforca-xtrail/",
+          "page_hash": "2541735acce7b2b9dd777f4aa6eb8777d347ba900ca6fce4b391cbf068955b79"
+        },
+        {
+          "url": "https://ca.wikiloc.com/rutes-cursa-de-muntanya/saldes-xtrail-26k-2020-48138873",
+          "source_page": "https://misports.cat/carreras/pedraforca-xtrail/",
+          "page_hash": "2541735acce7b2b9dd777f4aa6eb8777d347ba900ca6fce4b391cbf068955b79"
+        },
+        {
+          "url": "https://www.wikiloc.com/trail-running-trails/saldes-short2024-152032340",
+          "source_page": "https://misports.cat/carreras/pedraforca-xtrail/",
+          "page_hash": "2541735acce7b2b9dd777f4aa6eb8777d347ba900ca6fce4b391cbf068955b79"
+        }
+      ],
+      "socials": []
+    },
+    {
+      "id": "sant-climent-de-llobregat--trail-popular-d-hivern--a674e733",
+      "town": "Sant Climent de Llobregat",
+      "race_name": "Trail Popular d'Hivern",
+      "source_url": "https://www.amicsdelacursailamuntanya.cat/trail-popular-hivern/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/amicsdelacursailamuntanya",
+          "handle": "ig:amicsdelacursailamuntanya",
+          "source_page": "https://www.amicsdelacursailamuntanya.cat/trail-popular-hivern/",
+          "page_hash": "8f380495b20c4ca6b245a242319bb6770ac7a4f4919db2d54dd95deee87e1d93",
+          "scope": "race"
         }
       ]
     },
@@ -1185,16 +2013,14 @@
           "handle": "fb:maratomontseny",
           "source_page": "https://maratomontseny.com/",
           "page_hash": "78bf7f798a1a2a1f5654324e7f9d2caddfffb27946932a811805457e5781cbc0",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/maratomontseny",
           "handle": "ig:maratomontseny",
           "source_page": "https://maratomontseny.com/",
           "page_hash": "78bf7f798a1a2a1f5654324e7f9d2caddfffb27946932a811805457e5781cbc0",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1211,8 +2037,21 @@
           "handle": "ig:la_dragonera_trail",
           "source_page": "https://linktr.ee/cursadeldrac",
           "page_hash": "97f683ff3e8e7389b2ea3cd339ca5e53a81a3f2e6650e9cb08fc168a3cfd4384",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/linktr.ee",
+          "handle": "ig:linktr.ee",
+          "source_page": "https://linktr.ee/?utm_source=linktree&amp;utm_medium=profile&amp;utm_campaign=footer_logo_cta&amp;utm_content=cursadeldrac",
+          "page_hash": "53ecc16eb482257deb089b5a5eb1854f3fe904c68cce70dfcc8332378165d1aa",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/linktree",
+          "handle": "ig:linktree",
+          "source_page": "https://linktr.ee/?utm_source=linktree&amp;utm_medium=profile&amp;utm_campaign=footer_logo_cta&amp;utm_content=cursadeldrac",
+          "page_hash": "53ecc16eb482257deb089b5a5eb1854f3fe904c68cce70dfcc8332378165d1aa",
+          "scope": "race"
         }
       ]
     },
@@ -1231,12 +2070,18 @@
       ],
       "socials": [
         {
+          "url": "https://www.instagram.com/forcesfortsiferms",
+          "handle": "ig:forcesfortsiferms",
+          "source_page": "https://fff.cat/activitats/pujada-a-les-formigues/",
+          "page_hash": "adb386f56d3ca7b1306d2aff0e44f98abb205bffaadd8f6050f1f6e2a1e34ae3",
+          "scope": "race"
+        },
+        {
           "url": "https://www.facebook.com/forcesfortsferms.santhilarisacalm",
           "handle": "fb:forcesfortsferms.santhilarisacalm",
           "source_page": "https://fff.cat/activitats/pujada-a-les-formigues/",
           "page_hash": "adb386f56d3ca7b1306d2aff0e44f98abb205bffaadd8f6050f1f6e2a1e34ae3",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1246,23 +2091,46 @@
       "race_name": "Vallalta Trail",
       "source_url": "https://vallaltatrail.com/",
       "fetched_at": "2026-08-27T07:12:11.337Z",
-      "tracks": [],
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera/vallalta-trail-10k-2019-track-oficial-36034823",
+          "source_page": "https://vallaltatrail.com/",
+          "page_hash": "3d9d9ccbaf9a3e35e8d3f5c0c265cb5df6a7068e904e4e49f6aa84e85adaf08b"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/24km-vt-2019-oficial-35209336",
+          "source_page": "https://vallaltatrail.com/",
+          "page_hash": "3d9d9ccbaf9a3e35e8d3f5c0c265cb5df6a7068e904e4e49f6aa84e85adaf08b"
+        }
+      ],
       "socials": [
         {
           "url": "https://www.instagram.com/vallaltatrail",
           "handle": "ig:vallaltatrail",
           "source_page": "https://vallaltatrail.com/",
           "page_hash": "3d9d9ccbaf9a3e35e8d3f5c0c265cb5df6a7068e904e4e49f6aa84e85adaf08b",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/vallaltatrail",
           "handle": "fb:vallaltatrail",
           "source_page": "https://vallaltatrail.com/",
           "page_hash": "3d9d9ccbaf9a3e35e8d3f5c0c265cb5df6a7068e904e4e49f6aa84e85adaf08b",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/elsclandestinstrail",
+          "handle": "ig:elsclandestinstrail",
+          "source_page": "https://vallaltatrail.com/",
+          "page_hash": "3d9d9ccbaf9a3e35e8d3f5c0c265cb5df6a7068e904e4e49f6aa84e85adaf08b",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/cursesdemuntanyaacatalunya",
+          "handle": "ig:cursesdemuntanyaacatalunya",
+          "source_page": "https://vallaltatrail.com/",
+          "page_hash": "3d9d9ccbaf9a3e35e8d3f5c0c265cb5df6a7068e904e4e49f6aa84e85adaf08b",
+          "scope": "race"
         }
       ]
     },
@@ -1279,16 +2147,14 @@
           "handle": "ig:taga2040",
           "source_page": "https://taga2040.com/",
           "page_hash": "b5aa1283eb4ce38478154a37d2e1c2ed10854e5a79e0bb52c0c44ebc45877b1c",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/Taga2040Evo",
           "handle": "fb:taga2040evo",
           "source_page": "https://taga2040.com/",
           "page_hash": "b5aa1283eb4ce38478154a37d2e1c2ed10854e5a79e0bb52c0c44ebc45877b1c",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1305,16 +2171,14 @@
           "handle": "fb:stllhortons",
           "source_page": "https://www.ajhortons.cat/temes/esport/la-29-ena-cursa-de-la-vinya-i-la-8ena-pampol-trail-",
           "page_hash": "85483997d022944174e1b1a0ba3d965e02bf075b17c01cde0d4c9b769b461898",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/stllhortons",
           "handle": "ig:stllhortons",
           "source_page": "https://www.ajhortons.cat/temes/esport/la-29-ena-cursa-de-la-vinya-i-la-8ena-pampol-trail-",
           "page_hash": "85483997d022944174e1b1a0ba3d965e02bf075b17c01cde0d4c9b769b461898",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1331,24 +2195,56 @@
           "handle": "ig:chartersantllorenc15",
           "source_page": "https://www.maratocatalunya.cat/",
           "page_hash": "e58e04d4c4cf825888389ded64a469a301f4c9bd203d4901d4f8eb1167766a54",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/granja.laroca",
+          "handle": "ig:granja.laroca",
+          "source_page": "https://www.maratocatalunya.cat/",
+          "page_hash": "e58e04d4c4cf825888389ded64a469a301f4c9bd203d4901d4f8eb1167766a54",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/martanutricioesportiva",
+          "handle": "ig:martanutricioesportiva",
+          "source_page": "https://www.maratocatalunya.cat/",
+          "page_hash": "e58e04d4c4cf825888389ded64a469a301f4c9bd203d4901d4f8eb1167766a54",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/fondarius.restaurant",
+          "handle": "ig:fondarius.restaurant",
+          "source_page": "https://www.maratocatalunya.cat/",
+          "page_hash": "e58e04d4c4cf825888389ded64a469a301f4c9bd203d4901d4f8eb1167766a54",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/mascomabella",
+          "handle": "ig:mascomabella",
+          "source_page": "https://www.maratocatalunya.cat/",
+          "page_hash": "e58e04d4c4cf825888389ded64a469a301f4c9bd203d4901d4f8eb1167766a54",
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/mimat_sant_llorenc",
           "handle": "ig:mimat_sant_llorenc",
           "source_page": "https://www.maratocatalunya.cat/",
           "page_hash": "e58e04d4c4cf825888389ded64a469a301f4c9bd203d4901d4f8eb1167766a54",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/els_tres_peixets",
+          "handle": "ig:els_tres_peixets",
+          "source_page": "https://www.maratocatalunya.cat/",
+          "page_hash": "e58e04d4c4cf825888389ded64a469a301f4c9bd203d4901d4f8eb1167766a54",
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/bonarea.santllorencsavall",
           "handle": "ig:bonarea.santllorencsavall",
           "source_page": "https://www.maratocatalunya.cat/",
           "page_hash": "e58e04d4c4cf825888389ded64a469a301f4c9bd203d4901d4f8eb1167766a54",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1365,8 +2261,7 @@
           "handle": "ig:jovessesgueioles",
           "source_page": "https://sites.google.com/view/1a-trail-gaioles/inici",
           "page_hash": "0f1e77d7f4052614d2ebf7a983c26221aeaf244bf4eebb29ce2267c5b46836fc",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1376,15 +2271,45 @@
       "race_name": "Corriols de Guardiola",
       "source_url": "https://www.corriolsdeguardiola.cat/",
       "fetched_at": "2026-08-27T07:12:11.337Z",
-      "tracks": [],
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/cursa-corriols-de-guardiola-22km-2023-147724693",
+          "source_page": "https://www.corriolsdeguardiola.cat/",
+          "page_hash": "560e3ee847b9c27dc2b3960ce3691828991948965a6849e16d1927300ca96ded"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/cursa-corriols-de-guardiola-corriols-10km-2023-147724682",
+          "source_page": "https://www.corriolsdeguardiola.cat/",
+          "page_hash": "560e3ee847b9c27dc2b3960ce3691828991948965a6849e16d1927300ca96ded"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/cursa-corriols-de-guardiola-5-km-2023-147724644",
+          "source_page": "https://www.corriolsdeguardiola.cat/",
+          "page_hash": "560e3ee847b9c27dc2b3960ce3691828991948965a6849e16d1927300ca96ded"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/corriolets-de-guardiola-2021-grans-7848019",
+          "source_page": "https://www.corriolsdeguardiola.cat/",
+          "page_hash": "560e3ee847b9c27dc2b3960ce3691828991948965a6849e16d1927300ca96ded"
+        },
+        {
+          "url": "https://ca.wikiloc.com/rutes-correr/corriolets-mitjans-2023-149793930",
+          "source_page": "https://www.corriolsdeguardiola.cat/",
+          "page_hash": "560e3ee847b9c27dc2b3960ce3691828991948965a6849e16d1927300ca96ded"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/corriolets-de-guardiola-2021-petits-7989681",
+          "source_page": "https://www.corriolsdeguardiola.cat/",
+          "page_hash": "560e3ee847b9c27dc2b3960ce3691828991948965a6849e16d1927300ca96ded"
+        }
+      ],
       "socials": [
         {
           "url": "https://www.instagram.com/cursacorriols",
           "handle": "ig:cursacorriols",
           "source_page": "https://www.corriolsdeguardiola.cat/",
           "page_hash": "560e3ee847b9c27dc2b3960ce3691828991948965a6849e16d1927300ca96ded",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1397,12 +2322,49 @@
       "tracks": [],
       "socials": [
         {
+          "url": "https://www.instagram.com/maeevent",
+          "handle": "ig:maeevent",
+          "source_page": "https://cursadelaratafia.cat/",
+          "page_hash": "071dac0922c21967e63285fff049a7d3173466b52755ee485ddc299a5c4fc2e2",
+          "scope": "race"
+        },
+        {
           "url": "https://www.instagram.com/cursadelaratafia",
           "handle": "ig:cursadelaratafia",
           "source_page": "https://cursadelaratafia.cat/",
           "page_hash": "071dac0922c21967e63285fff049a7d3173466b52755ee485ddc299a5c4fc2e2",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "santa-cristina-d-aro--trail-ardenya--5e616790",
+      "town": "Santa Cristina d'Aro",
+      "race_name": "Trail Ardenya",
+      "source_url": "https://www.matxacuca.com/portfolio/trail-ardenya/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/matxacuca",
+          "handle": "fb:matxacuca",
+          "source_page": "https://www.matxacuca.com/portfolio/trail-ardenya/",
+          "page_hash": "e109f62a70d6f8a2bab2ec1c3c708411b15ed309d448785db51808610c129f59",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/matxacuca",
+          "handle": "ig:matxacuca",
+          "source_page": "https://www.matxacuca.com/portfolio/trail-ardenya/",
+          "page_hash": "e109f62a70d6f8a2bab2ec1c3c708411b15ed309d448785db51808610c129f59",
+          "scope": "race"
+        },
+        {
+          "url": "https://ca-es.facebook.com/matxacuca",
+          "handle": "fb:matxacuca",
+          "source_page": "https://www.matxacuca.com/portfolio/trail-ardenya/",
+          "page_hash": "e109f62a70d6f8a2bab2ec1c3c708411b15ed309d448785db51808610c129f59",
+          "scope": "race"
         }
       ]
     },
@@ -1412,23 +2374,58 @@
       "race_name": "La Neorural",
       "source_url": "https://laneorural.com/",
       "fetched_at": "2026-08-27T07:12:11.337Z",
-      "tracks": [],
+      "tracks": [
+        {
+          "url": "https://ca.wikiloc.com/wikiloc/embedv2.do?id=241619990&elevation=off&images=off&maptype=H",
+          "source_page": "https://laneorural.com/la_cursa.php",
+          "page_hash": "c1bd768b17ca07c1aac72aa5e9ed334e1c5bb7b6c0999a8d5553e87366ad0b9d"
+        }
+      ],
       "socials": [
         {
           "url": "https://www.facebook.com/ICursaDeMuntanyaDeStaMaDeMartorelleslaNeorural",
           "handle": "fb:icursademuntanyadestamademartorelleslaneorural",
           "source_page": "https://laneorural.com/",
           "page_hash": "2cb4dbadb9a3e50e9091a164415c2554563c5338c3ecbea7bebed57e8320ec37",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/la_neorural",
           "handle": "ig:la_neorural",
           "source_page": "https://laneorural.com/",
           "page_hash": "2cb4dbadb9a3e50e9091a164415c2554563c5338c3ecbea7bebed57e8320ec37",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "sentmenat--pujada-i-baixada-a-guanta--deb7314a",
+      "town": "Sentmenat",
+      "race_name": "Pujada i Baixada a Guanta",
+      "source_url": "https://www.lasansi.com/ca/pujada-guanta",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/lasansi",
+          "handle": "fb:lasansi",
+          "source_page": "https://www.lasansi.com/ca/pujada-guanta",
+          "page_hash": "282026b39abc2255b6841e2614f176a06ce1ae0692d4ba732bd719864157ce89",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/lasansiclub",
+          "handle": "ig:lasansiclub",
+          "source_page": "https://www.lasansi.com/ca/pujada-guanta",
+          "page_hash": "282026b39abc2255b6841e2614f176a06ce1ae0692d4ba732bd719864157ce89",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.facebook.com/RitualsCosmeticsES/?__tn__=K-R",
+          "handle": "fb:ritualscosmeticses",
+          "source_page": "https://www.lasansi.com/ca/pujada-guanta",
+          "page_hash": "282026b39abc2255b6841e2614f176a06ce1ae0692d4ba732bd719864157ce89",
+          "scope": "race"
         }
       ]
     },
@@ -1458,6 +2455,21 @@
       "socials": []
     },
     {
+      "id": "sorribes-de-la-vansa--vertical-de-l-arp--3e786005",
+      "town": "Sorribes de la Vansa",
+      "race_name": "Vertical de l'Arp",
+      "source_url": "https://inscripcions.cat/vertical-arp-trail-2025/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://ca.wikiloc.com/rutes-senderisme/vertical-de-larp-186130972",
+          "source_page": "https://inscripcions.cat/vertical-arp-trail-2025/",
+          "page_hash": "9dcd937a4fe077995d585faf1a58069018ff926a587d039da7ee49a49902f916"
+        }
+      ],
+      "socials": []
+    },
+    {
       "id": "st-andreu-de-llavaneres--moontrail-llavaneres--0cf1e2e1",
       "town": "St Andreu de Llavaneres",
       "race_name": "Moontrail Llavaneres",
@@ -1470,16 +2482,14 @@
           "handle": "ig:ajllavaneres",
           "source_page": "https://ajllavaneres.cat/moontrail26",
           "page_hash": "9b50a1432d0c92595981d9a8f2c1df4aa81ae6312cf94815dd25211e501eaa06",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/AjLlavaneres",
           "handle": "fb:ajllavaneres",
           "source_page": "https://ajllavaneres.cat/moontrail26",
           "page_hash": "9b50a1432d0c92595981d9a8f2c1df4aa81ae6312cf94815dd25211e501eaa06",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1496,8 +2506,7 @@
           "handle": "ig:escaldatsdesuria",
           "source_page": "https://www.dsport.cat/es/fitxa_cursa.php?id_cursa=1185",
           "page_hash": "04fac249caad418872add0103beb69e6f50636c5f871cfdd25a908b0024dbdc5",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "organizer"
         }
       ]
     },
@@ -1510,12 +2519,53 @@
       "tracks": [],
       "socials": [
         {
+          "url": "https://www.instagram.com/innovitsport",
+          "handle": "ig:innovitsport",
+          "source_page": "https://www.innovitsport.com/esdeveniments/trail-tocasons",
+          "page_hash": "8152e909eb65c7ee1564ccd26f13a5b38f944cdbd9280cdca4283ef98e08b214",
+          "scope": "race"
+        },
+        {
+          "url": "https://facebook.com/innovitsport",
+          "handle": "fb:innovitsport",
+          "source_page": "https://www.innovitsport.com/esdeveniments/trail-tocasons",
+          "page_hash": "8152e909eb65c7ee1564ccd26f13a5b38f944cdbd9280cdca4283ef98e08b214",
+          "scope": "race"
+        },
+        {
           "url": "https://www.facebook.com/innovittaradell",
           "handle": "fb:innovittaradell",
           "source_page": "https://www.innovitsport.com/esdeveniments/trail-tocasons",
           "page_hash": "8152e909eb65c7ee1564ccd26f13a5b38f944cdbd9280cdca4283ef98e08b214",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "tarragona--ctt-trail--710ce952",
+      "town": "Tarragona",
+      "race_name": "CTT Trail",
+      "source_url": "https://trail.tennistarragona.com/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/20k-4-doctubre-252830578",
+          "source_page": "https://trail.tennistarragona.com/",
+          "page_hash": "8e72cb95dd4e4a2dbda1e14c15ef762c1b64dbe091d9872b4217a5baf597548f"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/10k-caminada-4-doctubre-252829751",
+          "source_page": "https://trail.tennistarragona.com/",
+          "page_hash": "8e72cb95dd4e4a2dbda1e14c15ef762c1b64dbe091d9872b4217a5baf597548f"
+        }
+      ],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/ctttrail",
+          "handle": "ig:ctttrail",
+          "source_page": "https://trail.tennistarragona.com/",
+          "page_hash": "8e72cb95dd4e4a2dbda1e14c15ef762c1b64dbe091d9872b4217a5baf597548f",
+          "scope": "race"
         }
       ]
     },
@@ -1528,12 +2578,25 @@
       "tracks": [],
       "socials": [
         {
+          "url": "https://www.facebook.com/Alliberadrenalina",
+          "handle": "fb:alliberadrenalina",
+          "source_page": "https://alliberadrenalina.com/imperial-tarraco/",
+          "page_hash": "c645a3407c007f0e85244a7f432678539634770dadd38bb9cc5acd63f41abe45",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/a_adrenalina",
+          "handle": "ig:a_adrenalina",
+          "source_page": "https://alliberadrenalina.com/imperial-tarraco/",
+          "page_hash": "c645a3407c007f0e85244a7f432678539634770dadd38bb9cc5acd63f41abe45",
+          "scope": "race"
+        },
+        {
           "url": "https://www.facebook.com/imperialtarracotrail",
           "handle": "fb:imperialtarracotrail",
           "source_page": "https://alliberadrenalina.com/imperial-tarraco/",
           "page_hash": "c645a3407c007f0e85244a7f432678539634770dadd38bb9cc5acd63f41abe45",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1550,8 +2613,7 @@
           "handle": "fb:imperialtarracotrail",
           "source_page": "https://www.rockthesport.com/es/evento/imperial-tarraco-trail",
           "page_hash": "1cf6e42024b2d074a608fa539d738c986a2e527791bbd5b9196fa73ffb71c8e5",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1561,23 +2623,27 @@
       "race_name": "Cursa Fosca",
       "source_url": "https://www.cursafosca.cat/",
       "fetched_at": "2026-08-27T07:12:11.337Z",
-      "tracks": [],
+      "tracks": [
+        {
+          "url": "https://www.strava.com/routes/3293590770425491578",
+          "source_page": "https://www.cursafosca.cat/cursa",
+          "page_hash": "d1b9ae582f2cc0d0a32a6e501e3e98b0f981bf16f532168449f1fbdaa6167591"
+        }
+      ],
       "socials": [
         {
           "url": "https://www.instagram.com/cursafosca",
           "handle": "ig:cursafosca",
           "source_page": "https://www.cursafosca.cat/",
           "page_hash": "51b2ed4d0adff44e2b6ec7491b32f16b6d25edf744852b6bf4e2fc0253508be5",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/cursafosca.seminocturna",
           "handle": "fb:cursafosca.seminocturna",
           "source_page": "https://www.cursafosca.cat/",
           "page_hash": "51b2ed4d0adff44e2b6ec7491b32f16b6d25edf744852b6bf4e2fc0253508be5",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1590,12 +2656,25 @@
       "tracks": [],
       "socials": [
         {
+          "url": "https://www.facebook.com/lasansi",
+          "handle": "fb:lasansi",
+          "source_page": "https://www.lasansi.com/es/tossamarato",
+          "page_hash": "21d64a951b4d1c8049c21c04cecbd79b5ffd5fd5d640123e51de21c9eb8961bd",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/lasansiclub",
+          "handle": "ig:lasansiclub",
+          "source_page": "https://www.lasansi.com/es/tossamarato",
+          "page_hash": "21d64a951b4d1c8049c21c04cecbd79b5ffd5fd5d640123e51de21c9eb8961bd",
+          "scope": "race"
+        },
+        {
           "url": "https://www.facebook.com/FondistesTossa",
           "handle": "fb:fondistestossa",
           "source_page": "https://www.lasansi.com/es/tossamarato",
           "page_hash": "21d64a951b4d1c8049c21c04cecbd79b5ffd5fd5d640123e51de21c9eb8961bd",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1608,12 +2687,42 @@
       "tracks": [],
       "socials": [
         {
+          "url": "https://www.facebook.com/fornanglada/photos",
+          "handle": "fb:fornanglada",
+          "source_page": "https://www.cursadelbolet.cat/",
+          "page_hash": "cf39c02a10d9bc0cd3d5797e0704d99dac946cb0d97eef6e7bc747b1c1eb79b1",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.facebook.com/theantipatikscervesa",
+          "handle": "fb:theantipatikscervesa",
+          "source_page": "https://www.cursadelbolet.cat/",
+          "page_hash": "cf39c02a10d9bc0cd3d5797e0704d99dac946cb0d97eef6e7bc747b1c1eb79b1",
+          "scope": "race"
+        },
+        {
           "url": "https://www.instagram.com/cursadelbolet",
           "handle": "ig:cursadelbolet",
           "source_page": "https://www.cursadelbolet.cat/",
           "page_hash": "cf39c02a10d9bc0cd3d5797e0704d99dac946cb0d97eef6e7bc747b1c1eb79b1",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "ullastrell--cursa-muntanya-serralavella--09bf8d10",
+      "town": "Ullastrell",
+      "race_name": "Cursa muntanya Serralavella",
+      "source_url": "https://www.dsport.cat/es/fitxa_cursa.php?id_cursa=1127",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.instagram.com/escaldatsdesuria",
+          "handle": "ig:escaldatsdesuria",
+          "source_page": "https://www.dsport.cat/es/fitxa_cursa.php?id_cursa=1127",
+          "page_hash": "9324565980b5b9a3549af2102c0301aa4bcd45a3a74b06ee932611681b13f482",
+          "scope": "organizer"
         }
       ]
     },
@@ -1625,12 +2734,37 @@
       "fetched_at": "2026-08-27T07:12:11.337Z",
       "tracks": [
         {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/21k-trail-ermites-2024-165283612",
+          "source_page": "https://www.naturetime.es/ca/trailseries-les-ermites-ulldemolins-esp/",
+          "page_hash": "b6d1a9003b554f90f559062af7b2f816c6b2fd0d5283c2769765161edd145595"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/14k-trail-ermites-2024-165240026",
+          "source_page": "https://www.naturetime.es/ca/trailseries-les-ermites-ulldemolins-esp/",
+          "page_hash": "b6d1a9003b554f90f559062af7b2f816c6b2fd0d5283c2769765161edd145595"
+        },
+        {
           "url": "https://es.wikiloc.com/rutas-senderismo/5k-trail-ermites-2025-237986596",
           "source_page": "https://www.naturetime.es/ca/trailseries-les-ermites-ulldemolins-esp/",
           "page_hash": "b6d1a9003b554f90f559062af7b2f816c6b2fd0d5283c2769765161edd145595"
         }
       ],
-      "socials": []
+      "socials": [
+        {
+          "url": "https://www.facebook.com/Naturetime",
+          "handle": "fb:naturetime",
+          "source_page": "https://www.naturetime.es/ca/trailseries-les-ermites-ulldemolins-esp/",
+          "page_hash": "b6d1a9003b554f90f559062af7b2f816c6b2fd0d5283c2769765161edd145595",
+          "scope": "organizer"
+        },
+        {
+          "url": "https://www.instagram.com/naturetime_events",
+          "handle": "ig:naturetime_events",
+          "source_page": "https://www.naturetime.es/ca/trailseries-les-ermites-ulldemolins-esp/",
+          "page_hash": "b6d1a9003b554f90f559062af7b2f816c6b2fd0d5283c2769765161edd145595",
+          "scope": "organizer"
+        }
+      ]
     },
     {
       "id": "ulldemolins--utsm-serra-de-montsant--6ab734d4",
@@ -1638,23 +2772,70 @@
       "race_name": "UTSM Serra de Montsant",
       "source_url": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
       "fetched_at": "2026-08-27T07:12:11.337Z",
-      "tracks": [],
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/trail-serra-montsant-2023-25km-copa-feec-145717681",
+          "source_page": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
+          "page_hash": "d6cc1715b7c44406e667441f8978c56b4a0197c1fbea177d5258e7d683d09ca9"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/trail-serra-montsant-2023-11km-copa-feec-juvenil-junior-145718852",
+          "source_page": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
+          "page_hash": "d6cc1715b7c44406e667441f8978c56b4a0197c1fbea177d5258e7d683d09ca9"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-a-pie/start-7k-2023-v4-145999305",
+          "source_page": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
+          "page_hash": "d6cc1715b7c44406e667441f8978c56b4a0197c1fbea177d5258e7d683d09ca9"
+        },
+        {
+          "url": "https://ca.wikiloc.com/rutes-cursa-de-muntanya/htmcd-oficial-2019-vilaplana-prades-33443409",
+          "source_page": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
+          "page_hash": "d6cc1715b7c44406e667441f8978c56b4a0197c1fbea177d5258e7d683d09ca9"
+        }
+      ],
       "socials": [
         {
           "url": "https://www.instagram.com/ultratrail_serramontsant",
           "handle": "ig:ultratrail_serramontsant",
           "source_page": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
           "page_hash": "d6cc1715b7c44406e667441f8978c56b4a0197c1fbea177d5258e7d683d09ca9",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/UltraTrailSerraMontsant",
           "handle": "fb:ultratrailserramontsant",
           "source_page": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
           "page_hash": "d6cc1715b7c44406e667441f8978c56b4a0197c1fbea177d5258e7d683d09ca9",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/silvaglobal",
+          "handle": "ig:silvaglobal",
+          "source_page": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
+          "page_hash": "d6cc1715b7c44406e667441f8978c56b4a0197c1fbea177d5258e7d683d09ca9",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/topoathletic",
+          "handle": "ig:topoathletic",
+          "source_page": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
+          "page_hash": "d6cc1715b7c44406e667441f8978c56b4a0197c1fbea177d5258e7d683d09ca9",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.facebook.com/Naturetime",
+          "handle": "fb:naturetime",
+          "source_page": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
+          "page_hash": "d6cc1715b7c44406e667441f8978c56b4a0197c1fbea177d5258e7d683d09ca9",
+          "scope": "organizer"
+        },
+        {
+          "url": "https://www.instagram.com/naturetime_events",
+          "handle": "ig:naturetime_events",
+          "source_page": "https://www.naturetime.es/en/ultra-trail-serra-montsant-4/",
+          "page_hash": "d6cc1715b7c44406e667441f8978c56b4a0197c1fbea177d5258e7d683d09ca9",
+          "scope": "organizer"
         }
       ]
     },
@@ -1671,18 +2852,31 @@
           "handle": "ig:olladenuria",
           "source_page": "https://olladenuria.cat/",
           "page_hash": "0f2a4e3de6e8b4d6e239aa180e92bdc95d97779da806a3ea3593bdb445f9d48c",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://es-es.facebook.com/olladenuria",
           "handle": "fb:olladenuria",
           "source_page": "https://olladenuria.cat/",
           "page_hash": "0f2a4e3de6e8b4d6e239aa180e92bdc95d97779da806a3ea3593bdb445f9d48c",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
+    },
+    {
+      "id": "vallromanes--la-nocturna-trinxavambes--642e2998",
+      "town": "Vallromanes",
+      "race_name": "La nocturna Trinxavambes",
+      "source_url": "https://misports.cat/curses/nocturna-trinxavambes/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-senderismo/8k-camin-trx-vbs-2025-217325633",
+          "source_page": "https://misports.cat/curses/nocturna-trinxavambes/",
+          "page_hash": "8d664d63ebdadbfa50bdc0fe43a3d2d8e5c2743f3f141567f9b79d2b150bbb4e"
+        }
+      ],
+      "socials": []
     },
     {
       "id": "vallter--la-marrana-skyrace--8e73053a",
@@ -1697,24 +2891,21 @@
           "handle": "ig:lamarranaskyrace",
           "source_page": "https://cursalamarrana.com/",
           "page_hash": "34adffa5c46589e126d6e16d73ad5c1d7fc083ed75362e571e3db7fc80caca3d",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/cursamarrana",
           "handle": "fb:cursamarrana",
           "source_page": "https://cursalamarrana.com/",
           "page_hash": "34adffa5c46589e126d6e16d73ad5c1d7fc083ed75362e571e3db7fc80caca3d",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/cursamarrana/?locale=es_ES",
           "handle": "fb:cursamarrana",
           "source_page": "https://cursalamarrana.com/",
           "page_hash": "34adffa5c46589e126d6e16d73ad5c1d7fc083ed75362e571e3db7fc80caca3d",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1747,8 +2938,7 @@
           "handle": "ig:vandekames2023",
           "source_page": "https://www.vandekames.cat/",
           "page_hash": "43672a70cccb92218515c81b496b18b0d2410587fa82a34167fe47982175129c",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1765,8 +2955,24 @@
           "handle": "ig:laventallonina",
           "source_page": "https://www.curses.cat/ventallonina2026/",
           "page_hash": "2dd76a927fd38b35d6bf031ec45200d11840f674a7691e8a4ece26ba4a546249",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        }
+      ]
+    },
+    {
+      "id": "verdu--cursa-bacus--3ec4979b",
+      "town": "Verdú",
+      "race_name": "Cursa Bacus",
+      "source_url": "https://correvinyes.verdu.red/cursa-bacus-2026/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [],
+      "socials": [
+        {
+          "url": "https://www.facebook.com/comarquesonline",
+          "handle": "fb:comarquesonline",
+          "source_page": "https://correvinyes.verdu.red/cursa-bacus-2026/",
+          "page_hash": "3a0f6d62a89746638d4104b750fd878a8fe364fdc3f215a4b2efc908d5327d58",
+          "scope": "race"
         }
       ]
     },
@@ -1798,7 +3004,22 @@
           "page_hash": "7a12519c6f2a2ba4eb358fb6601973492d2d8618787ba22785a3fced14213b0c"
         }
       ],
-      "socials": []
+      "socials": [
+        {
+          "url": "https://www.facebook.com/emaransportsfoundation",
+          "handle": "fb:emaransportsfoundation",
+          "source_page": "https://emaransportsfoundation.org/home/eventos/aran_per_esport/#",
+          "page_hash": "26eb21e461006afed98159091ee87641b8161dfe788b3facf70cde11a79628fe",
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/emaransportsfoundation",
+          "handle": "ig:emaransportsfoundation",
+          "source_page": "https://emaransportsfoundation.org/home/eventos/aran_per_esport/#",
+          "page_hash": "26eb21e461006afed98159091ee87641b8161dfe788b3facf70cde11a79628fe",
+          "scope": "race"
+        }
+      ]
     },
     {
       "id": "vilaplana--vilaplana-030-extrem--54e080fe",
@@ -1813,8 +3034,14 @@
           "handle": "ig:vilaplana030",
           "source_page": "https://www.vilaplana030.cat/",
           "page_hash": "1b02ad421019f78256470193ff878f59413494e0228d70e6d8f57bf5f827ed33",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
+        },
+        {
+          "url": "https://www.instagram.com/clubmontbike",
+          "handle": "ig:clubmontbike",
+          "source_page": "https://www.vilaplana030.cat/",
+          "page_hash": "1b02ad421019f78256470193ff878f59413494e0228d70e6d8f57bf5f827ed33",
+          "scope": "race"
         }
       ]
     },
@@ -1831,8 +3058,7 @@
           "handle": "ig:cavavilarnau",
           "source_page": "https://www.rockthesport.com/ca/esdeveniment/vilarnau-correcava-2026",
           "page_hash": "5af3c5cdc4b652774fea902972f385afa207409702654a32078f0f1192d39a64",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     },
@@ -1849,24 +3075,21 @@
           "handle": "fb:vilaverdskyrace",
           "source_page": "https://vilaverdskyrace.naturaldfn.com/",
           "page_hash": "e35842ef893033a3af0e5b49dbec05fd640eba579252295776c353fea85c6d07",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.instagram.com/vilaverdsr",
           "handle": "ig:vilaverdsr",
           "source_page": "https://vilaverdskyrace.naturaldfn.com/",
           "page_hash": "e35842ef893033a3af0e5b49dbec05fd640eba579252295776c353fea85c6d07",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         },
         {
           "url": "https://www.facebook.com/vilaverdskyrace/photos",
           "handle": "fb:vilaverdskyrace",
           "source_page": "https://vilaverdskyrace.naturaldfn.com/",
           "page_hash": "e35842ef893033a3af0e5b49dbec05fd640eba579252295776c353fea85c6d07",
-          "scope": "race",
-          "relationship": "named-in-handle"
+          "scope": "race"
         }
       ]
     }

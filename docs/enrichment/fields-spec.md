@@ -136,6 +136,20 @@ substring evidence check because "montseny" was inside a *participant's club nam
   crawl→Haiku approach was sound in shape but the gate was not — an LLM inventing a
   plausible `value` needs field-local semantic validation, not substring occurrence.
 
+**Discovery ≠ publication (Codex round 2, 2026-08-26).** URL discovery does NOT prove a
+link belongs to a race — a followed page on a shared domain, or a sponsor/vendor link,
+resembles a valid link without being this race's. So the pipeline emits TWO files:
+- `link-candidates.json` — every host-allowlisted link found (high recall). INTERNAL,
+  never imported by the site or MCP.
+- `links.json` — the PUBLICATION bundle the runtime imports. A candidate is promoted
+  ONLY by a deterministic **identity proof** (Dima: "auto-safe subset, no review"): the
+  link's own URL slug / social handle contains a DISTINCTIVE token of this race's name
+  or town (generic trail-vocabulary is excluded). That proves the link names the event.
+  Routes with an explicit prior-edition year (2015–2024) are dropped. This withholds an
+  unproven link rather than guessing — conservative coverage, zero confidently-wrong
+  links. It killed round-2's survivors (UTSM's `htmcd-vilaplana-prades`, Camí de Sirga's
+  other-race route, Linktree/Rituals socials). Locked by the publication-invariant test.
+
 **Slice-1 link contract + honesty gates (all live in `scripts/enrich-extract-links.ts`,
 locked by `_test.ts` incl. a whole-bundle invariant):**
 - **Host identity (Codex B3):** a link classifies only if its host's *registrable

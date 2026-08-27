@@ -67,12 +67,12 @@ const UNTRUSTED_NOTICE =
   '"verify at url" and enriched_facts is null). NEVER relay a time, cutoff, price, ' +
   'sold-out, or registration status taken from taste as if current — send the user ' +
   'to the race url to confirm. Use taste for character, never for logistics. ' +
-  'links (get_race) are URLs found ON the official page: tracks are route maps ' +
-  '(Wikiloc/Komoot/Strava) — one per distance is common, so treat them as the ' +
-  'event\'s routes, not "the" course; socials are channels linked from the page, ' +
-  'scope-tagged "organizer" (a shared timing company / host town — NOT this race\'s ' +
-  'own) vs "race" — never present a social link as the race\'s official account, ' +
-  'and a sponsor/town link can appear. Lists expose has_track/has_social booleans.'
+  'links (get_race) are PUBLISHED only when the link\'s own URL slug / social handle ' +
+  'NAMES this race (deterministic identity proof — unproven candidates are withheld, ' +
+  'not guessed). tracks are route maps (Wikiloc/Komoot/Strava); several = the event\'s ' +
+  'different distances, so treat them as the event\'s routes, not "the" course, and ' +
+  'still tell the user to confirm the exact course on the official site. socials are ' +
+  'the race\'s own channel (named in the handle). Lists expose has_track/has_social.'
 
 type DistanceDifficulty = Distance & {
   km_effort?: number | null
