@@ -40,8 +40,57 @@ Deno.test('socials: real handles classify, widgets/pixels/vendor footers do not'
     'https://www.facebook.com/109439738811100', // bare numeric page-id
     'https://www.facebook.com/media/set/?vanity=x', // photo album
     'https://www.instagram.com/p/ABC123', // a single post, not a channel
+    'https://m.facebook.com/story.php?story_fbid=pfbid02x', // Codex B3: a story
+    'https://www.facebook.com/wix', // Codex B3: CMS vendor
+    'https://instagram.com/wix', // Codex B3: CMS vendor
+    'https://www.facebook.com/search/top?q=trail', // Codex B3: search result
+    'https://www.facebook.com/l.php?u=x', // link shim
   ]
   for (const u of notSocial) assertEquals(classifyLink(new URL(u)), null, u)
+})
+
+// Codex B3: substring host-matching admitted lookalikes + CDN hosts. Only the exact
+// registrable domain (and its subdomains) may classify.
+Deno.test('spoof + CDN hosts are rejected (registrable-domain match, not substring)', () => {
+  const spoof = [
+    'https://evilwikiloc.example/trails/view/1234-999999', // lookalike host
+    'https://wikiloc.com.attacker.net/rutes-correr/x-999999', // suffix trick
+    'https://scontent-mad1-1.cdninstagram.com/v/t51.82787-15/img', // IG CDN media
+    'https://scontent.cdninstagram.com/o1/v/t2/f2/m86', // IG CDN media
+    'https://strava-embeds.com/embed.js', // SDK host, not strava.com
+    'https://notfacebook.com/realrace', // lookalike
+  ]
+  for (const u of spoof) assertEquals(classifyLink(new URL(u)), null, u)
+  // real subdomains still work
+  assertEquals(classifyLink(new URL('https://ca.wikiloc.com/rutes-correr/x-138622583')), 'track')
+  assertEquals(classifyLink(new URL('https://m.facebook.com/agramuntesports')), 'social')
+})
+
+// Codex B3: the guarantee must hold over the WHOLE emitted bundle, not hand-picked
+// unit cases. Every published track/social must survive re-classification, and no
+// route may be claimed by ≥2 events (B1).
+Deno.test('bundle invariant: every emitted link re-classifies + no cross-event route', async () => {
+  let bundle: { races: Array<{ id: string; tracks: { url: string }[]; socials: { url: string; handle: string; scope: string }[] }> }
+  try {
+    bundle = JSON.parse(await Deno.readTextFile('docs/enrichment/2026-batch/links.json'))
+  } catch {
+    return // bundle not built in this checkout — skip
+  }
+  const eventsByTrack = new Map<string, Set<string>>()
+  for (const r of bundle.races) {
+    for (const t of r.tracks) {
+      assertEquals(classifyLink(new URL(t.url)), 'track', `track re-classify: ${t.url}`)
+      if (!eventsByTrack.has(t.url)) eventsByTrack.set(t.url, new Set())
+      eventsByTrack.get(t.url)!.add(r.id)
+    }
+    for (const s of r.socials) {
+      assertEquals(classifyLink(new URL(s.url)), 'social', `social re-classify: ${s.url}`)
+      assertEquals(['organizer', 'race'].includes(s.scope), true, `scope: ${s.scope}`)
+    }
+  }
+  for (const [url, evs] of eventsByTrack) {
+    assertEquals(evs.size < 2, true, `route on ≥2 events: ${url} → ${[...evs].join(', ')}`)
+  }
 })
 
 Deno.test('extractOutboundUrls pulls href, iframe src, and bare urls; drops mailto', () => {

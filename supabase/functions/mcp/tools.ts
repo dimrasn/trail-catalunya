@@ -16,10 +16,9 @@ import {
 import { applyFilters, numList, rangeList, strList } from './filters_core.ts'
 import { type TasteField, type TasteProfile, kidsFromTaste, tasteFlags, tasteForDisplay, tasteSummary } from './taste_view.ts'
 import tasteProfilesRaw from './taste.json' with { type: 'json' }
-// Generated character + extracted links (Slice-1), imported from the canonical
-// artifacts (single source of truth — same relative-import pattern grouping.ts uses
-// for town-corrections; Supabase bundles them at deploy).
-import characterProfilesRaw from '../../../docs/enrichment/2026-batch/parsed/character.json' with { type: 'json' }
+// Extracted links (Slice-1), imported from the canonical artifact (single source of
+// truth — same relative-import pattern grouping.ts uses for town-corrections;
+// Supabase bundles it at deploy).
 import raceLinksRaw from '../../../docs/enrichment/2026-batch/links.json' with { type: 'json' }
 import type { ToolDef } from './protocol.ts'
 
@@ -28,12 +27,6 @@ import type { ToolDef } from './protocol.ts'
 const tasteByEvent = new Map<string, TasteProfile>(
   (tasteProfilesRaw as TasteProfile[]).map((p) => [`${(p.url || '').trim()}::${(p.town || '').trim()}`, p]),
 )
-// Character extends taste ONLY where taste is absent — curated taste always wins.
-// Character fields are all our_read, so tasteFlags() never fires a false flag.
-for (const p of characterProfilesRaw as TasteProfile[]) {
-  const k = `${(p.url || '').trim()}::${(p.town || '').trim()}`
-  if (!tasteByEvent.has(k)) tasteByEvent.set(k, p)
-}
 
 // Event-level links keyed by source_url::town: route maps + social channels linked
 // from the official page. Never per-distance — a page links several routes.

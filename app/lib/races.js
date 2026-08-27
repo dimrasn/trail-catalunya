@@ -18,10 +18,6 @@ import { tasteForDisplay, tasteSummary, tasteFlags, kidsFromTaste } from './tast
 // Canonical taste artifact (plan v3, KTD1 — committed JSON bundled into the site
 // build; the MCP bundles the same file). Keyed by race_url::town.
 import tasteProfiles from '../../docs/enrichment/2026-batch/parsed/taste.json'
-// Generated character (Slice-1): our_read-labelled profiles for races the curated
-// taste.json doesn't cover. Same shape, so tasteForDisplay/Summary/Flags consume it
-// unchanged; every field is our_read, so tasteFlags never fires a false flag.
-import characterProfiles from '../../docs/enrichment/2026-batch/parsed/character.json'
 // Track/social links extracted from the official pages (Slice-1). Keyed by
 // source_url::town; attached event-level (never per-distance).
 import raceLinks from '../../docs/enrichment/2026-batch/links.json'
@@ -41,11 +37,6 @@ function provinceFor(rawTown, fallback) {
 const tasteByEvent = new Map(
   (tasteProfiles || []).map(p => [`${(p.url || '').trim()}::${(p.town || '').trim()}`, p]),
 )
-// Character extends taste ONLY where taste is absent — curated taste always wins.
-for (const p of characterProfiles || []) {
-  const k = `${(p.url || '').trim()}::${(p.town || '').trim()}`
-  if (!tasteByEvent.has(k)) tasteByEvent.set(k, p)
-}
 
 // Event-level links, keyed by source_url::town. Shape kept minimal for display:
 // tracks + socials, each with the org-vs-race scope where known.

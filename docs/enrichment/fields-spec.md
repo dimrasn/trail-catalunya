@@ -120,47 +120,62 @@ The MCP checks state per request; the site during ISR.
 - Eval key (human-verified) tests the exact scripted harness for zero false-positive
   actionable facts.
 
-## Slice 1 — LINKS + CHARACTER (low-risk, ships first)
+## Slice 1 — LINKS ONLY (character split out, 2026-08-26)
 
-Decided 2026-08-25 (after Codex round 3): publish the enrichment in two slices. Slice
-1 is the LOW-BLAST subset — where a wrong value is mildly annoying, not dangerous — so
-it ships on a deliberately (and honestly) simpler contract while the high-risk logistics
-wait for the full machine contract above. This is NOT a shortcut: the four Codex P0s
-target facts a runner *acts on* (start_time, price, cutoff, sold-out, equipment), and
-none of them apply to links or honesty-labelled character. Extracted from the durable
-corpus (`docs/enrichment/2026-batch/_corpus/`, content-addressed, git-tracked).
+Decided 2026-08-25, REVISED 2026-08-26 after a Codex review. The original Slice 1
+bundled links + generated character. Codex blocked it: the character path published
+confidently-wrong facts (a fabricated "Montseny natural park" that passed an 8-char
+substring evidence check because "montseny" was inside a *participant's club name*;
+269/416 fields with no evidence at all; stale prior-edition operational lines like
+"register by September 13"). Under the honesty bar, that cannot ship. So:
 
-**In Slice 1**
-- `track_link` (Wikiloc / Komoot / Strava route), `elevation_profile` link,
-  `social_link` (Instagram / Facebook) — each: `{ kind, url, source_url, page_hash,
-  fetched_at }`.
-- CHARACTER (`unique/cool/catch/who/setting/terrain/technicality/food`) — the existing
-  taste layer's shape + `claim_strength`, generated from the corpus; extends taste to
-  uncovered races. New validated character overrides legacy taste per race (KTD8).
+- **Slice 1 = LINKS ONLY.** Track (Wikiloc/Komoot/Strava routes) + social (IG/FB)
+  links extracted DETERMINISTICALLY from the durable corpus
+  (`docs/enrichment/2026-batch/_corpus/`, content-addressed, git-tracked). No LLM.
+- **CHARACTER is deferred to its own slice** with a real grounding gate (below). The
+  crawl→Haiku approach was sound in shape but the gate was not — an LLM inventing a
+  plausible `value` needs field-local semantic validation, not substring occurrence.
 
-**Explicitly NOT in Slice 1 (deferred to the logistics slice + the full contract):**
-start_time, price, cutoff, sold_out, confirmed, registration_*, mandatory_equipment,
-feec_licence, aid_stations. Anything a runner sets an alarm by, pays, or needs for
-safety waits for semantic validation + durable IDs + live freshness.
+**Slice-1 link contract + honesty gates (all live in `scripts/enrich-extract-links.ts`,
+locked by `_test.ts` incl. a whole-bundle invariant):**
+- **Host identity (Codex B3):** a link classifies only if its host's *registrable
+  domain* is exactly `wikiloc.com` / `komoot.*` / `strava.com` / `instagram.com` /
+  `facebook.com|fb.com` (subdomains OK). Substring matching is banned — it admitted
+  `cdninstagram.com`, `strava-embeds.com`, and `evilwikiloc.example` lookalikes.
+- **Route shape:** a track must be a route-shaped path (id-bearing slug / `tour/<id>` /
+  `routes|activities|segments/<id>`), never a user/club/root/embed-twin.
+- **Social shape:** a real profile handle only — reject roots, share/story/search/pixel/
+  CDN/media paths, numeric page-ids, and CMS/vendor footers (`wix`, `wordpress`…).
+- **Event identity (Codex B1):** links are read from the race's OWN page; on a shared-
+  organizer domain (one registrable domain hosting ≥2 race seeds, e.g. `naturetime.es`)
+  only the seed page is trusted, because a followed subpage may be a *sibling race*.
+  Any route claimed by ≥2 distinct events is dropped from all (unprovable identity).
+- **Provenance:** every link carries `source_page` (the exact page it was on) +
+  `page_hash` + `fetched_at`. The page hash binds BOTH text and the captured links, so
+  a changed href flips the freshness anchor (Codex should-fix 5).
+- **Event-level, never per-distance.** Corpus id = `slug(town)--slug(race)--<url-hash>`
+  so two same-named events in one town don't collide (Codex should-fix 5).
 
-**Why the four P0s don't bite here (the honesty argument, not a bypass)**
-- *r3-P0-1 semantic proof:* a `track_link` is validated DETERMINISTICALLY — the URL
-  parses, its host is on a small allowlist (wikiloc.com / komoot.* / strava.com /
-  instagram.com / facebook.com), and it occurs verbatim in a corpus page. No LLM
-  field-labelling to be wrong about. Character is honesty-labelled `our_read`, never
-  presented as an organizer fact.
-- *r3-P0-2 formal schema:* Slice 1 has a small, fully-typed shape (LinkFact +
-  CharacterClaim), separate from operational facts, `claim_strength` present.
-- *r3-P0-3 freshness:* links + character are `[stable]` (low staleness); each carries
-  `page_hash` + `fetched_at` so the later monitor can refresh them, but a stale link is
-  low-blast — no live suppression needed in Slice 1.
-- *r3-P0-4 identity:* attaches to the existing `(race_url, town)` event identity; a
-  mis-attach on a rename costs a link, not a start time. Durable series/edition/variant
-  IDs are built with the logistics slice, where they matter.
+**Explicitly NOT in Slice 1:** start_time, price, cutoff, sold_out, confirmed,
+registration_*, mandatory_equipment, feec_licence, aid_stations — the logistics slice +
+the full machine contract above (Codex round-3's four P0s apply THERE).
 
-**Slice 1 honesty rules:** a link publishes only if it parses + is host-allowlisted +
-occurs in a corpus page (else omitted, never fabricated). Character never asserts an
-organizer fact. Every link carries its `source_url` + `page_hash` + `fetched_at`.
+## CHARACTER slice — the grounding gate it must pass (from the Codex B2 finding)
+
+Character generation returns when it can meet ALL of these; until then no generated
+character ships:
+1. **Evidence REQUIRED per published field** — no evidence, no publish (drop the
+   269-field evidence-free tail entirely).
+2. **Evidence verified IN CONTEXT, not by substring** — the quote must support the
+   field's actual claim (the "montseny" ⊂ "CA BAIX MONTSENY" match must fail);
+   word-boundaried, semantically checked.
+3. **Provenance points at the ACTUAL page** the quote is on, not the seed page
+   (Codex should-fix 4) — the cited `page_hash` must verify the cited quote.
+4. **Operational content deterministically STRIPPED from character values** — dates,
+   times, cutoffs, prices, capacity, registration rules, equipment: none of these may
+   ride in as "character," even edition-stamped.
+5. **A human-verified answer key + whole-bundle regression tests** (the Amer/Vilarnau/
+   Duextrem cases become fixtures) — model self-labelling is not a gate.
 
 ## Open (settle before the LOGISTICS-slice U3 build)
 - Exact event-relative TTL + `[stable]` re-confirm cadence → into `docs/rules.md`.
