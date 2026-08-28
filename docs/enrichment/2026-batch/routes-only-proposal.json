@@ -1,0 +1,239 @@
+{
+  "proposal": "routes-only; identity = distinctive (≥5-char, non-generic) name/town token in slug; no prior-edition year",
+  "generated_from": "docs/enrichment/2026-batch/link-candidates.json",
+  "races": [
+    {
+      "id": "alcanar--pujada-al-montsia--d4dbf258",
+      "town": "Alcanar",
+      "race_name": "Pujada al Montsià",
+      "source_url": "https://www.pujadamontsia.cat/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://www.wikiloc.com/running-trails/absoluta-pujada-al-montsia-2026-276429776",
+          "source_page": "https://www.pujadamontsia.cat/recorreguts/cursa-absoluta/",
+          "page_hash": "aec6ec1923a0a0f317118b497e817b63787914512536da60bc6d12cff6ebbdb8"
+        }
+      ]
+    },
+    {
+      "id": "bigues-i-riells-del-fai--rural-trail--621982e1",
+      "town": "Bigues i Riells del Fai",
+      "race_name": "Rural Trail",
+      "source_url": "https://ruraltrail.com/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://ca.wikiloc.com/rutes-cursa-de-muntanya/rural-trail-2026-la-llarga-272144282",
+          "source_page": "https://ruraltrail.com/",
+          "page_hash": "f73cfb4b6540f18f2e5ac7ddd680c23dbfbcd0fb1f2bd2acb18050512402972d"
+        },
+        {
+          "url": "https://ca.wikiloc.com/rutes-cursa-de-muntanya/rural-trail-2026-la-del-mig-272144173",
+          "source_page": "https://ruraltrail.com/",
+          "page_hash": "f73cfb4b6540f18f2e5ac7ddd680c23dbfbcd0fb1f2bd2acb18050512402972d"
+        },
+        {
+          "url": "https://ca.wikiloc.com/rutes-cursa-de-muntanya/rural-trail-2026-la-curta-272143776",
+          "source_page": "https://ruraltrail.com/",
+          "page_hash": "f73cfb4b6540f18f2e5ac7ddd680c23dbfbcd0fb1f2bd2acb18050512402972d"
+        }
+      ]
+    },
+    {
+      "id": "colldejou--cursa-de-nadal-a-colldejou--fb962102",
+      "town": "Colldejou",
+      "race_name": "Cursa de Nadal a Colldejou",
+      "source_url": "https://www.naturetime.es/ca/cursa-de-nadal/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/21k-trail-colldejou-cursa-de-nadal-v3-154590713",
+          "source_page": "https://www.naturetime.es/ca/cursa-de-nadal/",
+          "page_hash": "96f70690546ead989ebfe05e380f3c95fb985203bf0532f86c07a0123b58abeb"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/12k-trail-colldejou-cursa-de-nadal-v3-154591103",
+          "source_page": "https://www.naturetime.es/ca/cursa-de-nadal/",
+          "page_hash": "96f70690546ead989ebfe05e380f3c95fb985203bf0532f86c07a0123b58abeb"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-senderismo/5k-trail-colldejou-cursa-de-nadal-v3-154591561",
+          "source_page": "https://www.naturetime.es/ca/cursa-de-nadal/",
+          "page_hash": "96f70690546ead989ebfe05e380f3c95fb985203bf0532f86c07a0123b58abeb"
+        }
+      ]
+    },
+    {
+      "id": "folgueroles--la-folguerolenca--ef96c586",
+      "town": "Folgueroles",
+      "race_name": "La Folguerolenca",
+      "source_url": "https://lafolguerolenca.wixsite.com/lafolguerolenca",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera/la-folguerolenca-23-cursa-de-sant-esteve-folgueroles-154993569",
+          "source_page": "https://lafolguerolenca.wixsite.com/lafolguerolenca",
+          "page_hash": "abbaeddef0ddbbf66c77055e074955221df25e0dc7e9d1593bdccb414b0aa1a2"
+        }
+      ]
+    },
+    {
+      "id": "l-albiol--trail-l-albiol--23c4276d",
+      "town": "L'Albiol",
+      "race_name": "Trail l'Albiol",
+      "source_url": "https://www.naturetime.es/ca/trail-albiol-3/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/12km-primavera-trail-lalbiol-127839967",
+          "source_page": "https://www.naturetime.es/ca/trail-albiol-3/",
+          "page_hash": "d84ba9ca25fdc0036253b41be57be29c34c84faba428f801ec1fadd15205ebff"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-a-pie/6k-start-trail-primavera-trail-lalbiol-127840191",
+          "source_page": "https://www.naturetime.es/ca/trail-albiol-3/",
+          "page_hash": "d84ba9ca25fdc0036253b41be57be29c34c84faba428f801ec1fadd15205ebff"
+        }
+      ]
+    },
+    {
+      "id": "la-guingueta-d-aneu--bocafoscant-night-trail--0e19e478",
+      "town": "La Guingueta d'Àneu",
+      "race_name": "Bocafoscant Night Trail",
+      "source_url": "https://bocafoscant.cat/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://ca.wikiloc.com/rutes-senderisme/panta-de-la-torrassa-mare-de-deu-dagost-y-aguait-de-la-llobatera-desde-guingueta-266728239",
+          "source_page": "https://bocafoscant.cat/",
+          "page_hash": "98469837749b117b44a553ffa8b196db0bec0b8e73a9f4025bc32c57d43132e8"
+        },
+        {
+          "url": "https://www.wikiloc.com/hiking-trails/bocafoscant-night-trail-179017981",
+          "source_page": "https://bocafoscant.cat/",
+          "page_hash": "98469837749b117b44a553ffa8b196db0bec0b8e73a9f4025bc32c57d43132e8"
+        }
+      ]
+    },
+    {
+      "id": "malgrat-de-mar--cursa-del-miner-de-ferro--c0878005",
+      "town": "Malgrat de Mar",
+      "race_name": "Cursa del Miner de Ferro",
+      "source_url": "https://gem-malgrat.cat/esdeveniments/el-miner-de-ferro/miner-de-ferro-2026/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://ca.wikiloc.com/rutes-cursa-de-muntanya/recorregut-15a-cursa-miner-de-ferro-2026-track-oficial-278238035",
+          "source_page": "https://www.gem-malgrat.cat/cursa-del-miner-de-ferro/",
+          "page_hash": "9e3aa9fecf153efb47f975edcdce5f34071785635573cbb718202efbedcdb2f9"
+        },
+        {
+          "url": "https://ca.wikiloc.com/rutes-senderisme/recorregut-15a-marxa-miner-de-ferro-2026-track-oficial-278237741",
+          "source_page": "https://www.gem-malgrat.cat/cursa-del-miner-de-ferro/",
+          "page_hash": "9e3aa9fecf153efb47f975edcdce5f34071785635573cbb718202efbedcdb2f9"
+        }
+      ]
+    },
+    {
+      "id": "marganell--cursa-matonera--94c833df",
+      "town": "Marganell",
+      "race_name": "Cursa Matonera",
+      "source_url": "https://www.marganell.cat/cursa-matonera",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://ca.wikiloc.com/rutes-senderisme/cursa-matonera-caminada-familiar-142306004",
+          "source_page": "https://www.marganell.cat/cursa-matonera",
+          "page_hash": "95993e844140184e2febd500d10328e2f9c95273a8d36f3ca2a5f836952e98fe"
+        }
+      ]
+    },
+    {
+      "id": "pavia--cursa-del-laberint--1d6985da",
+      "town": "Pàvia",
+      "race_name": "Cursa del Laberint",
+      "source_url": "https://lanostramel.com/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://www.wikiloc.com/trail-running-trails/la-cursa-del-laberint-279571812",
+          "source_page": "https://lanostramel.com/la-cursa-del-laberint/",
+          "page_hash": "46e466aca5f90d79aac84e3a3dadf1d2dd92147df42e370b2e96bf08edcb1eb1"
+        }
+      ]
+    },
+    {
+      "id": "ribera-de-cardos--marato-valls-de-cardos--f05580e0",
+      "town": "Ribera de Cardós",
+      "race_name": "Marató Valls de Cardós",
+      "source_url": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/marato-valls-de-cardos-2026-277779072",
+          "source_page": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+          "page_hash": "f3f388897813f1026a2e8178d5035a4ab440659fb9b257bd8e7d39ef0e511950"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/mitja-marato-valls-de-cardos-2026-277779497",
+          "source_page": "https://xtsportevents.com/reglament-ca-marato-valls-de-cardos/",
+          "page_hash": "f3f388897813f1026a2e8178d5035a4ab440659fb9b257bd8e7d39ef0e511950"
+        }
+      ]
+    },
+    {
+      "id": "sidamon--cursa-tossal-de-les-tenalles--99be0011",
+      "town": "Sidamon",
+      "race_name": "Cursa Tossal de les Tenalles",
+      "source_url": "https://www.cursatossaldelestenalles.cat/",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://ca.wikiloc.com/rutes-correr/cursa-5km-el-tossal-de-les-tenalles-sidamon-180934169",
+          "source_page": "https://www.cursatossaldelestenalles.cat/informaci%C3%B3/circuits",
+          "page_hash": "098d6c8bb676b3322e548564aed93c23d3477f6bec23303e52503d712cac6d65"
+        },
+        {
+          "url": "https://ca.wikiloc.com/rutes-correr/cursa-10km-tossal-de-les-tenalles-sidamon-180934651",
+          "source_page": "https://www.cursatossaldelestenalles.cat/informaci%C3%B3/circuits",
+          "page_hash": "098d6c8bb676b3322e548564aed93c23d3477f6bec23303e52503d712cac6d65"
+        },
+        {
+          "url": "https://ca.wikiloc.com/rutes-correr/cursa-infantil-tossal-de-les-tenalles-sidamon-180949514",
+          "source_page": "https://www.cursatossaldelestenalles.cat/informaci%C3%B3/circuits",
+          "page_hash": "098d6c8bb676b3322e548564aed93c23d3477f6bec23303e52503d712cac6d65"
+        }
+      ]
+    },
+    {
+      "id": "vielha--cursa-15-pobles--3cf2f44b",
+      "town": "Vielha",
+      "race_name": "Cursa 15 pobles",
+      "source_url": "https://emaransportsfoundation.org/home/eventos/aran_per_esport/#",
+      "fetched_at": "2026-08-27T07:12:11.337Z",
+      "tracks": [
+        {
+          "url": "https://es.wikiloc.com/rutas-senderismo/corsa-e-caminada-15-pobles-21km-219707316",
+          "source_page": "https://emaransportsfoundation.org/wp-content/uploads/2026/05/REGLAMENTO_VERANO_26.pdf",
+          "page_hash": "7a12519c6f2a2ba4eb358fb6601973492d2d8618787ba22785a3fced14213b0c"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-senderismo/corsa-e-caminada-15-pobles-11km-219707786",
+          "source_page": "https://emaransportsfoundation.org/wp-content/uploads/2026/05/REGLAMENTO_VERANO_26.pdf",
+          "page_hash": "7a12519c6f2a2ba4eb358fb6601973492d2d8618787ba22785a3fced14213b0c"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-senderismo/corsa-infantil-15-pobles-5-km-219707862",
+          "source_page": "https://emaransportsfoundation.org/wp-content/uploads/2026/05/REGLAMENTO_VERANO_26.pdf",
+          "page_hash": "7a12519c6f2a2ba4eb358fb6601973492d2d8618787ba22785a3fced14213b0c"
+        },
+        {
+          "url": "https://es.wikiloc.com/rutas-senderismo/caminada-15-pobles-15km-219707640",
+          "source_page": "https://emaransportsfoundation.org/wp-content/uploads/2026/05/REGLAMENTO_VERANO_26.pdf",
+          "page_hash": "7a12519c6f2a2ba4eb358fb6601973492d2d8618787ba22785a3fced14213b0c"
+        }
+      ]
+    }
+  ]
+}

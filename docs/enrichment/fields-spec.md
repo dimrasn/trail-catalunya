@@ -154,6 +154,14 @@ reusable groundwork; the closeout is `outputs/2026-08-26_enrichment-links-closeo
   collaborator/partial-collision/2025/pre-2015 cases the gate must reject. A test that
   re-runs the publisher's own predicate certifies its own bugs (Codex round-3 #3).
 
+**Direction (Dima, 2026-08-26): these passes want a dedicated service, not per-slice
+scripts.** Link-identity, character-grounding, edition-detection and freshness are all
+*algorithmic validation passes* over crawled evidence — the same shape recurring per
+slice. The long-term home is a separate "enrichment pass-runner" (a small service/
+microservice) that takes candidates + evidence and emits approved/rejected with reasons,
+rather than re-implementing the gate inside each extractor. The classifier + tenancy +
+dedup + identity rules built here are the first, reusable passes for it.
+
 **Reusable groundwork kept on the branch (sound, not shelved):**
 - The durable content-addressed corpus (`_corpus/`, url-hashed ids, links bound into the
   page hash) and the fixed crawl (`scripts/enrich-crawl.ts`).
