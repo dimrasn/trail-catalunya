@@ -1,5 +1,14 @@
 {
-  "proposal": "routes-only; identity = distinctive (≥5-char, non-generic) name/town token in slug; no prior-edition year",
+  "publication": "routes-only route maps (socials shelved)",
+  "identity_rule": "distinctive (≥5-char, non-generic) name/town token in slug; no prior-edition year",
+  "reviewed_by": "Codex 2026-08-27",
+  "withheld": {
+    "154590713": "Colldejou route explicitly labelled 2025 (edition year in the route title, not the slug)",
+    "154591103": "Colldejou route explicitly labelled 2025",
+    "154591561": "Colldejou route explicitly labelled 2025",
+    "154993569": "Folguerolenca route with explicit 2023 evidence",
+    "266728239": "Bocafoscant: matches only the town token `guingueta`; a hike near the town, not the race course"
+  },
   "generated_from": "docs/enrichment/2026-batch/link-candidates.json",
   "races": [
     {
@@ -41,44 +50,6 @@
       ]
     },
     {
-      "id": "colldejou--cursa-de-nadal-a-colldejou--fb962102",
-      "town": "Colldejou",
-      "race_name": "Cursa de Nadal a Colldejou",
-      "source_url": "https://www.naturetime.es/ca/cursa-de-nadal/",
-      "fetched_at": "2026-08-27T07:12:11.337Z",
-      "tracks": [
-        {
-          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/21k-trail-colldejou-cursa-de-nadal-v3-154590713",
-          "source_page": "https://www.naturetime.es/ca/cursa-de-nadal/",
-          "page_hash": "96f70690546ead989ebfe05e380f3c95fb985203bf0532f86c07a0123b58abeb"
-        },
-        {
-          "url": "https://es.wikiloc.com/rutas-carrera-por-montana/12k-trail-colldejou-cursa-de-nadal-v3-154591103",
-          "source_page": "https://www.naturetime.es/ca/cursa-de-nadal/",
-          "page_hash": "96f70690546ead989ebfe05e380f3c95fb985203bf0532f86c07a0123b58abeb"
-        },
-        {
-          "url": "https://es.wikiloc.com/rutas-senderismo/5k-trail-colldejou-cursa-de-nadal-v3-154591561",
-          "source_page": "https://www.naturetime.es/ca/cursa-de-nadal/",
-          "page_hash": "96f70690546ead989ebfe05e380f3c95fb985203bf0532f86c07a0123b58abeb"
-        }
-      ]
-    },
-    {
-      "id": "folgueroles--la-folguerolenca--ef96c586",
-      "town": "Folgueroles",
-      "race_name": "La Folguerolenca",
-      "source_url": "https://lafolguerolenca.wixsite.com/lafolguerolenca",
-      "fetched_at": "2026-08-27T07:12:11.337Z",
-      "tracks": [
-        {
-          "url": "https://es.wikiloc.com/rutas-carrera/la-folguerolenca-23-cursa-de-sant-esteve-folgueroles-154993569",
-          "source_page": "https://lafolguerolenca.wixsite.com/lafolguerolenca",
-          "page_hash": "abbaeddef0ddbbf66c77055e074955221df25e0dc7e9d1593bdccb414b0aa1a2"
-        }
-      ]
-    },
-    {
       "id": "l-albiol--trail-l-albiol--23c4276d",
       "town": "L'Albiol",
       "race_name": "Trail l'Albiol",
@@ -104,11 +75,6 @@
       "source_url": "https://bocafoscant.cat/",
       "fetched_at": "2026-08-27T07:12:11.337Z",
       "tracks": [
-        {
-          "url": "https://ca.wikiloc.com/rutes-senderisme/panta-de-la-torrassa-mare-de-deu-dagost-y-aguait-de-la-llobatera-desde-guingueta-266728239",
-          "source_page": "https://bocafoscant.cat/",
-          "page_hash": "98469837749b117b44a553ffa8b196db0bec0b8e73a9f4025bc32c57d43132e8"
-        },
         {
           "url": "https://www.wikiloc.com/hiking-trails/bocafoscant-night-trail-179017981",
           "source_page": "https://bocafoscant.cat/",

@@ -422,6 +422,26 @@ export default async function RacePage({ params }) {
         </>
       )}
 
+      {/* ROUTE MAPS — reviewed (Codex-approved), event-level; several = the race's
+          different distances. A route map, not a course guarantee. */}
+      {race.routes?.length > 0 && (
+        <>
+          <div style={kicker}>Route map{race.routes.length > 1 ? 's' : ''}</div>
+          <div style={{ fontSize: '11.5px', color: 'var(--fdr-ink-faint)', marginBottom: '8px' }}>From the official page — confirm the exact course on the site.</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+            {race.routes.map((url, i) => {
+              const host = /wikiloc/i.test(url) ? 'Wikiloc' : /komoot/i.test(url) ? 'Komoot' : /strava/i.test(url) ? 'Strava' : 'Route'
+              return (
+                <a key={url} href={url} target="_blank" rel="noopener noreferrer"
+                  style={{ display: 'inline-block', background: 'var(--fdr-surface)', border: '1px solid var(--fdr-border-strong)', color: 'var(--fdr-ink)', borderRadius: 'var(--fdr-radius-md)', padding: '8px 14px', fontSize: '13px', fontWeight: 600, textDecoration: 'none' }}>
+                  ↝ Route{race.routes.length > 1 ? ` ${i + 1}` : ''} · {host}
+                </a>
+              )
+            })}
+          </div>
+        </>
+      )}
+
       {/* GETTING THERE */}
       {race.lat != null && race.lng != null && (
         <>

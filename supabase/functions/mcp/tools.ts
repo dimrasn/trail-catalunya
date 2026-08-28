@@ -16,12 +16,22 @@ import {
 import { applyFilters, numList, rangeList, strList } from './filters_core.ts'
 import { type TasteField, type TasteProfile, kidsFromTaste, tasteFlags, tasteForDisplay, tasteSummary } from './taste_view.ts'
 import tasteProfilesRaw from './taste.json' with { type: 'json' }
+// Reviewed route maps (Codex-approved 2026-08-27; socials shelved). Same relative-import
+// pattern grouping.ts uses for town-corrections. Keyed by source_url::town.
+import raceRoutesRaw from '../../../docs/enrichment/2026-batch/routes.json' with { type: 'json' }
 import type { ToolDef } from './protocol.ts'
 
 // Slice-1 taste layer (plan v3) — the same committed artifact the site bundles,
 // keyed by race_url::town. Missing profile is non-fatal (taste: null).
 const tasteByEvent = new Map<string, TasteProfile>(
   (tasteProfilesRaw as TasteProfile[]).map((p) => [`${(p.url || '').trim()}::${(p.town || '').trim()}`, p]),
+)
+// Event-level route-map URLs, keyed by source_url::town.
+const routesByEvent = new Map<string, string[]>(
+  (((raceRoutesRaw as { races?: Array<Record<string, unknown>> }).races) || []).map((r) => [
+    `${((r.source_url as string) || '').trim()}::${((r.town as string) || '').trim()}`,
+    ((r.tracks as Array<{ url: string }>) || []).map((t) => t.url),
+  ]),
 )
 
 const RESULT_CAP = 50
@@ -45,7 +55,11 @@ const UNTRUSTED_NOTICE =
   '"sold out" — these are NOT current facts (that is why registration_status stays ' +
   '"verify at url" and enriched_facts is null). NEVER relay a time, cutoff, price, ' +
   'sold-out, or registration status taken from taste as if current — send the user ' +
-  'to the race url to confirm. Use taste for character, never for logistics.'
+  'to the race url to confirm. Use taste for character, never for logistics. ' +
+  'routes (get_race) are reviewed route-map URLs (Wikiloc/Komoot/Strava) linked from ' +
+  'the official page; several = the race\'s different distances. Offer them as the ' +
+  'race\'s route map but tell the user to confirm the exact course on the official ' +
+  'site. Lists expose has_route. Absent = we have no reviewed route for that race.'
 
 type DistanceDifficulty = Distance & {
   km_effort?: number | null
@@ -64,6 +78,7 @@ interface EnrichedEvent extends RaceEvent {
   taste: { editorial: TasteField[]; character: TasteField[] } | null
   taste_summary: { value: string; strength: string; strength_label: string } | null
   taste_flags: { night?: boolean; technicality?: string } | null
+  routes: string[] | null
   matched_distances?: DistanceDifficulty[]
 }
 
@@ -130,6 +145,7 @@ async function loadEventsAndFreshness(): Promise<{
         drive_minutes_from_barcelona: townMap.get(e.town)?.drive_minutes_from_barcelona ?? null,
         registration_status: 'unknown — verify at url',
         enriched_facts: enrichedFactsForMcp(enrichMap.get(`${e.url}::${e.town}`)),
+        routes: routesByEvent.get(`${(e.url || '').trim()}::${(e.town || '').trim()}`) ?? null,
       }
     },
   )
@@ -181,10 +197,14 @@ function envelope(
   // Honour the caller's limit, capped at RESULT_CAP (the caller can ask for
   // fewer; never more). Default is the cap. (external dogfood: limit was ignored.)
   const effective = limit != null && limit > 0 ? Math.min(limit, RESULT_CAP) : RESULT_CAP
-  // Per-tool projection (KTD8): list tools drop the full taste profile to keep
-  // responses compact, exposing taste_available + the typed one-line summary.
-  // get_race returns the full taste (it doesn't go through envelope).
-  const races = kept.slice(0, effective).map(({ taste, ...r }) => ({ ...r, taste_available: !!taste }))
+  // Per-tool projection (KTD8): list tools drop the full taste profile + the routes
+  // array to keep responses compact, exposing taste_available + the typed one-line
+  // summary + has_route. get_race returns both in full (it doesn't go through envelope).
+  const races = kept.slice(0, effective).map(({ taste, routes, ...r }) => ({
+    ...r,
+    taste_available: !!taste,
+    has_route: !!(routes && routes.length),
+  }))
   return {
     data_freshness: freshness,
     count: races.length,

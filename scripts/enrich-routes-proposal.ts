@@ -1,23 +1,38 @@
-// ROUTES-ONLY publication PROPOSAL (under Codex review, not wired to runtime).
-// Reads link-candidates.json and applies a tightened deterministic route-identity rule,
-// writing routes-only-proposal.json for review. Socials are EXCLUDED entirely (the
-// town-named-race ↔ municipality collision is unsolvable from strings — shelved).
+// ROUTES-ONLY route-map publication — the REVIEWED slice (runtime imports this).
+// Reads link-candidates.json, applies a tightened deterministic route-identity rule,
+// then subtracts the routes an outside reviewer (Codex, 2026-08-27) withheld — i.e. this
+// is the candidate → approval-ledger → publish flow, with Codex as the one-time reviewer.
+// Socials are EXCLUDED entirely (town-named-race ↔ municipality collision, shelved).
 //
-// Route identity rule (auto, no human):
-//   1. The route's own slug contains a DISTINCTIVE token of this race's name or town —
-//      ≥5 chars and NOT generic trail-vocabulary or a generic geographic word (sant,
-//      serra, pont…). This is the identity proof; it kills the round-3 `sant` collision.
-//   2. No prior-edition year: after stripping the trailing numeric route id, the slug
-//      has no 19xx/20xx before 2026 (drops 2025 routes and `aristot2007`).
-//   3. (Already applied upstream in candidates: host-exact allowlist, route shape,
-//      seed-page/tenancy, cross-event dedup.)
-// Framing if shipped: "Route map (from the official page) — confirm the exact course on
-// the site." Low-blast; the residual risk is a sibling-distance route, not a wrong race.
+// Route identity rule (auto):
+//   1. slug contains a DISTINCTIVE (≥5-char, non-generic) token of the race name/town.
+//   2. no prior-edition year (strip the route id, then no 19xx/20xx < 2026).
+//   3. (upstream in candidates: host-exact allowlist, route shape, seed-page/tenancy,
+//      cross-event dedup.)
+// Reviewer ledger (WITHHELD): the rule is URL-only, so it cannot see an edition year that
+// lives in the route TITLE (not the slug) or a weak town-token match. Codex read all 25
+// and withheld 5 for those reasons; recorded below by route id.
+//
+// Framing shipped: "Route map (from the official page) — confirm the exact course on the
+// site." Low-blast; residual risk is a sibling-distance route, not a wrong race.
 //
 // Run: deno run --allow-read --allow-write scripts/enrich-routes-proposal.ts
 
 const CANDIDATES = 'docs/enrichment/2026-batch/link-candidates.json'
-const OUT = 'docs/enrichment/2026-batch/routes-only-proposal.json'
+const OUT = 'docs/enrichment/2026-batch/routes.json'
+
+// Reviewer ledger — Wikiloc route ids withheld by Codex (2026-08-27) with reason.
+// (See outputs/2026-08-26_codex-enrichment-slice1-review-findings_v1.md, round-3 routes.)
+const WITHHELD: Record<string, string> = {
+  '154590713': 'Colldejou route explicitly labelled 2025 (edition year in the route title, not the slug)',
+  '154591103': 'Colldejou route explicitly labelled 2025',
+  '154591561': 'Colldejou route explicitly labelled 2025',
+  '154993569': 'Folguerolenca route with explicit 2023 evidence',
+  '266728239': 'Bocafoscant: matches only the town token `guingueta`; a hike near the town, not the race course',
+}
+function routeId(url: string): string {
+  return (url.match(/(\d{5,})(?:\D*)$/)?.[1]) ?? ''
+}
 
 // Generic trail vocabulary + generic geographic/common words: a match on these is NOT
 // distinctive (many races share them; `sant` matched an unrelated route in round 3).
@@ -59,25 +74,27 @@ type Cand = {
 const cands: Cand[] = JSON.parse(await Deno.readTextFile(CANDIDATES)).races
 
 const out: unknown[] = []
-let published = 0, rejected = 0
-const rejects: string[] = []
+let published = 0, ruleRejected = 0, reviewerWithheld = 0
 for (const r of cands) {
   const tokens = distinctiveTokens(r)
   const tracks = r.tracks.filter((t) => {
     const s = slugText(t.url)
-    const ok = tokens.length > 0 && namesRace(s, tokens) && !isPriorEdition(s)
-    ok ? published++ : (rejected++, rejects.push(`${r.town}: ${s}`))
-    return ok
-  })
+    if (!(tokens.length > 0 && namesRace(s, tokens) && !isPriorEdition(s))) { ruleRejected++; return false }
+    if (WITHHELD[routeId(t.url)]) { reviewerWithheld++; return false } // reviewer ledger
+    published++
+    return true
+  }).map((t) => ({ url: t.url, source_page: t.source_page, page_hash: t.page_hash }))
   if (tracks.length) {
     out.push({ id: r.id, town: r.town, race_name: r.race_name, source_url: r.source_url, fetched_at: r.fetched_at, tracks })
   }
 }
 
 await Deno.writeTextFile(OUT, JSON.stringify({
-  proposal: 'routes-only; identity = distinctive (≥5-char, non-generic) name/town token in slug; no prior-edition year',
+  publication: 'routes-only route maps (socials shelved)',
+  identity_rule: 'distinctive (≥5-char, non-generic) name/town token in slug; no prior-edition year',
+  reviewed_by: 'Codex 2026-08-27',
+  withheld: WITHHELD,
   generated_from: CANDIDATES,
   races: out,
 }, null, 2))
-console.log(`routes-only proposal: ${out.length} races, ${published} routes published, ${rejected} candidate routes rejected → ${OUT}`)
-console.log('sample rejects:', rejects.slice(0, 8))
+console.log(`routes.json (reviewed): ${out.length} races, ${published} routes published — ${ruleRejected} rule-rejected, ${reviewerWithheld} reviewer-withheld → ${OUT}`)

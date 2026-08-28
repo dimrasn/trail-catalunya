@@ -120,25 +120,31 @@ The MCP checks state per request; the site during ISR.
 - Eval key (human-verified) tests the exact scripted harness for zero false-positive
   actionable facts.
 
-## Slice 1 — SHELVED (character split out, then links shelved, 2026-08-26)
+## Slice 1 — ROUTE MAPS ONLY, reviewed (character deferred, socials shelved, 2026-08-27)
 
-Decided 2026-08-25, then reworked and finally SHELVED 2026-08-26 across three Codex
-reviews. Nothing from this slice ships to production. What remains on the branch is
-reusable groundwork; the closeout is `outputs/2026-08-26_enrichment-links-closeout_v1.md`.
+Decided 2026-08-25, reworked across three Codex reviews, and narrowed to its
+honestly-shippable core: **reviewed route maps only.** Closeout of the broader attempt:
+`outputs/2026-08-26_enrichment-links-closeout_v1.md`.
 
 - **CHARACTER — deferred (Codex round 1).** The generated character published
   confidently-wrong facts (a fabricated "Montseny natural park" that passed an 8-char
   substring evidence check because "montseny" was inside a *participant's club name*;
   269/416 fields with no evidence; stale prior-edition operational lines). Deferred to
   its own slice with the grounding gate below.
-- **LINKS — shelved (Codex rounds 2–3).** URL discovery is not proof that a link
-  BELONGS to a race. Every deterministic no-review rule leaked a confidently-wrong link:
-  host/tenancy/dedup let a sibling race's route through; then a slug/handle name-match
-  let through a *town-named race's municipality account* (`ajllavaneres`), sponsor/
-  collaborator handles that contain the town (`bonarea.santllorencsavall`), and
-  prior-edition routes. The root cause is structural: **name overlap ≠ relationship
-  identity, and it cannot be established from a flat URL + text corpus.** Owner decision
-  (declining a ~15-min human approval pass): shelve links rather than ship a leaky subset.
+- **SOCIALS — shelved (Codex rounds 2–3).** A social handle can't be tied to a race from
+  strings: a *town-named race collides with its municipality's account* (`ajllavaneres`),
+  sponsor/collaborator handles contain the town (`bonarea.santllorencsavall`). Name
+  overlap ≠ relationship identity, and a flat URL corpus can't establish it. Shelved.
+- **ROUTE MAPS — SHIP (reviewed).** A route whose slug names the race, on its own page,
+  no prior-edition year, not shared across events, is a defensible *route map* — framed
+  "confirm the exact course on the official site" (low-blast; residual risk is a
+  sibling-distance route, not a wrong race). The rule
+  (`scripts/enrich-routes-proposal.ts`) proposed 25; Codex reviewed all 25 and withheld 5
+  (three 2025-edition Colldejou routes + a 2023 Folguerolenca route whose years live in
+  the route TITLE not the slug, + a Bocafoscant route matching only the town token
+  `guingueta`). The remaining **20 routes / 10 races** publish to `routes.json`, which the
+  site + MCP import. This is the candidate → approval-ledger → publish flow, with Codex as
+  the one-time reviewer; the `WITHHELD` ledger is committed with reasons.
 
 **What a future links slice needs (the bar three rounds established):**
 - **Link-LOCAL evidence at crawl time** — each link's anchor text, image alt, `aria-label`,

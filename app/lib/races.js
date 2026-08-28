@@ -18,6 +18,10 @@ import { tasteForDisplay, tasteSummary, tasteFlags, kidsFromTaste } from './tast
 // Canonical taste artifact (plan v3, KTD1 — committed JSON bundled into the site
 // build; the MCP bundles the same file). Keyed by race_url::town.
 import tasteProfiles from '../../docs/enrichment/2026-batch/parsed/taste.json'
+// Reviewed route maps (Codex-approved 2026-08-27; socials shelved). Keyed by
+// source_url::town, attached event-level. A route map, not "the" course — the UI says
+// to confirm the exact course on the official site.
+import raceRoutes from '../../docs/enrichment/2026-batch/routes.json'
 // Town corrections applied at grouping so they survive the weekly scrape:
 // canonicalTown merges spelling variants of one town into one event; provinceFor
 // overrides a wrong scraped province. Mirror of supabase/functions/mcp/grouping.ts.
@@ -33,6 +37,13 @@ function provinceFor(rawTown, fallback) {
 
 const tasteByEvent = new Map(
   (tasteProfiles || []).map(p => [`${(p.url || '').trim()}::${(p.town || '').trim()}`, p]),
+)
+
+const routesByEvent = new Map(
+  ((raceRoutes && raceRoutes.races) || []).map(r => [
+    `${(r.source_url || '').trim()}::${(r.town || '').trim()}`,
+    (r.tracks || []).map(t => t.url),
+  ]),
 )
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -302,6 +313,12 @@ export async function getRaces() {
   }
   if (process.env.NODE_ENV !== 'production' || process.env.TASTE_JOIN_LOG) {
     console.log(`[taste] ${tasteJoins} of ${events.length} events joined a taste profile (${tasteByEvent.size} profiles available)`)
+  }
+
+  // Attach reviewed route maps (event-level; several = the different distances).
+  for (const ev of events) {
+    const routes = routesByEvent.get(`${(ev.url || '').trim()}::${(ev.town || '').trim()}`)
+    if (routes && routes.length) ev.routes = routes
   }
 
   // Attach enriched stable facts (Phase 2a) at the event grain (race_url, town).
