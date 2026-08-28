@@ -39,7 +39,37 @@ all differ from your training data. Read the relevant guide in
    drive time is null until the "New town" runbook (README) is run. The
    site→towns migration is deliberately deferred (enrichment plan, Scope Boundaries).
 
-## Deployment state (last verified 2026-08-25)
+## Deployment state (last verified 2026-08-27)
+
+**Enrichment Slice 1 → shipped as REVIEWED ROUTE MAPS ONLY (site + MCP LIVE & VERIFIED
+2026-08-27, origin/main `249c8e2`).** get_race returns `routes` (Wikiloc/Komoot/Strava
+route-map URLs, event-level); list tools expose `has_route`; the race page shows a "Route
+maps" section framed "confirm the exact course on the site." Verified live: MCP
+`get_race(cursa-15-pobles)` returns 4 route URLs, `has_route` true on the 10 route races;
+trailraces.cat/race/cursa-15-pobles renders all 4. **20 routes / 10 races**, built from a
+local crawl → `docs/enrichment/2026-batch/routes.json`. This is the surviving core of a
+3-round Codex honesty review; the rest was cut:
+- **Generated CHARACTER — deferred.** Published confidently-wrong facts (a fabricated
+  "Montseny natural park" that passed a substring evidence check; 269/416 fields no
+  evidence). Needs a real grounding gate — spec in `docs/enrichment/fields-spec.md`.
+- **SOCIAL links — shelved.** A social handle can't be tied to a race from strings (a
+  town-named race collides with its municipality's account, `ajllavaneres`).
+- **ROUTE identity** is auto-proven (slug names the race: distinctive ≥5-char non-generic
+  token, no prior-edition year, cross-event-deduped) THEN reviewed: Codex read all 25
+  proposed and withheld 5 (3× 2025-edition Colldejou, 1× 2023 Folguerolenca — years in the
+  route TITLE not the slug — and a Bocafoscant route matching only the town token). The
+  `WITHHELD` ledger (by route id, with reasons) is committed in
+  `scripts/enrich-routes-proposal.ts` — the candidate→approval-ledger→publish flow, Codex
+  the one-time reviewer. `routes.json` is the publication; `link-candidates.json` is the
+  internal high-recall record (imported by nothing). To refresh: re-crawl
+  (`scripts/enrich-crawl.ts`) → `enrich-extract-links.ts` (candidates) →
+  `enrich-routes-proposal.ts` (routes.json) — new/changed routes need re-review before they
+  publish. Reusable groundwork on `main`: durable content-addressed corpus
+  (`docs/enrichment/2026-batch/_corpus/`) + the classifier (host-exact allowlist, spoof/CDN
+  rejection, seed-page/tenancy, dedup), `scripts/enrich-extract-links_test.ts` (5 green).
+  Closeout of the broader attempt: `outputs/2026-08-26_enrichment-links-closeout_v1.md`.
+  DIRECTION (Dima): these algorithmic validation passes want a dedicated "pass-runner"
+  service, not per-slice scripts (fields-spec.md).
 
 **Ask-box intent logging (Step 3, U3) — FULLY LIVE & VERIFIED on prod 2026-08-25.**
 Migration `20260825120000_intent_log.sql` applied to prod (via Supabase MCP
