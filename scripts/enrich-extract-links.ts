@@ -1,25 +1,21 @@
-// Slice-1 LINK extraction — deterministic, no LLM (fields-spec.md "Slice 1").
-// Reads the durable corpus (docs/enrichment/2026-batch/_corpus/) and emits TWO files
-// (Codex round-2: separate discovery from publication — URL discovery is NOT proof of
-// identity):
-//   • link-candidates.json — every host-allowlisted link found on the race's page.
-//     High recall, INTERNAL, never imported by the site or MCP.
-//   • links.json — the PUBLICATION bundle: only links whose identity is PROVEN
-//     deterministically (no human review, no inference). Runtime imports only this.
+// Link CANDIDATE extraction — deterministic, no LLM. Reads the durable corpus
+// (docs/enrichment/2026-batch/_corpus/) and emits the host-allowlisted track/social
+// URLs found on each race's own page, with per-page provenance.
 //
-// The publication proof (auto-approval, Dima 2026-08-26 "auto-safe subset, no review"):
-// a link publishes ONLY if its own URL slug / social handle CONTAINS a distinctive
-// token of THIS race's name or town. That is positive proof the link names the event —
-// it kills the round-2 survivors (UTSM's `htmcd-vilaplana-prades`, Camí de Sirga's
-// other-race route, Linktree/sponsor socials) because they do not name their race.
-// Conservative by design: an embed/abbreviated/numeric slug that cannot be proven is a
-// candidate, not a publication. Routes carrying an explicit prior-edition year are
-// dropped too (no stale course as current).
+// LINKS ARE SHELVED (2026-08-26). This writes ONLY link-candidates.json, an INTERNAL
+// record — nothing in the site or MCP imports it. Publication was tried and pulled: a
+// string identity-proof (does the link's slug/handle name the race?) cannot prove a
+// link BELONGS to a race and leaked confidently-wrong links across 3 Codex rounds
+// (town-named races collide with their municipality's account; sponsor handles contain
+// the town; a followed route belongs to a sibling race). A future links slice must gate
+// on link-LOCAL evidence (anchor text + nearest heading; "under a Sponsors heading?")
+// or a human approval ledger. Closeout: outputs/2026-08-26_...-closeout_v1.md.
 //
-// Run: deno run --allow-read --allow-write scripts/enrich-extract-links.ts
+// The classifier (host-exact allowlist, route/social shape, spoof/CDN rejection) + the
+// cross-event route dedup + the seed-page/tenancy rule remain sound and are the reusable
+// groundwork. Run: deno run --allow-read --allow-write scripts/enrich-extract-links.ts
 
 const CORPUS = 'docs/enrichment/2026-batch/_corpus'
-const OUT = 'docs/enrichment/2026-batch/links.json' // publication bundle (runtime)
 const CANDIDATES = 'docs/enrichment/2026-batch/link-candidates.json' // internal, high-recall
 
 type Page = { url: string; hash: string; chars: number; text: string; links: string[] }
@@ -92,45 +88,6 @@ export function classifyLink(u: URL): 'track' | 'social' | null {
 // Prefer a clean Wikiloc route URL over its spatialArtifacts embed twin.
 function isUglyEmbed(u: string): boolean {
   return /spatialArtifacts\.do|embedv2?\.do|[?&]embed|\/embed\b/i.test(u)
-}
-
-// ---- Publication identity proof (Codex r2 auto-approval) ------------------
-
-// Generic trail-vocabulary + filler tokens that DON'T identify a specific race, so a
-// match on them is not proof of identity. The town + a distinctive race token are.
-const GENERIC_TOKENS = new Set([
-  'cursa', 'curses', 'trail', 'trails', 'marato', 'marató', 'vertical', 'cros', 'cross',
-  'milla', 'nocturna', 'nocturn', 'popular', 'muntanya', 'cami', 'camí', 'pujada', 'volta',
-  'ultra', 'mitja', 'sky', 'skyrace', 'race', 'running', 'run', 'trailrunning', 'caminada',
-  'marxa', 'travessa', 'duatlo', 'oficial', 'edicio', 'edició', 'senderisme', 'senderismo',
-  'rutes', 'rutas', 'correr', 'carrera', 'muntanya', 'serra', 'trailseries', 'series',
-  'de', 'del', 'dels', 'la', 'el', 'els', 'les', 'per', 'amb', 'i', 'a', 'als', 'una',
-])
-export const norm2 = (s: string) => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
-  .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
-// Distinctive tokens of a race — its town + any race-name word that isn't generic.
-export function raceTokens(race: { race_name: string; town: string }): string[] {
-  const out = new Set<string>()
-  for (const t of norm2(race.town).split(' ')) if (t.length >= 4) out.add(t) // town always distinctive
-  for (const t of norm2(race.race_name).split(' ')) if (t.length >= 4 && !GENERIC_TOKENS.has(t)) out.add(t)
-  return [...out]
-}
-// A URL slug (last path segment) or social handle, normalized for token search.
-export function slugText(url: string): string {
-  return norm2(url.split('?')[0].replace(/\/$/, '').split('/').pop() || '')
-}
-// Does the link's own slug/handle name THIS race? (identity proof)
-export function linkNamesRace(slugOrHandle: string, tokens: string[]): boolean {
-  const s = ` ${slugOrHandle} `
-  return tokens.some((t) => s.includes(` ${t} `) || s.includes(t)) // substring: `aristot2007` names `aristot`
-}
-// An explicit recent prior-edition year (2015–2024) in the slug — a stale course shown
-// as current. Strip the trailing numeric route id first (so its digits aren't read as a
-// year), and match even glued years (`short2024`); years <2015 are treated as name
-// tokens (e.g. `aristot2007`), not editions.
-export function isPriorEdition(slug: string): boolean {
-  const noId = slug.replace(/\s+\d{5,}\s*$/, '')
-  return /20(1[5-9]|2[0-4])/.test(noId)
 }
 
 // Stable key for a social account: platform + first path segment, lowercased.
@@ -273,36 +230,19 @@ if (import.meta.main) {
   }
 
   // ---- CANDIDATES (internal, high recall) — all host-allowlisted links post-gates.
+  // This is the ONLY output: links are SHELVED (2026-08-26). No publication bundle is
+  // written and nothing in the site or MCP imports this. A string identity-proof was
+  // tried and rejected (3 Codex rounds): URL/handle text overlap cannot prove a link
+  // BELONGS to a race — a town-named race collides with its municipality's account, a
+  // sponsor handle contains the town, a followed route belongs to a sibling race.
+  // A future links slice must gate on link-LOCAL evidence (anchor text + nearest
+  // heading, "under a Sponsors/Col·laboradors heading?") or a human approval ledger.
+  // See docs/enrichment/fields-spec.md and outputs/2026-08-26_...-closeout_v1.md.
   type Race = {
     id: string; town: string; race_name: string; source_url: string; fetched_at: string
     tracks: Track[]; socials: Social[]
   }
   const candidates = (out as Race[]).filter((r) => r.tracks.length || r.socials.length)
   await Deno.writeTextFile(CANDIDATES, JSON.stringify({ generated_from: CORPUS, races: candidates }, null, 2))
-
-  // ---- PUBLICATION (runtime) — only links whose slug/handle NAMES the race, proving
-  // identity deterministically (Codex r2). Routes carrying a prior-edition year drop.
-  let pubTrack = 0, pubSocial = 0, rejTrack = 0, rejSocial = 0
-  const published = candidates.map((r) => {
-    const tokens = raceTokens({ race_name: r.race_name, town: r.town })
-    const tracks = r.tracks.filter((t) => {
-      const slug = slugText(t.url)
-      const ok = linkNamesRace(slug, tokens) && !isPriorEdition(slug)
-      ok ? pubTrack++ : rejTrack++
-      return ok
-    })
-    const socials = r.socials.filter((s) => {
-      const ok = linkNamesRace(norm2(s.handle.split(':').pop() || ''), tokens)
-      ok ? pubSocial++ : rejSocial++
-      return ok
-    }).map((s) => ({ ...s, scope: 'race', relationship: 'named-in-handle' }))
-    return { ...r, tracks, socials }
-  }).filter((r) => r.tracks.length || r.socials.length)
-
-  const nTrack = published.filter((r) => r.tracks.length).length
-  const nSocial = published.filter((r) => r.socials.length).length
-  await Deno.writeTextFile(OUT, JSON.stringify({ generated_from: CANDIDATES, approval: 'auto: slug/handle names the race', races: published }, null, 2))
-  console.log(`candidates: ${candidates.length} races → ${CANDIDATES}`)
-  console.log(`PUBLISHED: ${published.length} races — ${nTrack} track, ${nSocial} social; identity-proven. ` +
-    `rejected ${rejTrack} track + ${rejSocial} social candidates (unproven); dropped ${droppedShared} cross-event → ${OUT}`)
+  console.log(`candidates: ${candidates.length} races (internal only — links shelved; ${droppedShared} cross-event route(s) dropped) → ${CANDIDATES}`)
 }

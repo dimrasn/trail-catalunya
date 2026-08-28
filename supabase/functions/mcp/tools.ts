@@ -16,33 +16,12 @@ import {
 import { applyFilters, numList, rangeList, strList } from './filters_core.ts'
 import { type TasteField, type TasteProfile, kidsFromTaste, tasteFlags, tasteForDisplay, tasteSummary } from './taste_view.ts'
 import tasteProfilesRaw from './taste.json' with { type: 'json' }
-// Extracted links (Slice-1), imported from the canonical artifact (single source of
-// truth — same relative-import pattern grouping.ts uses for town-corrections;
-// Supabase bundles it at deploy).
-import raceLinksRaw from '../../../docs/enrichment/2026-batch/links.json' with { type: 'json' }
 import type { ToolDef } from './protocol.ts'
 
 // Slice-1 taste layer (plan v3) — the same committed artifact the site bundles,
 // keyed by race_url::town. Missing profile is non-fatal (taste: null).
 const tasteByEvent = new Map<string, TasteProfile>(
   (tasteProfilesRaw as TasteProfile[]).map((p) => [`${(p.url || '').trim()}::${(p.town || '').trim()}`, p]),
-)
-
-// Event-level links keyed by source_url::town: route maps + social channels linked
-// from the official page. Never per-distance — a page links several routes.
-interface EventLinks {
-  tracks: { url: string }[]
-  socials: { url: string; handle: string; scope: string }[]
-}
-const linksByEvent = new Map<string, EventLinks>(
-  (((raceLinksRaw as { races?: Array<Record<string, unknown>> }).races) || []).map((r) => [
-    `${((r.source_url as string) || '').trim()}::${((r.town as string) || '').trim()}`,
-    {
-      tracks: ((r.tracks as Array<{ url: string }>) || []).map((t) => ({ url: t.url })),
-      socials: ((r.socials as Array<{ url: string; handle: string; scope: string }>) || [])
-        .map((s) => ({ url: s.url, handle: s.handle, scope: s.scope })),
-    },
-  ]),
 )
 
 const RESULT_CAP = 50
@@ -66,13 +45,7 @@ const UNTRUSTED_NOTICE =
   '"sold out" — these are NOT current facts (that is why registration_status stays ' +
   '"verify at url" and enriched_facts is null). NEVER relay a time, cutoff, price, ' +
   'sold-out, or registration status taken from taste as if current — send the user ' +
-  'to the race url to confirm. Use taste for character, never for logistics. ' +
-  'links (get_race) are PUBLISHED only when the link\'s own URL slug / social handle ' +
-  'NAMES this race (deterministic identity proof — unproven candidates are withheld, ' +
-  'not guessed). tracks are route maps (Wikiloc/Komoot/Strava); several = the event\'s ' +
-  'different distances, so treat them as the event\'s routes, not "the" course, and ' +
-  'still tell the user to confirm the exact course on the official site. socials are ' +
-  'the race\'s own channel (named in the handle). Lists expose has_track/has_social.'
+  'to the race url to confirm. Use taste for character, never for logistics.'
 
 type DistanceDifficulty = Distance & {
   km_effort?: number | null
@@ -91,7 +64,6 @@ interface EnrichedEvent extends RaceEvent {
   taste: { editorial: TasteField[]; character: TasteField[] } | null
   taste_summary: { value: string; strength: string; strength_label: string } | null
   taste_flags: { night?: boolean; technicality?: string } | null
-  links: EventLinks | null
   matched_distances?: DistanceDifficulty[]
 }
 
@@ -158,7 +130,6 @@ async function loadEventsAndFreshness(): Promise<{
         drive_minutes_from_barcelona: townMap.get(e.town)?.drive_minutes_from_barcelona ?? null,
         registration_status: 'unknown — verify at url',
         enriched_facts: enrichedFactsForMcp(enrichMap.get(`${e.url}::${e.town}`)),
-        links: linksByEvent.get(`${(e.url || '').trim()}::${(e.town || '').trim()}`) ?? null,
       }
     },
   )
@@ -210,16 +181,10 @@ function envelope(
   // Honour the caller's limit, capped at RESULT_CAP (the caller can ask for
   // fewer; never more). Default is the cap. (external dogfood: limit was ignored.)
   const effective = limit != null && limit > 0 ? Math.min(limit, RESULT_CAP) : RESULT_CAP
-  // Per-tool projection (KTD8): list tools drop the full taste profile + the links
-  // arrays to keep responses compact, exposing taste_available + the typed one-line
-  // summary + has_track/has_social booleans. get_race returns both in full (it does
-  // not go through envelope).
-  const races = kept.slice(0, effective).map(({ taste, links, ...r }) => ({
-    ...r,
-    taste_available: !!taste,
-    has_track: !!(links && links.tracks.length),
-    has_social: !!(links && links.socials.length),
-  }))
+  // Per-tool projection (KTD8): list tools drop the full taste profile to keep
+  // responses compact, exposing taste_available + the typed one-line summary.
+  // get_race returns the full taste (it doesn't go through envelope).
+  const races = kept.slice(0, effective).map(({ taste, ...r }) => ({ ...r, taste_available: !!taste }))
   return {
     data_freshness: freshness,
     count: races.length,

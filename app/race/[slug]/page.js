@@ -422,44 +422,6 @@ export default async function RacePage({ params }) {
         </>
       )}
 
-      {/* LINKS — route maps + social channels linked from the official page
-          (Slice 1). Event-level: several route maps = the different distances.
-          Socials are honest — scope "organizer" = a shared timing/host channel,
-          never asserted as the race's own account. */}
-      {race.links && (race.links.tracks?.length > 0 || race.links.socials?.length > 0) && (
-        <>
-          <div style={kicker}>Links</div>
-          <div style={{ fontSize: '11.5px', color: 'var(--fdr-ink-faint)', marginBottom: '8px' }}>Found on the official race page — verify on the site.</div>
-          {race.links.tracks?.length > 0 && (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: race.links.socials?.length ? '12px' : 0 }}>
-              {race.links.tracks.map((t, i) => {
-                const host = /wikiloc/i.test(t.url) ? 'Wikiloc' : /komoot/i.test(t.url) ? 'Komoot' : /strava/i.test(t.url) ? 'Strava' : 'Route'
-                return (
-                  <a key={t.url} href={t.url} target="_blank" rel="noopener noreferrer"
-                    style={{ display: 'inline-block', background: 'var(--fdr-surface)', border: '1px solid var(--fdr-border-strong)', color: 'var(--fdr-ink)', borderRadius: 'var(--fdr-radius-md)', padding: '8px 14px', fontSize: '13px', fontWeight: 600, textDecoration: 'none' }}>
-                    ↝ Route map{race.links.tracks.length > 1 ? ` ${i + 1}` : ''} · {host}
-                  </a>
-                )
-              })}
-            </div>
-          )}
-          {race.links.socials?.length > 0 && (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 14px', fontSize: '13px' }}>
-              {race.links.socials.map(s => {
-                const plat = s.handle?.startsWith('ig:') ? 'Instagram' : s.handle?.startsWith('fb:') ? 'Facebook' : 'Link'
-                const name = s.handle?.includes(':') ? s.handle.split(':')[1] : s.handle
-                return (
-                  <a key={s.url} href={s.url} target="_blank" rel="noopener noreferrer"
-                    style={{ color: 'var(--fdr-ink)', textDecoration: 'underline' }}>
-                    {plat}: {name}{s.scope === 'organizer' ? <span style={{ color: 'var(--fdr-ink-faint)' }}> (organizer)</span> : null}
-                  </a>
-                )
-              })}
-            </div>
-          )}
-        </>
-      )}
-
       {/* GETTING THERE */}
       {race.lat != null && race.lng != null && (
         <>

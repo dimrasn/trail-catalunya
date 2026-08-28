@@ -4,7 +4,7 @@
 // load-bearing piece. Run: deno test scripts/enrich-extract-links_test.ts
 import { assertEquals } from 'https://deno.land/std@0.224.0/assert/mod.ts'
 import { extractOutboundUrls } from '../supabase/functions/enrich-races/fetch.ts'
-import { classifyLink, isPriorEdition, linkNamesRace, norm2, raceTokens, slugText } from './enrich-extract-links.ts'
+import { classifyLink } from './enrich-extract-links.ts'
 
 Deno.test('tracks: real routes classify, profiles/roots/assets do not', () => {
   const track = [
@@ -66,32 +66,22 @@ Deno.test('spoof + CDN hosts are rejected (registrable-domain match, not substri
   assertEquals(classifyLink(new URL('https://m.facebook.com/agramuntesports')), 'social')
 })
 
-// Codex B3: the guarantee must hold over the WHOLE PUBLICATION bundle, not hand-picked
-// unit cases. Every published link must (a) re-classify, (b) NAME its race (the
-// identity proof — Codex r2), (c) not be a prior-edition route, and no route may be
-// claimed by ≥2 events (B1). links.json is the runtime bundle; a missing file FAILS.
-Deno.test('publication invariant: every published link names its race + re-classifies + no cross-event/old route', async () => {
-  const raw = await Deno.readTextFile('docs/enrichment/2026-batch/links.json') // must exist
-  const bundle: { races: Array<{ id: string; town: string; race_name: string; tracks: { url: string }[]; socials: { url: string; handle: string }[] }> } = JSON.parse(raw)
-  assertEquals(bundle.races.length > 0, true, 'publication bundle is empty')
-  const eventsByTrack = new Map<string, Set<string>>()
-  for (const r of bundle.races) {
-    const tokens = raceTokens(r)
-    for (const t of r.tracks) {
-      const slug = slugText(t.url)
-      assertEquals(classifyLink(new URL(t.url)), 'track', `track re-classify: ${t.url}`)
-      assertEquals(linkNamesRace(slug, tokens), true, `track does NOT name race ${r.id}: ${t.url}`)
-      assertEquals(isPriorEdition(slug), false, `track is a prior edition ${r.id}: ${t.url}`)
-      if (!eventsByTrack.has(t.url)) eventsByTrack.set(t.url, new Set())
-      eventsByTrack.get(t.url)!.add(r.id)
-    }
-    for (const s of r.socials) {
-      assertEquals(classifyLink(new URL(s.url)), 'social', `social re-classify: ${s.url}`)
-      assertEquals(linkNamesRace(norm2(s.handle.split(':').pop() || ''), tokens), true, `social does NOT name race ${r.id}: ${s.handle}`)
-    }
+// Links are SHELVED (2026-08-26): no runtime publication bundle exists, so there is no
+// publication invariant here. The candidate extractor's honesty-critical piece is the
+// CLASSIFIER (host-exact allowlist + spoof/CDN rejection), covered above. If a future
+// slice reintroduces publication, its gate must be validated against an INDEPENDENT
+// hand-verified rejection corpus (municipality/sponsor/collaborator/prior-year), not by
+// re-running the publisher's own predicate — a circular test certifies its own bugs.
+Deno.test('link-candidates.json (when built) contains only re-classifiable links', async () => {
+  let bundle: { races: Array<{ tracks: { url: string }[]; socials: { url: string }[] }> }
+  try {
+    bundle = JSON.parse(await Deno.readTextFile('docs/enrichment/2026-batch/link-candidates.json'))
+  } catch {
+    return // candidates are an internal artifact; absence is fine
   }
-  for (const [url, evs] of eventsByTrack) {
-    assertEquals(evs.size < 2, true, `route on ≥2 events: ${url} → ${[...evs].join(', ')}`)
+  for (const r of bundle.races) {
+    for (const t of r.tracks) assertEquals(classifyLink(new URL(t.url)), 'track', `track: ${t.url}`)
+    for (const s of r.socials) assertEquals(classifyLink(new URL(s.url)), 'social', `social: ${s.url}`)
   }
 })
 

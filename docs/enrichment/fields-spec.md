@@ -120,42 +120,50 @@ The MCP checks state per request; the site during ISR.
 - Eval key (human-verified) tests the exact scripted harness for zero false-positive
   actionable facts.
 
-## Slice 1 — LINKS ONLY (character split out, 2026-08-26)
+## Slice 1 — SHELVED (character split out, then links shelved, 2026-08-26)
 
-Decided 2026-08-25, REVISED 2026-08-26 after a Codex review. The original Slice 1
-bundled links + generated character. Codex blocked it: the character path published
-confidently-wrong facts (a fabricated "Montseny natural park" that passed an 8-char
-substring evidence check because "montseny" was inside a *participant's club name*;
-269/416 fields with no evidence at all; stale prior-edition operational lines like
-"register by September 13"). Under the honesty bar, that cannot ship. So:
+Decided 2026-08-25, then reworked and finally SHELVED 2026-08-26 across three Codex
+reviews. Nothing from this slice ships to production. What remains on the branch is
+reusable groundwork; the closeout is `outputs/2026-08-26_enrichment-links-closeout_v1.md`.
 
-- **Slice 1 = LINKS ONLY.** Track (Wikiloc/Komoot/Strava routes) + social (IG/FB)
-  links extracted DETERMINISTICALLY from the durable corpus
-  (`docs/enrichment/2026-batch/_corpus/`, content-addressed, git-tracked). No LLM.
-- **CHARACTER is deferred to its own slice** with a real grounding gate (below). The
-  crawl→Haiku approach was sound in shape but the gate was not — an LLM inventing a
-  plausible `value` needs field-local semantic validation, not substring occurrence.
+- **CHARACTER — deferred (Codex round 1).** The generated character published
+  confidently-wrong facts (a fabricated "Montseny natural park" that passed an 8-char
+  substring evidence check because "montseny" was inside a *participant's club name*;
+  269/416 fields with no evidence; stale prior-edition operational lines). Deferred to
+  its own slice with the grounding gate below.
+- **LINKS — shelved (Codex rounds 2–3).** URL discovery is not proof that a link
+  BELONGS to a race. Every deterministic no-review rule leaked a confidently-wrong link:
+  host/tenancy/dedup let a sibling race's route through; then a slug/handle name-match
+  let through a *town-named race's municipality account* (`ajllavaneres`), sponsor/
+  collaborator handles that contain the town (`bonarea.santllorencsavall`), and
+  prior-edition routes. The root cause is structural: **name overlap ≠ relationship
+  identity, and it cannot be established from a flat URL + text corpus.** Owner decision
+  (declining a ~15-min human approval pass): shelve links rather than ship a leaky subset.
 
-**Discovery ≠ publication (Codex round 2, 2026-08-26).** URL discovery does NOT prove a
-link belongs to a race — a followed page on a shared domain, or a sponsor/vendor link,
-resembles a valid link without being this race's. So the pipeline emits TWO files:
-- `link-candidates.json` — every host-allowlisted link found (high recall). INTERNAL,
-  never imported by the site or MCP.
-- `links.json` — the PUBLICATION bundle the runtime imports. A candidate is promoted
-  ONLY by a deterministic **identity proof** (Dima: "auto-safe subset, no review"): the
-  link's own URL slug / social handle contains a DISTINCTIVE token of this race's name
-  or town (generic trail-vocabulary is excluded). That proves the link names the event.
-  Routes with an explicit prior-edition year (2015–2024) are dropped. This withholds an
-  unproven link rather than guessing — conservative coverage, zero confidently-wrong
-  links. It killed round-2's survivors (UTSM's `htmcd-vilaplana-prades`, Camí de Sirga's
-  other-race route, Linktree/Rituals socials). Locked by the publication-invariant test.
+**What a future links slice needs (the bar three rounds established):**
+- **Link-LOCAL evidence at crawl time** — each link's anchor text, image alt, `aria-label`,
+  the nearest heading/section label, page title/canonical, and JSON-LD `sameAs`. The
+  current corpus stores only a flat `links[]`, which is why identity can't be proven.
+- **A relationship, not a host match** — publish `race` only from strong evidence (a full
+  normalized-name fingerprint, or context that is NOT under a "Patrocinadors /
+  Col·laboradors / Amb la col·laboració de" heading); otherwise keep an evidenced
+  `organizer`/`town`/`partner` relationship or withhold. No `unknown` relationship ships.
+- **Edition from the event date** — treat every non-current route year as non-current
+  (no hard-coded lower bound; `aristot2007` and 2025 routes both fail).
+- **An INDEPENDENT rejection corpus** — a hand-verified fixture of municipality/sponsor/
+  collaborator/partial-collision/2025/pre-2015 cases the gate must reject. A test that
+  re-runs the publisher's own predicate certifies its own bugs (Codex round-3 #3).
 
-**Slice-1 link contract + honesty gates (all live in `scripts/enrich-extract-links.ts`,
-locked by `_test.ts` incl. a whole-bundle invariant):**
-- **Host identity (Codex B3):** a link classifies only if its host's *registrable
-  domain* is exactly `wikiloc.com` / `komoot.*` / `strava.com` / `instagram.com` /
-  `facebook.com|fb.com` (subdomains OK). Substring matching is banned — it admitted
-  `cdninstagram.com`, `strava-embeds.com`, and `evilwikiloc.example` lookalikes.
+**Reusable groundwork kept on the branch (sound, not shelved):**
+- The durable content-addressed corpus (`_corpus/`, url-hashed ids, links bound into the
+  page hash) and the fixed crawl (`scripts/enrich-crawl.ts`).
+- The candidate extractor (`scripts/enrich-extract-links.ts` → `link-candidates.json`,
+  INTERNAL) + its classifier, `_test.ts`-locked:
+- **Host identity (Codex B3 + r2 #2):** a link classifies only if its host's *registrable
+  domain* is exactly `wikiloc.com` / `komoot.com` / `strava.com` / `instagram.com` /
+  `facebook.com|fb.com` (subdomains OK — `de.komoot.com`, `ca.wikiloc.com`). Substring/
+  wildcard matching is banned — it admitted `cdninstagram.com`, `strava-embeds.com`,
+  `evilwikiloc.example`, and (via a `komoot.*` wildcard) `komoot.example`.
 - **Route shape:** a track must be a route-shaped path (id-bearing slug / `tour/<id>` /
   `routes|activities|segments/<id>`), never a user/club/root/embed-twin.
 - **Social shape:** a real profile handle only — reject roots, share/story/search/pixel/
