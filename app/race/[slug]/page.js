@@ -112,6 +112,11 @@ function relatedRaces(all, race) {
 }
 
 function eventJsonLd(race) {
+  // startDate is REQUIRED for a valid schema.org Event. ~138 races are dateless
+  // (source-published month only, no firm day) — emitting Event JSON-LD without
+  // startDate is what GSC flags as a critical error, and fabricating a day from the
+  // expected month would be a made-up date. So: no real date → no Event schema.
+  if (!race.date) return null
   const prov = PROVINCE_TITLE[race.province] || race.province
   const ld = {
     '@context': 'https://schema.org',
@@ -128,7 +133,7 @@ function eventJsonLd(race) {
     },
     url: race.url,
   }
-  if (race.date) ld.startDate = race.date
+  ld.startDate = race.date // always present — guarded above
   if (race.dateEnd) ld.endDate = race.dateEnd
   if (race.lat != null && race.lng != null) {
     ld.location.geo = { '@type': 'GeoCoordinates', latitude: race.lat, longitude: race.lng }
@@ -189,12 +194,13 @@ export default async function RacePage({ params }) {
   const band = driveBand(race.driveMinutes)
   const related = relatedRaces(races, race)
   const prompt = buildRacePrompt(race)
-  const jsonLd = JSON.stringify(eventJsonLd(race)).replace(/</g, '\\u003c')
+  const ld = eventJsonLd(race)
+  const jsonLd = ld ? JSON.stringify(ld).replace(/</g, '\\u003c') : null
   const editorialRest = (race.taste?.editorial || []).filter(e => e.key !== 'unique')
 
   return (
     <main style={wrap}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+      {jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />}
 
       <p style={{ marginBottom: '18px' }}>
         <Link href="/" style={{ fontSize: '14px', color: 'var(--fdr-action)', textDecoration: 'underline', textUnderlineOffset: '2px' }}>← All races</Link>
