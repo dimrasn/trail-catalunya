@@ -15,9 +15,29 @@ export const ELEVATION_VALUES = ['u200', '200-500', '500-1000', '1000-2000', '20
 // shared URL may carry any month, so validate against all 12.
 export const MONTH_VALUES = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 export const PROVINCE_VALUES = ['BARCELONA', 'GIRONA', 'TARRAGONA', 'LLEIDA']
-// Human difficulty bands (event-max scope, mirroring the MCP): 'vh+' bundles
-// Very hard, Extreme and Brutal — three words, one tail of the catalogue.
-export const DIFFICULTY_VALUES = ['easy', 'moderate', 'hard', 'vh+']
+// One value per ITRA level (event-max scope, mirroring the MCP). Was four, with
+// 'vh+' bundling Very hard + Extreme + Brutal. Un-bundled 2026-09-10: that
+// grouping was sized to TODAY's Catalan catalogue, where the top three levels
+// hold ~19 events between them, and it fills in as soon as the catalogue reaches
+// past the Pyrenees. Splitting a live bucket later would move already-shared
+// ?dif= links, which is the instability R9 exists to prevent — so it is split
+// now, while 'vh+' can still be honoured as a legacy alias rather than orphaned.
+export const DIFFICULTY_VALUES = ['easy', 'moderate', 'hard', 'very-hard', 'extreme', 'brutal']
+
+// Level word -> filter value. The single place the mapping lives; matchesDifficulty
+// and the FilterBar both read it, so they cannot drift.
+export const DIFFICULTY_SLUG = {
+  Easy: 'easy',
+  Moderate: 'moderate',
+  Hard: 'hard',
+  'Very hard': 'very-hard',
+  Extreme: 'extreme',
+  Brutal: 'brutal',
+}
+
+// R9: a link someone shared before 2026-09-10 carries ?dif=vh+ and must keep
+// meaning what it meant — the top three levels, OR-ed.
+const DIFFICULTY_LEGACY = { 'vh+': ['very-hard', 'extreme', 'brutal'] }
 
 export const DEFAULT_FILTERS = {
   drive: [],
@@ -43,9 +63,14 @@ export function toggleValue(selected, value) {
 // Parse a comma-separated param into a deduped, validated array, preserving
 // the canonical order in `allowed` so shared URLs are stable regardless of
 // the order the user clicked the chips.
-function parseMulti(raw, allowed) {
+function parseMulti(raw, allowed, legacy) {
   if (!raw) return []
   const picked = new Set(raw.split(','))
+  if (legacy) {
+    for (const [old, expandsTo] of Object.entries(legacy)) {
+      if (picked.has(old)) expandsTo.forEach(v => picked.add(v))
+    }
+  }
   return allowed.filter(v => picked.has(v))
 }
 
@@ -54,7 +79,7 @@ export function filtersFromParams(sp) {
     drive: parseMulti(sp.get('drive'), DRIVE_VALUES),
     distance: parseMulti(sp.get('dist'), DISTANCE_VALUES),
     elevation: parseMulti(sp.get('elev'), ELEVATION_VALUES),
-    difficulty: parseMulti(sp.get('dif'), DIFFICULTY_VALUES),
+    difficulty: parseMulti(sp.get('dif'), DIFFICULTY_VALUES, DIFFICULTY_LEGACY),
     month: parseMulti(sp.get('month'), MONTH_VALUES),
     province: parseMulti(sp.get('prov'), PROVINCE_VALUES),
     showTBD: sp.get('tbd') === '1',
@@ -152,6 +177,10 @@ export function matchesProvince(race, selected) {
 export function matchesDifficulty(race, selected, eventLevelWord) {
   if (!selected || selected.length === 0) return true
   if (eventLevelWord == null) return false
-  const slug = { Easy: 'easy', Moderate: 'moderate', Hard: 'hard' }[eventLevelWord] || 'vh+'
+  const slug = DIFFICULTY_SLUG[eventLevelWord]
+  // An unrecognised level word is not a match. It used to fall through to 'vh+',
+  // so a typo or a new level word would have been silently filed under the
+  // hardest bucket — a wrong positive rather than a visible gap.
+  if (!slug) return false
   return selected.includes(slug)
 }

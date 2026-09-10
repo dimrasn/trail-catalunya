@@ -58,29 +58,61 @@ test('normalizeIntentPayload: goal_text trimmed and capped at 400', () => {
 // KTD2 parity: the JS canonical vocab must equal what the SQL migration hardcodes,
 // so a direct-RPC caller is validated against the SAME sets the UI/route use.
 // DB-free: parse the committed migration file (the SQL side of the parity guard).
-test('JS↔SQL parity: intent_log migration hardcodes the same chip ids, providers, and filter domains', () => {
+test('JS↔SQL parity: the EFFECTIVE migration allowlist matches the JS domains', () => {
   const dir = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'supabase', 'migrations')
-  const file = readdirSync(dir).find(f => f.endsWith('_intent_log.sql'))
-  assert.ok(file, 'intent_log migration exists')
-  const sql = readFileSync(join(dir, file), 'utf8')
+  // Read every migration in filename (= apply) order and let later definitions win,
+  // because that is what the database ends up with. Checking only the first file
+  // named *_intent_log.sql would miss a later CREATE OR REPLACE — which is exactly
+  // how the difficulty domain was widened on 2026-09-10 (the 08-25 migration is
+  // applied to prod and must not be edited).
+  const sql = readdirSync(dir).sort()
+    .filter(f => f.endsWith('.sql') && f.includes('intent_log'))
+    .map(f => readFileSync(join(dir, f), 'utf8'))
+    .join('\n')
+  assert.ok(sql.length, 'at least one intent_log migration exists')
 
-  // Chip ids: every JS id must appear as a quoted literal in the migration, and
-  // the migration must not reference a chip id JS does not define.
+  // Values the SQL may carry that JS no longer emits: retired filter values kept
+  // accepted on purpose, so a cached bundle or an old shared link still logs.
+  const LEGACY_OK = { difficulty: ['vh+'] }
+
   const jsChipIds = INTENT_CHIPS.map(c => c.id).sort()
   for (const id of jsChipIds) {
     assert.ok(sql.includes(`'${id}'`), `migration references chip id '${id}'`)
   }
-  // Providers
   for (const pv of PROVIDERS) {
     assert.ok(sql.includes(`'${pv}'`), `migration references provider '${pv}'`)
   }
-  // Filter value domains: each canonical value must appear in the migration.
+
   for (const [key, domain] of Object.entries(FILTER_ARRAY_DOMAINS)) {
     assert.ok(sql.includes(key), `migration references filter key '${key}'`)
+    // the LAST array literal bound to this key is the effective domain
+    const hits = [...sql.matchAll(new RegExp(`'${key}',\\s*array\\[([^\\]]*)\\]`, 'g'))]
+    assert.ok(hits.length, `migration binds an array to '${key}'`)
+    const effective = hits[hits.length - 1][1]
+      .split(',').map(v => v.trim().replace(/^'|'$/g, '')).filter(Boolean)
+
     for (const v of domain) {
-      assert.ok(sql.includes(`'${v}'`), `migration references ${key} value '${v}'`)
+      assert.ok(effective.includes(v),
+        `SQL domain for '${key}' is missing JS value '${v}' — got [${effective}]`)
     }
+    const extra = effective.filter(v => !domain.includes(v))
+    const allowed = LEGACY_OK[key] || []
+    assert.deepEqual(extra.filter(v => !allowed.includes(v)), [],
+      `SQL domain for '${key}' carries values JS does not define and that are not declared legacy`)
   }
+})
+
+test('JS↔SQL parity: the retired vh+ value is still accepted by the migration', () => {
+  // R9. A visitor on a cached bundle, or anyone following a ?dif=vh+ link, must
+  // still have their intent logged rather than silently dropped — dropping it
+  // would bias the signal the log exists to collect.
+  const dir = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'supabase', 'migrations')
+  const sql = readdirSync(dir).sort()
+    .filter(f => f.endsWith('.sql') && f.includes('intent_log'))
+    .map(f => readFileSync(join(dir, f), 'utf8')).join('\n')
+  const hits = [...sql.matchAll(/'difficulty',\s*array\[([^\]]*)\]/g)]
+  const effective = hits[hits.length - 1][1].split(',').map(v => v.trim().replace(/^'|'$/g, ''))
+  assert.ok(effective.includes('vh+'), 'vh+ stays accepted server-side')
 })
 
 test('logIntent posts chip IDS to /api/intent (not labels)', () => {

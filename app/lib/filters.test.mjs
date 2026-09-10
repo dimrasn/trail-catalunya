@@ -178,29 +178,53 @@ test('matchesProvince: OR across provinces', () => {
 })
 
 // --- difficulty filter (FdR redesign) ---
-import { DIFFICULTY_VALUES, matchesDifficulty } from './filters.js'
+import { DIFFICULTY_VALUES, DIFFICULTY_SLUG, matchesDifficulty } from './filters.js'
 
 test('difficulty: empty selection matches everything, unrated fails any active selection', () => {
   assert.equal(matchesDifficulty({}, [], null), true)
   assert.equal(matchesDifficulty({}, ['easy'], null), false)
 })
 
-test('difficulty: each band matches its slug; vh+ covers Very hard, Extreme, Brutal', () => {
-  assert.equal(matchesDifficulty({}, ['easy'], 'Easy'), true)
-  assert.equal(matchesDifficulty({}, ['moderate'], 'Moderate'), true)
-  assert.equal(matchesDifficulty({}, ['hard'], 'Hard'), true)
-  assert.equal(matchesDifficulty({}, ['vh+'], 'Very hard'), true)
-  assert.equal(matchesDifficulty({}, ['vh+'], 'Extreme'), true)
-  assert.equal(matchesDifficulty({}, ['vh+'], 'Brutal'), true)
-  assert.equal(matchesDifficulty({}, ['easy'], 'Hard'), false)
-  assert.equal(matchesDifficulty({}, ['easy', 'hard'], 'Hard'), true)
+test('difficulty: one value per ITRA level, each matching only its own', () => {
+  assert.equal(DIFFICULTY_VALUES.length, 6)
+  const LEVELS = ['Easy', 'Moderate', 'Hard', 'Very hard', 'Extreme', 'Brutal']
+  // every level has a slug, every slug is a declared value, and the mapping is 1:1
+  assert.deepEqual(LEVELS.map(w => DIFFICULTY_SLUG[w]), DIFFICULTY_VALUES)
+  for (const word of LEVELS) {
+    const slug = DIFFICULTY_SLUG[word]
+    assert.equal(matchesDifficulty({}, [slug], word), true, `${slug} should match ${word}`)
+    for (const other of LEVELS.filter(w => w !== word)) {
+      assert.equal(matchesDifficulty({}, [slug], other), false,
+        `${slug} must NOT match ${other} — the top three used to collapse together`)
+    }
+  }
+  assert.equal(matchesDifficulty({}, ['easy', 'brutal'], 'Brutal'), true) // OR within the row
 })
 
-test('difficulty: URL round-trip via dif param', () => {
-  const filters = { ...DEFAULT_FILTERS, difficulty: ['hard', 'vh+'] }
+test('difficulty: an unknown level word matches nothing, rather than falling into the hardest bucket', () => {
+  // it used to default to 'vh+', so a typo or a newly added level word would have
+  // been silently filed as Very-hard-or-worse — a wrong positive, not a visible gap
+  assert.equal(matchesDifficulty({}, ['brutal'], 'Apocalyptic'), false)
+  assert.equal(matchesDifficulty({}, DIFFICULTY_VALUES, 'Apocalyptic'), false)
+})
+
+test('difficulty: URL round-trip via dif param, canonical order', () => {
+  const filters = { ...DEFAULT_FILTERS, difficulty: ['brutal', 'hard'] }
   const qs = filtersToParams(filters)
-  assert.match(qs, /dif=hard%2Cvh%2B|dif=hard,vh\+/)
   const back = filtersFromParams(new URLSearchParams(qs))
-  assert.deepEqual(back.difficulty, ['hard', 'vh+'])
-  assert.equal(DIFFICULTY_VALUES.length, 4)
+  // re-emitted in DIFFICULTY_VALUES order, not click order
+  assert.deepEqual(back.difficulty, ['hard', 'brutal'])
+})
+
+test('difficulty: R9 — a shared ?dif=vh+ link still means the top three levels', () => {
+  const back = filtersFromParams(new URLSearchParams('dif=vh%2B'))
+  assert.deepEqual(back.difficulty, ['very-hard', 'extreme', 'brutal'])
+  // and it still selects exactly the races it used to
+  assert.equal(matchesDifficulty({}, back.difficulty, 'Very hard'), true)
+  assert.equal(matchesDifficulty({}, back.difficulty, 'Extreme'), true)
+  assert.equal(matchesDifficulty({}, back.difficulty, 'Brutal'), true)
+  assert.equal(matchesDifficulty({}, back.difficulty, 'Hard'), false)
+  // mixed legacy + new in one link
+  const mixed = filtersFromParams(new URLSearchParams('dif=easy,vh%2B'))
+  assert.deepEqual(mixed.difficulty, ['easy', 'very-hard', 'extreme', 'brutal'])
 })

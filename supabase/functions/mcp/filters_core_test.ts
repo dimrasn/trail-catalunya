@@ -112,15 +112,21 @@ Deno.test('rangeList: keeps numeric {min,max}, drops empties and junk', () => {
 // --- difficulty filter (event-max, mirrors app/lib/filters.js matchesDifficulty) ---
 // EVENTS km-effort: bcn-near 12+6=18 Easy · gir-mid 22+14=36 Moderate ·
 // tar-far 8+1.5≈9 Easy · lle-ultra 100+60=160 Extreme → vh+.
-import { eventMatchesDifficulty } from './filters_core.ts'
+import { DIFFICULTY_SLUG, eventMatchesDifficulty, expandDifficulty } from './filters_core.ts'
 
-Deno.test('difficulty[]: each band matches its event-max word; vh+ covers Extreme', () => {
+Deno.test('difficulty[]: one value per ITRA level; legacy vh+ still expands (R8/R9)', () => {
   assertEquals(ids(applyFilters(EVENTS, { difficulty: ['easy'] })), ['bcn-near', 'tar-far'])
   assertEquals(ids(applyFilters(EVENTS, { difficulty: ['moderate'] })), ['gir-mid'])
+  assertEquals(ids(applyFilters(EVENTS, { difficulty: ['extreme'] })), ['lle-ultra'])
+  // the level is now addressable on its own, and its neighbours are not it
+  assertEquals(ids(applyFilters(EVENTS, { difficulty: ['very-hard'] })), [])
+  assertEquals(ids(applyFilters(EVENTS, { difficulty: ['brutal'] })), [])
+  // an agent still sending the retired bundle gets what it always got
   assertEquals(ids(applyFilters(EVENTS, { difficulty: ['vh+'] })), ['lle-ultra'])
 })
 
 Deno.test('difficulty[]: OR across bands', () => {
+  assertEquals(ids(applyFilters(EVENTS, { difficulty: ['easy', 'extreme'] })), ['bcn-near', 'lle-ultra', 'tar-far'])
   assertEquals(ids(applyFilters(EVENTS, { difficulty: ['easy', 'vh+'] })), ['bcn-near', 'lle-ultra', 'tar-far'])
 })
 
@@ -135,7 +141,7 @@ Deno.test('difficulty[]: empty selection matches all; an UNRATED event never mat
 
 Deno.test('difficulty: strList normalizes scalar/CSV/array (parity with the tool input)', () => {
   assertEquals(strList('easy'), ['easy'])
-  assertEquals(strList('easy,vh+'), ['easy', 'vh+'])
+  assertEquals(strList('easy,vh+'), ['easy', 'vh+'])  // normalisation is separate from expansion
   assertEquals(strList(['moderate']), ['moderate'])
 })
 
@@ -160,4 +166,27 @@ Deno.test('not_before: dated past races excluded; undated/expected kept', () => 
   assertEquals(ids(applyFilters(evs, { not_before: '2026-07-01' })), ['expected-only', 'future', 'multiday-ending-future'])
   // no floor → all
   assertEquals(ids(applyFilters(evs, {})).length, 4)
+})
+
+// R8: the site and the MCP must agree on the level -> slug mapping, or the same
+// race answers a different filter depending on which surface asked. The site's
+// copy lives in app/lib/filters.js DIFFICULTY_SLUG. Keep these two in step.
+Deno.test('difficulty: slug mapping is the six ITRA levels, 1:1', () => {
+  assertEquals(Object.keys(DIFFICULTY_SLUG), [
+    'Easy', 'Moderate', 'Hard', 'Very hard', 'Extreme', 'Brutal',
+  ])
+  assertEquals(Object.values(DIFFICULTY_SLUG), [
+    'easy', 'moderate', 'hard', 'very-hard', 'extreme', 'brutal',
+  ])
+})
+
+Deno.test('difficulty: an unknown level word matches nothing', () => {
+  // previously it defaulted to 'vh+' — a wrong positive rather than a visible gap
+  assertEquals(eventMatchesDifficulty([{ km: 1, elevation_m: 1 }], ['brutal']), false)
+})
+
+Deno.test('difficulty: expandDifficulty is idempotent and dedupes', () => {
+  assertEquals(expandDifficulty(['vh+']), ['very-hard', 'extreme', 'brutal'])
+  assertEquals(expandDifficulty(['vh+', 'extreme']), ['very-hard', 'extreme', 'brutal'])
+  assertEquals(expandDifficulty(['easy']), ['easy'])
 })

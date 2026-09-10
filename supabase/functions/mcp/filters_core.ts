@@ -37,14 +37,41 @@ export interface Filters {
 }
 
 // Event-scope difficulty match (max km-effort → level word), mirroring the site's
-// matchesDifficulty in app/lib/filters.js: 'vh+' bundles Very hard/Extreme/Brutal,
-// and an UNRATED event never satisfies a positive claim (docs/rules.md honesty).
-const DIFFICULTY_SLUG: Record<string, string> = { Easy: 'easy', Moderate: 'moderate', Hard: 'hard' }
+// matchesDifficulty in app/lib/filters.js (R8 — these two must not drift).
+// ONE VALUE PER ITRA LEVEL as of 2026-09-10; 'vh+' used to bundle Very hard,
+// Extreme and Brutal. An UNRATED event never satisfies a positive claim
+// (docs/rules.md honesty rules).
+export const DIFFICULTY_SLUG: Record<string, string> = {
+  Easy: 'easy',
+  Moderate: 'moderate',
+  Hard: 'hard',
+  'Very hard': 'very-hard',
+  Extreme: 'extreme',
+  Brutal: 'brutal',
+}
+// An agent may still send the old bundled value; expand it rather than reject it.
+// Same contract as the site's ?dif= back-compat.
+const DIFFICULTY_LEGACY: Record<string, string[]> = {
+  'vh+': ['very-hard', 'extreme', 'brutal'],
+}
+export function expandDifficulty(selected: string[]): string[] {
+  const out = new Set<string>()
+  for (const v of selected) {
+    const legacy = DIFFICULTY_LEGACY[v]
+    if (legacy) legacy.forEach((x) => out.add(x))
+    else out.add(v)
+  }
+  return [...out]
+}
 export function eventMatchesDifficulty(distances: Dist[], selected?: string[]): boolean {
   if (!selected || selected.length === 0) return true
   const word = difficultyLevel(eventKmEffort(distances))
   if (word == null) return false
-  return selected.includes(DIFFICULTY_SLUG[word] || 'vh+')
+  const slug = DIFFICULTY_SLUG[word]
+  // An unrecognised level word matches nothing. It used to fall through to 'vh+',
+  // so a new level word would have been silently filed under the hardest bucket.
+  if (!slug) return false
+  return expandDifficulty(selected).includes(slug)
 }
 
 // The minimal event shape the filter reads — applyFilters stays decoupled from
