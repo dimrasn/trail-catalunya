@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect, useRef } from 'react'
 import FilterBar from './FilterBar'
+import { groupIntoRungs } from '../lib/weekends.js'
 import RaceCard from './RaceCard'
 import AskAI from './AskAI'
 import {
@@ -40,6 +41,43 @@ function todayISO() {
 // ../lib/filters.js (pure, unit-tested).
 
 // --- Components ---
+
+/* A rung of the weekend ladder. Sits under its month heading and above its
+   races: a Fri–Sun window, a midweek day, or the undated set.
+
+   Grouping by weekend rather than by day is measured, not stylistic — 99% of
+   dated races fall Fri–Sun and Mon–Thu holds one race in the whole season. The
+   undated rung is a SIBLING of the weekends, not a footnote beneath them: it is
+   the same structure and the same weight, marked only by the accent, because
+   "we know the month but not the day" is an answer, not a failure. */
+function RungHeader({ rung }) {
+  const undated = rung.kind === 'undated'
+  return (
+    <div style={{
+      padding: '9px 16px 5px',
+      display: 'flex',
+      alignItems: 'baseline',
+      gap: '8px',
+      backgroundColor: undated ? 'var(--fdr-wash)' : 'var(--fdr-sunk)',
+    }}>
+      <span className="fdr-mono" style={{
+        fontSize: '11.5px', fontWeight: 700, letterSpacing: '0.06em',
+        color: undated ? 'var(--fdr-action)' : 'var(--fdr-ink)',
+      }}>
+        {undated && <span aria-hidden="true">∗ </span>}
+        {rung.label}
+      </span>
+      <span className="fdr-mono" style={{ fontSize: '11px', color: 'var(--fdr-ink-faint)' }}>
+        {rung.races.length}
+      </span>
+      {undated && (
+        <span style={{ fontSize: '11px', color: 'var(--fdr-ink-faint)' }}>
+          the organizer has not published a day
+        </span>
+      )}
+    </div>
+  )
+}
 
 function SectionHeader({ label, count }) {
   return (
@@ -254,8 +292,13 @@ export default function RaceList({ races, lastUpdated }) {
         {monthsWithRaces.map(month => (
           <div key={month}>
             <SectionHeader label={monthLabel(month)} count={grouped[month].length} />
-            {grouped[month].map(race => (
-              <RaceCard key={race.id} race={race} />
+            {groupIntoRungs(grouped[month]).map(rung => (
+              <div key={rung.key}>
+                <RungHeader rung={rung} />
+                {rung.races.map(race => (
+                  <RaceCard key={race.id} race={race} />
+                ))}
+              </div>
             ))}
           </div>
         ))}
