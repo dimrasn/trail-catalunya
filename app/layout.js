@@ -1,5 +1,6 @@
 import './globals.css'
 import './fdr.css'
+import './study.css'
 import { Archivo, Manrope, IBM_Plex_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SITE_URL } from './lib/site'
