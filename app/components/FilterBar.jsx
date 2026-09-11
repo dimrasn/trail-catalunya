@@ -54,8 +54,7 @@ const DIFFICULTY_OPTIONS = [
 const DISTANCE_OPTIONS = [
   { value: 'any', label: 'Any' },
   { value: 'u10', label: '< 10 km' },
-  { value: '10-15', label: '10–15 km' },
-  { value: '15-21', label: '15–21 km' },
+  { value: '10-21', label: '10–21 km' },
   { value: '21-42', label: '21–42 km' },
   { value: '42+', label: '42+ km' },
 ]

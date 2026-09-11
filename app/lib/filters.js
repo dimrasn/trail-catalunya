@@ -9,7 +9,14 @@
 // Allowed bucket values per row — the source of truth for URL validation.
 // The FilterBar owns the labels; these are just the values a URL may carry.
 export const DRIVE_VALUES = ['u60', '60-120', '120+']
-export const DISTANCE_VALUES = ['u10', '10-15', '15-21', '21-42', '42+']
+// Four buckets, not five. The prototype collapsed 10-15 and 15-21 into a single
+// 10–21 band: the outer boundaries are unchanged, and the split inside them was
+// asking the runner to answer a question they do not have — a 14 km race and a
+// 19 km race are the same Sunday morning. Same R9 reasoning as the difficulty
+// un-bundling, run the other way: merging two live buckets is safe only if the
+// links that carried them keep meaning what they meant, so both survive as
+// legacy aliases (DISTANCE_LEGACY) rather than being orphaned.
+export const DISTANCE_VALUES = ['u10', '10-21', '21-42', '42+']
 export const ELEVATION_VALUES = ['u200', '200-500', '500-1000', '1000-2000', '2000+']
 // Accept any calendar month — visible chips are derived from the data, but a
 // shared URL may carry any month, so validate against all 12.
@@ -38,6 +45,11 @@ export const DIFFICULTY_SLUG = {
 // R9: a link someone shared before 2026-09-10 carries ?dif=vh+ and must keep
 // meaning what it meant — the top three levels, OR-ed.
 const DIFFICULTY_LEGACY = { 'vh+': ['very-hard', 'extreme', 'brutal'] }
+
+// R9 again: ?dist=10-15 and ?dist=15-21 were live values until 2026-09-11. Each
+// now expands to the band that swallowed it. A link carrying both still resolves
+// to one bucket, because parseMulti dedupes through a Set.
+const DISTANCE_LEGACY = { '10-15': ['10-21'], '15-21': ['10-21'] }
 
 export const DEFAULT_FILTERS = {
   drive: [],
@@ -77,7 +89,7 @@ function parseMulti(raw, allowed, legacy) {
 export function filtersFromParams(sp) {
   return {
     drive: parseMulti(sp.get('drive'), DRIVE_VALUES),
-    distance: parseMulti(sp.get('dist'), DISTANCE_VALUES),
+    distance: parseMulti(sp.get('dist'), DISTANCE_VALUES, DISTANCE_LEGACY),
     elevation: parseMulti(sp.get('elev'), ELEVATION_VALUES),
     difficulty: parseMulti(sp.get('dif'), DIFFICULTY_VALUES, DIFFICULTY_LEGACY),
     month: parseMulti(sp.get('month'), MONTH_VALUES),
@@ -125,8 +137,7 @@ export function matchesDistance(race, selected) {
     const km = d.km
     return selected.some(f => {
       if (f === 'u10') return km < 10
-      if (f === '10-15') return km >= 10 && km <= 15
-      if (f === '15-21') return km > 15 && km <= 21
+      if (f === '10-21') return km >= 10 && km <= 21
       if (f === '21-42') return km > 21 && km <= 42
       if (f === '42+') return km > 42
       return false

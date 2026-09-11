@@ -17,8 +17,8 @@ const EMPTY_FILTERS = {
 }
 
 test('buildPrompt: multiple buckets in one row render as "A or B"', () => {
-  const p = buildPrompt(RACES, { ...EMPTY_FILTERS, distance: ['10-15', '15-21'] })
-  assert.match(p, /distance 10–15 km or 15–21 km/)
+  const p = buildPrompt(RACES, { ...EMPTY_FILTERS, distance: ['10-21', '21-42'] })
+  assert.match(p, /distance 10–21 km or 21–42 km/)
 })
 
 test('buildPrompt: multiple months render as month names joined with "or"', () => {
@@ -44,7 +44,7 @@ test('buildPrompt: no active filters uses the unfiltered "ask my constraints" sh
 })
 
 test('buildPrompt: an active filter uses the filtered "recommend the best" shape', () => {
-  const p = buildPrompt(RACES, { ...EMPTY_FILTERS, distance: ['10-15'] })
+  const p = buildPrompt(RACES, { ...EMPTY_FILTERS, distance: ['10-21'] })
   assert.match(p, /My filters:/)
 })
 

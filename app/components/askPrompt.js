@@ -12,15 +12,18 @@ const MONTHS = [
 
 const DRIVE_LABEL = { u60: 'under 1h', '60-120': '1–2h', '120+': 'over 2h' }
 const DIST_LABEL = {
-  u10: 'under 10 km', '10-15': '10–15 km', '15-21': '15–21 km',
-  '21-42': '21–42 km', '42+': '42+ km',
+  u10: 'under 10 km', '10-21': '10–21 km', '21-42': '21–42 km', '42+': '42+ km',
 }
 const ELEV_LABEL = {
   u200: 'under 200 D+', '200-500': '200–500 D+', '500-1000': '500–1000 D+',
   '1000-2000': '1000–2000 D+', '2000+': '2000+ D+',
 }
+// One label per ITRA level, matching DIFFICULTY_VALUES since 2026-09-10. 'vh+'
+// stays so a legacy shared link that reaches the prompt still reads in English.
 const DIFFICULTY_LABEL = {
-  easy: 'Easy', moderate: 'Moderate', hard: 'Hard', 'vh+': 'Very hard or above',
+  easy: 'Easy', moderate: 'Moderate', hard: 'Hard',
+  'very-hard': 'Very hard', extreme: 'Extreme', brutal: 'Brutal',
+  'vh+': 'Very hard or above',
 }
 const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const PROV_LABEL = {

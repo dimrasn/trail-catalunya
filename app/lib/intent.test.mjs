@@ -73,7 +73,7 @@ test('JS↔SQL parity: the EFFECTIVE migration allowlist matches the JS domains'
 
   // Values the SQL may carry that JS no longer emits: retired filter values kept
   // accepted on purpose, so a cached bundle or an old shared link still logs.
-  const LEGACY_OK = { difficulty: ['vh+'] }
+  const LEGACY_OK = { difficulty: ['vh+'], distance: ['10-15', '15-21'] }
 
   const jsChipIds = INTENT_CHIPS.map(c => c.id).sort()
   for (const id of jsChipIds) {
