@@ -635,3 +635,26 @@ footer{padding:60px 0;font-size:12px;color:var(--grey);font-family:var(--fdr-mon
 .wk.tba .wkh{background:var(--soft)}
 .wk.tba .wkh b{color:var(--accent)}
 .wk .list{border-top:2px solid var(--ink)}
+
+/* The "Any" cap, aligned across rows.
+
+   NOT LIFTED — this is a fix to the study, not a port of it. `.seg.segf button
+   {flex:1 1 0}` splits the track equally by BUTTON COUNT, which makes every card
+   in a row identical (that is the study's stated intent, and it holds). But the
+   rows do not have equal counts: drive has 4 cards, distance and province have
+   5. So the first card is track/4 wide in one row and track/5 in the next, and
+   the centred "Any" pill lands at a different x in each — visible the moment two
+   segmented rows stack vertically, which is what the six-cell panel does and the
+   study's four-cell panel never did.
+
+   Pinning the first card to a fixed width puts "Any" at the same offset in every
+   row (6px track padding + (116-92)/2), and the remaining cards still divide
+   what is left equally among themselves, so the study's rhythm survives inside
+   each row. 116px is the 92px pill floor plus the 24px of breathing room the
+   band cards carry at the widths this panel is used at. */
+.seg.segf button:first-child{flex:0 0 116px}
+@media (max-width:620px){
+  /* the track wraps at this width, so the cards are no longer on one line and a
+     fixed first card would just make the wrap ragged */
+  .seg.segf button:first-child{flex:1 1 44%}
+}
