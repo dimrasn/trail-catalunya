@@ -105,7 +105,7 @@ function Header({ total }) {
   return (
     <div style={{ padding: '18px 16px 14px', borderBottom: '1px solid var(--fdr-border)' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '10px' }}>
-        <h1 style={{ fontSize: '21px', fontWeight: 700, color: 'var(--fdr-ink)', letterSpacing: '-0.01em' }}>
+        <h1 className="fdr-masthead">
           Find the race that fits
         </h1>
         <span className="fdr-mono" style={{ fontSize: '12.5px', color: 'var(--fdr-ink-faint)', whiteSpace: 'nowrap' }}>

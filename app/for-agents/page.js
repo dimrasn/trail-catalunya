@@ -33,23 +33,26 @@ const lede = { fontSize: '16px', color: 'var(--fdr-ink-muted)', marginBottom: '2
 const h2 = { fontSize: '19px', fontWeight: 700, margin: '34px 0 8px', color: 'var(--fdr-ink)' }
 const p = { fontSize: '16px', color: 'var(--fdr-ink-muted)', marginBottom: '12px' }
 const li = { fontSize: '16px', color: 'var(--fdr-ink-muted)', marginBottom: '6px' }
+// Survivors of the retired dark skin: these two blocks kept a near-black indigo
+// fill (#15152a) and lavender text, which have been sitting on a light page since
+// the FdR cutover. Re-set on the study's own surfaces.
 const code = {
-  fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+  fontFamily: 'var(--fdr-mono)',
   fontSize: '14px',
-  background: '#15152a',
-  border: '1px solid #26264a',
-  borderRadius: '6px',
+  background: 'var(--fdr-sunk)',
+  border: '1px solid var(--fdr-border)',
+  borderRadius: 'var(--fdr-radius-sm)',
   padding: '2px 6px',
-  color: '#c9c9ff',
+  color: 'var(--fdr-ink)',
 }
 const codeBlock = {
-  fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+  fontFamily: 'var(--fdr-mono)',
   fontSize: '14px',
-  background: '#15152a',
-  border: '1px solid #26264a',
-  borderRadius: '8px',
+  background: 'var(--fdr-sunk)',
+  border: '1px solid var(--fdr-border)',
+  borderRadius: 'var(--fdr-radius-sm)',
   padding: '12px 14px',
-  color: '#c9c9ff',
+  color: 'var(--fdr-ink)',
   overflowX: 'auto',
   marginBottom: '14px',
 }
