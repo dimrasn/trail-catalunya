@@ -9,15 +9,47 @@
 // Allowed bucket values per row — the source of truth for URL validation.
 // The FilterBar owns the labels; these are just the values a URL may carry.
 export const DRIVE_VALUES = ['u60', '60-120', '120+']
-export const DISTANCE_VALUES = ['u10', '10-15', '15-21', '21-42', '42+']
+// Four buckets, not five. The prototype collapsed 10-15 and 15-21 into a single
+// 10–21 band: the outer boundaries are unchanged, and the split inside them was
+// asking the runner to answer a question they do not have — a 14 km race and a
+// 19 km race are the same Sunday morning. Same R9 reasoning as the difficulty
+// un-bundling, run the other way: merging two live buckets is safe only if the
+// links that carried them keep meaning what they meant, so both survive as
+// legacy aliases (DISTANCE_LEGACY) rather than being orphaned.
+export const DISTANCE_VALUES = ['u10', '10-21', '21-42', '42+']
 export const ELEVATION_VALUES = ['u200', '200-500', '500-1000', '1000-2000', '2000+']
 // Accept any calendar month — visible chips are derived from the data, but a
 // shared URL may carry any month, so validate against all 12.
 export const MONTH_VALUES = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 export const PROVINCE_VALUES = ['BARCELONA', 'GIRONA', 'TARRAGONA', 'LLEIDA']
-// Human difficulty bands (event-max scope, mirroring the MCP): 'vh+' bundles
-// Very hard, Extreme and Brutal — three words, one tail of the catalogue.
-export const DIFFICULTY_VALUES = ['easy', 'moderate', 'hard', 'vh+']
+// One value per ITRA level (event-max scope, mirroring the MCP). Was four, with
+// 'vh+' bundling Very hard + Extreme + Brutal. Un-bundled 2026-09-10: that
+// grouping was sized to TODAY's Catalan catalogue, where the top three levels
+// hold ~19 events between them, and it fills in as soon as the catalogue reaches
+// past the Pyrenees. Splitting a live bucket later would move already-shared
+// ?dif= links, which is the instability R9 exists to prevent — so it is split
+// now, while 'vh+' can still be honoured as a legacy alias rather than orphaned.
+export const DIFFICULTY_VALUES = ['easy', 'moderate', 'hard', 'very-hard', 'extreme', 'brutal']
+
+// Level word -> filter value. The single place the mapping lives; matchesDifficulty
+// and the FilterBar both read it, so they cannot drift.
+export const DIFFICULTY_SLUG = {
+  Easy: 'easy',
+  Moderate: 'moderate',
+  Hard: 'hard',
+  'Very hard': 'very-hard',
+  Extreme: 'extreme',
+  Brutal: 'brutal',
+}
+
+// R9: a link someone shared before 2026-09-10 carries ?dif=vh+ and must keep
+// meaning what it meant — the top three levels, OR-ed.
+const DIFFICULTY_LEGACY = { 'vh+': ['very-hard', 'extreme', 'brutal'] }
+
+// R9 again: ?dist=10-15 and ?dist=15-21 were live values until 2026-09-11. Each
+// now expands to the band that swallowed it. A link carrying both still resolves
+// to one bucket, because parseMulti dedupes through a Set.
+const DISTANCE_LEGACY = { '10-15': ['10-21'], '15-21': ['10-21'] }
 
 export const DEFAULT_FILTERS = {
   drive: [],
@@ -43,18 +75,23 @@ export function toggleValue(selected, value) {
 // Parse a comma-separated param into a deduped, validated array, preserving
 // the canonical order in `allowed` so shared URLs are stable regardless of
 // the order the user clicked the chips.
-function parseMulti(raw, allowed) {
+function parseMulti(raw, allowed, legacy) {
   if (!raw) return []
   const picked = new Set(raw.split(','))
+  if (legacy) {
+    for (const [old, expandsTo] of Object.entries(legacy)) {
+      if (picked.has(old)) expandsTo.forEach(v => picked.add(v))
+    }
+  }
   return allowed.filter(v => picked.has(v))
 }
 
 export function filtersFromParams(sp) {
   return {
     drive: parseMulti(sp.get('drive'), DRIVE_VALUES),
-    distance: parseMulti(sp.get('dist'), DISTANCE_VALUES),
+    distance: parseMulti(sp.get('dist'), DISTANCE_VALUES, DISTANCE_LEGACY),
     elevation: parseMulti(sp.get('elev'), ELEVATION_VALUES),
-    difficulty: parseMulti(sp.get('dif'), DIFFICULTY_VALUES),
+    difficulty: parseMulti(sp.get('dif'), DIFFICULTY_VALUES, DIFFICULTY_LEGACY),
     month: parseMulti(sp.get('month'), MONTH_VALUES),
     province: parseMulti(sp.get('prov'), PROVINCE_VALUES),
     showTBD: sp.get('tbd') === '1',
@@ -100,8 +137,7 @@ export function matchesDistance(race, selected) {
     const km = d.km
     return selected.some(f => {
       if (f === 'u10') return km < 10
-      if (f === '10-15') return km >= 10 && km <= 15
-      if (f === '15-21') return km > 15 && km <= 21
+      if (f === '10-21') return km >= 10 && km <= 21
       if (f === '21-42') return km > 21 && km <= 42
       if (f === '42+') return km > 42
       return false
@@ -152,6 +188,10 @@ export function matchesProvince(race, selected) {
 export function matchesDifficulty(race, selected, eventLevelWord) {
   if (!selected || selected.length === 0) return true
   if (eventLevelWord == null) return false
-  const slug = { Easy: 'easy', Moderate: 'moderate', Hard: 'hard' }[eventLevelWord] || 'vh+'
+  const slug = DIFFICULTY_SLUG[eventLevelWord]
+  // An unrecognised level word is not a match. It used to fall through to 'vh+',
+  // so a typo or a new level word would have been silently filed under the
+  // hardest bucket — a wrong positive rather than a visible gap.
+  if (!slug) return false
   return selected.includes(slug)
 }

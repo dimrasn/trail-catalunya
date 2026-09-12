@@ -1,12 +1,18 @@
 import './globals.css'
 import './fdr.css'
-import { Anton, Work_Sans, JetBrains_Mono } from 'next/font/google'
+import './study.css'
+import { Archivo, Manrope, IBM_Plex_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SITE_URL } from './lib/site'
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-poster' })
-const workSans = Work_Sans({ subsets: ['latin'], variable: '--font-sans' })
-const jbMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
+// The design study's three faces, replacing Anton / Work Sans / JetBrains Mono.
+// Archivo is loaded as a VARIABLE font with its width axis exposed: the study
+// sets headlines at weight 800 / "wdth" 75, and a static cut cannot do that —
+// the condensed width is the whole point of the masthead. Manrope and IBM Plex
+// Mono are the study's body and data faces.
+const archivo = Archivo({ subsets: ['latin'], axes: ['wdth'], variable: '--font-poster' })
+const manrope = Manrope({ subsets: ['latin'], variable: '--font-sans' })
+const plexMono = IBM_Plex_Mono({ weight: ['500', '600'], subsets: ['latin'], variable: '--font-mono' })
 
 const TITLE = 'Trail Races in Catalunya 2026 — Calendar with Drive Times from Barcelona'
 const DESCRIPTION =
@@ -37,7 +43,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${anton.variable} ${workSans.variable} ${jbMono.variable}`}>
+      <body className={`${archivo.variable} ${manrope.variable} ${plexMono.variable}`}>
         {children}
         <Analytics />
       </body>

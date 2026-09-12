@@ -111,6 +111,17 @@ function relatedRaces(all, race) {
     .slice(0, 6)
 }
 
+// What to call the outbound link, from the host rather than from hope.
+function organizerLinkLabel(url) {
+  let host = ''
+  try { host = new URL(url).hostname.replace(/^www\./, '') } catch { return 'Organizer link' }
+  if (host === 'instagram.com') return 'Organizer on Instagram'
+  if (host === 'facebook.com' || host === 'm.facebook.com') return 'Organizer on Facebook'
+  if (host === 'linktr.ee' || host === 'lnk.bio') return 'Organizer links'
+  if (host === 'sites.google.com') return 'Organizer page'
+  return 'Official site & registration'
+}
+
 function eventJsonLd(race) {
   // startDate is REQUIRED for a valid schema.org Event. ~138 races are dateless
   // (source-published month only, no firm day) — emitting Event JSON-LD without
@@ -292,10 +303,22 @@ export default async function RacePage({ params }) {
 
       {/* TIER 2 — act zone */}
       <div style={{ marginTop: '18px' }}>
-        <a href={race.url} target="_blank" rel="noopener noreferrer"
-          style={{ display: 'block', textAlign: 'center', background: 'var(--fdr-action)', color: '#fff', borderRadius: 'var(--fdr-radius-md)', padding: '13px', fontWeight: 700, fontSize: '15px', textDecoration: 'none' }}>
-          Official site &amp; registration ↗
-        </a>
+        {/* The label is DERIVED from the host, not asserted. 34 of the catalogue's
+            urls are Instagram / Facebook / linktr.ee pages — the organizer's own
+            channel, but "the official site" is a claim the data does not support.
+            And an absent url renders nothing at all: race_url falls back to '' in
+            the scraper (parser.ts:306), so an unguarded href would produce a
+            SELF-LINK still captioned "Official site & registration". */}
+        {race.url ? (
+          <a href={race.url} target="_blank" rel="noopener noreferrer"
+            style={{ display: 'block', textAlign: 'center', background: 'var(--fdr-action)', color: 'var(--fdr-ink-inverse)', borderRadius: 'var(--fdr-radius-md)', padding: '13px', fontWeight: 700, fontSize: '15px', textDecoration: 'none' }}>
+            {organizerLinkLabel(race.url)} ↗
+          </a>
+        ) : (
+          <p className="fdr-mono" style={{ textAlign: 'center', padding: '13px', fontSize: '13px', color: 'var(--fdr-ink-faint)', border: '1px dashed var(--fdr-border)', borderRadius: 'var(--fdr-radius-md)' }}>
+            No organizer link in the source calendar
+          </p>
+        )}
         {/* Provider buttons in palette shades (Dima's ruling 2026-08-24):
             Claude wears the ramp's orange tint, ChatGPT the green — palette
             colours, not raw brand hex. */}

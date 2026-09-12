@@ -7,8 +7,8 @@
 }
 
 html, body {
-  background-color: #F9FAFC; /* --fdr-canvas: tokens load after this file */
-  color: #20252A;            /* --fdr-ink */
+  background-color: #F7F6F1; /* --fdr-canvas: tokens load after this file */
+  color: #11110F;            /* --fdr-ink */
   font-family: var(--font-sans, system-ui, -apple-system, 'Segoe UI', Roboto), sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;

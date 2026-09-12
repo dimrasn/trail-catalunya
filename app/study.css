@@ -1,0 +1,660 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   The design study's stylesheet, ported.
+
+   PROVENANCE: lifted from outputs/prototype/index.html in the sibling repo (the
+   standalone design study), NOT re-derived. Keeping it byte-comparable to the
+   study is deliberate — it can be diffed against the source when either moves,
+   and every rule here still carries the study's own comment explaining the
+   measurement behind it.
+
+   FOUR mechanical substitutions, and nothing else:
+     "Archivo",sans-serif        -> var(--fdr-poster)
+     "IBM Plex Mono",monospace   -> var(--fdr-mono)
+     "Manrope",...               -> var(--fdr-sans)
+     url("hero-art.jpg")         -> url("/hero-art.jpg")
+   The faces are self-hosted through next/font (app/layout.js); naming the
+   Google family here would quietly fall back to a system face.
+
+   THE RAMP IS DUPLICATED, AND THAT IS A HAZARD. --d1..--d6 below restate
+   app/lib/semantics.js LEVELS, because CSS cannot read a JS module. They are
+   parity-tested (app/lib/studyCss.test.mjs) so the two cannot drift silently.
+   Change a difficulty colour in semantics.js, not here.
+
+   Scope: the homepage surfaces (header, hero, glance, filter panel, controls,
+   list rows, weekend ladder). The .rp* race-page rules are the study's own SPA
+   detail view; they are inert here (no element carries those classes yet) and
+   are kept for the race-page port rather than deleted and re-lifted later.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root{
+  --white:#F7F6F1; --ink:#11110F; --grey:#64645D; --line:rgba(17,17,15,.15); --quiet:#E8E7DF;
+  /* coral is a SURFACE fill (ink sits on top of it); accent is the same hue darkened for TEXT */
+  --coral:#EC927B; --accent:#A8412A; --soft:rgba(236,146,123,.14);
+  /* ONE HUE, ONE MEANING. Difficulty owns the ramp; drive is the only other encoded
+     colour (Dima's ruling 2026-08-24 — banded, and the word always rides with the time);
+     everything else is ink. Distance is deliberately NOT on a ramp: it is a menu, not a
+     severity. It used to share this one, and on 64% of variants a distance pill and its
+     own difficulty tick came out different colours — the same swatch meaning two things. */
+
+  /* difficulty = the six ITRA levels, straight from app/lib/semantics.js LEVELS (Ramp A,
+     equal-lightness pastels, owner-ruled). Safe as tick fills specifically because the
+     LEVEL is already carried by how many of the six ticks are filled — colour is
+     reinforcement here, never the only channel. */
+  --d1:#ADE3BF; --d2:#DFD69D; --d3:#F9CAA2; --d4:#FFC2BC; --d5:#B04A44; --d6:#4F1F1E;
+  --d5-ink:#FDF3F2; --d6-ink:#F3E2E1;   /* the two dark levels take light text as chip fills */
+
+  /* drive, same three hues as semantics.js DRIVE_CHIP. As CHIP FILLS they are the repo's
+     values verbatim. As TEXT they are darkened: the repo's DRIVE_INK near (#04884D) is
+     4.19:1 on this cream and fails AA for the 11px sub-label, where these are 5.9/5.0/6.2. */
+  --dv1:#ADE3BF; --dv2:#F9CAA2; --dv3:#B04A44;
+  --dt1:#2F6B3A; --dt2:#7E5B12; --dt3:#A8322A;
+
+  /* UI state, deliberately OFF both ramps: --save marks your shortlist, --hit marks a
+     search match. Neither is a property of the race, so neither may borrow a band colour. */
+  --save:#F2D77F; --hit:#F2D77F;
+  /* glance tiles are decoration, not encoded data — one family, stepped, so they cannot
+     be mistaken for the difficulty ramp (they used to be four unrelated pastels) */
+  --gl1:#FBEAE4; --gl2:#F8DFD6; --gl3:#F5D3C7; --gl4:#F1C7B8;
+  /* one gradient, reused by every filled surface: chips, pills, ticks, sort indicator */
+  --grad:linear-gradient(180deg,rgba(255,255,255,.55),rgba(17,17,15,.12));
+  --grad-dark:linear-gradient(180deg,rgba(255,255,255,.20),rgba(0,0,0,.28));
+  --hdr:72px; --stick:210px;
+  --ease:cubic-bezier(.2,.8,.2,1); --d:420ms;
+}
+*{box-sizing:border-box;margin:0}
+html{background:var(--white);color:var(--ink);font-family:var(--fdr-sans);font-size:15px;-webkit-font-smoothing:antialiased;scrollbar-gutter:stable}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+.mono{font-family:var(--fdr-mono)}
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,60px)}
+.in{opacity:0;transform:translateY(14px);animation:rise .7s var(--ease) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+@keyframes up{to{transform:none}}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* scoped to the direct child of .wrap — as a bare element selector this was also hitting
+   the race page's <header class="rphead">, forcing it into a 72px sticky flex row */
+.wrap>header{position:sticky;top:0;z-index:6;background:var(--white);display:flex;justify-content:space-between;align-items:center;height:72px;border-bottom:2px solid var(--ink)}
+.circ{width:42px;height:42px;border:2px solid var(--ink);border-radius:50%;background:var(--coral);display:grid;place-items:center;text-decoration:none;color:var(--ink);font-weight:700;transition:transform .3s var(--ease);flex:0 0 auto}
+.circ:hover{transform:rotate(45deg)}
+.origin{position:relative;display:inline-flex}
+/* a statement, not a control — no border, no hover, no pointer */
+.origin .otrig{height:42px;display:inline-flex;align-items:center;gap:10px;flex:0 0 auto;
+  padding:0 4px;text-transform:none;letter-spacing:0;cursor:default}
+.origin .ol{font:600 9px var(--fdr-mono);letter-spacing:.14em;color:var(--grey)}
+.origin b{font-family:var(--fdr-poster);font-weight:800;font-size:14px;font-variation-settings:"wdth" 80;text-transform:uppercase;letter-spacing:-.01em}
+.mark{font-family:var(--fdr-poster);font-weight:800;font-size:19px;letter-spacing:-.03em;cursor:pointer;background:none;border:0;padding:0;color:inherit}
+.mark b{color:var(--accent)}
+.nav{display:flex;align-items:center;gap:28px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.nav .navlbl{color:var(--grey)}
+
+.hero{display:block;padding:clamp(14px,1.8vw,26px) 0 0}
+.top{margin-bottom:10px}
+.top p{max-width:46ch;font-size:13px;line-height:1.5;color:var(--grey)}
+/* word-spacing has to fight the -.07em tracking, or "PICK A TRAIL" closes up into one word */
+.hero h1{font-family:var(--fdr-poster);font-weight:800;font-variation-settings:"wdth" 75;font-size:clamp(40px,6.6vw,100px);line-height:.8;letter-spacing:-.07em;word-spacing:.18em;text-transform:uppercase}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top}
+/* must come after .w — both target the same element, and .l2 needs to win the display race
+   or "Go run." stays inline-block on the left and the right-hand space goes unused */
+.hero h1 .l2{display:block;width:100%;text-align:right}
+/* trailing letter-spacing leaves the box .07em short of the ink; pad it back so the
+   final "." lands flush with the right edge instead of hanging over it and clipping */
+.hero h1 .w span{display:inline-block;position:relative;padding-right:.07em;transform:translateY(110%);animation:up .9s var(--ease) forwards}
+/* hero wash — confined to the display type. The tagline and hint sit on clean cream,
+   because at 13px they need 4.5:1 and the artwork's dark areas drop them to 4.1. The
+   headline is 100px, so the 3:1 large-text threshold applies and it has room to spare.
+   Masked on all four edges so it dissolves into the page rather than ending in a box. */
+.heroart{display:none}
+@media (min-width:901px){
+  .h1wrap{position:relative;isolation:isolate}
+  .heroart{display:block;position:absolute;inset:-24px 0 -16px;z-index:-1;pointer-events:none;
+    background-image:url("/hero-art.jpg");background-size:cover;background-position:50% 60%;
+    opacity:.43;filter:saturate(.72) contrast(.86);
+    /* hard left/right so the band lines up with the glance card and filter bar below;
+       soft top/bottom so it does not collide with the tagline or the hint line */
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 15%,#000 84%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 15%,#000 84%,transparent 100%)}
+}
+/* headline-only deep rust. The standard --accent caps the hero art at ~.34 opacity;
+   this carries it to .46 while still clearing 3:1 over the darkest part of the image. */
+.acc{color:#8E3520;font-style:normal}
+.hero .hint{font-family:var(--fdr-mono);font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
+
+/* glance — three columns side by side instead of a tall stack, so the race list stays
+   within reach of the first screen */
+.glance{display:grid;grid-template-columns:minmax(260px,.85fr) minmax(420px,1.15fr);margin-top:20px;border:2px solid var(--ink)}
+.lead{padding:clamp(20px,2.4vw,30px);border-right:2px solid var(--ink);display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.lead .mini{font:600 9px var(--fdr-mono);letter-spacing:.12em}
+.lead h2{font-family:var(--fdr-poster);font-weight:800;font-variation-settings:"wdth" 75;font-size:clamp(30px,3.4vw,52px);line-height:.88;letter-spacing:-.04em;text-transform:uppercase;margin-top:9px}
+.lead h2 .l2{display:block;color:var(--accent)}
+.leadbottom{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.leadbottom p{font-size:12.5px;line-height:1.5;max-width:30ch;color:var(--grey)}
+.nextup{flex:0 0 auto;text-align:left;border-left:3px solid var(--accent);padding-left:12px}
+.nextup span{display:block;font:600 9px var(--fdr-mono);letter-spacing:.14em;color:var(--grey);margin-bottom:5px}
+.nextup b{display:block;font-family:var(--fdr-poster);font-weight:800;font-variation-settings:"wdth" 80;font-size:16px;letter-spacing:-.02em;line-height:1.12;max-width:20ch}
+.nextup i{display:block;font-style:normal;font-family:var(--fdr-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;margin-top:5px;font-weight:600}
+.stats{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;min-height:216px}
+.stats.none{display:block;min-height:0;padding:clamp(26px,4vw,48px);display:grid;place-items:center}
+.statempty{font-size:14px;color:var(--grey);max-width:32ch;text-align:center;line-height:1.55}
+.stat{position:relative;padding:15px 16px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);border-top:0;border-left:0;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left;overflow:hidden;isolation:isolate;background:none;font:inherit;color:inherit;cursor:pointer;width:100%}
+.stat>*{position:relative;z-index:1}
+.stat:hover strong,.stat:focus-visible strong{transform:translateX(3px)}
+.stat strong{transition:transform .3s var(--ease)}
+.stat::before{content:"";position:absolute;inset:0;background:var(--fill);transform:scaleY(0);transform-origin:bottom;transition:transform .55s var(--ease);z-index:0}
+.stat:nth-child(1){--fill:var(--gl1)}
+.stat:nth-child(2){border-right:0;--fill:var(--gl2)}
+.stat:nth-child(3){border-bottom:0;--fill:var(--gl3)}
+.stat:nth-child(4){border:0;--fill:var(--gl4)}
+.stat.seen::before{transform:scaleY(1)}
+.stat.still::before{transition:none}
+.stat strong{font-family:var(--fdr-poster);font-weight:800;font-variation-settings:"wdth" 75;font-size:clamp(28px,3vw,50px);line-height:.82;letter-spacing:-.05em;display:block}
+.stat strong small{font-size:.32em;letter-spacing:0;margin-left:5px;font-variation-settings:"wdth" 100;font-weight:600}
+.stat .sl{font:600 8.5px/1.4 var(--fdr-mono);letter-spacing:.1em}
+.stat .sv{display:block;width:100%}
+.stat span.n{font-family:var(--fdr-sans);font-size:11px;font-weight:700;letter-spacing:0;margin-top:6px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ── filter bar ───────────────────────────────────────────────────────────────
+   Structure: a bordered panel of labelled cells, asking the four questions in
+   plain language. Row 1 holds the two lists that GROW — when, and how hard —
+   as menus. Row 2 holds the two short, stable lists as always-visible segmented
+   controls. Row 3 is the meta strip. Divider rules, not gaps, separate cells:
+   the panel reads as one instrument rather than four loose widgets. */
+.bar{position:sticky;top:var(--hdr);z-index:5;background:var(--white);padding-bottom:14px}
+.bar .inner{border:2px solid var(--ink);background:var(--white)}
+/* two equal cells per row, two rows — so all four controls are the same width and the
+   same 40px height. Nothing in the panel is bigger than anything else. */
+/* The divider is painted ON the grid, centred, rather than as a border on the second
+   cell — a border-left made the right cell 1px narrower than the left, so the two
+   tracks could never be the same width no matter what was inside them. */
+.fgrid{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);
+  background:linear-gradient(var(--line),var(--line)) 50% 0/1px 100% no-repeat}
+.fgrid:last-of-type{border-bottom:0}
+.fcell{padding:13px clamp(14px,1.6vw,22px) 15px;min-width:0;
+  display:flex;flex-direction:column;justify-content:flex-start;gap:9px}
+/* the question, in the same mono micro-caps the rest of the page uses for labels */
+.fl{font:600 9px var(--fdr-mono);letter-spacing:.14em;color:var(--grey);text-transform:uppercase}
+
+/* menu control (WHEN, HOW HARD) — same listbox pattern as the origin picker */
+.sel{position:relative;display:block}
+.selbtn{width:100%;height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:0 17px;border:1.5px solid var(--ink);border-radius:999px;background:var(--white);cursor:pointer;
+  font-family:var(--fdr-mono);font-size:13px;color:var(--ink);text-align:left;
+  transition:background-color .25s var(--ease),box-shadow .25s var(--ease)}
+.selbtn:hover{background-color:var(--soft)}
+.sel.on .selbtn{box-shadow:inset 0 0 0 1px var(--ink)}
+/* THE NEGATIVE SPACE IS THE ANSWER. Empty, the control shows a quiet placeholder;
+   pick something and the picks themselves fill the bar as tokens. A wide control that
+   only ever says "2 levels" wastes the room it just asked for. */
+.selv{flex:1 1 auto;display:flex;align-items:center;gap:3px;overflow:hidden;min-width:0}
+/* SAME CARD AS DISTANCE AND DRIVE. A token is the .sgi pill in every dimension —
+   32px tall, 92px floor, 15px sides, 13px mono, 999px radius, no border — so a pick in
+   a menu and a pick in a segmented row are the same object, and all four controls sit
+   on one rhythm. The unpicked placeholder is that same pill left unfilled, which is
+   exactly how an unselected segment reads. */
+.tk,.selv .ph{display:inline-flex;align-items:baseline;justify-content:center;gap:7px;flex:0 0 auto;
+  height:32px;line-height:32px;padding:0 15px;min-width:92px;border-radius:999px;
+  font-family:var(--fdr-mono);font-size:13px;font-weight:600;letter-spacing:.04em;
+  white-space:nowrap;max-width:100%}
+.selv .ph{color:var(--grey);padding-left:0;min-width:0;justify-content:flex-start}
+.tk{background-color:var(--tkc,var(--ink));background-image:var(--grad-dark);color:var(--tkink,var(--white))}
+.tk .swx{width:14px;height:8px;flex:0 0 auto;border:1.5px solid var(--ink);transform:skewX(-14deg);
+  background-color:var(--dc);background-image:var(--grad);align-self:center}
+.tk.g1,.tk.g2,.tk.g3,.tk.g4{background-image:var(--grad);--tkink:var(--ink)}
+.tk.g1{--tkc:var(--d1)}.tk.g2{--tkc:var(--d2)}.tk.g3{--tkc:var(--d3)}.tk.g4{--tkc:var(--d4)}
+.tk.g5{--tkc:var(--d5);--tkink:var(--d5-ink)}
+.tk.g6{--tkc:var(--d6);--tkink:var(--d6-ink)}
+.tk.rest{background:none;background-image:none;color:var(--grey);min-width:0;padding:0 12px;
+  box-shadow:inset 0 0 0 1.5px var(--line)}
+.selbtn i{font-style:normal;font-size:10px;color:var(--accent);flex:0 0 auto;transition:transform .25s var(--ease)}
+.sel.open .selbtn i{transform:rotate(180deg)}
+.selmenu{position:absolute;top:calc(100% + 6px);left:0;min-width:100%;max-height:56vh;overflow:auto;
+  display:flex;flex-direction:column;gap:2px;background:var(--white);border:2px solid var(--ink);padding:6px;
+  opacity:0;transform:translateY(-4px);pointer-events:none;z-index:9;
+  transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.sel.open .selmenu{opacity:1;transform:none;pointer-events:auto}
+.selopt{display:flex;align-items:center;gap:9px;height:32px;padding:0 10px;border:0;border-radius:999px;
+  background:none;cursor:pointer;font-family:var(--fdr-mono);font-size:11.5px;color:var(--ink);
+  text-align:left;white-space:nowrap;width:100%}
+.selopt:hover{background:var(--quiet)}
+.selopt[aria-selected="true"]{background-color:var(--ink);background-image:var(--grad-dark);color:var(--white);font-weight:600}
+.selopt .swx{width:17px;height:9px;flex:0 0 auto;border:1.5px solid var(--ink);transform:skewX(-14deg);
+  background-color:var(--dc);background-image:var(--grad)}
+.selopt .cnt{margin-left:auto;padding-left:14px;color:var(--grey);font-size:10.5px}
+.selopt[aria-selected="true"] .cnt{color:rgba(247,246,241,.75)}
+.selsep{height:1px;background:var(--line);margin:5px 4px}
+/* an option that would return nothing is dimmed, not hidden — a level with no races
+   this season is information, and hiding it would make the scale look shorter */
+.selopt.zero{opacity:.42}
+
+/* Segmented controls (DISTANCE, DRIVE). Same track as the sort/view toggles, but these
+   are MULTI-select, so the sliding single indicator is gone — it can only ever point at
+   one thing. Each selected segment fills in place instead, and they can be adjacent. */
+/* EQUAL CARDS. "Any" used to size to its content while the band cards grew, which made
+   the Any->first gap ~50px shorter than every gap after it and broke the rhythm at the
+   one place the eye starts. flex:1 1 0 ignores content width entirely, so all cards are
+   identical and their centres are evenly spaced across the track.
+   Padding is 6px, not 3px: at 3px the selected dark pill and the track's own 2px ink
+   border merged into a single dark blob at the left cap, which read as the pill bursting
+   out of the track. 6px keeps a clear cream gap. The geometry still nests exactly —
+   button 36px tall, radius 18; track inner radius 24 minus 6px padding = 18. */
+.seg.segf{width:100%;height:52px;display:flex;align-items:stretch;background:var(--quiet);padding:6px;gap:3px;border-radius:999px}
+.seg.segf button{flex:1 1 0;min-width:0}
+.seg.segf .ind{display:none}
+/* One line, baseline-aligned: the band word sits BESIDE its time, the way it does on
+   every race row — same vocabulary, same reading order, so the filter and the result
+   read as one sentence. Distance carries no count and no invented category word
+   (SHORT/LONG would be a homemade taxonomy — see the D1 note). */
+/* NOTE the .seg.segf prefix on every rule below. `.seg button` is declared LATER in
+   this stylesheet at equal specificity, so a plain `.segf button` lost font-family,
+   font-size, text-transform, letter-spacing AND padding to it — which is why the
+   labels rendered as uppercase Archivo and why 9px of inherited vertical padding
+   pushed the band word off the time's baseline. Do not drop the prefix. */
+/* THE CARD IS NOT THE PILL. The button stays a full, equal-width card — that is what
+   keeps the label rhythm even and the hit area generous — but the FILL lives on an
+   inner span that hugs its own label. Filling the whole card turned one pick into a
+   118px slab around a 50px word, and two adjacent picks (MID + FAR) into a single
+   two-tone lump. A pill that hugs its label is also what the schematic showed. */
+.seg.segf button{display:flex;align-items:center;justify-content:center;
+  background:none;border:0;padding:0;min-width:0;cursor:pointer}
+/* min-width, not a special case for "Any". The pill hugs its label, but a two-syllable
+   label ("Any", 55px) sat as a visibly lesser thing beside the band pills (88-103px).
+   A floor of 92px puts it in the middle of that range and covers any future short label
+   without another one-off rule. */
+.sgi{display:inline-flex;align-items:baseline;justify-content:center;gap:7px;
+  height:32px;line-height:32px;padding:0 15px;min-width:92px;
+  border-radius:999px;max-width:100%;
+  font-family:var(--fdr-mono);font-size:13px;font-weight:600;letter-spacing:.04em;
+  text-transform:none;white-space:nowrap;color:var(--ink);
+  transition:background-color var(--d) var(--ease),color var(--d) var(--ease)}
+.sgi b{font-weight:600;font-size:13px}
+.sgw{font-style:normal;font-size:9.5px;font-weight:700;letter-spacing:.14em;color:var(--grey)}
+.seg.segf button[aria-pressed="true"] .sgi .sgw{color:inherit;opacity:.75}
+.seg.segf button:hover .sgi{background-color:rgba(17,17,15,.07)}
+.seg.segf button[aria-pressed="true"] .sgi{background-color:var(--ink);background-image:var(--grad-dark);color:var(--white)}
+/* Drive is colour-encoded (D2), so a selected drive segment wears its OWN band colour
+   rather than the shared ink — otherwise picking "< 1 h" would paint NEAR the same
+   colour as FAR and quietly undo the encoding. */
+.seg.segf.drivesg button[data-v="1"][aria-pressed="true"] .sgi{background-color:var(--dv1);background-image:var(--grad);color:var(--ink)}
+.seg.segf.drivesg button[data-v="2"][aria-pressed="true"] .sgi{background-color:var(--dv2);background-image:var(--grad);color:var(--ink)}
+.seg.segf.drivesg button[data-v="3"][aria-pressed="true"] .sgi{background-color:var(--dv3);background-image:var(--grad-dark);color:var(--d5-ink)}
+/* the multi-select check column, so "selected" is not carried by colour alone */
+.selopt .tick{width:11px;flex:0 0 auto;font-size:10px;color:var(--accent)}
+.selopt[aria-selected="true"] .tick{color:var(--white)}
+.selopt .olb{overflow:hidden;text-overflow:ellipsis}
+
+.fmeta{display:flex;align-items:center;gap:12px;padding:11px clamp(14px,1.6vw,22px);border-top:1px solid var(--line);flex-wrap:wrap;row-gap:8px}
+.mspacer{flex:1 1 auto}
+.chip{font-family:var(--fdr-mono);text-decoration:none;border-radius:999px;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;height:34px;display:inline-flex;align-items:center;padding:0 8px;min-width:0;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;user-select:none;justify-content:center;white-space:nowrap;transition:background-color var(--d) var(--ease),color var(--d) var(--ease),transform .15s var(--ease)}
+.chip:hover{background-color:var(--soft)}
+.chip:active{transform:scale(.96)}
+/* Only the two ENCODED rows carry colour at rest: difficulty and drive. Distance and
+   month stay neutral ink — neither is a severity, and a tinted distance chip was the
+   thing that made "<10 km" and "Easy" the same blue. Active = full-strength fill,
+   gradient, heavier ring. */
+/* ONE CHIP PER ITRA LEVEL. The filter's granularity matches the scale's — six ticks,
+   six legend swatches, six chips. It would be cheaper today to bundle the top three
+   (12 + 5 + 2 events on the current Catalan calendar) but that bundling is an artefact
+   of THIS catalogue, not of the scale: extend past the Pyrenees and the tail fills in.
+   Un-bundling later would also move the ?f= contract after links had been shared. */
+.chip[data-g="diff"][data-v="1"]{background-color:var(--d1);--c:var(--d1)}
+.chip[data-g="diff"][data-v="2"]{background-color:var(--d2);--c:var(--d2)}
+.chip[data-g="diff"][data-v="3"]{background-color:var(--d3);--c:var(--d3)}
+.chip[data-g="diff"][data-v="4"]{background-color:var(--d4);--c:var(--d4)}
+.chip[data-g="diff"][data-v="5"]{background-color:var(--d5);color:var(--d5-ink);--c:var(--d5)}
+.chip[data-g="diff"][data-v="6"]{background-color:var(--d6);color:var(--d6-ink);--c:var(--d6)}
+.chip[data-g="drive"][data-v="1"]{background-color:var(--dv1);--c:var(--dv1)}
+.chip[data-g="drive"][data-v="2"]{background-color:var(--dv2);--c:var(--dv2)}
+.chip[data-g="drive"][data-v="3"]{background-color:var(--dv3);color:var(--d5-ink);--c:var(--dv3)}
+.chip[data-g="diff"]:hover,.chip[data-g="drive"]:hover{background-color:var(--c);background-image:var(--grad)}
+.chip[aria-pressed="true"]{background-color:var(--ink);color:var(--white);background-image:var(--grad-dark);box-shadow:inset 0 0 0 1px var(--ink);font-weight:700}
+.chip[aria-pressed="true"][data-g="diff"],
+.chip[aria-pressed="true"][data-g="drive"]{background-color:var(--c);background-image:var(--grad);color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+/* the two dark levels keep light text in every state, per semantics.js LEVELS pairing */
+.chip[data-g="diff"][data-v="5"]:hover,.chip[aria-pressed="true"][data-g="diff"][data-v="5"],
+.chip[data-g="drive"][data-v="3"]:hover,.chip[aria-pressed="true"][data-g="drive"][data-v="3"]{color:var(--d5-ink);background-image:var(--grad-dark)}
+.chip[data-g="diff"][data-v="6"]:hover,.chip[aria-pressed="true"][data-g="diff"][data-v="6"]{color:var(--d6-ink);background-image:var(--grad-dark)}
+/* two 34px rows with a 10px gap — the exact rhythm of the two chip rows on the left,
+   so the search box lines up with DISTANCE and the count lines up with DRIVE */
+.count{font-size:12px;color:var(--grey);white-space:nowrap}
+.count b{color:var(--ink);font-weight:600}
+.chip.clear{flex:0 0 auto;border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.chip.clear.live{border-style:solid;color:var(--ink);border-color:var(--ink)}
+.fbtoggle{display:none;flex:0 0 auto;gap:6px}
+.fbtoggle b{font-weight:700}
+.fbtoggle[aria-expanded="true"]{background-color:var(--ink);color:var(--white);background-image:var(--grad-dark)}
+.chip.save{flex:0 0 auto;gap:6px}
+.chip.save b{font-weight:700}
+.chip.save[aria-pressed="true"]{background-color:var(--save);background-image:var(--grad);color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+
+/* sort + view controls */
+.ctl{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:18px 0 0}
+.seg{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;position:relative;isolation:isolate}
+.seg button{font-family:var(--fdr-poster);font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;padding:9px 14px;cursor:pointer;position:relative;z-index:1;background:none;border:0;color:var(--ink);transition:color var(--d) var(--ease)}
+.seg button[aria-checked="true"]{color:var(--white)}
+.seg .ind{position:absolute;top:0;bottom:0;left:0;width:0;background-color:var(--ink);background-image:var(--grad-dark);transition:transform var(--d) var(--ease),width var(--d) var(--ease)}
+.dir{font-family:var(--fdr-mono);font-size:12px;margin-left:10px;cursor:pointer;color:var(--grey);background:none;border:0;border-bottom:1px solid transparent;padding:2px 0}
+.dir:hover{color:var(--ink);border-color:var(--ink)}
+/* the three scale legends live behind a disclosure — the formula stays always-visible,
+   the swatches were costing ~70px above the list for something you read once */
+.legendbar{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:14px 0 0;font-family:var(--fdr-mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--grey)}
+.legendbar b{color:var(--ink);font-weight:600}
+.lgtoggle{font:inherit;font-weight:600;text-transform:uppercase;color:var(--grey);background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;padding:2px 0;letter-spacing:.06em}
+.lgtoggle:hover{color:var(--ink);border-color:var(--ink)}
+.lgtoggle i{font-style:normal;display:inline-block;transition:transform .25s var(--ease)}
+.lgtoggle[aria-expanded="true"] i{transform:rotate(180deg)}
+/* smooth open/close rather than a hard hidden toggle */
+.legends .legend:last-child{border-bottom:0}
+.legends{display:grid;grid-template-rows:0fr;opacity:0;padding:0;visibility:hidden;
+  transition:grid-template-rows var(--d) var(--ease),opacity .3s var(--ease),padding var(--d) var(--ease),visibility 0s linear var(--d)}
+.legends>.lgbox{overflow:hidden;min-height:0}
+.legends.open{grid-template-rows:1fr;opacity:1;padding:8px 0 0;visibility:visible;
+  transition:grid-template-rows var(--d) var(--ease),opacity .3s var(--ease) .06s,padding var(--d) var(--ease),visibility 0s}
+.legend>span+span{white-space:nowrap}
+.legend{display:grid;grid-template-columns:200px repeat(6,minmax(0,1fr));gap:0 14px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-family:var(--fdr-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--grey)}
+.legend b{color:var(--ink);font-weight:600}
+.legend .sw{display:inline-block;width:19px;height:11px;border:1.5px solid var(--ink);transform:skewX(-14deg);margin-right:4px;vertical-align:-1px;background-image:var(--grad)}
+
+/* list view */
+/* min-height keeps the document tall enough that filtering down to a few races can't
+   collapse the page under the scroll position and bounce the user back to the hero */
+.view{min-height:82vh;transition:opacity var(--d) var(--ease),transform var(--d) var(--ease)}
+.view.hidden{display:none}
+.view.leaving{opacity:0;transform:translateY(8px)}
+.month{display:grid;grid-template-columns:140px 1fr;padding-top:30px}
+.month h2,.cmonth h2{font-family:var(--fdr-poster);font-weight:800;font-variation-settings:"wdth" 75;font-size:40px;letter-spacing:-.03em;text-transform:uppercase;line-height:1;position:sticky;top:var(--stick);align-self:start}
+.month h2 small,.cmonth h2 small{display:block;font-size:11px;letter-spacing:.06em;color:var(--grey);font-weight:500;margin-top:6px;font-family:var(--fdr-mono);text-transform:none;font-variation-settings:"wdth" 100}
+.list{border-top:2px solid var(--ink);display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:70px minmax(190px,1.55fr) minmax(200px,1fr) 150px 116px 28px;gap:18px;align-items:center;padding:16px 0;border-bottom:2px solid var(--ink);color:inherit;position:relative;cursor:pointer;transition:background .25s var(--ease),padding-left var(--d) var(--ease)}
+.list.wide .row{grid-template-columns:94px minmax(180px,1.55fr) minmax(190px,1fr) 150px 116px 28px}
+.row:hover{background:var(--quiet);padding-left:8px}
+.row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:bottom;transition:transform var(--d) var(--ease)}
+.row:hover::before{transform:scaleY(1)}
+.day{font-family:var(--fdr-poster);font-size:30px;font-weight:800;letter-spacing:-.04em;line-height:1;font-variation-settings:"wdth" 80}
+.day small{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--grey);font-variation-settings:"wdth" 100;margin-top:3px}
+.name{font-family:var(--fdr-poster);font-size:18px;font-weight:700;letter-spacing:-.015em}
+.town{font-size:12px;color:var(--grey);margin-top:3px;font-family:var(--fdr-mono);text-transform:uppercase}
+/* The origin is a PAGE-level constant — the header picker already says "DRIVE FROM
+   <city>". Repeating "from L'Hospitalet" on every row cost 127px in a 116px column,
+   which overflowed the gap and printed under the save star. The row carries the time
+   and its band word; the city is stated once, where you change it. */
+.drive{font-family:var(--fdr-poster);font-size:26px;font-weight:800;letter-spacing:-.04em;font-variation-settings:"wdth" 80;color:var(--accent);white-space:nowrap;text-align:right;min-width:0}
+/* the time itself carries the band colour — but the WORD carries the band, so the
+   colour is reinforcement and never the only channel */
+.dt1{color:var(--dt1);--dtc:var(--dt1)}.dt2{color:var(--dt2);--dtc:var(--dt2)}.dt3{color:var(--dt3);--dtc:var(--dt3)}
+/* --dtc re-carries the band colour past `small`, which resets to grey for "from <city>" */
+.dw{font-style:normal;font-weight:700;letter-spacing:.1em;color:var(--dtc)}
+.drive small,.diff small{display:block;font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--grey);text-transform:uppercase;font-variation-settings:"wdth" 100}
+.kms{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:var(--fdr-mono);font-size:11.5px;font-variant-numeric:tabular-nums}
+.v{display:inline-grid;grid-template-columns:auto auto;column-gap:7px;align-items:baseline;padding:5px 9px;border:1.5px solid var(--ink);border-radius:999px;white-space:nowrap;transition:transform .3s var(--ease)}
+.row:hover .v{transform:translateY(-1px)}
+/* Distance pills are NEUTRAL. Distance is a menu of options, not a severity, and the
+   difficulty tick right beside them already owns the ramp. The km number stays ink; the
+   climb beside it is quieter, because the distance is what you pick. */
+.v b{font-weight:600}.v span{color:var(--grey)}
+.v{background-color:var(--white)}
+.row:hover .v{background-color:var(--white)}
+.kms .n{color:var(--accent);font-weight:600;padding-left:2px}
+/* difficulty: 6 ticks that fill like a bib tear-off — one per ITRA level.
+   18px (was 22px at five ticks) so six of them still clear the 150px column. */
+.diff{justify-self:start;text-align:left}
+.diff .ticks{display:inline-flex;gap:3px;margin-bottom:5px}
+.diff i{display:block;width:18px;height:9px;border:1.5px solid var(--ink);transform:skewX(-14deg)}
+.diff i.f{background-color:var(--dc);background-image:var(--grad)}
+.g1{--dc:var(--d1)}.g2{--dc:var(--d2)}.g3{--dc:var(--d3)}
+.g4{--dc:var(--d4)}.g5{--dc:var(--d5)}.g6{--dc:var(--d6)}
+/* unrated: the six ticks stay (so the scale is still legible) but sit hollow and
+   hairline — an absence, not a low score. The word is greyed to match. */
+.ticks.unrated i{border-color:var(--line);border-style:dashed}
+.urw{color:var(--grey)}
+.drow.norate .dtrack{border-color:var(--line);border-style:dashed}
+.stat.nodata{cursor:default}
+.stat.nodata strong{color:var(--grey)}
+.diff b{font-family:var(--fdr-poster);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:block}
+
+/* empty state */
+.empty{padding:70px 0 40px;border-top:2px solid var(--ink);margin-top:44px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.empty h3{font-family:var(--fdr-poster);font-weight:800;font-variation-settings:"wdth" 75;font-size:clamp(32px,4vw,56px);text-transform:uppercase;letter-spacing:-.04em;line-height:.9}
+.empty p{font-size:14px;color:var(--grey);max-width:46ch;line-height:1.55}
+.empty .chip{flex:0 0 auto}
+
+/* calendar view */
+.cal{padding-top:40px}
+.cmonth{display:grid;grid-template-columns:140px 1fr;padding-bottom:56px}
+/* month gutter — the races the grid cannot place, under the month they belong to */
+.mgut{border:2px solid var(--ink);border-top:0;padding:0 16px 6px;background:var(--quiet)}
+.mgh{display:flex;align-items:center;gap:8px;padding:12px 0 2px;
+  font:600 9px var(--fdr-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+.mgut .list{border-top:1px solid var(--line)}
+.mgut .row:last-child{border-bottom:0}
+.ast{font-style:normal;color:var(--accent);font-weight:700}
+/* the day cell of an undated race states the absence instead of showing a number */
+.day.dayless .ast{font-size:26px;line-height:1;display:block}
+.day.dayless small{color:var(--accent)}
+
+/* ── race page ───────────────────────────────────────────────────────────────
+   Inverted hero so the page announces itself as a detail view the moment it loads,
+   and so there is one obvious place for the eye to start. Everything below it is
+   deliberately quieter. */
+.rp{display:none;padding:20px 0 40px}
+body.onrace .rp{display:block}
+body.onrace .hero,body.onrace .glance,body.onrace .bar,body.onrace .ctl,
+body.onrace .legendbar,body.onrace .legends,body.onrace #listview,body.onrace #calview,
+body.onrace .circ{display:none}
+.backlink{font:600 10px var(--fdr-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--grey);background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;padding:3px 0}
+.backlink:hover{color:var(--ink);border-color:var(--ink)}
+
+/* terracotta band carries the branding; the stats sit on cream directly below it,
+   because the drive traffic light and the difficulty ticks both need a neutral ground
+   to read against — coral ticks on a coral panel disappear */
+.rphero{position:relative;height:auto;min-height:0;color:var(--white);margin-top:14px;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:14px 40px;
+  padding:clamp(20px,2.4vw,30px) clamp(20px,2.6vw,34px) clamp(22px,2.6vw,32px);
+  background:radial-gradient(130% 100% at 88% 4%,rgba(236,146,123,.34),transparent 58%),
+             linear-gradient(135deg,#B4492F 0%,var(--accent) 45%,#8B3320 100%)}
+.rphero>*{position:relative;z-index:1}
+.rpeyebrow{grid-column:1/-1;display:flex;gap:16px;flex-wrap:wrap;font:600 10px var(--fdr-mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(247,246,241,.92)}
+.rpeyebrow span+span{border-left:1px solid rgba(247,246,241,.4);padding-left:16px}
+.rptitle{font-family:var(--fdr-poster);font-weight:800;font-variation-settings:"wdth" 76;font-size:clamp(30px,4.4vw,62px);line-height:1.02;letter-spacing:-.04em;word-spacing:.1em;text-transform:uppercase;margin:2px 0 0;max-width:24ch;grid-column:1}
+.rpactions{grid-column:2;justify-self:end;align-self:end;display:flex;gap:10px;flex-wrap:wrap}
+.rpactions .chip{flex:0 0 auto;padding:0 16px;height:36px;border-color:rgba(247,246,241,.6);color:var(--white);background-image:none;background-color:transparent}
+.rpactions .chip:hover{background-color:rgba(247,246,241,.16)}
+.rpactions .chip.solid{background-color:var(--white);border-color:var(--white);color:var(--ink)}
+.rpactions .chip.solid:hover{background-color:#fff}
+/* a stated absence, not a dead button: no pointer, no hover, plainly not clickable */
+.rpactions .chip.nolink{border-style:dashed;border-color:rgba(247,246,241,.45);
+  color:rgba(247,246,241,.72);cursor:default;font-style:normal}
+.rpactions .chip.save[aria-pressed="true"]{background-color:var(--save);border-color:var(--save);color:var(--ink)}
+/* stats on cream, so every encoded colour keeps working */
+.rpstats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--white);border-bottom:2px solid var(--ink)}
+.rpstat{padding:16px 18px 17px;border-right:1px solid var(--line)}
+.rpstat:last-child{border-right:0}
+.rpstat span{display:block;font:600 8.5px var(--fdr-mono);letter-spacing:.12em;color:var(--grey);margin-bottom:8px}
+.rpstat strong{font-family:var(--fdr-poster);font-weight:800;font-variation-settings:"wdth" 80;font-size:27px;letter-spacing:-.03em;line-height:1;display:block}
+.rpstat strong small{font-size:.42em;font-weight:600;margin-left:4px;font-variation-settings:"wdth" 100;color:var(--grey)}
+.rpstat .ticks{display:inline-flex;gap:3px;margin-top:9px}
+.rpstat .ticks i{display:block;width:12px;height:8px;border:1.5px solid var(--ink);transform:skewX(-14deg)}
+.rpstat .ticks i.f{background-color:var(--dc);background-image:var(--grad)}
+
+.rpsec{padding:26px 0 0}
+.rpsec>h3{display:flex;align-items:center;gap:10px;font:600 9px var(--fdr-mono);letter-spacing:.14em;color:var(--grey);text-transform:uppercase;margin-bottom:14px}
+.rpsec>h3::before{content:"";width:9px;height:9px;flex:0 0 auto;background:var(--hc,var(--ink));background-image:var(--grad);border:1px solid var(--ink)}
+.rpsec>h3::after{content:"";flex:1 1 auto;height:1px;background:var(--line)}
+.mnote{margin-top:12px;font-size:11.5px;color:var(--grey);line-height:1.55}
+
+/* every distance on one shared effort axis, with the band boundaries marked, so a
+   single-option race still reads in context instead of as a full-width bar */
+.dgrid{border-top:2px solid var(--ink)}
+.daxis,.drow{display:grid;grid-template-columns:92px 84px minmax(150px,1fr) 96px;gap:14px;align-items:center}
+.daxis{padding:8px 0;border-bottom:1px solid var(--line)}
+.daxis>span{font:600 8.5px var(--fdr-mono);letter-spacing:.1em;color:var(--grey)}
+.daxis .track{position:relative;height:12px}
+.daxis .track b{position:absolute;top:0;transform:translateX(-50%);font:600 8px var(--fdr-mono);letter-spacing:.06em;color:var(--grey);white-space:nowrap}
+.daxis>span:last-child{text-align:right}
+.drow{padding:13px 0;border-bottom:1px solid var(--line)}
+.drow.off{opacity:.36}
+.drow .dkm{font-family:var(--fdr-poster);font-weight:800;font-size:21px;font-variation-settings:"wdth" 80;letter-spacing:-.03em}
+.drow .dcl{font-family:var(--fdr-mono);font-size:12px;font-variant-numeric:tabular-nums;color:var(--grey)}
+.dtrack{position:relative;height:16px;border:1.5px solid var(--ink);overflow:hidden}
+.dtrack i{position:absolute;inset:0 auto 0 0;background-color:var(--dc);background-image:var(--grad);transform-origin:left;animation:ebar .7s var(--ease) both}
+.dtrack u{position:absolute;top:0;bottom:0;width:1px;background:rgba(17,17,15,.28)}
+@keyframes ebar{from{transform:scaleX(0)}}
+.drow .drt{display:flex;align-items:baseline;justify-content:flex-end;gap:7px;text-align:right}
+.drow .drt b{font-family:var(--fdr-poster);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.drow .drt span{font-family:var(--fdr-mono);font-size:11px;color:var(--grey);font-variant-numeric:tabular-nums}
+
+.rprel{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:10px}
+.rprel .list{border-top:2px solid var(--ink)}
+.rprel .row,.rprel .list.wide .row{grid-template-columns:54px minmax(0,1fr) 78px 62px 30px;gap:12px}
+.rprel .row .kms{display:none}
+/* the difficulty ticks stay — they are the only colour these lists carry, and the
+   rating actually varies within "same weekend" */
+.rprel .row .diff{display:block;justify-self:start;text-align:left;margin:0}
+.rprel .row .diff b,.rprel .row .diff small{display:none}
+.rprel .row .diff .ticks{margin-bottom:0}
+.rprel .row .diff i{width:10px;height:7px}
+.rprel .row .drive{font-size:17px;text-align:right}
+/* the band word stays here too — it always rides with the time */
+.rprel .row .drive small{font-size:10px}
+.rprel .row .day{font-size:24px}
+.rprel .row .name{font-size:14.5px}
+.rname{color:inherit;text-decoration:none;background-image:linear-gradient(var(--accent),var(--accent));background-size:0 2px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .3s var(--ease)}
+.rname:hover{color:var(--accent);background-size:100% 2px}
+.rname .ext{font-size:.68em;vertical-align:.35em;margin-left:3px;color:var(--accent)}
+.rname:hover{color:var(--accent);background-size:100% 2px}
+.rname .ext{font-size:.68em;vertical-align:.35em;margin-left:3px;color:var(--accent)}
+
+
+/* row controls */
+.ract{display:flex;align-items:center;justify-content:flex-end;gap:8px;justify-self:stretch}
+.rsave{width:28px;height:28px;margin-right:0;border:1.5px solid var(--line);border-radius:50%;background:none;cursor:pointer;display:grid;place-items:center;font-size:12px;color:var(--grey);flex:0 0 auto;transition:border-color .25s var(--ease),color .25s var(--ease),background-color .25s var(--ease),transform .2s var(--ease)}
+.row:hover .rsave,.rsave:focus-visible{border-color:var(--ink);color:var(--ink)}
+.rsave:hover{transform:scale(1.12)}
+.stx{display:block;flex:0 0 auto;overflow:visible}
+.chip.save .stx{margin-right:1px}
+.rsave[aria-pressed="true"]{border-color:var(--ink);background-color:var(--save);background-image:var(--grad);color:var(--ink)}
+.row.saved::before{transform:scaleY(1);background:var(--save)}
+.row.saved:hover::before{background:var(--accent)}
+footer{padding:60px 0;font-size:12px;color:var(--grey);font-family:var(--fdr-mono);text-transform:uppercase;line-height:1.7}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.in,.hero h1 .w span{opacity:1;transform:none}.stat::before{transform:scaleY(1)}}
+@media (max-width:1100px){
+  .row,.list.wide .row{grid-template-columns:66px minmax(0,1fr) 104px 28px;gap:8px 14px;
+    grid-template-areas:"day info drive go" "day kms kms go" "day diff diff go";align-items:start}
+  .day{grid-area:day}.info{grid-area:info}.kms{grid-area:kms}.diff{grid-area:diff}
+  .drive{grid-area:drive;text-align:left;font-size:21px}
+  .ract{grid-area:go;align-self:start}
+}
+@media (max-width:900px){
+  /* every cell becomes a full-width stacked row; the dividers turn horizontal */
+  .fgrid{grid-template-columns:1fr}
+  .fcell{border-left:0;border-top:1px solid var(--line)}
+  .fgrid:first-child>.fcell:first-child{border-top:0}
+  .chip{padding:0 6px;font-size:10px}
+  .glance{grid-template-columns:1fr}
+  .lead,  .stats{min-height:0}
+  .hero h1 .l2{text-align:left}
+  .month,.cmonth{grid-template-columns:1fr}
+  .month h2,.cmonth h2{position:static;margin-bottom:12px}
+  /* keep distance + difficulty visible: restack instead of hiding */
+  .row,.list.wide .row{grid-template-columns:56px 1fr 30px;grid-template-areas:"day info go" "day drive go" "kms kms kms" "diff diff diff";gap:6px 14px;align-items:start;padding:14px 0}
+  .day{grid-area:day}.info{grid-area:info}.drive{grid-area:drive;font-size:20px}
+  .ract{grid-area:go;align-self:start;margin-top:2px}
+  .rsave{border-color:var(--ink);color:var(--ink)}
+  .kms{grid-area:kms;margin-top:4px}
+  .diff{grid-area:diff;justify-self:start;text-align:left;margin-top:2px;display:flex;align-items:baseline;gap:8px}
+  .diff .ticks{margin-bottom:0}
+  .diff small{display:none}
+  .drive small{display:inline;margin-left:6px}
+  /* the weekend ladder needs no phone special-case: its rungs are just lists, and the
+     rows inside already restack at this width */
+}
+@media (max-width:900px){
+  /* the two chip rows are ~120px of permanent screen on a phone — collapse them
+     behind a Filters button and keep only search + count + saved always visible */
+  .fbtoggle{display:inline-flex}
+  /* with search gone there is nothing that must stay out, so all four cells collapse
+     behind Filters and the meta strip alone holds the sticky bar open */
+  .bar:not(.open) .fgrid{display:none}
+  .navlbl{display:none}
+  .origin .otrig{padding:0 2px}
+  .top{flex-direction:column;align-items:flex-start;gap:14px}
+  .lead,  /* race page stacks */
+  .rpstats{grid-template-columns:1fr 1fr}
+  .rprel{grid-template-columns:1fr;gap:0}
+  .rphero{grid-template-columns:1fr;gap:16px}
+  .rptitle{grid-column:1}
+  .rpactions{grid-column:1;justify-self:start}
+  .legend{display:flex;flex-wrap:wrap;gap:9px 18px;font-size:11px}
+  .legend>span:first-child{flex:1 0 100%;margin-bottom:1px}
+  .legendbar{font-size:11px;gap:12px}
+  /* right-aligned pills leave a hole on a narrow row */
+  .rptitle{margin:10px 0 16px}
+  .daxis,.drow{grid-template-columns:74px 1fr 78px;gap:10px}
+  .daxis .track,.drow .dtrack{grid-column:1/-1;order:3}
+  .daxis>span:nth-child(2),.drow .dcl{text-align:right}
+  footer{padding:40px 0 calc(40px + env(safe-area-inset-bottom))}
+}
+@media (max-width:620px){
+  /* label moves above its row so five chips still get usable width */
+  /* five segments will not fit a 375px row as one line — let them wrap into a
+     two-row block rather than shrinking the labels to nothing */
+  /* the track is flex now, so it wraps rather than re-flowing as a grid; the cards keep
+     their real content width and take a second line instead of squeezing the labels */
+  .seg.segf{flex-wrap:wrap;height:auto;border-radius:20px;padding:5px}
+  .seg.segf button{flex:1 1 44%}
+  .sgi{height:30px;line-height:30px;padding:0 12px;min-width:76px}
+  .wrap>header{height:60px}
+  .mark{font-size:16px}
+  .nav{gap:10px}
+  .circ{width:36px;height:36px}
+  .origin b{font-size:12px}
+  .origin .ol{display:none}
+  .hero{padding:26px 0 0}
+  .rpstats{grid-template-columns:1fr}
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NOT LIFTED — written here.
+
+   The study's renderCal() emits .ladder / .wk / .wkh / .wkn, but its stylesheet
+   has no rule for any of them: the weekend ladder replaced the calendar grid in
+   the study's final commit and the CSS never followed, so the rungs rendered
+   unstyled. These are built from the study's existing vocabulary (the mono
+   micro-caps label of .mgh, the .quiet ground, the accent reserved for the
+   undated rung) rather than invented from nothing.
+   ───────────────────────────────────────────────────────────────────────────── */
+.ladder{display:flex;flex-direction:column}
+.wk+.wk{margin-top:18px}
+.wkh{display:flex;align-items:baseline;gap:10px;padding:9px 12px;background:var(--quiet);
+  border:2px solid var(--ink);border-bottom:0;
+  font:600 10px var(--fdr-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+.wkh b{color:var(--ink);font-weight:600;letter-spacing:.1em}
+.wkn{margin-left:auto;font-size:9.5px}
+/* the undated rung is a SIBLING of the weekends — same structure, same weight,
+   marked by the accent, never a footnote under the real content */
+.wk.tba .wkh{background:var(--soft)}
+.wk.tba .wkh b{color:var(--accent)}
+.wk .list{border-top:2px solid var(--ink)}
+
+/* The "Any" cap, aligned across rows.
+
+   NOT LIFTED — this is a fix to the study, not a port of it. `.seg.segf button
+   {flex:1 1 0}` splits the track equally by BUTTON COUNT, which makes every card
+   in a row identical (that is the study's stated intent, and it holds). But the
+   rows do not have equal counts: drive has 4 cards, distance and province have
+   5. So the first card is track/4 wide in one row and track/5 in the next, and
+   the centred "Any" pill lands at a different x in each — visible the moment two
+   segmented rows stack vertically, which is what the six-cell panel does and the
+   study's four-cell panel never did.
+
+   Pinning the first card to a fixed width puts "Any" at the same offset in every
+   row (6px track padding + (116-92)/2), and the remaining cards still divide
+   what is left equally among themselves, so the study's rhythm survives inside
+   each row. 116px is the 92px pill floor plus the 24px of breathing room the
+   band cards carry at the widths this panel is used at. */
+.seg.segf button:first-child{flex:0 0 116px}
+@media (max-width:620px){
+  /* the track wraps at this width, so the cards are no longer on one line and a
+     fixed first card would just make the wrap ragged */
+  .seg.segf button:first-child{flex:1 1 44%}
+}

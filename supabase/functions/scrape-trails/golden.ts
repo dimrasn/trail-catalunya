@@ -36,7 +36,7 @@ export async function runGoldenAssertions(
   for (const g of GOLDEN_RACES) {
     const { data, error } = await supabase
       .from('races')
-      .select('town, province, elevation_m')
+      .select('town, province, elevation_m, race_url')
       .eq('source', 'ultrescatalunya')
       .eq('race_name', g.race_name)
       .eq('distance_km', g.distance_km)
@@ -60,6 +60,33 @@ export async function runGoldenAssertions(
     if (Number(row.elevation_m) !== g.elevation_m) {
       failures.push(`${g.race_name}: elevation '${row.elevation_m}' != '${g.elevation_m}'`)
     }
+    // race_url is not just a link — app/lib/races.js groups events by
+    // `${race_url}::${town}`, so an EMPTY url does not merely lose a button, it
+    // merges the race with every other link-less race in the same town: one
+    // card, one slug, several races. The parser falls back to '' when the
+    // aggregator lists no <a href> (parser.ts:306), so this is one bad upstream
+    // row away from happening silently. Fail the scrape instead.
+    if (!(row.race_url || '').trim()) {
+      failures.push(`${g.race_name}: race_url is empty — events group by (race_url, town), so this would MERGE races`)
+    }
+  }
+
+  // Catalogue-wide, not just the golden rows: any empty race_url is an identity
+  // hazard, and the golden set is seven races out of hundreds.
+  const { count: urllessCount, error: urllessError } = await supabase
+    .from('races')
+    .select('race_hash', { count: 'exact', head: true })
+    .eq('source', 'ultrescatalunya')
+    .neq('status', 'REMOVED')
+    .or('race_url.is.null,race_url.eq.')
+  if (urllessError) {
+    failures.push(`race_url sweep: query error ${urllessError.message}`)
+  } else if ((urllessCount ?? 0) > 0) {
+    failures.push(
+      `${urllessCount} active row(s) have an empty race_url — these MERGE into one ` +
+      `event per town (app/lib/races.js groups by race_url::town). Fix upstream or ` +
+      `give them a synthetic stable key before publishing.`,
+    )
   }
 
   return { passed: failures.length === 0, failures }

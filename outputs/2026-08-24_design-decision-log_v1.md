@@ -42,3 +42,13 @@
 1. **Q3 SUPERSEDED — drive gets the full difficulty treatment, warm ramp (specimen option B).** Dima reviewed the three-way specimen (A shipped / B warm / C cool) and chose B: banded chips NEAR (green pastel) · MID (amber pastel) · FAR (dark red), word + time always together. Overrides both the external reviewer's Q3 and our A recommendation; the warm-collision trade-off is accepted, with the band word as the disambiguator. Implemented in `semantics.js` (`DRIVE_CHIP`), RaceCard, race-page gate; related-row text colours follow `DRIVE_INK` (green/amber/red).
 2. **Q8 SUPERSEDED — AI provider buttons wear palette shades**, not neutral: Ask Claude = the ramp's orange tint (#F9CAA2/#593215), Ask ChatGPT = the green tint (#ADE3BF/#103C28). Palette colours, not raw brand hex — a middle path between the brand-hue ban and neutrality. Implemented in AskAI + race-page act zone.
 3. **Filter "More" section: first rework** — content filters (Kids run, Climb D+) stay under MORE; view toggles moved to a separate SHOW row ("No date yet", "Past races"). Dima flagged more rework coming; treat this row as open.
+
+## Addendum 2 — 2026-09-12 (design-port ship; owner accepted on review)
+
+The prototype design port (`feat/prototype-design-port`, reviewed 2026-09-12) supersedes three earlier dispositions; Dima accepted all three at ship:
+
+1. **Q6 horizon SUPERSEDED — the Weekends view replaces the "Next two weekends" block.** Every month grouped into Fri–Sun rungs on demand, population stated, undated seated separately. Same job, whole calendar.
+2. **Pick-after-input RETIRED — the "closest match" block is removed.** The glance panel (named superlatives + counts) carries orientation; revisit only if the intent log shows runners hunting for a promoted pick.
+3. **Distance buckets 5 → 4** (10–15 + 15–21 merge into 10–21). Legacy URLs and intent-log values still resolve (verified live); an old shared link now returns MORE races, never zero.
+
+Also shipped with the port: six un-bundled ITRA difficulty levels as filter values (`vh+` kept as a legacy alias), the study identity (cream `#F7F6F1` / terracotta `#A8412A` / Archivo–Manrope–Plex) re-pointed through the `fdr-*` tokens site-wide, difficulty attribution ("for 28 km ↑2000"), per-option filter counts, and the A1/A2 `race_url` honesty fixes. Review fixes applied pre-ship: deno mirror-test typo (154/154 after), 390px filter-row overflow, `--dt2` AA contrast.
