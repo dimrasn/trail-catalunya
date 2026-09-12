@@ -47,7 +47,7 @@
      values verbatim. As TEXT they are darkened: the repo's DRIVE_INK near (#04884D) is
      4.19:1 on this cream and fails AA for the 11px sub-label, where these are 5.9/5.0/6.2. */
   --dv1:#ADE3BF; --dv2:#F9CAA2; --dv3:#B04A44;
-  --dt1:#2F6B3A; --dt2:#8A6414; --dt3:#A8322A;
+  --dt1:#2F6B3A; --dt2:#7E5B12; --dt3:#A8322A;
 
   /* UI state, deliberately OFF both ramps: --save marks your shortlist, --hit marks a
      search match. Neither is a property of the race, so neither may borrow a band colour. */
@@ -282,7 +282,7 @@ html{background:var(--white);color:var(--ink);font-family:var(--fdr-sans);font-s
 .selopt[aria-selected="true"] .tick{color:var(--white)}
 .selopt .olb{overflow:hidden;text-overflow:ellipsis}
 
-.fmeta{display:flex;align-items:center;gap:12px;padding:11px clamp(14px,1.6vw,22px);border-top:1px solid var(--line)}
+.fmeta{display:flex;align-items:center;gap:12px;padding:11px clamp(14px,1.6vw,22px);border-top:1px solid var(--line);flex-wrap:wrap;row-gap:8px}
 .mspacer{flex:1 1 auto}
 .chip{font-family:var(--fdr-mono);text-decoration:none;border-radius:999px;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;height:34px;display:inline-flex;align-items:center;padding:0 8px;min-width:0;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;user-select:none;justify-content:center;white-space:nowrap;transition:background-color var(--d) var(--ease),color var(--d) var(--ease),transform .15s var(--ease)}
 .chip:hover{background-color:var(--soft)}

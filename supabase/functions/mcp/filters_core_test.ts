@@ -182,7 +182,7 @@ Deno.test('difficulty: slug mapping is the six ITRA levels, 1:1', () => {
 
 Deno.test('difficulty: an unknown level word matches nothing', () => {
   // previously it defaulted to 'vh+' — a wrong positive rather than a visible gap
-  assertEquals(eventMatchesDifficulty([{ km: 1, elevation_m: 1 }], ['brutal']), false)
+  assertEquals(eventMatchesDifficulty([{ km: 1, elevationGain: 1 }], ['brutal']), false)
 })
 
 Deno.test('difficulty: expandDifficulty is idempotent and dedupes', () => {
