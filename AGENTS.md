@@ -39,7 +39,28 @@ all differ from your training data. Read the relevant guide in
    drive time is null until the "New town" runbook (README) is run. The
    site→towns migration is deliberately deferred (enrichment plan, Scope Boundaries).
 
-## Deployment state (last verified 2026-08-27)
+## Deployment state (last verified 2026-09-12)
+
+**Design port (study identity) — merged to `main` 2026-09-12 (site auto-deploys).**
+The homepage renders the design study's layout on live data: masthead → hero →
+month-at-a-glance (named superlatives + NEXT UP) → question-cell filter panel
+(per-option counts) → sort/view controls → ruled list, plus a WEEKENDS view
+(Fri–Sun rungs per month, undated seated). Identity: cream `#F7F6F1`, terracotta
+`#A8412A`, Archivo/Manrope/IBM Plex Mono — re-pointed through the `fdr-*` tokens,
+so race pages ride the same board. Filter domains changed: SIX ITRA difficulty
+levels (`vh+` = legacy alias) and FOUR distance buckets (`10-21`; `10-15`/`15-21`
+resolve as aliases) — site + intent-log SQL + MCP mirror. The "Next two weekends"
+horizon and "closest match" blocks are RETIRED (decision log Addendum 2). Honesty:
+outbound race link guarded + host-derived label (34 socials say "Organizer on
+Instagram" etc.); empty `race_url` fails the Monday scrape (golden sweep).
+OPERATIONAL TAIL of this merge: (1) apply migration
+`20260911120000_intent_log_four_distance_buckets.sql` to prod (carries the 09-10
+six-level file forward; until applied the intent log DROPS rows with new filter
+values); (2) redeploy the MCP via `scripts/deploy-mcp.sh` for six-level difficulty
+parity (check live version first — L17). Suites at merge: node 144 · deno 154 ·
+build 240 pages. Review trail: `outputs/2026-09-11_design-port-handoff_v1.md` +
+pre-ship review fixes (deno mirror typo, 390px overflow, dt2 contrast).
+
 
 **Enrichment Slice 1 → shipped as REVIEWED ROUTE MAPS ONLY (site + MCP LIVE & VERIFIED
 2026-08-27, origin/main `249c8e2`).** get_race returns `routes` (Wikiloc/Komoot/Strava
