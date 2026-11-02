@@ -84,6 +84,7 @@ export interface FilterableEvent {
   date: string | null
   dateEnd?: string | null
   expectedMonth?: number
+  expectedYear?: number
   taste_flags?: { night?: boolean; technicality?: string } | null
 }
 
@@ -117,6 +118,9 @@ export function applyFilters<T extends FilterableEvent>(
     // Past floor: drop dated races that already finished (dateEnd covers multi-day).
     // Undated / expected-month races are kept (they're forward-looking).
     if (f.not_before && e.date && (e.dateEnd || e.date) < f.not_before) return false
+    // Month-only race whose month is already over: past, same as a dated one.
+    if (f.not_before && !e.date && e.expectedMonth != null && e.expectedYear != null &&
+        `${e.expectedYear}-${String(e.expectedMonth).padStart(2, '0')}` < f.not_before.slice(0, 7)) return false
 
     // A distance/elevation filter keeps the event only if at least one distance
     // satisfies ALL supplied predicates together (same variant, never split

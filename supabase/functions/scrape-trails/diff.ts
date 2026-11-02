@@ -48,6 +48,20 @@ export interface DbRaceRow {
   [key: string]: unknown
 }
 
+// Rows the source calendar is still expected to list: not REMOVED and not yet
+// run. The source drops a race once it has happened, but our DB only marks it
+// REMOVED on a SUCCESSFUL run. Counting finished races in the sanity baseline
+// therefore deadlocks: once they push fresh rows below the threshold, the gate
+// aborts, nothing is marked REMOVED, and it fails again every week (it did,
+// 5 Oct - 2 Nov 2026, freezing the calendar at 28 Sep).
+export function sanityBaseline(rows: DbRaceRow[], todayISO: string): number {
+  return rows.filter((r) => {
+    if (r.status === 'REMOVED') return false
+    const d = r.date
+    return !(typeof d === 'string' && d.length >= 10 && d.slice(0, 10) < todayISO)
+  }).length
+}
+
 export function computeChanges(fresh: Race[], current: DbRaceRow[]): ChangeEvent[] {
   const currentByHash = new Map<string, DbRaceRow>()
   for (const r of current) currentByHash.set(r.race_hash, r)

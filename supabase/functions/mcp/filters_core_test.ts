@@ -190,3 +190,13 @@ Deno.test('difficulty: expandDifficulty is idempotent and dedupes', () => {
   assertEquals(expandDifficulty(['vh+', 'extreme']), ['very-hard', 'extreme', 'brutal'])
   assertEquals(expandDifficulty(['easy']), ['easy'])
 })
+
+Deno.test('not_before: a month-only race whose month is over is past too', () => {
+  const evs = [
+    { id: 'sep-tba', province: 'BARCELONA', kidsRun: false, distances: [{ km: 10 }], date: null, expectedMonth: 9, expectedYear: 2026, drive_minutes_from_barcelona: 30 },
+    { id: 'nov-tba', province: 'BARCELONA', kidsRun: false, distances: [{ km: 10 }], date: null, expectedMonth: 11, expectedYear: 2026, drive_minutes_from_barcelona: 30 },
+    { id: 'no-month', province: 'BARCELONA', kidsRun: false, distances: [{ km: 10 }], date: null, drive_minutes_from_barcelona: 30 },
+  ] as unknown as Parameters<typeof applyFilters>[0]
+  // 2 Nov: September is over; the current month still counts as upcoming.
+  assertEquals(ids(applyFilters(evs, { not_before: '2026-11-02' })), ['no-month', 'nov-tba'])
+})

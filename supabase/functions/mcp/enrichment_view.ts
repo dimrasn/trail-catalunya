@@ -49,11 +49,14 @@ export function factToMcp(raw: unknown, key?: StableKey, nowMs: number = Date.no
 }
 
 // A race_enrichment row → the enriched_facts object, or null if nothing shows.
-export function enrichedFactsForMcp(row: Record<string, unknown> | null | undefined): EnrichedFacts | null {
+export function enrichedFactsForMcp(
+  row: Record<string, unknown> | null | undefined,
+  nowMs: number = Date.now(),
+): EnrichedFacts | null {
   if (!row) return null
   const out: EnrichedFacts = {}
   for (const key of STABLE_KEYS) {
-    const m = factToMcp(row[key], key)
+    const m = factToMcp(row[key], key, nowMs)
     if (m) out[key] = m
   }
   return Object.keys(out).length ? out : null

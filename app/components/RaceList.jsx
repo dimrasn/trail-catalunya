@@ -138,6 +138,11 @@ export default function RaceList({ races, lastUpdated }) {
       // agreement gate failing) sits behind the toggle.
       if (!race.date && race.expectedMonth == null && !filters.showTBD) return false
       if (race.date && !filters.showPast && (race.dateEnd || race.date) < today) return false
+      // A month-only race whose month has passed is past too: the source never
+      // published a date and it has not run since. Without this it sat at the top
+      // of the calendar indefinitely (Sep/Oct "TBA" rows still showing in Nov).
+      if (!race.date && race.expectedMonth != null && !filters.showPast &&
+          monthKeyOf(race) < today.slice(0, 7)) return false
       if (filters.kidsRun && !race.kidsRun) return false
       if (savedOnly && !saved.has(race.id)) return false
       return (

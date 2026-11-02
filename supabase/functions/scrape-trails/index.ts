@@ -9,7 +9,7 @@
 
 import { createClient } from 'jsr:@supabase/supabase-js@2'
 import { CALENDAR_URL, parseCalendar, type Race } from './parser.ts'
-import { computeChanges, summarize, type DbRaceRow } from './diff.ts'
+import { computeChanges, summarize, type DbRaceRow, sanityBaseline } from './diff.ts'
 import { runGoldenAssertions } from './golden.ts'
 import { sendAlert } from '../_shared/email.ts'
 
@@ -267,7 +267,8 @@ Deno.serve(async (req) => {
     if (currentErr) throw new Error(`Fetch current state: ${currentErr.message}`)
 
     // 5. Sanity gate: bail if fresh count looks like garbage
-    const baseline = (currentRows || []).filter((r: DbRaceRow) => r.status !== 'REMOVED').length
+    // Upcoming + undated only — finished races legitimately leave the source.
+    const baseline = sanityBaseline((currentRows || []) as DbRaceRow[], new Date().toISOString().slice(0, 10))
     if (baseline >= SANITY_BASELINE_MIN && deduped.length < baseline * SANITY_MIN_FRACTION) {
       throw new Error(
         `Sanity gate failed: only ${deduped.length} fresh rows vs ${baseline} active in DB ` +

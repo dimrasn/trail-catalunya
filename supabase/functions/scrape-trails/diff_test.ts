@@ -3,7 +3,7 @@
 // Run: deno test --allow-read supabase/functions/scrape-trails/diff_test.ts
 
 import { assert, assertEquals } from 'jsr:@std/assert@1'
-import { computeChanges, summarize, type DbRaceRow } from './diff.ts'
+import { computeChanges, sanityBaseline, summarize, type DbRaceRow } from './diff.ts'
 import type { Race } from './parser.ts'
 
 function race(overrides: Partial<Race> = {}): Race {
@@ -145,4 +145,15 @@ Deno.test('mixed re_added and changed', () => {
   assertEquals(sum.changed, 1)
   assertEquals(sum.added, 0)
   assertEquals(sum.removed, 0)
+})
+
+Deno.test('sanityBaseline: finished races do not count (5 Oct - 2 Nov 2026 deadlock)', () => {
+  const rows = [
+    { race_hash: 'a', status: 'ACTIVA', date: '2026-09-04' }, // finished
+    { race_hash: 'b', status: 'ACTIVA', date: '2026-11-07' }, // upcoming
+    { race_hash: 'c', status: 'ACTIVA', date: null },         // undated
+    { race_hash: 'd', status: 'REMOVED', date: '2026-12-01' }, // removed
+    { race_hash: 'e', status: 'ACTIVA', date: '2026-11-02' }, // today counts
+  ] as DbRaceRow[]
+  assertEquals(sanityBaseline(rows, '2026-11-02'), 3)
 })

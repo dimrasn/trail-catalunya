@@ -50,7 +50,10 @@ Deno.test('enrichedFactsForMcp omits unknowns and returns null when empty', () =
     price: fact(null, 'unknown'),
     confirmed_status: fact('confirmed', 'medium'),
   }
-  const out = enrichedFactsForMcp(row)!
+  // Pinned clock: these fixtures are dated 2026-06-23; with the real clock the
+  // high-blast facts aged past the 90-day ceiling (~21 Sep) and this test, and
+  // with it the MCP deploy gate, failed.
+  const out = enrichedFactsForMcp(row, Date.UTC(2026, 5, 23))!
   assert(out.start_time)
   assert(out.confirmed_status)
   assertEquals(out.price, undefined)
