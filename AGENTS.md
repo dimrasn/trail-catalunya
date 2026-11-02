@@ -17,6 +17,9 @@ all differ from your training data. Read the relevant guide in
    the session ends (he talks, he does not edit markdown). Open commitments:
    `docs/open-loops.md`.
 3. `## Deployment state` below — what's live vs built-but-NOT-deployed.
+
+**INCIDENT 2026-11-02 — calendar frozen 5 weeks, fixed same day (`2cf4873`).** Scrapes failed every Monday 2026-10-05 → 11-02 (sanity gate counted ~209 finished races in its baseline; finished races are only removed by a successful run, so it could never recover). Last good scrape before the fix: 2026-09-28. Nobody noticed for 5 weeks: check whether `sendAlert` emails ever arrived. Fixes: `sanityBaseline()` = upcoming + undated rows; month-only races in a past month now hidden (site + MCP `not_before`); `enrichment_view_test` clock pinned (it had been failing since ~21 Sep, which blocked `deploy-mcp.sh`). Deployed: scrape-trails + MCP (build `2cf4873`, live-verified); forced scrape OK (300 rows, +22 / −115 / ~34 changed). Live homepage verified opening on November. Open: why the outage was silent; the "PAST RACES 0" counter; audit brief `outputs/2026-11-02_audit-handoff_v1.md`.
+
    **enrich-races is NOT live**: don't apply its migrations or "fix" its absence
    without the activation checklist.
 4. Tests before touching code:
